@@ -82,7 +82,7 @@
     "testcafe": "^0.18.5",
     "testcafe-vue-selectors": "^2.1.0",
     "togeojson": "^0.16.0",
-    "vue": "2.5.2",
+    "vue": "2.5.15",
     "vue-avatar": "^2.0.0",
     "vue-router": "^2.7.0",
     "vue2-dropzone": "^3.0.5",
