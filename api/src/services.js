@@ -1,4 +1,3 @@
-import path from 'path'
 import _ from 'lodash'
 import logger from 'winston'
 import kCore from '@kalisio/kdk-core'
