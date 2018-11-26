@@ -23,9 +23,11 @@ services:
       - STRIPE_PUBLIC_KEY
       - DB_URL
     networks:
-      - app-network
+      - app
+      - cluster
 
 networks:
-  app-network:
+  app:
+  cluster:
     external:
       name: ${DOCKER_NETWORK}
