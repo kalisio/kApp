@@ -1,4 +1,4 @@
-<img src="https://github.com/kalisio/kDocs/blob/master/images/kalisio-logo-256.png" width="256">
+[![Kalisio](https://s3.eu-central-1.amazonaws.com/kalisioscope/kalisio/kalisio-logo-black-512x168.png)](https://kalisio.com)
 
 ## kApp application
 
