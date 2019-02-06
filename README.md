@@ -1,6 +1,6 @@
 [![Kalisio](https://s3.eu-central-1.amazonaws.com/kalisioscope/kalisio/kalisio-logo-black-512x168.png)](https://kalisio.com)
 
-## kApp application
+## kApp - KDK application template
 
 [![Build Status](https://travis-ci.org/kalisio/kApp.png?branch=master)](https://travis-ci.org/kalisio/kApp)
 [![Code Climate](https://codeclimate.com/github/kalisio/kApp/badges/gpa.svg)](https://codeclimate.com/github/kalisio/kApp)
