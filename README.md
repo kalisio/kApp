@@ -14,7 +14,7 @@ For more information please visit our websites:
 * [Kalisio Company](https://kalisio.com/)
 * [kApp development build](https://kapp.dev.kalisio.xyz/)
 
-This application is based on the [Kalisio Development Kit](https://kalisio.gitbooks.io/kalisio/).
+This application is based on the [Kalisio Development Kit](https://kalisio.github.io/kdk/).
 
 ### License
 
