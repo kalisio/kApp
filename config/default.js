@@ -40,31 +40,23 @@ module.exports = {
   logs: {
     level: (process.env.NODE_ENV === 'development' ? 'debug' : 'info')
   },
-  roles: {
-    // Member/Manager/Owner
-    colors: ['amber', 'orange', 'deep-orange'],
-    icons: ['person', 'work', 'verified_user']
-  },
   screen: {
-    footer: [
+    extraLinks: [
       { label: 'screen.ABOUT_KALISIO', url: website },
       { label: 'screen.CONTACT', url: website + '/#footer' },
       { label: 'screen.TERMS_AND_POLICIES', url: domain + '/#/terms' },
     ],
-    header: 'kalisio-banner.png'
+    banner: 'kalisio-banner.png'
   },
   login: {
     providers: ['google', 'github']
   },
   layout: {
-    appBar: 'layout/KAppBar',
-    sideNav: 'layout/KSideNav'
+    view: 'lHh LpR lFf',
+    rightBreakpoint: 9999
   },
   appBar: {
-    title: 'kApp',
-    speech: {
-      language: 'en'
-    }
+    title: 'kApp'
   },
   sideNav: {
     banner: 'kalisio-banner.png',

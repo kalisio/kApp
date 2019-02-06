@@ -44,7 +44,7 @@ module.exports = {
     max: 50
   },
   authentication: {
-    secret: process.env.APP_SECRET,
+    secret: process.env.APP_SECRET || 'my secret',
     strategies: [
       'jwt',
       'local'
@@ -75,15 +75,15 @@ module.exports = {
         name: 'Kalisio'
       }
     ],
-    github: {
+    github: (process.env.NODE_APP_INSTANCE ? {
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
       callbackURL: domain + '/auth/github/callback',
       successRedirect: domain + '/',
       failureRedirect: domain + '/#/login' +
         '?error_message=An error occured while authenticating with GitHub, check you correctly authorized the application and have a valid public email in your profile'
-    },
-    google: {
+    } : undefined),
+    google: (process.env.NODE_APP_INSTANCE ? {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: domain + '/auth/google/callback',
@@ -91,7 +91,7 @@ module.exports = {
       failureRedirect: domain + '/#/login' +
         '?error_message=An error occured while authenticating with Google, check you correctly authorized the application and have a valid public email in your profile',
       scope: ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email']
-    },
+    } : undefined),
     // Required for OAuth2 to work correctly
     cookie: {
       enabled: true,
@@ -126,11 +126,11 @@ module.exports = {
     adapter: 'mongodb',
     url: process.env.DB_URL || (containerized ? 'mongodb://mongodb:27017/kapp' : 'mongodb://127.0.0.1:27017/kapp')
   },
-  storage: {
+  storage: (process.env.NODE_APP_INSTANCE ? {
     accessKeyId: process.env.S3_ACCESS_KEY,
     secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
     bucket: process.env.S3_BUCKET
-  }
+  } : undefined)
 }
 
 /*

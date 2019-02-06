@@ -13,7 +13,7 @@ module.exports = {
       },
       'register': 'authentication/KRegister',
       'change-endpoint': 'authentication/KChangeEndpoint',
-      chlidren: {
+      children: {
         // The name of the route has to be set the default child
         name: 'home',
         component: 'layout/KHome',
