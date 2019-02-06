@@ -40,20 +40,26 @@ module.exports = {
   logs: {
     level: (process.env.NODE_ENV === 'development' ? 'debug' : 'info')
   },
-  screen: {
+  screens: {
     extraLinks: [
       { label: 'screen.ABOUT_KALISIO', url: website },
       { label: 'screen.CONTACT', url: website + '/#footer' },
       { label: 'screen.TERMS_AND_POLICIES', url: domain + '/#/terms' },
     ],
-    banner: 'kalisio-banner.png'
-  },
-  login: {
-    providers: ['google', 'github']
+    banner: 'kalisio-banner.png',
+    /*
+    login: {
+      providers: ['google', 'github']
+    },
+    */
+    logout: {
+      links: [
+        { id: 'login-link', label: 'KLogout.LOG_IN_AGAIN_LINK', route: { name: 'login' } },
+      ]
+    }
   },
   layout: {
-    view: 'lHh LpR lFf',
-    rightBreakpoint: 9999
+    view: 'lHh LpR lFf'
   },
   appBar: {
     title: 'kApp'
@@ -63,6 +69,12 @@ module.exports = {
     components: {
       user_actions: 'layout/KLinksPanel'
     }
+  },
+  panel: {
+    links: [
+      { }, // separator
+      { label: 'sideNav.LOGOUT', icon: 'exit_to_app', route: { name: 'logout' } }
+    ]
   },
   user_actions: {
     links: [

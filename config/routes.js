@@ -15,9 +15,21 @@ module.exports = {
       'change-endpoint': 'authentication/KChangeEndpoint',
       children: {
         // The name of the route has to be set the default child
-        name: 'home',
+        name: '',
         component: 'layout/KHome',
-        meta: { authenticated: true, unauthenticated: false }
+        meta: { authenticated: true, unauthenticated: false },
+        children: {
+          'default-home-view': {
+            // Because this child is the default one path is empty and name is the one of the parent route
+            path: '',
+            name: 'home',
+            redirect: { name: 'main' }
+          },
+          'main': {
+            path: 'main',
+            component: 'MainActivity'
+          }
+        }
       }
     }
   },
