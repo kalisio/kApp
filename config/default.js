@@ -47,11 +47,12 @@ module.exports = {
       { label: 'screen.TERMS_AND_POLICIES', url: domain + '/#/terms' },
     ],
     banner: 'kalisio-banner.png',
-    /*
     login: {
-      providers: ['google', 'github']
+      providers: [], // ['google', 'github'],
+      links: [
+        { id: 'register-link', label: 'KLogin.DONT_HAVE_AN_ACCOUNT_LINK', route: { name: 'register' } }
+      ]
     },
-    */
     logout: {
       links: [
         { id: 'login-link', label: 'KLogout.LOG_IN_AGAIN_LINK', route: { name: 'login' } },
@@ -59,7 +60,8 @@ module.exports = {
     }
   },
   layout: {
-    view: 'lHh LpR lFf'
+    view: 'lHh LpR lFf',
+    rightBreakpoint: 9999
   },
   appBar: {
     title: 'kApp'

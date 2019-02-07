@@ -20,9 +20,9 @@
     "RECONNECT": "Tentative de reconnection en cours..."
   },
   "MainActivity": {
-    "TOGGLE": "Cliquer sur le boutton pour activer",
-    "UNTOGGLE": "Cliquer sur le boutton pour désactiver",
-    "ACTION": "Action pour l'activité courante",
-    "TITLE": "Titre pour l'activité courante"
+    "ADD_USER": "Ajouter un utilisateur",
+    "REMOVE_USER": "Supprimer l'utilisateur",
+    "TITLE": "Vos utilisateurs",
+    "PANEL": "Ouvrir le panneau droit"
   }
 }

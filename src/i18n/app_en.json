@@ -20,9 +20,9 @@
     "RECONNECT": "We are trying to reconnect..."
   },
   "MainActivity": {
-    "TOGGLE": "Click button to toggle",
-    "UNTOGGLE": "Click button to untoggle",
-    "ACTION": "Action for current activity",
-    "TITLE": "Title for current activity"
+    "ADD_USER": "Add a user",
+    "REMOVE_USER": "Remove the user",
+    "TITLE": "Your users",
+    "PANEL": "Open right panel"
   }
 }

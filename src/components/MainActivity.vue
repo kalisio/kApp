@@ -1,7 +1,6 @@
 <template>
   <div>
-    <h1 class="text-center">{{ text }}</h1>
-    <q-btn class="fixed" style="right: 20px; top: 70px" small round icon="layers" color="secondary" @click="layout.toggleRight()" />
+    <k-list service="users" :renderer="renderer" :filter-query="searchQuery" />
   </div>
 </template>
 
@@ -21,12 +20,15 @@ export default {
   inject: [ 'layout' ],
   data () {
     return {
-      toggled: false
-    }
-  },
-  computed: {
-    text() {
-      return (this.toggled ? this.$t('MainActivity.UNTOGGLE') :  this.$t('MainActivity.TOGGLE'))
+      renderer: {
+        component: 'collection/KItem',
+        props: {
+          itemActions: [{
+            label: this.$i18n.t('MainActivity.REMOVE_USER'),
+            handler: (user) => this.onRemoveUser(user)
+          }]
+        }
+      }
     }
   },
   methods: {
@@ -36,20 +38,36 @@ export default {
       this.setRightPanelContent('MainPanel', this.$data)
       // Title
       this.setTitle(this.$t('MainActivity.TITLE'))
+      // Search bar
+      this.setSearchBar('profile.name')
       // Fab actions
       this.registerFabAction({
-        name: 'action',
-        label: this.$t('MainActivity.ACTION'),
-        icon: 'refresh',
-        handler: this.onAction
+        name: 'add_user',
+        label: this.$t('MainActivity.ADD_USER'),
+        icon: 'person_add',
+        handler: this.onAddUser
+      })
+      this.registerFabAction({
+        name: 'open_panel',
+        label: this.$t('MainActivity.PANEL'),
+        icon: 'keyboard_arrow_right',
+        handler: this.onOpenPanel
       })
     },
-    onAction () {
-      this.toggled = !this.toggled
+    onAddUser () {
+      this.$router.push({ name: 'register' })
+    },
+    async onRemoveUser (user) {
+      await this.$api.getService('users').remove(user._id)
+      if (this.$store.get('user')._id === user._id) this.$router.push({ name: 'logout' })
+    },
+    onOpenPanel () {
+      this.layout.toggleRight()
     }
   },
   created () {
-    // Initialize event listeners, internal data, etc.
+    // Load the required components
+    this.$options.components['k-list'] = this.$load('collection/KList')
   },
   mounted () {
     // Initialize required DOM elements, etc.
