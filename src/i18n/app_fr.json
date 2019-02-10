@@ -21,7 +21,7 @@
   },
   "MainActivity": {
     "ADD_USER": "Ajouter un utilisateur",
-    "REMOVE_USER": "Supprimer l'utilisateur",
+    "REMOVE_USER": "Supprimer",
     "TITLE": "Vos utilisateurs",
     "PANEL": "Ouvrir le panneau droit"
   }

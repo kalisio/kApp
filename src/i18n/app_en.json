@@ -21,7 +21,7 @@
   },
   "MainActivity": {
     "ADD_USER": "Add a user",
-    "REMOVE_USER": "Remove the user",
+    "REMOVE_USER": "Remove",
     "TITLE": "Your users",
     "PANEL": "Open right panel"
   }
