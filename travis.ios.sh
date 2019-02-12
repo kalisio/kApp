@@ -14,7 +14,7 @@ else
 
 	# Create the keychain
 	KEY_CHAIN_NAME=ios-build.keychain
-	KEY_CHAIN_PASSWORD=travis@kdk
+	KEY_CHAIN_PASSWORD=travis
 
 	# Create a custom keychain
 	security create-keychain -p $KEY_CHAIN_PASSWORD $KEY_CHAIN_NAME
@@ -26,9 +26,10 @@ else
 	#security list-keychains -s $KEY_CHAIN
 
 	# Add certificates to keychain and allow codesign to access them
-	security import kApp-secrets/ios/AppleWWDRCA.cer -k $KEY_CHAIN_NAME -T /usr/bin/codesign
-	security import kApp-secrets/ios/ios_distribution.cer -k $KEY_CHAIN_NAME -T /usr/bin/codesign
-	security import kApp-secrets/ios/ios_distribution.p12 -k $KEY_CHAIN_NAME -P $APPLE_KEY_PASSWORD -T /usr/bin/codesign
+	# see: https://github.com/travis-ci/travis-ci/issues/6791#issuecomment-261215038
+	security import kApp-secrets/ios/AppleWWDRCA.cer -k $KEY_CHAIN_NAME -A
+	security import kApp-secrets/ios/ios_distribution.cer -k $KEY_CHAIN_NAME -A
+	security import kApp-secrets/ios/ios_distribution.p12 -k $KEY_CHAIN_NAME -P $APPLE_KEY_PASSWORD -A
 
 	# see: https://docs.travis-ci.com/user/common-build-problems/#mac-macos-sierra-1012-code-signing-errors
   security set-key-partition-list -S apple-tool:,apple: -s -k keychainPass $KEY_CHAIN_NAME
