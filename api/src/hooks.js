@@ -6,7 +6,13 @@ import { permissions as corePermissions, hooks as coreHooks } from '@kalisio/kdk
 const { authenticate } = require('@feathersjs/authentication').hooks
 
 // Default rules for all users
+function defineUserAbilities (subject, can, cannot) {
+  can('service', 'documents')
+  can('all', 'documents')
+}
+
 corePermissions.defineAbilities.registerHook(corePermissions.defineUserAbilities)
+corePermissions.defineAbilities.registerHook(defineUserAbilities)
 
 module.exports = {
   before: {

@@ -1,6 +1,7 @@
 <template>
   <div>
-    <k-list service="users" :renderer="renderer" :filter-query="searchQuery" />
+    <k-list service="documents" :renderer="renderer" :filter-query="searchQuery" />
+    <k-modal-editor ref="editor" service="documents" @applied="onDocumentCreated" />
   </div>
 </template>
 
@@ -24,8 +25,8 @@ export default {
         component: 'collection/KItem',
         props: {
           itemActions: [{
-            label: this.$i18n.t('MainActivity.REMOVE_USER'),
-            handler: (user) => this.onRemoveUser(user)
+            label: this.$i18n.t('MainActivity.REMOVE_DOCUMENT'),
+            handler: (document) => this.onDeleteDocument(document)
           }]
         }
       }
@@ -42,32 +43,35 @@ export default {
       this.setSearchBar('profile.name')
       // Fab actions
       this.registerFabAction({
-        name: 'add_user',
-        label: this.$t('MainActivity.ADD_USER'),
-        icon: 'person_add',
-        handler: this.onAddUser
-      })
-      this.registerFabAction({
         name: 'open_panel',
         label: this.$t('MainActivity.PANEL'),
         icon: 'keyboard_arrow_right',
         handler: this.onOpenPanel
+      }),
+      this.registerFabAction({
+        name: 'create-document',
+        label: this.$t('MainActivity.CREATE_DOCUMENT'),
+        icon: 'add',
+        handler: this.onCreateDocument
       })
-    },
-    onAddUser () {
-      this.$router.push({ name: 'register' })
-    },
-    async onRemoveUser (user) {
-      await this.$api.getService('users').remove(user._id)
-      if (this.$store.get('user')._id === user._id) this.$router.push({ name: 'logout' })
     },
     onOpenPanel () {
       this.layout.toggleRight()
+    },
+    onCreateDocument () {
+      this.$refs.editor.open()
+    },
+    onDocumentCreated () {
+      this.$refs.editor.close()
+    },
+    async onDeleteDocument (document) {
+      await this.$api.getService('documents').remove(document._id)
     }
   },
   created () {
     // Load the required components
     this.$options.components['k-list'] = this.$load('collection/KList')
+    this.$options.components['k-modal-editor'] = this.$load('editor/KModalEditor')
   },
   mounted () {
     // Initialize required DOM elements, etc.

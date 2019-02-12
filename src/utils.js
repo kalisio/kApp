@@ -16,8 +16,12 @@ function loadComponent (component) {
 function loadSchema (schema) {
   return import(`@kalisio/kdk-core/lib/common/schemas/${schema}.json`)
     .catch(errorCore => {
-      console.log(errorCore)
-    })
+      // Otherwise this should be app component
+      return import(`./schemas/${schema}.json`)
+      .catch(errorApp => {
+        console.log(errorCore, errorApp)
+      })
+  })
 }
 
 function loadTranslation (module, locale) {

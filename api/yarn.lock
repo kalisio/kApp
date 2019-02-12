@@ -51,9 +51,9 @@
     passport "^0.4.0"
     uuid "^3.1.0"
 
-"@feathersjs/authentication@git+https://github.com/kalisio/authentication.git":
+"@feathersjs/authentication@https://github.com/kalisio/authentication.git":
   version "2.1.7"
-  resolved "git+https://github.com/kalisio/authentication.git#b730e0624b112e9be372dea168702dc740037396"
+  resolved "https://github.com/kalisio/authentication.git#b730e0624b112e9be372dea168702dc740037396"
   dependencies:
     "@feathersjs/commons" "^2.0.0"
     "@feathersjs/errors" "^3.0.0"

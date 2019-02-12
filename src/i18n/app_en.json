@@ -20,9 +20,9 @@
     "RECONNECT": "We are trying to reconnect..."
   },
   "MainActivity": {
-    "ADD_USER": "Add a user",
-    "REMOVE_USER": "Remove",
-    "TITLE": "Your users",
+    "CREATE_DOCUMENT": "New document",
+    "DELETE_DOCUMENT": "Delete",
+    "TITLE": "Your documents",
     "PANEL": "Open right panel"
   }
 }

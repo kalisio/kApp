@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import path from 'path'
 import logger from 'winston'
 import kCore from '@kalisio/kdk-core'
 import packageInfo from '../../package.json'
@@ -24,6 +25,13 @@ module.exports = async function () {
     logger.error(error.message)
   }
 
+  // Create a service
+  app.createService('documents', {
+    servicesPath: '',
+    modelsPath: path.join(__dirname, 'models')
+  })
+
+  // Create the default user
   let usersService = app.getService('users')
   let defaultUsers = app.get('authentication').defaultUsers
   // Do not use exposed passwords on staging/prod environments

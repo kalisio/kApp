@@ -20,9 +20,9 @@
     "RECONNECT": "Tentative de reconnection en cours..."
   },
   "MainActivity": {
-    "ADD_USER": "Ajouter un utilisateur",
-    "REMOVE_USER": "Supprimer",
-    "TITLE": "Vos utilisateurs",
+    "CREATE_DOCUMENT": "Nouveau document",
+    "REMOVE_DOCUMENT": "Supprimer",
+    "TITLE": "Vos documents",
     "PANEL": "Ouvrir le panneau droit"
   }
 }
