@@ -24,7 +24,7 @@ jobs:
     - docker
     install: true
     script:
-    - bash travis.build.sh
+    - bash .travis.build.sh
     deploy:
       skip_cleanup: true
       provider: s3
@@ -48,7 +48,7 @@ jobs:
     install:
     - npm install -g codeclimate-test-reporter
     script:
-    - bash travis.test.sh
+    - bash .travis.test.sh
     after_script:
     - codeclimate-test-reporter < server-coverage/lcov.info
     deploy:
@@ -84,7 +84,7 @@ jobs:
     deploy:
       provider: script
       skip_cleanup: true
-      script: bash travis.deploy.sh
+      script: bash .travis.deploy.sh
       on:
         all_branches: true
 
@@ -110,7 +110,7 @@ jobs:
     - npm install -g cross-env
     - gem install fastlane
     script:
-    - bash travis.android.sh
+    - bash .travis.android.sh
 
   - stage: IOS
     language: objective-c
@@ -125,4 +125,4 @@ jobs:
     - npm install -g cross-env
     - gem install fastlane        
     script:
-    - bash travis.ios.sh
+    - bash .travis.ios.sh

@@ -3,7 +3,7 @@ if [[ $TRAVIS_COMMIT_MESSAGE == *"[skip ios]"* ]]
 then
 	echo "Skipping ios stage"
 else
-	source travis.env.sh
+	source .travis.env.sh
 
   # Retrieve the built Web app
 	aws s3 sync s3://kapp-builds/$TRAVIS_BUILD_NUMBER/dist cordova/www
@@ -38,5 +38,5 @@ else
 	npm run cordova:build:release
 
   # Backup the ios build to S3
-	aws s3 sync cordova/platforms/ios s3://kapp-builds/$TRAVIS_BUILD_NUMBER/ios/build
+	aws s3 sync cordova/platforms/ios s3://kapp-builds/$TRAVIS_BUILD_NUMBER/ios/build/device
 fi
