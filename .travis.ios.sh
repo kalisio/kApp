@@ -38,5 +38,5 @@ else
 	npm run cordova:build:release
 
   # Backup the ios build to S3
-	aws s3 sync cordova/platforms/ios/build/device s3://kapp-builds/$TRAVIS_BUILD_NUMBER/ios
+	#aws s3 sync cordova/platforms/ios/build/device s3://kapp-builds/$TRAVIS_BUILD_NUMBER/ios
 fi
