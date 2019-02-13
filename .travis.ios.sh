@@ -39,9 +39,8 @@ else
 
   # Backup the ios build to S3
 	aws s3 sync cordova/platforms/ios/build/device s3://kapp-builds/$TRAVIS_BUILD_NUMBER/ios > /dev/null
-	if [ $? -eq 0 ] || [ $? -eq 2 ]; then
-		exit 0
-	else
-  	exit 1
+	echo $?
+	if [ $? -eq 1 ]; then
+		exit 1
 	fi
 fi

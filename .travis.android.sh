@@ -22,5 +22,9 @@ else
 	npm run cordova:deploy:android
 
 	# Store the android build to S3
-	aws s3 sync cordova/platforms/android/build/outputs/apk s3://kapp-builds/$TRAVIS_BUILD_NUMBER/android
+	aws s3 sync cordova/platforms/android/app/build/outputs/apk s3://kapp-builds/$TRAVIS_BUILD_NUMBER/android > /dev/null
+	echo $?
+	if [ $? -eq 1 ]; then
+		exit 1
+	fi
 fi
