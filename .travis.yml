@@ -107,6 +107,7 @@ jobs:
     install:
     - pip install --user awscli
     - npm install -g cordova
+    - npm install -g ios-deploy --unsafe-perm=true
     - npm install -g cross-env
     - gem install fastlane
     script:
