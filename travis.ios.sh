@@ -18,6 +18,7 @@ else
 	security unlock-keychain -p travis ios-build.keychain
   security set-keychain-settings -t 3600 -l ~/Library/Keychains/ios-build.keychain
 
+
 	# Add certificates to keychain and allow codesign to access them
 	# see: https://github.com/travis-ci/travis-ci/issues/6791#issuecomment-261215038
 	security import kApp-secrets/ios/AppleWWDRCA.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
@@ -25,7 +26,7 @@ else
 	security import kApp-secrets/ios/ios_distribution.p12 -k ~/Library/Keychains/ios-build.keychain -P $APPLE_KEY_PASSWORD -T /usr/bin/codesign
 
 	# see: https://docs.travis-ci.com/user/common-build-problems/#mac-macos-sierra-1012-code-signing-errors
-  security set-key-partition-list -S apple-tool:,apple: -s -k keychainPass ios-build.keychain
+  security set-key-partition-list -S apple-tool:,apple: -s -k travis ios-build.keychain
 
 	# Install the required secret files requied to sign the app
 	cp kApp-secrets/ios/build.json cordova/.
