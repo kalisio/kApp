@@ -6,7 +6,7 @@ else
 	source .travis.env.sh
 
   # Retrieve the built Web app
-	aws s3 sync s3://kapp-builds/$TRAVIS_BUILD_NUMBER/dist cordova/www
+	aws s3 sync s3://kapp-builds/$TRAVIS_BUILD_NUMBER/dist cordova/www > /dev/null
 
 	# Retrieve the secret files
 	echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
@@ -38,7 +38,6 @@ else
 
   # Backup the ios build to S3
 	aws s3 sync cordova/platforms/ios/build/device s3://kapp-builds/$TRAVIS_BUILD_NUMBER/ios > /dev/null
-	echo $?
 	if [ $? -eq 1 ]; then
 		exit 1
 	fi
