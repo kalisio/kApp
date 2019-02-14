@@ -125,12 +125,7 @@ module.exports = {
   db: {
     adapter: 'mongodb',
     url: process.env.DB_URL || (containerized ? 'mongodb://mongodb:27017/kapp' : 'mongodb://127.0.0.1:27017/kapp')
-  },
-  storage: (process.env.NODE_APP_INSTANCE ? {
-    accessKeyId: process.env.S3_ACCESS_KEY,
-    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
-    bucket: process.env.S3_BUCKET
-  } : undefined)
+  }
 }
 
 /*
