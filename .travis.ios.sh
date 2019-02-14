@@ -31,6 +31,7 @@ else
 	cp workspace/$FLAVOR/ios/build.json cordova/.
 	mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
 	cp workspace/$FLAVOR/ios/*.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+  cp workspace/$FLAVOR/ios/Appfile cordova/fastlane/
 
 	# Build and deploy the app
 	npm run cordova:add:ios

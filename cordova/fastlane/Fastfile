@@ -12,7 +12,7 @@
 default_platform(:android)
 
 platform :android do
-  desc "Deploy a new version to the Google Play Console"
+  desc "Deploy to the Google Play Console"
   lane :dev do
     upload_to_play_store(track: 'alpha',
       skip_upload_metadata: true,
@@ -39,25 +39,36 @@ platform :android do
 end
 
 platform :ios do
-  ios_project_path = "platforms/ios/kApp.xcodeproj"
-
-  desc "Build for IOS"
+  desc "Deploy to the App Store"
   lane :dev do
-    # Recreate schemes to ensure a smooth transition from cordova to gym
-    recreate_schemes(project: ios_project_path)
-
-    #update_project_team(
-    #  path: ios_project_path,
-    #  teamid: "TEAMID"
-    #)
-
-    #update_provisioning_profile_specifier(xcodeproj: ios_project_path)
-
-
-    gym(scheme: "awesomeproject",
-        configuration: "Debug",
-        clean: true,
-        project: ios_project_path,
-        output_directory: "target")
+    deliver(
+      submit_for_review: false,
+      automatic_release: false,
+      force: true, # Skip HTMl report verification
+      skip_metadata: true,
+      skip_screenshots: true,
+      ipa: './platforms/ios/ios/build/device/kApp.ipa'
+    )
   end
+  lane :test do
+    deliver(
+      submit_for_review: false,
+      automatic_release: false,
+      force: true, # Skip HTMl report verification
+      skip_metadata: true,
+      skip_screenshots: true,
+      ipa: './platforms/ios/ios/build/device/kApp.ipa'
+    )
+  end
+  lane :prod do
+    deliver(
+      submit_for_review: false,
+      automatic_release: false,
+      force: true, # Skip HTMl report verification
+      skip_metadata: true,
+      skip_screenshots: true,
+      ipa: './platforms/ios/ios/build/device/kApp.ipa'
+    )
+  end
+)
 end

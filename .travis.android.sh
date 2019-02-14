@@ -12,12 +12,12 @@ else
 	echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
 	git clone -b $APP https://github.com/kalisio/kdk-workspaces workspace
 
-		# Install the required secret files requied to sign the app
-	cp workspace/$FLAVOR/android/* cordova/
-	
+	# Install the required secret files requied to sign the app
+	cp workspace/$FLAVOR/android/*.json cordova/
+	cp workspace/$FLAVOR/android/kalisio.keystore cordova/
+	cp workspace/$FLAVOR/android/Appfie cordova/fastlane/
+		
 	# Build and deploy the mobile app	
-  echo json_key_file\(\"google-play.json\"\) > cordova/fastlane/Appfile
-  echo package_name\(\"com.kalisio.$APP\"\) >> cordova/fastlane/Appfile
   export ORG_GRADLE_PROJECT_cdvVersionCode=$TRAVIS_BUILD_NUMBER
 	npm run cordova:deploy:android
 
