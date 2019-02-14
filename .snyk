@@ -1,0 +1,19 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.3
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:debug:20170905':
+    - '@kalisio/kdk-core > socket.io-client > debug':
+        patched: '2019-02-14T16:28:55.878Z'
+    - '@kalisio/kdk-core > socket.io-client > engine.io-client > debug':
+        patched: '2019-02-14T16:28:55.878Z'
+    - '@kalisio/kdk-core > socket.io-client > socket.io-parser > debug':
+        patched: '2019-02-14T16:28:55.878Z'
+  'npm:ms:20170412':
+    - '@kalisio/kdk-core > socket.io-client > debug > ms':
+        patched: '2019-02-14T16:28:55.878Z'
+    - '@kalisio/kdk-core > socket.io-client > engine.io-client > debug > ms':
+        patched: '2019-02-14T16:28:55.878Z'
+    - '@kalisio/kdk-core > socket.io-client > socket.io-parser > debug > ms':
+        patched: '2019-02-14T16:28:55.878Z'
