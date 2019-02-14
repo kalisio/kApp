@@ -8,7 +8,6 @@ else
 		# Retrieve the ssh êm
 	echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
 	git clone -b kapp https://github.com/kalisio/kdk-workspaces workspace
-	ls workspace
 	cp workspace/${FLAVOR}/ssh.pem ssh.pem
 
 	eval "$(ssh-agent -s)"
