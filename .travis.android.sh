@@ -13,7 +13,7 @@ else
 	git clone -b kapp https://github.com/kalisio/kdk-workspaces workspace
 
 		# Install the required secret files requied to sign the app
-	cp workspace/android/* cordova/
+	cp workspace/${FLAVOR}/android/* cordova/
 	
 	# Build and deploy the mobile app	
   echo json_key_file\(\"google-play.json\"\) > cordova/fastlane/Appfile

@@ -20,17 +20,17 @@ else
 
 	# Add certificates to keychain and allow codesign to access them
 	# see: https://github.com/travis-ci/travis-ci/issues/6791#issuecomment-261215038
-	security import workspace/ios/AppleWWDRCA.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
-	security import workspace/ios/ios_distribution.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
-	security import workspace/ios/ios_distribution.p12 -k ~/Library/Keychains/ios-build.keychain -P $APPLE_KEY_PASSWORD -T /usr/bin/codesign
+	security import workspace/${FLAVOR}/ios/AppleWWDRCA.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
+	security import workspace/${FLAVOR}/ios/ios_distribution.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
+	security import workspace/${FLAVOR}/ios/ios_distribution.p12 -k ~/Library/Keychains/ios-build.keychain -P $APPLE_KEY_PASSWORD -T /usr/bin/codesign
 
 	# see: https://docs.travis-ci.com/user/common-build-problems/#mac-macos-sierra-1012-code-signing-errors
   security set-key-partition-list -S apple-tool:,apple: -s -k travis ios-build.keychain
 
 	# Install the required secret files requied to sign the app
-	cp workspace/ios/build.json cordova/.
+	cp workspace/${FLAVOR}/ios/build.json cordova/.
 	mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-	cp workspace/ios/*.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+	cp workspace/${FLAVOR}/ios/*.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
 
 	# Build and deploy the app
 	npm run cordova:add:ios
