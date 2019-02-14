@@ -10,10 +10,10 @@ else
 
 		# Retrieve the secret files
 	echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
-	git clone https://github.com/kalisio/kApp-secrets
+	git clone -b kapp https://github.com/kalisio/kdk-workspaces workspace
 
 		# Install the required secret files requied to sign the app
-	cp kApp-secrets/android/* cordova/
+	cp workspace/android/* cordova/
 	
 	# Build and deploy the mobile app	
   echo json_key_file\(\"google-play.json\"\) > cordova/fastlane/Appfile

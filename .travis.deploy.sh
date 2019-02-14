@@ -5,6 +5,11 @@ then
 else
 	source .travis.env.sh
 
+		# Retrieve the ssh êm
+	echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
+	git clone -b kapp https://github.com/kalisio/kdk-workspaces workspace
+	cp workspace/ssh.pem ssh.pem
+
 	eval "$(ssh-agent -s)"
 	chmod 600 ssh.pem
 	ssh-add ssh.pem
@@ -25,6 +30,6 @@ else
 
 	# Deploy the stack
 	ssh ${SSH_USER}@${SSH_REMOTE} "cd ${APP}; chmod u+x ./remove-app.sh; chmod u+x ./deploy-app.sh"
-	ssh ${SSH_USER}@${SSH_REMOTE} "cd ${APP}; sudo ./remove-app.sh; sudo k-worker-foreach \"sudo docker image prune -a -f\"; sudo ./deploy-app.sh"
+	ssh ${SSH_USER}@${SSH_REMOTE} "cd ${APP}; sudo ./remove-app.sh; sudo k-swarm-prune; sudo ./deploy-app.sh"
 fi
 
