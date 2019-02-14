@@ -15,11 +15,14 @@ else
 	# Install the required secret files requied to sign the app
 	cp workspace/$FLAVOR/android/*.json cordova/
 	cp workspace/$FLAVOR/android/kalisio.keystore cordova/
-	cp workspace/$FLAVOR/android/Appfie cordova/fastlane/
+	cp workspace/$FLAVOR/android/Appfile cordova/fastlane/
 		
 	# Build and deploy the mobile app	
   export ORG_GRADLE_PROJECT_cdvVersionCode=$TRAVIS_BUILD_NUMBER
 	npm run cordova:deploy:android
+	if [ $? -ne 0 ]; then
+		exit 1
+	fi
 
 	# Store the android build to S3
 	aws s3 sync cordova/platforms/android/app/build/outputs/apk s3://$APP-builds/$TRAVIS_BUILD_NUMBER/android > /dev/null

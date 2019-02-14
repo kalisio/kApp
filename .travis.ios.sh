@@ -34,8 +34,10 @@ else
   cp workspace/$FLAVOR/ios/Appfile cordova/fastlane/
 
 	# Build and deploy the app
-	npm run cordova:add:ios
-	npm run cordova:build:release
+	npm run cordova:deploy:ios
+	if [ $? -ne 0 ]; then
+		exit 1
+	fi
 
   # Backup the ios build to S3
 	aws s3 sync cordova/platforms/ios/build/device s3://kapp-builds/$TRAVIS_BUILD_NUMBER/ios > /dev/null
