@@ -79,14 +79,7 @@ jobs:
     - docker
     install: true
     script:
-    - openssl aes-256-cbc -K $encrypted_83630750896a_key -iv $encrypted_83630750896a_iv -in secrets.tar.enc -out secrets.tar -d
-    - tar xvf secrets.tar
-    deploy:
-      provider: script
-      skip_cleanup: true
-      script: bash .travis.deploy.sh
-      on:
-        all_branches: true
+    - bash .travis.deploy.sh
 
   - stage: ANDROID
     language: android
