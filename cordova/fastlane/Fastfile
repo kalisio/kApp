@@ -12,7 +12,7 @@
 default_platform(:android)
 
 platform :android do
-  desc "Deploy to the Google Play Console"
+  desc "Deploy to the Google Play"
   lane :dev do
     upload_to_play_store(track: 'alpha',
       skip_upload_metadata: true,
@@ -47,8 +47,7 @@ platform :ios do
       force: true, # Skip HTMl report verification
       skip_metadata: true,
       skip_screenshots: true,
-      ipa: './platforms/ios/ios/build/device/kApp.ipa'
-    )
+      ipa: './platforms/ios/ios/build/device/kApp.ipa')
   end
   lane :test do
     deliver(
@@ -57,8 +56,7 @@ platform :ios do
       force: true, # Skip HTMl report verification
       skip_metadata: true,
       skip_screenshots: true,
-      ipa: './platforms/ios/ios/build/device/kApp.ipa'
-    )
+      ipa: './platforms/ios/ios/build/device/kApp.ipa')
   end
   lane :prod do
     deliver(
@@ -67,8 +65,6 @@ platform :ios do
       force: true, # Skip HTMl report verification
       skip_metadata: true,
       skip_screenshots: true,
-      ipa: './platforms/ios/ios/build/device/kApp.ipa'
-    )
+      ipa: './platforms/ios/ios/build/device/kApp.ipa')
   end
-)
 end
