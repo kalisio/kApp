@@ -20,7 +20,13 @@ else
 		
 	# Build and deploy the mobile app	
   export ORG_GRADLE_PROJECT_cdvVersionCode=$TRAVIS_BUILD_NUMBER
-	npm run cordova:deploy:android
+	npm run cordova:build:android
+	if [ $? -ne 0 ]; then
+		exit 1
+	fi
+
+  # Deploy the APK to GooglePlay
+	cd cordova && fastlane android $NODE_APP_INSTANCE && cd ..
 	if [ $? -ne 0 ]; then
 		exit 1
 	fi

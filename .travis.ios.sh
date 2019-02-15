@@ -31,16 +31,20 @@ else
 	cp workspace/$FLAVOR/ios/build.json cordova/.
 	mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
 	cp workspace/$FLAVOR/ios/*.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
-  cp workspace/$FLAVOR/ios/Appfile cordova/fastlane/
 
-	# Build and deploy the app
-	npm run cordova:deploy:ios
+	# Build the app
+	npm run cordova:build:ios
 	if [ $? -ne 0 ]; then
 		exit 1
 	fi
 
-	/Applications/Xcode.app/Contents/Applications/Application\ Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool --upload-app -f "./cordova/platforms/ios/build/device/kApp.ipa" -u "$APPLE_ID" -p "$FASTLANE_PASSWORD"
-  
+  # Deploy the IPA to the AppleStore
+	ALTOOL=/Applications/Xcode.app/Contents/Applications/Application\ Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool
+	$ALTOOL --upload-app -f "./cordova/platforms/ios/build/device/kApp.ipa" -u "$APPLE_ID" -p "$APPLE_APP_PASSWORD"
+  if [ $? -ne 0 ]; then
+		exit 1
+	fi
+
 	# Backup the ios build to S3
 	aws s3 sync cordova/platforms/ios/build/device s3://kapp-builds/$TRAVIS_BUILD_NUMBER/ios > /dev/null
 	if [ $? -eq 1 ]; then

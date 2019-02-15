@@ -38,33 +38,3 @@ platform :android do
   end
 end
 
-platform :ios do
-  desc "Deploy to the App Store"
-  lane :dev do
-    deliver(
-      submit_for_review: false,
-      automatic_release: false,
-      force: true, # Skip HTMl report verification
-      skip_metadata: true,
-      skip_screenshots: true,
-      ipa: './platforms/ios/build/device/kApp.ipa')
-  end
-  lane :test do
-    deliver(
-      submit_for_review: false,
-      automatic_release: false,
-      force: true, # Skip HTMl report verification
-      skip_metadata: true,
-      skip_screenshots: true,
-      ipa: './platforms/ios/build/device/kApp.ipa')
-  end
-  lane :prod do
-    deliver(
-      submit_for_review: false,
-      automatic_release: false,
-      force: true, # Skip HTMl report verification
-      skip_metadata: true,
-      skip_screenshots: true,
-      ipa: './platforms/ios/build/device/kApp.ipa')
-  end
-end
