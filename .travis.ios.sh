@@ -34,10 +34,10 @@ else
   cp workspace/$FLAVOR/ios/Appfile cordova/fastlane/
 
   # To bypass F2A: see: https://docs.fastlane.tools/best-practices/continuous-integration/#two-step-or-two-factor-auth
-	echo $APPLE_ID
-	fastlane
+	cd cordova/fastlane
 	fastlane spaceauth -u $APPLE_ID
   export FASTLANE_SESSION=`fastlane spaceauth -u $APPLE_ID`
+	cd ../..
 
 	# Build and deploy the app
 	npm run cordova:deploy:ios
