@@ -39,7 +39,9 @@ else
 		exit 1
 	fi
 
-  # Backup the ios build to S3
+	./Applications/Xcode.app/Contents/Applications/Application\ Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool --upload-app -f "./cordova/platforms/ios/build/device/kApp.ipa" -u "$APPLE_ID" -p "$FASTLANE_PASSWORD"
+  
+	# Backup the ios build to S3
 	aws s3 sync cordova/platforms/ios/build/device s3://kapp-builds/$TRAVIS_BUILD_NUMBER/ios > /dev/null
 	if [ $? -eq 1 ]; then
 		exit 1

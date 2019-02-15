@@ -43,7 +43,7 @@
     "cordova:fastlane:android": "cd cordova && cross-env-shell \"fastlane android $NODE_APP_INSTANCE\" && cd ..",
     "cordova:fastlane:ios": "cd cordova && cross-env-shell \"fastlane ios $NODE_APP_INSTANCE\" && cd ..",
     "cordova:deploy:android": "npm run cordova:add:android && npm run cordova:build && npm run cordova:fastlane:android",
-    "cordova:deploy:ios": "npm run cordova:add:ios && npm run cordova:build:release && npm run cordova:fastlane:ios",
+    "cordova:deploy:ios": "npm run cordova:add:ios && npm run cordova:build:release",
     "cordova:dev": "cd cordova && cordova run --debug && cd ..",
     "cordova:prod": "cd cordova && cordova run --release && cd ..",
     "cordova": "npm run cordova:dev",
