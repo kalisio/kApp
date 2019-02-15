@@ -40,7 +40,7 @@ else
 
   # Deploy the IPA to the AppleStore
 	ALTOOL="/Applications/Xcode.app/Contents/Applications/Application\ Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool"
-	$ALTOOL --upload-app -f "./cordova/platforms/ios/build/device/kApp.ipa" -u "$APPLE_ID" -p "$APPLE_APP_PASSWORD"
+	"$ALTOOL" --upload-app -f "./cordova/platforms/ios/build/device/kApp.ipa" -u "$APPLE_ID" -p "$APPLE_APP_PASSWORD"
   if [ $? -ne 0 ]; then
 		exit 1
 	fi
