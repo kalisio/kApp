@@ -86,18 +86,23 @@ jobs:
     sudo: false
     jdk: oraclejdk8
     android:
-      components:
-      - tools
-      - tools  # Include again to work around travis not using the latest, see: https://github.com/travis-ci/travis-ci/issues/6193
-      - platform-tools
-      - build-tools-27.0.3
-      - android-27
+    cache:
+      directories:
+      - $HOME/android-sdk-dl
+      - $HOME/android-sdk
     licenses:
       - '.+'
     before_install:
     - nvm install 8
-    - yes | sdkmanager "platforms;android-27"
     install:
+    # https://medium.com/@bod/cache-your-android-sdk-with-travis-c816b9264708
+    - if test ! -e $HOME/android-sdk-dl/sdk-tools.zip ; then curl https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip > $HOME/android-sdk-dl/sdk-tools.zip ; fi
+    - unzip -qq -n $HOME/android-sdk-dl/sdk-tools.zip -d $HOME/android-sdk
+    - echo y | $HOME/android-sdk/tools/bin/sdkmanager 'tools' > /dev/null
+    - echo y | $HOME/android-sdk/tools/bin/sdkmanager 'platform-tools' > /dev/null
+    - echo y | $HOME/android-sdk/tools/bin/sdkmanager 'build-tools;27.0.3' > /dev/null
+    - echo y | $HOME/android-sdk/tools/bin/sdkmanager 'platforms;android-27' > /dev/null
+    - echo y | $HOME/android-sdk/tools/bin/sdkmanager 'extras;google;m2repository' > /dev/null
     - pip install --user awscli
     - npm install -g cordova
     - npm install -g cross-env
