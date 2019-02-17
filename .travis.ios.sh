@@ -31,6 +31,10 @@ else
 	cp workspace/$FLAVOR/ios/build.json cordova/.
 	mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
 	cp workspace/$FLAVOR/ios/*.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+ 
+  # Increment the build number
+	cp cordova/config.xml config.ios.xml
+	cat config.ios.xml | xmlstarlet ed -i '/widget' -t attr -n 'ios-CFBundleVersion' -v $TRAVIS_BUILD_NUMBER > cordova/config.xml
 
 	# Build the app
 	npm run cordova:build:ios
@@ -41,11 +45,6 @@ else
   # Deploy the IPA to the AppleStore
 	#ALTOOL="/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool"
 	# "$ALTOOL" --upload-app -f "./cordova/platforms/ios/build/device/kApp.ipa" -u "$APPLE_ID" -p "$APPLE_APP_PASSWORD"
-	#/usr/libexec/PlistBuddy -c "Set :CFBundleVersion $TRAVIS_BUILD_NUMBER" "${PROJECT_DIR}/${INFOPLIST_FILE}"
-	echo $PRODUCT_SETTINGS_PATH
-	echo $PROJECT_DIR
-	echo $INFOPLIST_FILE
-	/usr/libexec/PlistBuddy -c "Set :CFBundleVersion $TRAVIS_BUILD_NUMBER" "$PRODUCT_SETTINGS_PATH"
 
 	/Applications/Xcode.app/Contents/Applications/Application\ Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool --upload-app -f "./cordova/platforms/ios/build/device/kApp.ipa" -u "$APPLE_ID" -p "$APPLE_APP_PASSWORD"
 	#if [ $? -ne 0 ]; then
