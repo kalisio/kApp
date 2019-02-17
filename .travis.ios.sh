@@ -41,8 +41,11 @@ else
   # Deploy the IPA to the AppleStore
 	#ALTOOL="/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool"
 	# "$ALTOOL" --upload-app -f "./cordova/platforms/ios/build/device/kApp.ipa" -u "$APPLE_ID" -p "$APPLE_APP_PASSWORD"
-	/usr/libexec/PlistBuddy -c "Set :CFBundleVersion $TRAVIS_BUILD_NUMBER" "${PROJECT_DIR}/${INFOPLIST_FILE}"
-	#/usr/libexec/PlistBuddy -c "Set :CFBundleVersion $TRAVIS_BUILD_NUMBER" "$PRODUCT_SETTINGS_PATH"
+	#/usr/libexec/PlistBuddy -c "Set :CFBundleVersion $TRAVIS_BUILD_NUMBER" "${PROJECT_DIR}/${INFOPLIST_FILE}"
+	echo $PRODUCT_SETTINGS_PATH
+	echo $PROJECT_DIR
+	echo $INFOPLIST_FILE
+	/usr/libexec/PlistBuddy -c "Set :CFBundleVersion $TRAVIS_BUILD_NUMBER" "$PRODUCT_SETTINGS_PATH"
 
 	/Applications/Xcode.app/Contents/Applications/Application\ Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool --upload-app -f "./cordova/platforms/ios/build/device/kApp.ipa" -u "$APPLE_ID" -p "$APPLE_APP_PASSWORD"
 	#if [ $? -ne 0 ]; then
