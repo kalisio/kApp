@@ -18,8 +18,10 @@ else
 	cp workspace/$FLAVOR/android/kalisio.keystore cordova/
 	cp workspace/$FLAVOR/android/Appfile cordova/fastlane/
 		
+	# Increment the build number
+	export ORG_GRADLE_PROJECT_cdvVersionCode=$TRAVIS_BUILD_NUMBER
+
 	# Build and deploy the mobile app	
-  export ORG_GRADLE_PROJECT_cdvVersionCode=$TRAVIS_BUILD_NUMBER
 	npm run cordova:build:android
 	if [ $? -ne 0 ]; then
 		exit 1

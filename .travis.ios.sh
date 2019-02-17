@@ -33,6 +33,8 @@ else
 	cp workspace/$FLAVOR/ios/*.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
  
   # Increment the build number
+	# Warning: the config.xml must not contain any default namespace
+	# see: https://stackoverflow.com/questions/9025492/xmlstarlet-does-not-select-anything
 	cp cordova/config.xml config.ios.xml
 	cat config.ios.xml | xmlstarlet ed -i '/widget' -t attr -n 'ios-CFBundleVersion' -v $TRAVIS_BUILD_NUMBER > cordova/config.xml
 
@@ -45,11 +47,9 @@ else
   # Deploy the IPA to the AppleStore
 	ALTOOL="/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool"
 	"$ALTOOL" --upload-app -f "./cordova/platforms/ios/build/device/kApp.ipa" -u "$APPLE_ID" -p "$APPLE_APP_PASSWORD"
-
-	#/Applications/Xcode.app/Contents/Applications/Application\ Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool --upload-app -f "./cordova/platforms/ios/build/device/kApp.ipa" -u "$APPLE_ID" -p "$APPLE_APP_PASSWORD"
-	#if [ $? -ne 0 ]; then
-	#	exit 1
-	#fi
+	if [ $? -ne 0 ]; then
+		exit 1
+	fi
 
 	# Backup the ios build to S3
 	aws s3 sync cordova/platforms/ios/build/device s3://kapp-builds/$TRAVIS_BUILD_NUMBER/ios > /dev/null
