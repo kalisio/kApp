@@ -1,5 +1,6 @@
 // Page models
 import * as pages from './page-models'
+import Runner from './record.js'
 
 fixture`Basic`// declare the fixture
   .page`${pages.getUrl()}`  // specify the start page
