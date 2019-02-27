@@ -92,11 +92,6 @@ jobs:
       - platform-tools
       - build-tools-27.0.3
       - android-27
-    cache:
-      directories:
-      # Android SDK
-      - $HOME/android-sdk-dl
-      - $HOME/android-sdk
     licenses:
       - '.+'
     before_install:

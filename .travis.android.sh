@@ -5,7 +5,7 @@ then
 else
 	source .travis.env.sh
 
-	 # Retrieve the built Web app
+	# Retrieve the built Web app
 	aws s3 sync s3://$APP-builds/$TRAVIS_BUILD_NUMBER/dist cordova/www > /dev/null
 
 		# Retrieve the secret files
