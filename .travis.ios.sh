@@ -5,6 +5,11 @@ then
 else
 	source .travis.env.sh
 
+  #
+	# Provision the required files
+	#
+	travis_fold start "privision"
+
   # Retrieve the built Web app
 	aws s3 sync s3://$APP-builds/$TRAVIS_BUILD_NUMBER/dist cordova/www > /dev/null
 
@@ -32,6 +37,13 @@ else
 	mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
 	cp workspace/$FLAVOR/ios/*.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
  
+  travis_fold end "privision"
+
+	#
+	# Build the app
+	#
+	travis_fold start "build"
+  
   # Increment the build number
 	# Warning: the config.xml must not contain any default namespace
 	# see: https://stackoverflow.com/questions/9025492/xmlstarlet-does-not-select-anything
@@ -43,6 +55,13 @@ else
 	if [ $? -ne 0 ]; then
 		exit 1
 	fi
+
+	travis_fold end "build"
+
+	#
+  # Deploy the app
+	#
+	travis_fold start "deploy"
 
   # Deploy the IPA to the AppleStore
 	ALTOOL="/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool"
@@ -56,4 +75,6 @@ else
 	if [ $? -eq 1 ]; then
 		exit 1
 	fi
+
+	travis_fold end "deploy"
 fi
