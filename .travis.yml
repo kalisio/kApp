@@ -92,11 +92,6 @@ jobs:
       - platform-tools
       - build-tools-27.0.3
       - android-27
-    cache:
-      directories:
-      # Android SDK
-      - $HOME/android-sdk-dl
-      - $HOME/android-sdk
     licenses:
       - '.+'
     before_install:
@@ -107,6 +102,8 @@ jobs:
     - npm install -g cordova
     - npm install -g cross-env
     - gem install fastlane
+    before_script:
+    - export -f travis_fold    
     script:
     - bash .travis.android.sh
 
@@ -120,7 +117,9 @@ jobs:
     - brew install awscli
     - brew install xmlstarlet
     - npm install -g cordova
-    - npm install -g ios-deploy    
-    - npm install -g cross-env      
+    - npm install -g ios-deploy --unsafe-perm=true
+    - npm install -g cross-env
+    before_script:
+    - export -f travis_fold   
     script:
     - bash .travis.ios.sh
