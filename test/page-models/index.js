@@ -1,13 +1,13 @@
 import { ClientFunction } from 'testcafe'
 import ApplicationLayout from './layout'
 import Authentication from './authentication'
-import Newdoc from './newdoc'
+import Documents from './documents'
 
 // Export all models
 export {
   ApplicationLayout,
   Authentication,
-  Newdoc
+  Documents
 }
 
 // Access store

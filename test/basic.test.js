@@ -16,10 +16,11 @@ fixture`Basic`// declare the fixture
 
 const app = new pages.ApplicationLayout()
 const auth = new pages.Authentication()
-const docs = new pages.Newdoc()
+const docs = new pages.Documents()
 
 test('Login as default user', async test => {
   await auth.logIn(test, { email: 'kalisio@kalisio.xyz', password: 'Pass;word1' })
   await docs.createNew(test)
+  await docs.delete(test)
   await auth.logOut(test)
 })
