@@ -1,6 +1,5 @@
 // Page models
 import * as pages from './page-models'
-import Runner from './record.js'
 
 fixture`Basic`// declare the fixture
   .page`${pages.getUrl()}`  // specify the start page
@@ -17,8 +16,10 @@ fixture`Basic`// declare the fixture
 
 const app = new pages.ApplicationLayout()
 const auth = new pages.Authentication()
+const docs = new pages.Newdoc()
 
 test('Login as default user', async test => {
   await auth.logIn(test, { email: 'kalisio@kalisio.xyz', password: 'Pass;word1' })
+  await docs.createNew(test)
   await auth.logOut(test)
 })
