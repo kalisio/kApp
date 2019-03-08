@@ -8,7 +8,7 @@ else
   #
 	# Provision the required files
 	#
-	travis_fold start "privision"
+	travis_fold start "provision"
 
 	# Retrieve the built Web app
 	aws s3 sync s3://$APP-builds/$TRAVIS_BUILD_NUMBER/dist cordova/www > /dev/null
@@ -34,8 +34,18 @@ else
 	export ORG_GRADLE_PROJECT_cdvVersionCode=$TRAVIS_BUILD_NUMBER
 
 	# Build and deploy the mobile app	
-	npm run cordova:build:android
-	if [ $? -ne 0 ]; then
+	npm run cordova:build:android > android.build.log 2>&1
+	# Capture the build result
+	BUILD_CODE=$?
+	# Copy the log whatever the result
+	aws s3 cp android.build.log s3://$APP-builds/$TRAVIS_BUILD_NUMBER/android.build.log
+	if [ $BUILD_CODE -ne 0 ]; then
+		exit 1
+	fi
+
+	# Backup the android build to S3
+	aws s3 sync cordova/platforms/android/app/build/outputs/apk s3://$APP-builds/$TRAVIS_BUILD_NUMBER/android > /dev/null
+	if [ $? -eq 1 ]; then
 		exit 1
 	fi
 
@@ -47,14 +57,13 @@ else
 	travis_fold start "deploy"
 
   # Deploy the APK to GooglePlay
-	cd cordova && fastlane android $NODE_APP_INSTANCE && cd ..
-	if [ $? -ne 0 ]; then
-		exit 1
-	fi
-
-	# Store the android build to S3
-	aws s3 sync cordova/platforms/android/app/build/outputs/apk s3://$APP-builds/$TRAVIS_BUILD_NUMBER/android > /dev/null
-	if [ $? -eq 1 ]; then
+	cd cordova
+	fastlane android $NODE_APP_INSTANCE > android.deploy.log 2>&1
+	DEPLOY_CODE=$?
+	cd ..
+	# Copy the log whatever the result
+	aws s3 cp cordova/android.deploy.log s3://$APP-builds/$TRAVIS_BUILD_NUMBER/android.deploy.log
+	if [ $DEPLOY_CODE -ne 0 ]; then
 		exit 1
 	fi
 

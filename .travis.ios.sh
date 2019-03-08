@@ -51,8 +51,19 @@ else
 	cat config.ios.xml | xmlstarlet ed -i '/widget' -t attr -n 'ios-CFBundleVersion' -v $TRAVIS_BUILD_NUMBER > cordova/config.xml
 
 	# Build the app
-	npm run cordova:build:ios
-	if [ $? -ne 0 ]; then
+	npm run cordova:build:ios > ios.build.log 2>&1
+	# Capture the build result
+	BUILD_CODE=$?
+	# Copy the log whatever the result
+	aws s3 cp ios.build.log s3://$APP-builds/$TRAVIS_BUILD_NUMBER/ios.build.log
+	# Exit if an error has occured
+	if [ $BUILD_CODE -ne 0 ]; then
+		exit 1
+	fi
+
+  # Backup the ios build to S3
+	aws s3 sync cordova/platforms/ios/build/device s3://kapp-builds/$TRAVIS_BUILD_NUMBER/ios > /dev/null
+	if [ $? -eq 1 ]; then
 		exit 1
 	fi
 
@@ -65,14 +76,13 @@ else
 
   # Deploy the IPA to the AppleStore
 	ALTOOL="/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool"
-	"$ALTOOL" --upload-app -f "./cordova/platforms/ios/build/device/kApp.ipa" -u "$APPLE_ID" -p "$APPLE_APP_PASSWORD"
-	if [ $? -ne 0 ]; then
-		exit 1
-	fi
-
-	# Backup the ios build to S3
-	aws s3 sync cordova/platforms/ios/build/device s3://kapp-builds/$TRAVIS_BUILD_NUMBER/ios > /dev/null
-	if [ $? -eq 1 ]; then
+	"$ALTOOL" --upload-app -f "./cordova/platforms/ios/build/device/kApp.ipa" -u "$APPLE_ID" -p "$APPLE_APP_PASSWORD" > ios.deploy.log 2>&1
+	# Capture the deploy result
+	DEPLOY_CODE=$?
+	# Copy the log whatever the result
+	aws s3 cp ios.deploy.log s3://$APP-builds/$TRAVIS_BUILD_NUMBER/ios.deploy.log
+	# Exit if an error has occured
+	if [ $DEPLOY_CODE -ne 0 ]; then
 		exit 1
 	fi
 
