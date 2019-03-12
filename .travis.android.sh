@@ -31,7 +31,7 @@ else
 	travis_fold start "build"
 
   # Generate config.xml
-	envsubst < config.xml.tpl > config.xml
+	envsubst < cordova/config.xml.tpl > cordova/config.xml
 	# Increment the build number
 	#export ORG_GRADLE_PROJECT_cdvVersionCode=$TRAVIS_BUILD_NUMBER
 
