@@ -11,7 +11,7 @@ else
 	travis_fold start "privision"
 
   # Retrieve the built Web app
-	aws s3 sync s3://$APP-builds/$TRAVIS_BUILD_NUMBER/dist cordova/www > /dev/null
+	aws s3 sync s3://$APP-builds/$BUILD_NUMBER/dist cordova/www > /dev/null
 
 	# Retrieve the secret files
 	echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
@@ -47,22 +47,24 @@ else
   # Increment the build number
 	# Warning: the config.xml must not contain any default namespace
 	# see: https://stackoverflow.com/questions/9025492/xmlstarlet-does-not-select-anything
-	cp cordova/config.xml config.ios.xml
-	cat config.ios.xml | xmlstarlet ed -i '/widget' -t attr -n 'ios-CFBundleVersion' -v $TRAVIS_BUILD_NUMBER > cordova/config.xml
+	#cp cordova/config.xml config.ios.xml
+	#cat config.ios.xml | xmlstarlet ed -i '/widget' -t attr -n 'ios-CFBundleVersion' -v $TRAVIS_BUILD_NUMBER > cordova/config.xml
+  # Generate config.xml
+	envsubst < config.xml.tpl > config.xml
 
 	# Build the app
 	npm run cordova:build:ios > ios.build.log 2>&1
 	# Capture the build result
 	BUILD_CODE=$?
 	# Copy the log whatever the result
-	aws s3 cp ios.build.log s3://$APP-builds/$TRAVIS_BUILD_NUMBER/ios.build.log
+	aws s3 cp ios.build.log s3://$APP-builds/$BUILD_NUMBER/ios.build.log
 	# Exit if an error has occured
 	if [ $BUILD_CODE -ne 0 ]; then
 		exit 1
 	fi
 
   # Backup the ios build to S3
-	aws s3 sync cordova/platforms/ios/build/device s3://$APP-builds/$TRAVIS_BUILD_NUMBER/ios > /dev/null
+	aws s3 sync cordova/platforms/ios/build/device s3://$APP-builds/$BUILD_NUMBER/ios > /dev/null
 	if [ $? -eq 1 ]; then
 		exit 1
 	fi
@@ -80,7 +82,7 @@ else
 	# Capture the deploy result
 	DEPLOY_CODE=$?
 	# Copy the log whatever the result
-	aws s3 cp ios.deploy.log s3://$APP-builds/$TRAVIS_BUILD_NUMBER/ios.deploy.log
+	aws s3 cp ios.deploy.log s3://$APP-builds/$BUILD_NUMBER/ios.deploy.log
 	# Exit if an error has occured
 	if [ $DEPLOY_CODE -ne 0 ]; then
 		exit 1
