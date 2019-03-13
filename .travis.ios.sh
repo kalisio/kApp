@@ -43,14 +43,6 @@ else
 	# Build the app
 	#
 	travis_fold start "build"
-  
-  # Increment the build number
-	# Warning: the config.xml must not contain any default namespace
-	# see: https://stackoverflow.com/questions/9025492/xmlstarlet-does-not-select-anything
-	#cp cordova/config.xml config.ios.xml
-	#cat config.ios.xml | xmlstarlet ed -i '/widget' -t attr -n 'ios-CFBundleVersion' -v $TRAVIS_BUILD_NUMBER > cordova/config.xml
-  # Generate config.xml
-	envsubst < config.xml.tpl > config.xml
 
 	# Build the app
 	npm run cordova:build:ios > ios.build.log 2>&1

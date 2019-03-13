@@ -119,7 +119,6 @@ jobs:
     - nvm install 8
     install:
     - brew install awscli
-    - brew install xmlstarlet
     - npm install -g cordova
     - npm install -g ios-deploy --unsafe-perm=true
     - npm install -g cross-env

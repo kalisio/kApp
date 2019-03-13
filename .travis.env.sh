@@ -2,6 +2,9 @@
 export APP=kapp
 export HOST=kapp
 export PORT=8081
+export AUTHOR=kalisio
+export AUTHOR_EMAIL=contact@kalisio.com
+export AUTHOR_WEBSITE=https://kalisio.com
 export DOMAIN=kalisio.xyz
 export VERSION=$(node -p -e "require('./package.json').version")
 
@@ -11,6 +14,7 @@ then
 	export FLAVOR=dev
 	export SUBDOMAIN=dev.$DOMAIN
 	export VERSION_TAG=$VERSION-dev
+	export PACKAGE_ID=com.$AUTHORT.$APP.dev
 fi
 if [[ $TRAVIS_BRANCH == "test" ]]
 then
@@ -18,6 +22,7 @@ then
 	export FLAVOR=test
 	export SUBDOMAIN=test.$DOMAIN
 	export VERSION_TAG=$VERSION-test
+	export PACKAGE_ID=com.$AUTHORT.$APP.test
 fi
 if [[ -n "$TRAVIS_TAG" ]]
 then
@@ -25,6 +30,7 @@ then
 	export FLAVOR=prod
 	export SUBDOMAIN=$DOMAIN
 	export VERSION_TAG=$VERSION
+	export PACKAGE_ID=com.$AUTHORT.$APP
 fi
 
 export BUILD_NUMBER=$TRAVIS_BUILD_NUMBER

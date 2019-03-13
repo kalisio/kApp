@@ -30,11 +30,6 @@ else
 	#
 	travis_fold start "build"
 
-  # Generate config.xml
-	envsubst < cordova/config.xml.tpl > cordova/config.xml
-	# Increment the build number
-	#export ORG_GRADLE_PROJECT_cdvVersionCode=$TRAVIS_BUILD_NUMBER
-
 	# Build and deploy the mobile app	
 	npm run cordova:build:android > android.build.log 2>&1
 	# Capture the build result

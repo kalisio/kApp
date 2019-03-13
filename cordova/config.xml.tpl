@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.kalisio.kapp.$FLAVOR" version="0.3.0" ios-CFBundleVersion="$BUILD_NUMBER" android-versionCode="$BUILD_NUMBER">
+<widget id="$PACKAGE_ID" version="0.3.0" ios-CFBundleVersion="$BUILD_NUMBER" android-versionCode="$BUILD_NUMBER">
     <name>kapp</name>
     <description>Kalisio App Template</description>
     <icon src="res/icons/icon.png" />
-    <author email="support@kalisio.com" href="http://www.kalisio.com">Kalisio</author>
+    <author email="$AUTHOR_EMAIL" href="$AUTHOR_WEBSITE">Kalisio</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

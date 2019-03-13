@@ -20,7 +20,7 @@
     "url": "https://github.com/kalisio/kapp/issues"
   },
   "scripts": {
-    "version": "cordova-set-version cordova/config.xml",
+    "version": "cordova-set-version cordova/config.xml.tpl",
     "postversion": "git push origin --tags && npm run changelog && git push origin",
     "release:patch": "cd api && npm run release:patch && cd .. && npm version --no-git-tag-version --force patch",
     "release:minor": "cd api && npm run release:minor && cd .. && npm version --no-git-tag-version --force minor",
@@ -37,8 +37,8 @@
     "cordova:add:android": "cd cordova && cordova platform add android@~7.1.1 && cd ..",
     "cordova:add:ios": "cd cordova && cordova platform add ios@~5.0.0 && cd ..",
     "cordova:add": "npm run cordova:add:android && npm run cordova:add:ios",
-    "cordova:build:debug": "cd cordova && cordova build --debug --device && cd ..",
-    "cordova:build:release": "cd cordova && cordova build --release --device && cd ..",
+    "cordova:build:debug": "cd cordova && envusb config.xml.tpl congif.xml && cordova build --debug --device && cd ..",
+    "cordova:build:release": "cd cordova && envusb config.xml.tpl congif.xml && cordova build --release --device && cd ..",
     "cordova:build": "npm run cordova:build:debug && npm run cordova:build:release",
     "cordova:build:android": "npm run cordova:add:android && npm run cordova:build:release",
     "cordova:build:ios": "npm run cordova:add:ios && npm run cordova:build:release",
@@ -133,6 +133,7 @@
     "cordova": "^8.0.0",
     "cordova-set-version": "^6.0.3",
     "css-loader": "^0.28.0",
+    "envsub": "^3.0.9",
     "es6-promise": "^4.1.1",
     "eslint": "^4.4.1",
     "eslint-friendly-formatter": "^3.0.0",
