@@ -3,8 +3,6 @@ export APP=kapp
 export HOST=kapp
 export PORT=8081
 export AUTHOR=kalisio
-export AUTHOR_EMAIL=contact@kalisio.com
-export AUTHOR_WEBSITE=https://kalisio.com
 export DOMAIN=kalisio.xyz
 export VERSION=$(node -p -e "require('./package.json').version")
 
