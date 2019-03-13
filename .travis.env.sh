@@ -12,7 +12,7 @@ then
 	export FLAVOR=dev
 	export SUBDOMAIN=dev.$DOMAIN
 	export VERSION_TAG=$VERSION-dev
-	export PACKAGE_ID=com.$AUTHORT.$APP.dev
+	export PACKAGE_ID=com.$AUTHOR.$APP.dev
 fi
 if [[ $TRAVIS_BRANCH == "test" ]]
 then
@@ -20,7 +20,7 @@ then
 	export FLAVOR=test
 	export SUBDOMAIN=test.$DOMAIN
 	export VERSION_TAG=$VERSION-test
-	export PACKAGE_ID=com.$AUTHORT.$APP.test
+	export PACKAGE_ID=com.$AUTHOR.$APP.test
 fi
 if [[ -n "$TRAVIS_TAG" ]]
 then
@@ -28,7 +28,7 @@ then
 	export FLAVOR=prod
 	export SUBDOMAIN=$DOMAIN
 	export VERSION_TAG=$VERSION
-	export PACKAGE_ID=com.$AUTHORT.$APP
+	export PACKAGE_ID=com.$AUTHOR.$APP
 fi
 
 export BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
