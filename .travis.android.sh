@@ -30,8 +30,6 @@ else
 	#
 	travis_fold start "build"
 
-  echo $PACKAGE_ID
-	
 	# Build and deploy the mobile app	
 	npm run cordova:build:android > android.build.log 2>&1
 	# Capture the build result
