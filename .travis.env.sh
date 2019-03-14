@@ -73,22 +73,23 @@
 #echo "DB_URL=$DB_URL" >> .env
 
 # Retrieve the environment files
-
-
 if [[ $TRAVIS_BRANCH == "master" ]]
 then
 	export DEBUG=
 	export FLAVOR=dev
+	export PACKAGE_ID=com.${AUTHOR:-kalisio}.$APP.dev
 fi
 if [[ $TRAVIS_BRANCH == "test" ]]
 then
 	export DEBUG=
 	export FLAVOR=test
+	export PACKAGE_ID=com.${AUTHOR:-kalisio}.$APP.test
 fi
 if [[ -n "$TRAVIS_TAG" ]]
 then
 	export DEBUG=
 	export FLAVOR=prod
+	export PACKAGE_ID=com.${AUTHOR:-kalisio}.$APP
 fi
 
 # Retrieve the corresponding workspace
