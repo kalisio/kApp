@@ -4,6 +4,7 @@ services:
   app:
     image: kalisio/${APP}:${VERSION_TAG}
     environment:
+      - DEBUG
       - APP_SECRET
       - GITHUB_CLIENT_ID
       - GITHUB_CLIENT_SECRET
