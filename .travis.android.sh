@@ -13,9 +13,9 @@ else
 	# Retrieve the built Web app
 	aws s3 sync s3://$APP-builds/$BUILD_NUMBER/dist cordova/www > /dev/null
 
-		# Retrieve the secret files
-	echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
-	git clone -b $APP https://github.com/kalisio/kdk-workspaces workspace
+	# Retrieve the secret files
+	#echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
+	#git clone -b $APP https://github.com/kalisio/kdk-workspaces workspace
 
 	# Install the required secret files requied to sign the app
 	cp workspace/common/android/*.json cordova/
