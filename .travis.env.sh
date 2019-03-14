@@ -72,30 +72,35 @@
 #echo "TESTCAFE_SPEED=$TESTCAFE_SPEED" >> .env
 #echo "DB_URL=$DB_URL" >> .env
 
-# Retrieve the secret files
-echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
-git clone -b $APP https://github.com/kalisio/kdk-workspaces workspace
+# Retrieve the environment files
+
 
 if [[ $TRAVIS_BRANCH == "master" ]]
 then
-	cp workspace/dev/.env .env
-	set -a
-	. .env
-	set +a
+	export DEBUG=kalisio*,-kalisio:kCore:authorisations:hooks
+	export FLAVOR=dev
 fi
-#if [[ $TRAVIS_BRANCH == "test" ]]
-#then
-#	export DEBUG=
-#	export FLAVOR=test
-#	export SUBDOMAIN=test.$DOMAIN
-#	export VERSION_TAG=$VERSION-test
-#	export PACKAGE_ID=com.$AUTHOR.$APP.test
-#fi
-#if [[ -n "$TRAVIS_TAG" ]]
-#then
-#	export DEBUG=
-#	export FLAVOR=prod
-#	export SUBDOMAIN=$DOMAIN
-#	export VERSION_TAG=$VERSION
-#	export PACKAGE_ID=com.$AUTHOR.$APP
-#fi
+if [[ $TRAVIS_BRANCH == "test" ]]
+then
+	export DEBUG=
+	export FLAVOR=test
+fi
+if [[ -n "$TRAVIS_TAG" ]]
+then
+	export DEBUG=
+	export FLAVOR=prod
+fi
+
+# Retrieve the corresponding workspace
+echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
+git clone -b $APP https://github.com/kalisio/kdk-workspaces workspace
+
+# Retrieve the environment file and setup the variables
+cp workspace/$FLAVOR/.env .env
+set -a
+. .env
+set +a
+
+# Exports addtionnal variables from Travis
+export BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
+
