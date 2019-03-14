@@ -13,10 +13,6 @@ else
   # Retrieve the built Web app
 	aws s3 sync s3://$APP-builds/$BUILD_NUMBER/dist cordova/www > /dev/null
 
-	# Retrieve the secret files
-	#echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
-	#git clone -b $APP https://github.com/kalisio/kdk-workspaces workspace
-
 	# Create a custom keychain
 	security create-keychain -p travis ios-build.keychain
 	security default-keychain -s ios-build.keychain

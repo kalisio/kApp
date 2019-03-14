@@ -77,7 +77,7 @@
 
 if [[ $TRAVIS_BRANCH == "master" ]]
 then
-	export DEBUG=kalisio*,-kalisio:kCore:authorisations:hooks
+	export DEBUG=
 	export FLAVOR=dev
 fi
 if [[ $TRAVIS_BRANCH == "test" ]]
