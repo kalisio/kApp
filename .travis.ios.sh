@@ -25,9 +25,8 @@ else
 	security unlock-keychain -p travis ios-build.keychain
   security set-keychain-settings -t 3600 -l ~/Library/Keychains/ios-build.keychain
 
-	# Add certificates to keychain and allow codesign to access them
-	# see: https://github.com/travis-ci/travis-ci/issues/6791#issuecomment-261215038
-	security import workspace/common/ios/AppleWWDRCA.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
+	# Import the certificates to keychain
+	security import AppleWWDRCA.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
 	for CERTIFICATE in $APPLE_CERTIFICATES; do
  		security import $CERTIFICATE.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
 		security import $CERTIFICATE.p12 -k ~/Library/Keychains/ios-build.keychain -P $APPLE_P12_PASSWORD -T /usr/bin/codesign
