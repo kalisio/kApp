@@ -25,7 +25,7 @@ export BUILDS_BUCKET=$APP-builds
 echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
 git clone -b $APP https://github.com/kalisio/kdk-workspaces workspace
 cp workspace/common/.env .env
-if [ -e workspace/$FLAVOR/.env ]
+if [ -f workspace/$FLAVOR/.env ]
 then
 	cat workspace/$FLAVOR/.env >> .env
 fi
@@ -44,7 +44,7 @@ set +a
 
 # Retrieve ci environement variables
 cp workspace/common/.travis.env .travis.env
-if [ -e workspace/$FLAVOR/.travis.env ]
+if [ -f workspace/$FLAVOR/.travis.env ]
 then
 	cat workspace/$FLAVOR/.travis.env >> .travis.env
 fi
