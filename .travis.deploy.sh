@@ -12,9 +12,6 @@ else
 
 	cp workspace/$FLAVOR/ssh.pem ssh.pem
  
-  echo $SSH_USER
-	echo $SSH_REMOTE
-
   # Enable ssh pem
 	eval "$(ssh-agent -s)"
 	chmod 600 ssh.pem

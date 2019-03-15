@@ -23,12 +23,12 @@ else
 	
 	# Backup the server coverages
 	codeclimate-test-reporter < server-coverage/lcov.info
-	aws s3 server-coverage dist s3://$BUILDS_BUCKET/$BUILD_NUMBER/server-coverage > /dev/null
+	aws s3 cp server-coverage dist s3://$BUILDS_BUCKET/$BUILD_NUMBER/server-coverage > /dev/null
 	if [ $? -eq 1 ]; then
 		exit 1
 	fi
 	# Backup the client screenshots
-	aws s3 client-screenshots dist s3://$BUILDS_BUCKET/$BUILD_NUMBER/client-screenshots > /dev/null
+	aws s3 cp client-screenshots dist s3://$BUILDS_BUCKET/$BUILD_NUMBER/client-screenshots > /dev/null
 	if [ $? -eq 1 ]; then
 		exit 1
 	fi
