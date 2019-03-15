@@ -16,9 +16,10 @@ else
 	# Install the required secret files requied to sign the app
 	cp workspace/common/android/*.json cordova/
 	cp workspace/common/android/kalisio.keystore cordova/
+	cp workspace/$FLAVOR/android/*.json cordova/
 	cp workspace/$FLAVOR/android/Appfile cordova/fastlane/
 	
-	travis_fold end "privision"
+	travis_fold end "provision"
 
 	#
 	# Build the app
