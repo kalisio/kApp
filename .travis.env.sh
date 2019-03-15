@@ -27,6 +27,7 @@ git clone -b $APP https://github.com/kalisio/kdk-workspaces workspace
 cp workspace/common/.env .env
 if [ -f workspace/$FLAVOR/.env ]
 then
+  echo merging $FLAVOR/.env file with common .env
 	cat workspace/$FLAVOR/.env >> .env
 fi
 
@@ -38,7 +39,7 @@ echo "VERSION=$VERSION" >> .env
 echo "VERSION_TAG=$VERSION-$FLAVOR" >> .env
 echo "BUILD_NUMBER=$TRAVIS_BUILD_NUMBER" >> .env
 
-echo .env
+cat .env
 set -a
 . .env
 set +a
@@ -47,10 +48,11 @@ set +a
 cp workspace/common/.travis.env .travis.env
 if [ -f workspace/$FLAVOR/.travis.env ]
 then
+  echo merging $FLAVOR/.travis.env with common .travis.env
 	cat workspace/$FLAVOR/.travis.env >> .travis.env
 fi
 
-echo .travis.env
+cat .travis.env
 set -a
 . .travis.env
 set +a
