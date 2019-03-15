@@ -39,7 +39,6 @@ echo "VERSION=$VERSION" >> .env
 echo "VERSION_TAG=$VERSION-$FLAVOR" >> .env
 echo "BUILD_NUMBER=$TRAVIS_BUILD_NUMBER" >> .env
 
-cat .env
 set -a
 . .env
 set +a
@@ -52,7 +51,6 @@ then
 	cat workspace/$FLAVOR/.travis.env >> .travis.env
 fi
 
-cat .travis.env
 set -a
 . .travis.env
 set +a
