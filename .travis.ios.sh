@@ -11,7 +11,7 @@ else
 	travis_fold start "privision"
 
   # Retrieve the built Web app
-	aws s3 sync s3://$APP-builds/$BUILD_NUMBER/dist cordova/www > /dev/null
+	aws s3 sync s3://$BUILDS_BUCKET/$BUILD_NUMBER/dist cordova/www > /dev/null
 
 	# Create a custom keychain
 	security create-keychain -p travis ios-build.keychain
@@ -45,14 +45,14 @@ else
 	# Capture the build result
 	BUILD_CODE=$?
 	# Copy the log whatever the result
-	aws s3 cp ios.build.log s3://$APP-builds/$BUILD_NUMBER/ios.build.log
+	aws s3 cp ios.build.log s3://$BUILDS_BUCKET/$BUILD_NUMBER/ios.build.log
 	# Exit if an error has occured
 	if [ $BUILD_CODE -ne 0 ]; then
 		exit 1
 	fi
 
   # Backup the ios build to S3
-	aws s3 sync cordova/platforms/ios/build/device s3://$APP-builds/$BUILD_NUMBER/ios > /dev/null
+	aws s3 sync cordova/platforms/ios/build/device s3://$BUILDS_BUCKET/$BUILD_NUMBER/ios > /dev/null
 	if [ $? -eq 1 ]; then
 		exit 1
 	fi
@@ -70,7 +70,7 @@ else
 	# Capture the deploy result
 	DEPLOY_CODE=$?
 	# Copy the log whatever the result
-	aws s3 cp ios.deploy.log s3://$APP-builds/$BUILD_NUMBER/ios.deploy.log
+	aws s3 cp ios.deploy.log s3://$BUILDS_BUCKET/$BUILD_NUMBER/ios.deploy.log
 	# Exit if an error has occured
 	if [ $DEPLOY_CODE -ne 0 ]; then
 		exit 1

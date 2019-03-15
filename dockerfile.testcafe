@@ -1,6 +1,6 @@
 FROM testcafe/testcafe
 
-MAINTAINER Luc Claustres <luc.claustres@kalisio.xyz>
+LABEL maintainer="Kalisio <contact@kalisio.xyz>"
 
 WORKDIR /opt/testcafe
 
