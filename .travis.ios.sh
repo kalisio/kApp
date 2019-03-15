@@ -11,7 +11,13 @@ else
 	travis_fold start "provision"
 
   # Retrieve the built Web app
-	aws s3 sync s3://$BUILDS_BUCKET/$BUILD_NUMBER/dist cordova/www > /dev/null
+	aws s3 sync s3://$BUILDS_BUCKET/$BUILD_NUMBER/www cordova/www > /dev/null
+
+	# Copy the certificates
+	cp workspace/common/ios/*.cer .
+	cp workspace/common/ios/*.p12 .
+  cp workspace/$FLAVOR/ios/*.cer .
+	cp workspace/$FLAVOR/ios/*.p12 .
 
 	# Create a custom keychain
 	security create-keychain -p travis ios-build.keychain
@@ -22,9 +28,11 @@ else
 	# Add certificates to keychain and allow codesign to access them
 	# see: https://github.com/travis-ci/travis-ci/issues/6791#issuecomment-261215038
 	security import workspace/common/ios/AppleWWDRCA.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
-	security import workspace/common/ios/ios_distribution.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
-	security import workspace/common/ios/ios_distribution.p12 -k ~/Library/Keychains/ios-build.keychain -P $APPLE_P12_PASSWORD -T /usr/bin/codesign
-
+	for CERTIFICATE in $APPLE_CERTIFICATES; do
+ 		security import $CERTIFICATE.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
+		security import $CERTIFICATE.p12 -k ~/Library/Keychains/ios-build.keychain -P $APPLE_P12_PASSWORD -T /usr/bin/codesign
+	done
+	
 	# see: https://docs.travis-ci.com/user/common-build-problems/#mac-macos-sierra-1012-code-signing-errors
   security set-key-partition-list -S apple-tool:,apple: -s -k travis ios-build.keychain
 

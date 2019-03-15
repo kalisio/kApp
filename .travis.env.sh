@@ -1,6 +1,4 @@
 #!/bin/bash
-
-# Define required environement variobles according the flavor
 if [[ $TRAVIS_BRANCH == "master" ]]
 then
 	export FLAVOR=dev
