@@ -4,7 +4,12 @@ then
 	echo "Skipping deploy stage"
 else
 	source .travis.env.sh
-	
+
+	#
+	# Deploy the app
+	#
+	travis_fold start "deploy"
+
 	cp workspace/$FLAVOR/ssh.pem ssh.pem
 
   # Enable ssh pem
@@ -29,5 +34,7 @@ else
 	# Deploy the stack
 	ssh $SSH_USER@$SSH_REMOTE "cd $APP; chmod u+x ./remove-app.sh; chmod u+x ./deploy-app.sh"
 	ssh $SSH_USER@$SSH_REMOTE "cd $APP; sudo ./remove-app.sh; sudo k-swarm-prune; sudo ./deploy-app.sh"
+
+	travis_fold end "deploy"
 fi
 

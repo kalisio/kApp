@@ -52,6 +52,8 @@ jobs:
     services:
     - docker
     install: true
+    before_script:
+    - export -f travis_fold      
     script:
     - bash .travis.deploy.sh
 

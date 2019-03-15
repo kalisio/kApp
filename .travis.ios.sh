@@ -8,7 +8,7 @@ else
   #
 	# Provision the required files
 	#
-	travis_fold start "privision"
+	travis_fold start "provision"
 
   # Retrieve the built Web app
 	aws s3 sync s3://$BUILDS_BUCKET/$BUILD_NUMBER/dist cordova/www > /dev/null
@@ -33,7 +33,7 @@ else
 	mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
 	cp workspace/$FLAVOR/ios/*.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
  
-  travis_fold end "privision"
+  travis_fold end "provision"
 
 	#
 	# Build the app
