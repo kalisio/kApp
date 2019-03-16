@@ -17,9 +17,11 @@ then
 else 
 	# Build the image and run the container
 	docker-compose -f deploy/app.yml -f deploy/app.build.yml up -d
-	if [ $? -eq 0 ]; then
-		exit 1
-	fi
+  # Check the build has succeeded
+	docker exec -ti ${APP}_app_1 ls /opt/$APP/dist
+	if [ $? -eq 1 ]; then
+	  exit 1
+  fi
 
 	# Tag the built image and push it to the hub
 	docker tag kalisio/$APP kalisio/$APP:$VERSION_TAG
@@ -30,7 +32,7 @@ fi
 # Copy the artifact from the container to the host
 # See https://docs.docker.com/compose/reference/envvars/#compose_project_name
 # explanation on the container name
-docker cp ${APP}_app_1:/opt/${APP}/dist dist
+docker cp $APP_app_1:/opt/$APP/dist dist
 
 # Backup the artifact to S3
 aws s3 sync dist s3://$BUILDS_BUCKET/$BUILD_NUMBER/www > /dev/null
