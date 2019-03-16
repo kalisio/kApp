@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="$PACKAGE_ID" version="0.3.0" ios-CFBundleVersion="$BUILD_NUMBER" android-versionCode="$BUILD_NUMBER">
-    <name>$APP</name>
+    <name>$TITLE</name>
     <description>Kalisio App Template</description>
     <icon src="res/icons/icon.png" />
     <author email="contact@kalisio.com" href="https://kalisio.com">Kalisio</author>
