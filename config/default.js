@@ -35,7 +35,7 @@ module.exports = {
   apiTimeout: 20000,
   transport: 'websocket', // Could be 'http' or 'websocket',
   appName: 'kApp',
-  appLogo: 'kalisio-logo.png',
+  appLogo: 'kapp-icon.png',
   publisher: 'Kalisio',
   logs: {
     level: (process.env.NODE_ENV === 'development' ? 'debug' : 'info')
@@ -46,7 +46,7 @@ module.exports = {
       { label: 'screen.CONTACT', url: website + '/#footer' },
       { label: 'screen.TERMS_AND_POLICIES', url: domain + '/#/terms' },
     ],
-    banner: 'kalisio-banner.png',
+    banner: 'kapp-logo.png',
     login: {
       providers: [], // ['google', 'github'],
       links: [
@@ -67,7 +67,7 @@ module.exports = {
     title: 'kApp'
   },
   sideNav: {
-    banner: 'kalisio-banner.png',
+    banner: 'kapp-logo.png',
     components: {
       user_actions: 'layout/KLinksPanel'
     }
