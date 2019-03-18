@@ -24,7 +24,7 @@ else
 	docker-compose -f deploy/app.yml -f deploy/app.build.yml up -d
   # Check if the build has succeeded
 	docker exec -ti ${APP}_app_1 ls /opt/$APP/dist
-	if [ $? -eq 1 ]; then
+	if [ $? -ne 0 ]; then
 	  exit 1
   fi
 
