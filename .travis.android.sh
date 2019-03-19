@@ -17,7 +17,6 @@ else
 	cp workspace/common/android/*.json cordova/
 	cp workspace/$FLAVOR/android/*.json cordova/
 	cp workspace/common/android/$GOOGLE_KEYSTORE cordova/	
-	cp workspace/$FLAVOR/android/Appfile cordova/fastlane/
 	
 	travis_fold end "provision"
 
@@ -54,6 +53,10 @@ else
   # Deploy the app
 	#
 	travis_fold start "deploy"
+
+	# Generate the Appfile
+	echo "json_key_file(\"google-play.json\")" > cordova/fastlane/Appfile
+	echo "package_name(\"$PACKAGE_ID\")" >> cordova/fastlane/Appfile
 
   # Deploy the APK to GooglePlay
 	cd cordova
