@@ -76,6 +76,7 @@
     "@feathersjs/client": "^3.5.4",
     "@kalisio/kdk-core": "^1.0.0",
     "@panter/vue-i18next": "^0.9.1",
+    "@quasar/extras": "^1.1.1",
     "ajv": "^5.2.2",
     "ajv-i18n": "2",
     "annyang": "^2.6.0",
@@ -103,8 +104,7 @@
     "material-design-icons": "^3.0.1",
     "npm-run-all": "^4.1.2",
     "password-generator": "^2.2.0",
-    "quasar-extras": "0.0.8",
-    "quasar-framework": "0.14.7",
+    "quasar": "^1.0.0-beta.13",
     "roboto-fontface": "^0.7.0",
     "showdown": "^1.8.6",
     "socket.io-client": "^2.0.1",
@@ -116,6 +116,7 @@
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
+    "@quasar/app": "^1.0.0-beta.13",
     "autoprefixer": "^6.4.0",
     "babel-core": "^6.0.0",
     "babel-eslint": "^7.0.0",
