@@ -30,7 +30,7 @@ function loadTranslation (module, locale) {
     .catch(errorCore => {
       return import(`./i18n/${translation}`)
         .catch(errorApp => {
-          console.log(errorCore, errorTeam, errorNotify, errorMap, errorEvent, errorApp)
+          console.log(errorCore, errorApp)
         })
     })
 }

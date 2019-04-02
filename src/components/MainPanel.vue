@@ -1,23 +1,27 @@
 <template>
   <q-list link no-border>
-    <q-item @click="onLogout()">
-      <q-item-side icon="exit_to_app" />
-      <q-item-main :label="$t('sideNav.LOGOUT')" />
+    <q-item @click="onLogout()" clickable v-ripple>
+      <q-item-section avatar >
+          <q-icon name="exit_to_app" />
+      </q-item-section>
+      <q-item-section>
+        <q-item-label>{{ $t('sideNav.LOGOUT') }}</q-item-label>
+      </q-item-section>
     </q-item>
   </q-list>
 </template>
 
 <script>
-import { QList, QItem, QItemSide, QItemMain, QItemSeparator } from 'quasar'
+import { QList, QItem, QItemSection, QItemLabel, QIcon } from 'quasar'
 
 export default {
   name: 'main-panel',
   components: {
     QList,
     QItem,
-    QItemSide,
-    QItemMain,
-    QItemSeparator
+    QItemSection,
+    QItemLabel,
+    QIcon
   },
   methods: {
     onLogout () {

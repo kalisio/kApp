@@ -1,21 +1,20 @@
 <template>
   <q-card>
-    <q-card-main>
+    <q-card-section>
       <k-markdown-viewer url="statics/kapp-terms.md"></k-markdown-viewer>
-    </q-card-main>
+    </q-card-section>
   </q-card>
 </template>
 
 <script>
 import utils from '../utils'
-import { QCard, QCardTitle, QCardMain } from 'quasar'
+import { QCard, QCardSection } from 'quasar'
 
 export default {
   name: 'terms',
   components: {
     QCard,
-    QCardTitle,
-    QCardMain
+    QCardSection
   },
   created () {
     this.$options.components['k-screen'] = utils.loadComponent('frame/KScreen')

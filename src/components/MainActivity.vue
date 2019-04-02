@@ -47,7 +47,7 @@ export default {
         label: this.$t('MainActivity.PANEL'),
         icon: 'keyboard_arrow_right',
         handler: this.onOpenPanel
-      }),
+      })
       this.registerFabAction({
         name: 'create-document',
         label: this.$t('MainActivity.CREATE_DOCUMENT'),

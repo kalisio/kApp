@@ -8,6 +8,6 @@ export default function () {
   try {
     api.configure(kCore)
   } catch (error) {
-    logger.error(error.message)
+    logger.error(error, error.message)
   }
 }
