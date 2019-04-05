@@ -48,7 +48,7 @@ module.exports = {
     ],
     banner: 'kapp-logo.png',
     login: {
-      providers: [], // ['google', 'github'],
+      providers: ['google', 'github'],
       links: [
         { id: 'register-link', label: 'KLogin.DONT_HAVE_AN_ACCOUNT_LINK', route: { name: 'register' } }
       ]
