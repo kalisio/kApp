@@ -37,6 +37,11 @@ module.exports = {
   appName: 'kApp',
   appLogo: 'kapp-icon.png',
   publisher: 'Kalisio',
+  locale: {
+    // If you'd like to force locale otherwise it is retrieved from browser
+    //default: 'en',
+    fallback: 'en'
+  },
   logs: {
     level: (process.env.NODE_ENV === 'development' ? 'debug' : 'info')
   },

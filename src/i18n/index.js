@@ -7,12 +7,14 @@ export async function configureI18n () {
   // Defines the modules to be loaded
   const modules = ['kCore', 'app']
   try {
-    // Retrieve the locale
-    const locale = kCoreUtils.getLocale()
+    // Define the locale to be used
+    const localeConfig = config.locale || {}
+    const localeBrowser = kCoreUtils.getLocale()
+    let locale = localeConfig.default || localeBrowser
     // Initializes i18next
     i18next.init({
       lng: locale,
-      fallbackLng: 'en',
+      fallbackLng: localeConfig.fallback || 'en',
       defaultNS: ['kdk']
     })
     // Build the translation resolvers
