@@ -88,7 +88,7 @@
     "feathers-authentication-management": "^1.0.0",
     "feathers-reactive": "^0.7.2",
     "i18next": "^10.5.0",
-    "jquery": "^3.2.1",
+    "jquery": "^3.4.0",
     "js-yaml": "^3.10.0",
     "leaflet": "^1.0.3",
     "leaflet-basemaps": "^0.2.0",
