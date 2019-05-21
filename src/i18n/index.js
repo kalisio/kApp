@@ -1,5 +1,6 @@
 import logger from 'loglevel'
 import i18next from 'i18next'
+import config from 'config'
 import { utils as kCoreUtils } from '@kalisio/kdk-core/client'
 import { loadTranslation } from '../utils'
 
