@@ -22,6 +22,7 @@
   "MainActivity": {
     "CREATE_DOCUMENT": "Nouveau document",
     "REMOVE_DOCUMENT": "Supprimer",
+    "EDIT_DOCUMENT": "Editer",
     "TITLE": "Vos documents",
     "PANEL": "Ouvrir le panneau droit"
   }
