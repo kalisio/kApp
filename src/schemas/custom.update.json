@@ -9,7 +9,7 @@
         "type": "string",
         "field": {
           "component": "form/KTextField",
-          "helper": "schemas.EMAIL_FIELD_HELPER"
+          "helper": "schemas.CUSTOM_FIELD_HELPER"
         }
       }
     },

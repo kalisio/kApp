@@ -2,7 +2,6 @@
   <div>
     <k-modal ref="custommodal" :toolbar="toolbar" :title="$t('MainActivity.MODAL_TITLE')">
       <div slot="modal-content">
-        <div>{{savedData}}</div>
         <k-editor ref="customEditor" objectId="custom" service="custom" @applied="onObjectUpdated" />
       </div>
     </k-modal>
@@ -65,8 +64,7 @@ export default {
         name: 'close',
         icon: 'close',
         handler: () => this.closeCustomModal()
-      }],
-      savedData: this.$api.getService('custom').get("id")
+      }]
     }
   },
   methods: {

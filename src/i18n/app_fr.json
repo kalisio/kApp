@@ -24,6 +24,10 @@
     "REMOVE_DOCUMENT": "Supprimer",
     "EDIT_DOCUMENT": "Editer",
     "TITLE": "Vos documents",
-    "PANEL": "Ouvrir le panneau droit"
+    "PANEL": "Ouvrir le panneau droit",
+    "MODAL_TITLE": "Editer un objet"
+  },
+  "schemas": {
+    "CUSTOM_FIELD_HELPER": "Ecrire quelque chose"
   }
 }

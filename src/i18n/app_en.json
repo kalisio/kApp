@@ -23,6 +23,10 @@
     "CREATE_DOCUMENT": "New document",
     "DELETE_DOCUMENT": "Delete",
     "TITLE": "Your documents",
-    "PANEL": "Open right panel"
+    "PANEL": "Open right panel",
+    "MODAL_TITLE": "Edit object"
+  },
+  "schemas": {
+    "CUSTOM_FIELD_HELPER": "Edit field"
   }
 }
