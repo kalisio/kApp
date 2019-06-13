@@ -28,6 +28,6 @@
     "MODAL_TITLE": "Editer un objet"
   },
   "schemas": {
-    "CUSTOM_FIELD_HELPER": "Ecrire quelque chose"
+    "CUSTOM_FIELD_HELPER": "Edition du champ"
   }
 }
