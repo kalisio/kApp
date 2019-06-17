@@ -3,7 +3,7 @@
     <k-modal ref="custommodal" :toolbar="toolbar" :title="$t('MainActivity.MODAL_TITLE')">
       <div slot="modal-content">
         <k-editor ref="customEditor" objectId="custom" service="custom" @applied="onObjectUpdated" />
-       <!-- <k-viewer ref="customEditor" objectId="custom" service="custom" @applied="onObjectUpdated" />-->
+        <k-viewer ref="customEditor" objectId="custom" service="custom" @applied="onObjectUpdated" />
       </div>
     </k-modal>
     
@@ -135,7 +135,7 @@ export default {
     this.$options.components['k-modal'] = this.$load('frame/KModal')
 
     this.$options.components['k-editor'] = this.$load('editor/KEditor')
-    this.$options.components['k-viewer'] = this.$load('KViewer')
+    this.$options.components['k-viewer'] = this.$load('viewer/KViewer')
 
   },
   mounted () {

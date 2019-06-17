@@ -19,7 +19,7 @@
 
 <script>
 import { QField, QInput } from 'quasar'
-import { mixins } from '../mixins' //'@kalisio/kdk-core/client'//
+import { mixins } from '@kalisio/kdk-core/client'//'../mixins' //
 
 export default {
   name: 'custom-field',
