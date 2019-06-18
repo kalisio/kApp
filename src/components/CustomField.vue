@@ -27,6 +27,6 @@ export default {
     QField,
     QInput
   },
-  mixins: [mixins.customField]
+  mixins: [mixins.baseField]
 }
 </script>
