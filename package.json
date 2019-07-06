@@ -73,11 +73,10 @@
     ]
   },
   "dependencies": {
-    "@quasar/extras": "^1.1.1",
-    "quasar": "^1.0.0-beta.13",
     "@feathersjs/client": "^3.5.4",
     "@kalisio/kdk-core": "^1.0.0",
     "@panter/vue-i18next": "^0.9.1",
+    "@quasar/extras": "^1.1.4",
     "ajv": "^5.2.2",
     "ajv-i18n": "2",
     "annyang": "^2.6.0",
@@ -99,20 +98,20 @@
     "leaflet.vectorgrid": "^1.3.0",
     "lodash": "^4.17.4",
     "loglevel": "^1.6.0",
-    "material-design-icons": "^3.0.1",
     "mime-types-browser": "^0.0.3",
     "npm-run-all": "^4.1.2",
     "password-generator": "^2.2.0",
-    "roboto-fontface": "^0.7.0",
+    "quasar": "^1.0.3",
     "showdown": "^1.8.6",
     "togeojson": "^0.16.0",
-    "vue": "2.6.10",
+    "vue": "^2.6.10",
     "vue-avatar": "^2.0.0",
+    "vue-router": "^3.0.2",
     "vue2-dropzone": "^3.5.8",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
-    "@quasar/app": "^1.0.0-beta.15",
+    "@quasar/app": "^1.0.1",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
     "config": "^1.26.1",
@@ -125,8 +124,9 @@
     "eslint": "^4.4.1",
     "eslint-loader": "^2.1.1",
     "eslint-plugin-vue": "^5.0.0",
-    "strip-ansi": "=3.0.1",
-    "standard": "^10.0.3"
+    "ignore-loader": "^0.1.2",
+    "standard": "^10.0.3",
+    "strip-ansi": "=3.0.1"
   },
   "engines": {
     "node": ">= 8.9.0",

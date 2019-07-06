@@ -1,7 +1,8 @@
 <template>
   <!-- Don't drop "q-app" class -->
   <div id="q-app">
-    <q-ajax-bar ref="bar" position="bottom" size="8px" color="primary" :delay="250"></q-ajax-bar>
+    <!-- TODO 'delay' property has been dropped after v.0.16 - how to replicate? -->
+    <q-ajax-bar ref="bar" position="bottom" size="8px" color="primary" :delay="250" :skip-hijack="false"></q-ajax-bar>
     <router-view></router-view>
   </div>
 </template>
@@ -35,13 +36,15 @@ export default {
     },
     startProgress () {
       let progressBar = this.$refs.bar
-      if (progressBar && !progressBar.active && (this.nbRequests > this.nbCompletedRequests)) {
+      // TODO QAjaxBar 'active' prop is undefined ...
+      if (progressBar && /*!progressBar.active &&*/ (this.nbRequests > this.nbCompletedRequests)) {
         progressBar.start()
       }
     },
     stopProgress () {
       let progressBar = this.$refs.bar
-      if (progressBar && progressBar.active && (this.nbRequests <= this.nbCompletedRequests)) {
+      // TODO QAjaxBar 'active' prop is undefined ...
+      if (progressBar && /*progressBar.active &&*/ (this.nbRequests <= this.nbCompletedRequests)) {
         progressBar.stop()
       }
     }

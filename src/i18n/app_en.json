@@ -21,7 +21,7 @@
   },
   "MainActivity": {
     "CREATE_DOCUMENT": "New document",
-    "DELETE_DOCUMENT": "Delete",
+    "REMOVE_DOCUMENT": "Delete",
     "TITLE": "Your documents",
     "PANEL": "Open right panel"
   }

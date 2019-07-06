@@ -29,10 +29,10 @@ module.exports = function (ctx) {
 
     extras: [
       'roboto-font',
-      'material-icons' // optional, you are not bound to it
+      'material-icons', // optional, you are not bound to it
       // 'ionicons-v4',
       // 'mdi-v3',
-      // 'fontawesome-v5',
+      'fontawesome-v5'
       // 'eva-icons'
     ],
 
@@ -62,9 +62,10 @@ module.exports = function (ctx) {
       // Quasar plugins
       plugins: [
         'Notify'
-      ]
+      ],
 
       // iconSet: 'ionicons-v4'
+      // iconSet: 'fontawesome-v5'
       // lang: 'de' // Quasar language
     },
 
@@ -83,7 +84,7 @@ module.exports = function (ctx) {
         // TODO fix this
         // cfg.output.sourcePrefix = '', // Required for Cesium, see https://github.com/AnalyticalGraphicsInc/cesium/issues/4876
         // cfg.externals.fs = true, // Required for Cesium, https://github.com/AnalyticalGraphicsInc/cesium/issues/4838
-        cfg.resolve.extensions = ['.js', '.vue', '.json'],
+        // cfg.resolve.extensions = ['.js', '.vue', '.json'],
         cfg.resolve.modules = [
           resolve(''),
           resolve('src'),
@@ -105,6 +106,10 @@ module.exports = function (ctx) {
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
           exclude: /node_modules/
+        }),
+        cfg.module.rules.push({
+          test: /\.js.map$/,
+          loader: 'ignore-loader'
         }),
         cfg.plugins.push(new webpack.DefinePlugin({
             // 'process.env': config[env.prod ? 'build' : 'dev'].env,
