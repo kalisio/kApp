@@ -8,8 +8,9 @@
        "name": {
         "type": "string",
         "field": {
-          "component": "CustomField",
-          "helper": "schemas.CUSTOM_FIELD_HELPER"
+          "component": "form/KTextField",
+          "helper": "schemas.CUSTOM_FIELD_HELPER",
+          "label": "schemas.CUSTOM_FIELD_LABEL"
         }
       }
     },

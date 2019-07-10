@@ -2,13 +2,14 @@
   <div>
     <k-modal ref="custommodal" :toolbar="toolbar" :title="$t('MainActivity.MODAL_TITLE')">
       <div slot="modal-content">
-        <k-editor ref="customEditor" objectId="custom" service="custom" @applied="onObjectUpdated" />
-        <k-viewer ref="customEditor" objectId="custom" service="custom" @applied="onObjectUpdated" />
+    <!--    <k-editor ref="customEditor" objectId="custom" service="custom" @applied="onObjectUpdated" />-->
+        <k-viewer ref="customViewer" objectId="custom" service="custom" @applied="onCustomEditorUpdated" />
       </div>
     </k-modal>
     
     <k-list service="documents" :renderer="renderer" :filter-query="searchQuery" />
     <k-modal-editor ref="editor" service="documents" :objectId="documentId" @applied="onDocumentCreated" />
+    <k-modal-viewer ref="viewer" service="documents" :objectId="documentId" />
   </div>
 </template>
 
@@ -56,6 +57,10 @@ export default {
           {
             label: this.$i18n.t('MainActivity.EDIT_DOCUMENT'),
             handler: (document) => this.onEditDocument(document)
+          },
+          {
+            label: this.$i18n.t('MainActivity.VIEW_DOCUMENT'),
+            handler: (document) => this.onViewDocument(document)
           }]
         }
       },
@@ -92,9 +97,9 @@ export default {
       }),
       this.registerFabAction({
         name: 'open-modal',
-        label: this.$t('Object'),
+        label: this.$t('MainActivity.CUSTOM_EDITOR'),
         icon: 'close',
-        handler: this.onOpenObject
+        handler: this.onOpenCustomEditor
       })
     },
     onOpenPanel () {
@@ -117,14 +122,21 @@ export default {
       await this.$nextTick()
       this.$refs.editor.open()
     },
-    async onOpenObject () {
+    async onOpenCustomEditor () {
       this.$refs.custommodal.open()
     },
-    async onObjectUpdated (object) {
+    async onCustomEditorUpdated (object) {
       console.log('Object updated: ', object)
+      this.$api.getService('custom').patch(0, { name: '' })
     },
     closeCustomModal(){
       this.$refs.custommodal.close()
+    },
+    async onViewDocument (document) { 
+      console.log("onViewDocument("+document._id+") trigered")
+      this.documentId = document._id
+      await this.$nextTick()
+      this.$refs.viewer.open()
     }
   },
   created () {
@@ -136,6 +148,7 @@ export default {
 
     this.$options.components['k-editor'] = this.$load('editor/KEditor')
     this.$options.components['k-viewer'] = this.$load('viewer/KViewer')
+    this.$options.components['k-modal-viewer'] = this.$load('viewer/KModalViewer')
 
   },
   mounted () {

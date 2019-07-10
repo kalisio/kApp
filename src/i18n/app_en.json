@@ -24,9 +24,12 @@
     "DELETE_DOCUMENT": "Delete",
     "TITLE": "Your documents",
     "PANEL": "Open right panel",
-    "MODAL_TITLE": "Edit object"
+    "MODAL_TITLE": "Edit object",
+    "CUSTOM_EDITOR": "Custom editor",
+    "VIEW_DOCUMENT": "See"
   },
   "schemas": {
-    "CUSTOM_FIELD_HELPER": "Edit field"
+    "CUSTOM_FIELD_HELPER": "Edit field",
+    "CUSTOM_FIELD_LABEL": "Name"
   }
 }
