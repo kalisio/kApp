@@ -3,7 +3,7 @@
     <k-modal ref="custommodal" :toolbar="toolbar" :title="$t('MainActivity.MODAL_TITLE')">
       <div slot="modal-content">
     <!--    <k-editor ref="customEditor" objectId="custom" service="custom" @applied="onObjectUpdated" />-->
-        <k-viewer ref="customViewer" objectId="custom" service="custom" @applied="onCustomEditorUpdated" />
+        <k-editor ref="customViewer" objectId="custom" service="custom" @applied="onCustomEditorUpdated" />
       </div>
     </k-modal>
     
@@ -98,7 +98,7 @@ export default {
       this.registerFabAction({
         name: 'open-modal',
         label: this.$t('MainActivity.CUSTOM_EDITOR'),
-        icon: 'close',
+        icon: 'create',
         handler: this.onOpenCustomEditor
       })
     },
@@ -137,6 +137,7 @@ export default {
       this.documentId = document._id
       await this.$nextTick()
       this.$refs.viewer.open()
+      this.documentId = null
     }
   },
   created () {
