@@ -17,8 +17,11 @@ export default class Documents extends ApplicationLayout {
       this.create = Selector('#apply-button')
 
       //list
-      this.firstElement = Selector('#item-overflow-menu-entry').nth(0)
+      //this.firstElement = Selector('#item-overflow-menu-entry').nth(0)
+      this.firstElement = VueSelector('q-item-side').nth(0)
       this.supr = Selector('#Supprimer')
+      this.edit = Selector('#Editer')
+      this.view = Selector('#Voir')
 
 
 
@@ -49,6 +52,22 @@ export default class Documents extends ApplicationLayout {
         .click(this.firstElement)
         .wait(500)
         .click(this.supr)
+        .wait(500)
+    }
+
+    async edit(test){
+      await test
+        .click(this.firstElement)
+        .wait(500)
+        .click(this.edit)
+        .wait(500)
+    }
+
+    async view(test){
+      await test
+        .click(this.firstElement)
+        .wait(500)
+        .click(this.view)
         .wait(500)
     }
 }

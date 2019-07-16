@@ -27,10 +27,12 @@
     "PANEL": "Ouvrir le panneau droit",
     "MODAL_TITLE": "Editer un objet",
     "CUSTOM_EDITOR": "Editeur customisé",
+    "CUSTOM_VIEWER": "Visioneuse customisé",
     "VIEW_DOCUMENT": "Voir"
   },
   "schemas": {
     "CUSTOM_FIELD_HELPER": "Edition du champ",
-    "CUSTOM_FIELD_LABEL": "Nom"
+    "CUSTOM_FIELD_LABEL": "Nom",
+    "TITLE_EXAMPLE": "Example de champs"
   }
 }

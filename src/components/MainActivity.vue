@@ -1,11 +1,12 @@
 <template>
   <div>
-    <k-modal ref="custommodal" :toolbar="toolbar" :title="$t('MainActivity.MODAL_TITLE')">
+ <!--   <k-modal ref="customeditormodal" :toolbar="toolbar" :title="$t('MainActivity.MODAL_TITLE')">
       <div slot="modal-content">
-    <!--    <k-editor ref="customEditor" objectId="custom" service="custom" @applied="onObjectUpdated" />-->
         <k-editor ref="customViewer" objectId="custom" service="custom" @applied="onCustomEditorUpdated" />
       </div>
-    </k-modal>
+    </k-modal>-->
+    <k-modal-editor ref="customeditormodal" service="custom" objectId="custom" @applied="onCustomEditorUpdated" />
+    <k-modal-viewer ref="customviewermodal" service="custom" objectId="custom" />
     
     <k-list service="documents" :renderer="renderer" :filter-query="searchQuery" />
     <k-modal-editor ref="editor" service="documents" :objectId="documentId" @applied="onDocumentCreated" />
@@ -96,10 +97,16 @@ export default {
         handler: this.onCreateDocument
       }),
       this.registerFabAction({
-        name: 'open-modal',
+        name: 'open-editor-modal',
         label: this.$t('MainActivity.CUSTOM_EDITOR'),
         icon: 'create',
         handler: this.onOpenCustomEditor
+      }),
+      this.registerFabAction({
+        name: 'open-viewer-modal',
+        label: this.$t('MainActivity.CUSTOM_VIEWER'),
+        icon: 'visibility',
+        handler: this.onOpenCustomViewer
       })
     },
     onOpenPanel () {
@@ -123,7 +130,10 @@ export default {
       this.$refs.editor.open()
     },
     async onOpenCustomEditor () {
-      this.$refs.custommodal.open()
+      this.$refs.customeditormodal.open()
+    },
+    async onOpenCustomViewer () {
+      this.$refs.customviewermodal.open()
     },
     async onCustomEditorUpdated (object) {
       console.log('Object updated: ', object)

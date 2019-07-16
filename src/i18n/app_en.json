@@ -26,10 +26,12 @@
     "PANEL": "Open right panel",
     "MODAL_TITLE": "Edit object",
     "CUSTOM_EDITOR": "Custom editor",
+    "CUSTOM_VIEWER": "Custom viewer",
     "VIEW_DOCUMENT": "See"
   },
   "schemas": {
     "CUSTOM_FIELD_HELPER": "Edit field",
-    "CUSTOM_FIELD_LABEL": "Name"
+    "CUSTOM_FIELD_LABEL": "Name",
+    "TITLE_EXAMPLE": "Fields examples"
   }
 }
