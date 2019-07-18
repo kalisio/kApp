@@ -39,26 +39,13 @@
       },
       "KChipsWithIconField": {
         "type": "object",
-        "name": "KChipsWithIconField",
         "uniqueItems": true,
-        "minItems": 2,
+        "minItems": 1,
         "chips": true,
         "field": {
           "component": "form/KChipsWithIconField",
           "helper": "schemas.CUSTOM_FIELD_HELPER",
-          "label": "KChipsWithIconField",
-          "icon" : {
-            "name" : "label",
-            "color" : "red"
-          },
-          "option": [[
-            { "item": "KChipsWithIconField-1-1", "value": "11" },
-            { "item": "KChipsWithIconField-1-2", "value": "12" }
-          ],
-          [
-            { "item": "KChipsWithIconField-2-1", "value": "21"},
-            { "item": "KChipsWithIconField-2-2", "value": "22"}
-          ]]
+          "label": "KChipsWithIconField"
         }
       },
       "KDatetimeField": {
