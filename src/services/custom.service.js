@@ -4,17 +4,17 @@ export default function (name, api, options) {
   let object = {
     KTextField: 'KTextField',
     KTextareaField: "KTextareaField",
-    KAttachmentField: "KAttachmentField",
-    KChipsField: ["KChipsField"],
+    KAttachmentField: { "name": "KAttachmentField", "color": "primary" },
+    KChipsField: ["KChipsField-1","KChipsField-2"],
     KChipsWithIconField: [{ "name": "KChipsWithIconField-1", "color": "dark" }, { "name": "KChipsWithIconField-2", "color": "dark" }], //"KChipsWithIconField",
     KDatetimeField: "2019-07-16",
     KEmailField: "kalisio@kalisio.xyz",
-    KIconField: { "name": "check", "color": "dark" },
-    KItemField: { "name": "check", "color": "dark" },
+    KIconField: { "name": "check", "color": "primary" },
+    KItemField: { "name": "KItemField", "services": "documents", "color": "dark" },
     KNumberField: "0123456789",
     KPasswordField: "KPasswordField",
     KPhoneField: "0123456789",
-    KTagField: "KTagField",
+    KTagField: [{ "name": "KTagField-1", "color": "dark" }, { "name": "KTagField-2", "color": "dark" }],
     KToggleField: true,
     KUrlField: "Kalisio.com"
   }

@@ -30,7 +30,7 @@
         }
       },
       "KChipsField": {
-        "type": "object",
+        "type": "array",
         "field": {
           "component": "form/KChipsField",
           "helper": "schemas.CUSTOM_FIELD_HELPER",
@@ -38,9 +38,11 @@
         }
       },
       "KChipsWithIconField": {
-        "type": "array",
+        "type": "object",
+        "name": "KChipsWithIconField",
         "uniqueItems": true,
         "minItems": 2,
+        "chips": true,
         "field": {
           "component": "form/KChipsWithIconField",
           "helper": "schemas.CUSTOM_FIELD_HELPER",
@@ -49,10 +51,14 @@
             "name" : "label",
             "color" : "red"
           },
-          "option": [
-            { "item": "KItemField-1", "value": "1" },
-            { "item": "KItemField-2", "value": "2" }
-          ]
+          "option": [[
+            { "item": "KChipsWithIconField-1-1", "value": "11" },
+            { "item": "KChipsWithIconField-1-2", "value": "12" }
+          ],
+          [
+            { "item": "KChipsWithIconField-2-1", "value": "21"},
+            { "item": "KChipsWithIconField-2-2", "value": "22"}
+          ]]
         }
       },
       "KDatetimeField": {
@@ -80,15 +86,12 @@
         }
       },
       "KItemField": {
-        "type": "array",
+        "type": "array",        
+        "services": ["custom"],
         "field": {
           "component": "form/KItemField",
           "helper": "schemas.CUSTOM_FIELD_HELPER",
-          "label": "KItemField",
-          "option": [
-            { "item": "KItemField-1", "value": "1" },
-            { "item": "KItemField-2", "value": "2" }
-          ]
+          "label": "KItemField"
         }
       },
       "KNumberField": {
@@ -128,7 +131,7 @@
         }
       },
       "KSelectField": {
-        "type": "array",
+        "type": "string",
         "field": {
           "component": "form/KSelectField",
           "helper": "schemas.CUSTOM_FIELD_HELPER",
@@ -140,11 +143,11 @@
         }
       },
       "KTagField": {
-        "type": "string",
-        "field": {
-          "component": "form/KTagField",
-          "helper": "schemas.CUSTOM_FIELD_HELPER",
-          "label": "KTagField"
+        "type": "array",
+          "field": {
+            "component": "form/KTagField",
+            "helper": "schemas.CUSTOM_FIELD_HELPER",
+            "label": "KTagField"
         }
       },
       "KToggleField": {
