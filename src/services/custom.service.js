@@ -11,10 +11,10 @@ export default function (name, api, options) {
     KEmailField: "kalisio@kalisio.xyz",
     KIconField: { "name": "check", "color": "primary" },
     KItemField: { "name": "KItemField", "services": "documents", "color": "dark" },
-    KNumberField: "+0123456789",
+    KNumberField: "0123456789",
     KPasswordField: "KPasswordField",
-    KPhoneField: "0123456789",
-    KTagField: [{ "name": "KTagField-1", "color": "dark" }, { "name": "KTagField-2", "color": "dark" }],
+    KPhoneField: "+0123456789",
+    KTagField: [{ "value": "KTagField", "scope": "documents", "icon" : { "name" : "check","color" : "primary" } }],//[{ "name": "KTagField-1", "color": "dark" }, { "name": "KTagField-2", "color": "dark" }],
     KToggleField: true,
     KUrlField: "Kalisio.com"
   }

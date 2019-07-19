@@ -38,7 +38,7 @@
         }
       },
       "KChipsWithIconField": {
-        "type": "object",
+        "type": "array",
         "uniqueItems": true,
         "minItems": 1,
         "chips": true,
@@ -73,7 +73,7 @@
         }
       },
       "KItemField": {
-        "type": "array",        
+        "type": "object",        
         "services": ["custom"],
         "field": {
           "component": "form/KItemField",
@@ -95,6 +95,7 @@
           "component": "form/KOptionsField",
           "helper": "schemas.CUSTOM_FIELD_HELPER",
           "label": "KOptionsField",
+          "type": "radio",
           "options": [
             { "label": "KOptionsField-1", "value": "1" },
             { "label": "KOptionsField-2", "value": "2" }
@@ -123,18 +124,11 @@
           "component": "form/KSelectField",
           "helper": "schemas.CUSTOM_FIELD_HELPER",
           "label": "KSelectField",
+          "v-model": "1",
           "options": [
-            { "label": "KSelectField-1", "value": "1" },
+            { "label": "KSelectField-1", "value": "1", "selected": "true" },
             { "label": "KSelectField-2", "value": "2" }
           ]
-        }
-      },
-      "KTagField": {
-        "type": "array",
-          "field": {
-            "component": "form/KTagField",
-            "helper": "schemas.CUSTOM_FIELD_HELPER",
-            "label": "KTagField"
         }
       },
       "KToggleField": {
