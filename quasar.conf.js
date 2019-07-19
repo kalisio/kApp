@@ -58,7 +58,8 @@ module.exports = function (ctx) {
         'QExpansionItem',
         "QCard",
         "QCardSection",
-        "QCardActions"
+        "QCardActions",
+        "QDialog"
       ],
 
       directives: [
