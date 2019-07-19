@@ -79,8 +79,7 @@ export default {
       this.$api.socket.on('reconnect', () => {
         // Dismiss pending reconnection error message
         if (this.pendingReconnection) {
-          const dismiss = this.pendingReconnection
-          dismiss()
+          this.pendingReconnection()
           this.pendingReconnection = null
         }
         Loading.show({message: this.$t('Index.RECONNECT')})
