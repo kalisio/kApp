@@ -1,13 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import { Store } from '@kalisio/kdk-core/client'
 import utils from '../utils'
 import config from 'config'
 
 Vue.use(VueRouter)
 
+/*
+ * If not building with SSR mode, you can
+ * directly export the Router instantiation
+ */
+
 export default function (/* { store, ssrContext } */) {
-  const Router = new VueRouter({
-    // scrollBehavior: () => ({ y: 0 }),
+  const router = new VueRouter({
+    scrollBehavior: () => ({ x: 0, y: 0 }),
     routes: utils.buildRoutes(config.routes),
 
     // Leave these as is and change from quasar.conf.js instead!
@@ -17,5 +23,6 @@ export default function (/* { store, ssrContext } */) {
     base: process.env.VUE_ROUTER_BASE
   })
 
-  return Router
+  Store.set('router', router)
+  return router
 }
