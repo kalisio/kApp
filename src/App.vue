@@ -10,6 +10,11 @@
 import _ from 'lodash'
 
 export default {
+  data () {
+    return {
+      progressBarActive: false
+    }
+  },
   methods: {
     showError (message) {
       this.$q.notify({
@@ -28,15 +33,15 @@ export default {
     },
     startProgress () {
       let progressBar = this.$refs.bar
-      // TODO QAjaxBar 'active' prop is undefined ...
-      if (progressBar && /*!progressBar.active &&*/ (this.nbRequests > this.nbCompletedRequests)) {
+      if (progressBar && !this.progressBarActive && (this.nbRequests > this.nbCompletedRequests)) {
         progressBar.start()
+        this.progressBarActive = true
       }
     },
     stopProgress () {
       let progressBar = this.$refs.bar
-      // TODO QAjaxBar 'active' prop is undefined ...
-      if (progressBar && /*progressBar.active &&*/ (this.nbRequests <= this.nbCompletedRequests)) {
+      if (progressBar && this.progressBarActive && (this.nbRequests <= this.nbCompletedRequests)) {
+        this.progressBarActive = false
         progressBar.stop()
       }
     }
