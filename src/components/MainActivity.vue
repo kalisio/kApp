@@ -6,19 +6,14 @@
 </template>
 
 <script>
-
-import { QBtn } from 'quasar'
 import { mixins as kCoreMixins } from '@kalisio/kdk-core/client'
 
 export default {
   name: 'main-activity',
-  components: {
-    QBtn
-  },
   mixins: [
     kCoreMixins.baseActivity
   ],
-  inject: [ 'layout' ],
+  inject: [ 'klayout' ],
   data () {
     return {
       renderer: {
@@ -56,7 +51,7 @@ export default {
       })
     },
     onOpenPanel () {
-      this.layout.toggleRight()
+      this.klayout.toggleRightDrawer()
     },
     onCreateDocument () {
       this.$refs.editor.open()

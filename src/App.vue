@@ -1,23 +1,15 @@
 <template>
   <!-- Don't drop "q-app" class -->
   <div id="q-app">
-    <!-- TODO 'delay' property has been dropped after v.0.16 - how to replicate? -->
-    <q-ajax-bar ref="bar" position="bottom" size="8px" color="primary" :delay="250" :skip-hijack="false"></q-ajax-bar>
+    <q-ajax-bar ref="bar" position="bottom" size="8px" color="primary" />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 import _ from 'lodash'
-import { QAjaxBar } from 'quasar'
 
-/*
- * Root component
- */
 export default {
-  components: {
-    QAjaxBar
-  },
   methods: {
     showError (message) {
       this.$q.notify({

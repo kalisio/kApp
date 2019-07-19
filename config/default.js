@@ -61,7 +61,12 @@ module.exports = {
   },
   layout: {
     view: 'lHh LpR lFf',
-    rightBreakpoint: 9999
+    leftDrawer: {
+      behavior: 'mobile'
+    },
+    rightDrawer: {
+      behavior: 'mobile'
+    }
   },
   appBar: {
     title: 'kApp'
@@ -84,5 +89,5 @@ module.exports = {
       { label: 'sideNav.LOGOUT', icon: 'exit_to_app', route: { name: 'logout' } }
     ]
   },
-  routes: require('./routes')
+  routes: require('../src/router/routes')
 }
