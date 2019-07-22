@@ -46,7 +46,7 @@ export default {
     this.restoreSession()
       .then(user => {
         this.user = user
-        this.$q.notify({
+        this.$toast({
           type: 'positive',
           message: 'Restoring previous session'
         })
@@ -69,7 +69,7 @@ export default {
       this.$api.socket.on('reconnect_error', () => {
         // Display it only the first time the error appears because multiple attempts will be tried
         if (!this.pendingReconnection) {
-          this.pendingReconnection = this.$q.notify({
+          this.pendingReconnection = this.$toast({
             message: this.$t('Index.DISCONNECT')
           })
         }
@@ -103,7 +103,7 @@ export default {
           if (!api.buildNumber) return
           else if (api.buildNumber === config.buildNumber) return
         }
-        this.$q.notify({
+        this.$toast({
           message: this.$t('Index.VERSION_MISMATCH')
         })
       })
