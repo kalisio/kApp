@@ -13,7 +13,7 @@ fs.writeFileSync(path.join('config', 'client-config.json'), JSON.stringify(clien
 module.exports = function (ctx) {
   return {
     // app boot file (/src/boot)
-    // --> boot files are part of "main.js"
+    // --> boot files are part of 'main.js'
     boot: [
       'api',
       'i18n'
@@ -55,10 +55,11 @@ module.exports = function (ctx) {
         'QItemLabel',
         'QSeparator',
         'QExpansionItem',
-        "QCard",
-        "QCardSection",
-        "QCardActions",
-        "QDialog"
+        'QCard',
+        'QCardSection',
+        'QCardActions',
+        'QDialog',
+        'QAvatar'
       ],
 
       directives: [
