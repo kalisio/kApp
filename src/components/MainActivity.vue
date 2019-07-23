@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="full-width">
     <k-list service="documents" :renderer="renderer" :filter-query="searchQuery" />
     <k-modal-editor ref="editor" service="documents" @applied="onDocumentCreated" />
   </div>
