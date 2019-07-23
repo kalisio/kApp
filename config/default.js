@@ -62,11 +62,11 @@ module.exports = {
   layout: {
     view: 'lHh LpR lFf',
     leftDrawer: {
-      behavior: 'mobile'
     },
     rightDrawer: {
       behavior: 'mobile'
-    }
+    },
+    showLeftDrawerOnStartup: true
   },
   appBar: {
     title: 'kApp'
