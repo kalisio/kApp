@@ -34,32 +34,39 @@ module.exports = function (ctx) {
 
       components: [
         'QAjaxBar',
-        'QLayout',
-        'QHeader',
-        'QDrawer',
-        'QPageContainer',
-        'QPage',
-        'QPageSticky',
-        'QToolbar',
-        'QToolbarTitle',
-        'QResizeObserver',
+        'QAvatar',
         'QBtn',
-        'QToggle',
-        'QMenu',
-        'QTooltip',
-        'QIcon',
-        'QChip',
-        'QList',
-        'QItem',
-        'QItemSection',
-        'QItemLabel',
-        'QSeparator',
-        'QExpansionItem',
         'QCard',
         'QCardSection',
         'QCardActions',
+        'QChip',
         'QDialog',
-        'QAvatar'
+        'QDrawer',
+        'QExpansionItem',
+        'QField',
+        'QHeader',
+        'QIcon',
+        'QItem',
+        'QItemSection',
+        'QItemLabel',
+        'QLayout',
+        'QList',
+        'QMenu',
+        'QPage',
+        'QPageContainer',
+        'QPageSticky',
+        'QResizeObserver',
+        'QRouteTab',
+        'QSelect',
+        'QSeparator',
+        'QTab',
+        'QTabPanel',
+        'QTabPanels',
+        'QTabs',
+        'QToolbar',
+        'QToolbarTitle',
+        'QToggle',
+        'QTooltip'
       ],
 
       directives: [
@@ -68,7 +75,8 @@ module.exports = function (ctx) {
 
       // Quasar plugins
       plugins: [
-        'Notify'
+        'Notify',
+        'Dialog'
       ]
     },
 
