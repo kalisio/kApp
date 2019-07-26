@@ -74,16 +74,11 @@ module.exports = {
   sideNav: {
     banner: 'kapp-logo.png',
     components: {
-      user_actions: 'layout/KLinksPanel'
+      component_demo: 'Demo',
+      app_logout: 'layout/KLinksPanel'
     }
   },
-  panel: {
-    links: [
-      { }, // separator
-      { label: 'sideNav.LOGOUT', icon: 'exit_to_app', route: { name: 'logout' } }
-    ]
-  },
-  user_actions: {
+  app_logout: {
     links: [
       { }, // separator
       { label: 'sideNav.LOGOUT', icon: 'exit_to_app', route: { name: 'logout' } }

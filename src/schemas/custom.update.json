@@ -1,0 +1,145 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://www.kalisio.xyz/schemas/groups.create.json#",
+    "title": "schemas.TITLE_EXAMPLE",
+    "description": "create an object",
+    "type": "object",
+    "properties": {
+       "KTextField": {
+        "type": "string",
+        "minLength": 3,
+        "maxLength": 128,
+        "field": {
+          "component": "form/KTextField",
+          "helper": "KTextField"
+        }
+      },
+      "KTextareaField": {
+        "type": "string",
+        "field": {
+          "component": "form/KTextareaField",
+          "helper": "KTextareaField"
+        }
+      },
+      "KAttachmentField": {
+        "type": "object",
+        "field": {
+          "component": "form/KAttachmentField",
+          "helper": "KAttachmentField"
+        }
+      },
+      "KChipsField": {
+        "type": "array",
+        "field": {
+          "component": "form/KChipsField",
+          "helper": "KChipsField"
+        }
+      },
+      "KChipsWithIconField": {
+        "type": "array",
+        "uniqueItems": true,
+        "minItems": 1,
+        "chips": true,
+        "field": {
+          "component": "form/KChipsWithIconField",
+          "helper": "KChipsWithIconField"
+        }
+      },
+      "KDatetimeField": {
+        "type": "string",
+        "field": {
+          "component": "form/KDatetimeField",
+          "helper": "KDatetimeField"
+        }
+      },
+      "KEmailField": {
+        "type": "string",
+        "field": {
+          "component": "form/KEmailField",
+          "helper": "KEmailField"
+        }
+      },
+      "KIconField": {
+        "type": "object",
+        "field": {
+          "component": "form/KIconField",
+          "helper": "KIconField"
+        }
+      },
+      "KItemField": {
+        "type": "object",
+        "services": ["custom"],
+        "field": {
+          "component": "form/KItemField",
+          "helper": "KItemField"
+        }
+      },
+      "KNumberField": {
+        "type": "integer",
+        "field": {
+          "component": "form/KNumberField",
+          "helper": "KNumberField"
+        }
+      },
+      "KOptionsField": {
+        "type": "string",
+        "field": {
+          "component": "form/KOptionsField",
+          "helper": "KOptionsField",
+          "type": "radio",
+          "options": [
+            { "label": "KOptionsField-1", "value": "1" },
+            { "label": "KOptionsField-2", "value": "2" }
+          ]
+        }
+      },
+      "KPasswordField": {
+        "type": "string",
+        "field": {
+          "component": "form/KPasswordField",
+          "helper": "KPasswordField"
+        }
+      },
+      "KPhoneField": {
+        "type": "string",
+        "field": {
+          "component": "form/KPhoneField",
+          "helper": "KPhoneField"
+        }
+      },
+      "KSelectField": {
+        "type": "string",
+        "field": {
+          "component": "form/KSelectField",
+          "helper": "KSelectField",
+          "v-model": "1",
+          "options": [
+            { "label": "KSelectField-1", "value": "1", "selected": "true" },
+            { "label": "KSelectField-2", "value": "2" }
+          ]
+        }
+      },
+      "KTagField": {
+        "type": "string",
+        "field": {
+          "component": "form/KTagField",
+          "helper": "KTagField"
+        }
+      },
+      "KToggleField": {
+        "type": "string",
+        "field": {
+          "component": "form/KToggleField",
+          "helper": "KToggleField"
+        }
+      },
+      "KUrlField": {
+        "type": "string",
+        "field": {
+          "component": "form/KUrlField",
+          "helper": "KUrlField"
+        }
+      }
+    },
+    "required": ["KTextField", "KTextareaField" ]
+}

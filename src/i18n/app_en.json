@@ -5,8 +5,8 @@
     "TERMS_AND_POLICIES": "Terms and Policies"
   },
   "sideNav": {
-    "DASHBOARD": "Tableau de bord",
-    "LOGOUT": "Se déconnecter"
+    "DEMO": "Demo page",
+    "LOGOUT": "Log off"
   },
   "Context": {
     "EVENTS": "Events & templates",
@@ -23,6 +23,12 @@
     "CREATE_DOCUMENT": "New document",
     "REMOVE_DOCUMENT": "Delete",
     "TITLE": "Your documents",
-    "PANEL": "Open right panel"
+    "PANEL": "Open right panel",
+    "MODAL_TITLE": "Edit object",
+    "CUSTOM_EDITOR": "Custom editor",
+    "CUSTOM_VIEWER": "Custom viewer"
+  },
+  "schemas": {
+    "TITLE_EXAMPLE": "Fields examples"
   }
 }

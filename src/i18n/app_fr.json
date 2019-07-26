@@ -5,7 +5,7 @@
     "TERMS_AND_POLICIES": "Conditions générales"
   },
   "sideNav": {
-    "DASHBOARD": "Tableau de bord",
+    "DEMO": "Page démo",
     "LOGOUT": "Se déconnecter"
   },
   "Context": {
@@ -23,6 +23,12 @@
     "CREATE_DOCUMENT": "Nouveau document",
     "REMOVE_DOCUMENT": "Supprimer",
     "TITLE": "Vos documents",
-    "PANEL": "Ouvrir le panneau droit"
+    "PANEL": "Ouvrir le panneau droit",
+    "MODAL_TITLE": "Editer un objet",
+    "CUSTOM_EDITOR": "Editeur customisé",
+    "CUSTOM_VIEWER": "Visioneuse customisé"
+  },
+  "schemas": {
+    "TITLE_EXAMPLE": "Example de champs"
   }
 }
