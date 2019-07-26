@@ -80,6 +80,7 @@
     "ajv-i18n": "2",
     "casl": "^1.0.2",
     "cesium": "^1.38.0",
+    "cross-env": "^5.1.4",
     "eslint-plugin-html": "^6.0.0",
     "eslint-plugin-testcafe": "^0.2.1",
     "fastclick": "^1.0.6",
