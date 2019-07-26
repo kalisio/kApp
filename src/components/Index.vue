@@ -18,17 +18,6 @@ export default {
     redirect () {
       // Run registered guards to redirect accordingly if required
       const result = beforeGuard(this.$route)
-      //
-      // TODO we have a problem here - the problem is with the signup/register page (KRegister).
-      //
-      // After successful signup, the regster page does NOT redirect to the home page (or any other page) -
-      // it "stays" on the Register page, which to the user looks like "nothing happens".
-      //
-      // The "redirect()" method (this method) does get called, but the result (see line above:
-      // "result = beforeGuard(this.$route)) returns "true" which means no redirection happens.
-      //
-      // This must have worked before, but stopped working at some point. Need to find out why.
-      //
       if (typeof result === 'string') {
         // Redirect to a given route based on authentication state
         this.$router.push({ name: result })
