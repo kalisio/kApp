@@ -24,23 +24,20 @@
       ref="editor"
       service="custom"
       objectId="custom"
-      @applied="onCustomEditorUpdated" />
+      @applied="onUpdate" />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'settings',
+  name: 'demo',
   methods: {
     openEditor () {
       this.$refs.editor.open()
     },
-    onSettingsEdited () {
-      this.$refs.editor.close()
-    },
-    async onCustomEditorUpdated (object) {
-      console.log('Object updated: ', object)
+    async onUpdate (object) {
       this.$api.getService('custom').patch(0, { name: '' })
+      this.$refs.editor.close()
     }
   },
   created () {

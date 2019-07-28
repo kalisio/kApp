@@ -14,22 +14,14 @@ function loadComponent (component) {
 }
 
 function loadSchema (schema) {
-
-  return new Promise(function (resolve, reject) {
-    try {
-      const json = require(`@kalisio/kdk-core/lib/common/schemas/${schema}.json`)
-      return resolve(json)
-    } catch (errorCore) {
-
-      try {
-        const json = require(`./schemas/${schema}.json`)
-        return resolve(json)
-      } catch (errorApp) {
-        console.log(errorCore, errorApp)
-        return reject(errorApp)
-      }
-    }
-  })
+  return import(`@kalisio/kdk-core/lib/common/schemas/${schema}.json`)
+    .catch(errorCore => {
+      // Otherwise this should be app component
+      return import(`./schemas/${schema}.json`)
+        .catch(errorApp => {
+          console.log(errorCore, errorApp)
+        })
+    })
 }
 
 function loadTranslation (module, locale) {

@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-06/schema#",
-    "$id": "http://www.kalisio.xyz/schemas/groups.create.json#",
+    "$id": "http://www.kalisio.xyz/schemas/custom.update.json#",
     "title": "schemas.TITLE_EXAMPLE",
     "description": "create an object",
     "type": "object",
@@ -117,13 +117,6 @@
             { "label": "KSelectField-1", "value": "1", "selected": "true" },
             { "label": "KSelectField-2", "value": "2" }
           ]
-        }
-      },
-      "KTagField": {
-        "type": "string",
-        "field": {
-          "component": "form/KTagField",
-          "helper": "KTagField"
         }
       },
       "KToggleField": {
