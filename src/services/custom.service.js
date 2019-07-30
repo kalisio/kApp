@@ -7,7 +7,6 @@ export default function (name, api, options) {
     KAttachmentField: { "name": "KAttachmentField", "color": "primary" },
     KChipsField: ["KChipsField-1","KChipsField-2"],
     KChipsWithIconField: [{ "value": "KChipsWithIconField", "icon" : { "name" : "check", "color" : "secondary" } }],
-    KDatetimeField: "2019-07-16T12:00:00.000Z",
     KEmailField: "kalisio@kalisio.xyz",
     KIconField: { "name": "check", "color": "primary" },
     KItemField: { "name": "KItemField", "services": "documents", "color": "dark" },
