@@ -17,7 +17,7 @@ export default function (name, api, options) {
     KSelectField: 'KSelectField1',
     KTagField: [{ "value": "KTagField", "scope": "documents", "icon" : { "name" : "check", "color" : "primary" } }],
     KToggleField: true,
-    KUrlField: "Kalisio.com"
+    KUrlField: "https://kalisio.com"
   }
 
   return {

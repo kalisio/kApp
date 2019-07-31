@@ -54,6 +54,7 @@
       },
       "KEmailField": {
         "type": "string",
+        "format": "email",
         "field": {
           "component": "form/KEmailField",
           "helper": "KEmailField"
@@ -128,6 +129,7 @@
       },
       "KUrlField": {
         "type": "string",
+        "format": "uri",
         "field": {
           "component": "form/KUrlField",
           "helper": "KUrlField"
