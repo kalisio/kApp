@@ -6,7 +6,7 @@
        <!-- <k-viewer ref="customEditor" objectId="custom" service="custom" @applied="onObjectUpdated" />-->
       </div>
     </k-modal>
-    
+
     <k-list service="documents" :renderer="renderer" :filter-query="searchQuery" />
     <k-modal-editor ref="editor" service="documents" :objectId="documentId" @applied="onDocumentCreated" />
   </div>
@@ -106,7 +106,7 @@ export default {
     async onDeleteDocument (document) {
       await this.$api.getService('documents').remove(document._id)
     },
-    async onEditDocument (document) { 
+    async onEditDocument (document) {
       console.log("onEditDocument("+document._id+") trigered")
       this.documentId = document._id
       await this.$nextTick()
@@ -116,7 +116,8 @@ export default {
       this.$refs.custommodal.open()
     },
     async onObjectUpdated (object) {
-      console.log('Object updated: ', object)
+      this.$api.getService('custom').patch(0, { name: '' })
+      this.$refs.custommodal.close()
     },
     closeCustomModal(){
       this.$refs.custommodal.close()
@@ -132,12 +133,14 @@ export default {
     this.$options.components['k-editor'] = this.$load('editor/KEditor')
     this.$options.components['k-viewer'] = this.$load('KViewer')
 
+    this.$events.$on('open-custom-editor', this.onOpenObject)
   },
   mounted () {
     // Initialize required DOM elements, etc.
   },
   beforeDestroy () {
-    // Remove event listenres, etc.
+    // Remove event listeners, etc.
+    this.$events.$off('open-custom-editor', this.onOpenObject)
   }
 }
 </script>

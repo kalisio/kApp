@@ -16,15 +16,6 @@
         </q-item-section>
       </q-item>
     </q-list>
-    <!--
-      Create editor
-     -->
-    <k-modal-editor
-      id="editor"
-      ref="editor"
-      service="custom"
-      objectId="custom"
-      @applied="onUpdate" />
   </div>
 </template>
 
@@ -33,16 +24,9 @@ export default {
   name: 'demo',
   methods: {
     openEditor () {
-      this.$refs.editor.open()
-    },
-    async onUpdate (object) {
-      this.$api.getService('custom').patch(0, { name: '' })
-      this.$refs.editor.close()
+      // Simply fire an event, it will be handled elsewhere to actually open the demo/custom editor
+      this.$events.$emit('open-custom-editor')
     }
-  },
-  created () {
-    // Load the required components
-    this.$options.components['k-modal-editor'] = this.$load('editor/KModalEditor')
   }
 }
 </script>
