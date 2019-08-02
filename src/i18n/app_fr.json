@@ -22,6 +22,7 @@
   "MainActivity": {
     "CREATE_DOCUMENT": "Nouveau document",
     "REMOVE_DOCUMENT": "Supprimer",
+    "EDIT_DOCUMENT": "Editer",
     "TITLE": "Vos documents",
     "PANEL": "Ouvrir le panneau droit",
     "MODAL_TITLE": "Editer un objet",
@@ -29,6 +30,7 @@
     "CUSTOM_VIEWER": "Visioneuse customisé"
   },
   "schemas": {
+    "CUSTOM_FIELD_HELPER": "Edition du champ",
     "TITLE_EXAMPLE": "Example de champs"
   }
 }

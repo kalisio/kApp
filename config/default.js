@@ -29,6 +29,7 @@ module.exports = {
   // If using local IP on WiFi router
   //domain: 'http://192.168.1.16:8081',
   domain,
+  flavor: process.env.NODE_APP_INSTANCE || 'dev',
   version: require('../package.json').version,
   buildNumber: process.env.BUILD_NUMBER,
   apiPath: API_PREFIX,
@@ -37,6 +38,11 @@ module.exports = {
   appName: 'kApp',
   appLogo: 'kapp-icon.png',
   publisher: 'Kalisio',
+  locale: {
+    // If you'd like to force locale otherwise it is retrieved from browser
+    //default: 'en',
+    fallback: 'en'
+  },
   logs: {
     level: (process.env.NODE_ENV === 'development' ? 'debug' : 'info')
   },

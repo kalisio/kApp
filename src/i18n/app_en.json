@@ -22,6 +22,7 @@
   "MainActivity": {
     "CREATE_DOCUMENT": "New document",
     "REMOVE_DOCUMENT": "Delete",
+    "EDIT_DOCUMENT": "Editer",
     "TITLE": "Your documents",
     "PANEL": "Open right panel",
     "MODAL_TITLE": "Edit object",
@@ -29,6 +30,7 @@
     "CUSTOM_VIEWER": "Custom viewer"
   },
   "schemas": {
+    "CUSTOM_FIELD_HELPER": "Edit field",
     "TITLE_EXAMPLE": "Fields examples"
   }
 }

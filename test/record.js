@@ -7,10 +7,10 @@ createTestCafe('localhost', 1337, 1338)
         const runner = testcafe.createRunner();
         console.log('TestCafe | record.js : runner initialized !');
         try {
-            runner.video('artifacts/videos', {
+            runner.video('test/videos', {
                 singleFile: true,
                 failedOnly: false,
-                pathPattern: '${TEST_INDEX}/${USERAGENT}/${FILE_INDEX}.mp4'
+                pathPattern: '${DATE}/${FILE_INDEX}.mp4'
             });
         } catch (error) {
             console.log('TestCafe | record.js :'+error);

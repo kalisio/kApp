@@ -76,10 +76,13 @@ export default {
           this.pendingReconnection()
           this.pendingReconnection = null
         }
-        Loading.show({message: this.$t('Index.RECONNECT')})
-        setTimeout(() => {
-          window.location.reload()
-        }, 3000)
+        // Causes problems with hot reload in dev
+        if (!DEV) {
+          Loading.show({message: this.$t('Index.RECONNECT')})
+          setTimeout(() => {
+            window.location.reload()
+          }, 3000)
+        }
       })
     }
     // Check for API version, this one is not a service but a basic route so we don't use Feathers client
