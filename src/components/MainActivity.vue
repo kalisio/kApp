@@ -107,7 +107,7 @@ export default {
       await this.$api.getService('documents').remove(document._id)
     },
     async onEditDocument (document) {
-      console.log("onEditDocument("+document._id+") trigered")
+      // console.log("onEditDocument("+document._id+") triggered")
       this.documentId = document._id
       await this.$nextTick()
       this.$refs.editor.open()
