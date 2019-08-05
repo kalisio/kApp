@@ -68,11 +68,17 @@ module.exports = {
   layout: {
     view: 'lHh LpR lFf',
     leftDrawer: {
+      isVisible: true,
+      component: {
+        name: 'layout/KSideNav'
+      }
     },
     rightDrawer: {
-      behavior: 'mobile'
-    },
-    showLeftDrawerOnStartup: true
+      behavior: 'mobile',
+      component: {
+        name: 'MainPanel'
+      }
+    }
   },
   appBar: {
     title: 'kApp'

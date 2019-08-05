@@ -66,8 +66,6 @@ export default {
   methods: {
     refreshActivity () {
       this.clearActivity()
-      // Setup the right pane
-      this.setRightPanelContent('MainPanel', this.$data)
       // Title
       this.setTitle(this.$t('MainActivity.TITLE'))
       // Search bar

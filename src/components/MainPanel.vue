@@ -12,17 +12,8 @@
 </template>
 
 <script>
-import { QList, QItem, QItemSection, QItemLabel, QIcon } from 'quasar'
-
 export default {
   name: 'main-panel',
-  components: {
-    QList,
-    QItem,
-    QItemSection,
-    QItemLabel,
-    QIcon
-  },
   methods: {
     onLogout () {
       this.$router.push({ name: 'logout'})
