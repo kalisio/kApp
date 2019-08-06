@@ -63,6 +63,11 @@ module.exports = {
       links: [
         { id: 'login-link', label: 'KLogout.LOG_IN_AGAIN_LINK', route: { name: 'login' } },
       ]
+    },
+    register: {
+      links: [
+        { id: 'login-link', label: 'KRegister.ALREADY_HAVE_AN_ACCOUNT_LINK', route: { name: 'login' } }
+      ]
     }
   },
   layout: {
