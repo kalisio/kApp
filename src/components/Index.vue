@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-view class="q-pa-md"></router-view>
+    <router-view></router-view>
   </div>
 </template>
 
