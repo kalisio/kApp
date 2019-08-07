@@ -1,5 +1,5 @@
 <template>
-  <div class="full-width">
+  <div class="q-pa-sm">
     <k-modal ref="custommodal" :toolbar="toolbar" :title="$t('MainActivity.MODAL_TITLE')">
       <div slot="modal-content">
         <k-editor ref="customEditor" objectId="custom" service="custom" @applied="onObjectUpdated" />
@@ -7,7 +7,9 @@
       </div>
     </k-modal>
 
-    <k-list service="documents" :renderer="renderer" :filter-query="searchQuery" />
+    <k-list v-if="mode==='list'" service="documents" :renderer="itemRenderer" :filter-query="searchQuery" />
+    <k-grid v-else service="documents" :renderer="cardRenderer" :filter-query="searchQuery" />
+
     <k-modal-editor ref="editor" service="documents" :objectId="documentId" @applied="onDocumentCreated" />
   </div>
 </template>
@@ -21,6 +23,12 @@ export default {
     kCoreMixins.schemaProxy
   ],
   inject: [ 'klayout' ],
+  props: {
+    mode: {
+      type: String,
+      required: true
+    }
+  },
   computed: {
     buttons () {
       let buttons = [
@@ -41,17 +49,36 @@ export default {
   },
   data () {
     return {
-      renderer: {
+      itemRenderer: {
         component: 'collection/KItem',
         props: {
           itemActions: [{
-            label: this.$i18n.t('MainActivity.REMOVE_DOCUMENT'),
-            handler: (document) => this.onDeleteDocument(document)
-          },
-          {
-            label: this.$i18n.t('MainActivity.EDIT_DOCUMENT'),
-            handler: (document) => this.onEditDocument(document)
-          }]
+              label: this.$i18n.t('MainActivity.EDIT_DOCUMENT'),
+              icon: 'edit',
+              handler: (document) => this.onEditDocument(document)
+            },
+            {
+              label: this.$i18n.t('MainActivity.REMOVE_DOCUMENT'),
+              icon: 'delete',
+              handler: (document) => this.onDeleteDocument(document)
+            }]
+        }
+      },
+      cardRenderer: {
+        component: 'collection/KCard',
+        props: {
+          itemActions: {
+            pane: [{
+              label: this.$i18n.t('MainActivity.EDIT_DOCUMENT'),
+              icon: 'edit',
+              handler: (document) => this.onEditDocument(document)
+            }],
+            menu: [{
+              label: this.$i18n.t('MainActivity.REMOVE_DOCUMENT'),
+              icon: 'delete',
+              handler: (document) => this.onDeleteDocument(document)
+            }]
+          }
         }
       },
       documentId: null,
@@ -68,6 +95,22 @@ export default {
       this.clearActivity()
       // Title
       this.setTitle(this.$t('MainActivity.TITLE'))
+      // Tabbar
+      // Tabbar actions
+      this.registerTabAction({
+        name: 'list',
+        label: this.$t('MainActivity.LIST_LABEL'),
+        icon: 'menu',
+        route: { name: 'main', params: { mode: 'list' } },
+        default: this.mode === 'list'
+      })
+      this.registerTabAction({
+        name: 'grid',
+        label: this.$t('MainActivity.GRID_LABEL'),
+        icon: 'apps',
+        route: { name: 'main', params: { mode: 'grid' } },
+        default: this.mode === 'grid'
+      })
       // Search bar
       this.setSearchBar('profile.name')
       // Fab actions
@@ -124,6 +167,7 @@ export default {
   created () {
     // Load the required components
     this.$options.components['k-list'] = this.$load('collection/KList')
+    this.$options.components['k-grid'] = this.$load('collection/KGrid')
     this.$options.components['k-modal-editor'] = this.$load('editor/KModalEditor')
     this.$options.components['k-modal-document-editor'] = this.$load('KModalDocumentEditor')
     this.$options.components['k-modal'] = this.$load('frame/KModal')

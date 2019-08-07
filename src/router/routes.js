@@ -23,11 +23,12 @@ module.exports = {
             // Because this child is the default one path is empty and name is the one of the parent route
             path: '',
             name: 'home',
-            redirect: { name: 'main' }
+            redirect: { name: 'main', params: { mode: 'list' }}
           },
-          'main': {
-            path: 'main',
-            component: 'MainActivity'
+          'main/:mode': {
+            name: 'main',
+            component: 'MainActivity',
+            props: true
           }
         }
       }

@@ -20,10 +20,12 @@
     "RECONNECT": "We are trying to reconnect..."
   },
   "MainActivity": {
+    "TITLE": "Your documents",
+    "LIST_LABEL": "List",
+    "GRID_LABEL": "Grid",
     "CREATE_DOCUMENT": "New document",
     "REMOVE_DOCUMENT": "Delete",
     "EDIT_DOCUMENT": "Editer",
-    "TITLE": "Your documents",
     "PANEL": "Open right panel",
     "MODAL_TITLE": "Edit object",
     "CUSTOM_EDITOR": "Custom editor",

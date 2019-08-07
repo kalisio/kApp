@@ -20,10 +20,12 @@
     "RECONNECT": "Tentative de reconnection en cours..."
   },
   "MainActivity": {
+    "TITLE": "Vos documents",
+    "LIST_LABEL": "Liste",
+    "GRID_LABEL": "Grille",
     "CREATE_DOCUMENT": "Nouveau document",
     "REMOVE_DOCUMENT": "Supprimer",
     "EDIT_DOCUMENT": "Editer",
-    "TITLE": "Vos documents",
     "PANEL": "Ouvrir le panneau droit",
     "MODAL_TITLE": "Editer un objet",
     "CUSTOM_EDITOR": "Editeur customisé",
