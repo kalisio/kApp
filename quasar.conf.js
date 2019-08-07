@@ -44,6 +44,8 @@ module.exports = function (ctx) {
         'QDialog',
         'QDrawer',
         'QExpansionItem',
+        'QFab',
+        'QFabAction',
         'QField',
         'QHeader',
         'QIcon',
