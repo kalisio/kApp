@@ -45,8 +45,6 @@ travis_fold end "build"
 travis_fold start "backup"
 
 # Copy the artifact from the container to the host
-# See https://docs.docker.com/compose/reference/envvars/#compose_project_name to
-# get some explanation on the container name
 docker-compose -f deploy/app.yml up -d
 APP_CONTAINER_NAME=`docker ps --format '{{.Names}}' | grep $APP`
 docker cp ${APP_CONTAINER_NAME}:/opt/$APP/dist/spa www

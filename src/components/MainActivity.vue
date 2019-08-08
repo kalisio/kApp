@@ -29,24 +29,6 @@ export default {
       required: true
     }
   },
-  computed: {
-    buttons () {
-      let buttons = [
-        { name: 'apply-button', label: this.applyButton, color: 'primary', handler: (event, done) => this.apply(event, done) }
-      ]
-      if (this.clearButton !== '') {
-        buttons.push({
-          name: 'clear-button', label: this.clearButton, color: 'primary', handler: (event, done) => this.clear(event, done)
-        })
-      }
-      if (this.resetButton !== '') {
-        buttons.push({
-          name: 'reset-button', label: this.resetButton, color: 'primary', handler: (event, done) => this.reset(event, done)
-        })
-      }
-      return buttons
-    }
-  },
   data () {
     return {
       itemRenderer: {
@@ -96,18 +78,17 @@ export default {
       // Title
       this.setTitle(this.$t('MainActivity.TITLE'))
       // Tabbar
-      // Tabbar actions
       this.registerTabAction({
         name: 'list',
         label: this.$t('MainActivity.LIST_LABEL'),
-        icon: 'menu',
+        icon: 'view_list',
         route: { name: 'main', params: { mode: 'list' } },
         default: this.mode === 'list'
       })
       this.registerTabAction({
         name: 'grid',
         label: this.$t('MainActivity.GRID_LABEL'),
-        icon: 'apps',
+        icon: 'view_modules',
         route: { name: 'main', params: { mode: 'grid' } },
         default: this.mode === 'grid'
       })
@@ -115,22 +96,10 @@ export default {
       this.setSearchBar('profile.name')
       // Fab actions
       this.registerFabAction({
-        name: 'open_panel',
-        label: this.$t('MainActivity.PANEL'),
-        icon: 'keyboard_arrow_right',
-        handler: this.onOpenPanel
-      })
-      this.registerFabAction({
         name: 'create-document',
         label: this.$t('MainActivity.CREATE_DOCUMENT'),
         icon: 'add',
         handler: this.onCreateDocument
-      }),
-      this.registerFabAction({
-        name: 'open-modal',
-        label: this.$t('Object'),
-        icon: 'close',
-        handler: this.onOpenObject
       })
     },
     onOpenPanel () {
@@ -179,6 +148,15 @@ export default {
   },
   mounted () {
     // Initialize required DOM elements, etc.
+    this.$store.patch('appBar', { 
+      toolbar: [{ 
+        name: 'open_panel',
+        label: this.$t('MainActivity.PANEL'),
+        icon: 'chrome_reader_mode',
+        handler: this.onOpenPanel
+      }], 
+      menu: [] 
+    })
   },
   beforeDestroy () {
     // Remove event listeners, etc.
