@@ -11,6 +11,13 @@
           "helper": "ID de l'arbre"
         }
       },
+      "icon": {
+        "type": "object",
+        "field": {
+          "component": "form/KIconField",
+          "helper": "KIconField"
+        }
+      },
       "status": {
         "type": "string", 
         "field": {

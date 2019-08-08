@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-sm">
+  <q-page padding>
     <k-modal ref="custommodal" :toolbar="toolbar" :title="$t('MainActivity.MODAL_TITLE')">
       <div slot="modal-content">
         <k-editor ref="customEditor" objectId="custom" service="custom" @applied="onObjectUpdated" />
@@ -11,7 +11,7 @@
     <k-grid v-else service="documents" :renderer="cardRenderer" :filter-query="searchQuery" />
 
     <k-modal-editor ref="editor" service="documents" :objectId="documentId" @applied="onDocumentCreated" />
-  </div>
+  </q-page>
 </template>
 
 <script>
