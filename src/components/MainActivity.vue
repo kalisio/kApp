@@ -88,7 +88,7 @@ export default {
       this.registerTabAction({
         name: 'grid',
         label: this.$t('MainActivity.GRID_LABEL'),
-        icon: 'view_modules',
+        icon: 'view_module',
         route: { name: 'main', params: { mode: 'grid' } },
         default: this.mode === 'grid'
       })

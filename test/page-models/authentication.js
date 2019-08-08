@@ -20,7 +20,7 @@ export default class Authentication extends ApplicationLayout {
     this.loginLocal = Selector('#local')
     // Logout
     this.logoutScreen = VueSelector('k-logout k-screen')
-    this.logout = VueSelector('k-links-panel').find('.q-item-icon').withText('exit_to_app')
+    this.logout = VueSelector('k-links-panel').find('.q-icon').withText('exit_to_app')
     // Register
     this.registerScreen = VueSelector('k-register k-screen')
     this.registerNameInput = VueSelector('k-register k-text-field')
@@ -46,7 +46,7 @@ export default class Authentication extends ApplicationLayout {
       .typeText(this.passwordInput, credentials.password || defaultTestUser.password, { replace: true })
       .click(this.loginLocal)
       // Need this so that we are sure dynamic components, user, etc. have been loaded
-      .wait(10000)
+      .wait(100)
   }
   async logInAndCloseSignupAlert (test, credentials = {}) {
     await this.logIn(test, credentials)

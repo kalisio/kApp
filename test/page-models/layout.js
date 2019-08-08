@@ -7,12 +7,12 @@ export default class ApplicationLayout {
     this.error = VueSelector('q-toast')
     this.appBar = VueSelector('k-app-bar')
     this.appBarTitle = this.appBar.find('#app-bar-title')
-    this.overflowMenuEntry = this.appBar.find('#overflow-menu-entry')
-    this.overflowMenu = Selector('#overflow-menu')
+    this.appBarOverflowMenu = Selector('#overflow-menu')
+    this.appBarOverflowMenuEntry = this.appBar.find('#overflow-menu-entry')
     this.sideNavToggle = this.appBar.find('#ap')
     this.sideNav = VueSelector('k-side-nav')
     this.tabBar = VueSelector('k-tab-bar')
-    this.fab = Selector('.q-fab')
+    this.fab = Selector('#fab')
     this.identityPanel = VueSelector('k-identity-panel')
     this.identityLink = Selector('#account')
     this.signupAlert = VueSelector('k-signup-alert')
@@ -56,8 +56,8 @@ export default class ApplicationLayout {
   }
   async clickOverflowMenu (test, entry) {
     await test
-      .click(this.overflowMenuEntry)
-      .click(this.overflowMenu.find(entry))
+      .click(this.appBarOverflowMenuEntry)
+      .click(this.appBarOverflowMenu.find(entry))
       .wait(1000)
   }
   async clickTabBar (test, tab) {
