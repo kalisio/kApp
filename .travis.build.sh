@@ -48,8 +48,8 @@ travis_fold start "backup"
 # See https://docs.docker.com/compose/reference/envvars/#compose_project_name to
 # get some explanation on the container name
 docker-compose -f deploy/app.yml up -d
-docker ps
-docker cp ${APP}_app_1:/opt/$APP/dist/spa www
+APP_CONTAINER_NAME=`docker ps --format '{{.Names}}' | grep $APP`
+docker cp ${APP_CONTAINER_NAME}:/opt/$APP/dist/spa www
 ERROR_CODE=$?
 if [ $ERROR_CODE -eq 1 ]; then
 	echo "Copying the artifact from the image has failed [error: $ERROR_CODE]"
