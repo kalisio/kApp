@@ -1,4 +1,5 @@
 .git
+.quasar
 dist
 electron/dist
 node_modules
