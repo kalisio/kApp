@@ -17,9 +17,21 @@ else
 	mkdir server-coverage
 	chmod -R 777 server-coverage
 
-  # Run the tests
+  # Run MongoDB
 	docker-compose -f deploy/app.yml -f deploy/mongodb.yml up -d mongodb
+	ERROR_CODE=$?
+	if [ $ERROR_CODE -eq 1 ]; then
+		echo "Running MongoDB failed [error: $ERROR_CODE]"
+		exit 1
+	fi
+
+	# Run the API tests
 	docker-compose -f deploy/app.yml -f deploy/mongodb.yml -f deploy/app.test.server.yml up app
+	ERROR_CODE=$?
+	if [ $ERROR_CODE -eq 1 ]; then
+		echo "Testing ${APP} API failed [error: $ERROR_CODE]"
+		exit 1
+	fi
 
   # Backup the server coverages
 	codeclimate-test-reporter < server-coverage/lcov.info
@@ -40,11 +52,17 @@ else
 	chmod -R 777 client-screenshots
 
 	docker-compose -f deploy/app.yml -f deploy/mongodb.yml -f deploy/app.test.client.yml up -d app
+	ERROR_CODE=$?
+	if [ $ERROR_CODE -eq 1 ]; then
+		echo "Running ${App} failed [error: $ERROR_CODE]"
+		exit 1
+	fi
 	docker-compose -f deploy/app.yml -f deploy/mongodb.yml -f deploy/app.test.client.yml up testcafe
-	
-	# Backup the client screenshots
+	ERROR_CODE=$?
+	# Copy the screenshots whatever the result
 	aws s3 sync client-screenshots s3://$BUILDS_BUCKET/$BUILD_NUMBER/client-screenshots > /dev/null
-	if [ $? -eq 1 ]; then
+	if [ $ERROR_CODE -eq 1 ]; then
+		echo "Testing ${App} frontend failed [error: $ERROR_CODE]"
 		exit 1
 	fi
 
