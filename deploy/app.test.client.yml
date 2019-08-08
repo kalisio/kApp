@@ -3,7 +3,6 @@ version: '3.3'
 services:
   testcafe:
     build:
-      context: ../.
       dockerfile: dockerfile.testcafe
     image: kalisio/testcafe
     depends_on:
@@ -14,7 +13,7 @@ services:
       - DB_URL=mongodb://mongodb:27017/${APP}
       - APP_URL=app:${PORT}
     volumes:
-      - ../test:/opt/testcafe/${APP}
+      - test:/opt/testcafe/${APP}
     command: firefox /opt/testcafe/${APP}/*.test.js -S -s screenshots
     networks:
       - app-network
