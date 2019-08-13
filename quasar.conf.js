@@ -11,6 +11,7 @@ const clientConfig = require('config')
 fs.writeFileSync(path.join('config', 'client-config.json'), JSON.stringify(clientConfig))
 
 module.exports = function (ctx) {
+
   return {
     // app boot file (/src/boot)
     // --> boot files are part of 'main.js'
@@ -25,7 +26,7 @@ module.exports = function (ctx) {
 
     extras: [
       'roboto-font',
-      'material-icons', 
+      'material-icons',
       'fontawesome-v5'
     ],
 
@@ -106,7 +107,8 @@ module.exports = function (ctx) {
           ...cfg.resolve.alias, // This adds the existing aliases
           '@': path.resolve(__dirname, './src/components'),
           config: path.resolve(__dirname, './config/client-config.json')
-        }
+        },
+        cfg.optimization.minimize = process.env.DEBUG ? false : cfg.optimization.minimize
       }
     },
 
