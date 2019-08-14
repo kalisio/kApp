@@ -1,4 +1,4 @@
-[![Kalisio](https://s3.eu-central-1.amazonaws.com/kalisioscope/kalisio/kalisio-logo-black-512x168.png)](https://kalisio.com)
+[![Kalisio](https://s3.eu-central-1.amazonaws.com/kalisioscope/kapp/kapp-logo-black-512x168.png)](https://kalisio.com)
 
 ## kApp - KDK application template
 
