@@ -77,7 +77,7 @@ export default {
           this.pendingReconnection = null
         }
         // Causes problems with hot reload in dev
-        if (!DEV) {
+        if (this.$config('flavor') !== 'dev') {
           Loading.show({message: this.$t('Index.RECONNECT')})
           setTimeout(() => {
             window.location.reload()
