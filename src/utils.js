@@ -25,7 +25,7 @@ function loadSchema (schema) {
 }
 
 function loadTranslation (module, locale) {
-  let translation = module + '_' + locale + '.json'
+  const translation = module + '_' + locale + '.json'
   return import(`@kalisio/kdk-core/lib/client/i18n/${translation}`)
     .catch(errorCore => {
       return import(`./i18n/${translation}`)
@@ -57,7 +57,7 @@ function buildRoutes (config) {
   function buildRoutesRecursively (config, routes, parentRoute) {
     _.forOwn(config, (value, key) => {
       // The key is always the path for the route
-      let route = {
+      const route = {
         path: key,
         name: key,
         // "Inherit" meta data on nested routes
@@ -103,12 +103,12 @@ function buildRoutes (config) {
     })
   }
 
-  let routes = []
+  const routes = []
   buildRoutesRecursively(config, routes)
   return routes
 }
 
-let utils = {
+const utils = {
   loadComponent,
   loadSchema,
   loadTranslation,

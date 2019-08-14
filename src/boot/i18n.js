@@ -6,10 +6,10 @@ import utils from '../utils'
 import config from 'config'
 
 export default async ({ app, Vue }) => {
-    // Define the locale to be used
+  // Define the locale to be used
   const localeConfig = config.locale || {}
   const localeBrowser = kCoreUtils.getLocale()
-  let locale = localeConfig.default || localeBrowser
+  const locale = localeConfig.default || localeBrowser
   // Initializes i18next
   i18next.init({
     lng: locale,
@@ -24,7 +24,7 @@ export default async ({ app, Vue }) => {
       return utils.loadTranslation(module, locale)
     })
     // Apply the resolvers and add the translation bundles to i18next
-    let translations = await Promise.all(translationResolvers)
+    const translations = await Promise.all(translationResolvers)
     translations.forEach((translation) => {
       i18next.addResourceBundle(locale, 'kdk', translation, true, true)
     })

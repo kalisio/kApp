@@ -28,13 +28,6 @@
           "helper": "KAttachmentField"
         }
       },
-      "KChipsField": {
-        "type": "array",
-        "field": {
-          "component": "form/KChipsField",
-          "helper": "KChipsField"
-        }
-      },
       "KChipsWithIconField": {
         "type": "array",
         "uniqueItems": true,

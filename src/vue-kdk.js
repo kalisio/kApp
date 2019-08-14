@@ -1,8 +1,7 @@
 import _ from 'lodash'
 import config from 'config'
-import { utils as kCoreUtils } from '@kalisio/kdk-core/client'
+import { utils as kCoreUtils, Store, Events } from '@kalisio/kdk-core/client'
 import utils from './utils'
-import { Store, Events } from '@kalisio/kdk-core/client'
 
 export default {
   install (Vue, options) {

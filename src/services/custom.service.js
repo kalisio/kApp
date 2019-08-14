@@ -1,23 +1,22 @@
 import _ from 'lodash'
 
 export default function (name, api, options) {
-  let object = {
+  const object = {
     KTextField: 'KTextField',
-    KTextareaField: "KTextareaField",
-    KAttachmentField: { "name": "KAttachmentField", "color": "primary" },
-    KChipsField: ["KChipsField-1","KChipsField-2"],
-    KChipsWithIconField: [{ "value": "KChipsWithIconField", "icon" : { "name" : "check", "color" : "secondary" } }],
-    KEmailField: "kalisio@kalisio.xyz",
-    KIconField: { "name": "check", "color": "primary" },
-    KItemField: { "name": "KItemField", "services": "documents", "color": "dark" },
-    KNumberField: "0123456789",
+    KTextareaField: 'KTextareaField',
+    KAttachmentField: { name: 'KAttachmentField', color: 'primary' },
+    KChipsWithIconField: [{ value: 'KChipsWithIconField', icon: { name: 'check', color: 'secondary' } }],
+    KEmailField: 'kalisio@kalisio.xyz',
+    KIconField: { name: 'check', color: 'primary' },
+    KItemField: { name: 'KItemField', services: 'documents', color: 'dark' },
+    KNumberField: '0123456789',
     KOptionsField: 'KOptionsField',
-    KPasswordField: "KPasswordField",
-    KPhoneField: "+0123456789",
+    KPasswordField: 'KPasswordField',
+    KPhoneField: '+0123456789',
     KSelectField: 'KSelectField1',
-    KTagField: [{ "value": "KTagField", "scope": "documents", "icon" : { "name" : "check", "color" : "primary" } }],
+    KTagField: [{ value: 'KTagField', scope: 'documents', icon: { name: 'check', color: 'primary' } }],
     KToggleField: true,
-    KUrlField: "https://kalisio.com"
+    KUrlField: 'https://kalisio.com'
   }
 
   return {
@@ -32,7 +31,7 @@ export default function (name, api, options) {
       })
     }
 
-    //api.getService('custom').patch('object', { name: 'toto' })
-    //const object = api.getService('custom').get('object')
+    // api.getService('custom').patch('object', { name: 'toto' })
+    // const object = api.getService('custom').get('object')
   }
 }

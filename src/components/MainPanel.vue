@@ -1,6 +1,6 @@
 <template>
   <q-list link no-border>
-    <q-item @click="onLogout()" clickable v-ripple>
+    <q-item clickable v-ripple @click="onLogout">
       <q-item-section avatar >
           <q-icon name="exit_to_app" />
       </q-item-section>
