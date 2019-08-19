@@ -81,7 +81,7 @@ module.exports = {
     rightDrawer: {
       behavior: 'mobile',
       component: {
-        name: 'MainPanel'
+        name: 'DeviceInfo'
       }
     }
   },

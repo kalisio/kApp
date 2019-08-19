@@ -56,6 +56,7 @@ module.exports = function (ctx) {
         'QItemLabel',
         'QLayout',
         'QList',
+        'QMarkupTable',
         'QMenu',
         'QPage',
         'QPageContainer',
