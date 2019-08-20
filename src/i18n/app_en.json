@@ -1,4 +1,6 @@
 {
+  "YES": "Yes",
+  "NO": "No",
   "screen": {
     "ABOUT_KALISIO": "About",
     "CONTACT": "Contact",
@@ -30,6 +32,11 @@
     "MODAL_TITLE": "Edit object",
     "CUSTOM_EDITOR": "Custom editor",
     "CUSTOM_VIEWER": "Custom viewer"
+  },
+  "PLatform": {
+    "TITLE": "Your platform",
+    "CORDOVA": "Cordova",
+    "BROWSER": "Browser"
   },
   "schemas": {
     "CUSTOM_FIELD_HELPER": "Edit field",
