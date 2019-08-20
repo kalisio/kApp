@@ -65,7 +65,7 @@ else
 	fi
 
   # Backup the ios build to S3
-	aws s3 sync cordova/platforms/ios/build/device s3://$BUILDS_BUCKET/$BUILD_NUMBER/ios > /dev/null
+	aws s3 sync src-cordova/platforms/ios/build/device s3://$BUILDS_BUCKET/$BUILD_NUMBER/ios > /dev/null
 	if [ $? -eq 1 ]; then
 		exit 1
 	fi
@@ -79,7 +79,7 @@ else
 
   # Deploy the IPA to the AppleStore
 	ALTOOL="/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool"
-	"$ALTOOL" --upload-app -f "./cordova/platforms/ios/build/device/$TITLE.ipa" -u "$APPLE_ID" -p "$APPLE_APP_PASSWORD" > ios.deploy.log 2>&1
+	"$ALTOOL" --upload-app -f "./src-cordova/platforms/ios/build/device/$TITLE.ipa" -u "$APPLE_ID" -p "$APPLE_APP_PASSWORD" > ios.deploy.log 2>&1
 	# Capture the deploy result
 	DEPLOY_CODE=$?
 	# Copy the log whatever the result

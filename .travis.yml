@@ -84,6 +84,7 @@ jobs:
     - npm install -g envsub
     - npm install -g cross-env
     - gem install fastlane -v '~> 2.119.0'
+    - npm install -g @quasar/cli
     before_script:
     - export -f travis_fold    
     script:
@@ -101,6 +102,7 @@ jobs:
     - npm install -g envsub
     - npm install -g ios-deploy --unsafe-perm=true
     - npm install -g cross-env
+    - npm install -g @quasar/cli
     before_script:
     - export -f travis_fold   
     script:
