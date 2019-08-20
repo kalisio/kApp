@@ -184,7 +184,7 @@ module.exports = function (ctx) {
     },
 
     cordova: {
-      id: 'com.kalisio.kapp'
+      id: process.env.PACKAGE_ID
     },
 
     electron: {

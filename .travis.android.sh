@@ -11,12 +11,12 @@ else
 	travis_fold start "provision"
 
 	# Retrieve the built Web app
-	aws s3 sync s3://$BUILDS_BUCKET/$BUILD_NUMBER/www cordova/www > /dev/null
+	# aws s3 sync s3://$BUILDS_BUCKET/$BUILD_NUMBER/www cordova/www > /dev/null
 
 	# Install the required secret files requied to sign the app
-	cp workspace/common/android/*.json cordova/
-	cp workspace/$FLAVOR/android/*.json cordova/
-	cp workspace/common/android/$GOOGLE_KEYSTORE cordova/	
+	cp workspace/common/android/*.json src-cordova/
+	cp workspace/$FLAVOR/android/*.json src-cordova/
+	cp workspace/common/android/$GOOGLE_KEYSTORE src-cordova/	
 	
 	travis_fold end "provision"
 

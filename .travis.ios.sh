@@ -11,7 +11,7 @@ else
 	travis_fold start "provision"
 
   # Retrieve the built Web app
-	aws s3 sync s3://$BUILDS_BUCKET/$BUILD_NUMBER/www cordova/www > /dev/null
+	# aws s3 sync s3://$BUILDS_BUCKET/$BUILD_NUMBER/www cordova/www > /dev/null
 
 	# Copy the certificates
 	cp workspace/common/ios/*.cer .
@@ -36,7 +36,7 @@ else
   security set-key-partition-list -S apple-tool:,apple: -s -k travis ios-build.keychain
 
 	# Install the required secret files requied to sign the app
-	cp workspace/$FLAVOR/ios/build.json cordova/.
+	cp workspace/$FLAVOR/ios/build.json src-cordova/.
 	mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
 	cp workspace/$FLAVOR/ios/*.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
  
