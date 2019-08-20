@@ -70,7 +70,7 @@ else
 	fi
 
   # Backup the ios build to S3
-	aws s3 sync src-cordova/platforms/ios/build/device s3://$BUILDS_BUCKET/$BUILD_NUMBER/ios > /dev/null
+	aws s3 sync src-cordova/platforms/ios/build s3://$BUILDS_BUCKET/$BUILD_NUMBER/ios > /dev/null
 	if [ $? -eq 1 ]; then
 		exit 1
 	fi
