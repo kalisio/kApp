@@ -14,7 +14,6 @@ else
 	# aws s3 sync s3://$BUILDS_BUCKET/$BUILD_NUMBER/www cordova/www > /dev/null
 
 	# Install the required secret files requied to sign the app
-	ls workspace/common/android
 	cp workspace/common/android/*.json src-cordova/
 	cp workspace/$FLAVOR/android/*.json src-cordova/
 	cp workspace/common/android/$GOOGLE_KEYSTORE src-cordova/	
@@ -34,10 +33,7 @@ else
 
   # Pull kCore
   git clone -b $TRAVIS_BRANCH https://github.com/kalisio/kCore kCore
-	cd kCore
-	yarn
-	yarn link
-	cd ..
+	cd kCore &&	yarn && yarn link && cd .. 
   yarn link @kalisio/kdk-core
 
 	# Build and deploy the mobile app	

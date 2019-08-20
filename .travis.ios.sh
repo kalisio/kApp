@@ -53,6 +53,11 @@ else
 		TITLE=$TITLE-$FLAVOR
 	fi
 
+  # Pull kCore
+  git clone -b $TRAVIS_BRANCH https://github.com/kalisio/kCore kCore
+	cd kCore &&	yarn && yarn link && cd .. 
+  yarn link @kalisio/kdk-core
+
 	# Build the app
 	npm run cordova:build:ios > ios.build.log 2>&1
 	# Capture the build result
