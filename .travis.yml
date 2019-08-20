@@ -92,7 +92,8 @@ jobs:
     # Quasar cli
     - npm install -g @quasar/cli  
     install:
-    - yarn install
+    - yarn version
+    - yarn
     before_script:
     - export -f travis_fold    
     script:
@@ -117,7 +118,7 @@ jobs:
     # Quasar cli
     - npm install -g @quasar/cli  
     install:
-    - yarn install
+    - yarn
     before_script:
     - export -f travis_fold   
     script:
