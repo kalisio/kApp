@@ -64,7 +64,6 @@ jobs:
   - stage: ANDROID
     os: linux
     language: android
-    sudo: false
     jdk: oraclejdk8
     android:
       components:
@@ -81,10 +80,7 @@ jobs:
     # SDKMangager
     - yes | sdkmanager "platforms;android-27"
     # Yarn
-    - sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
-    - echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-    - sudo apt-get update -qq
-    - sudo apt-get install -y -qq yarn 
+    - npm install -g yarn
     # AWS cli
     - pip install --user awscli
     # Fastlane
@@ -92,7 +88,8 @@ jobs:
     # Quasar cli
     - npm install -g @quasar/cli  
     install:
-    - yarn install
+    - yarn version
+    - yarn
     before_script:
     - export -f travis_fold    
     script:
@@ -106,10 +103,7 @@ jobs:
     # NVM
     - nvm install 8
     # Yarn
-    - sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
-    - echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-    - sudo apt-get update -qq
-    - sudo apt-get install -y -qq yarn    
+    - npm install -g yarn
     # AWS cli
     - brew install awscli
     # Ios deploy
@@ -117,7 +111,7 @@ jobs:
     # Quasar cli
     - npm install -g @quasar/cli  
     install:
-    - yarn install
+    - yarn
     before_script:
     - export -f travis_fold   
     script:
