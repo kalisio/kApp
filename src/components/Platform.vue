@@ -41,7 +41,7 @@ export default {
   name: 'device-info',
   methods: {
     isCordova () {
-      if (typeof(cordova) == "object") return true
+      if (window.cordova) return true
     }
   }
 }

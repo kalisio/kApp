@@ -184,7 +184,7 @@ module.exports = function (ctx) {
     },
 
     cordova: {
-      // id: 'org.cordova.quasar.app'
+      id: 'com.kalisio.kapp'
     },
 
     electron: {
