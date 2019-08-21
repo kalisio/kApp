@@ -29,15 +29,10 @@ else
 	travis_fold start "build"
 
 	# Overwrite the title in dev/test flavor
-	if [ $TRAVIS_BRANCH != "prod" ]
+	if [ $FLAVOR != "prod" ]
 	then
 		TITLE=$TITLE-$FLAVOR
 	fi
-
-  # Pull kCore
-  git clone -b $TRAVIS_BRANCH https://github.com/kalisio/kCore kCore
-	cd kCore &&	yarn && yarn link && cd .. 
-  yarn link @kalisio/kdk-core
 
 	# Build and deploy the mobile app	
 	npm run cordova:build:android > android.build.log 2>&1

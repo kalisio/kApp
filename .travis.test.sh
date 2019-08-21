@@ -17,7 +17,7 @@ else
 	mkdir server-coverage
 	chmod -R 777 server-coverage
 
-  # Run MongoDB
+  # Run the app
 	docker-compose -f deploy/app.yml -f deploy/mongodb.yml up -d mongodb
 	ERROR_CODE=$?
 	if [ $ERROR_CODE -eq 1 ]; then
@@ -50,13 +50,16 @@ else
 	# Output directory for client screenshots
 	mkdir client-screenshots
 	chmod -R 777 client-screenshots
-
+ 
+  # Run the app
 	docker-compose -f deploy/app.yml -f deploy/mongodb.yml -f deploy/app.test.client.yml up -d app
 	ERROR_CODE=$?
 	if [ $ERROR_CODE -eq 1 ]; then
 		echo "Running ${App} failed [error: $ERROR_CODE]"
 		exit 1
 	fi
+
+	# Run client tests
 	docker-compose -f deploy/app.yml -f deploy/mongodb.yml -f deploy/app.test.client.yml up testcafe
 	ERROR_CODE=$?
 	# Copy the screenshots whatever the result

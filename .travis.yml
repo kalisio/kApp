@@ -75,7 +75,7 @@ jobs:
     before_install:
     # NVM
     - nvm install 8
-    # SDKMangager
+    # AndroidDK Licence Mangager
     - yes | sdkmanager "platforms;android-27"
     # Yarn
     - npm install -g yarn
@@ -86,7 +86,6 @@ jobs:
     # Quasar cli
     - npm install -g @quasar/cli  
     install:
-    - yarn version
     - yarn
     before_script:
     - export -f travis_fold    
