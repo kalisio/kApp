@@ -5,18 +5,10 @@
     </div>
     <q-markup-table>
       <thead class="bg-secondary text-white">
-        <th class="text-left">User Agent</th>
+        <th class="text-left">{{ $t('Platform.USER_AGENT') }}</th>
       </thead>
       <tbody>
         <td>{{ $q.platform.userAgent }}</td>
-      </tbody>
-    </q-markup-table>
-    <q-markup-table>
-      <thead class="bg-secondary text-white">
-        <th class="text-left">{{ $t('Platform.CORDOVA') }}</th>
-      </thead>
-      <tbody>
-        <td>{{ isCordova() ? $t('YES') : $t('NO') }}</td>
       </tbody>
     </q-markup-table>
     <q-markup-table>

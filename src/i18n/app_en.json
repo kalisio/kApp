@@ -35,7 +35,7 @@
   },
   "PLatform": {
     "TITLE": "Your platform",
-    "CORDOVA": "Cordova",
+    "USER_AGENT": "User Agent",
     "BROWSER": "Browser"
   },
   "schemas": {
