@@ -12,6 +12,7 @@ else
 
   # Install the kdk if required
 	if [ $FLAVOR != "prod" ]
+	then
 		source .travis.kdk.sh
 	fi
 
