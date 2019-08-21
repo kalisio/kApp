@@ -10,8 +10,10 @@ else
 	#
 	travis_fold start "provision"
 
-  # Retrieve the built Web app
-	# aws s3 sync s3://$BUILDS_BUCKET/$BUILD_NUMBER/www cordova/www > /dev/null
+  # Install the kdk if required
+	if [ $FLAVOR != "prod" ]
+		source .travis.kdk.sh
+	fi
 
 	# Copy the certificates
 	cp workspace/common/ios/*.cer .
@@ -48,15 +50,10 @@ else
 	travis_fold start "build"
 
 	# Overwrite the title in dev/test flavor
-	if [[ $TRAVIS_BRANCH != "prod" ]]
+	if [ $FLAVOR != "prod" ]
 	then
 		TITLE=$TITLE-$FLAVOR
 	fi
-
-  # Pull kCore
-  git clone -b $TRAVIS_BRANCH https://github.com/kalisio/kCore kCore
-	cd kCore &&	yarn && yarn link && cd .. 
-  yarn link @kalisio/kdk-core
 
 	# Build the app
 	npm run cordova:build:ios > ios.build.log 2>&1

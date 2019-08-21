@@ -10,8 +10,10 @@ else
 	#
 	travis_fold start "provision"
 
-	# Retrieve the built Web app
-	# aws s3 sync s3://$BUILDS_BUCKET/$BUILD_NUMBER/www cordova/www > /dev/null
+  # Install the kdk if required
+	if [ $FLAVOR != "prod" ]
+		source .travis.kdk.sh
+	fi
 
 	# Install the required secret files requied to sign the app
 	cp workspace/common/android/*.json src-cordova/
@@ -26,7 +28,7 @@ else
 	travis_fold start "build"
 
 	# Overwrite the title in dev/test flavor
-	if [[ $TRAVIS_BRANCH != "prod" ]]
+	if [ $TRAVIS_BRANCH != "prod" ]
 	then
 		TITLE=$TITLE-$FLAVOR
 	fi
