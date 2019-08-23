@@ -1,18 +1,25 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "$id": "http://www.kalisio.xyz/schemas/groups.create.json#",
+  "$id": "http://www.kalisio.xyz/schemas/documents.create.json#",
   "title": "Protocole",
   "type": "object",
   "properties": {
     "name": {
-      "type": "string", 
+      "type": "string",
       "field": {
         "component": "form/KTextField",
         "helper": "ID de l'arbre"
       }
     },
+    "icon": {
+      "type": "object",
+      "field": {
+        "component": "form/KIconField",
+        "helper": "KIconField"
+      }
+    },
     "status": {
-      "type": "string", 
+      "type": "string",
       "field": {
         "component": "form/KSelectField",
         "helper": "Status",
@@ -27,7 +34,7 @@
       }
     },
     "genre": {
-      "type": "string", 
+      "type": "string",
       "field": {
         "component": "form/KSelectField",
         "helper": "Genre",
@@ -41,7 +48,7 @@
       }
     },
     "espece": {
-      "type": "string", 
+      "type": "string",
       "field": {
         "component": "form/KSelectField",
         "helper": "Espece",
@@ -54,12 +61,12 @@
           { "label": "Fraxinus excelsior", "value": "fraxinus excelsior" },
           { "label": "Fraxinus angustifolia", "value": "fraxinus angustifolia" },
           { "label": "Fraxinus ornus", "value": "fraxinus ornus" },
-          { "label": "Betula pendula", "value": "betula pendula" }       
+          { "label": "Betula pendula", "value": "betula pendula" }
         ]
       }
     },
     "etat_sani": {
-      "type": "string", 
+      "type": "string",
       "field": {
         "component": "form/KSelectField",
         "helper": "Etat sanitaire",
@@ -71,7 +78,7 @@
       }
     },
     "etat_meca": {
-      "type": "string", 
+      "type": "string",
       "field": {
         "component": "form/KSelectField",
         "helper": "Etat mécanique",
@@ -84,7 +91,7 @@
       }
     },
     "forme": {
-      "type": "string", 
+      "type": "string",
       "field": {
         "component": "form/KSelectField",
         "helper": "Forme",
@@ -101,7 +108,7 @@
       }
     },
     "desciption": {
-      "type": "string", 
+      "type": "string",
       "field": {
         "component": "form/KTextareaField",
         "helper": "Observations"

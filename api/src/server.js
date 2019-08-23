@@ -16,7 +16,7 @@ export class Server {
     this.app = kalisio()
     // Serve pure static assets
     if (process.env.NODE_ENV === 'production') {
-      this.app.use('/', express.static('../dist'))
+      this.app.use('/', express.static('../dist/spa'))
     }
     // In dev this is done by the webpack server
 

@@ -1,12 +1,14 @@
 {
+  "YES": "Yes",
+  "NO": "No",
   "screen": {
     "ABOUT_KALISIO": "About",
     "CONTACT": "Contact",
     "TERMS_AND_POLICIES": "Terms and Policies"
   },
   "sideNav": {
-    "DASHBOARD": "Tableau de bord",
-    "LOGOUT": "Se déconnecter"
+    "DEMO": "Demo page",
+    "LOGOUT": "Log off"
   },
   "Context": {
     "EVENTS": "Events & templates",
@@ -20,13 +22,24 @@
     "RECONNECT": "We are trying to reconnect..."
   },
   "MainActivity": {
-    "CREATE_DOCUMENT": "New document",
-    "DELETE_DOCUMENT": "Delete",
     "TITLE": "Your documents",
+    "LIST_LABEL": "List",
+    "GRID_LABEL": "Grid",
+    "CREATE_DOCUMENT": "New document",
+    "REMOVE_DOCUMENT": "Delete",
+    "EDIT_DOCUMENT": "Edit",
     "PANEL": "Open right panel",
-    "MODAL_TITLE": "Edit object"
+    "MODAL_TITLE": "Edit object",
+    "CUSTOM_EDITOR": "Custom editor",
+    "CUSTOM_VIEWER": "Custom viewer"
+  },
+  "PLatform": {
+    "TITLE": "Your platform",
+    "USER_AGENT": "User Agent",
+    "BROWSER": "Browser"
   },
   "schemas": {
-    "CUSTOM_FIELD_HELPER": "Edit field"
+    "CUSTOM_FIELD_HELPER": "Edit field",
+    "TITLE_EXAMPLE": "Fields examples"
   }
 }

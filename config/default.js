@@ -63,11 +63,27 @@ module.exports = {
       links: [
         { id: 'login-link', label: 'KLogout.LOG_IN_AGAIN_LINK', route: { name: 'login' } },
       ]
+    },
+    register: {
+      links: [
+        { id: 'login-link', label: 'KRegister.ALREADY_HAVE_AN_ACCOUNT_LINK', route: { name: 'login' } }
+      ]
     }
   },
   layout: {
     view: 'lHh LpR lFf',
-    rightBreakpoint: 9999
+    leftDrawer: {
+      isVisible: true,
+      component: {
+        name: 'layout/KSideNav'
+      }
+    },
+    rightDrawer: {
+      behavior: 'mobile',
+      component: {
+        name: 'Platform'
+      }
+    }
   },
   appBar: {
     title: 'kApp'
@@ -75,20 +91,15 @@ module.exports = {
   sideNav: {
     banner: 'kapp-logo.png',
     components: {
-      user_actions: 'layout/KLinksPanel'
+      component_demo: 'Demo',
+      app_logout: 'layout/KLinksPanel'
     }
   },
-  panel: {
+  app_logout: {
     links: [
       { }, // separator
       { label: 'sideNav.LOGOUT', icon: 'exit_to_app', route: { name: 'logout' } }
     ]
   },
-  user_actions: {
-    links: [
-      { }, // separator
-      { label: 'sideNav.LOGOUT', icon: 'exit_to_app', route: { name: 'logout' } }
-    ]
-  },
-  routes: require('./routes')
+  routes: require('../src/router/routes')
 }

@@ -20,7 +20,7 @@ export default class Authentication extends ApplicationLayout {
     this.loginLocal = Selector('#local')
     // Logout
     this.logoutScreen = VueSelector('k-logout k-screen')
-    this.logout = VueSelector('k-links-panel').find('.q-item-icon').withText('exit_to_app')
+    this.logout = VueSelector('k-links-panel').find('.q-icon').withText('exit_to_app')
     // Register
     this.registerScreen = VueSelector('k-register k-screen')
     this.registerNameInput = VueSelector('k-register k-text-field')
@@ -40,18 +40,21 @@ export default class Authentication extends ApplicationLayout {
     this.signInGitHub = Selector('input[type=submit]')
     this.authorizeGitHub = Selector('button[type=submit]')
   }
+
   async logIn (test, credentials = {}) {
     await test
       .typeText(this.emailInput, credentials.email || defaultTestUser.email, { replace: true })
       .typeText(this.passwordInput, credentials.password || defaultTestUser.password, { replace: true })
       .click(this.loginLocal)
       // Need this so that we are sure dynamic components, user, etc. have been loaded
-      .wait(10000)
+      .wait(100)
   }
+
   async logInAndCloseSignupAlert (test, credentials = {}) {
     await this.logIn(test, credentials)
     await this.closeSignupAlert(test)
   }
+
   async logOut (test) {
     await this.openSideNav(test)
     await test
@@ -59,6 +62,7 @@ export default class Authentication extends ApplicationLayout {
       // Need this so that we are sure the page has been loaded
       .wait(5000)
   }
+
   async signIn (test, identity = {}) {
     await test
       .typeText(this.registerNameInput, identity.name || defaultTestUser.name, { replace: true })
@@ -69,6 +73,7 @@ export default class Authentication extends ApplicationLayout {
       // Need this so that we are sure dynamic components, user, etc. have been loaded
       .wait(5000)
   }
+
   async logInGoogle (test) {
     await test
       .click(this.loginGoogle)
@@ -81,6 +86,7 @@ export default class Authentication extends ApplicationLayout {
       // Need this so that we are sure google page is loaded & dynamic components, user, etc. have been loaded
       .wait(5000)
   }
+
   async logInGitHub (test) {
     await test
       .click(this.loginGitHub)
@@ -93,9 +99,9 @@ export default class Authentication extends ApplicationLayout {
     const authorize = await this.authorizeGitHub()
     if (authorize) {
       await test
-          .click(this.authorizeGitHub)
-          // Need this so that we are sure dynamic components, user, etc. have been loaded
-          .wait(5000)
+        .click(this.authorizeGitHub)
+      // Need this so that we are sure dynamic components, user, etc. have been loaded
+        .wait(5000)
     }
   }
 }

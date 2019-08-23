@@ -1,6 +1,9 @@
 # IDE
 .vscode
 
+# Quasar generated
+.quasar
+
 # Logs
 logs
 *.log

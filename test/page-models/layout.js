@@ -7,64 +7,73 @@ export default class ApplicationLayout {
     this.error = VueSelector('q-toast')
     this.appBar = VueSelector('k-app-bar')
     this.appBarTitle = this.appBar.find('#app-bar-title')
-    this.overflowMenuEntry = this.appBar.find('#overflow-menu-entry')
-    this.overflowMenu = Selector('#overflow-menu')
+    this.appBarOverflowMenu = Selector('#overflow-menu')
+    this.appBarOverflowMenuEntry = this.appBar.find('#overflow-menu-entry')
     this.sideNavToggle = this.appBar.find('#ap')
     this.sideNav = VueSelector('k-side-nav')
     this.tabBar = VueSelector('k-tab-bar')
-    this.fab = Selector('.q-fab')
+    this.fab = Selector('#fab')
     this.identityPanel = VueSelector('k-identity-panel')
     this.identityLink = Selector('#account')
     this.signupAlert = VueSelector('k-signup-alert')
     this.idSelector = Selector((id) => { return document.getElementById(id) })
   }
+
   async isSideNavVisible () {
     const exists = await this.sideNav.exists
     if (!exists) return false
-    let left = await this.sideNav.getBoundingClientRectProperty('left')
+    const left = await this.sideNav.getBoundingClientRectProperty('left')
     // quasar actually hides the sideNav by translating it outside the viewport,
     // so that the visible flag is always true
     return left >= 0
   }
+
   async openSideNav (test) {
-    let isSideNavVisible = await this.isSideNavVisible()
+    const isSideNavVisible = await this.isSideNavVisible()
     if (!isSideNavVisible) {
       await test
         .click(this.sideNavToggle) // Ensure menu is open
         .wait(1000)
     }
   }
+
   async clickIdentity (test) {
     await this.openSideNav(test)
     await test
       .click(this.identityLink)
       .wait(1000)
   }
+
   async checkIdentity (test, name) {
     const identityPanel = await this.identityPanel.getVue()
     await test.expect(identityPanel.state.name).eql(name, 'User name is invalid')
   }
+
   async closeSignupAlert (test) {
     await test
       .click(this.signupAlert.find('.q-alert-close').find('.cursor-pointer'))
       .wait(1000)
   }
+
   async clickToolbar (test, entry) {
     await test
       .click(this.appBar.find(entry))
       .wait(3000)
   }
+
   async clickOverflowMenu (test, entry) {
     await test
-      .click(this.overflowMenuEntry)
-      .click(this.overflowMenu.find(entry))
+      .click(this.appBarOverflowMenuEntry)
+      .click(this.appBarOverflowMenu.find(entry))
       .wait(1000)
   }
+
   async clickTabBar (test, tab) {
     await test
       .click(this.tabBar.find(tab))
       .wait(3000)
   }
+
   async openAndClickFab (test, entry) {
     await test
       .click(Selector(this.fab))
@@ -73,23 +82,28 @@ export default class ApplicationLayout {
       .click(this.fab.find(entry))
       .wait(1000)
   }
+
   async clickFab (test, entry) {
     await test
       .click(Selector(entry))
       .wait(1000)
   }
+
   async isErrorVisible () {
     await this.error.visible
   }
+
   async getItem (test, collectionSelector, name) {
     const collection = await collectionSelector.getVue()
     return _.find(collection.state.items, { name: name })
   }
+
   async getItemId (test, collectionSelector, name) {
-    let item = await this.getItem(test, collectionSelector, name)
+    const item = await this.getItem(test, collectionSelector, name)
     if (item) return item._id
     return undefined
   }
+
   async checkCollectionCount (test, collectionSelector, count) {
     const collection = await collectionSelector.getVue()
     await test.expect(collection.state.items.length).eql(count, 'Invalid collection length')

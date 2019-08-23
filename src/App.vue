@@ -1,28 +1,23 @@
 <template>
   <!-- Don't drop "q-app" class -->
   <div id="q-app">
-    <q-ajax-bar ref="bar" position="bottom" size="8px" color="primary" :delay="250"></q-ajax-bar>
+    <q-ajax-bar ref="bar" position="bottom" size="8px" color="primary" />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 import _ from 'lodash'
-import { Toast, Events, QAjaxBar } from 'quasar'
 
-/*
- * Root component
- */
 export default {
-  components: {
-    QAjaxBar
+  data () {
+    return {
+      progressBarActive: false
+    }
   },
   methods: {
     showError (message) {
-      Toast.create.negative({
-        html: message,
-        timeout: 5000
-      })
+      this.$toast({ message, html: true })
     },
     showRouteError (route) {
       // We handle error on any page with query string
@@ -34,13 +29,15 @@ export default {
     },
     startProgress () {
       let progressBar = this.$refs.bar
-      if (progressBar && !progressBar.active && (this.nbRequests > this.nbCompletedRequests)) {
+      if (progressBar && !this.progressBarActive && (this.nbRequests > this.nbCompletedRequests)) {
         progressBar.start()
+        this.progressBarActive = true
       }
     },
     stopProgress () {
       let progressBar = this.$refs.bar
-      if (progressBar && progressBar.active && (this.nbRequests <= this.nbCompletedRequests)) {
+      if (progressBar && this.progressBarActive && (this.nbRequests <= this.nbCompletedRequests)) {
+        this.progressBarActive = false
         progressBar.stop()
       }
     }
@@ -59,13 +56,13 @@ export default {
   mounted () {
     // Check for error on refresh
     this.showRouteError(this.$route)
-    Events.$on('error-hook', hook => {
+    this.$events.$on('error-hook', hook => {
       this.nbCompletedRequests++
       this.stopProgress()
       // Forward to global error handler
-      Events.$emit('error', hook.error)
+      this.$events.$emit('error', hook.error)
     })
-    Events.$on('error', error => {
+    this.$events.$on('error', error => {
       // Translate the message if a translation key exists
       const translation = _.get(error, 'data.translation')
       if (translation) {
@@ -83,11 +80,11 @@ export default {
       }
       this.showError(error.message)
     })
-    Events.$on('before-hook', hook => {
+    this.$events.$on('before-hook', hook => {
       this.nbRequests++
       this.startProgress()
     })
-    Events.$on('after-hook', hook => {
+    this.$events.$on('after-hook', hook => {
       this.nbCompletedRequests++
       this.stopProgress()
     })

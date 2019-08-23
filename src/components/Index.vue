@@ -1,11 +1,11 @@
 <template>
   <div>
-    <router-view class="layout-view"></router-view>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import { Toast, Events, Loading, Alert } from 'quasar'
+import { Loading } from 'quasar'
 import { mixins, beforeGuard } from '@kalisio/kdk-core/client'
 import config from 'config'
 import utils from '../utils'
@@ -46,7 +46,6 @@ export default {
     this.restoreSession()
       .then(user => {
         this.user = user
-        Toast.create.positive('Restoring previous session')
         // No need to redirect here since the user should be set thus managed by event handler below
       })
       .catch(() => {
@@ -55,7 +54,7 @@ export default {
         this.redirect()
       })
 
-    Events.$on('user-changed', user => {
+    this.$events.$on('user-changed', user => {
       this.user = user
       // Check if we need to redirect based on the fact there is an authenticated user
       this.redirect()
@@ -66,7 +65,7 @@ export default {
       this.$api.socket.on('reconnect_error', () => {
         // Display it only the first time the error appears because multiple attempts will be tried
         if (!this.pendingReconnection) {
-          this.pendingReconnection = Alert.create({html: this.$t('Index.DISCONNECT')})
+          this.pendingReconnection = this.$toast({ message: this.$t('Index.DISCONNECT') })
         }
       })
       // Handle reconnection correctly, otherwise auth seems to be lost
@@ -74,11 +73,11 @@ export default {
       this.$api.socket.on('reconnect', () => {
         // Dismiss pending reconnection error message
         if (this.pendingReconnection) {
-          this.pendingReconnection.dismiss()
+          this.pendingReconnection()
           this.pendingReconnection = null
         }
         // Causes problems with hot reload in dev
-        if (!DEV) {
+        if (this.$config('flavor') !== 'dev') {
           Loading.show({message: this.$t('Index.RECONNECT')})
           setTimeout(() => {
             window.location.reload()
@@ -101,7 +100,7 @@ export default {
           if (!api.buildNumber) return
           else if (api.buildNumber === config.buildNumber) return
         }
-        Alert.create({html: this.$t('Index.VERSION_MISMATCH')})
+        this.$toast({ message: this.$t('Index.VERSION_MISMATCH') })
       })
   }
 }

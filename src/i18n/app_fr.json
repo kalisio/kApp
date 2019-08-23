@@ -1,11 +1,13 @@
 {
+  "YES": "Oui",
+  "NO": "Non",
   "screen": {
     "ABOUT_KALISIO": "A propos",
     "CONTACT": "Contact",
     "TERMS_AND_POLICIES": "Conditions générales"
   },
   "sideNav": {
-    "DASHBOARD": "Tableau de bord",
+    "DEMO": "Page démo",
     "LOGOUT": "Se déconnecter"
   },
   "Context": {
@@ -20,14 +22,24 @@
     "RECONNECT": "Tentative de reconnection en cours..."
   },
   "MainActivity": {
+    "TITLE": "Vos documents",
+    "LIST_LABEL": "Liste",
+    "GRID_LABEL": "Grille",
     "CREATE_DOCUMENT": "Nouveau document",
     "REMOVE_DOCUMENT": "Supprimer",
     "EDIT_DOCUMENT": "Editer",
-    "TITLE": "Vos documents",
     "PANEL": "Ouvrir le panneau droit",
-    "MODAL_TITLE": "Editer un objet"
+    "MODAL_TITLE": "Editer un objet",
+    "CUSTOM_EDITOR": "Editeur customisé",
+    "CUSTOM_VIEWER": "Visioneuse customisé"
+  },
+  "Platform": {
+    "TITLE": "Votre plateforme",
+    "USER_AGENT": "Agent utilisateur",
+    "BROWSER": "Navigateur"
   },
   "schemas": {
-    "CUSTOM_FIELD_HELPER": "Edition du champ"
+    "CUSTOM_FIELD_HELPER": "Edition du champ",
+    "TITLE_EXAMPLE": "Example de champs"
   }
 }
