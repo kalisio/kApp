@@ -8,7 +8,6 @@
 import { Loading } from 'quasar'
 import { mixins, beforeGuard } from '@kalisio/kdk-core/client'
 import config from 'config'
-import utils from '../utils'
 
 export default {
   name: 'index',
@@ -78,7 +77,7 @@ export default {
         }
         // Causes problems with hot reload in dev
         if (this.$config('flavor') !== 'dev') {
-          Loading.show({message: this.$t('Index.RECONNECT')})
+          Loading.show({ message: this.$t('Index.RECONNECT') })
           setTimeout(() => {
             window.location.reload()
           }, 3000)

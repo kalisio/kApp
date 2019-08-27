@@ -22,7 +22,7 @@ export default {
     kCoreMixins.baseActivity,
     kCoreMixins.schemaProxy
   ],
-  inject: [ 'klayout' ],
+  inject: ['klayout'],
   props: {
     mode: {
       type: String,
@@ -35,15 +35,15 @@ export default {
         component: 'collection/KItem',
         props: {
           itemActions: [{
-              label: this.$i18n.t('MainActivity.EDIT_DOCUMENT'),
-              icon: 'edit',
-              handler: (document) => this.onEditDocument(document)
-            },
-            {
-              label: this.$i18n.t('MainActivity.REMOVE_DOCUMENT'),
-              icon: 'delete',
-              handler: (document) => this.onDeleteDocument(document)
-            }]
+            label: this.$i18n.t('MainActivity.EDIT_DOCUMENT'),
+            icon: 'edit',
+            handler: (document) => this.onEditDocument(document)
+          },
+          {
+            label: this.$i18n.t('MainActivity.REMOVE_DOCUMENT'),
+            icon: 'delete',
+            handler: (document) => this.onDeleteDocument(document)
+          }]
         }
       },
       cardRenderer: {
@@ -129,7 +129,7 @@ export default {
       this.$api.getService('custom').patch(0, { name: '' })
       this.$refs.custommodal.close()
     },
-    closeCustomModal(){
+    closeCustomModal () {
       this.$refs.custommodal.close()
     }
   },
@@ -148,14 +148,14 @@ export default {
   },
   mounted () {
     // Initialize required DOM elements, etc.
-    this.$store.patch('appBar', { 
-      toolbar: [{ 
+    this.$store.patch('appBar', {
+      toolbar: [{
         name: 'open_panel',
         label: this.$t('MainActivity.PANEL'),
         icon: 'chrome_reader_mode',
         handler: this.onOpenPanel
-      }], 
-      menu: [] 
+      }],
+      menu: []
     })
   },
   beforeDestroy () {

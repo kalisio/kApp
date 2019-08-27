@@ -1,5 +1,4 @@
 import { Selector } from 'testcafe'
-import VueSelector from 'testcafe-vue-selectors'
 import ApplicationLayout from './layout'
 
 export default class Documents extends ApplicationLayout {

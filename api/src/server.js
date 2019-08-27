@@ -33,7 +33,7 @@ export class Server {
   }
 
   async run () {
-    let app = this.app
+    const app = this.app
     // First try to connect to DB
     await app.db.connect()
     // Set up our services
@@ -49,7 +49,7 @@ export class Server {
     const httpsConfig = app.get('https')
     if (httpsConfig) {
       const port = httpsConfig.port
-      let server = https.createServer({
+      const server = https.createServer({
         key: fs.readFileSync(httpsConfig.key),
         cert: fs.readFileSync(httpsConfig.cert)
       }, app)

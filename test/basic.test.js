@@ -14,7 +14,6 @@ fixture`Basic`// declare the fixture
     await pages.checkNoClientError(test)
   })
 
-const app = new pages.ApplicationLayout()
 const auth = new pages.Authentication()
 const docs = new pages.Documents()
 

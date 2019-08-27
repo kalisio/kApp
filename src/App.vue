@@ -28,14 +28,14 @@ export default {
       }
     },
     startProgress () {
-      let progressBar = this.$refs.bar
+      const progressBar = this.$refs.bar
       if (progressBar && !this.progressBarActive && (this.nbRequests > this.nbCompletedRequests)) {
         progressBar.start()
         this.progressBarActive = true
       }
     },
     stopProgress () {
-      let progressBar = this.$refs.bar
+      const progressBar = this.$refs.bar
       if (progressBar && this.progressBarActive && (this.nbRequests <= this.nbCompletedRequests)) {
         this.progressBarActive = false
         progressBar.stop()
