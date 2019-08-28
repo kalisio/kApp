@@ -1,6 +1,5 @@
 import _ from 'lodash'
 import path from 'path'
-import logger from 'winston'
 import kCore from '@kalisio/kdk-core'
 import packageInfo from '../../package.json'
 
@@ -22,7 +21,7 @@ module.exports = async function () {
     })
     await app.configure(kCore)
   } catch (error) {
-    logger.error(error.message)
+    app.logger.error(error.message)
   }
 
   // Create a service
@@ -42,7 +41,7 @@ module.exports = async function () {
       const defaultUser = defaultUsers[i]
       const createdUser = _.find(users, user => user.email === defaultUser.email)
       if (!createdUser) {
-        logger.info('Initializing default user (email = ' + defaultUser.email + ', password = ' + defaultUser.password + ')')
+        app.logger.info('Initializing default user (email = ' + defaultUser.email + ', password = ' + defaultUser.password + ')')
         await usersService.create(defaultUser)
       }
     }

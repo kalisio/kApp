@@ -1,5 +1,6 @@
 var path = require('path')
 var fs = require('fs')
+var winston = require('winston')
 var containerized = require('containerized')()
 
 const serverPort = process.env.PORT || 8081
@@ -107,10 +108,11 @@ module.exports = {
   },
   logs: {
     Console: {
-      colorize: true,
+      format: winston.format.combine(winston.format.colorize(), winston.format.simple()),
       level: (process.env.NODE_ENV === 'development' ? 'verbose' : 'info')
     },
     DailyRotateFile: {
+      format: winston.format.json(),
       dirname: path.join(__dirname, '..', 'logs'),
       filename: 'kapp-%DATE%.log',
       datePattern: 'YYYY-MM-DD',
