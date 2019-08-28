@@ -5,7 +5,7 @@ import chailint from 'chai-lint'
 import server from '../src/main'
 
 describe('kapp', () => {
-  let connection, userService
+  let expressServer, userService
 
   before(() => {
     chailint(chai, util)
@@ -16,7 +16,7 @@ describe('kapp', () => {
   })
 
   it('initialize the server', async () => {
-    connection = await server.run()
+    expressServer = await server.run()
   })
   // Let enough time to process
   .timeout(10000)
@@ -28,7 +28,7 @@ describe('kapp', () => {
 
   // Cleanup
   after(async () => {
-    if (connection) await connection.close()
+    if (expressServer) await expressServer.close()
     fs.emptyDirSync(path.join(__dirname, 'logs'))
     await server.app.db.instance.dropDatabase()
     await server.app.db.disconnect()
