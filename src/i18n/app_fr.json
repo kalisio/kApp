@@ -7,7 +7,8 @@
     "TERMS_AND_POLICIES": "Conditions générales"
   },
   "sideNav": {
-    "DEMO": "Page démo",
+    "EDITOR": "Editeur",
+    "VIEWER": "Viewer",
     "LOGOUT": "Se déconnecter"
   },
   "Context": {
@@ -29,17 +30,12 @@
     "REMOVE_DOCUMENT": "Supprimer",
     "EDIT_DOCUMENT": "Editer",
     "PANEL": "Ouvrir le panneau droit",
-    "MODAL_TITLE": "Editer un objet",
-    "CUSTOM_EDITOR": "Editeur customisé",
-    "CUSTOM_VIEWER": "Visioneuse customisé"
+    "EDITOR_TITLE": "Editeur",
+    "VIEWER_TITLE": "Visioneuse"
   },
   "Platform": {
     "TITLE": "Votre plateforme",
     "USER_AGENT": "Agent utilisateur",
     "BROWSER": "Navigateur"
-  },
-  "schemas": {
-    "CUSTOM_FIELD_HELPER": "Edition du champ",
-    "TITLE_EXAMPLE": "Example de champs"
   }
 }

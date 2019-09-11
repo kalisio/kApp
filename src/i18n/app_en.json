@@ -7,8 +7,9 @@
     "TERMS_AND_POLICIES": "Terms and Policies"
   },
   "sideNav": {
-    "DEMO": "Demo page",
-    "LOGOUT": "Log off"
+    "EDITOR": "Editor",
+    "VIEWER": "Viewer",
+    "LOGOUT": "Logout"
   },
   "Context": {
     "EVENTS": "Events & templates",
@@ -29,17 +30,12 @@
     "REMOVE_DOCUMENT": "Delete",
     "EDIT_DOCUMENT": "Edit",
     "PANEL": "Open right panel",
-    "MODAL_TITLE": "Edit object",
-    "CUSTOM_EDITOR": "Custom editor",
-    "CUSTOM_VIEWER": "Custom viewer"
+    "EDITOR_TITLE": "Editor",
+    "VIEWER_TITLE": "Viewer"
   },
   "PLatform": {
     "TITLE": "Your platform",
     "USER_AGENT": "User Agent",
     "BROWSER": "Browser"
-  },
-  "schemas": {
-    "CUSTOM_FIELD_HELPER": "Edit field",
-    "TITLE_EXAMPLE": "Fields examples"
   }
 }

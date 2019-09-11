@@ -1,0 +1,138 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://www.kalisio.xyz/schemas/custom.update.json#",
+  "title": "",
+  "description": "Viewer example",
+  "type": "object",
+  "properties": {
+     "KTextField": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 128,
+      "field": {
+        "component": "form/KTextField",
+        "label": "Text",
+        "helper": "KTextField"
+      }
+    },
+    "KTextareaField": {
+      "type": "string",
+      "field": {
+        "component": "form/KTextareaField",
+        "label": "Text area",
+        "helper": "KTextareaField"
+      }
+    },
+    "KAttachmentField": {
+      "type": "object",
+      "field": {
+        "component": "form/KAttachmentField",
+        "label": "Attachment",
+        "helper": "KAttachmentField"
+      }
+    },
+    "KChipsWithIconField": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "chips": true,
+      "field": {
+        "component": "form/KChipsWithIconField",
+        "label": "Chips",
+        "helper": "KChipsWithIconField"
+      }
+    },
+    "KDatetimeField": {
+      "type": "string",
+      "field": {
+        "component": "form/KDatetimeField",
+        "label": "Data/time",
+        "helper": "KDatetimeField"
+      }
+    },
+    "KEmailField": {
+      "type": "string",
+      "format": "email",
+      "field": {
+        "component": "form/KEmailField",
+        "label": "Email",
+        "helper": "KEmailField"
+      }
+    },
+    "KIconField": {
+      "type": "object",
+      "field": {
+        "component": "form/KIconField",
+        "label": "Icon",
+        "helper": "KIconField"
+      }
+    },
+    "KItemField": {
+      "type": "object",
+      "services": ["custom"],
+      "field": {
+        "component": "form/KItemField",
+        "label": "Item",
+        "helper": "KItemField"
+      }
+    },
+    "KNumberField": {
+      "type": "integer",
+      "field": {
+        "component": "form/KNumberField",
+        "label": "Number",
+        "helper": "KNumberField"
+      }
+    },
+    "KOptionsField": {
+      "type": "string",
+      "field": {
+        "component": "form/KOptionsField",
+        "label": "Options",
+        "helper": "KOptionsField",
+        "type": "radio",
+        "options": [
+          { "label": "Option 1", "value": "option1", "selected": "true" },
+          { "label": "Option 2", "value": "option2" }
+        ]
+      }
+    },
+    "KPhoneField": {
+      "type": "string",
+      "field": {
+        "component": "form/KPhoneField",
+        "label": "Phone",
+        "helper": "KPhoneField"
+      }
+    },
+    "KSelectField": {
+      "type": "string",
+      "field": {
+        "component": "form/KSelectField",
+        "label": "Select",
+        "helper": "KSelectField",
+        "options": [
+          { "label": "Option 1", "value": "option1", "selected": "true" },
+          { "label": "Option 2", "value": "option2" }
+        ]
+      }
+    },
+    "KToggleField": {
+      "type": "string",
+      "field": {
+        "component": "form/KToggleField",
+        "label": "Toggle",
+        "helper": "KToggleField"
+      }
+    },
+    "KUrlField": {
+      "type": "string",
+      "format": "uri",
+      "field": {
+        "component": "form/KUrlField",
+        "label": "Url",
+        "helper": "KUrlField"
+      }
+    }
+  }
+}

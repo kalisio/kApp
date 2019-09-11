@@ -1,16 +1,25 @@
 <template>
   <q-page padding>
-    <k-modal ref="custommodal" :toolbar="toolbar" :title="$t('MainActivity.MODAL_TITLE')">
-      <div slot="modal-content">
-        <k-editor ref="customEditor" objectId="custom" service="custom" @applied="onObjectUpdated" />
-       <!-- <k-viewer ref="customEditor" objectId="custom" service="custom" @applied="onObjectUpdated" />-->
-      </div>
-    </k-modal>
-
+    <!--
+      Item list rendering
+     -->
     <k-list v-if="mode==='list'" service="documents" :renderer="itemRenderer" :filter-query="searchQuery" />
+    <!--
+      Card grid rendering
+     -->
     <k-grid v-else service="documents" :renderer="cardRenderer" :filter-query="searchQuery" />
-
-    <k-modal-editor ref="editor" service="documents" :objectId="documentId" @applied="onDocumentCreated" />
+    <!-- 
+      Document editor
+     -->
+    <k-modal-editor ref="documentEditor" service="documents" :objectId="documentId" @applied="onDocumentCreated" />
+    <!--
+      Custom editor
+     -->
+    <k-modal-editor ref="customEditor" service="custom" objectId="0" @applied="onCustomObjectUpdated" />
+    <!--
+      Custom viewer
+     -->
+    <k-modal-viewer ref="customViewer" service="custom" objectId="0" />
   </q-page>
 </template>
 
@@ -19,8 +28,7 @@ import { mixins as kCoreMixins } from '@kalisio/kdk-core/client'
 export default {
   name: 'main-activity',
   mixins: [
-    kCoreMixins.baseActivity,
-    kCoreMixins.schemaProxy
+    kCoreMixins.baseActivity
   ],
   inject: ['klayout'],
   props: {
@@ -37,7 +45,7 @@ export default {
           itemActions: [{
             label: this.$i18n.t('MainActivity.EDIT_DOCUMENT'),
             icon: 'edit',
-            handler: (document) => this.onEditDocument(document)
+            handler: (document) => this.onEditDocument(document) 
           },
           {
             label: this.$i18n.t('MainActivity.REMOVE_DOCUMENT'),
@@ -63,13 +71,7 @@ export default {
           }
         }
       },
-      documentId: null,
-      schema: 'custom',
-      toolbar: [{
-        name: 'close',
-        icon: 'close',
-        handler: () => this.closeCustomModal()
-      }]
+      documentId: null
     }
   },
   methods: {
@@ -108,29 +110,28 @@ export default {
     async onCreateDocument () {
       this.documentId = null
       await this.$nextTick()
-      this.$refs.editor.open()
+      this.$refs.documentEditor.open()
     },
     onDocumentCreated () {
-      this.$refs.editor.close()
+      this.$refs.documentEditor.close()
     },
     async onDeleteDocument (document) {
       await this.$api.getService('documents').remove(document._id)
     },
     async onEditDocument (document) {
-      // console.log("onEditDocument("+document._id+") triggered")
       this.documentId = document._id
       await this.$nextTick()
-      this.$refs.editor.open()
+      this.$refs.documentEditor.open()
     },
-    async onOpenObject () {
-      this.$refs.custommodal.open()
+    onOpenCustomEditor () {
+      this.$refs.customEditor.open()
     },
-    async onObjectUpdated (object) {
-      this.$api.getService('custom').patch(0, { name: '' })
-      this.$refs.custommodal.close()
+    onOpenCustomViewer () {
+      this.$refs.customViewer.open()
     },
-    closeCustomModal () {
-      this.$refs.custommodal.close()
+    async onCustomObjectUpdated (object) {
+      await this.$api.getService('custom').patch(0, { name: '' })
+      this.$refs.customEditor.close()
     }
   },
   created () {
@@ -138,13 +139,10 @@ export default {
     this.$options.components['k-list'] = this.$load('collection/KList')
     this.$options.components['k-grid'] = this.$load('collection/KGrid')
     this.$options.components['k-modal-editor'] = this.$load('editor/KModalEditor')
-    this.$options.components['k-modal-document-editor'] = this.$load('KModalDocumentEditor')
-    this.$options.components['k-modal'] = this.$load('frame/KModal')
-
-    this.$options.components['k-editor'] = this.$load('editor/KEditor')
-    this.$options.components['k-viewer'] = this.$load('KViewer')
-
-    this.$events.$on('open-custom-editor', this.onOpenObject)
+    this.$options.components['k-modal-viewer'] = this.$load('viewer/KModalViewer')
+    // Listen to the nav links  
+    this.$events.$on('open-custom-editor', this.onOpenCustomEditor)
+    this.$events.$on('open-custom-viewer', this.onOpenCustomViewer)
   },
   mounted () {
     // Initialize required DOM elements, etc.
@@ -160,7 +158,8 @@ export default {
   },
   beforeDestroy () {
     // Remove event listeners, etc.
-    this.$events.$off('open-custom-editor', this.onOpenObject)
+    this.$events.$off('open-custom-editor', this.onOpenCustomEditor)
+    this.$events.$off('open-custom-viewer', this.onOpenCustomViewer)
   }
 }
 </script>
