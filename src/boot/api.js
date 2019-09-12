@@ -16,6 +16,4 @@ export default async ({ app, router, Vue }) => {
 
   // Add global guard
   beforeGuard.registerGuard(authenticationGuard)
-  // Now done in index to ensure the session has been correctly restored before registering guards
-  // router.beforeEach(beforeGuard)
 }
