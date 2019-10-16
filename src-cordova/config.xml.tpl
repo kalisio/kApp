@@ -89,4 +89,6 @@
     <plugin name="cordova-plugin-sim" spec="~1.3.3" />
     <plugin name="cordova-plugin-whitelist" spec="~1.3.2" />
     <plugin name="cordova-plugin-inappbrowser" spec="~3.0.0" />
+    <engine name="android" spec="~8.0.0" />
+    <engine name="ios" spec="~5.0.0" />
 </widget>
