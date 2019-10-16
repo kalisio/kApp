@@ -11,7 +11,7 @@ else
 	travis_fold start "deploy"
 
 	cp workspace/$FLAVOR/*.pem ~/.ssh/.
-	cp workspace/$FLAVOR/config.ssh ~/.ssh/config
+	cp workspace/$FLAVOR/ssh.config ~/.ssh/config
 
   # Create app directory if needed 
 	ssh remote mkdir -p $APP
