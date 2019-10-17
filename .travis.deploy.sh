@@ -13,6 +13,7 @@ else
 	# Copy the required keys and update the mode
 	cp workspace/$FLAVOR/*.pem ~/.ssh/.
 	for KEY in `~/.ssh/*.pem`; do
+	  echo securing $KEY
   	chmod 600 $KEY
 	done
 
@@ -36,10 +37,6 @@ else
 	scp deploy/remove-app.sh REMOTE_SERVER:~/$APP
 
 	# Deploy the stack
-	SUDO=""
-	if [ "$SSH_USER" != "root" ]; then
-		SUDO="sudo"
-	fi
 	ssh REMOTE_SERVER "cd $APP; chmod u+x ./remove-app.sh; chmod u+x ./deploy-app.sh"
 	ssh REMOTE_SERVER "cd $APP; ./remove-app.sh; k-swarm-prune; ./deploy-app.sh"
 
