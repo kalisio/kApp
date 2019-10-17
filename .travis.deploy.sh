@@ -12,8 +12,7 @@ else
 
 	# Copy the required keys and update the mode
 	cp workspace/$FLAVOR/*.pem ~/.ssh/.
-	for KEY in `~/.ssh/*.pem`; do
-	  echo securing $KEY
+	for KEY in `ls ~/.ssh/*.pem`; do
   	chmod 600 $KEY
 	done
 
