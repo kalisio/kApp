@@ -10,7 +10,13 @@ else
 	#
 	travis_fold start "deploy"
 
+	# Copy the required keys and update the mode
 	cp workspace/$FLAVOR/*.pem ~/.ssh/.
+	for KEY in `~/.ssh/*.pem`; do
+  	chmod 600 $KEY
+	done
+
+	# Copy the ssh config file
 	cp workspace/$FLAVOR/ssh.config ~/.ssh/config
 
   # Create app directory if needed 
