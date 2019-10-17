@@ -14,7 +14,7 @@ else
 	cp workspace/$FLAVOR/ssh.config ~/.ssh/config
 
   # Create app directory if needed 
-	ssh -o StrictHostKeyChecking=no REMOTE_SERVER mkdir -p $APP
+	ssh REMOTE_SERVER mkdir -p $APP
 
 	# Deploy environment file
 	scp .env REMOTE_SERVER:~/$APP/.env
