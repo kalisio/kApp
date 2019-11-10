@@ -1,11 +1,13 @@
-FROM  node:8-stretch
-
-MAINTAINER Kalisio <contact@kalisio.xyz>
+#
+# Build stage
+#
+FROM  node:8-buster AS Build
 
 ARG APP
 ARG BUILD_NUMBER
 ARG BRANCH=master
 
+ENV APP=$APP
 ENV BUILD_NUMBER=$BUILD_NUMBER
 ENV DEBUG=kalisio*,-kalisio:kCore:authorisations:hooks
 ENV NODE_APP_INSTANCE=dev
@@ -14,19 +16,36 @@ WORKDIR /opt/${APP}
 COPY . /opt/${APP}
 
 WORKDIR /opt/${APP}/modules
-RUN git clone https://github.com/kalisio/kCore.git -b ${BRANCH} --single-branch && cd kCore && yarn install && yarn link && cd ..
+RUN git clone https://github.com/kalisio/kCore.git -b ${BRANCH} --single-branch && cd kCore && yarn && yarn link && cd ..
 
 WORKDIR /opt/${APP}/api
-
-RUN yarn install
-RUN yarn link @kalisio/kdk-core
-RUN npm run build
+RUN \
+  yarn && \
+  yarn link @kalisio/kdk-core && \
+  yarn build
 
 WORKDIR /opt/${APP}
+RUN \
+  yarn && \
+  yarn link @kalisio/kdk-core && \
+  yarn build
 
-RUN yarn install
+#
+# Release stage
+#
+FROM node:8-buster-slim
+LABEL maintainer="contact@kalisio.xyz"
+
+COPY --from=Build /opt/${APP} /opt/${APP}
+
+WORKDIR /opt/${APP}/modules
+RUN cd kCore && yarn link
+
+WORKDIR /opt/${APP}/api
 RUN yarn link @kalisio/kdk-core
-RUN npm run build
+
+WORKDIR /opt/${APP}
+RUN yarn link @kalisio/kdk-core
 
 EXPOSE 8081
 

@@ -17,6 +17,7 @@ else
 	done
 
 	# Copy the ssh config file
+	# Note: it does not seem necessary to restart the service (service sshd reload)
 	cp workspace/$FLAVOR/ssh.config ~/.ssh/config
 
   # Create app directory if needed 
