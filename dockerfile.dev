@@ -7,7 +7,6 @@ ARG APP
 ARG BUILD_NUMBER
 ARG BRANCH=master
 
-ENV APP=$APP
 ENV BUILD_NUMBER=$BUILD_NUMBER
 ENV DEBUG=kalisio*,-kalisio:kCore:authorisations:hooks
 ENV NODE_APP_INSTANCE=dev
@@ -35,6 +34,8 @@ RUN \
 #
 FROM node:8-buster-slim
 LABEL maintainer="contact@kalisio.xyz"
+
+ARG APP
 
 COPY --from=Build /opt/${APP} /opt/${APP}
 
