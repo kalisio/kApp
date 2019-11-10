@@ -38,6 +38,8 @@ LABEL maintainer="contact@kalisio.xyz"
 
 COPY --from=Build /opt/${APP} /opt/${APP}
 
+RUN ls /opt/${APP} && ls /opt/${APP}/modules
+
 WORKDIR /opt/${APP}/modules
 RUN cd kCore && yarn link
 
