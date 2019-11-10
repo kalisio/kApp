@@ -43,11 +43,14 @@ ENV DEBUG=kalisio*,-kalisio:kCore:authorisations:hooks
 
 COPY --from=Build /opt/${APP} /opt/${APP}
 
+WORKDIR /opt/${APP}/modules
+RUN cd kCore && yarn link
+
+WORKDIR /opt/${APP}/api
+RUN yarn link @kalisio/kdk-core
+
 WORKDIR /opt/${APP}
-RUN \
-  cd modules/kCore && yarn link && cd ../.. && \
-  cd api && yarn link @kalisio/kdk-core && cd .. && \
-  yarn link @kalisio/kdk-core
+RUN yarn link @kalisio/kdk-core
 
 EXPOSE 8081
 
