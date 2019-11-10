@@ -44,8 +44,8 @@ COPY --from=Build /opt/${APP} /opt/${APP}
 
 WORKDIR /opt/${APP}
 RUN \
-  cd modules/kCore && yarn link && cd ..\.. && \
-  cd api && yarn link @kalisio/kdk-core &&  cd .. && \
+  cd modules/kCore && yarn link && cd ../.. && \
+  cd api && yarn link @kalisio/kdk-core && cd .. && \
   yarn link @kalisio/kdk-core
 
 EXPOSE 8081
