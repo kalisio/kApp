@@ -35,6 +35,7 @@ jobs:
     - '8'
     services:
     - docker
+    - mongodb
     addons:
       code_climate:
         repo_token: 19d3ef0c5e4541c913514b7a3a3825829e5e354f08dc39fd2c03b7898958d597

@@ -17,16 +17,8 @@ else
 	mkdir server-coverage
 	chmod -R 777 server-coverage
 
-  # Run the app
-	docker-compose -f deploy/app.yml -f deploy/mongodb.yml up -d mongodb
-	ERROR_CODE=$?
-	if [ $ERROR_CODE -eq 1 ]; then
-		echo "Running MongoDB failed [error: $ERROR_CODE]"
-		exit 1
-	fi
-
 	# Run the API tests
-	docker-compose -f deploy/app.yml -f deploy/mongodb.yml -f deploy/app.test.server.yml up app
+	docker-compose -f deploy/app.yml -f deploy/app.test.server.yml up app
 	ERROR_CODE=$?
 	if [ $ERROR_CODE -eq 1 ]; then
 		echo "Testing ${APP} API failed [error: $ERROR_CODE]"
