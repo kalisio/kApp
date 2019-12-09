@@ -19,7 +19,7 @@ else
 	chmod -R 777 server-coverage
 
 	# Run the tests
-	docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.server.yml up app
+	docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.server.yml up
 	ERROR_CODE=$?
 	if [ $ERROR_CODE -eq 1 ]; then
 		echo "Testing ${APP} API failed [error: $ERROR_CODE]"
@@ -27,7 +27,7 @@ else
 	fi
 
   # Backup the server coverages
-	codeclimate-test-reporter < server-coverage/lcov.info
+	codeclimate-test-reporter < ./server-coverage/lcov.info
 	aws s3 sync server-coverage s3://$BUILDS_BUCKET/$BUILD_NUMBER/server-coverage > /dev/null
 	if [ $? -eq 1 ]; then
 		exit 1
@@ -45,7 +45,7 @@ else
 	chmod -R 777 client-screenshots
  
   # Run the app
-	docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.client.yml up -d app
+	docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.client.yml up 
 	#ERROR_CODE=$?
 	#if [ $ERROR_CODE -eq 1 ]; then
 	#	echo "Running ${App} failed [error: $ERROR_CODE]"
