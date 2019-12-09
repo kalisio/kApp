@@ -20,7 +20,7 @@ else
 	# Run the tests
 	docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.server.yml up app
 	ERROR_CODE=$?
-	# Backup the server coverages
+	# Backup the server coverages whatever the result
 	codeclimate-test-reporter < ./server-coverage/lcov.info
 	aws s3 sync server-coverage s3://$BUILDS_BUCKET/$BUILD_NUMBER/server-coverage > /dev/null
 	if [ $ERROR_CODE -eq 1 ]; then
