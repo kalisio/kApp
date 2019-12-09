@@ -4,6 +4,9 @@ then
 	echo "Skipping test stage"
 else
 	source .travis.env.sh
+  #DOCKER_HOST=172.17.0.1
+	#DOCKER_HOST=$(ip -4 addr show docker0 | grep -Po 'inet \K[\d.]+')
+	#echo $DOCKER_HOST
 
 	# It first need to create the required network 
 	docker network create --attachable $DOCKER_NETWORK

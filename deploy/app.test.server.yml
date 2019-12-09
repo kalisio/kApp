@@ -4,7 +4,7 @@ services:
   app:
     environment:
       - DEBUG=
-      - DB_URL=mongodb://host.docker.internal:27017/${APP}
+      - DB_URL=mongodb://${DOCKER_HOST}:27017/${APP}
     working_dir: /opt/${APP}
     volumes:
       - ./server-coverage:/opt/${APP}/api/coverage
