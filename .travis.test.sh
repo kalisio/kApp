@@ -19,7 +19,7 @@ else
 	chmod -R 777 server-coverage
 
 	# Run the tests
-	docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.server.yml up
+	docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.server.yml up app
 	ERROR_CODE=$?
 	if [ $ERROR_CODE -eq 1 ]; then
 		echo "Testing ${APP} API failed [error: $ERROR_CODE]"
@@ -45,7 +45,7 @@ else
 	chmod -R 777 client-screenshots
  
   # Run the app
-	docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.client.yml up 
+	docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.client.yml up testcafe
 	#ERROR_CODE=$?
 	#if [ $ERROR_CODE -eq 1 ]; then
 	#	echo "Running ${App} failed [error: $ERROR_CODE]"
