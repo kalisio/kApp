@@ -14,11 +14,9 @@ services:
       - NODE_APP_INSTANCE=${FLAVOR}
       - DB_URL
     networks:
-      - app
-      - cluster
+      - app-network
 
 networks:
-  app:
-  cluster:
+  app-network:
     external:
       name: ${DOCKER_NETWORK}
