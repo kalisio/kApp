@@ -52,7 +52,7 @@ else
 	chmod -R 777 client-screenshots
  
   # Run the app
-	docker-compose -f deploy/app.yml -f deploy/mongodb.yml -f deploy/app.test.client.yml up -d app
+	docker-compose -f deploy/app.yml -f deploy/app.test.client.yml up -d app
 	ERROR_CODE=$?
 	if [ $ERROR_CODE -eq 1 ]; then
 		echo "Running ${App} failed [error: $ERROR_CODE]"
@@ -60,7 +60,7 @@ else
 	fi
 
 	# Run client tests
-	docker-compose -f deploy/app.yml -f deploy/mongodb.yml -f deploy/app.test.client.yml up testcafe
+	docker-compose -f deploy/app.yml -f deploy/app.test.client.yml up testcafe
 	ERROR_CODE=$?
 	# Copy the screenshots whatever the result
 	aws s3 sync client-screenshots s3://$BUILDS_BUCKET/$BUILD_NUMBER/client-screenshots > /dev/null
