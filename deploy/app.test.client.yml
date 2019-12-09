@@ -8,16 +8,17 @@ services:
     image: kalisio/testcafe
     depends_on:
       - app
+      - mongodb
     environment:
       - NODE_ENV=production
-      - DB_URL=mongodb://172.17.0.1:27017/${APP}
+      - DB_URL=mongodb://mongodb:27017/${APP}
       - APP_URL=app:${PORT}
     volumes:
       - ../test:/opt/testcafe/${APP}
     command: firefox /opt/testcafe/${APP}/*.test.js -S -s screenshots
     networks:
       - app-network
-
+      
 networks:
   app-network:
     external:
