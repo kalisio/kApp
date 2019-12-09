@@ -1,7 +1,7 @@
 version: '3.3'
 
 services:
-  mocha:
+  app:
     environment:
       - DEBUG=
       - DB_URL=mongodb://mongodb:27017/${APP}
