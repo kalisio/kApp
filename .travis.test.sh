@@ -14,15 +14,15 @@ else
 	travis_fold start "api"
 
 	# Output directory for server coverage
-	mkdir server-coverage
-	chmod -R 777 server-coverage
+	mkdir -p /opt/${APP}/api
+	chmod -R 777 /opt/${APP}/api
 
 	# Run the tests
 	docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.server.yml up app
 	ERROR_CODE=$?
 	# Backup the server coverages whatever the result
-	codeclimate-test-reporter < ./server-coverage/lcov.info
-	aws s3 sync server-coverage s3://$BUILDS_BUCKET/$BUILD_NUMBER/server-coverage > /dev/null
+	codeclimate-test-reporter < /opt/${APP}/api/coverage/lcov.info
+	aws s3 sync /opt/${APP}/api/coverage s3://$BUILDS_BUCKET/$BUILD_NUMBER/server-coverage > /dev/null
 	if [ $ERROR_CODE -eq 1 ]; then
 		echo "Testing ${APP} API failed [error: $ERROR_CODE]"
 		exit 1
@@ -45,7 +45,7 @@ else
 	# Copy the screenshots whatever the result
 	aws s3 sync client-screenshots s3://$BUILDS_BUCKET/$BUILD_NUMBER/client-screenshots > /dev/null
 	if [ $ERROR_CODE -eq 1 ]; then
-		echo "Testing ${App} client failed [error: $ERROR_CODE]"
+		echo "Testing ${APP} client failed [error: $ERROR_CODE]"
 		exit 1
 	fi
 
