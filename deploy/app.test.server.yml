@@ -5,7 +5,7 @@ services:
     environment:
       - DEBUG=
       - DB_URL=mongodb://mongodb:27017/${APP}
-    working_dir: /opt/${APP}
+    working_dir: /opt/${APP}/api
     depends_on:
       - mongodb
     volumes:
