@@ -14,7 +14,7 @@ else
 	travis_fold start "api"
 
 	# Output directory for server coverage
-	mkdir -p /opt/${APP}/api
+	mkdir -p /opt/${APP}/api/coverage
 	chmod -R 777 /opt/${APP}/api
 
 	# Run the tests
