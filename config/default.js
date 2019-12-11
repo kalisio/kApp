@@ -37,7 +37,9 @@ module.exports = {
   transport: 'websocket', // Could be 'http' or 'websocket',
   appName: 'kApp',
   appLogo: 'kapp-icon.png',
+  appWebsite: 'https://github.com/kalisio/kApp',
   publisher: 'Kalisio',
+  publisherWebsite: website,
   locale: {
     // If you'd like to force locale otherwise it is retrieved from browser
     //default: 'en',
@@ -92,6 +94,7 @@ module.exports = {
     banner: 'kapp-logo.png',
     components: {
       component_demo: 'Demo',
+      app_about: 'layout/KAbout',
       app_logout: 'layout/KLinksPanel'
     }
   },
