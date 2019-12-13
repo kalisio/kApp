@@ -10,4 +10,5 @@ services:
       - mongodb
     volumes:
       - ../coverage:/opt/${APP}/api/coverage
+      - /opt/${APP}/api/src:/opt/${APP}/api/src
     command: [ "npm", "run", "test:server" ]

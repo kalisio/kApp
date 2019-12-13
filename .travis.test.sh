@@ -9,6 +9,8 @@ curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-lin
 chmod +x ./cc-test-reporter
 mkdir coverage
 chmod +w coverage
+mkdir -p /opt/${APP}/api/src
+chmod +w /opt/${APP}/api/src
 
 # Initialize code climate
 ./cc-test-reporter before-build
