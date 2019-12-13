@@ -4,21 +4,28 @@ source .travis.env.sh
 # It first need to create the required network and run mongodb
 docker network create --attachable $DOCKER_NETWORK
 
-# Output directory for server coverage
+# Install code climate
+curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+chmod +x ./cc-test-reporter
 mkdir coverage
-chmod -R 777 coverage
+chmod +w coverage
+
+# Initialize code climate
+./cc-test-reporter before-build
 
 # Run the tests
 docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.server.yml up app
-#ERROR_CODE=$?
+ERROR_CODE=$?
+
+# Report to code climate
+./cc-test-reporter after-build -t lcov --exit-code $ERROR_CODE
 # Backup the server coverages whatever the result
 #codeclimate-test-reporter < ./coverage/lcov.info
 #aws s3 sync ./cc-test-reporter s3://$BUILDS_BUCKET/$BUILD_NUMBER/api-coverage > /dev/null
-#if [ $ERROR_CODE -eq 1 ]; then
-#	echo "Testing ${APP} API failed [error: $ERROR_CODE]"
-#	exit 1
-#fi
-
+if [ $ERROR_CODE -eq 1 ]; then
+	echo "Testing ${APP} API failed [error: $ERROR_CODE]"
+	exit 1
+fi
 
 
 #

@@ -43,16 +43,8 @@ jobs:
       - CC_TEST_REPORTER_ID=19d3ef0c5e4541c913514b7a3a3825829e5e354f08dc39fd2c03b7898958d597
     install:
     - pip install --user awscli
-    - npm install -g codeclimate-test-reporter
-    before_script:
-    - export -f travis_fold
-    - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-    - chmod +x ./cc-test-reporter
-    - ./cc-test-reporter before-build
     script:
     - bash .travis.test.sh
-    after_script:
-    - ./cc-test-reporter after-build -t lcov --exit-code $TRAVIS_TEST_RESULT
 
   - stage: DEPLOY
     os: linux
@@ -61,9 +53,7 @@ jobs:
     - '8'
     services:
     - docker
-    install: true
-    before_script:
-    - export -f travis_fold      
+    install: true   
     script:
     - bash .travis.deploy.sh
 
