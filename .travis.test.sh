@@ -23,12 +23,12 @@ ERROR_CODE=$?
 mkdir -p /opt/${APP}/api
 ln -s api/src /opt/${APP}/api/src 
 
-echo coverage content:
+echo -- coverage content:
 ls ./coverage
-echo /opt/${APP}/api/src content:
-ls /opt/${APP}/api
-echo api/src content:
+echo -- /opt/${APP}/api/src content:
 ls /opt/${APP}/api/src
+echo -- api/src content:
+ls api/src
 
 # Report to code climate
 ./cc-test-reporter after-build -t lcov --exit-code $ERROR_CODE
