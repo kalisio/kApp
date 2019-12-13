@@ -8,10 +8,15 @@ notifications:
 
 stages:
 - name: BUILD
+  if: commit_message !~ /\[skip build\]/
 - name: TEST
+  if: commit_message !~ /\[skip test\]/
 - name: DEPLOY
+  if: commit_message !~ /\[skip deploy\]/
 - name: ANDROID
+  if: commit_message !~ /\[skip android\]/
 - name: IOS
+  if: commit_message !~ /\[skip ios\]/
 
 jobs:
   include:
@@ -23,8 +28,6 @@ jobs:
     - '8'
     services:
     - docker
-    before_script:
-    - export -f travis_fold
     script:
     - bash .travis.build.sh
 
@@ -49,7 +52,7 @@ jobs:
     script:
     - bash .travis.test.sh
     after_script:
-      - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+    - ./cc-test-reporter after-build -t lcov --exit-code $TRAVIS_TEST_RESULT
 
   - stage: DEPLOY
     os: linux
