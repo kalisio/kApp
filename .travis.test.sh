@@ -21,7 +21,7 @@ ERROR_CODE=$?
 
 
 mkdir -p /opt/${APP}/api
-ln -s /opt/${APP}/api/src ./api/src
+ln -s ./api/src /opt/${APP}/api/src 
 
 echo coverage content
 ls ./coverage
