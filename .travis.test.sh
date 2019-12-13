@@ -16,7 +16,6 @@ else
 	# Output directory for server coverage
 	mkdir coverage
 	chmod -R 777 coverage
-	mkdir -p /opt/${APP}/api/src
 	
 	# Run the tests
 	docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.server.yml up app
@@ -34,21 +33,21 @@ else
   #
 	# Test the client
 	#
-  travis_fold start "client"
+#  travis_fold start "client"
 
 	# Output directory for client screenshots
-	mkdir client-screenshots
-	chmod -R 777 client-screenshots
+#	mkdir client-screenshots
+#	chmod -R 777 client-screenshots
  
   # Run the app
-	docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.client.yml up testcafe
-	ERROR_CODE=$?
+#	docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.client.yml up testcafe
+#	ERROR_CODE=$?
 	# Copy the screenshots whatever the result
-	aws s3 sync client-screenshots s3://$BUILDS_BUCKET/$BUILD_NUMBER/client-screenshots > /dev/null
-	if [ $ERROR_CODE -eq 1 ]; then
-		echo "Testing ${APP} client failed [error: $ERROR_CODE]"
-		exit 1
-	fi
+#	aws s3 sync client-screenshots s3://$BUILDS_BUCKET/$BUILD_NUMBER/client-screenshots > /dev/null
+#	if [ $ERROR_CODE -eq 1 ]; then
+#		echo "Testing ${APP} client failed [error: $ERROR_CODE]"
+#		exit 1
+#	fi
 
-	travis_fold end "client"
+#	travis_fold end "client"
 fi
