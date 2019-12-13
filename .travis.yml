@@ -38,9 +38,6 @@ jobs:
     - '8'
     services:
     - docker
-    env:
-      global:
-      - CC_TEST_REPORTER_ID=19d3ef0c5e4541c913514b7a3a3825829e5e354f08dc39fd2c03b7898958d597
     install:
     - pip install --user awscli
     script:

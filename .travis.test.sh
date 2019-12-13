@@ -17,25 +17,19 @@ mkdir coverage && chmod +w coverage
 # Run the tests
 docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.server.yml up app
 ERROR_CODE=$?
+if [ $ERROR_CODE -eq 1 ]; then
+	echo "Testing ${APP} API failed [error: $ERROR_CODE]"
+	exit 1
+fi
 
 # Fake that the sources are in /opt/${APP}/api/src (symbolik link does not work)
 mkdir -p /opt/${APP}/api
 cp -R api/src /opt/${APP}/api/src
 
-echo -- coverage content:
-ls ./coverage
-echo -- /opt/${APP}/api/src content:
-ls /opt/${APP}/api/src
-echo -- api/src content:
-ls api/src
-
 # Report to code climate
 ./cc-test-reporter after-build -t lcov --exit-code $ERROR_CODE
-# Backup the server coverages whatever the result
-#codeclimate-test-reporter < ./coverage/lcov.info
-#aws s3 sync ./cc-test-reporter s3://$BUILDS_BUCKET/$BUILD_NUMBER/api-coverage > /dev/null
 if [ $ERROR_CODE -eq 1 ]; then
-	echo "Testing ${APP} API failed [error: $ERROR_CODE]"
+	echo "Reporting ${APP} API tests coverage failed [error: $ERROR_CODE]"
 	exit 1
 fi
 
