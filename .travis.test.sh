@@ -19,14 +19,15 @@ mkdir -p src && chmod +w src
 docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.server.yml up app
 ERROR_CODE=$?
 
-
+# Fake that the sources are in /opt/${APP}/api/src 
 mkdir -p /opt/${APP}/api
-ln -s ./api/src /opt/${APP}/api/src 
+ln -s api/src /opt/${APP}/api/src 
 
-echo coverage content
+echo coverage content:
 ls ./coverage
-echo /opt/${APP}/api/src content
+echo /opt/${APP}/api/src content:
 ls /opt/${APP}/api
+echo api/src content:
 ls /opt/${APP}/api/src
 
 # Report to code climate
