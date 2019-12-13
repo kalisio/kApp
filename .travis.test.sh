@@ -7,6 +7,8 @@ docker network create --attachable $DOCKER_NETWORK
 # Install code climate
 curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
 chmod +x ./cc-test-reporter
+
+# Create the coverage dir
 mkdir coverage && chmod +w coverage
 mkdir -p src && chmod +w src
 
@@ -17,13 +19,9 @@ mkdir -p src && chmod +w src
 docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.server.yml up app
 ERROR_CODE=$?
 
-echo coverage content
-ls coverage
-echo src content
-ls src
-
+# 
 mkdir -p /opt/${APP}/api
-ln -s /opt/${APP}/api/src ./src
+ln -s /opt/${APP}/api/src ./api/src
 
 # Report to code climate
 ./cc-test-reporter after-build -t lcov --exit-code $ERROR_CODE
