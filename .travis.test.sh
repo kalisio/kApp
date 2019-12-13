@@ -4,11 +4,6 @@ source .travis.env.sh
 # It first need to create the required network and run mongodb
 docker network create --attachable $DOCKER_NETWORK
 
-#
-# Test the api
-#
-travis_fold start "api"
-
 # Output directory for server coverage
 mkdir coverage
 chmod -R 777 coverage
@@ -24,7 +19,7 @@ docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.server
 #	exit 1
 #fi
 
-travis_fold end "api"
+
 
 #
 # Test the client
