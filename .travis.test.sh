@@ -17,8 +17,8 @@ mkdir -p src && chmod +w src
 docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.server.yml up app
 ERROR_CODE=$?
 
-ls /opt/${APP}/api/coverage
-ls /opt/${APP}/api/src
+ls coverage
+ls src
 # Report to code climate
 ./cc-test-reporter after-build -t lcov --exit-code $ERROR_CODE
 # Backup the server coverages whatever the result
