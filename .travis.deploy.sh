@@ -29,8 +29,6 @@ else
 	# Deploy compose files
 	scp deploy/app.yml REMOTE_SERVER:~/$APP/app.yml
 	scp deploy/app.swarm.yml REMOTE_SERVER:~/$APP/app.swarm.yml
-	scp deploy/mongodb.yml REMOTE_SERVER:~/$APP/mongodb.yml
-	scp deploy/mongodb.swarm.yml REMOTE_SERVER:~/$APP/mongodb.swarm.yml
 
 	# Deploy utilities
 	scp deploy/deploy-app.sh REMOTE_SERVER:~/$APP

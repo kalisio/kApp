@@ -8,7 +8,7 @@ notifications:
 
 stages:
 - name: BUILD
-- name: TEST-API
+- name: TEST
 - name: DEPLOY
 - name: ANDROID
 - name: IOS
@@ -50,7 +50,7 @@ jobs:
     - bash .travis.test.sh
     after_script:
       - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-      
+
   - stage: DEPLOY
     os: linux
     language: node_js
