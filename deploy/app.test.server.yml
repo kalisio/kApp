@@ -9,5 +9,6 @@ services:
     depends_on:
       - mongodb
     volumes:
-      - /opt/${APP}/api:/opt/${APP}/api
+      - ./coverage:/opt/${APP}/api
+      - /opt/${APP}/api/src:/opt/${APP}/api/src
     command: [ "npm", "run", "test:server" ]
