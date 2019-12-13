@@ -19,9 +19,14 @@ mkdir -p src && chmod +w src
 docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.server.yml up app
 ERROR_CODE=$?
 
-# 
+
 mkdir -p /opt/${APP}/api
 ln -s /opt/${APP}/api/src ./api/src
+
+echo coverage content
+ls ./coverage
+echo /opt/${APP}/api/src content
+ls /opt/${APP}/api/src
 
 # Report to code climate
 ./cc-test-reporter after-build -t lcov --exit-code $ERROR_CODE
