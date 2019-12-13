@@ -10,7 +10,6 @@ chmod +x ./cc-test-reporter
 
 # Create the coverage dir
 mkdir coverage && chmod +w coverage
-mkdir -p src && chmod +w src
 
 # Initialize code climate
 ./cc-test-reporter before-build
@@ -19,9 +18,9 @@ mkdir -p src && chmod +w src
 docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.server.yml up app
 ERROR_CODE=$?
 
-# Fake that the sources are in /opt/${APP}/api/src 
+# Fake that the sources are in /opt/${APP}/api/src (symbolik link does not work)
 mkdir -p /opt/${APP}/api
-ln -s api/src /opt/${APP}/api/src 
+cp -R api/src /opt/${APP}/api/src
 
 echo -- coverage content:
 ls ./coverage
