@@ -26,6 +26,7 @@ ln -s /opt/${APP}/api/src ./api/src
 echo coverage content
 ls ./coverage
 echo /opt/${APP}/api/src content
+ls /opt/${APP}/api
 ls /opt/${APP}/api/src
 
 # Report to code climate
