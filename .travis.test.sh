@@ -7,16 +7,14 @@ docker network create --attachable $DOCKER_NETWORK
 # Install code climate
 curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
 chmod +x ./cc-test-reporter
-mkdir coverage
-chmod +w coverage
-mkdir -p /opt/${APP}/api/src
-chmod +w /opt/${APP}/api/src
+mkdir coverage && chmod +w coverage
+mkdir -p src && chmod +w src
 
 # Initialize code climate
 ./cc-test-reporter before-build
 
 # Run the tests
-docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.server.yml up -d app
+docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.server.yml up app
 ERROR_CODE=$?
 
 ls /opt/${APP}/api/coverage
