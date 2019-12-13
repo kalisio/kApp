@@ -16,7 +16,7 @@ chmod +w /opt/${APP}/api/src
 ./cc-test-reporter before-build
 
 # Run the tests
-docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.server.yml up app
+docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.server.yml up -d app
 ERROR_CODE=$?
 
 # Report to code climate
