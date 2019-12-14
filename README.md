@@ -4,7 +4,7 @@
 
 [![Build Status](https://travis-ci.org/kalisio/kApp.png?branch=master)](https://travis-ci.org/kalisio/kApp)
 [![Code Climate](https://codeclimate.com/github/kalisio/kApp/badges/gpa.svg)](https://codeclimate.com/github/kalisio/kApp)
-[![Test Coverage](https://codeclimate.com/github/kalisio/kApp/badges/coverage.svg)](https://codeclimate.com/github/kalisio/kApp/coverage)
+[![Test Coverage](https://codeclimate.com/github/kalisio/kApp/badges/coverage.svg)](https://codeclimate.com/github/kalisio/kApp/test_coverage)
 [![Dependency Status](https://img.shields.io/david/kalisio/kapp.svg?style=flat-square)](https://david-dm.org/kalisio/kapp)
 [![Documentation](https://img.shields.io/badge/documentation-available-brightgreen.svg)](https://kalisio.github.io/kdk/)
 [![Known Vulnerabilities](https://snyk.io/test/github/kalisio/kapp/badge.svg)](https://snyk.io/test/github/kalisio/kapp)
