@@ -18,6 +18,6 @@ This application is based on the [Kalisio Development Kit](https://kalisio.githu
 
 ### License
 
-Copyright (c) 2018 Kalisio
+Copyright (c) 2018-2019 Kalisio
 
 Licensed under the [MIT license](LICENSE).
