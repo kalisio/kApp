@@ -8,7 +8,7 @@ notifications:
 
 stages:
 - name: BUILD
-  if: commit_message !~ /(skip-build)/
+  if: commit_message !~ /(skip[ _-]build)/
 - name: TEST
   if: commit_message !~ /(skip-test)/
 - name: DEPLOY
