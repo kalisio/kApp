@@ -6,17 +6,6 @@ notifications:
     on_success: always
     on_failure: always
 
-
-language: node_js
-node_js:
-- '8'    
-env:
-  matrix:
-  - SCOPE=api
-  - SCOPE=client
-script:
-- bash .travis.test.sh $SCOPE
-
 stages:
 - name: BUILD
   if: commit_message !~ /(skip[ _-]build)/
@@ -57,11 +46,15 @@ jobs:
     language: node_js
     node_js:
     - '8'
+    env:
+      matrix:
+      - SCOPE=api
+      - SCOPE=client
     services:
     - docker
     install: true   
     script:
-    - bash .travis.deploy.sh
+    - bash .travis.deploy.sh $SCOPE
 
   - stage: ANDROID
     os: linux
