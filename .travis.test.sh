@@ -4,50 +4,47 @@ source .travis.env.sh
 # It first need to create the required network and run mongodb
 docker network create --attachable $DOCKER_NETWORK
 
-# Install code climate
-curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-chmod +x ./cc-test-reporter
+if [ $1 == "api" ]
+then 
+	# Install code climate
+	curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+	chmod +x ./cc-test-reporter
 
-# Create the coverage dir
-mkdir coverage && chmod +w coverage
+	# Create the coverage dir
+	mkdir coverage && chmod +w coverage
 
-# Initialize code climate
-./cc-test-reporter before-build
+	# Initialize code climate
+	./cc-test-reporter before-build
 
-# Run the tests
-docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.server.yml up --exit-code-from app app
-ERROR_CODE=$?
-if [ $ERROR_CODE -ne 0 ]; then
-	echo "Testing ${APP} API failed [error: $ERROR_CODE]"
-	exit 1
+	# Run the tests
+	docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.server.yml up --exit-code-from app app
+	ERROR_CODE=$?
+	if [ $ERROR_CODE -ne 0 ]; then
+		echo "Testing ${APP} API failed [error: $ERROR_CODE]"
+		exit 1
+	fi
+
+	# Pretend that the sources are in /opt/${APP}/api/src (symbolik link does not work)
+	mkdir -p /opt/${APP}/api
+	cp -R api/src /opt/${APP}/api/src
+
+	# Report to code climate
+	./cc-test-reporter after-build -t lcov --exit-code $ERROR_CODE
 fi
 
-# Pretend that the sources are in /opt/${APP}/api/src (symbolik link does not work)
-mkdir -p /opt/${APP}/api
-cp -R api/src /opt/${APP}/api/src
+if [ $1 == "cient"]
+then
+	Output directory for client screenshots
+	mkdir screenshots
+	chmod -R 777 screenshots
 
-# Report to code climate
-./cc-test-reporter after-build -t lcov --exit-code $ERROR_CODE
-
-
-
-#
-# Test the client
-#
-#  travis_fold start "client"
-
-# Output directory for client screenshots
-#	mkdir client-screenshots
-#	chmod -R 777 client-screenshots
-
-# Run the app
-#	docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.client.yml up testcafe
-#	ERROR_CODE=$?
-# Copy the screenshots whatever the result
-#	aws s3 sync client-screenshots s3://$BUILDS_BUCKET/$BUILD_NUMBER/client-screenshots > /dev/null
-#	if [ $ERROR_CODE -eq 1 ]; then
-#		echo "Testing ${APP} client failed [error: $ERROR_CODE]"
-#		exit 1
-#	fi
-
-#	travis_fold end "client"
+	# Run the app
+	docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.client.yml up testcafe
+	ERROR_CODE=$?
+	Copy the screenshots whatever the result
+	aws s3 sync screenshots s3://$BUILDS_BUCKET/$BUILD_NUMBER/client-screenshots > /dev/null
+	if [ $ERROR_CODE -eq 1 ]; then
+		echo "Testing ${APP} client failed [error: $ERROR_CODE]"
+		exit 1
+	fi
+fi

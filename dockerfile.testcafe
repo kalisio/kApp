@@ -1,4 +1,4 @@
-FROM testcafe/testcafe
+FROM testcafe/testcafe:1.3.3
 
 LABEL maintainer="Kalisio <contact@kalisio.xyz>"
 
