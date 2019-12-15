@@ -6,6 +6,18 @@ notifications:
     on_success: always
     on_failure: always
 
+# stage: TEST 
+# Must be declared here 
+language: node_js
+node_js:
+- '8'    
+env:
+  matrix:
+  - SCOPE=api
+  - SCOPE=client
+script:
+- bash .travis.test.sh $SCOPE
+
 stages:
 - name: BUILD
   if: commit_message !~ /(skip[ _-]build)/
@@ -31,30 +43,16 @@ jobs:
     script:
     - bash .travis.build.sh
 
-  - stage: TEST
-    os: linux
-    language: node_js
-    node_js:
-    - '8'
-    services:
-    - docker
-    script:
-    - bash .travis.test.sh
-
   - stage: DEPLOY
     os: linux
     language: node_js
     node_js:
     - '8'
-    env:
-      matrix:
-      - SCOPE=api
-      - SCOPE=client
     services:
     - docker
     install: true   
     script:
-    - bash .travis.deploy.sh $SCOPE
+    - bash .travis.deploy.sh
 
   - stage: ANDROID
     os: linux
