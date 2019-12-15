@@ -40,6 +40,8 @@ jobs:
     - '8'
     services:
     - docker
+    env:
+    - PROVIDER=none
     script:
     - bash .travis.build.sh
 
@@ -50,6 +52,8 @@ jobs:
     - '8'
     services:
     - docker
+    env:
+    - PROVIDER=none
     install: true   
     script:
     - bash .travis.deploy.sh
@@ -66,7 +70,9 @@ jobs:
       - build-tools-28.0.3
       - android-28
     licenses:
-      - '.+'
+    - '.+'
+    env:
+    - PROVIDER=none
     before_install:
     # NVM
     - nvm install 8
@@ -91,6 +97,8 @@ jobs:
     os: osx
     language: objective-c
     osx_image: xcode10.1
+    env:
+    - PROVIDER=none
     before_install:
     # NVM
     - nvm install 8
