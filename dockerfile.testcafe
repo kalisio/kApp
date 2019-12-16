@@ -1,6 +1,7 @@
 FROM testcafe/testcafe:1.3.3
 
 LABEL maintainer="Kalisio <contact@kalisio.xyz>"
+
 # Increase privileges otherwise we can't write
 USER root
 
@@ -12,8 +13,8 @@ RUN chown user screenshots
 WORKDIR /usr/lib/node_modules/testcafe
 
 # Add missing modules for our tests to run
-RUN npm install testcafe-vue-selectors
-RUN npm install mongodb
+RUN npm install -g testcafe-vue-selectors
+RUN npm install -g mongodb
 
 # Reset privileges
 USER user
