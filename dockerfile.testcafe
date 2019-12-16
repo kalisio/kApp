@@ -9,9 +9,14 @@ WORKDIR /opt/testcafe
 USER root
 
 # Add missing modules for our tests to run
-RUN npm install testcafe-vue-selectors
+RUN \
+  npm install testcafe-vue-selectors && \
+  npm install eslint-plugin-testcafe
+
+
 # Create a symlink so that we use the testcafe project as if installed in our test code
 RUN cd node_modules && ln -nsf ../ testcafe
+
 # Create a folder holding screenshots
 RUN mkdir screenshots
 RUN chown user screenshots
