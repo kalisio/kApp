@@ -14,9 +14,9 @@ services:
       - DB_URL=mongodb://mongodb:27017/${APP}
       - APP_URL=app:${PORT}
     volumes:
-      - ../test:/opt/testcafe/${APP}
+      #- ../test:/opt/testcafe/${APP}
       - ../screenshots:/opt/testcafe/screenshots
-    command: firefox /opt/testcafe/${APP}/*.test.js -S -s screenshots
+    command: firefox /opt/testcafe/test/*.test.js -S -s screenshots
     networks:
       - app-network
       
