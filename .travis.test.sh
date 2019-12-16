@@ -39,11 +39,7 @@ then
 	chmod -R 777 screenshots
 
 	# Run the app
-	docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.client.yml up -d
-	sleep 30
-	docker ps
-	curl loclahost:8081
-	yarn cafe
+	docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.client.yml up --exit-code-from testcafe testcafe
 	ERROR_CODE=$?
 	#Copy the screenshots whatever the result
 	aws s3 sync screenshots s3://$BUILDS_BUCKET/$BUILD_NUMBER/client-screenshots > /dev/null
