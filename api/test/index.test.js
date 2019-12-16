@@ -19,7 +19,7 @@ describe('kapp', () => {
     expressServer = await server.run()
   })
   // Let enough time to process
-  .timeout(10000)
+    .timeout(10000)
 
   it('registers the services', () => {
     userService = server.app.getService('users')
