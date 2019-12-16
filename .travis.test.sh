@@ -2,7 +2,7 @@
 source .travis.env.sh
 
 # It first need to create the required network and run mongodb
-docker network create --attachable $DOCKER_NETWORK
+docker network create --driver=host --attachable $DOCKER_NETWORK
 
 if [ $1 == "api" ]
 then 
