@@ -40,7 +40,9 @@ then
 
 	# Run the app
 	docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.client.yml up -d
-	sleep 60
+	sleep 30
+	docker ps
+	curl loclahost:8081
 	yarn cafe
 	ERROR_CODE=$?
 	#Copy the screenshots whatever the result
