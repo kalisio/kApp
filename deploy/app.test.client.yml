@@ -1,25 +1,30 @@
 version: '3.3'
 
-services:
-  testcafe:
-    build:
-      context: ../.
-      dockerfile: dockerfile.testcafe
-    image: kalisio/testcafe
-    depends_on:
-      - mongodb
-      - app
-    environment:
-      - NODE_ENV=production
-      - DB_URL=mongodb://mongodb:27017/${APP}
-      - APP_URL=app:${PORT}
-    volumes:
-      - ../test:/opt/testcafe/${APP}
-    command: firefox /opt/testcafe/${APP}/*.test.js -S -s screenshots
-    networks:
-      - app-network
+service:
+  app:
+    ports:
+      - "8081:8081"
+
+# services:
+#   testcafe:
+#     build:
+#       context: ../.
+#       dockerfile: dockerfile.testcafe
+#     image: kalisio/testcafe
+#     depends_on:
+#       - mongodb
+#       - app
+#     environment:
+#       - NODE_ENV=production
+#       - DB_URL=mongodb://mongodb:27017/${APP}
+#       - APP_URL=app:${PORT}
+#     volumes:
+#       - ../test:/opt/testcafe/${APP}
+#     command: firefox /opt/testcafe/${APP}/*.test.js -S -s screenshots
+#     networks:
+#       - app-network
       
-networks:
-  app-network:
-    external:
-      name: ${DOCKER_NETWORK}
+# networks:
+#   app-network:
+#     external:
+#       name: ${DOCKER_NETWORK}

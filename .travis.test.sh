@@ -40,7 +40,13 @@ then
 
 	# Run the app
 	docker-compose -f deploy/mongodb.yml -f deploy/app.yml up -d
-	docker-compose -f deploy/app.test.client.yml up --exit-code-from testcafe testcafe
+	docker ps
+	APP_CONTAINER_NAME=`docker ps --format '{{.Names}}' | grep $APP`
+	docker inspect $APP_CONTAINER_NAME
+	#docker-compose -f deploy/app.test.client.yml up --exit-code-from testcafe testcafe
+	export APP_URL=app:${PORT}
+	export NODE_ENV=production
+	yarn cafe
 	ERROR_CODE=$?
 	#Copy the screenshots whatever the result
 	aws s3 sync screenshots s3://$BUILDS_BUCKET/$BUILD_NUMBER/client-screenshots > /dev/null
