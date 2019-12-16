@@ -15,7 +15,10 @@ RUN \
 
 
 # Create a symlink so that we use the testcafe project as if installed in our test code
-RUN cd node_modules && ln -nsf ../ testcafe
+#RUN cd node_modules && ln -nsf ../ testcafe
+ENV NODE_PATH=/opt/testcafe/node_modules
+ENV PATH=${PATH}:/opt/testcafe/node_modules/.bin
+
 COPY test /opt/testcafe/test
 
 # Create a folder holding screenshots
