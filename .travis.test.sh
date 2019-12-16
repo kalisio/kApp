@@ -2,7 +2,7 @@
 source .travis.env.sh
 
 # It first need to create the required network and run mongodb
-docker network create --driver=host --attachable $DOCKER_NETWORK
+docker network create --attachable $DOCKER_NETWORK
 
 if [ $1 == "api" ]
 then 
@@ -39,13 +39,8 @@ then
 	chmod -R 777 screenshots
 
 	# Run the app
-	docker-compose -f deploy/mongodb.yml -f deploy/app.yml up -d
-	docker ps
-	APP_CONTAINER_NAME=`docker ps --format '{{.Names}}' | grep $APP`
-	docker inspect $APP_CONTAINER_NAME
-	export APP_URL=http://localhost:${PORT}
-	wget $APP_URL/api/capabilities
-	yarn cafe
+	docker-compose -f deploy/app.yml -f deploy/mongodb.yml -f deploy/app.test.client.yml up -d app
+	docker-compose -f deploy/app.yml -f deploy/mongodb.yml -f deploy/app.test.client.yml up --exit-code-from testcafe testcafe
 	ERROR_CODE=$?
 	#Copy the screenshots whatever the result
 	aws s3 sync screenshots s3://$BUILDS_BUCKET/$BUILD_NUMBER/client-screenshots > /dev/null
