@@ -7,14 +7,13 @@ USER root
 
 # Create a folder holding screenshots
 WORKDIR /opt/testcafe
-RUN mkdir screenshots
-RUN chown user screenshots
+RUN mkdir screenshots && chown user screenshots
 
 WORKDIR /usr/lib/node_modules/testcafe
 
 # Add missing modules for our tests to run
 RUN npm install -g testcafe-vue-selectors
-RUN npm install -g mongodb
+#RUN npm install -g mongodb
 
 # Reset privileges
 USER user
