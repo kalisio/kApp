@@ -11,7 +11,7 @@ USER root
 # Add missing modules for our tests to run
 RUN \
   npm install testcafe-vue-selectors && \
-  npm install eslint-plugin-testcafe
+  npm install babel-runtime
 
 
 # Create a symlink so that we use the testcafe project as if installed in our test code
