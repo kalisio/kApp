@@ -3,7 +3,7 @@ version: '3.3'
 services:
   app:
     ports:
-      - 8010:8081
+      - "8080:8081"
 
 
 #services:
