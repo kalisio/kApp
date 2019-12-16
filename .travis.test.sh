@@ -43,9 +43,8 @@ then
 	docker ps
 	APP_CONTAINER_NAME=`docker ps --format '{{.Names}}' | grep $APP`
 	docker inspect $APP_CONTAINER_NAME
-	#docker-compose -f deploy/app.test.client.yml up --exit-code-from testcafe testcafe
-	export APP_URL=app:${PORT}
-	export NODE_ENV=production
+	export APP_URL=http://app:${PORT}
+	wget $APP_URL
 	yarn cafe
 	ERROR_CODE=$?
 	#Copy the screenshots whatever the result
