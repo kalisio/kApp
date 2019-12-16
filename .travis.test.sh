@@ -44,7 +44,7 @@ then
 	APP_CONTAINER_NAME=`docker ps --format '{{.Names}}' | grep $APP`
 	docker inspect $APP_CONTAINER_NAME
 	export APP_URL=http://localhost:${PORT}
-	wget $APP_URL
+	wget $APP_URL/api/capabilities
 	yarn cafe
 	ERROR_CODE=$?
 	#Copy the screenshots whatever the result
