@@ -1,13 +1,8 @@
 .git
 .quasar
-dist
-electron/dist
 node_modules
-electron/node_modules
-cordova/node_modules
-cordova/platforms
-cordova/plugins
-cordova/www
+dist
+src-cordova
 api/node_modules
 api/dist
 api/logs
