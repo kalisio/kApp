@@ -10,12 +10,12 @@ USER root
 
 # Add missing modules for our tests to run
 RUN \
-  npm install -g testcafe-vue-selectors && \
-  npm install -g eslint-plugin-testcafe
+  npm install testcafe-vue-selectors && \
+  npm install eslint-plugin-testcafe
 
 
 # Create a symlink so that we use the testcafe project as if installed in our test code
-#RUN cd node_modules && ln -nsf ../ testcafe
+RUN cd node_modules && ln -nsf ../ testcafe
 COPY test /opt/testcafe/test
 
 # Create a folder holding screenshots
