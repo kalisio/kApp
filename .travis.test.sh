@@ -32,7 +32,7 @@ then
 	./cc-test-reporter after-build -t lcov --exit-code $ERROR_CODE
 fi
 
-if [ $1 == "cient" ]
+if [ $1 == "client" ]
 then
 	Output directory for client screenshots
 	mkdir screenshots
