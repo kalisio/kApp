@@ -55,8 +55,8 @@ export default class Authentication extends ApplicationLayout {
     await this.closeSignupAlert(test)
   }
 
-  async logOut (test) {
-    await this.openSideNav(test)
+  async logOut (test, openSideNav) {
+    if (openSideNav) await this.openSideNav(test)
     await test
       .click(this.logout)
       // Need this so that we are sure the page has been loaded
