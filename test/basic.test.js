@@ -19,7 +19,7 @@ const docs = new pages.Documents()
 
 test('Login as default user', async test => {
   await auth.logIn(test, { email: 'kalisio@kalisio.xyz', password: 'Pass;word1' })
-  await test.wait(2500)
+  await test.wait(5000)
   //await docs.create(test, { name: 'document1' })
   //await docs.delete(test)
   await auth.logOut(test, false)
