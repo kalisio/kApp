@@ -12,7 +12,7 @@ services:
       - APP_URL=app:${PORT}
     volumes:
       - ../test:/tests
-     - ../screenshots:/screenshots
+      - ../screenshots:/screenshots
     #command: chromium:headless /tests/*.test.js #firefox /tests/*.test.js -S -s screenshots
     command: firefox:headless /tests/*.test.js -S -s /screenshots
     networks:
