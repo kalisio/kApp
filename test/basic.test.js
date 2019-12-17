@@ -22,5 +22,5 @@ test('Login as default user', async test => {
   await test.wait(10000)
   //await docs.create(test, { name: 'document1' })
   //await docs.delete(test)
-  //await auth.logOut(test, false)
+  await auth.logOut(test, false)
 })
