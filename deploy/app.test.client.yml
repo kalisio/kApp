@@ -2,10 +2,7 @@ version: '3.3'
 
 services:
   testcafe:
-    build:
-      context: ../.
-      dockerfile: dockerfile.testcafe
-    image: kalisio/testcafe
+    image: kalisio/testcafe:1.3.3
     depends_on:
       - mongodb
       - app
@@ -16,7 +13,7 @@ services:
     volumes:
       - ../test:/tests
       #- ../screenshots:/opt/testcafe/screenshots
-    command: testcafe firefox '/tests/*.test.js' #firefox /tests/*.test.js -S -s screenshots
+    command: firefox '/tests/*.test.js' #firefox /tests/*.test.js -S -s screenshots
     networks:
       - app-network
       
