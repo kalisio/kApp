@@ -13,7 +13,7 @@ services:
     volumes:
       - ../test:/tests
       #- ../screenshots:/opt/testcafe/screenshots
-    command: firefox '/tests/*.test.js' #firefox /tests/*.test.js -S -s screenshots
+    command: 'chromium --no-sandbox' '/tests/*.test.js' #firefox /tests/*.test.js -S -s screenshots
     networks:
       - app-network
       
