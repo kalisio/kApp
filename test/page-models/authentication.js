@@ -47,7 +47,7 @@ export default class Authentication extends ApplicationLayout {
       .typeText(this.passwordInput, credentials.password || defaultTestUser.password, { replace: true })
       .click(this.loginLocal)
       // Need this so that we are sure dynamic components, user, etc. have been loaded
-      .wait(100)
+      .wait(500)
   }
 
   async logInAndCloseSignupAlert (test, credentials = {}) {
@@ -56,11 +56,11 @@ export default class Authentication extends ApplicationLayout {
   }
 
   async logOut (test, openSideNav) {
-    if (openSideNav) await this.openSideNav(test)
+    if (openSideNav)await this.openSideNav(test)
     await test
       .click(this.logout)
       // Need this so that we are sure the page has been loaded
-      .wait(5000)
+      .wait(500)
   }
 
   async signIn (test, identity = {}) {
