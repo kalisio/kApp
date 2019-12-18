@@ -20,7 +20,7 @@ then
 	docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.api.yml up --exit-code-from app app
 	ERROR_CODE=$?
 	if [ $ERROR_CODE -ne 0 ]; then
-		echo "Testing ${APP} API failed [error: $ERROR_CODE]"
+		echo "Testing API failed [error: $ERROR_CODE]"
 		exit 1
 	fi
 
@@ -42,9 +42,9 @@ else
 	docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.client.yml up --exit-code-from testcafe testcafe
 	ERROR_CODE=$?
 	#Copy the screenshots whatever the result
-	aws s3 sync screenshots s3://$BUILDS_BUCKET/$BUILD_NUMBER/client-screenshots > /dev/null
+	aws s3 sync screenshots s3://$BUILDS_BUCKET/$BUILD_NUMBER/$FIXTURE-screenshots > /dev/null
 	if [ $ERROR_CODE -eq 1 ]; then
-		echo "Testing ${APP} client failed [error: $ERROR_CODE]"
+		echo "Testing $FIXTURE failed [error: $ERROR_CODE]"
 		exit 1
 	fi
 fi
