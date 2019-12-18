@@ -17,7 +17,7 @@ export default class Authentication extends ApplicationLayout {
     this.passwordInput = VueSelector('k-login k-password-field')
     // withText('Log in') does not seem to work probably because the
     // text is on a sub internal element, we might use IDs ?
-    this.loginLocal = Selector('#local')
+    this.loginLocal = Selector('.q-btn').nth(2)
     // Logout
     this.logoutScreen = VueSelector('k-logout k-screen')
     this.logout = VueSelector('k-links-panel').find('.q-icon').withText('exit_to_app')
