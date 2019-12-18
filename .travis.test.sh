@@ -17,7 +17,7 @@ then
 	./cc-test-reporter before-build
 
 	# Run the tests
-	docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.server.yml up --exit-code-from app app
+	docker-compose -f deploy/mongodb.yml -f deploy/app.yml -f deploy/app.test.api.yml up --exit-code-from app app
 	ERROR_CODE=$?
 	if [ $ERROR_CODE -ne 0 ]; then
 		echo "Testing ${APP} API failed [error: $ERROR_CODE]"
@@ -31,7 +31,7 @@ then
 	# Report to code climate
 	./cc-test-reporter after-build -t lcov --exit-code $ERROR_CODE
 else
-  # Run the client tests with the given fixture 
+  # Run Testcafe with the given fixture 
 	export FIXTURE=$1
 
 	# Create the screenshots dir

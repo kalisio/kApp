@@ -14,7 +14,8 @@ node_js:
 env:
   matrix:
   - SCOPE=api
-  - SCOPE=Screens
+  - SCOPE=screens
+  - SCOPE=basic
 before_install:
 - pip install --user awscli
 script:
