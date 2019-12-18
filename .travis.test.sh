@@ -30,10 +30,10 @@ then
 
 	# Report to code climate
 	./cc-test-reporter after-build -t lcov --exit-code $ERROR_CODE
-fi
+else
+  # Run the client tests with the given fixture 
+	export FIXTURE=$1
 
-if [ $1 == "client" ]
-then
 	# Create the screenshots dir
 	mkdir screenshots
 	chmod -R 777 screenshots

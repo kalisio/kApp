@@ -14,7 +14,7 @@ services:
       - ../test:/tests
       - ../screenshots:/screenshots
     #command: chromium:headless /tests/*.test.js #firefox /tests/*.test.js -S -s screenshots
-    command: firefox:headless /tests/*.test.js -S -s /screenshots
+    command: firefox:headless /tests/*.test.js -S -s /screenshots -f $FIXTURE
     networks:
       - app-network
       
