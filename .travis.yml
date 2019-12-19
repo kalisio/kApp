@@ -17,7 +17,7 @@ env:
   - TEST_SCOPE=api BROWSER=firefox
   - TEST_SCOPE=app BROWSER=chromium
   - TEST_SCOPE=app BROWSER=firefox
-  fore_install:
+before_install:
 - pip install --user awscli
 script:
 - bash .travis.test.sh $TEST_SCOPE
