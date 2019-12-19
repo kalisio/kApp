@@ -8,7 +8,12 @@ export default class App {
     this.loginScreen = VueSelector('k-login k-screen')
     this.emailInput = VueSelector('k-login k-email-field')
     this.passwordInput = VueSelector('k-login k-password-field')
-    this.loginLocal = Selector('button[type=button]').nth(2)
+    //this.loginLocal = Selector('button[type=button]').nth(2)
+    this.loginLocal = Selector(() => {
+      console.log('toc toc') 
+      console.log(document) 
+      return document.getElementById('local') 
+    })
     this.registerLink = Selector('#register-link')
     // Logout screen
     this.logoutScreen = VueSelector('k-logout k-screen')
@@ -21,6 +26,19 @@ export default class App {
     this.registerConfirmPasswordInput = VueSelector('k-register k-password-field').nth(1)
     this.register = Selector('button[type=button]').nth(0)
     this.loginLink = Selector('#login-link')
+    // Layout
+    this.appBar = VueSelector('k-app-bar')
+    this.appBarTitle = this.appBar.find('#app-bar-title')
+    this.appBarOverflowMenu = Selector('#overflow-menu')
+    this.appBarOverflowMenuEntry = this.appBar.find('#overflow-menu-entry')
+    this.sideNavToggle = this.appBar.find('#ap')
+    this.sideNav = VueSelector('k-side-nav')
+    this.tabBar = VueSelector('k-tab-bar')
+    this.fab = Selector('#fab')
+    this.identityPanel = VueSelector('k-identity-panel')
+    this.identityLink = Selector('#account')
+    this.signupAlert = VueSelector('k-signup-alert')
+    this.idSelector = Selector((id) => { return document.getElementById(id) })
   }
 
   async goToLoginScreen (test) {

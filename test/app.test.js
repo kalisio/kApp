@@ -17,14 +17,14 @@ fixture`app`// declare the fixture
 const app = new pages.App()
 
 test('Navigating through the screens', async test => {
-  await test.setTestSpeed(0.1)
+  await test.setTestSpeed(0.5)
   await app.goToRegisterScreen(test)
   await app.goToLoginScreen(test)
 })
 
 test('Authenticating to the app', async test => {
-  await test.setTestSpeed(0.1)
+  await test.setTestSpeed(0.5)
   await app.logIn(test, { email: 'kalisio@kalisio.xyz', password: 'Pass;word1' })
-  await test.setTestSpeed(0.1)
+  await test.takeScreenshot('./screenshots.jpg')
   await app.logOut(test, false)
 })
