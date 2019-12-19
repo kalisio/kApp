@@ -34,7 +34,6 @@ test('Registering to the app', async test => {
 })
 
 test('Authenticating to the app', async test => {
-  await app.goToRegisterScreen(test)
-  await app.register(test, user)
+  await app.logIn(test, user)
   await app.logOut(test, false)
 })
