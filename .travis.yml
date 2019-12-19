@@ -13,11 +13,11 @@ node_js:
 - '8'    
 env:
   matrix:
-  - TEST_SCOPE=api
-  - TEST_SCOPE=app
-  - BROWSER=chromium
-  - BROWSER=firefox
-before_install:
+  - TEST_SCOPE=api BROWSER=chromium
+  - TEST_SCOPE=api BROWSER=firefox
+  - TEST_SCOPE=app BROWSER=chromium
+  - TEST_SCOPE=app BROWSER=firefox
+  fore_install:
 - pip install --user awscli
 script:
 - bash .travis.test.sh $TEST_SCOPE
@@ -45,8 +45,7 @@ jobs:
     services:
     - docker
     env:
-    - TEST_SCOPE=none
-    - BROWSER=none
+    - TEST_SCOPE=none BROWSER=none
     script:
     - bash .travis.build.sh
 
@@ -58,8 +57,7 @@ jobs:
     services:
     - docker
     env:
-    - TEST_SCOPE=none
-    - BROWSER=none
+    - TEST_SCOPE=none BROWSER=none
     install: true   
     script:
     - bash .travis.deploy.sh
@@ -78,8 +76,7 @@ jobs:
     licenses:
     - '.+'
     env:
-    - TEST_SCOPE=none
-    - BROWSER=none
+    - TEST_SCOPE=none BROWSER=none
     before_install:
     # NVM
     - nvm install 8
@@ -105,8 +102,7 @@ jobs:
     language: objective-c
     osx_image: xcode10.1
     env:
-    - TEST_SCOPE=none
-    - BROWSER=none
+    - TEST_SCOPE=none BROWSER=none
     before_install:
     # NVM
     - nvm install 8
