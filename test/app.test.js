@@ -1,7 +1,7 @@
 // Page models
 import * as pages from './page-models'
 
-fixture`application`// declare the fixture
+fixture`app`// declare the fixture
   .page`${pages.getUrl()}` // specify the start page
   // test.before/test.after overrides fixture.beforeEach/fixture.afterEach hook,
   // so implement one in your test if you'd like another behaviour
@@ -14,10 +14,9 @@ fixture`application`// declare the fixture
     await pages.checkNoClientError(test)
   })
 
-const app = new pages.Application()
-const auth = new pages.Authentication()
+const app = new pages.App()
 
-test('Navigating through the screen', async test => {
+test('Navigating through the screens', async test => {
   await test.setTestSpeed(0.1)
   await app.goToRegisterScreen(test)
   await app.goToLoginScreen(test)
@@ -25,6 +24,7 @@ test('Navigating through the screen', async test => {
 
 test('Authenticating to the app', async test => {
   await test.setTestSpeed(0.1)
-  await auth.logIn(test, { email: 'kalisio@kalisio.xyz', password: 'Pass;word1' })
+  await app.logIn(test, { email: 'kalisio@kalisio.xyz', password: 'Pass;word1' })
   await test.setTestSpeed(0.1)
+  await app.logOut(test, false)
 })

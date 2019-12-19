@@ -1,12 +1,12 @@
 import { ClientFunction } from 'testcafe'
-import Application from './application'
+import App from './app'
 import ApplicationLayout from './layout'
 import Authentication from './authentication'
 import Documents from './documents'
 
 // Export all models
 export {
-  Application,
+  App,
   ApplicationLayout,
   Authentication,
   Documents
