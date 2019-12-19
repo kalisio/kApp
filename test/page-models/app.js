@@ -10,8 +10,6 @@ export default class App {
     this.passwordInput = VueSelector('k-login k-password-field')
     //this.loginLocal = Selector('button[type=button]').nth(2)
     this.loginLocal = Selector(() => {
-      console.log('toc toc') 
-      console.log(document) 
       return document.getElementById('local') 
     })
     this.registerLink = Selector('#register-link')
@@ -24,7 +22,8 @@ export default class App {
     this.registerEmailInput = VueSelector('k-register k-email-field')
     this.registerPasswordInput = VueSelector('k-register k-password-field').nth(0)
     this.registerConfirmPasswordInput = VueSelector('k-register k-password-field').nth(1)
-    this.register = Selector('button[type=button]').nth(0)
+    this.registerAcceptTerms = VueSelector('k-register k-toggle-field').find('.q-toggle')
+    this.registerButton = Selector('button[type=button]').nth(0)
     this.loginLink = Selector('#login-link')
     // Layout
     this.appBar = VueSelector('k-app-bar')
@@ -75,13 +74,14 @@ export default class App {
       .wait(500)
   }
 
-  async signIn (test, identity = {}) {
+  async register (test, identity = {}) {
     await test
       .typeText(this.registerNameInput, identity.name || defaultTestUser.name, { replace: true })
       .typeText(this.registerEmailInput, identity.email || defaultTestUser.email, { replace: true })
       .typeText(this.registerPasswordInput, identity.password || defaultTestUser.password, { replace: true })
       .typeText(this.registerConfirmPasswordInput, identity.password || defaultTestUser.password, { replace: true })
-      .click(this.register)
+      .click(this.registerAcceptTerms)
+      .click(this.registerButton)
       // Need this so that we are sure dynamic components, user, etc. have been loaded
       .wait(5000)
   }
