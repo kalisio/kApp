@@ -43,7 +43,7 @@ export default class Application {
     this.appBarTitle = this.appBar.find('#app-bar-title')
     this.appBarOverflowMenu = Selector('#overflow-menu')
     this.appBarOverflowMenuEntry = this.appBar.find('#overflow-menu-entry')
-    this.sideNavToggle = this.appBar.find('#ap')
+    this.sideNavToggle = this.appBar.find('#left-drawer-toggle')
     this.sideNav = VueSelector('k-side-nav')
     this.identityPanel = VueSelector('k-identity-panel')
     this.identityLink = Selector('#account')
