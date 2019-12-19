@@ -63,7 +63,7 @@ export default class Authentication extends ApplicationLayout {
       .wait(500)
   }
 
-  async signIn (test, identity = {}) {
+  async resgister (test, identity = {}) {
     await test
       .typeText(this.registerNameInput, identity.name || defaultTestUser.name, { replace: true })
       .typeText(this.registerEmailInput, identity.email || defaultTestUser.email, { replace: true })
