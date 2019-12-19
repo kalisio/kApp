@@ -13,11 +13,10 @@ node_js:
 - '8'    
 env:
   matrix:
-  - TEST_SCOPE=api BROWSER=chromium
-  - TEST_SCOPE=api BROWSER=firefox
+  - TEST_SCOPE=api BROWSER=none
   - TEST_SCOPE=app BROWSER=chromium
   - TEST_SCOPE=app BROWSER=firefox
-  fore_install:
+before_install:
 - pip install --user awscli
 script:
 - bash .travis.test.sh $TEST_SCOPE
