@@ -1,10 +1,9 @@
 import { Selector } from 'testcafe'
-import ApplicationLayout from './layout'
+import Application from './application'
 
-export default class Documents extends ApplicationLayout {
+export default class Documents extends Application {
   constructor () {
     super()
-
     // list
     this.nameField = Selector('.q-dialog').find('#name-field')
     this.createButton = Selector('.q-dialog').find('#apply-button')
