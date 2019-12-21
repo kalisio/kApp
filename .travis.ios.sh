@@ -9,7 +9,11 @@ travis_fold start "provision"
 # Install the kdk if required
 if [ $FLAVOR != "prod" ]
 then
-	source .travis.kdk.sh
+  git clone https://github.com/kalisio/kdk.git && cd kdk && yarn 
+  node . workspaces/${APP}.js --clone --branch ${FLAVOR}
+  node . workspaces/${APP}.js --install
+  node . workspaces/${APP}.js --link
+	cd $APP
 fi
 
 # Copy the certificates
