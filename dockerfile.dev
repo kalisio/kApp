@@ -20,7 +20,7 @@ RUN \
   node . workspaces/${APP}.js --clone && \
   node . workspaces/${APP}.js --install && \
   node . workspaces/${APP}.js --link && \
-  cd ${APP}\api && yarn build && cd .. && yarn build
+  cd ${APP} && yarn build && cd api && yarn build
 
 #
 # Run stage
@@ -42,6 +42,5 @@ RUN \
   node . workspaces/${APP}.js --link
 
 WORKDIR /opt/kdk/${APP}
-
 EXPOSE 8081
 CMD [ "yarn", "prod" ]
