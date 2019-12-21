@@ -17,9 +17,9 @@ RUN git clone https://github.com/kalisio/kdk.git && cd kdk && yarn
 # Install the app
 WORKDIR /opt/kdk
 RUN \
-  node . kdk/workspaces/${APP}.js --clone && \
-  node . kdk/workspaces/${APP}.js --install && \
-  node . kdk/workspaces/${APP}.js --link && \
+  node . workspaces/${APP}.js --clone && \
+  node . workspaces/${APP}.js --install && \
+  node . workspaces/${APP}.js --link && \
   cd ${APP}\api && yarn build && cd .. && yarn build
 
 #
@@ -39,8 +39,7 @@ COPY --from=Build /opt/kdk /opt/kdk
 
 WORKDIR /opt/kdk
 RUN \
-  cd kdk && yarn link && cd .. && \
-  node . kdk/workspaces/${APP}.js --link
+  node . workspaces/${APP}.js --link
 
 WORKDIR /opt/kdk/${APP}
 
