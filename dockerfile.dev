@@ -13,13 +13,13 @@ ENV NODE_APP_INSTANCE=dev
 WORKDIR /opt
 
 # Install the cli
-RUN git clone https://github.com/kalisio/kdk.git && cd kdk && yarn && yarn link
+RUN git clone https://github.com/kalisio/kdk.git && cd kdk && yarn 
 
 # Install the app
 RUN \
-  kdk ./kdk/workspaces/${APP}.js --clone && \
-  kdk ./kdk/workspaces/${APP}.js --install && \
-  kdk ./kdk/workspaces/${APP}.js --link && \
+  node . kdk/workspaces/${APP}.js --clone && \
+  node . kdk/workspaces/${APP}.js --install && \
+  node . kdk/workspaces/${APP}.js --link && \
   cd ${APP}\api && yarn build && cd .. && yarn build
 
 #
@@ -40,7 +40,7 @@ COPY --from=Build /opt/kdk /opt/kdk
 WORKDIR /opt/kdk
 RUN \
   cd kdk && yarn link && cd .. && \
-  kdk ./kdk/workspaces/${APP}.js --link
+  node . kdk/workspaces/${APP}.js --link
 
 WORKDIR /opt/kdk/${APP}
 
