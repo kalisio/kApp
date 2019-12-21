@@ -10,23 +10,17 @@ ARG BRANCH=master
 ENV BUILD_NUMBER=$BUILD_NUMBER
 ENV NODE_APP_INSTANCE=dev
 
-WORKDIR /opt/${APP}
-COPY . /opt/${APP}
+WORKDIR /opt
 
-WORKDIR /opt/${APP}/modules
-RUN git clone https://github.com/kalisio/kCore.git -b ${BRANCH} --single-branch && cd kCore && yarn && yarn link && cd ..
+# Install the cli
+RUN git clone https://github.com/kalisio/kdk.git && cd kdk && yarn && yarn link && cd ..
 
-WORKDIR /opt/${APP}/api
+# Install the app
 RUN \
-  yarn && \
-  yarn link @kalisio/kdk-core && \
-  yarn build
-
-WORKDIR /opt/${APP}
-RUN \
-  yarn && \
-  yarn link @kalisio/kdk-core && \
-  yarn build
+  kdk ./kdk/workspaces/${APP}.js --clone && \
+  kdk ./kdk/workspaces/${APP}.js --install && \
+  kdk ./kdk/workspaces/${APP}.js --link && \
+  cd ${APP}\api && yarn build && cd .. && yarn build
 
 #
 # Run stage
@@ -41,16 +35,13 @@ ENV BUILD_NUMBER=$BUILD_NUMBER
 ENV NODE_APP_INSTANCE=dev
 ENV DEBUG=kalisio*,-kalisio:kCore:authorisations:hooks
 
+COPY --from=Build /opt/kdk /opt/kdk
 COPY --from=Build /opt/${APP} /opt/${APP}
 
-WORKDIR /opt/${APP}/modules
-RUN cd kCore && yarn link
-
-WORKDIR /opt/${APP}/api
-RUN yarn link @kalisio/kdk-core
-
-WORKDIR /opt/${APP}
-RUN yarn link @kalisio/kdk-core
+WORKDIR /opt
+RUN \
+  cd kdk && yarn link && cd .. && \
+  kdk ./kdk/workspaces/${APP}.js --link
 
 EXPOSE 8081
 
