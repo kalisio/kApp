@@ -13,7 +13,7 @@ ENV NODE_APP_INSTANCE=dev
 WORKDIR /opt
 
 # Install the cli
-RUN git clone https://github.com/kalisio/kdk.git && cd kdk && yarn && yarn link && cd ..
+RUN git clone https://github.com/kalisio/kdk.git && cd kdk && yarn
 
 # Install the app
 RUN \
@@ -36,13 +36,13 @@ ENV NODE_APP_INSTANCE=dev
 ENV DEBUG=kalisio*,-kalisio:kCore:authorisations:hooks
 
 COPY --from=Build /opt/kdk /opt/kdk
-COPY --from=Build /opt/${APP} /opt/${APP}
 
-WORKDIR /opt
+WORKDIR /opt/kdk
 RUN \
   cd kdk && yarn link && cd .. && \
   kdk ./kdk/workspaces/${APP}.js --link
 
-EXPOSE 8081
+WORKDIR /opt/kdk/${APP}
 
+EXPOSE 8081
 CMD [ "yarn", "prod" ]
