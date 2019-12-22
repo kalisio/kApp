@@ -17,9 +17,9 @@ then
 fi
 
 # Install the required secret files requied to sign the app
-cp workspace/common/android/*.json src-cordova/
-cp workspace/$FLAVOR/android/*.json src-cordova/
-cp workspace/common/android/$GOOGLE_KEYSTORE src-cordova/	
+cp $TRAVIS_BUILD_DIR/workspace/common/android/*.json src-cordova/
+cp $TRAVIS_BUILD_DIR/workspace/$FLAVOR/android/*.json src-cordova/
+cp $TRAVIS_BUILD_DIR/workspace/common/android/$GOOGLE_KEYSTORE src-cordova/	
 
 travis_fold end "provision"
 

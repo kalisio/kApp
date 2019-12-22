@@ -17,10 +17,10 @@ then
 fi
 
 # Copy the certificates
-cp workspace/common/ios/*.cer .
-cp workspace/common/ios/*.p12 .
-cp workspace/$FLAVOR/ios/*.cer .
-cp workspace/$FLAVOR/ios/*.p12 .
+cp $TRAVIS_BUILD_DIR/workspace/common/ios/*.cer .
+cp $TRAVIS_BUILD_DIR/workspace/common/ios/*.p12 .
+cp $TRAVIS_BUILD_DIR/workspace/$FLAVOR/ios/*.cer .
+cp $TRAVIS_BUILD_DIR/workspace/$FLAVOR/ios/*.p12 .
 
 # Create a custom keychain
 security create-keychain -p travis ios-build.keychain
@@ -39,9 +39,9 @@ done
 security set-key-partition-list -S apple-tool:,apple: -s -k travis ios-build.keychain
 
 # Install the required secret files requied to sign the app
-cp workspace/$FLAVOR/ios/build.json src-cordova/.
+cp $TRAVIS_BUILD_DIR/workspace/$FLAVOR/ios/build.json src-cordova/.
 mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-cp workspace/$FLAVOR/ios/*.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+cp $TRAVIS_BUILD_DIR/workspace/$FLAVOR/ios/*.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
 
 travis_fold end "provision"
 
