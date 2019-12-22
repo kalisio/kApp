@@ -4,7 +4,7 @@ services:
   app:
     image: kalisio/${APP}:${VERSION_TAG}
     env_file:
-      - .env
+      - ../.env
     networks:
       - app-network
 

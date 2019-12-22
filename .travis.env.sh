@@ -11,14 +11,11 @@ else
   export FLAVOR=dev
 fi
 
-# Extract the APP variable according the travis repo slut
-REPO_SLUG="$TRAVIS_REPO_SLUG"
-REPO_NAME=${REPO_SLUG,,} # to lowercase
-APP=`echo $REPO_NAME | cut -d'/' -f2`  # do not use substiution because it fails on MacOS
+# Extract the name of the app
+APP=$(node -p -e "require('./package.json').name")
 
 # Exports addtionnal variables
 VERSION=$(node -p -e "require('./package.json').version")
-BUILDS_BUCKET=$APP-builds
 
 # Retrieve the environment variables stored in the workspace
 echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
@@ -54,4 +51,6 @@ fi
 set -a
 . .travis.env
 set +a
+
+BUILDS_BUCKET=$APP-builds
 
