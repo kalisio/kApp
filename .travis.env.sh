@@ -14,7 +14,8 @@ fi
 # Extract the APP variable according the travis repo slut
 REPO_SLUG="$TRAVIS_REPO_SLUG"
 REPO_NAME=${REPO_SLUG,,} # to lowercase
-export APP=${REPO_NAME#*/} # omit the organization
+APP_NAME=${REPO_NAME#*/} # omit the organization
+export APP=$APP_NAME
 
 # Exports addtionnal variables
 export VERSION=$(node -p -e "require('./package.json').version")
