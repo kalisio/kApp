@@ -14,12 +14,11 @@ fi
 # Extract the APP variable according the travis repo slut
 REPO_SLUG="$TRAVIS_REPO_SLUG"
 REPO_NAME=${REPO_SLUG,,} # to lowercase
-APP_NAME=${REPO_NAME#*/} # omit the organization
-export APP=$APP_NAME
+APP=`echo $REPO_NAME | cut -d'/' -f2`  # do not use substiution because it fails on MacOS
 
 # Exports addtionnal variables
-export VERSION=$(node -p -e "require('./package.json').version")
-export BUILDS_BUCKET=$APP-builds
+VERSION=$(node -p -e "require('./package.json').version")
+BUILDS_BUCKET=$APP-builds
 
 # Retrieve the environment variables stored in the workspace
 echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
