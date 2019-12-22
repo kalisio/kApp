@@ -70,7 +70,7 @@ fi
 # Backup the ios build to S3
 aws s3 sync src-cordova/platforms/ios/build s3://$BUILDS_BUCKET/$BUILD_NUMBER/ios > /dev/null
 EXIT_CODE=$?
-if [ $EXIT_CODE -ne 0 ]; then
+if [ $EXIT_CODE -eq 1 ]; then 
 	echo "Copying the artefact to s3 failed [error: $EXIT_CODE]"
 	exit 1
 fi

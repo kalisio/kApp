@@ -47,7 +47,7 @@ fi
 # Backup the android build to S3
 aws s3 sync src-cordova/platforms/android/app/build/outputs/apk s3://$BUILDS_BUCKET/$BUILD_NUMBER/android > /dev/null
 EXIT_CODE=$?
-if [ $EXIT_CODE -ne 0 ]; then
+if [ $EXIT_CODE -eq 1 ]; then
 	echo "Copying the artefact to s3 failed [error: $EXIT_CODE]"
 	exit 1
 fi
