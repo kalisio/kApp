@@ -65,9 +65,9 @@ echo "package_name(\"$PACKAGE_ID\")" >> src-cordova/fastlane/Appfile
 cd src-cordova
 fastlane android $NODE_APP_INSTANCE > android.deploy.log 2>&1
 DEPLOY_CODE=$?
-cd ..
+
 # Copy the log whatever the result
-aws s3 cp src-cordova/android.deploy.log s3://$BUILDS_BUCKET/$BUILD_NUMBER/android.deploy.log
+aws s3 cp android.deploy.log s3://$BUILDS_BUCKET/$BUILD_NUMBER/android.deploy.log
 if [ $DEPLOY_CODE -ne 0 ]; then
 	exit 1
 fi

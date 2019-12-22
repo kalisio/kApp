@@ -26,7 +26,7 @@ then
 
 	# Pretend that the sources are in /opt/${APP}/api/src (symbolik link does not work)
 	mkdir -p /opt/${APP}/api
-	cp -R api/src /opt/${APP}/api/src
+	cp -R api/src /opt/kdk/${APP}/api/src
 
 	# Report to code climate
 	./cc-test-reporter after-build -t lcov --exit-code $ERROR_CODE
