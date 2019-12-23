@@ -10,9 +10,9 @@ travis_fold start "provision"
 if [ $FLAVOR != "prod" ]
 then
   git clone https://github.com/kalisio/kdk.git && cd kdk && yarn 
-  node . workspaces/${APP}.js --clone --branch ${FLAVOR}
-  node . workspaces/${APP}.js --install
-  node . workspaces/${APP}.js --link
+  node . $TRAVIS_BUILD_DIR/workspace/${APP}.js --clone --branch ${FLAVOR}
+  node . $TRAVIS_BUILD_DIR/workspace/${APP}.js --install
+  node . $TRAVIS_BUILD_DIR/workspace/${APP}.js --link
 	cd $APP
 fi
 
