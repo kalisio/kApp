@@ -8,7 +8,7 @@
       Card grid rendering
      -->
     <k-grid v-else service="documents" :renderer="cardRenderer" :filter-query="searchQuery" />
-    <!-- 
+    <!--
       Document editor
      -->
     <k-modal-editor ref="documentEditor" service="documents" :objectId="documentId" @applied="onDocumentCreated" />
@@ -45,7 +45,7 @@ export default {
           itemActions: [{
             label: this.$i18n.t('MainActivity.EDIT_DOCUMENT'),
             icon: 'edit',
-            handler: (document) => this.onEditDocument(document) 
+            handler: (document) => this.onEditDocument(document)
           },
           {
             label: this.$i18n.t('MainActivity.REMOVE_DOCUMENT'),
@@ -140,7 +140,7 @@ export default {
     this.$options.components['k-grid'] = this.$load('collection/KGrid')
     this.$options.components['k-modal-editor'] = this.$load('editor/KModalEditor')
     this.$options.components['k-modal-viewer'] = this.$load('viewer/KModalViewer')
-    // Listen to the nav links  
+    // Listen to the nav links
     this.$events.$on('open-custom-editor', this.onOpenCustomEditor)
     this.$events.$on('open-custom-viewer', this.onOpenCustomViewer)
   },

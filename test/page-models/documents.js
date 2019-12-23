@@ -1,9 +1,10 @@
 import { Selector } from 'testcafe'
-import Application from './application'
+import Layout from './layout'
 
-export default class Documents extends Application {
-  constructor () {
+export default class Documents extends Layout {
+  constructor (layout) {
     super()
+    this.layout = layout
     // list
     this.nameField = Selector('.q-dialog').find('#name-field')
     this.createButton = Selector('.q-dialog').find('#apply-button')
@@ -12,7 +13,7 @@ export default class Documents extends Application {
   }
 
   async create (test, values) {
-    await this.clickFab(test, '#create-document')
+    await this.layout.clickFab(test, '#create-document')
     await test
       .typeText(this.nameField, values.name, { replace: true })
       .click(this.createButton)

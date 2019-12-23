@@ -1,10 +1,12 @@
 import { ClientFunction } from 'testcafe'
-import Application from './application'
+import Screens from './screens'
+import Layout from './layout'
 import Documents from './documents'
 
 // Export all models
 export {
-  Application,
+  Screens,
+  Layout,
   Documents
 }
 

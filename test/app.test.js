@@ -14,28 +14,37 @@ fixture`app`// declare the fixture
     await pages.checkNoClientError(test)
   })
 
-const app = new pages.Application()
-const docs = new pages.Documents()
+const screens = new pages.Screens()
+const layout = new pages.Layout()
+const docs = new pages.Documents(layout)
+
+const user = {
+  name: 'kalisio',
+  email: 'kalisio@kalisio.xyz',
+  password: 'Pass;word1'
+}
 
 test('Registering to the app', async test => {
-  await app.goToRegisterScreen(test)
-  await app.register(test)
-  await app.logout(test)
+  await screens.goToRegisterScreen(test)
+  await screens.register(test, user)
+  await layout.logout(test, user)
 })
 
 test('Authenticating to the app', async test => {
-  await app.login(test)
-  await app.logout(test)
+  await screens.login(test, user)
+  await layout.logout(test)
+  await screens.goToLoginScreen(test)
 })
 
 test('Create document', async test => {
-  await app.login(test)
+  await screens.login(test, user)
   await docs.create(test, { name: 'document1' })
-  await app.logout(test)
+  await layout.logout(test)
 })
 
 test('Delete document', async test => {
-  await app.login(test)
+  await screens.login(test, user)
   await docs.delete(test)
-  await app.logout(test)
+  await layout.logout(test)
 })
+
