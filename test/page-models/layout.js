@@ -10,8 +10,8 @@ export default class AppBar extends Page {
     this.appBarTitle = this.appBar.find('#app-bar-title')
     this.appBarOverflowMenu = Selector('#overflow-menu')
     this.appBarOverflowMenuEntry = this.appBar.find('#overflow-menu-entry')
-    // SideNav
     this.sideNavToggle = this.appBar.find('#left-drawer-toggle')
+    // SideNav
     this.sideNav = VueSelector('k-side-nav')
     this.identityPanel = VueSelector('k-identity-panel')
     this.identityLink = Selector('#account')
@@ -26,12 +26,10 @@ export default class AppBar extends Page {
 
   // Sidenav functions
   async isSideNavVisible () {
-    const exists = await this.sideNav.exists
-    if (!exists) return false
-    const left = await this.sideNav.getBoundingClientRectProperty('left')
     // quasar actually hides the sideNav by translating it outside the viewport,
     // so that the visible flag is always true
-    return left >= 0
+    const leftPos = await this.sideNav.getBoundingClientRectProperty('left')
+    return leftPos >= 0
   }
 
   async openSideNav (test) {
