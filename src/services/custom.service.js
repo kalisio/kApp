@@ -5,7 +5,7 @@ export default function (name, api, options) {
     KTextField: 'Lorem ipsum',
     KTextareaField: 'Post hoc impie perpetratum quod in aliis quoque iam timebatur, tamquam licentia crudelitati indulta per suspicionum nebulas aestimati quidam noxii damnabantur. quorum pars necati, alii puniti bonorum multatione actique laribus suis extorres nullo sibi relicto praeter querelas et lacrimas, stipe conlaticia victitabant, et civili iustoque imperio ad voluntatem converso cruentam, claudebantur opulentae domus et clarae.',
     KAttachmentField: { name: 'An attachment file' },
-    KChipsWithIconField: [{ value: 'A chips', icon: { name: 'check', color: 'secondary' } }, { value: 'Another chips', icon: { name: 'layers', color: 'blue' } }],
+    KChipsField: [{ value: 'A chips', icon: { name: 'check', color: 'secondary' } }, { value: 'Another chips', icon: { name: 'layers', color: 'blue' } }],
     KEmailField: 'kalisio@kalisio.xyz',
     KIconField: { name: 'check', color: 'orange' },
     KItemField: { name: 'An item', services: 'documents', color: 'lime' },

@@ -31,15 +31,15 @@
         "helper": "KAttachmentField"
       }
     },
-    "KChipsWithIconField": {
+    "KChipsField": {
       "type": "array",
       "uniqueItems": true,
       "minItems": 1,
       "chips": true,
       "field": {
-        "component": "form/KChipsWithIconField",
+        "component": "form/KChipsField",
         "label": "Chips",
-        "helper": "KChipsWithIconField"
+        "helper": "KChipsField"
       }
     },
     "KDatetimeField": {
