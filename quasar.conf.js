@@ -88,7 +88,8 @@ module.exports = function (ctx) {
       plugins: [
         'Notify',
         'Dialog',
-        'Platform'
+        'Platform',
+        'Loading'
       ]
     },
 
