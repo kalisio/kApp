@@ -25,10 +25,11 @@ echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
 git clone -b $APP https://github.com/kalisio/kdk-workspaces workspace
 
 # Define the CLI workspace to be used for building process
-WORKSPACE=workspace/$APP.js
 if [ -f workspace/$FLAVOR/$APP.js ]
 then
-  WORKSPACE=workspace/$FLAVOR/$APP.js
+  export WORKSPACE=workspace/$FLAVOR/$APP.js
+else
+  export WORKSPACE=workspace/$APP.js
 fi
 
 # Define environment variables (merges common and flavor env)
@@ -47,7 +48,6 @@ echo "VERSION=$VERSION" >> .env
 echo "VERSION_TAG=$VERSION-$FLAVOR" >> .env
 echo "BUILD_NUMBER=$TRAVIS_BUILD_NUMBER" >> .env
 echo "BRANCH=$TRAVIS_BRANCH" >> .env
-echo "WORKSPACE=$WORKSPACE" >> .env
 
 set -a
 . .env
