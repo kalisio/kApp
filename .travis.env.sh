@@ -17,6 +17,13 @@ fi
 # Extract the name of the app
 APP=$(node -p -e "require('./package.json').name")
 
+# Define the CLI workspace to be used for building process
+WORKSPACE=workspace/$APP.js
+if [ -f =workspace/$FLAVOR/$APP.js ]
+then
+  WORKSPACE==workspace/$FLAVOR/$APP.js
+fi
+
 # Exports addtionnal variables
 VERSION=$(node -p -e "require('./package.json').version")
 

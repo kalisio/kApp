@@ -6,13 +6,11 @@ FROM  node:8-buster AS Build
 ARG APP
 ARG BRANCH
 ARG FLAVOR
+ARG WORKSPACE
 ARG BUILD_NUMBER
 
 ENV BUILD_NUMBER=$BUILD_NUMBER
 ENV NODE_APP_INSTANCE=$FLAVOR
-
-ENV WORKSPACE=workspace/$APP.js
-RUN if [ -f workspace/${FLAVOR}/${APP}.js ]; then WORKSPACE=workspace/${FLAVOR]/${APP].js; fi
 
 # Install the cli
 WORKDIR /opt
