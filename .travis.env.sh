@@ -17,7 +17,6 @@ fi
 # Extract the name of the app
 APP=$(node -p -e "require('./package.json').name")
 
-
 # Exports addtionnal variables
 VERSION=$(node -p -e "require('./package.json').version")
 
@@ -31,7 +30,6 @@ if [ -f workspace/$FLAVOR/$APP.js ]
 then
   WORKSPACE=workspace/$FLAVOR/$APP.js
 fi
-echo $WORKSPACE
 
 # Define environment variables (merges common and flavor env)
 cp workspace/common/.env .env
@@ -49,6 +47,7 @@ echo "VERSION=$VERSION" >> .env
 echo "VERSION_TAG=$VERSION-$FLAVOR" >> .env
 echo "BUILD_NUMBER=$TRAVIS_BUILD_NUMBER" >> .env
 echo "BRANCH=$TRAVIS_BRANCH" >> .env
+echo "WORKSPACE=$WORKSPACE" >> .env
 
 set -a
 . .env
