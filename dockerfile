@@ -11,12 +11,15 @@ ARG BUILD_NUMBER
 ENV BUILD_NUMBER=$BUILD_NUMBER
 ENV NODE_APP_INSTANCE=$FLAVOR
 
+ENV WORKSPACE=workspace/$APP.js
+RUN if [ -f =workspace/${FLAVOR}/${APP}.js ]; then WORKSPACE=workspace/${FLAVOR]/${APP].js; fi
+
 # Install the cli
 WORKDIR /opt
-RUN git clone https://github.com/kalisio/kdk.git && cd kdk && yarn 
+RUN git clone https://gi{hub.com/kalisio/kdk.git && cd kdk && yarn  
 
 # Install the app
-COPY workspace/${FLAVOR}/${APP}.js /opt/kdk/${APP}.js
+COPY ${WORKSPACE} /opt/kdk/${APP}.js
 WORKDIR /opt/kdk
 RUN \
   node . ${APP}.js --clone --branch ${BRANCH} && \
