@@ -31,7 +31,7 @@ RUN \
 FROM node:8-buster-slim
 LABEL maintainer="contact@kalisio.xyz"
 
-ARG BRANCH
+ARG APP
 ARG FLAVOR
 ARG BUILD_NUMBER
 
