@@ -27,9 +27,9 @@ git clone -b $APP https://github.com/kalisio/kdk-workspaces workspace
 
 # Define the CLI workspace to be used for building process
 WORKSPACE=workspace/$APP.js
-if [ -f =workspace/$FLAVOR/$APP.js ]
+if [ -f workspace/$FLAVOR/$APP.js ]
 then
-  WORKSPACE==workspace/$FLAVOR/$APP.js
+  WORKSPACE=workspace/$FLAVOR/$APP.js
 fi
 
 # Define environment variables (merges common and flavor env)
