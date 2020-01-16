@@ -31,6 +31,7 @@ if [ -f workspace/$FLAVOR/$APP.js ]
 then
   WORKSPACE=workspace/$FLAVOR/$APP.js
 fi
+echo $WORKSPACE
 
 # Define environment variables (merges common and flavor env)
 cp workspace/common/.env .env

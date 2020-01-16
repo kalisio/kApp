@@ -17,6 +17,7 @@ WORKDIR /opt
 RUN git clone https://github.com/kalisio/kdk.git && cd kdk && yarn  
 
 # Install the app
+RUN echo ${WORKSPACE}
 COPY ${WORKSPACE} /opt/kdk/${APP}.js
 WORKDIR /opt/kdk
 RUN \
