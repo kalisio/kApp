@@ -7,14 +7,11 @@ source .travis.env.sh
 travis_fold start "provision"
 
 # Install the kdk if required
-if [ $FLAVOR != "prod" ]
-then
-  git clone https://github.com/kalisio/kdk.git && cd kdk && yarn 
-  node . $TRAVIS_BUILD_DIR/workspace/${APP}.js --clone --branch ${FLAVOR}
-  node . $TRAVIS_BUILD_DIR/workspace/${APP}.js --install
-  node . $TRAVIS_BUILD_DIR/workspace/${APP}.js --link
-	cd $APP
-fi
+git clone https://github.com/kalisio/kdk.git && cd kdk && yarn 
+node . $TRAVIS_BUILD_DIR/workspace/${FLAVOR}/${APP}.js --clone --branch ${BRANCH}
+node . $TRAVIS_BUILD_DIR/workspace/${FLAVOR}/${APP}.js --install
+node . $TRAVIS_BUILD_DIR/workspace/${FLAVOR}/${APP}.js --link
+cd $APP
 
 # Copy the certificates
 cp $TRAVIS_BUILD_DIR/workspace/common/ios/*.cer .

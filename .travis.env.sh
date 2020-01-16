@@ -1,7 +1,7 @@
 #!/bin/bash
+
 TEST_FLAVOR_REGEX="^test*"
 PROD_FLAVOR_REGEX="^v[0-9]+\.[0-9]+\.[0-9]+"
-
 if [[ $TRAVIS_BRANCH =~ $TEST_FLAVOR_REGEX ]];
 then
   if [[ $TRAVIS_TAG =~ $PROD_FLAVOR_REGEX ]];
