@@ -20,7 +20,7 @@ travis_fold end "provision"
 travis_fold start "build"
 
 # Build the api
-cd kdk/$APP/api && yarn build
+cd $APP/api && yarn build
 ERROR_CODE=$?
 if [ $ERROR_CODE -eq 1 ]; then
 	echo "Building the api failed [error: $ERROR_CODE]"
