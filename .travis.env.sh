@@ -6,19 +6,21 @@ if [[ $TRAVIS_BRANCH =~ $TEST_FLAVOR_REGEX ]];
 then
   if [[ $TRAVIS_TAG =~ $PROD_FLAVOR_REGEX ]];
   then
-    export FLAVOR=prod
+    FLAVOR=prod
   else
-    export FLAVOR=test
+    FLAVOR=test
   fi
 else
-  export FLAVOR=dev
+  FLAVOR=dev
 fi
+NODE_APP_INSTANCE=$FLAVOR
 
 # Extract the name of the app
 APP=$(node -p -e "require('./package.json').name")
 
 # Exports addtionnal variables
 VERSION=$(node -p -e "require('./package.json').version")
+TAG=$VERSION-$FLAVOR
 
 # Clone the workspace 
 echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
@@ -41,13 +43,12 @@ then
 fi
 
 # Add computed variables
-echo "APP=$APP" >> .env
-echo "COMPOSE_PROJECT_NAME=$APP" >> .env
-echo "NODE_APP_INSTANCE=$FLAVOR" >> .env
-echo "VERSION=$VERSION" >> .env
-echo "VERSION_TAG=$VERSION-$FLAVOR" >> .env
-echo "BUILD_NUMBER=$TRAVIS_BUILD_NUMBER" >> .env
-echo "BRANCH=$TRAVIS_BRANCH" >> .env
+#echo "APP=$APP" >> .env
+#echo "COMPOSE_PROJECT_NAME=$APP" >> .env
+#echo "NODE_APP_INSTANCE=$FLAVOR" >> .env
+#echo "VERSION=$VERSION" >> .env
+#echo "VERSION_TAG=$VERSION-$FLAVOR" >> .env
+#echo "BUILD_NUMBER=$TRAVIS_BUILD_NUMBER" >> .env
 
 set -a
 . .env

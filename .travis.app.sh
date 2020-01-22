@@ -9,7 +9,7 @@ travis_fold start "provision"
 # Install the kdk and the required dependencies according the project file
 git clone https://github.com/kalisio/kdk.git && cd kdk && yarn 
 cp $TRAVIS_BUILD_DIR/${PROJECT} ${APP}.js
-node . ${APP}.js --clone ${BRANCH}
+node . ${APP}.js --clone ${TRAVIS_BRANCH}
 node . ${APP}.js --install
 node . ${APP}.js --link
 
@@ -35,7 +35,7 @@ if [ $ERROR_CODE -eq 1 ]; then
 	exit 1
 fi
 # Build the docker image
-cd ../.. && docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$BUILD_NUMBER -t kalisio/$APP:$VERSION_TAG . 
+cd ../.. && docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$TRAVIS_BUILD_NUMBER -t kalisio/$APP:$VERSION_TAG . 
 ERROR_CODE=$?
 if [ $ERROR_CODE -eq 1 ]; then
 	echo "Building the docker image has failed [error: $ERROR_CODE]"

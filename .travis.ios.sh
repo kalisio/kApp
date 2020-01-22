@@ -8,7 +8,7 @@ travis_fold start "provision"
 
 # Install the kdk if required
 git clone https://github.com/kalisio/kdk.git && cd kdk && yarn 
-node . $TRAVIS_BUILD_DIR/workspace/${FLAVOR}/${APP}.js --clone ${BRANCH}
+node . $TRAVIS_BUILD_DIR/workspace/${FLAVOR}/${APP}.js --clone ${TRAVIS_BRANCH}
 node . $TRAVIS_BUILD_DIR/workspace/${FLAVOR}/${APP}.js --install
 node . $TRAVIS_BUILD_DIR/workspace/${FLAVOR}/${APP}.js --link
 cd $APP
@@ -58,14 +58,14 @@ npm run cordova:build:ios > ios.build.log 2>&1
 # Capture the build result
 EXIT_CODE=$?
 # Copy the log whatever the result
-aws s3 cp ios.build.log s3://$BUILDS_BUCKET/$BUILD_NUMBER/ios.build.log
+aws s3 cp ios.build.log s3://$BUILDS_BUCKET/$TRAVIS_BUILD_NUMBER/ios.build.log
 if [ $EXIT_CODE -ne 0 ]; then
 	echo "Building the app failed [error: $EXIT_CODE]"
 	exit 1
 fi
 
 # Backup the ios build to S3
-aws s3 sync src-cordova/platforms/ios/build s3://$BUILDS_BUCKET/$BUILD_NUMBER/ios > /dev/null
+aws s3 sync src-cordova/platforms/ios/build s3://$BUILDS_BUCKET/$TRAVIS_BUILD_NUMBER/ios > /dev/null
 EXIT_CODE=$?
 if [ $EXIT_CODE -eq 1 ]; then 
 	echo "Copying the artefact to s3 failed [error: $EXIT_CODE]"
@@ -85,7 +85,7 @@ ALTOOL="/Applications/Xcode.app/Contents/Applications/Application Loader.app/Con
 # Capture the deploy result
 EXIT_CODE=$?
 # Copy the log whatever the result
-aws s3 cp ios.deploy.log s3://$BUILDS_BUCKET/$BUILD_NUMBER/ios.deploy.log
+aws s3 cp ios.deploy.log s3://$BUILDS_BUCKET/$TRAVIS_BUILD_NUMBER/ios.deploy.log
 if [ $EXIT_CODE -ne 0 ]; then
 	echo "Deploying the app failed [error: $EXIT_CODE]"
 	exit 1
