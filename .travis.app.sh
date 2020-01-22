@@ -7,7 +7,7 @@ source .travis.env.sh
 travis_fold start "build"
 
 # Build the image
-docker-compose -f .travis.build.yml
+docker-compose -f .travis.build.yml build
 ERROR_CODE=$?
 if [ $ERROR_CODE -ne 0 ]; then
 	echo "Building the docker image has failed [error: $ERROR_CODE]"
