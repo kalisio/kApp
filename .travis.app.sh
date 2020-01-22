@@ -20,13 +20,27 @@ travis_fold end "provision"
 #
 travis_fold start "build"
 
-# Build the front
-yarn build > build.log 2>&1 && tail -n 24 build.log 
 # Build the api
 cd api && yarn build
+ERROR_CODE=$?
+if [ $ERROR_CODE -eq 1 ]; then
+	echo "Building the api failed [error: $ERROR_CODE]"
+	exit 1
+fi
+# Build the client
+cd .. && yarn build > build.log 2>&1 && tail -n 24 build.log 
+ERROR_CODE=$?
+if [ $ERROR_CODE -eq 1 ]; then
+	echo "Building the client image has failed [error: $ERROR_CODE]"
+	exit 1
+fi
 # Build the docker image
-cd ../..
-docker build -build-arg APP=$APP FLAVOR=$FLAVOR BUILD_NUMBER=$BUILD_NUMBER --f dockerfile -t kalisio/$APP:$VERSION_TAG . 
+cd .. && docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$BUILD_NUMBER --f dockerfile -t kalisio/$APP:$VERSION_TAG . 
+ERROR_CODE=$?
+if [ $ERROR_CODE -eq 1 ]; then
+	echo "Building the docker image has failed [error: $ERROR_CODE]"
+	exit 1
+fi
 
 travis_fold end "build"
 
