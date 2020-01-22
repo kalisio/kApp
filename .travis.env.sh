@@ -7,12 +7,12 @@ if [[ $TRAVIS_BRANCH =~ $TEST_FLAVOR_REGEX ]];
 then
   if [[ $TRAVIS_TAG =~ $PROD_FLAVOR_REGEX ]];
   then
-    FLAVOR=prod
+    export FLAVOR=prod
   else
-    FLAVOR=test
+    export FLAVOR=test
   fi
 else
-  FLAVOR=dev
+  export FLAVOR=dev
 fi
 NODE_APP_INSTANCE=$FLAVOR
 
@@ -30,9 +30,9 @@ git clone -b $APP https://github.com/kalisio/kdk-workspaces workspace
 # Define the CLI workspace to be used for building process
 if [ -f workspace/$FLAVOR/$APP.js ]
 then
-  export PROJECT=workspace/$FLAVOR/$APP.js
+  PROJECT=workspace/$FLAVOR/$APP.js
 else
-  export PROJECT=workspace/$APP.js
+  PROJECT=workspace/$APP.js
 fi
 
 # Read extra environment variables (merges common and flavor env)
@@ -59,6 +59,6 @@ set -a
 . .travis.env
 set +a
 
-BUILD_NUMBER=${TRAVIS_BUILD_NUMBER}
-BUILD_BUCKET=${APP}-builds/${BUILD_NUMBER}
+export BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
+BUILD_BUCKET=${APP}-builds/$BUILD_NUMBER
 
