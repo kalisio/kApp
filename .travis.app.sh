@@ -11,7 +11,6 @@ git clone https://github.com/kalisio/kdk.git && cd kdk && yarn
 node . $TRAVIS_BUILD_DIR/workspace/${FLAVOR}/${APP}.js --clone ${BRANCH}
 node . $TRAVIS_BUILD_DIR/workspace/${FLAVOR}/${APP}.js --install
 node . $TRAVIS_BUILD_DIR/workspace/${FLAVOR}/${APP}.js --link
-cd $APP
 
 travis_fold end "provision"
 
@@ -21,7 +20,7 @@ travis_fold end "provision"
 travis_fold start "build"
 
 # Build the api
-cd api && yarn build
+cd kdk/$APP/api && yarn build
 ERROR_CODE=$?
 if [ $ERROR_CODE -eq 1 ]; then
 	echo "Building the api failed [error: $ERROR_CODE]"
@@ -35,7 +34,7 @@ if [ $ERROR_CODE -eq 1 ]; then
 	exit 1
 fi
 # Build the docker image
-cd .. && docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$BUILD_NUMBER -t kalisio/$APP:$VERSION_TAG . 
+cd ../.. && docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$BUILD_NUMBER -t kalisio/$APP:$VERSION_TAG . 
 ERROR_CODE=$?
 if [ $ERROR_CODE -eq 1 ]; then
 	echo "Building the docker image has failed [error: $ERROR_CODE]"
