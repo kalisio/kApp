@@ -2,27 +2,31 @@
 source .travis.env.sh
 
 #
+# Provision the required files
+#
+travis_fold start "provision"
+
+# Install the kdk if required
+git clone https://github.com/kalisio/kdk.git && cd kdk && yarn 
+node . $TRAVIS_BUILD_DIR/workspace/${FLAVOR}/${APP}.js --clone ${BRANCH}
+node . $TRAVIS_BUILD_DIR/workspace/${FLAVOR}/${APP}.js --install
+node . $TRAVIS_BUILD_DIR/workspace/${FLAVOR}/${APP}.js --link
+cd $APP
+
+travis_fold end "provision"
+
+#
 # Build the app
 #
 travis_fold start "build"
 
-# Build the image
-docker-compose -f .travis.build.yml build
-ERROR_CODE=$?
-if [ $ERROR_CODE -ne 0 ]; then
-	echo "Building the docker image has failed [error: $ERROR_CODE]"
-	exit 1
-fi
-
-# Tag the built image and push it to the hub
-docker tag kalisio/$APP kalisio/$APP:$VERSION_TAG
-docker login -u="$DOCKER_USER" -p="$DOCKER_PASSWORD"
-docker push kalisio/$APP:$VERSION_TAG
-ERROR_CODE=$?
-if [ $ERROR_CODE -eq 1 ]; then
-	echo "Pushing the docker image has failed [error: $ERROR_CODE]"
-	exit 1
-fi
+# Build the front
+yarn build > build.log 2>&1 && tail -n 24 build.log 
+# Build the api
+cd api && yarn build
+# Build the docker image
+cd ../..
+docker build -build-arg APP=$APP FLAVOR=$FLAVOR BUILD_NUMBER=$BUILD_NUMBER --f dockerfile -t kalisio/$APP:$VERSION_TAG . 
 
 travis_fold end "build"
 
@@ -30,6 +34,15 @@ travis_fold end "build"
 # Deploy the app
 #
 travis_fold start "deploy"
+
+# Push the docker image to the hub
+docker login -u="$DOCKER_USER" -p="$DOCKER_PASSWORD"
+docker push kalisio/$APP:$VERSION_TAG
+ERROR_CODE=$?
+if [ $ERROR_CODE -eq 1 ]; then
+	echo "Pushing the docker image has failed [error: $ERROR_CODE]"
+	exit 1
+fi
 
 # Copy the required keys and update the mode
 cp workspace/$FLAVOR/*.pem ~/.ssh/.
