@@ -58,11 +58,9 @@ cp workspace/$FLAVOR/*.pem ~/.ssh/.
 for KEY in `ls ~/.ssh/*.pem`; do
 	chmod 600 $KEY
 done
-
 # Copy the ssh config file
 # Note: it does not seem necessary to restart the service (service sshd reload)
 cp workspace/$FLAVOR/ssh.config ~/.ssh/config
-
 # Deploy the stack
 ssh REMOTE_SERVER "cd kargo; ./kargo remove $APP; ./kargo deploy $APP"
 
