@@ -59,5 +59,6 @@ set -a
 . .travis.env
 set +a
 
-BUILDS_BUCKET=$APP-builds
+BUILD_NUMBER=${TRAVIS_BUILD_NUMBER}
+BUILD_BUCKET=${APP}-builds/${BUILD_NUMBER}
 

@@ -30,7 +30,7 @@ if [ $ERROR_CODE -eq 1 ]; then
 	exit 1
 fi
 # Build the docker image
-cd ../.. && docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$TRAVIS_BUILD_NUMBER -t kalisio/$APP:$TAG . 
+cd ../.. && docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$BUILD_NUMBER -t kalisio/$APP:$TAG . 
 ERROR_CODE=$?
 if [ $ERROR_CODE -eq 1 ]; then
 	echo "Building the docker image has failed [error: $ERROR_CODE]"
