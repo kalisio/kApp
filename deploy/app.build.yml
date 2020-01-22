@@ -9,6 +9,6 @@ services:
         APP: ${APP}
         BRANCH: ${BRANCH}
         FLAVOR: ${FLAVOR}
-        WORKSPACE: ${WORKSPACE}        
+        MANIFEST: ${MANIFEST}        
         BUILD_NUMBER: ${BUILD_NUMBER}
         

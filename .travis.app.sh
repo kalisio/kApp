@@ -1,6 +1,11 @@
 #!/bin/bash
 source .travis.env.sh
 
+#
+# Build the app
+#
+travis_fold start "build"
+
 # Create the required network 
 docker network create --attachable $DOCKER_NETWORK
 
@@ -22,3 +27,25 @@ if [ $ERROR_CODE -eq 1 ]; then
 	exit 1
 fi
 
+
+travis_fold end "build"
+
+#
+# Deploy the app
+#
+travis_fold start "deploy"
+
+# Copy the required keys and update the mode
+cp workspace/$FLAVOR/*.pem ~/.ssh/.
+for KEY in `ls ~/.ssh/*.pem`; do
+	chmod 600 $KEY
+done
+
+# Copy the ssh config file
+# Note: it does not seem necessary to restart the service (service sshd reload)
+cp workspace/$FLAVOR/ssh.config ~/.ssh/config
+
+# Deploy the stack
+ssh REMOTE_SERVER "cd kargo; ./kargo remove $APP; ./kargo deploy $APP"
+
+travis_fold end "deploy"

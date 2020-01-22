@@ -8,7 +8,7 @@ travis_fold start "provision"
 
 # Install the kdk if required
 git clone https://github.com/kalisio/kdk.git && cd kdk && yarn 
-node . $TRAVIS_BUILD_DIR/workspace/${FLAVOR}/${APP}.js --clone --branch ${BRANCH}
+node . $TRAVIS_BUILD_DIR/workspace/${FLAVOR}/${APP}.js --clone ${BRANCH}
 node . $TRAVIS_BUILD_DIR/workspace/${FLAVOR}/${APP}.js --install
 node . $TRAVIS_BUILD_DIR/workspace/${FLAVOR}/${APP}.js --link
 cd $APP

@@ -6,7 +6,7 @@ FROM  node:8-buster AS Build
 ARG APP
 ARG BRANCH
 ARG FLAVOR
-ARG WORKSPACE
+ARG MANFISET
 ARG BUILD_NUMBER
 
 ENV BUILD_NUMBER=$BUILD_NUMBER
@@ -17,11 +17,10 @@ WORKDIR /opt
 RUN git clone https://github.com/kalisio/kdk.git && cd kdk && yarn  
 
 # Install the app
-RUN echo ${WORKSPACE}
-COPY ${WORKSPACE} /opt/kdk/${APP}.js
+COPY ${MANFISET} /opt/kdk/${APP}.js
 WORKDIR /opt/kdk
 RUN \
-  node . ${APP}.js --clone --branch ${BRANCH} && \
+  node . ${APP}.js --clone ${BRANCH} && \
   node . ${APP}.js --install && \
   node . ${APP}.js --link && \
   cd ${APP} && yarn build > build.log 2>&1 && tail -n 24 build.log && \ 
