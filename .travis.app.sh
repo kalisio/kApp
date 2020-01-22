@@ -6,9 +6,6 @@ source .travis.env.sh
 #
 travis_fold start "build"
 
-# Create the required network 
-docker network create --attachable $DOCKER_NETWORK
-
 # Build the image
 docker-compose -f deploy/app.yml -f deploy/app.build.yml build
 ERROR_CODE=$?

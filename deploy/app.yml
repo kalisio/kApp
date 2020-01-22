@@ -5,10 +5,4 @@ services:
     image: kalisio/${APP}:${VERSION_TAG}
     env_file:
       - ../.env
-    networks:
-      - app-network
 
-networks:
-  app-network:
-    external:
-      name: ${DOCKER_NETWORK}
