@@ -6,11 +6,12 @@ source .travis.env.sh
 #
 travis_fold start "provision"
 
-# Install the kdk if required
+# Install the kdk and the required dependencies according the project file
 git clone https://github.com/kalisio/kdk.git && cd kdk && yarn 
-node . $TRAVIS_BUILD_DIR/workspace/${FLAVOR}/${APP}.js --clone ${BRANCH}
-node . $TRAVIS_BUILD_DIR/workspace/${FLAVOR}/${APP}.js --install
-node . $TRAVIS_BUILD_DIR/workspace/${FLAVOR}/${APP}.js --link
+cp $TRAVIS_BUILD_DIR/${PROJECT} ${APP}.js
+node . ${APP}.js --clone ${BRANCH}
+node . ${APP}.js --install
+node . ${APP}.js --link
 
 travis_fold end "provision"
 
