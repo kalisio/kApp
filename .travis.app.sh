@@ -35,7 +35,7 @@ if [ $ERROR_CODE -eq 1 ]; then
 	exit 1
 fi
 # Build the docker image
-cd ../.. && docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$TRAVIS_BUILD_NUMBER -t kalisio/$APP:$VERSION_TAG . 
+cd ../.. && docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$TRAVIS_BUILD_NUMBER -t kalisio/$APP:$TAG . 
 ERROR_CODE=$?
 if [ $ERROR_CODE -eq 1 ]; then
 	echo "Building the docker image has failed [error: $ERROR_CODE]"
@@ -51,7 +51,7 @@ travis_fold start "deploy"
 
 # Push the docker image to the hub
 docker login -u="$DOCKER_USER" -p="$DOCKER_PASSWORD"
-docker push kalisio/$APP:$VERSION_TAG
+docker push kalisio/$APP:$TAG
 ERROR_CODE=$?
 if [ $ERROR_CODE -eq 1 ]; then
 	echo "Pushing the docker image has failed [error: $ERROR_CODE]"
