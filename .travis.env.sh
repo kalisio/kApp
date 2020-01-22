@@ -1,4 +1,5 @@
 #!/bin/bash
+# Define the environment variables
 
 TEST_FLAVOR_REGEX="^test*"
 PROD_FLAVOR_REGEX="^v[0-9]+\.[0-9]+\.[0-9]+"
@@ -34,7 +35,7 @@ else
   export PROJECT=workspace/$APP.js
 fi
 
-# Define environment variables (merges common and flavor env)
+# Read extra environment variables (merges common and flavor env)
 cp workspace/common/.env .env
 if [ -f workspace/$FLAVOR/.env ]
 then
@@ -42,19 +43,11 @@ then
   cat workspace/$FLAVOR/.env >> .env
 fi
 
-# Add computed variables
-#echo "APP=$APP" >> .env
-#echo "COMPOSE_PROJECT_NAME=$APP" >> .env
-#echo "NODE_APP_INSTANCE=$FLAVOR" >> .env
-#echo "VERSION=$VERSION" >> .env
-#echo "VERSION_TAG=$VERSION-$FLAVOR" >> .env
-#echo "BUILD_NUMBER=$TRAVIS_BUILD_NUMBER" >> .env
-
 set -a
 . .env
 set +a
 
-# Retrieve ci environement variables
+# Read ci environement variables
 cp workspace/common/.travis.env .travis.env
 if [ -f workspace/$FLAVOR/.travis.env ]
 then

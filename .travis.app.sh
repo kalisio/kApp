@@ -6,12 +6,7 @@ source .travis.env.sh
 #
 travis_fold start "provision"
 
-# Install the kdk and the required dependencies according the project file
-git clone https://github.com/kalisio/kdk.git && cd kdk && yarn 
-cp $TRAVIS_BUILD_DIR/${PROJECT} ${APP}.js
-node . ${APP}.js --clone ${TRAVIS_BRANCH}
-node . ${APP}.js --install
-node . ${APP}.js --link
+source .travis.project.sh
 
 travis_fold end "provision"
 
@@ -21,7 +16,7 @@ travis_fold end "provision"
 travis_fold start "build"
 
 # Build the api
-cd $APP/api && yarn build
+cd api && yarn build
 ERROR_CODE=$?
 if [ $ERROR_CODE -eq 1 ]; then
 	echo "Building the api failed [error: $ERROR_CODE]"
