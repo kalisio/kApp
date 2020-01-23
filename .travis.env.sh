@@ -67,5 +67,5 @@ node . ${APP}.js --clone ${TRAVIS_BRANCH}
 node . ${APP}.js --install
 node . ${APP}.js --link
 
-cd $AP
+cd $APP
 
