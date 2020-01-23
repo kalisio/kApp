@@ -8,10 +8,13 @@ ARG BUILD_NUMBER
 ENV BUILD_NUMBER=$BUILD_NUMBER
 ENV NODE_APP_INSTANCE=$FLAVOR
 
-ADD kdk.tgz /opt
+COPY kdk.tgz /opt
 
 WORKDIR /opt/kdk
-RUN node . ${APP}.js --link
+RUN \
+  tar zxf kdk.tgz && \
+  rm kdk.tgz && \
+  node . ${APP}.js --link
 
 WORKDIR /opt/kdk/${APP}
 EXPOSE 8081
