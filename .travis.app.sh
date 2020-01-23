@@ -1,12 +1,11 @@
 #!/bin/bash
-source .travis.env.sh
 
 #
 # Provision the required files
 #
 travis_fold start "provision"
 
-source .travis.project.sh
+source .travis.env.sh
 
 travis_fold end "provision"
 
@@ -29,8 +28,10 @@ if [ $ERROR_CODE -eq 1 ]; then
 	echo "Building the client image has failed [error: $ERROR_CODE]"
 	exit 1
 fi
-# Build the docker image
-cd ../.. && docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$BUILD_NUMBER -t kalisio/$APP:$TAG . 
+# Create an archive to speed docker build process
+cd ../..
+tar -zcvf kdk.tgz
+docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$BUILD_NUMBER -t kalisio/$APP:$TAG . 
 ERROR_CODE=$?
 if [ $ERROR_CODE -eq 1 ]; then
 	echo "Building the docker image has failed [error: $ERROR_CODE]"

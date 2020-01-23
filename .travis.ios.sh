@@ -1,12 +1,11 @@
 #!/bin/bash
-source .travis.env.sh
 
 #
 # Provision the required files
 #
 travis_fold start "provision"
 
-source .travis.project.sh
+source .travis.env.sh
 
 # Copy the certificates
 cp $TRAVIS_BUILD_DIR/workspace/common/ios/*.cer .

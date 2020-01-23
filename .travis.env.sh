@@ -1,5 +1,4 @@
 #!/bin/bash
-# Define the environment variables
 
 TEST_FLAVOR_REGEX="^test$|-test$"
 PROD_FLAVOR_REGEX="^v[0-9]+\.[0-9]+\.[0-9]+"
@@ -27,14 +26,6 @@ TAG=$VERSION-$FLAVOR
 echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
 git clone -b $APP https://github.com/kalisio/kdk-workspaces workspace
 
-# Define the CLI workspace to be used for building process
-if [ -f workspace/$FLAVOR/$APP.js ]
-then
-  PROJECT=workspace/$FLAVOR/$APP.js
-else
-  PROJECT=workspace/$APP.js
-fi
-
 # Read extra environment variables (merges common and flavor env)
 cp workspace/common/.env .env
 if [ -f workspace/$FLAVOR/.env ]
@@ -61,4 +52,20 @@ set +a
 
 export BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
 BUILD_BUCKET=${APP}-builds/$BUILD_NUMBER
+
+# Install the kdk
+git clone https://github.com/kalisio/kdk.git && cd kdk && yarn 
+
+# Clone the project and install the dependencies
+if [ -f $TRAVIS_BUILD_DIR/workspace/$FLAVOR/$APP.js ]
+then
+  cp $TRAVIS_BUILD_DIR/workspace/$FLAVOR/$APP.js ${APP}.js  
+else
+  cp $TRAVIS_BUILD_DIR/workspace/$APP.js ${APP}.js
+fi
+node . ${APP}.js --clone ${TRAVIS_BRANCH}
+node . ${APP}.js --install
+node . ${APP}.js --link
+
+cd $AP
 
