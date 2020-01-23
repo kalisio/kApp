@@ -49,7 +49,14 @@ docker login -u="$DOCKER_USER" -p="$DOCKER_PASSWORD"
 docker push kalisio/$APP:$TAG
 ERROR_CODE=$?
 if [ $ERROR_CODE -eq 1 ]; then
-	echo "Pushing the docker image has failed [error: $ERROR_CODE]"
+	echo "Pushing the docker image $TAG has failed [error: $ERROR_CODE]"
+	exit 1
+fi
+docker tag kalisio/$APP:$TAG kalisio/$APP:$FLAVOR
+docker push kalisio/$APP:$FLAVOR
+ERROR_CODE=$?
+if [ $ERROR_CODE -eq 1 ]; then
+	echo "Pushing the docker image $FLAVOR has failed [error: $ERROR_CODE]"
 	exit 1
 fi
 
