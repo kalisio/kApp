@@ -1,7 +1,7 @@
 #!/bin/bash
 # Define the environment variables
 
-TEST_FLAVOR_REGEX="^test*"
+TEST_FLAVOR_REGEX="^test$|-test$"
 PROD_FLAVOR_REGEX="^v[0-9]+\.[0-9]+\.[0-9]+"
 if [[ $TRAVIS_BRANCH =~ $TEST_FLAVOR_REGEX ]];
 then
@@ -14,7 +14,7 @@ then
 else
   export FLAVOR=dev
 fi
-NODE_APP_INSTANCE=$FLAVOR
+export NODE_APP_INSTANCE=$FLAVOR
 
 # Extract the name of the app
 APP=$(node -p -e "require('./package.json').name")
