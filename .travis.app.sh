@@ -1,5 +1,10 @@
 #!/bin/bash
 
+push_docker () {
+	docker push kalisio/$1:$2
+	check_code $? "Pushing the $2 $1 docker image"
+}
+
 #
 # Provision the required files
 #
@@ -16,20 +21,20 @@ travis_fold start "build"
 
 # Build the api
 cd api && yarn build
-chcheck_code $? "Building the api"
+check_code $? "Building the api"
 
 # Build the client
 cd .. && yarn build > build.log 2>&1 && tail -n 24 build.log 
-chcheck_code $? "Builing the client"
+check_code $? "Builing the client"
 
 # Create an archive to speed docker build process
 cd ../..
 tar -zcf kdk.tgz kdk
 docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$BUILD_NUMBER -f dockerfile.app -t kalisio/$APP:$TAG . 
-chcheck_code $? "Building the app docker image"
+check_code $? "Building the app docker image"
 
-docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$BUILD_NUMBER -f dockerfile.tests.client -t kalisio/$APP:$FLAVOR-tests-client . 
-chcheck_code $? "Building the tests client docker image"
+docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$BUILD_NUMBER -f dockerfile.tests.client -t kalisio/$APP:tests-client-$TAG . 
+check_code $? "Building the tests client docker image"
 
 travis_fold end "build"
 
@@ -38,17 +43,18 @@ travis_fold end "build"
 #
 travis_fold start "deploy"
 
-# Push the docker image to the hub
 docker login -u="$DOCKER_USER" -p="$DOCKER_PASSWORD"
-docker push kalisio/$APP:$TAG
-chcheck_code $? "Pushing the $TAG app docker image"
+check_code $? "Connecting to Docker"
 
+# Push the app image to the hub
+docker_push $APP $TAG
 docker tag kalisio/$APP:$TAG kalisio/$APP:$FLAVOR
-docker push kalisio/$APP:$FLAVOR
-chcheck_code $? "Pushing the $FLAVOR app docker image"
+docker_push $APP $FLAVOR
 
-docker push kalisio/$APP:$FLAVOR-tests-client
-chcheck_code $? "Pushing the $FLAVOR tests-client docker image"
+# Push the tests client image to the hub
+docker_push $APP tests-client-$TAG
+docker tag kalisio/$APP:tests-client-$TAG kalisio/$APP:tests-client-$FLAVOR
+docker_push $APP tests-client-$FLAVOR
 
 # Copy the required keys and update the mode
 cp workspace/$FLAVOR/*.pem ~/.ssh/.
@@ -60,6 +66,6 @@ done
 cp workspace/$FLAVOR/ssh.config ~/.ssh/config
 # Deploy the stack
 ssh REMOTE_SERVER "cd kargo; ./kargo remove $APP; ./kargo deploy $APP"
-chcheck_code $? "Deploying the app"
+check_code $? "Deploying the app"
 
 travis_fold end "deploy"

@@ -2,7 +2,6 @@
 
 check_code()
 {
-   echo $1 $2
    if [ $1 -ne 0 ]; then
 	  echo "$2 has failed [error: $1]"
 	  exit 1
