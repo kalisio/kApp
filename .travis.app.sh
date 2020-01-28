@@ -36,6 +36,9 @@ tar -zcf kdk.tgz kdk
 docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$BUILD_NUMBER -f dockerfile.app -t kalisio/$APP:$TAG . 
 check_code $? "Building the app docker image"
 
+docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$BUILD_NUMBER -f dockerfile.tests.api -t kalisio/$APP:tests-api-$TAG . 
+check_code $? "Building the tests api docker image"
+
 docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$BUILD_NUMBER -f dockerfile.tests.client -t kalisio/$APP:tests-client-$TAG . 
 check_code $? "Building the tests client docker image"
 
@@ -51,6 +54,9 @@ check_code $? "Connecting to Docker"
 
 # Push the app image to the hub
 push_docker $APP $TAG $FLAVOR 
+
+# Push the tests api image to the hub
+push_docker $APP tests-api-$TAG tests-api-$FLAVOR
 
 # Push the tests client image to the hub
 push_docker $APP tests-client-$TAG tests-client-$FLAVOR
