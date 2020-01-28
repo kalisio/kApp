@@ -3,6 +3,9 @@
 push_docker () {
 	docker push kalisio/$1:$2
 	check_code $? "Pushing the $2 $1 docker image"
+	docker tag kalisio/$1:$2 kalisio/$1:$3
+	docker push kalisio/$1:$3
+	check_code $? "Pushing the $3 $1 docker image"
 }
 
 #
@@ -47,14 +50,10 @@ docker login -u="$DOCKER_USER" -p="$DOCKER_PASSWORD"
 check_code $? "Connecting to Docker"
 
 # Push the app image to the hub
-docker_push $APP $TAG
-docker tag kalisio/$APP:$TAG kalisio/$APP:$FLAVOR
-docker_push $APP $FLAVOR
+push_docker $APP $TAG $FLAVOR 
 
 # Push the tests client image to the hub
-docker_push $APP tests-client-$TAG
-docker tag kalisio/$APP:tests-client-$TAG kalisio/$APP:tests-client-$FLAVOR
-docker_push $APP tests-client-$FLAVOR
+push_docker $APP tests-client-$TAG tests-client-$FLAVOR
 
 # Copy the required keys and update the mode
 cp workspace/$FLAVOR/*.pem ~/.ssh/.
