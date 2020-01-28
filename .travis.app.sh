@@ -16,20 +16,20 @@ travis_fold start "build"
 
 # Build the api
 cd api && yarn build
-check_code $? -1 "Building the api"
+chcheck_code $? "Building the api"
 
 # Build the client
 cd .. && yarn build > build.log 2>&1 && tail -n 24 build.log 
-check_code $? -1 "Builing the client"
+chcheck_code $? "Builing the client"
 
 # Create an archive to speed docker build process
 cd ../..
 tar -zcf kdk.tgz kdk
 docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$BUILD_NUMBER -f dockerfile.app -t kalisio/$APP:$TAG . 
-check_code $? -1 "Building the app docker image"
+chcheck_code $? "Building the app docker image"
 
 docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$BUILD_NUMBER -f dockerfile.tests.client -t kalisio/$APP:$FLAVOR-tests-client . 
-check_code $? -1 "Building the tests client docker image"
+chcheck_code $? "Building the tests client docker image"
 
 travis_fold end "build"
 
@@ -41,14 +41,14 @@ travis_fold start "deploy"
 # Push the docker image to the hub
 docker login -u="$DOCKER_USER" -p="$DOCKER_PASSWORD"
 docker push kalisio/$APP:$TAG
-check_code $? -1 "Pushing the $TAG app docker image"
+chcheck_code $? "Pushing the $TAG app docker image"
 
 docker tag kalisio/$APP:$TAG kalisio/$APP:$FLAVOR
 docker push kalisio/$APP:$FLAVOR
-check_code $? -1 "Pushing the $FLAVOR app docker image"
+chcheck_code $? "Pushing the $FLAVOR app docker image"
 
 docker push kalisio/$APP:$FLAVOR-tests-client
-check_code $? -1 "Pushing the $FLAVOR tests-client docker image"
+chcheck_code $? "Pushing the $FLAVOR tests-client docker image"
 
 # Copy the required keys and update the mode
 cp workspace/$FLAVOR/*.pem ~/.ssh/.
@@ -60,6 +60,6 @@ done
 cp workspace/$FLAVOR/ssh.config ~/.ssh/config
 # Deploy the stack
 ssh REMOTE_SERVER "cd kargo; ./kargo remove $APP; ./kargo deploy $APP"
-check_code $? -1 "Deploying the app"
+chcheck_code $? "Deploying the app"
 
 travis_fold end "deploy"
