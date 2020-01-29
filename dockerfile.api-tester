@@ -25,6 +25,6 @@ RUN \
 CMD \
   yarn lint; \
   ./cc-test-reporter before-build; \
-  yarn coverage --reporter test/reporter/reporter.slack; \
+  yarn coverage --reporter test/reporters/mocha.slack; \
   ./cc-test-reporter format-coverage -t lcov; \
   ./cc-test-reporter upload-coverage
