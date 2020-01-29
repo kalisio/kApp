@@ -22,4 +22,4 @@ RUN \
   mkdir coverage && \
   chmod +w coverage
 
-CMD ./cc-reporter before-build; yarn coverage --reporter test/reporter/reporter.slack; ./cc-reporter format-coverage -t lcov --prefix /opt/kdk/$APP; ./cc-reporter upload-coverage
+CMD ./cc-reporter before-build; yarn coverage --reporter test/reporter/reporter.slack; ./cc-reporter format-coverage -t lcov --prefix /opt/kdk; ./cc-reporter upload-coverage
