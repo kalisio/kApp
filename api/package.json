@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "@slack/webhook": "^5.0.2",
     "babel-cli": "^6.24.0",
     "babel-core": "^6.24.1",
     "babel-eslint": "^10.0.3",
