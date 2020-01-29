@@ -11,6 +11,9 @@ ENV MOCHA_CONTEXT=$APP
 ENV SLACK_WEBOOK_URL=
 ENV CC_TEST_REPORTER_ID=
 
+# Install GIT
+RUN apt-get update && apt-get -y install git-all
+
 # Install code climate
 WORKDIR /opt/kdk/$APP/api
 RUN \
@@ -19,4 +22,4 @@ RUN \
   mkdir coverage && \
   chmod +w coverage
 
-CMD ./cc-reporter before-build; yarn coverage --reporter test/reporter/reporter.slack; ./cc-reporter format-coverage -t lcov --prefix /opt/kdk/$APP -o coverage/codeclimate.json; ./cc-reporter upload-coverage
+CMD ./cc-reporter before-build; yarn coverage --reporter test/reporter/reporter.slack; ./cc-reporter format-coverage -t lcov --prefix /opt/kdk/$APP; ./cc-reporter upload-coverage
