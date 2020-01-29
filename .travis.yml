@@ -2,10 +2,9 @@ notifications:
   email: false
   slack:
     rooms:
-      secure: S3xDhrrLgQ1DSBgc42M9wkJzmqYlv/FSeKhcOxDVspy8s/N2N4z4JCGpuX3RYIPEHNIaao9gTvQJ5Ddoq5hCppXncyKsmH4NvDVQ1JdjTRk5KXp6SC0mJvJ7Vh4pKhcpJu87sh9dZs9Io6VqqG/bGpcjt9SFgVz/n24DPKgeREa351GorhncFmnG3ZtItHGe5a7n5V9sM3g5uLUf0ELPew6iPvkyx5xNvyMfMrgcJDbXKHQR6S5xvp7Pw/GkXGVR7d1nQElKMsDOlEiui+l2ctRFo0ZnNGoVzvLGKygkw717Q6k215Gq7x/eZI5//Kidwxra0ks7NYhYhzayRiy+pJ2ZYH3N8c5KL6xbVzyNn8LpP733Ra48oJZK+yjk77TAIkwvBsoH0p1Hc1fi12fdgrhACHa48zy/ILMcnGILfX5BOjVwpPy2dUbiKQHmClrq4Fe+t9vK11wqEjJr/bm2WfmbqEudWn3Kb1Vpk5ZohNZuhXcqJ/PdT9ns9ac8jNHxP3mAiCulOQbRNFq95ZjYQuMscKzlw18WUNyfi/5hsMCKgi78Kbg5Bzia1SieF0w+uo3qHDNIEPiuQevrSc0zGLUaPn+G4O08tx75Gxjg23/leBvn36qv2rXG1+RjL7saj00S2sTSKEB9rXWf8unE19Rh2gXDg4Asxyr63nOLBBI=
+      secure: abympaaJrZWXUep69DxgyA26s8mvfXWHxMaXuM7yizDMVorwO709VWy6SKtEj5B0pRIeVGAL4igVBaX9t5VKnG0PpZ5akhkbEzcV0xWIIPbrr+UphGU7nbk7qEIyWFNtHYBDUkyfQdVPmv5pMTdgy7MOIK8P2leiCRFU2Ulnii/IBYu9KAojw3NE0xn57odLeznE1HVpW+DXKhxtL/qoj2T8CqKXb6ugf3jlabKVxRww6JG/cEWXMetGVzAU3ms4BcXsITKEE0h0ARslheoljb6GlhsjscyeCopIO9h8xqfEHYFEc2F5FD8Ulz7QwzK6vvCrYhoM6Cs78NkGKwo5KVefFPmDDISvYyG6wXeaNBoLBITjJfHeGgB30qSRf44rLyNNYwXia3vh35wNJkFQr1/Xb/EGgF/M8TCxb05IE1lpZyvSL5bB4cspPcjgyQJtXgkKJkWFpWF3X2r6z8sQTKC2ZX2KEID6pkonkIGrUJqk0MWxX3RxXaBaseh+KHj/9zY+9AldrlK63k3dORYAq2vyHEZgyEKPN+ENKS3F7W7EZH7u+NH5EbZkildMj2J1QS3BkYutYd2W8Og3YRTc+wshabUwyShqr9pgJULcGklgM5tngWKL/QrqF6iYGX3oPLuaBqjcQgSTisVQ//F65iKCsxlPrddMS68KreQ4km8=
     on_success: always
     on_failure: always
-
 stages:
 - name: APP
   if: commit_message !~ /(skip[ _-]app)/
@@ -13,10 +12,8 @@ stages:
   if: commit_message !~ /(skip[ _-]android)/
 - name: IOS
   if: commit_message !~ /(skip[ _-]ios)/
-
 jobs:
   include:
-
   - stage: APP
     os: linux
     language: node_js
@@ -28,7 +25,6 @@ jobs:
     - export -f travis_fold
     script:
     - bash .travis.app.sh
-
   - stage: ANDROID
     os: linux
     language: android
@@ -36,50 +32,38 @@ jobs:
     android:
       components:
       - tools
-      - tools  # Include again to work around travis not using the latest, see: https://github.com/travis-ci/travis-ci/issues/6193
+      - tools
       - platform-tools
       - build-tools-28.0.3
       - android-28
     licenses:
-    - '.+'
+    - ".+"
     before_install:
-    # NVM
     - nvm install 8
-    # AndroidDK Licence Mangager
     - yes | sdkmanager "platforms;android-28"
-    # Yarn
     - npm install -g yarn
-    # AWS cli
     - pip install --user awscli
-    # Fastlane
     - gem install fastlane -v '~> 2.137.0'
-    # Quasar cli
-    - npm install -g @quasar/cli  
+    - npm install -g @quasar/cli
     install:
     - yarn
     before_script:
-    - export -f travis_fold    
+    - export -f travis_fold
     script:
     - bash .travis.android.sh
-
   - stage: IOS
     os: osx
     language: objective-c
     osx_image: xcode10.1
     before_install:
-    # NVM
     - nvm install 8
-    # Yarn
     - npm install -g yarn
-    # AWS cli
     - brew install awscli
-    # Ios deploy
     - npm install -g ios-deploy --unsafe-perm=true
-    # Quasar cli
-    - npm install -g @quasar/cli  
+    - npm install -g @quasar/cli
     install:
     - yarn
     before_script:
-    - export -f travis_fold   
+    - export -f travis_fold
     script:
     - bash .travis.ios.sh
