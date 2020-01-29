@@ -33,13 +33,13 @@ check_code $? "Builing the client"
 # Create an archive to speed docker build process
 cd ../..
 tar -zcf kdk.tgz kdk
-docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$BUILD_NUMBER -f dockerfile.app -t kalisio/$APP:$TAG . 
+docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$BUILD_NUMBER -f dockerfile -t kalisio/$APP:$TAG . 
 check_code $? "Building the app docker image"
 
-docker build --build-arg APP=$APP --build-arg TAG=$TAG -f dockerfile.tests.api -t kalisio/$APP:${TAG}_tests-api . 
+docker build --build-arg APP=$APP --build-arg TAG=$TAG -f dockerfile.api-tests -t kalisio/$APP:${TAG}_api-tests . 
 check_code $? "Building the tests api docker image"
 
-docker build --build-arg APP=$APP -f dockerfile.tests.client -t kalisio/$APP:${TAG}_tests-client . 
+docker build --build-arg APP=$APP -f dockerfile.client-tests -t kalisio/$APP:${TAG}_cllent-tests . 
 check_code $? "Building the tests client docker image"
 
 travis_fold end "build"
@@ -56,10 +56,10 @@ check_code $? "Connecting to Docker"
 push_docker $APP $TAG $FLAVOR 
 
 # Push the tests api image to the hub
-push_docker $APP ${TAG}_tests-api ${FLAVOR}_tests-api
+push_docker $APP ${TAG}_api-tests ${FLAVOR}_api-tests
 
 # Push the tests client image to the hub
-push_docker $APP ${TAG}_tests-client ${FLAVOR}_tests-client
+push_docker $APP ${TAG}_cllent-tests ${FLAVOR}_cllent-tests
 
 # Copy the required keys and update the mode
 cp workspace/$FLAVOR/*.pem ~/.ssh/.
