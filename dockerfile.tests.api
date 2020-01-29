@@ -14,4 +14,4 @@ ENV MOCHA_CONTEXT=$APP
 ENV SLACK_WEBOOK_URL=
 
 WORKDIR /opt/kdk/$APP/api
-CMD [ "yarn", "coverage", "--reporter", "test/reporter/reporter.slack" ]
+CMD ./cc-test-reporter before-build; yarn coverage --reporter test/reporter/reporter.slack; ./cc-test-reporter after-build -t lcov

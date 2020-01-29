@@ -59,7 +59,7 @@ push_docker $APP $TAG $FLAVOR
 push_docker $APP ${TAG}_tests-api ${FLAVOR}_tests-api
 
 # Push the tests client image to the hub
-push_docker $APP ${TAG}_tests-client ${FLAVO}_tests-client
+push_docker $APP ${TAG}_tests-client ${FLAVOR}_tests-client
 
 # Copy the required keys and update the mode
 cp workspace/$FLAVOR/*.pem ~/.ssh/.
