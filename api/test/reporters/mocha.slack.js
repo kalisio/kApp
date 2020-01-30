@@ -58,6 +58,7 @@ function SlackReporter (runner, options) {
     if (!suite.root) {
       console.log(`[${suite.fullTitle()}]`)
       blocks.push(section(`*[${suite.fullTitle()}]*`))
+      blocks.push(section(`*[${suite.fullTitle()}]*`))
       passes = 0
       skips = 0
       failures = 0
