@@ -12,8 +12,7 @@ const SlackReporter = concat({ encoding: 'string' }, function (data) {
   lines.forEach(function (line) {
     const re = /\s*([A-Za-z]:)?([^:]+):([^:]+):([^:]+): (.*)/.exec(line)
     if (re) {
-      const filePath = re[1] + re[2]
-      notifier.addSection(`:exclamation:  ${filePath}:${re[3]}:${re[4]}: ${re[5]}`)
+      notifier.addSection(`:exclamation:  ${re[2]}:${re[3]}:${re[4]}: ${re[5]}`)
       errors++
     }
   })

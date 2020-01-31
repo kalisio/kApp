@@ -1,8 +1,8 @@
 const { IncomingWebhook } = require('@slack/webhook')
 
 class SlackNotifier {
-  constructor (slack_webook_url) {
-    this.webhook = new IncomingWebhook(slack_webook_url)
+  constructor (slackWebhookUrl) {
+    this.webhook = new IncomingWebhook(slackWebhookUrl)
     this.blocks = []
   }
 
