@@ -14,7 +14,7 @@ stages:
 - name: IOS
   if: commit_message !~ /(skip[ _-]ios)/
 
-  jobs:
+jobs:
   include:
 
   - stage: APP
