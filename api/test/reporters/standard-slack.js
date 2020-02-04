@@ -6,7 +6,7 @@ const SlackReporter = concat({ encoding: 'string' }, function (data) {
   const context = process.env.STANDARD_CONTEXT
   let errors = 0
   // Add a title
-  notifier.addSection(`*[${context}]* checking style`)
+  notifier.addSection(`*[${context}]* checking style with Standard`)
   // Scan the output
   const lines = data.split('\n')
   lines.forEach(function (line) {

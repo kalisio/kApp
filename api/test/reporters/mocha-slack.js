@@ -23,7 +23,7 @@ function SlackReporter (runner, options) {
 
   runner.on(EVENT_RUN_BEGIN, function () {
     startTime = new Date()
-    notifier.addSection(`[${context}] running tests ${startTime.toUTCString()}`)
+    notifier.addSection(`*[${context}]* running tests with Mocha ${startTime.toUTCString()}`)
   })
 
   runner.on(EVENT_RUN_END, function () {
@@ -36,7 +36,7 @@ function SlackReporter (runner, options) {
   runner.on(EVENT_SUITE_BEGIN, function (suite) {
     if (!suite.root) {
       console.log(`[${suite.fullTitle()}]`)
-      notifier.addSection(`*[${suite.fullTitle()}]*`)
+      notifier.addSection(`[${suite.fullTitle()}]`)
       passes = 0
       skips = 0
       failures = 0
