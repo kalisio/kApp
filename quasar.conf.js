@@ -74,6 +74,8 @@ module.exports = function (ctx) {
         'QTabPanels',
         'QTabs',
         'QTime',
+        'QTimeline',
+        'QTimelineEntry',
         'QToolbar',
         'QToolbarTitle',
         'QToggle',
