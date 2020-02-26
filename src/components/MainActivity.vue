@@ -11,7 +11,7 @@
     <!--
       Card grid rendering
      -->
-    <k-table v-if="mode==='table'" service="documents" :nb-items-per-page="2" selection="multiple" :filter-query="searchQuery" />
+    <k-table v-if="mode==='table'" service="documents" :nb-items-per-page="2" :item-actions="tableActions" selection="multiple" :filter-query="searchQuery" />
     <!--
       Document editor
      -->
@@ -89,6 +89,21 @@ export default {
           }
         }
       },
+      tableActions: [{
+        label: this.$i18n.t('MainActivity.VIEW_DOCUMENT'),
+        icon: 'description',
+        handler: (document) => this.onViewDocument(document)
+      },
+      {
+        label: this.$i18n.t('MainActivity.EDIT_DOCUMENT'),
+        icon: 'edit',
+        handler: (document) => this.onEditDocument(document)
+      },
+      {
+        label: this.$i18n.t('MainActivity.REMOVE_DOCUMENT'),
+        icon: 'delete',
+        handler: (document) => this.onDeleteDocument(document)
+      }],
       documentId: null
     }
   },
