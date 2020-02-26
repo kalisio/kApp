@@ -26,9 +26,11 @@
     "TITLE": "Vos documents",
     "LIST_LABEL": "Liste",
     "GRID_LABEL": "Grille",
+    "TABLE_LABEL": "Table",
     "CREATE_DOCUMENT": "Nouveau document",
     "REMOVE_DOCUMENT": "Supprimer",
     "EDIT_DOCUMENT": "Editer",
+    "VIEW_DOCUMENT": "Voir",
     "PANEL": "Ouvrir le panneau droit",
     "EDITOR_TITLE": "Editeur",
     "VIEWER_TITLE": "Visioneuse"

@@ -7,11 +7,19 @@
     <!--
       Card grid rendering
      -->
-    <k-grid v-else service="documents" :renderer="cardRenderer" :filter-query="searchQuery" />
+    <k-grid v-if="mode==='grid'" service="documents" :renderer="cardRenderer" :filter-query="searchQuery" />
+    <!--
+      Card grid rendering
+     -->
+    <k-table v-if="mode==='table'" service="documents" :nb-items-per-page="2" selection="multiple" :filter-query="searchQuery" />
     <!--
       Document editor
      -->
     <k-modal-editor ref="documentEditor" service="documents" :objectId="documentId" @applied="onDocumentCreated" />
+    <!--
+      Document editor
+     -->
+    <k-modal-viewer ref="documentViewer" service="documents" :objectId="documentId" />
     <!--
       Custom editor
      -->
@@ -43,6 +51,11 @@ export default {
         component: 'collection/KItem',
         props: {
           itemActions: [{
+            label: this.$i18n.t('MainActivity.VIEW_DOCUMENT'),
+            icon: 'description',
+            handler: (document) => this.onViewDocument(document)
+          },
+          {
             label: this.$i18n.t('MainActivity.EDIT_DOCUMENT'),
             icon: 'edit',
             handler: (document) => this.onEditDocument(document)
@@ -59,6 +72,11 @@ export default {
         props: {
           itemActions: {
             pane: [{
+              label: this.$i18n.t('MainActivity.VIEW_DOCUMENT'),
+              icon: 'description',
+              handler: (document) => this.onViewDocument(document)
+            },
+            {
               label: this.$i18n.t('MainActivity.EDIT_DOCUMENT'),
               icon: 'edit',
               handler: (document) => this.onEditDocument(document)
@@ -94,8 +112,15 @@ export default {
         route: { name: 'main', params: { mode: 'grid' } },
         default: this.mode === 'grid'
       })
+      this.registerTabAction({
+        name: 'table',
+        label: this.$t('MainActivity.TABLE_LABEL'),
+        icon: 'view_headline',
+        route: { name: 'main', params: { mode: 'table' } },
+        default: this.mode === 'table'
+      })
       // Search bar
-      this.setSearchBar('profile.name')
+      this.setSearchBar('name')
       // Fab actions
       this.registerFabAction({
         name: 'create-document',
@@ -118,6 +143,11 @@ export default {
     async onDeleteDocument (document) {
       await this.$api.getService('documents').remove(document._id)
     },
+    async onViewDocument (document) {
+      this.documentId = document._id
+      await this.$nextTick()
+      this.$refs.documentViewer.open()
+    },
     async onEditDocument (document) {
       this.documentId = document._id
       await this.$nextTick()
@@ -138,6 +168,7 @@ export default {
     // Load the required components
     this.$options.components['k-list'] = this.$load('collection/KList')
     this.$options.components['k-grid'] = this.$load('collection/KGrid')
+    this.$options.components['k-table'] = this.$load('collection/KTable')
     this.$options.components['k-modal-editor'] = this.$load('editor/KModalEditor')
     this.$options.components['k-modal-viewer'] = this.$load('viewer/KModalViewer')
     // Listen to the nav links

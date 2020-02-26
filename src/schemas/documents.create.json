@@ -15,7 +15,7 @@
       "type": "object",
       "field": {
         "component": "form/KIconField",
-        "helper": "KIconField"
+        "helper": "Icône"
       }
     },
     "status": {
