@@ -27,7 +27,7 @@ cd api && yarn build
 check_code $? "Building the api"
 
 # Build the client
-cd .. && yarn build > build.log 2>&1 && tail -n 24 build.log 
+cd .. && yarn build #> build.log 2>&1 && tail -n 24 build.log 
 check_code $? "Builing the client"
 
 # Create an archive to speed docker build process
