@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import path from 'path'
-import kCore from '@kalisio/kdk-core'
+import kCore from '@kalisio/kdk/core.api'
 import packageInfo from '../../package.json'
 
 module.exports = async function () {

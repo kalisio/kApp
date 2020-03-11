@@ -1,7 +1,7 @@
 import logger from 'loglevel'
 import i18next from 'i18next'
 import VueI18next from '@panter/vue-i18next'
-import { utils as kCoreUtils } from '@kalisio/kdk-core/client'
+import { utils as kCoreUtils } from '@kalisio/kdk/core.client'
 import utils from '../utils'
 import config from 'config'
 

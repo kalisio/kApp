@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import config from 'config'
-import { utils as kCoreUtils, Store, Events } from '@kalisio/kdk-core/client'
+import { utils as kCoreUtils, Store, Events } from '@kalisio/kdk/core.client'
 import utils from './utils'
 
 export default {

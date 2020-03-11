@@ -13,7 +13,7 @@ if (logPath) {
 
 if (require.main === module) {
   process.on('unhandledRejection', (reason, p) =>
-    server.app.logger.error('Unhandled Rejection at: Promise ', p, reason)
+    server.app.logger.error('Unhandled Rejection at: Promise ', reason)
   )
 
   server.run().then(() => {

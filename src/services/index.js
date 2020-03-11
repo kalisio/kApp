@@ -1,5 +1,5 @@
 import logger from 'loglevel'
-import kCore from '@kalisio/kdk-core/client'
+import kCore from '@kalisio/kdk/core.client'
 import CustomService from './custom.service'
 
 export default function () {

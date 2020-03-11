@@ -1,4 +1,4 @@
-import { kalisio } from '@kalisio/kdk-core'
+import { kalisio } from '@kalisio/kdk/core.api'
 
 const fs = require('fs-extra')
 const https = require('https')

@@ -2,7 +2,7 @@ import _ from 'lodash'
 
 function loadComponent (component) {
   return () => {
-    return import(`@kalisio/kdk-core/lib/client/components/${component}.vue`)
+    return import(`@kalisio/kdk/lib/core/client/components/${component}.vue`)
       .catch(errorCore => {
         // Otherwise this should be app component
         return import(`@/${component}.vue`)
@@ -14,7 +14,7 @@ function loadComponent (component) {
 }
 
 function loadSchema (schema) {
-  return import(`@kalisio/kdk-core/lib/common/schemas/${schema}.json`)
+  return import(`@kalisio/kdk/lib/core/common/schemas/${schema}.json`)
     .catch(errorCore => {
       // Otherwise this should be app component
       return import(`./schemas/${schema}.json`)
@@ -26,7 +26,7 @@ function loadSchema (schema) {
 
 function loadTranslation (module, locale) {
   const translation = module + '_' + locale + '.json'
-  return import(`@kalisio/kdk-core/lib/client/i18n/${translation}`)
+  return import(`@kalisio/kdk/lib/core/client/i18n/${translation}`)
     .catch(errorCore => {
       return import(`./i18n/${translation}`)
         .catch(errorApp => {
