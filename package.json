@@ -85,6 +85,7 @@
     "mime-types-browser": "^0.0.3",
     "moment": "^2.24.0",
     "npm-run-all": "^4.1.2",
+    "papaparse": "^4.6.1",
     "password-generator": "^2.2.0",
     "quasar": "^1.0.5",
     "showdown": "^1.8.6",
