@@ -8,6 +8,9 @@ ARG BUILD_NUMBER
 ENV BUILD_NUMBER=$BUILD_NUMBER
 ENV NODE_APP_INSTANCE=$FLAVOR
 
+# Install curl
+RUN apt-get update && apt-get -y install curl
+
 # Copy the built artefact.
 # Warning - 
 # We could do ADD and let Docker uncompress automatically the archive but we reach log limit in Travis.

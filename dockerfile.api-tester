@@ -13,7 +13,7 @@ ENV SLACK_WEBOOK_URL=
 ENV CC_TEST_REPORTER_ID=
 
 # Install GIT
-RUN apt-get update && apt-get -y install git curl
+RUN apt-get update && apt-get -y install git
 
 # Install code climate
 WORKDIR /opt/kalisio/$APP/api
