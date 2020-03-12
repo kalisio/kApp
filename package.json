@@ -69,7 +69,7 @@
   "dependencies": {
     "@feathersjs/client": "^3.5.4",
     "@panter/vue-i18next": "^0.9.1",
-    "@quasar/extras": "^1.2.0",
+    "@quasar/extras": "^1.6.0",
     "ajv": "^6.0.0",
     "ajv-i18n": "^3.0.0",
     "babel-polyfill": "^6.26.0",
@@ -87,7 +87,7 @@
     "npm-run-all": "^4.1.2",
     "papaparse": "^4.6.1",
     "password-generator": "^2.2.0",
-    "quasar": "^1.0.5",
+    "quasar": "^1.9.9",
     "showdown": "^1.8.6",
     "sift": "^6.0.0",
     "socket.io-client": "^2.0.1",
@@ -95,7 +95,7 @@
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
-    "@quasar/app": "^1.0.4",
+    "@quasar/app": "^1.6.0",
     "@vue/eslint-config-standard": "^4.0.0",
     "config": "^1.26.1",
     "connect-history-api-fallback": "^1.1.0",
