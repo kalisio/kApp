@@ -47,4 +47,3 @@ test('Delete document', async test => {
   await docs.delete(test)
   await layout.logout(test)
 })
-
