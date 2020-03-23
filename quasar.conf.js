@@ -47,6 +47,7 @@ module.exports = function (ctx) {
         'QFab',
         'QFabAction',
         'QField',
+        'QFooter',
         'QHeader',
         'QIcon',
         'QInput',
@@ -82,7 +83,8 @@ module.exports = function (ctx) {
       ],
 
       directives: [
-        'Ripple'
+        'Ripple',
+        'TouchSwipe'
       ],
 
       // Quasar plugins

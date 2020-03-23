@@ -78,13 +78,8 @@ module.exports = {
       isVisible: true,
       component: {
         name: 'layout/KSideNav'
-      }
-    },
-    rightDrawer: {
-      behavior: 'mobile',
-      component: {
-        name: 'Platform'
-      }
+      },
+      opener: true
     }
   },
   appBar: {

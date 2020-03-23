@@ -1,34 +1,36 @@
 <template>
-  <q-page padding>
-    <!--
-      Item list rendering
-     -->
-    <k-list v-if="mode==='list'" service="documents" :renderer="itemRenderer" :filter-query="searchQuery" />
-    <!--
-      Card grid rendering
-     -->
-    <k-grid v-if="mode==='grid'" service="documents" :renderer="cardRenderer" :filter-query="searchQuery" />
-    <!--
-      Card grid rendering
-     -->
-    <k-table v-if="mode==='table'" service="documents" :nb-items-per-page="2" :item-actions="tableActions" selection="multiple" :filter-query="searchQuery" />
-    <!--
-      Document editor
-     -->
-    <k-modal-editor ref="documentEditor" service="documents" :objectId="documentId" @applied="onDocumentCreated" />
-    <!--
-      Document editor
-     -->
-    <k-modal-viewer ref="documentViewer" service="documents" :objectId="documentId" />
-    <!--
-      Custom editor
-     -->
-    <k-modal-editor ref="customEditor" service="custom" objectId="0" @applied="onCustomObjectUpdated" />
-    <!--
-      Custom viewer
-     -->
-    <k-modal-viewer ref="customViewer" service="custom" objectId="0" />
-  </q-page>
+  <k-page padding>
+    <div slot="page-content" >
+      <!--
+        Item list rendering
+      -->
+      <k-list v-if="mode==='list'" service="documents" :renderer="itemRenderer" :filter-query="searchQuery" />
+      <!--
+        Card grid rendering
+      -->
+      <k-grid v-if="mode==='grid'" service="documents" :renderer="cardRenderer" :filter-query="searchQuery" />
+      <!--
+        Card grid rendering
+      -->
+      <k-table v-if="mode==='table'" service="documents" :nb-items-per-page="2" :item-actions="tableActions" selection="multiple" :filter-query="searchQuery" />
+      <!--
+        Document editor
+      -->
+      <k-modal-editor ref="documentEditor" service="documents" :objectId="documentId" @applied="onDocumentCreated" />
+      <!--
+        Document editor
+      -->
+      <k-modal-viewer ref="documentViewer" service="documents" :objectId="documentId" />
+      <!--
+        Custom editor
+      -->
+      <k-modal-editor ref="customEditor" service="custom" objectId="0" @applied="onCustomObjectUpdated" />
+      <!--
+        Custom viewer
+      -->
+      <k-modal-viewer ref="customViewer" service="custom" objectId="0" />
+    </div>
+  </k-page>
 </template>
 
 <script>
@@ -181,6 +183,7 @@ export default {
   },
   created () {
     // Load the required components
+    this.$options.components['k-page'] = this.$load('layout/KPage')
     this.$options.components['k-list'] = this.$load('collection/KList')
     this.$options.components['k-grid'] = this.$load('collection/KGrid')
     this.$options.components['k-table'] = this.$load('collection/KTable')
@@ -193,12 +196,12 @@ export default {
   mounted () {
     // Initialize required DOM elements, etc.
     this.$store.patch('appBar', {
-      toolbar: [{
+      toolbar: [] /*{
         name: 'open_panel',
         label: this.$t('MainActivity.PANEL'),
         icon: 'chrome_reader_mode',
         handler: this.onOpenPanel
-      }],
+      }],*/,
       menu: []
     })
   },
