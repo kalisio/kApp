@@ -23,11 +23,11 @@ if (process.env.NODE_APP_INSTANCE === 'dev') {
 
 module.exports = {
   // Special alias to host loopback interface in cordova
-  //domain: 'http://10.0.2.2:8081',
+  // domain: 'http://10.0.2.2:8081',
   // If using port forwarding
-  //domain: 'http://localhost:8081',
+  // domain: 'http://localhost:8081',
   // If using local IP on WiFi router
-  //domain: 'http://192.168.1.16:8081',
+  // domain: 'http://192.168.1.16:8081',
   domain,
   flavor: process.env.NODE_APP_INSTANCE || 'dev',
   version: require('../package.json').version,
@@ -42,7 +42,7 @@ module.exports = {
   publisherWebsite: website,
   locale: {
     // If you'd like to force locale otherwise it is retrieved from browser
-    //default: 'en',
+    // default: 'en',
     fallback: 'en'
   },
   logs: {
@@ -52,7 +52,7 @@ module.exports = {
     extraLinks: [
       { label: 'screen.ABOUT_KALISIO', url: website },
       { label: 'screen.CONTACT', url: website + '/#footer' },
-      { label: 'screen.TERMS_AND_POLICIES', url: domain + '/#/terms' },
+      { label: 'screen.TERMS_AND_POLICIES', url: domain + '/#/terms' }
     ],
     banner: 'kapp-logo.png',
     login: {
@@ -63,7 +63,7 @@ module.exports = {
     },
     logout: {
       links: [
-        { id: 'login-link', label: 'KLogout.LOG_IN_AGAIN_LINK', route: { name: 'login' } },
+        { id: 'login-link', label: 'KLogout.LOG_IN_AGAIN_LINK', route: { name: 'login' } }
       ]
     },
     register: {
