@@ -1,6 +1,6 @@
 <template>
   <k-page padding>
-    <div slot="page-content" >
+    <template v-slot:page-content>
       <!--
         Item list rendering
       -->
@@ -29,7 +29,7 @@
         Custom viewer
       -->
       <k-modal-viewer ref="customViewer" service="custom" objectId="0" />
-    </div>
+    </template>
   </k-page>
 </template>
 

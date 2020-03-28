@@ -27,6 +27,7 @@ module.exports = function (ctx) {
     extras: [
       'roboto-font',
       'material-icons',
+      'line-awesome',
       'fontawesome-v5'
     ],
 
@@ -96,6 +97,8 @@ module.exports = function (ctx) {
       ]
     },
 
+    animations: [],
+    
     supportIE: false,
 
     build: {
@@ -105,7 +108,7 @@ module.exports = function (ctx) {
       // gzip: true,
       // analyze: true,
       // extractCSS: false,
-      extendWebpack (cfg, { isServer, isClient }) {
+      extendWebpack (cfg) {
         cfg.resolve.modules = [
           path.resolve(__dirname, 'src'),
           path.resolve(__dirname, 'node_modules')
@@ -144,9 +147,6 @@ module.exports = function (ctx) {
       // port: 8080,
       open: true // opens browser window automatically
     },
-
-    // animations: 'all' --- includes all animations
-    animations: [],
 
     ssr: {
       pwa: false
@@ -226,5 +226,3 @@ module.exports = function (ctx) {
     }
   }
 }
-
-
