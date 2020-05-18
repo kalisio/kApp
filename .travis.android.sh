@@ -26,10 +26,10 @@ then
 fi
 
 # Build and deploy the mobile app	
-npm run cordova:build:android > android.build.log 2>&1
+npm run cordova:build:android > android.build.log #2>&1
 EXIT_CODE=$?
 # Copy the log whatever the result
-aws s3 cp android.build.log s3://${BUILD_BUCKET}/android.build.log
+#aws s3 cp android.build.log s3://${BUILD_BUCKET}/android.build.log
 check_code $EXIT_CODE "Building the app"
 
 # Backup the android build to S3
