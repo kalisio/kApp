@@ -28,9 +28,8 @@ MAJOR=0
 MINOR=0
 PATCH=0
 parse_semver $VERSION MAJOR MINOR PATCH
-TAG=$VERSION-$FLAVOR
 
-echo "Building $APP v$MAJOR.$MINOR.$PATCH [$TAG]"
+echo "Building $APP v$MAJOR.$MINOR.$PATCH"
 
 # Clone the workspace 
 echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
@@ -54,6 +53,9 @@ else
   KDK_PROJECT_FILE=$APP.js
 fi
 export NODE_APP_INSTANCE=$FLAVOR
+TAG=$VERSION-$FLAVOR
+
+echo "Build flavor is $FLAVOR"
 
 # Read ci environement variables
 cp workspace/common/.travis.env .travis.env
