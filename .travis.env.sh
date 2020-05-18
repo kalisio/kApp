@@ -8,7 +8,23 @@ check_code()
   fi
 }
 
+# Extract the name of the app
+APP=$(node -p -e "require('./package.json').name")
 
+# Exports addtionnal variables
+VERSION=$(node -p -e "require('./package.json').version")
+MAJOR=`echo $VERSION | sed -e "s#$RE#\1#"`
+MINOR=`echo $VERSION | sed -e "s#$RE#\2#"`
+PATCH=`echo $VERSION | sed -e "s#$RE#\3#"`
+TAG=$VERSION-$FLAVOR
+
+echo "Building $APP v$MAJOR.$MINOR.$PATCH [$TAG]"
+
+# Clone the workspace 
+echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
+git clone -b $APP https://github.com/kalisio/kdk-workspaces workspace
+
+# Define the flavor
 TEST_FLAVOR_REGEX="^test$|-test$"
 PROD_FLAVOR_REGEX="^v[0-9]+\.[0-9]+\.[0-9]+"
 if [[ $TRAVIS_BRANCH =~ $TEST_FLAVOR_REGEX ]];
@@ -16,36 +32,16 @@ then
   if [[ $TRAVIS_TAG =~ $PROD_FLAVOR_REGEX ]];
   then
     export FLAVOR=prod
+    KDK_PROJECT_FILE=$APP-$VERSION.js
   else
     export FLAVOR=test
+    KDK_PROJECT_FILE=$APP-$MAJOR-$MINOR.js
   fi
 else
   export FLAVOR=dev
+  KDK_PROJECT_FILE=$APP.js
 fi
 export NODE_APP_INSTANCE=$FLAVOR
-
-# Extract the name of the app
-APP=$(node -p -e "require('./package.json').name")
-
-# Exports addtionnal variables
-VERSION=$(node -p -e "require('./package.json').version")
-TAG=$VERSION-$FLAVOR
-
-# Clone the workspace 
-echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
-git clone -b $APP https://github.com/kalisio/kdk-workspaces workspace
-
-# Read extra environment variables (merges common and flavor env)
-cp workspace/common/.env .env
-if [ -f workspace/$FLAVOR/.env ]
-then
-  echo merging $FLAVOR/.env file with common .env
-  cat workspace/$FLAVOR/.env >> .env
-fi
-
-set -a
-. .env
-set +a
 
 # Read ci environement variables
 cp workspace/common/.travis.env .travis.env
@@ -66,14 +62,7 @@ BUILD_BUCKET=${APP}-builds/$BUILD_NUMBER
 git clone https://github.com/kalisio/kli.git kalisio && cd kalisio && yarn 
 
 # Clone the project and install the dependencies
-if [ -f $TRAVIS_BUILD_DIR/workspace/$FLAVOR/$APP.js ]
-then
-  echo Found specific project file in $FLAVOR
-  cp $TRAVIS_BUILD_DIR/workspace/$FLAVOR/$APP.js $APP.js  
-else
-  echo use common project file
-  cp $TRAVIS_BUILD_DIR/workspace/$APP.js $APP.js
-fi
+cp $TRAVIS_BUILD_DIR/workspace/$FLAVOR/$KDK_PROJECT_FILE $APP.js
 node . $APP.js --clone $TRAVIS_BRANCH
 node . $APP.js --install
 node . $APP.js --link
