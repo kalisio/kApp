@@ -21,9 +21,9 @@ APP=$(node -p -e "require('./package.json').name")
 # Exports addtionnal variables
 VERSION=$(node -p -e "require('./package.json').version")
 parse_semver $VERSION
-MAJOR=${SMEVER[0]}
-MINOR=${SMEVER[1]}
-PATCH=${SMEVER[2]}
+MAJOR=${SEMVER[0]}
+MINOR=${SEMVER[1]}
+PATCH=${SEMVER[2]}
 
 echo "Building $APP v$MAJOR.$MINOR.$PATCH"
 
