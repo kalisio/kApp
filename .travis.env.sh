@@ -8,15 +8,11 @@ check_code()
   fi
 }
 
-parse_semver() 
+parse_semver()
 {
-  local RE='[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.]\([0-9]*\)\([0-9A-Za-z-]*\)'
-  # Major 
-  eval $2=`echo $1 | sed -e "s#$RE#\1#"`
-  # Minor
-  eval $3=`echo $1 | sed -e "s#$RE#\2#"`
-  # Patch
-  eval $4=`echo $1 | sed -e "s#$RE#\3#"`
+  local REGEXP="^([0-9]+)\.([0-9]+)\.([0-9]+)"
+  [[ "$1" =~ $REGEXP ]]
+  SEMVER=(${BASH_REMATCH[1]} ${BASH_REMATCH[2]} ${BASH_REMATCH[3]})
 }
 
 # Extract the name of the app
@@ -24,10 +20,10 @@ APP=$(node -p -e "require('./package.json').name")
 
 # Exports addtionnal variables
 VERSION=$(node -p -e "require('./package.json').version")
-MAJOR=0
-MINOR=0
-PATCH=0
-parse_semver $VERSION MAJOR MINOR PATCH
+parse_semver $VERSION
+MAJOR=${SMEVER[0]}
+MINOR=${SMEVER[1]}
+PATCH=${SMEVER[2]}
 
 echo "Building $APP v$MAJOR.$MINOR.$PATCH"
 
