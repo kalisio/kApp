@@ -964,10 +964,10 @@
     "@nodelib/fs.scandir" "2.1.3"
     fastq "^1.6.0"
 
-"@panter/vue-i18next@^0.9.1":
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/@panter/vue-i18next/-/vue-i18next-0.9.1.tgz#a24694d37b7e2f54f67ac8a485f634203660e98d"
-  integrity sha1-okaU03t+L1T2esikhfY0IDZg6Y0=
+"@panter/vue-i18next@^0.15.2":
+  version "0.15.2"
+  resolved "https://registry.yarnpkg.com/@panter/vue-i18next/-/vue-i18next-0.15.2.tgz#814f6774237e444eb9b69156e9c507d41b7fbd32"
+  integrity sha512-7VX9GyxHJNEJKa2CRzC294Oz5EEbzVDZ1o3O/P8gL/PWBmcFOFsuivRbP/1a9ga2ihv/NBzoCWMCNIEEeCcONQ==
   dependencies:
     deepmerge "^2.0.0"
 
