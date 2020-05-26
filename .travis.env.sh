@@ -15,6 +15,10 @@ parse_semver()
   SEMVER=(${BASH_REMATCH[1]} ${BASH_REMATCH[2]} ${BASH_REMATCH[3]})
 }
 
+# Add 
+nvm install v12.16.3
+nvm use v12.16.3
+
 # Extract the name of the app
 APP=$(node -p -e "require('./package.json').name")
 
