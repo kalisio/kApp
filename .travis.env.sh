@@ -16,8 +16,8 @@ parse_semver()
 }
 
 # Add 
-nvm install v12.16.3
-nvm use v12.16.3
+nvm install 12.16.3
+nvm use 12.16.3
 
 # Extract the name of the app
 APP=$(node -p -e "require('./package.json').name")
