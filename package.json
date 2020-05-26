@@ -101,7 +101,7 @@
     "connect-history-api-fallback": "^1.1.0",
     "cordova": "8.1.0",
     "cordova-set-version": "^6.0.3",
-    "envsub": "^3.0.9",
+    "envsub": "^4.0.7",
     "es6-promise": "^4.1.1",
     "eslint": "^6.1.0",
     "eslint-loader": "^2.1.1",
