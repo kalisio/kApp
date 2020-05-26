@@ -26,6 +26,8 @@ jobs:
     - docker
     before_script:
     - export -f travis_fold
+    - nvm install 12.16.3
+    - nvm use 12.16.3
     script:
     - bash .travis.app.sh
 
