@@ -40,7 +40,6 @@ export default {
   mixins: [
     kCoreMixins.baseActivity
   ],
-  inject: ['klayout'],
   props: {
     mode: {
       type: String,
@@ -147,7 +146,7 @@ export default {
       })
     },
     onOpenPanel () {
-      this.klayout.toggleRightDrawer()
+      this.$store.patch('rightDrawer', { visible: true })
     },
     async onCreateDocument () {
       this.documentId = null
