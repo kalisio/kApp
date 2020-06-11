@@ -53,7 +53,7 @@ export default {
         props: {
           itemActions: [{
             label: this.$i18n.t('MainActivity.VIEW_DOCUMENT'),
-            icon: 'description',
+            icon: 'las la-file-alt',
             handler: (document) => this.onViewDocument(document)
           },
           {
@@ -74,7 +74,7 @@ export default {
           itemActions: {
             pane: [{
               label: this.$i18n.t('MainActivity.VIEW_DOCUMENT'),
-              icon: 'description',
+              icon: 'las la-file-alt',
               handler: (document) => this.onViewDocument(document)
             },
             {
@@ -92,7 +92,7 @@ export default {
       },
       tableActions: [{
         label: this.$i18n.t('MainActivity.VIEW_DOCUMENT'),
-        icon: 'description',
+        icon: 'las la-file-alt',
         handler: (document) => this.onViewDocument(document)
       },
       {
