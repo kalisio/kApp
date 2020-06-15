@@ -6,8 +6,6 @@ fixture`app`// declare the fixture
   // test.before/test.after overrides fixture.beforeEach/fixture.afterEach hook,
   // so implement one in your test if you'd like another behaviour
   .beforeEach(async test => {
-    // mock geolocation
-    await pages.mockLocationAPI()
   })
   .afterEach(async test => {
     // check for console error messages
@@ -16,6 +14,7 @@ fixture`app`// declare the fixture
 
 const screens = new pages.Screens()
 const layout = new pages.Layout()
+const sideNav = new pages.SideNav()
 const docs = new pages.Documents(layout)
 
 const user = {
@@ -27,23 +26,27 @@ const user = {
 test('Registering to the app', async test => {
   await screens.goToRegisterScreen(test)
   await screens.register(test, user)
-  await layout.logout(test, user)
+  await layout.clickLeftOpener(test)
+  await sideNav.logout(test)
 })
 
 test('Authenticating to the app', async test => {
   await screens.login(test, user)
-  await layout.logout(test)
+  await layout.clickLeftOpener(test)
+  await sideNav.logout(test)
   await screens.goToLoginScreen(test)
 })
 
 test('Create document', async test => {
   await screens.login(test, user)
   await docs.create(test, { name: 'document1' })
-  await layout.logout(test)
+  await layout.clickLeftOpener(test)
+  await sideNav.logout(test)
 })
 
 test('Delete document', async test => {
   await screens.login(test, user)
   await docs.delete(test)
-  await layout.logout(test)
+  await layout.clickLeftOpener(test)
+  await sideNav.logout(test)
 })

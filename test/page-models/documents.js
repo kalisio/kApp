@@ -1,5 +1,5 @@
 import { Selector } from 'testcafe'
-import Layout from './layout'
+import { Layout } from './core'
 
 export default class Documents extends Layout {
   constructor (layout) {

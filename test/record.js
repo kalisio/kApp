@@ -17,7 +17,7 @@ createTestCafe('localhost', 1337, 1338)
     }
 
     return runner
-      .src(['./test/basic.test.js'])
+      .src(['./test/app.test.js'])
       .browsers(['firefox'])
       .run()
   })
