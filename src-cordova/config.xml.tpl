@@ -29,6 +29,7 @@
     <preference name="android-installLocation" value="auto" />
     <preference name="loadUrlTimeoutValue" value="30000" />
     <preference name="SplashScreen" value="screen" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="res/icons/android/icon-36-ldpi.png" />
@@ -90,6 +91,7 @@
         <splash height="2048" src="res/screens/ios/screen-ipad-landscape-ipadpro.png" width="2732" />
         <splash height="2732" src="res/screens/ios/screen-ipad-portrait-ipadpro.png" width="2048" />
     </platform>
+    <plugin name="cordova-plugin-statusbar" spec="~2.4.3"/>
     <plugin name="cordova-plugin-android-permissions" spec="~1.0.0" />
     <plugin name="cordova-plugin-device" spec="~2.0.2" />
     <plugin name="cordova-plugin-sim" spec="~1.3.3" />
