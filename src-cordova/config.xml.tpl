@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="$PACKAGE_ID" version="0.3.0" ios-CFBundleVersion="$BUILD_NUMBER" android-versionCode="$BUILD_NUMBER">
+<widget id="$PACKAGE_ID" version="0.3.0" ios-CFBundleVersion="$BUILD_NUMBER" android-versionCode="$BUILD_NUMBER" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>$TITLE</name>
     <description>Kalisio App Template</description>
     <icon src="res/icons/icon.png" />
@@ -107,7 +107,7 @@
     <plugin name="cordova-plugin-sim" spec="~1.3.3" />
     <plugin name="cordova-plugin-whitelist" spec="~1.3.2" />
     <plugin name="cordova-plugin-inappbrowser" spec="~3.0.0" />
-    <plugin name="cordova-plugin-wkwebview-engine" spec="~1.2.1" />
-    <engine name="android" spec="~8.1.0" />
-    <engine name="ios" spec="~5.1.1" />
+    <!--plugin name="cordova-plugin-wkwebview-engine" spec="~1.2.1" /-->
+    <engine name="android" spec="~8.0.0" />
+    <!--engine name="ios" spec="~5.1.1" /-->
 </widget>
