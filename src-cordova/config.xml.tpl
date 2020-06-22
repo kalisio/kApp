@@ -103,10 +103,10 @@
     <plugin name="cordova-custom-config" spec="~5.1.0"/>
     <plugin name="cordova-plugin-statusbar" spec="~2.4.3"/>
     <plugin name="cordova-plugin-android-permissions" spec="~1.0.0" />
-    <plugin name="cordova-plugin-device" spec="~2.0.2" />
+    <plugin name="cordova-plugin-device" spec="~2.0.3" />
     <plugin name="cordova-plugin-sim" spec="~1.3.3" />
-    <plugin name="cordova-plugin-whitelist" spec="~1.3.2" />
-    <plugin name="cordova-plugin-inappbrowser" spec="~3.0.0" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.3.4" />
+    <plugin name="cordova-plugin-inappbrowser" spec="~4.0.0" />
     <plugin name="cordova-plugin-wkwebview-engine" spec="~1.2.1" />
     <engine name="android" spec="~8.0.0" />
     <engine name="ios" spec="~5.1.1" />
