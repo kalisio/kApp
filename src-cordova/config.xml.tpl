@@ -109,5 +109,5 @@
     <plugin name="cordova-plugin-inappbrowser" spec="~3.0.0" />
     <plugin name="cordova-plugin-wkwebview-engine" spec="~1.2.1" />
     <engine name="android" spec="~8.0.0" />
-    <!--engine name="ios" spec="~5.0.0" /-->
+    <engine name="ios" spec="~5.1.1" />
 </widget>
