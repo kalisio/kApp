@@ -64,10 +64,10 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
-        <preference name="WKWebViewOnly" value="true" />
-            <feature name="CDVWKWebViewEngine">
-                <param name="ios-package" value="CDVWKWebViewEngine" />
-            </feature>
+        <feature name="CDVWKWebViewEngine">
+            <param name="ios-package" value="CDVWKWebViewEngine" />
+        </feature>
+        <preference name="WKWebViewOnly" value="true" />    
         <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
         <icon height="29" src="res/icons/ios/icon-small.png" width="29" />
         <icon height="58" src="res/icons/ios/icon-small-2x.png" width="58" />
@@ -109,5 +109,5 @@
     <plugin name="cordova-plugin-inappbrowser" spec="~3.0.0" />
     <plugin name="cordova-plugin-wkwebview-engine" spec="~1.2.1" />
     <engine name="android" spec="~8.0.0" />
-    <!--engine name="ios" spec="~5.1.1" /-->
+    <!--engine name="ios" spec="~5.0.0" /-->
 </widget>
