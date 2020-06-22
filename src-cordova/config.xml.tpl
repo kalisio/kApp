@@ -32,6 +32,10 @@
     <preference name="StatusBarOverlaysWebView" value="false" />
     <platform name="android">
         <allow-intent href="market:*" />
+        <custom-config-file parent="/*" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.CAMERA" />
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+        </custom-config-file>
         <icon density="ldpi" src="res/icons/android/icon-36-ldpi.png" />
         <icon density="mdpi" src="res/icons/android/icon-48-mdpi.png" />
         <icon density="hdpi" src="res/icons/android/icon-72-hdpi.png" />
@@ -60,6 +64,11 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <preference name="WKWebViewOnly" value="true" />
+            <feature name="CDVWKWebViewEngine">
+                <param name="ios-package" value="CDVWKWebViewEngine" />
+            </feature>
+        <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
         <icon height="29" src="res/icons/ios/icon-small.png" width="29" />
         <icon height="58" src="res/icons/ios/icon-small-2x.png" width="58" />
         <icon height="87" src="res/icons/ios/icon-small-3x.png" width="87" />
@@ -91,12 +100,14 @@
         <splash height="2048" src="res/screens/ios/screen-ipad-landscape-ipadpro.png" width="2732" />
         <splash height="2732" src="res/screens/ios/screen-ipad-portrait-ipadpro.png" width="2048" />
     </platform>
+    <plugin name="cordova-custom-config" spec="~5.1.0"/>
     <plugin name="cordova-plugin-statusbar" spec="~2.4.3"/>
     <plugin name="cordova-plugin-android-permissions" spec="~1.0.0" />
     <plugin name="cordova-plugin-device" spec="~2.0.2" />
     <plugin name="cordova-plugin-sim" spec="~1.3.3" />
     <plugin name="cordova-plugin-whitelist" spec="~1.3.2" />
     <plugin name="cordova-plugin-inappbrowser" spec="~3.0.0" />
-    <engine name="android" spec="~8.0.0" />
+    <plugin name="cordova-plugin-wkwebview-engine" spec="~1.2.1"
+    <engine name="android" spec="~8.1.0" />
     <engine name="ios" spec="~5.1.1" />
 </widget>
