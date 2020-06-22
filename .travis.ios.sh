@@ -73,7 +73,7 @@ xcrun altool --upload-app -f "./src-cordova/platforms/ios/build/device/$TITLE.ip
 EXIT_CODE=$?
 # Copy the log whatever the result
 aws s3 cp ios.deploy.log s3://${BUILD_BUCKET}/ios.deploy.log
-check_code $? "Deploying the app"
+check_code $EXIT_CODE "Deploying the app"
 
 travis_fold end "deploy"
 
