@@ -109,6 +109,6 @@
     <plugin name="cordova-plugin-whitelist" spec="~1.3.4" />
     <plugin name="cordova-plugin-inappbrowser" spec="~4.0.0" />
     <plugin name="cordova-plugin-wkwebview-engine" spec="~1.2.1" />
-    <engine name="android" spec="~8.0.0" />
+    <engine name="android" spec="~9.0.0" />
     <engine name="ios" spec="~5.1.1" />
 </widget>
