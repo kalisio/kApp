@@ -36,6 +36,7 @@ module.exports = function (ctx) {
       components: [
         'QAjaxBar',
         'QAvatar',
+        'QBadge',
         'QBtn',
         'QCard',
         'QCardSection',

@@ -4,15 +4,15 @@
       <!--
         Item list rendering
       -->
-      <k-list v-if="mode==='list'" service="documents" :renderer="itemRenderer" :filter-query="searchQuery" />
+      <k-list v-if="mode==='list'" service="documents" :renderer="itemRenderer" :filter-query="filterQuery" />
       <!--
         Card grid rendering
       -->
-      <k-grid v-if="mode==='grid'" service="documents" :renderer="cardRenderer" :filter-query="searchQuery" />
+      <k-grid v-if="mode==='grid'" service="documents" :renderer="cardRenderer" :filter-query="filterQuery"  />
       <!--
         Card grid rendering
       -->
-      <k-table v-if="mode==='table'" service="documents" :nb-items-per-page="2" :item-actions="tableActions" selection="multiple" :filter-query="searchQuery" />
+      <k-table v-if="mode==='table'" service="documents" :nb-items-per-page="2" :item-actions="tableActions" selection="multiple" :filter-query="filterQuery" />
       <!--
         Document editor
       -->
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { mixins as kCoreMixins } from '@kalisio/kdk/core.client'
+import { utils as kCoreUtils, mixins as kCoreMixins } from '@kalisio/kdk/core.client'
 export default {
   name: 'main-activity',
   mixins: [
@@ -48,6 +48,8 @@ export default {
   },
   data () {
     return {
+      userName:  this.$store.get('user.name'),
+      filterQuery: {},
       itemRenderer: {
         component: 'collection/KItem',
         props: {
@@ -108,33 +110,42 @@ export default {
       documentId: null
     }
   },
+  watch: {
+    mode: function () {
+      this.setActivityBarMode(this.mode)
+    }
+  },
   methods: {
     refreshActivity () {
       this.clearActivity()
-      // Title
-      this.setTitle(this.$t('MainActivity.TITLE'))
-      // Tabbar
-      this.registerTabAction({
-        name: 'list',
-        label: this.$t('MainActivity.LIST_LABEL'),
-        icon: 'view_list',
-        route: { name: 'main', params: { mode: 'list' } },
-        default: this.mode === 'list'
-      })
-      this.registerTabAction({
-        name: 'grid',
-        label: this.$t('MainActivity.GRID_LABEL'),
-        icon: 'view_module',
-        route: { name: 'main', params: { mode: 'grid' } },
-        default: this.mode === 'grid'
-      })
-      this.registerTabAction({
-        name: 'table',
-        label: this.$t('MainActivity.TABLE_LABEL'),
-        icon: 'view_headline',
-        route: { name: 'main', params: { mode: 'table' } },
-        default: this.mode === 'table'
-      })
+      this.setActivityBar({ 
+          'list': [
+            { component: 'QChip', label: kCoreUtils.getInitials(this.userName), color: 'grey-8', textColor: 'white' },
+            { component: 'QSeparator', vertical: true, inset: true },
+            { icon: 'view_module', label: this.$t('MainActivity.GRID_LABEL'), handler: { name: 'main', params: { mode: 'grid' } } },
+            { icon: 'las la-table', label: this.$t('MainActivity.TABLE_LABEL'), handler: { name: 'main', params: { mode: 'table' } } },
+            { icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
+          ],
+          'grid': [
+            { component: 'QChip', label: kCoreUtils.getInitials(this.userName), color: 'grey-8', textColor: 'white' },
+            { component: 'QSeparator', vertical: true, inset: true },
+            { icon: 'las la-list', label:  this.$t('MainActivity.LIST_LABEL'), handler: { name: 'main', params: { mode: 'list' } } },
+            { icon: 'las la-table', label: this.$t('MainActivity.TABLE_LABEL'), handler: { name: 'main', params: { mode: 'table' } } },
+            { icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
+          ],
+          'table': [
+            { component: 'QChip', label: kCoreUtils.getInitials(this.userName), color: 'grey-8', textColor: 'white' },
+            { component: 'QSeparator', vertical: true, inset: true },
+            { icon: 'las la-list', label:  this.$t('MainActivity.LIST_LABEL'), handler: { name: 'main', params: { mode: 'list' } } },
+            { icon: 'view_module', label: this.$t('MainActivity.GRID_LABEL'), handler: { name: 'main', params: { mode: 'grid' } } },
+            { icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
+          ],
+          'filter': [
+            { icon: 'las la-arrow-left', handler: this.onFilterCanceled },
+            { component: 'QSeparator', vertical: true, inset: true },
+            { component: 'collection/KFilter', value: this.filterQuery }
+          ]
+        }, this.mode)
       // Search bar
       this.setSearchBar('name')
       // Fab actions
@@ -144,6 +155,15 @@ export default {
         icon: 'add',
         handler: this.onCreateDocument
       })
+    },
+    onFilterActivated () {
+      this.setActivityBarMode('filter')
+    },
+    onFilterCanceled () {
+      this.setActivityBarMode(this.mode)
+    },
+    onFilterChanged (filterQuery) {
+      this.filterQuery = filterQuery
     },
     onOpenPanel () {
       this.$store.patch('rightDrawer', { visible: true })
@@ -191,23 +211,13 @@ export default {
     // Listen to the nav links
     this.$events.$on('open-custom-editor', this.onOpenCustomEditor)
     this.$events.$on('open-custom-viewer', this.onOpenCustomViewer)
-  },
-  mounted () {
-    // Initialize required DOM elements, etc.
-    this.$store.patch('appBar', {
-      toolbar: [] /*{
-        name: 'open_panel',
-        label: this.$t('MainActivity.PANEL'),
-        icon: 'chrome_reader_mode',
-        handler: this.onOpenPanel
-      }],*/,
-      menu: []
-    })
+    this.$events.$on('filter-changed', this.onFilterChanged)
   },
   beforeDestroy () {
     // Remove event listeners, etc.
     this.$events.$off('open-custom-editor', this.onOpenCustomEditor)
     this.$events.$off('open-custom-viewer', this.onOpenCustomViewer)
+    this.$events.$off('filter-changed', this.onFilterChanged)
   }
 }
 </script>
