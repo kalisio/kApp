@@ -20,7 +20,7 @@
       <!--
         Document editor
       -->
-      <k-modal-viewer ref="documentViewer" service="documents" :objectId="documentId" />
+      <k-modaler ref="documentViewer" service="documents" :objectId="documentId" />
       <!--
         Custom editor
       -->
@@ -28,7 +28,7 @@
       <!--
         Custom viewer
       -->
-      <k-modal-viewer ref="customViewer" service="custom" objectId="0" />
+      <k-modaler ref="customViewer" service="custom" objectId="0" />
     </template>
   </k-page>
 </template>
@@ -59,13 +59,15 @@ export default {
             handler: (document) => this.onViewDocument(document)
           },
           {
-            label: this.$i18n.t('MainActivity.EDIT_DOCUMENT'),
+            id: 'edit-document',
             icon: 'edit',
+            label: this.$i18n.t('MainActivity.EDIT_DOCUMENT'),
             handler: (document) => this.onEditDocument(document)
           },
           {
-            label: this.$i18n.t('MainActivity.REMOVE_DOCUMENT'),
+            id: 'edit-document',
             icon: 'delete',
+            label: this.$i18n.t('MainActivity.REMOVE_DOCUMENT'),
             handler: (document) => this.onDeleteDocument(document)
           }]
         }
@@ -75,13 +77,15 @@ export default {
         props: {
           itemActions: {
             pane: [{
-              label: this.$i18n.t('MainActivity.VIEW_DOCUMENT'),
+              id: 'view-document',
               icon: 'las la-file-alt',
+              tooltip: this.$i18n.t('MainActivity.VIEW_DOCUMENT'),
               handler: (document) => this.onViewDocument(document)
             },
             {
-              label: this.$i18n.t('MainActivity.EDIT_DOCUMENT'),
+              id: 'edit-document',
               icon: 'edit',
+              tooltip: this.$i18n.t('MainActivity.EDIT_DOCUMENT'),
               handler: (document) => this.onEditDocument(document)
             }],
             menu: [{
@@ -120,22 +124,25 @@ export default {
       this.clearActivity()
       this.setActivityBar({ 
           'list': [
-            { icon: 'view_module', label: this.$t('MainActivity.GRID_LABEL'), handler: { name: 'main', params: { mode: 'grid' } } },
-            { icon: 'las la-table', label: this.$t('MainActivity.TABLE_LABEL'), handler: { name: 'main', params: { mode: 'table' } } },
-            { icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
+            { id: 'list', icon: 'las la-list', label:  this.$t('MainActivity.LIST_LABEL'), color: 'primary' },
+            { id: 'grid', icon: 'view_module', tooltip: this.$t('MainActivity.GRID_LABEL'), handler: { name: 'main', params: { mode: 'grid' } } },
+            { id: 'table', icon: 'las la-table', tooltip: this.$t('MainActivity.TABLE_LABEL'), handler: { name: 'main', params: { mode: 'table' } } },
+            { id: 'filter', icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
           ],
           'grid': [
-            { icon: 'las la-list', label:  this.$t('MainActivity.LIST_LABEL'), handler: { name: 'main', params: { mode: 'list' } } },
-            { icon: 'las la-table', label: this.$t('MainActivity.TABLE_LABEL'), handler: { name: 'main', params: { mode: 'table' } } },
-            { icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
+            { id: 'list', icon: 'las la-list', tooltip:  this.$t('MainActivity.LIST_LABEL'), handler: { name: 'main', params: { mode: 'list' } } },
+            { id: 'grid', icon: 'view_module', label: this.$t('MainActivity.GRID_LABEL'), color: 'primary' },
+            { id: 'table', icon: 'las la-table', tooltip: this.$t('MainActivity.TABLE_LABEL'), handler: { name: 'main', params: { mode: 'table' } } },
+            { id: 'filter', icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
           ],
           'table': [
-            { icon: 'las la-list', label:  this.$t('MainActivity.LIST_LABEL'), handler: { name: 'main', params: { mode: 'list' } } },
-            { icon: 'view_module', label: this.$t('MainActivity.GRID_LABEL'), handler: { name: 'main', params: { mode: 'grid' } } },
-            { icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
+            { id: 'list', icon: 'las la-list', label:  this.$t('MainActivity.LIST_LABEL'), handler: { name: 'main', params: { mode: 'list' } } },
+            { id: 'grid', icon: 'view_module', tooltip: this.$t('MainActivity.GRID_LABEL'), handler: { name: 'main', params: { mode: 'grid' } } },
+            { id: 'table', icon: 'las la-table', label: this.$t('MainActivity.TABLE_LABEL'), color: 'primary' },
+            { id: 'filter', icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
           ],
           'filter': [
-            { icon: 'las la-arrow-left', handler: this.onFilterCanceled },
+            { id: 'back', icon: 'las la-arrow-left', handler: this.onFilterCanceled },
             { component: 'QSeparator', vertical: true,  color: 'lightgrey' },
             { component: 'collection/KFilter', value: this.filterQuery }
           ]
@@ -199,16 +206,16 @@ export default {
     this.$options.components['k-grid'] = this.$load('collection/KGrid')
     this.$options.components['k-table'] = this.$load('collection/KTable')
     this.$options.components['k-modal-editor'] = this.$load('editor/KModalEditor')
-    this.$options.components['k-modal-viewer'] = this.$load('viewer/KModalViewer')
+    this.$options.components['k-modaler'] = this.$load('viewer/KModalViewer')
     // Listen to the nav links
     this.$events.$on('open-custom-editor', this.onOpenCustomEditor)
-    this.$events.$on('open-custom-viewer', this.onOpenCustomViewer)
+    this.$events.$on('open-customer', this.onOpenCustomViewer)
     this.$events.$on('filter-changed', this.onFilterChanged)
   },
   beforeDestroy () {
     // Remove event listeners, etc.
     this.$events.$off('open-custom-editor', this.onOpenCustomEditor)
-    this.$events.$off('open-custom-viewer', this.onOpenCustomViewer)
+    this.$events.$off('open-customer', this.onOpenCustomViewer)
     this.$events.$off('filter-changed', this.onFilterChanged)
   }
 }
