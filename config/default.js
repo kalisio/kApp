@@ -75,19 +75,20 @@ module.exports = {
   layout: {
     view: 'lHh LpR lFf',
     leftDrawer: {
-      isVisible: true,
+      behavior: 'mobile',
       component: {
         name: 'layout/KSideNav'
       },
       opener: true
+    },
+    activityBar: {
+      opener: true
     }
-  },
-  appBar: {
-    title: 'kApp'
   },
   sideNav: {
     banner: 'kapp-logo.png',
     components: {
+      user_identity: 'account/KIdentityPanel',
       component_demo: 'Demo',
       app_about: 'layout/KAbout',
       app_logout: 'layout/KLinksPanel'

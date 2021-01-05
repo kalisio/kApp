@@ -13,7 +13,7 @@ module.exports = {
       },
       register: 'authentication/KRegister',
       'change-endpoint': 'authentication/KChangeEndpoint',
-      children: {
+      home: {
         // The name of the route has to be set the default child
         name: '',
         component: 'layout/KHome',
@@ -28,6 +28,11 @@ module.exports = {
           'main/:mode': {
             name: 'main',
             component: 'MainActivity',
+            props: true
+          },
+          'account/:mode': {
+            name: 'account-activity',
+            component: 'account/KAccountActivity',
             props: true
           }
         }

@@ -120,34 +120,26 @@ export default {
       this.clearActivity()
       this.setActivityBar({ 
           'list': [
-            { component: 'QChip', label: kCoreUtils.getInitials(this.userName), color: 'grey-8', textColor: 'white' },
-            { component: 'QSeparator', vertical: true, inset: true },
             { icon: 'view_module', label: this.$t('MainActivity.GRID_LABEL'), handler: { name: 'main', params: { mode: 'grid' } } },
             { icon: 'las la-table', label: this.$t('MainActivity.TABLE_LABEL'), handler: { name: 'main', params: { mode: 'table' } } },
             { icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
           ],
           'grid': [
-            { component: 'QChip', label: kCoreUtils.getInitials(this.userName), color: 'grey-8', textColor: 'white' },
-            { component: 'QSeparator', vertical: true, inset: true },
             { icon: 'las la-list', label:  this.$t('MainActivity.LIST_LABEL'), handler: { name: 'main', params: { mode: 'list' } } },
             { icon: 'las la-table', label: this.$t('MainActivity.TABLE_LABEL'), handler: { name: 'main', params: { mode: 'table' } } },
             { icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
           ],
           'table': [
-            { component: 'QChip', label: kCoreUtils.getInitials(this.userName), color: 'grey-8', textColor: 'white' },
-            { component: 'QSeparator', vertical: true, inset: true },
             { icon: 'las la-list', label:  this.$t('MainActivity.LIST_LABEL'), handler: { name: 'main', params: { mode: 'list' } } },
             { icon: 'view_module', label: this.$t('MainActivity.GRID_LABEL'), handler: { name: 'main', params: { mode: 'grid' } } },
             { icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
           ],
           'filter': [
             { icon: 'las la-arrow-left', handler: this.onFilterCanceled },
-            { component: 'QSeparator', vertical: true, inset: true },
+            { component: 'QSeparator', vertical: true,  color: 'lightgrey' },
             { component: 'collection/KFilter', value: this.filterQuery }
           ]
         }, this.mode)
-      // Search bar
-      this.setSearchBar('name')
       // Fab actions
       this.registerFabAction({
         name: 'create-document',
