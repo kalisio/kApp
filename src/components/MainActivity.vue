@@ -54,7 +54,7 @@ export default {
         component: 'collection/KItem',
         props: {
           itemActions: [
-            { id: 'view-document', icon: 'las la-file-alt', label: this.$i18n.t('MainActivity.VIEW_DOCUMENT'), handler: (document) => this.onViewDocument(document) },
+            { id: 'view-document', icon: 'las la-glasses', label: this.$i18n.t('MainActivity.VIEW_DOCUMENT'), handler: (document) => this.onViewDocument(document) },
             { id: 'edit-document', icon: 'las la-edit', label: this.$i18n.t('MainActivity.EDIT_DOCUMENT'), handler: (document) => this.onEditDocument(document) },
             { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px;' },
             { id: 'remove-document', icon: 'las la-trash', label: this.$i18n.t('MainActivity.REMOVE_DOCUMENT'), handler: (document) => this.onDeleteDocument(document) }
@@ -65,7 +65,7 @@ export default {
         component: 'collection/KCard',
         props: {
           itemActions: [
-            { id: 'view-document', icon: 'las la-file-alt', tooltip: this.$i18n.t('MainActivity.VIEW_DOCUMENT'), handler: (document) => this.onViewDocument(document) },
+            { id: 'view-document', icon: 'las la-glasses', tooltip: this.$i18n.t('MainActivity.VIEW_DOCUMENT'), handler: (document) => this.onViewDocument(document) },
             { id: 'edit-document', icon: 'las la-edit', tooltip: this.$i18n.t('MainActivity.EDIT_DOCUMENT'), handler: (document) => this.onEditDocument(document) },
             { component: 'frame/KOverflowMenu', content: [
               { id: 'remove-document', icon: 'las la-trash', label: this.$i18n.t('MainActivity.REMOVE_DOCUMENT'), handler: (document) => this.onDeleteDocument(document) }
@@ -74,7 +74,7 @@ export default {
         }
       },
       tableActions: [
-        { id: 'view-document', icon: 'las la-file-alt', label: this.$i18n.t('MainActivity.VIEW_DOCUMENT'), handler: (document) => this.onViewDocument(document) },
+        { id: 'view-document', icon: 'las la-glasses', label: this.$i18n.t('MainActivity.VIEW_DOCUMENT'), handler: (document) => this.onViewDocument(document) },
         { id: 'edit-document', icon: 'las la-edit', label: this.$i18n.t('MainActivity.EDIT_DOCUMENT'), handler: (document) => this.onEditDocument(document) },
         { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px;' },
         { id: 'remove-document', icon: 'las la-trash', label: this.$i18n.t('MainActivity.REMOVE_DOCUMENT'), handler: (document) => this.onDeleteDocument(document) }
@@ -177,13 +177,13 @@ export default {
     this.$options.components['k-modaler'] = this.$load('viewer/KModalViewer')
     // Listen to the nav links
     this.$events.$on('open-custom-editor', this.onOpenCustomEditor)
-    this.$events.$on('open-customer', this.onOpenCustomViewer)
+    this.$events.$on('open-custom-viewer', this.onOpenCustomViewer)
     this.$events.$on('filter-changed', this.onFilterChanged)
   },
   beforeDestroy () {
     // Remove event listeners, etc.
     this.$events.$off('open-custom-editor', this.onOpenCustomEditor)
-    this.$events.$off('open-customer', this.onOpenCustomViewer)
+    this.$events.$off('open-custom-viewer', this.onOpenCustomViewer)
     this.$events.$off('filter-changed', this.onFilterChanged)
   }
 }
