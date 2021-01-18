@@ -74,14 +74,15 @@ module.exports = {
   },
   layout: {
     view: 'lHh LpR lFf',
+    topPane: {
+      opener: true,
+      visible: true
+    },
     leftDrawer: {
       behavior: 'mobile',
       component: {
         name: 'layout/KSideNav'
       },
-      opener: true
-    },
-    activityBar: {
       opener: true
     }
   },

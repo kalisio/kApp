@@ -53,92 +53,60 @@ export default {
       itemRenderer: {
         component: 'collection/KItem',
         props: {
-          itemActions: [{
-            label: this.$i18n.t('MainActivity.VIEW_DOCUMENT'),
-            icon: 'las la-file-alt',
-            handler: (document) => this.onViewDocument(document)
-          },
-          {
-            id: 'edit-document',
-            icon: 'edit',
-            label: this.$i18n.t('MainActivity.EDIT_DOCUMENT'),
-            handler: (document) => this.onEditDocument(document)
-          },
-          {
-            id: 'edit-document',
-            icon: 'delete',
-            label: this.$i18n.t('MainActivity.REMOVE_DOCUMENT'),
-            handler: (document) => this.onDeleteDocument(document)
-          }]
+          itemActions: [
+            { id: 'view-document', icon: 'las la-file-alt', label: this.$i18n.t('MainActivity.VIEW_DOCUMENT'), handler: (document) => this.onViewDocument(document) },
+            { id: 'edit-document', icon: 'las la-edit', label: this.$i18n.t('MainActivity.EDIT_DOCUMENT'), handler: (document) => this.onEditDocument(document) },
+            { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px;' },
+            { id: 'remove-document', icon: 'las la-trash', label: this.$i18n.t('MainActivity.REMOVE_DOCUMENT'), handler: (document) => this.onDeleteDocument(document) }
+          ]
         }
       },
       cardRenderer: {
         component: 'collection/KCard',
         props: {
-          itemActions: {
-            pane: [{
-              id: 'view-document',
-              icon: 'las la-file-alt',
-              tooltip: this.$i18n.t('MainActivity.VIEW_DOCUMENT'),
-              handler: (document) => this.onViewDocument(document)
-            },
-            {
-              id: 'edit-document',
-              icon: 'edit',
-              tooltip: this.$i18n.t('MainActivity.EDIT_DOCUMENT'),
-              handler: (document) => this.onEditDocument(document)
-            }],
-            menu: [{
-              label: this.$i18n.t('MainActivity.REMOVE_DOCUMENT'),
-              icon: 'delete',
-              handler: (document) => this.onDeleteDocument(document)
-            }]
-          }
+          itemActions: [
+            { id: 'view-document', icon: 'las la-file-alt', tooltip: this.$i18n.t('MainActivity.VIEW_DOCUMENT'), handler: (document) => this.onViewDocument(document) },
+            { id: 'edit-document', icon: 'las la-edit', tooltip: this.$i18n.t('MainActivity.EDIT_DOCUMENT'), handler: (document) => this.onEditDocument(document) },
+            { component: 'frame/KOverflowMenu', content: [
+              { id: 'remove-document', icon: 'las la-trash', label: this.$i18n.t('MainActivity.REMOVE_DOCUMENT'), handler: (document) => this.onDeleteDocument(document) }
+            ]}
+          ]
         }
       },
-      tableActions: [{
-        label: this.$i18n.t('MainActivity.VIEW_DOCUMENT'),
-        icon: 'las la-file-alt',
-        handler: (document) => this.onViewDocument(document)
-      },
-      {
-        label: this.$i18n.t('MainActivity.EDIT_DOCUMENT'),
-        icon: 'edit',
-        handler: (document) => this.onEditDocument(document)
-      },
-      {
-        label: this.$i18n.t('MainActivity.REMOVE_DOCUMENT'),
-        icon: 'delete',
-        handler: (document) => this.onDeleteDocument(document)
-      }],
+      tableActions: [
+        { id: 'view-document', icon: 'las la-file-alt', label: this.$i18n.t('MainActivity.VIEW_DOCUMENT'), handler: (document) => this.onViewDocument(document) },
+        { id: 'edit-document', icon: 'las la-edit', label: this.$i18n.t('MainActivity.EDIT_DOCUMENT'), handler: (document) => this.onEditDocument(document) },
+        { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px;' },
+        { id: 'remove-document', icon: 'las la-trash', label: this.$i18n.t('MainActivity.REMOVE_DOCUMENT'), handler: (document) => this.onDeleteDocument(document) }
+      ],
       documentId: null
     }
   },
   watch: {
     mode: function () {
-      this.setActivityBarMode(this.mode)
+      this.setTopPaneMode(this.mode)
     }
   },
   methods: {
     refreshActivity () {
       this.clearActivity()
-      this.setActivityBar({ 
+      this.setTopPane({ 
           'list': [
-            { id: 'list', icon: 'las la-list', label:  this.$t('MainActivity.LIST_LABEL'), color: 'primary' },
-            { id: 'grid', icon: 'view_module', tooltip: this.$t('MainActivity.GRID_LABEL'), handler: { name: 'main', params: { mode: 'grid' } } },
-            { id: 'table', icon: 'las la-table', tooltip: this.$t('MainActivity.TABLE_LABEL'), handler: { name: 'main', params: { mode: 'table' } } },
+            { id: 'list', icon: 'las la-list', label:  this.$t('MainActivity.LIST_LABEL'), color: 'primary', status: () => { return 'disabled' } },
+            { id: 'grid', icon: 'view_module', tooltip: this.$t('MainActivity.GRID_LABEL'), route: { name: 'main', params: { mode: 'grid' } } },
+            { id: 'table', icon: 'las la-table', tooltip: this.$t('MainActivity.TABLE_LABEL'), route: { name: 'main', params: { mode: 'table' } } },
             { id: 'filter', icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
           ],
           'grid': [
-            { id: 'list', icon: 'las la-list', tooltip:  this.$t('MainActivity.LIST_LABEL'), handler: { name: 'main', params: { mode: 'list' } } },
-            { id: 'grid', icon: 'view_module', label: this.$t('MainActivity.GRID_LABEL'), color: 'primary' },
-            { id: 'table', icon: 'las la-table', tooltip: this.$t('MainActivity.TABLE_LABEL'), handler: { name: 'main', params: { mode: 'table' } } },
+            { id: 'list', icon: 'las la-list', tooltip:  this.$t('MainActivity.LIST_LABEL'), route: { name: 'main', params: { mode: 'list' } } },
+            { id: 'grid', icon: 'view_module', label: this.$t('MainActivity.GRID_LABEL'), color: 'primary', status: () => { return 'disabled' } },
+            { id: 'table', icon: 'las la-table', tooltip: this.$t('MainActivity.TABLE_LABEL'), route: { name: 'main', params: { mode: 'table' } } },
             { id: 'filter', icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
           ],
           'table': [
-            { id: 'list', icon: 'las la-list', label:  this.$t('MainActivity.LIST_LABEL'), handler: { name: 'main', params: { mode: 'list' } } },
-            { id: 'grid', icon: 'view_module', tooltip: this.$t('MainActivity.GRID_LABEL'), handler: { name: 'main', params: { mode: 'grid' } } },
-            { id: 'table', icon: 'las la-table', label: this.$t('MainActivity.TABLE_LABEL'), color: 'primary' },
+            { id: 'list', icon: 'las la-list', label:  this.$t('MainActivity.LIST_LABEL'), route: { name: 'main', params: { mode: 'list' } } },
+            { id: 'grid', icon: 'view_module', tooltip: this.$t('MainActivity.GRID_LABEL'), route: { name: 'main', params: { mode: 'grid' } } },
+            { id: 'table', icon: 'las la-table', label: this.$t('MainActivity.TABLE_LABEL'), color: 'primary', status: () => { return 'disabled' } },
             { id: 'filter', icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
           ],
           'filter': [
@@ -156,10 +124,10 @@ export default {
       })
     },
     onFilterActivated () {
-      this.setActivityBarMode('filter')
+      this.setTopPaneMode('filter')
     },
     onFilterCanceled () {
-      this.setActivityBarMode(this.mode)
+      this.setTopPaneMode(this.mode)
     },
     onFilterChanged (filterQuery) {
       this.filterQuery = filterQuery
