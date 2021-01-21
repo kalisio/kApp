@@ -54,10 +54,10 @@ export default {
         component: 'collection/KItem',
         props: {
           itemActions: [
-            { id: 'view-document', icon: 'las la-glasses', label: this.$i18n.t('MainActivity.VIEW_DOCUMENT'), handler: (document) => this.onViewDocument(document) },
-            { id: 'edit-document', icon: 'las la-edit', label: this.$i18n.t('MainActivity.EDIT_DOCUMENT'), handler: (document) => this.onEditDocument(document) },
+            { id: 'view-document', icon: 'las la-glasses', label: 'MainActivity.VIEW_DOCUMENT', handler: (document) => this.onViewDocument(document) },
+            { id: 'edit-document', icon: 'las la-edit', label: 'MainActivity.EDIT_DOCUMENT', handler: (document) => this.onEditDocument(document) },
             { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px;' },
-            { id: 'remove-document', icon: 'las la-trash', label: this.$i18n.t('MainActivity.REMOVE_DOCUMENT'), handler: (document) => this.onDeleteDocument(document) }
+            { id: 'remove-document', icon: 'las la-trash', label: 'MainActivity.REMOVE_DOCUMENT', handler: (document) => this.onDeleteDocument(document) }
           ]
         }
       },
@@ -65,19 +65,19 @@ export default {
         component: 'collection/KCard',
         props: {
           itemActions: [
-            { id: 'view-document', icon: 'las la-glasses', tooltip: this.$i18n.t('MainActivity.VIEW_DOCUMENT'), handler: (document) => this.onViewDocument(document) },
-            { id: 'edit-document', icon: 'las la-edit', tooltip: this.$i18n.t('MainActivity.EDIT_DOCUMENT'), handler: (document) => this.onEditDocument(document) },
+            { id: 'view-document', icon: 'las la-glasses', tooltip: 'MainActivity.VIEW_DOCUMENT', handler: (document) => this.onViewDocument(document) },
+            { id: 'edit-document', icon: 'las la-edit', tooltip: 'MainActivity.EDIT_DOCUMENT', handler: (document) => this.onEditDocument(document) },
             { component: 'frame/KOverflowMenu', content: [
-              { id: 'remove-document', icon: 'las la-trash', label: this.$i18n.t('MainActivity.REMOVE_DOCUMENT'), handler: (document) => this.onDeleteDocument(document) }
+              { id: 'remove-document', icon: 'las la-trash', label: 'MainActivity.REMOVE_DOCUMENT', handler: (document) => this.onDeleteDocument(document) }
             ]}
           ]
         }
       },
       tableActions: [
-        { id: 'view-document', icon: 'las la-glasses', label: this.$i18n.t('MainActivity.VIEW_DOCUMENT'), handler: (document) => this.onViewDocument(document) },
-        { id: 'edit-document', icon: 'las la-edit', label: this.$i18n.t('MainActivity.EDIT_DOCUMENT'), handler: (document) => this.onEditDocument(document) },
+        { id: 'view-document', icon: 'las la-glasses', label: 'MainActivity.VIEW_DOCUMENT', handler: (document) => this.onViewDocument(document) },
+        { id: 'edit-document', icon: 'las la-edit', label: 'MainActivity.EDIT_DOCUMENT', handler: (document) => this.onEditDocument(document) },
         { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px;' },
-        { id: 'remove-document', icon: 'las la-trash', label: this.$i18n.t('MainActivity.REMOVE_DOCUMENT'), handler: (document) => this.onDeleteDocument(document) }
+        { id: 'remove-document', icon: 'las la-trash', label: 'MainActivity.REMOVE_DOCUMENT', handler: (document) => this.onDeleteDocument(document) }
       ],
       documentId: null
     }
@@ -92,21 +92,21 @@ export default {
       this.clearActivity()
       this.setTopPane({ 
           'list': [
-            { id: 'list', icon: 'las la-list', label:  this.$t('MainActivity.LIST_LABEL'), color: 'primary', status: () => { return 'disabled' } },
-            { id: 'grid', icon: 'view_module', tooltip: this.$t('MainActivity.GRID_LABEL'), route: { name: 'main', params: { mode: 'grid' } } },
-            { id: 'table', icon: 'las la-table', tooltip: this.$t('MainActivity.TABLE_LABEL'), route: { name: 'main', params: { mode: 'table' } } },
+            { id: 'list', icon: 'las la-list', label: 'MainActivity.LIST_LABEL', color: 'primary', status: () => { return 'disabled' } },
+            { id: 'grid', icon: 'view_module', tooltip: 'MainActivity.GRID_LABEL', route: { name: 'main', params: { mode: 'grid' } } },
+            { id: 'table', icon: 'las la-table', tooltip: 'MainActivity.TABLE_LABEL', route: { name: 'main', params: { mode: 'table' } } },
             { id: 'filter', icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
           ],
           'grid': [
-            { id: 'list', icon: 'las la-list', tooltip:  this.$t('MainActivity.LIST_LABEL'), route: { name: 'main', params: { mode: 'list' } } },
-            { id: 'grid', icon: 'view_module', label: this.$t('MainActivity.GRID_LABEL'), color: 'primary', status: () => { return 'disabled' } },
-            { id: 'table', icon: 'las la-table', tooltip: this.$t('MainActivity.TABLE_LABEL'), route: { name: 'main', params: { mode: 'table' } } },
+            { id: 'list', icon: 'las la-list', tooltip:  'MainActivity.LIST_LABEL', route: { name: 'main', params: { mode: 'list' } } },
+            { id: 'grid', icon: 'view_module', label: 'MainActivity.GRID_LABEL', color: 'primary', status: () => { return 'disabled' } },
+            { id: 'table', icon: 'las la-table', tooltip: 'MainActivity.TABLE_LABEL', route: { name: 'main', params: { mode: 'table' } } },
             { id: 'filter', icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
           ],
           'table': [
-            { id: 'list', icon: 'las la-list', label:  this.$t('MainActivity.LIST_LABEL'), route: { name: 'main', params: { mode: 'list' } } },
-            { id: 'grid', icon: 'view_module', tooltip: this.$t('MainActivity.GRID_LABEL'), route: { name: 'main', params: { mode: 'grid' } } },
-            { id: 'table', icon: 'las la-table', label: this.$t('MainActivity.TABLE_LABEL'), color: 'primary', status: () => { return 'disabled' } },
+            { id: 'list', icon: 'las la-list', label:  'MainActivity.LIST_LABEL', route: { name: 'main', params: { mode: 'list' } } },
+            { id: 'grid', icon: 'view_module', tooltip: 'MainActivity.GRID_LABEL', route: { name: 'main', params: { mode: 'grid' } } },
+            { id: 'table', icon: 'las la-table', label: 'MainActivity.TABLE_LABEL', color: 'primary', status: () => { return 'disabled' } },
             { id: 'filter', icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
           ],
           'filter': [
@@ -118,7 +118,7 @@ export default {
       // Fab actions
       this.registerFabAction({
         name: 'create-document',
-        label: this.$t('MainActivity.CREATE_DOCUMENT'),
+        label: 'MainActivity.CREATE_DOCUMENT',
         icon: 'add',
         handler: this.onCreateDocument
       })
