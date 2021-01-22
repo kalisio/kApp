@@ -79,27 +79,17 @@ module.exports = {
       visible: true
     },
     leftDrawer: {
+      content: [
+        { component: 'QImg', src: 'statics/kapp-logo.png' },
+        { component: 'account/KIdentityPanel', class: 'full-width' },
+        { componenr: 'Demo' },
+        { component: 'layout/KAbout' },
+        { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px;' },
+        { id: 'logout', icon: 'las la-sign-out-alt', label: 'sideNav.LOGOUT', route: { name: 'logout' }, renderer: 'item' }
+      ],
       behavior: 'mobile',
-      component: {
-        name: 'layout/KSideNav'
-      },
       opener: true
     }
-  },
-  sideNav: {
-    banner: 'kapp-logo.png',
-    components: {
-      user_identity: 'account/KIdentityPanel',
-      component_demo: 'Demo',
-      app_about: 'layout/KAbout',
-      app_logout: 'layout/KLinksPanel'
-    }
-  },
-  app_logout: {
-    links: [
-      { }, // separator
-      { label: 'sideNav.LOGOUT', icon: 'exit_to_app', route: { name: 'logout' } }
-    ]
   },
   routes: require('../src/router/routes')
 }
