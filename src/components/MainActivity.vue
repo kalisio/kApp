@@ -104,7 +104,7 @@ export default {
             { id: 'filter', icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
           ],
           'table': [
-            { id: 'list', icon: 'las la-list', label:  'MainActivity.LIST_LABEL', route: { name: 'main', params: { mode: 'list' } } },
+            { id: 'list', icon: 'las la-list', tooltip:  'MainActivity.LIST_LABEL', route: { name: 'main', params: { mode: 'list' } } },
             { id: 'grid', icon: 'view_module', tooltip: 'MainActivity.GRID_LABEL', route: { name: 'main', params: { mode: 'grid' } } },
             { id: 'table', icon: 'las la-table', label: 'MainActivity.TABLE_LABEL', color: 'primary', status: () => { return 'disabled' } },
             { id: 'filter', icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
@@ -116,12 +116,17 @@ export default {
           ]
         }, this.mode)
       // Fab actions
-      this.registerFabAction({
-        name: 'create-document',
-        label: 'MainActivity.CREATE_DOCUMENT',
-        icon: 'add',
-        handler: this.onCreateDocument
-      })
+      this.setFabActions([
+        { id: 'create-document',  icon: 'las la-plus', label: 'MainActivity.CREATE_DOCUMENT', color: 'primary', handler: this.onCreateDocument },
+        { id: 'minus',  icon: 'las la-minus', label: 'Minus', color: 'blue', handler: this.onCreateDocument },
+        { id: 'eye',  icon: 'las la-eye', label: 'Eye', color: 'primary', handler: this.onCreateDocument },
+        { id: 'tape',  icon: 'las la-tape', label: 'Measure tool', color: 'green', handler: this.onCreateDocument },
+        { id: 'anchor',  icon: 'las la-anchor', label: 'Feu d\'habitation', color: 'primary', handler: this.onCreateDocument },
+        { id: 'compass',  icon: 'las la-compass', label: 'Navigate', color: 'primary', handler: this.onCreateDocument },
+        { id: 'eye2',  icon: 'las la-eye', label: 'Eye', color: 'primary', handler: this.onCreateDocument },
+        { id: 'tape2',  icon: 'las la-tape', label: 'Measure tool', color: 'primary', handler: this.onCreateDocument },
+        { id: 'anchor2',  icon: 'las la-anchor', label: 'Anchor', color: 'primary', handler: this.onCreateDocument, status: () => { return this.mode !== 'grid' ? 'hidden' : 'visible' } }
+      ])
     },
     onFilterActivated () {
       this.setTopPaneMode('filter')

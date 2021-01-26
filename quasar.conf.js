@@ -99,7 +99,10 @@ module.exports = function (ctx) {
       ]
     },
 
-    animations: [],
+    animations: [
+      'fadeIn',
+      'fadeOut'
+    ],
     
     supportIE: false,
 

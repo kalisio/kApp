@@ -1,12 +1,13 @@
 import _ from 'lodash'
 import config from 'config'
-import { utils as kCoreUtils, Store, Events } from '@kalisio/kdk/core.client'
+import { utils as kCoreUtils, Store, Layout, Events } from '@kalisio/kdk/core.client'
 import utils from './utils'
 
 export default {
   install (Vue, options) {
     // Inject in Vue the Kalisio features
     Vue.prototype.$store = Store
+    Vue.prototype.$layout = Layout
     Vue.prototype.$events = Events
     Vue.prototype.$api = options.api
     Vue.prototype.$can = options.api.can
@@ -17,6 +18,7 @@ export default {
     }
     // FIXME: This is used for testing purpose, don't know how to access this from testcafe otherwise
     global.$store = Vue.prototype.$store
+    global.$layout = Vue.prototype.$layout
     global.$api = Vue.prototype.$api
   }
 }
