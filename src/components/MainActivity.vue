@@ -67,7 +67,7 @@ export default {
           itemActions: [
             { id: 'view-document', icon: 'las la-glasses', tooltip: 'MainActivity.VIEW_DOCUMENT', handler: (document) => this.onViewDocument(document) },
             { id: 'edit-document', icon: 'las la-edit', tooltip: 'MainActivity.EDIT_DOCUMENT', handler: (document) => this.onEditDocument(document) },
-            { component: 'frame/KOverflowMenu', content: [
+            { component: 'frame/KMenu', id: 'overflow-menu', actionRenderer: 'item', content: [
               { id: 'remove-document', icon: 'las la-trash', label: 'MainActivity.REMOVE_DOCUMENT', handler: (document) => this.onDeleteDocument(document) }
             ]}
           ]
