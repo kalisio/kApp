@@ -20,7 +20,7 @@
       <!--
         Document editor
       -->
-      <k-modaler ref="documentViewer" service="documents" :objectId="documentId" />
+      <k-modal ref="documentViewer" service="documents" :objectId="documentId" />
       <!--
         Custom editor
       -->
@@ -28,7 +28,7 @@
       <!--
         Custom viewer
       -->
-      <k-modaler ref="customViewer" service="custom" objectId="0" />
+      <k-modal ref="customViewer" service="custom" objectId="0" />
     </template>
   </k-page>
 </template>
@@ -93,19 +93,19 @@ export default {
       this.setTopPane({ 
           'list': [
             { id: 'list', icon: 'las la-list', label: 'MainActivity.LIST_LABEL', color: 'primary', status: () => { return 'disabled' } },
-            { id: 'grid', icon: 'view_module', tooltip: 'MainActivity.GRID_LABEL', route: { name: 'main', params: { mode: 'grid' } } },
-            { id: 'table', icon: 'las la-table', tooltip: 'MainActivity.TABLE_LABEL', route: { name: 'main', params: { mode: 'table' } } },
+            { id: 'grid', icon: 'view_module', tooltip: 'MainActivity.GRID_LABEL', route: { name: 'main-activity', params: { mode: 'grid' } } },
+            { id: 'table', icon: 'las la-table', tooltip: 'MainActivity.TABLE_LABEL', route: { name: 'main-activity', params: { mode: 'table' } } },
             { id: 'filter', icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
           ],
           'grid': [
-            { id: 'list', icon: 'las la-list', tooltip:  'MainActivity.LIST_LABEL', route: { name: 'main', params: { mode: 'list' } } },
+            { id: 'list', icon: 'las la-list', tooltip:  'MainActivity.LIST_LABEL', route: { name: 'main-activity', params: { mode: 'list' } } },
             { id: 'grid', icon: 'view_module', label: 'MainActivity.GRID_LABEL', color: 'primary', status: () => { return 'disabled' } },
-            { id: 'table', icon: 'las la-table', tooltip: 'MainActivity.TABLE_LABEL', route: { name: 'main', params: { mode: 'table' } } },
+            { id: 'table', icon: 'las la-table', tooltip: 'MainActivity.TABLE_LABEL', route: { name: 'main-activity', params: { mode: 'table' } } },
             { id: 'filter', icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
           ],
           'table': [
-            { id: 'list', icon: 'las la-list', tooltip:  'MainActivity.LIST_LABEL', route: { name: 'main', params: { mode: 'list' } } },
-            { id: 'grid', icon: 'view_module', tooltip: 'MainActivity.GRID_LABEL', route: { name: 'main', params: { mode: 'grid' } } },
+            { id: 'list', icon: 'las la-list', tooltip:  'MainActivity.LIST_LABEL', route: { name: 'main-activity', params: { mode: 'list' } } },
+            { id: 'grid', icon: 'view_module', tooltip: 'MainActivity.GRID_LABEL', route: { name: 'main-activity', params: { mode: 'grid' } } },
             { id: 'table', icon: 'las la-table', label: 'MainActivity.TABLE_LABEL', color: 'primary', status: () => { return 'disabled' } },
             { id: 'filter', icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
           ],
@@ -116,7 +116,7 @@ export default {
           ]
         }, this.mode)
       // Fab actions
-      this.setFabActions([
+      this.setFab([
         { id: 'create-document',  icon: 'las la-plus', label: 'MainActivity.CREATE_DOCUMENT', color: 'primary', handler: this.onCreateDocument },
         { id: 'minus',  icon: 'las la-minus', label: 'Minus', color: 'blue', handler: this.onCreateDocument },
         { id: 'eye',  icon: 'las la-eye', label: 'Eye', color: 'primary', handler: this.onCreateDocument },
@@ -179,7 +179,7 @@ export default {
     this.$options.components['k-grid'] = this.$load('collection/KGrid')
     this.$options.components['k-table'] = this.$load('collection/KTable')
     this.$options.components['k-modal-editor'] = this.$load('editor/KModalEditor')
-    this.$options.components['k-modaler'] = this.$load('viewer/KModalViewer')
+    this.$options.components['k-modal'] = this.$load('viewer/KModalViewer')
     // Listen to the nav links
     this.$events.$on('open-custom-editor', this.onOpenCustomEditor)
     this.$events.$on('open-custom-viewer', this.onOpenCustomViewer)

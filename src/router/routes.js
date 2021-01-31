@@ -23,14 +23,14 @@ module.exports = {
             // Because this child is the default one path is empty and name is the one of the parent route
             path: '',
             name: 'home',
-            redirect: { name: 'main', params: { mode: 'list' } }
+            redirect: { name: 'main-activity', params: { mode: 'list' } }
           },
           'main/:mode': {
-            name: 'main',
+            name: 'main-activity',
             component: 'MainActivity',
             props: true
           },
-          'account/:mode': {
+          'account/:page': {
             name: 'account-activity',
             component: 'account/KAccountActivity',
             props: true
