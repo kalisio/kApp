@@ -92,21 +92,21 @@ export default {
       this.clearActivity()
       this.setTopPane({ 
           'list': [
-            { id: 'list', icon: 'las la-list', label: 'MainActivity.LIST_LABEL', color: 'primary', status: () => { return 'disabled' } },
+            { id: 'list', icon: 'las la-list', label: 'MainActivity.LIST_LABEL', color: 'primary', disabled: true },
             { id: 'grid', icon: 'view_module', tooltip: 'MainActivity.GRID_LABEL', route: { name: 'main-activity', params: { mode: 'grid' } } },
             { id: 'table', icon: 'las la-table', tooltip: 'MainActivity.TABLE_LABEL', route: { name: 'main-activity', params: { mode: 'table' } } },
             { id: 'filter', icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
           ],
           'grid': [
             { id: 'list', icon: 'las la-list', tooltip:  'MainActivity.LIST_LABEL', route: { name: 'main-activity', params: { mode: 'list' } } },
-            { id: 'grid', icon: 'view_module', label: 'MainActivity.GRID_LABEL', color: 'primary', status: () => { return 'disabled' } },
+            { id: 'grid', icon: 'view_module', label: 'MainActivity.GRID_LABEL', color: 'primary', disabled: true },
             { id: 'table', icon: 'las la-table', tooltip: 'MainActivity.TABLE_LABEL', route: { name: 'main-activity', params: { mode: 'table' } } },
             { id: 'filter', icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
           ],
           'table': [
             { id: 'list', icon: 'las la-list', tooltip:  'MainActivity.LIST_LABEL', route: { name: 'main-activity', params: { mode: 'list' } } },
             { id: 'grid', icon: 'view_module', tooltip: 'MainActivity.GRID_LABEL', route: { name: 'main-activity', params: { mode: 'grid' } } },
-            { id: 'table', icon: 'las la-table', label: 'MainActivity.TABLE_LABEL', color: 'primary', status: () => { return 'disabled' } },
+            { id: 'table', icon: 'las la-table', label: 'MainActivity.TABLE_LABEL', color: 'primary', disabled: true },
             { id: 'filter', icon: 'las la-search', tooltip: 'Search', handler: this.onFilterActivated }
           ],
           'filter': [
