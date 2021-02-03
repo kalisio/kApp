@@ -91,7 +91,7 @@ module.exports = {
       opener: true
     }
   },
-  'account-activity': {
+  accountActivity: {
     topPane: {
       content: {
         profile: [

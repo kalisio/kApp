@@ -37,9 +37,7 @@
 import { utils as kCoreUtils, mixins as kCoreMixins } from '@kalisio/kdk/core.client'
 export default {
   name: 'main-activity',
-  mixins: [
-    kCoreMixins.baseActivity
-  ],
+  mixins: [kCoreMixins.baseActivity()],
   props: {
     mode: {
       type: String,
