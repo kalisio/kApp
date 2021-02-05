@@ -110,7 +110,7 @@ export default {
           'filter': [
             { id: 'back', icon: 'las la-arrow-left', handler: this.onFilterCanceled },
             { component: 'QSeparator', vertical: true,  color: 'lightgrey' },
-            { component: 'collection/KFilter' }
+            { component: 'collection/KFilter', on: { event: 'filter-changed', listener: this.onFilterChanged } }
           ]
         }, this.mode)
       // Fab actions
