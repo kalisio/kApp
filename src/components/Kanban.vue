@@ -32,7 +32,7 @@ export default {
         component: 'collection/KCard',
         props: {
           itemActions: [
-            { id: 'view-document', icon: 'las la-glasses', tooltip: 'MainActivity.VIEW_DOCUMENT', handler: (document) => this.onViewDocument(document) }
+            { id: 'view-document', icon: 'las la-glasses', tooltip: 'KanbanActivity.VIEW_DOCUMENT', handler: (document) => this.onViewDocument(document) }
           ]
         }
       }

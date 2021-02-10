@@ -19,20 +19,20 @@ export default {
         { 
           id: 'view-document', 
           icon: 'las la-glasses', 
-          label: 'MainActivity.VIEW_DOCUMENT', 
+          label: 'Documents.VIEW', 
           handler: (document) => this.$router.push({ name: 'view-document', params: { service: 'documents', objectId: document._id } })
         },
         { 
           id: 'edit-document', 
           icon: 'las la-edit', 
-          label: 'MainActivity.EDIT_DOCUMENT', 
+          label: 'Documents.EDIT', 
           handler: (document) => this.$router.push({ name: 'edit-document', params: { service: 'documents', objectId: document._id } })
         },
         { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px;' },
         { 
           id: 'remove-document',
           icon: 'las la-trash',
-          label: 'MainActivity.REMOVE_DOCUMENT',
+          label: 'Documents.DELETE',
           handler: (document) => this.deleteDocument(document)
         }
       ],

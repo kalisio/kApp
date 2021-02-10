@@ -83,10 +83,10 @@ module.exports = {
         { component: 'QImg', src: 'statics/kapp-logo.png' },
         { component: 'account/KIdentityPanel', class: 'full-width' },
         { component: 'layout/KAbout' },
-        { id: 'collection', icon: 'dashboard', label: 'Collection', renderer: 'item', route: { name: 'collection-activity', params: { page: 'list' } } },
-        { id: 'kanban', icon: 'dashboard', label: 'Kanban', renderer: 'item', route: { name: 'kanban-activity' } },
+        { id: 'collection', icon: 'dashboard', label: 'SideNav.COLLECTION_ACTIVITY', renderer: 'item', route: { name: 'collection-activity', params: { page: 'list' } } },
+        { id: 'kanban', icon: 'dashboard', label: 'SideNav.KANBAN_ACTIVITY', renderer: 'item', route: { name: 'kanban-activity' } },
         { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px;' },
-        { id: 'logout', icon: 'las la-sign-out-alt', label: 'sideNav.LOGOUT', renderer: 'item', route: { name: 'logout' } }
+        { id: 'logout', icon: 'las la-sign-out-alt', label: 'SideNav.LOGOUT', renderer: 'item', route: { name: 'logout' } }
       ],
       behavior: 'mobile',
       opener: true
@@ -128,22 +128,22 @@ module.exports = {
     topPane: {
       content: {
         list: [
-          { id: 'list', icon: 'las la-list', label: 'MainActivity.LIST_LABEL', color: 'primary', disabled: true },
-          { id: 'grid', icon: 'view_module', tooltip: 'MainActivity.GRID_LABEL', route: { name: 'collection-activity', params: { page: 'grid' } } },
-          { id: 'table', icon: 'las la-table', tooltip: 'MainActivity.TABLE_LABEL', route: { name: 'collection-activity', params: { page: 'table' } } },
-          { id: 'filter', icon: 'las la-search', tooltip: 'FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } }
+          { id: 'list', icon: 'las la-list', label: 'CollectionActivity.LIST', color: 'primary', disabled: true },
+          { id: 'grid', icon: 'view_module', tooltip: 'CollectionActivity.GRID', route: { name: 'collection-activity', params: { page: 'grid' } } },
+          { id: 'table', icon: 'las la-table', tooltip: 'CollectionActivity.TABLE', route: { name: 'collection-activity', params: { page: 'table' } } },
+          { id: 'filter', icon: 'las la-search', tooltip: 'CollectionActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } }
         ],
         grid: [
-          { id: 'list', icon: 'las la-list', tooltip: 'MainActivity.LIST_LABEL', route: { name: 'collection-activity', params: { page: 'list' } } },
-          { id: 'grid', icon: 'view_module', label: 'MainActivity.GRID_LABEL', color: 'primary', disabled: true },
-          { id: 'table', icon: 'las la-table', tooltip: 'MainActivity.TABLE_LABEL', route: { name: 'collection-activity', params: { page: 'table' } } },
-          { id: 'filter', icon: 'las la-search', tooltip: 'FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } }
+          { id: 'list', icon: 'las la-list', tooltip: 'CollectionActivity.LIST', route: { name: 'collection-activity', params: { page: 'list' } } },
+          { id: 'grid', icon: 'view_module', label: 'CollectionActivity.GRID', color: 'primary', disabled: true },
+          { id: 'table', icon: 'las la-table', tooltip: 'CollectionActivity.TABLE', route: { name: 'collection-activity', params: { page: 'table' } } },
+          { id: 'filter', icon: 'las la-search', tooltip: 'CollectionActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } }
         ],
         table: [
-          { id: 'list', icon: 'las la-list', tooltip: 'MainActivity.LIST_LABEL', route: { name: 'collection-activity', params: { page: 'list' } } },
-          { id: 'grid', icon: 'view_module', tooltip: 'MainActivity.GRID_LABEL', route: { name: 'collection-activity', params: { page: 'grid' } } },
-          { id: 'table', icon: 'las la-table', label: 'MainActivity.TABLE_LABEL', color: 'primary', disabled: true },
-          { id: 'filter', icon: 'las la-search', tooltip: 'FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } }
+          { id: 'list', icon: 'las la-list', tooltip: 'CollectionActivity.LIST', route: { name: 'collection-activity', params: { page: 'list' } } },
+          { id: 'grid', icon: 'view_module', tooltip: 'CollectionActivity.GRID', route: { name: 'collection-activity', params: { page: 'grid' } } },
+          { id: 'table', icon: 'las la-table', label: 'CollectionActivity.TABLE', color: 'primary', disabled: true },
+          { id: 'filter', icon: 'las la-search', tooltip: 'CollectionActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } }
         ],
         filter: [
           { id: 'back', icon: 'las la-arrow-left', handler: { name: 'restoreTopPaneMode' } },
@@ -167,9 +167,10 @@ module.exports = {
     topPane: {
       content: {
         default: [
+          { id: 'table', icon: 'dashboard', label: 'KanbanActivity.LABEL', color: 'primary', disabled: true },
           { id: 'back', icon: 'las la-arrow-left', handler: { name: 'goBack' } },
           { component: 'QSeparator', vertical: true, color: 'lightgrey' },
-          { id: 'filter', icon: 'las la-search', tooltip: 'Search', handler: { name: 'setTopPaneMode', params: ['filter'] } }
+          { id: 'filter', icon: 'las la-search', tooltip: 'KanbanActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } }
         ],
         filter: [
           { id: 'back', icon: 'las la-arrow-left', handler: { name: 'setTopPaneMode', params: ['default'] } },
