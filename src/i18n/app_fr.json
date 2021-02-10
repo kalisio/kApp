@@ -17,9 +17,10 @@
     "RECONNECT": "Tentative de reconnection en cours..."
   },
   "SideNav": {
-    "LAYOUT_ACTIVITY": "Démo layout",
-    "COLLECTION_ACTIVITY": "Démo collection",
-    "KANBAN_ACTIVITY": "Démo Kanban",
+    "LAYOUT_ACTIVITY": "Layout",
+    "COLLECTION_ACTIVITY": "Collections",
+    "KANBAN_ACTIVITY": "Kanban",
+    "EDITOR_ACTIVITY": "Editeur",
     "LOGOUT": "Se déconnecter"
   },
   "LayoutActivity": {
@@ -34,6 +35,11 @@
   "KanbanActivity": {
     "LABEL": "Kanban",
     "FILTER": "Filtrer"
+  },
+  "EditorActivity": {
+    "LABEL": "Editeur",
+    "EDIT": "Editer",
+    "VIEW": "Visualiser"
   },
   "Platform": {
     "TITLE": "Votre plateforme",

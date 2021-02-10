@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md">
+  <div class="q-pa-md" style="max-width: 400px;">
     <div class="q-mb-md text-h6">
       {{ $t('Platform.TITLE') }}
     </div>

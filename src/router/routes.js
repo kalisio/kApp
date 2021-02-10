@@ -27,16 +27,16 @@ module.exports = {
           },
           'account/:page': {
             name: 'account-activity',
-            component: 'activity/KSwitch',
+            component: 'account/KAccountActivity',
             props: true
           },
-          'layout-demo': {
+          layout: {
             name: 'layout-activity',
             component: 'LayoutActivity'
           },
-          'collection-demo/:page': {
+          'collection/:page': {
             name: 'collection-activity',
-            component: 'activity/KSwitch',
+            component: 'CollectionActivity',
             props: true,
             children: {
               create: {
@@ -56,10 +56,25 @@ module.exports = {
               }
             }
           },
-          'kanban-demo': {
+          kanban: {
             name: 'kanban-activity',
-            component: 'Kanban',
-            props: true
+            component: 'KanbanActivity'
+          },
+          editor: {
+            name: 'editor-activity',
+            component: 'EditorActivity',
+            children: {
+              edit: {
+                name: 'edit-object',
+                component: 'editor/KModalEditor',
+                props: true
+              },
+              view: {
+                name: 'view-object',
+                component: 'viewer/KModalViewer',
+                props: true
+              }
+            }
           }
         }
       }

@@ -9,25 +9,21 @@
         :categories="categories" 
         :categoryField="categoryField"
         :renderer="cardRenderer" 
-        :filter-query="filterQuery" />
+        :filter-query="filter.query" />
     </template>
   </k-page>
 </template>
 
 <script>
 import { mixins as kCoreMixins } from '@kalisio/kdk/core.client'
-import documentsMixin from '../mixins/mixins.documents'
 
 export default {
   name: 'kanban',
-  mixins: [
-    kCoreMixins.baseActivity(),
-    documentsMixin
-  ],
+  mixins: [kCoreMixins.baseActivity()],
   data () {
     return {
       categories: null,
-      filterQuery: null,
+      filter: this.$store.get('filter'),
       cardRenderer: {
         component: 'collection/KCard',
         props: {
@@ -38,20 +34,11 @@ export default {
       }
     }
   },
-  methods: {
-    onFilterChanged (query) {
-      console.log(query)
-      this.filterQuery = query
-    },
-    refreshActivity () {
-      // Does nothing
-    }
-  },
   created () {
     // Load the required components
     this.$options.components['k-page'] = this.$load('layout/KPage')
     this.$options.components['k-board'] = this.$load('collection/KBoard')
-    // Configure once the activity
+    // Configure the activity
     this.configureActivity()
     // Setup the pane mode according the current page
     this.categories = this.activityOptions.categories

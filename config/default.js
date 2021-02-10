@@ -78,10 +78,12 @@ module.exports = {
       content: [
         { component: 'QImg', src: 'statics/kapp-logo.png' },
         { component: 'account/KIdentityPanel', class: 'full-width' },
-        { component: 'layout/KAbout' },
         { id: 'layout', icon: 'las la-desktop', label: 'SideNav.LAYOUT_ACTIVITY', renderer: 'item', route: { name: 'layout-activity' } },
-        { id: 'collection', icon: 'dashboard', label: 'SideNav.COLLECTION_ACTIVITY', renderer: 'item', route: { name: 'collection-activity', params: { page: 'list' } } },
+        { id: 'collection', icon: 'las la-list', label: 'SideNav.COLLECTION_ACTIVITY', renderer: 'item', route: { name: 'collection-activity', params: { page: 'list' } } },
         { id: 'kanban', icon: 'dashboard', label: 'SideNav.KANBAN_ACTIVITY', renderer: 'item', route: { name: 'kanban-activity' } },
+        { id: 'editor', icon: 'las la-edit', label: 'SideNav.EDITOR_ACTIVITY', renderer: 'item', route: { name: 'editor-activity' } },
+        { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px;' },
+        { component: 'layout/KAbout' },
         { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px;' },
         { id: 'logout', icon: 'las la-sign-out-alt', label: 'SideNav.LOGOUT', renderer: 'item', route: { name: 'logout' } }
       ],
@@ -93,6 +95,9 @@ module.exports = {
       visible: true
     },
     rightPane: {
+      opener: true
+    },
+    bottomPane: {
       opener: true
     }
   },
@@ -121,11 +126,6 @@ module.exports = {
           { id: 'danger-zone', icon: 'las la-exclamation-triangle', color: 'primary', label: 'KAccountActivity.DANGER_ZONE', disabled: true }
         ]
       }
-    },
-    pages: {
-      profile: { component: 'account/KAccountProfile' },
-      security: { component: 'account/KAccountSecurity' },
-      'danger-zone': { component: 'account/KAccountDZ' }
     }
   },
   layoutActivity: {
@@ -142,24 +142,35 @@ module.exports = {
       content: [
         { component: 'Platform' }
       ]
+    },
+    bottomPane: {
+      content: [
+        { component: 'Platform' }
+      ]
     }
   },
   collectionActivity: {
     topPane: {
       content: {
         list: [
+          { id: 'home', icon: 'las la-home', route: { name: 'home' } },
+          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
           { id: 'list', icon: 'las la-list', label: 'CollectionActivity.LIST', color: 'primary', disabled: true },
           { id: 'grid', icon: 'view_module', tooltip: 'CollectionActivity.GRID', route: { name: 'collection-activity', params: { page: 'grid' } } },
           { id: 'table', icon: 'las la-table', tooltip: 'CollectionActivity.TABLE', route: { name: 'collection-activity', params: { page: 'table' } } },
           { id: 'filter', icon: 'las la-search', tooltip: 'CollectionActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } }
         ],
         grid: [
+          { id: 'home', icon: 'las la-home', route: { name: 'home' } },
+          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
           { id: 'list', icon: 'las la-list', tooltip: 'CollectionActivity.LIST', route: { name: 'collection-activity', params: { page: 'list' } } },
           { id: 'grid', icon: 'view_module', label: 'CollectionActivity.GRID', color: 'primary', disabled: true },
           { id: 'table', icon: 'las la-table', tooltip: 'CollectionActivity.TABLE', route: { name: 'collection-activity', params: { page: 'table' } } },
           { id: 'filter', icon: 'las la-search', tooltip: 'CollectionActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } }
         ],
         table: [
+          { id: 'home', icon: 'las la-home', route: { name: 'home' } },
+          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
           { id: 'list', icon: 'las la-list', tooltip: 'CollectionActivity.LIST', route: { name: 'collection-activity', params: { page: 'list' } } },
           { id: 'grid', icon: 'view_module', tooltip: 'CollectionActivity.GRID', route: { name: 'collection-activity', params: { page: 'grid' } } },
           { id: 'table', icon: 'las la-table', label: 'CollectionActivity.TABLE', color: 'primary', disabled: true },
@@ -176,17 +187,14 @@ module.exports = {
       actions: [
         { id: 'create-document', icon: 'las la-plus', route: { name: 'create-document', params: { service: 'documents' } } }
       ]
-    },
-    pages: {
-      list: { component: 'ListView' },
-      grid: { component: 'GridView' },
-      table: { component: 'TableView' }
     }
   },
   kanbanActivity: {
     topPane: {
       content: {
         default: [
+          { id: 'home', icon: 'las la-home', route: { name: 'home' } },
+          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
           { id: 'table', icon: 'dashboard', label: 'KanbanActivity.LABEL', color: 'primary', disabled: true },
           { id: 'filter', icon: 'las la-search', tooltip: 'KanbanActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } }
         ],
@@ -203,6 +211,19 @@ module.exports = {
       { name: 'déclin' }
     ],
     categoryField: 'etat_sani'
+  },
+  editorActivity: {
+    topPane: {
+      content: {
+        default: [
+          { id: 'home', icon: 'las la-home', route: { name: 'home' } },
+          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
+          { id: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL', color: 'primary', disabled: true },
+          { id: 'editor', icon: 'las la-edit', tooltip: 'EditorActivity.EDIT', route: { name: 'edit-object', params: { service: 'custom', objectId: '0' } } },
+          { id: 'viewer', icon: 'las la-glasses', tooltip: 'EditorActivity.VIEW', route: { name: 'view-object', params: { service: 'custom', objectId: '0' } } }
+        ]
+      }
+    }
   },
   routes: require('../src/router/routes')
 }

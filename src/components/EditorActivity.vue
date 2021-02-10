@@ -1,7 +1,7 @@
 <template>
-  <k-page>
+  <k-page padding>
     <template v-slot:page-content>
-      <div class="fixed-center text-h5">Layout</div>
+      <router-view :router="getRouter()" />
     </template>
   </k-page>
 </template>
@@ -10,8 +10,16 @@
 import { mixins as kCoreMixins } from '@kalisio/kdk/core.client'
 
 export default {
-  name: 'layout',
+  name: 'kanban',
   mixins: [kCoreMixins.baseActivity()],
+  methods: {
+    getRouter () {
+      return {
+        onApply: { name: 'editor-activity' },
+        onDismiss: { name: 'editor-activity' }
+      }
+    },
+  },
   created () {
     // Load the required components
     this.$options.components['k-page'] = this.$load('layout/KPage')
