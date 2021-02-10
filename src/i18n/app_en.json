@@ -17,9 +17,13 @@
     "RECONNECT": "We are trying to reconnect..."
   },
   "SideNav": {
-    "COLLECTION_ACTIVITY": "Collections",
-    "KANBAN_ACTIVITY": "Kanban",
+    "LAYOUT_ACTIVITY": "Layout demo",
+    "COLLECTION_ACTIVITY": "Collections demo",
+    "KANBAN_ACTIVITY": "Kanban demo",
     "LOGOUT": "Logout"
+  },
+  "LayoutActivity": {
+    "LABEL": "Layout"
   },
   "CollectionActivity": {
     "LIST": "List",

@@ -30,7 +30,11 @@ module.exports = {
             component: 'activity/KSwitch',
             props: true
           },
-          'collection/:page': {
+          'layout-demo': {
+            name: 'layout-activity',
+            component: 'LayoutActivity'
+          },
+          'collection-demo/:page': {
             name: 'collection-activity',
             component: 'activity/KSwitch',
             props: true,
@@ -52,7 +56,7 @@ module.exports = {
               }
             }
           },
-          kanban: {
+          'kanban-demo': {
             name: 'kanban-activity',
             component: 'Kanban',
             props: true

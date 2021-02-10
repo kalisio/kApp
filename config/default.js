@@ -74,15 +74,12 @@ module.exports = {
   },
   layout: {
     view: 'lHh LpR lFf',
-    topPane: {
-      opener: true,
-      visible: true
-    },
     leftDrawer: {
       content: [
         { component: 'QImg', src: 'statics/kapp-logo.png' },
         { component: 'account/KIdentityPanel', class: 'full-width' },
         { component: 'layout/KAbout' },
+        { id: 'layout', icon: 'las la-desktop', label: 'SideNav.LAYOUT_ACTIVITY', renderer: 'item', route: { name: 'layout-activity' } },
         { id: 'collection', icon: 'dashboard', label: 'SideNav.COLLECTION_ACTIVITY', renderer: 'item', route: { name: 'collection-activity', params: { page: 'list' } } },
         { id: 'kanban', icon: 'dashboard', label: 'SideNav.KANBAN_ACTIVITY', renderer: 'item', route: { name: 'kanban-activity' } },
         { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px;' },
@@ -90,27 +87,34 @@ module.exports = {
       ],
       behavior: 'mobile',
       opener: true
+    },
+    topPane: {
+      opener: true,
+      visible: true
+    },
+    rightPane: {
+      opener: true
     }
   },
   accountActivity: {
     topPane: {
       content: {
         profile: [
-          { id: 'back', icon: 'las la-arrow-left', handler: { name: 'goBack' } },
+          { id: 'home', icon: 'las la-home', route: { name: 'home' } },
           { component: 'QSeparator', vertical: true, color: 'lightgrey' },
           { id: 'profile', icon: 'las la-user', color: 'primary', label: 'KAccountActivity.PROFILE', disabled: true },
           { id: 'security', icon: 'las la-shield-alt', tooltip: 'KAccountActivity.SECURITY', route: { name: 'account-activity', params: { page: 'security' } } },
           { id: 'danger-zone', icon: 'las la-exclamation-triangle', tooltip: 'KAccountActivity.DANGER_ZONE', route: { name: 'account-activity', params: { page: 'danger-zone' } } }
         ],
         security: [
-          { id: 'back', icon: 'las la-arrow-left', handler: { name: 'goBack' } },
+          { id: 'home', icon: 'las la-home', route: { name: 'home' } },
           { component: 'QSeparator', vertical: true, color: 'lightgrey' },
           { id: 'profile', icon: 'las la-user', tooltip: 'KAccountActivity.PROFILE', route: { name: 'account-activity', params: { page: 'profile' } } },
           { id: 'security', icon: 'las la-shield-alt', color: 'primary', label: 'KAccountActivity.SECURITY', disabled: true },
           { id: 'danger-zone', icon: 'las la-exclamation-triangle', tooltip: 'KAccountActivity.DANGER_ZONE', route: { name: 'account-activity', params: { page: 'danger-zone' } } }
         ],
         'danger-zone': [
-          { id: 'back', icon: 'las la-arrow-left', handler: { name: 'goBack' } },
+          { id: 'home', icon: 'las la-home', route: { name: 'home' } },
           { component: 'QSeparator', vertical: true, color: 'lightgrey' },
           { id: 'profile', icon: 'las la-user', tooltip: 'KAccountActivity.PROFILE', route: { name: 'account-activity', params: { page: 'profile' } } },
           { id: 'security', icon: 'las la-shield-alt', tooltip: 'KAccountActivity.SECURITY', route: { name: 'account-activity', params: { page: 'security' } } },
@@ -122,6 +126,22 @@ module.exports = {
       profile: { component: 'account/KAccountProfile' },
       security: { component: 'account/KAccountSecurity' },
       'danger-zone': { component: 'account/KAccountDZ' }
+    }
+  },
+  layoutActivity: {
+    topPane: {
+      content: {
+        default: [
+          { id: 'home', icon: 'las la-home', route: { name: 'home' } },
+          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
+          { id: 'layout', icon: 'las la-desktop', label: 'LayoutActivity.LABEL', color: 'primary', disabled: true }
+        ]
+      }
+    },
+    rightPane: {
+      content: [
+        { component: 'Platform' }
+      ]
     }
   },
   collectionActivity: {
@@ -168,8 +188,6 @@ module.exports = {
       content: {
         default: [
           { id: 'table', icon: 'dashboard', label: 'KanbanActivity.LABEL', color: 'primary', disabled: true },
-          { id: 'back', icon: 'las la-arrow-left', handler: { name: 'goBack' } },
-          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
           { id: 'filter', icon: 'las la-search', tooltip: 'KanbanActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } }
         ],
         filter: [

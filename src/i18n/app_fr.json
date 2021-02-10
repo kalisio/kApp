@@ -17,10 +17,14 @@
     "RECONNECT": "Tentative de reconnection en cours..."
   },
   "SideNav": {
-    "COLLECTION_ACTIVITY": "Collections",
-    "KANBAN_ACTIVITY": "Kanban",
+    "LAYOUT_ACTIVITY": "Démo layout",
+    "COLLECTION_ACTIVITY": "Démo collection",
+    "KANBAN_ACTIVITY": "Démo Kanban",
     "LOGOUT": "Se déconnecter"
   },
+  "LayoutActivity": {
+    "LABEL": "Layout"
+  },  
   "CollectionActivity": {
     "LIST": "Liste",
     "GRID": "Grille",
