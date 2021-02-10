@@ -23,16 +23,38 @@ module.exports = {
             // Because this child is the default one path is empty and name is the one of the parent route
             path: '',
             name: 'home',
-            redirect: { name: 'main-activity', params: { mode: 'list' } }
-          },
-          'main/:mode': {
-            name: 'main-activity',
-            component: 'MainActivity',
-            props: true
+            redirect: { name: 'collection-activity', params: { page: 'list' } }
           },
           'account/:page': {
             name: 'account-activity',
-            component: 'account/KAccountActivity',
+            component: 'activity/KSwitch',
+            props: true
+          },
+          'collection/:page': {
+            name: 'collection-activity',
+            component: 'activity/KSwitch',
+            props: true,
+            children: {
+              create: {
+                name: 'create-document',
+                component: 'editor/KModalEditor',
+                props: true
+              },
+              ':objectId/edit': {
+                name: 'edit-document',
+                component: 'editor/KModalEditor',
+                props: true
+              },
+              ':objectId/view': {
+                name: 'view-document',
+                component: 'viewer/KModalViewer',
+                props: true
+              }
+            }
+          },
+          kanban: {
+            name: 'kanban-activity',
+            component: 'Kanban',
             props: true
           }
         }

@@ -82,10 +82,11 @@ module.exports = {
       content: [
         { component: 'QImg', src: 'statics/kapp-logo.png' },
         { component: 'account/KIdentityPanel', class: 'full-width' },
-        { componenr: 'Demo' },
         { component: 'layout/KAbout' },
+        { id: 'collection', icon: 'dashboard', label: 'Collection', renderer: 'item', route: { name: 'collection-activity', params: { page: 'list' } } },
+        { id: 'kanban', icon: 'dashboard', label: 'Kanban', renderer: 'item', route: { name: 'kanban-activity' } },
         { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px;' },
-        { id: 'logout', icon: 'las la-sign-out-alt', label: 'sideNav.LOGOUT', route: { name: 'logout' }, renderer: 'item' }
+        { id: 'logout', icon: 'las la-sign-out-alt', label: 'sideNav.LOGOUT', renderer: 'item', route: { name: 'logout' } }
       ],
       behavior: 'mobile',
       opener: true
@@ -116,7 +117,73 @@ module.exports = {
           { id: 'danger-zone', icon: 'las la-exclamation-triangle', color: 'primary', label: 'KAccountActivity.DANGER_ZONE', disabled: true }
         ]
       }
+    },
+    pages: {
+      profile: { component: 'account/KAccountProfile' },
+      security: { component: 'account/KAccountSecurity' },
+      'danger-zone': { component: 'account/KAccountDZ' }
     }
+  },
+  collectionActivity: {
+    topPane: {
+      content: {
+        list: [
+          { id: 'list', icon: 'las la-list', label: 'MainActivity.LIST_LABEL', color: 'primary', disabled: true },
+          { id: 'grid', icon: 'view_module', tooltip: 'MainActivity.GRID_LABEL', route: { name: 'collection-activity', params: { page: 'grid' } } },
+          { id: 'table', icon: 'las la-table', tooltip: 'MainActivity.TABLE_LABEL', route: { name: 'collection-activity', params: { page: 'table' } } },
+          { id: 'filter', icon: 'las la-search', tooltip: 'FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } }
+        ],
+        grid: [
+          { id: 'list', icon: 'las la-list', tooltip: 'MainActivity.LIST_LABEL', route: { name: 'collection-activity', params: { page: 'list' } } },
+          { id: 'grid', icon: 'view_module', label: 'MainActivity.GRID_LABEL', color: 'primary', disabled: true },
+          { id: 'table', icon: 'las la-table', tooltip: 'MainActivity.TABLE_LABEL', route: { name: 'collection-activity', params: { page: 'table' } } },
+          { id: 'filter', icon: 'las la-search', tooltip: 'FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } }
+        ],
+        table: [
+          { id: 'list', icon: 'las la-list', tooltip: 'MainActivity.LIST_LABEL', route: { name: 'collection-activity', params: { page: 'list' } } },
+          { id: 'grid', icon: 'view_module', tooltip: 'MainActivity.GRID_LABEL', route: { name: 'collection-activity', params: { page: 'grid' } } },
+          { id: 'table', icon: 'las la-table', label: 'MainActivity.TABLE_LABEL', color: 'primary', disabled: true },
+          { id: 'filter', icon: 'las la-search', tooltip: 'FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } }
+        ],
+        filter: [
+          { id: 'back', icon: 'las la-arrow-left', handler: { name: 'restoreTopPaneMode' } },
+          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
+          { component: 'collection/KFilter', on: { event: 'filter-changed', listener: { name: 'onFilterChanged' } } }
+        ]
+      }
+    },
+    fab: {
+      actions: [
+        { id: 'create-document', icon: 'las la-plus', route: { name: 'create-document', params: { service: 'documents' } } }
+      ]
+    },
+    pages: {
+      list: { component: 'ListView' },
+      grid: { component: 'GridView' },
+      table: { component: 'TableView' }
+    }
+  },
+  kanbanActivity: {
+    topPane: {
+      content: {
+        default: [
+          { id: 'back', icon: 'las la-arrow-left', handler: { name: 'goBack' } },
+          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
+          { id: 'filter', icon: 'las la-search', tooltip: 'Search', handler: { name: 'setTopPaneMode', params: ['filter'] } }
+        ],
+        filter: [
+          { id: 'back', icon: 'las la-arrow-left', handler: { name: 'setTopPaneMode', params: ['default'] } },
+          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
+          { component: 'collection/KFilter', on: { event: 'filter-changed', listener: { name: 'onFilterChanged' } } }
+        ]
+      }
+    },
+    categories: [
+      { name: 'sain' },
+      { name: 'malade' },
+      { name: 'déclin' }
+    ],
+    categoryField: 'etat_sani'
   },
   routes: require('../src/router/routes')
 }
