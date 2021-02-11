@@ -135,8 +135,6 @@ export default {
     this.$options.components['k-list'] = this.$load('collection/KList')
     this.$options.components['k-grid'] = this.$load('collection/KGrid')
     this.$options.components['k-table'] = this.$load('collection/KTable')
-    // Configure the activity
-    this.configureActivity()
   }
 }
 </script>

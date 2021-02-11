@@ -23,6 +23,7 @@ export default {
   data () {
     return {
       categories: null,
+      categoryField: undefined,
       filter: this.$store.get('filter'),
       cardRenderer: {
         component: 'collection/KCard',
@@ -34,15 +35,17 @@ export default {
       }
     }
   },
+  methods: {
+    configureActivity () {
+      kCoreMixins.baseActivity(this.activityName).methods.configureActivity.call(this)
+      this.categories = this.activityOptions.categories
+      this.categoryField = this.activityOptions.categoryField
+    }
+  },
   created () {
     // Load the required components
     this.$options.components['k-page'] = this.$load('layout/KPage')
     this.$options.components['k-board'] = this.$load('collection/KBoard')
-    // Configure the activity
-    this.configureActivity()
-    // Setup the pane mode according the current page
-    this.categories = this.activityOptions.categories
-    this.categoryField = this.activityOptions.categoryField
   }
 }
 </script>
