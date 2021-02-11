@@ -116,7 +116,7 @@ module.exports = {
           { component: 'QSeparator', vertical: true, color: 'lightgrey' },
           { id: 'profile', icon: 'las la-user', tooltip: 'KAccountActivity.PROFILE', size: '1rem', route: { name: 'account-activity', params: { page: 'profile' } } },
           { id: 'security', icon: 'las la-shield-alt', color: 'primary', label: 'KAccountActivity.SECURITY', size: '1rem', disabled: true },
-          { id: 'danger-zone', icon: 'las la-exclamation-triangle', tooltip: 'KAccountActivity.DANGER_ZONE',size: '1rem', route: { name: 'account-activity', params: { page: 'danger-zone' } } }
+          { id: 'danger-zone', icon: 'las la-exclamation-triangle', tooltip: 'KAccountActivity.DANGER_ZONE', size: '1rem', route: { name: 'account-activity', params: { page: 'danger-zone' } } }
         ],
         'danger-zone': [
           { id: 'home', icon: 'las la-home', size: '1rem', route: { name: 'home' } },
@@ -201,7 +201,7 @@ module.exports = {
         filter: [
           { id: 'back', icon: 'las la-arrow-left', size: '1rem', handler: { name: 'setTopPaneMode', params: ['default'] } },
           { component: 'QSeparator', vertical: true, color: 'lightgrey' },
-          { component: 'collection/KFilter', size: '1rem',  }
+          { component: 'collection/KFilter', size: '1rem' }
         ]
       }
     },
@@ -220,7 +220,7 @@ module.exports = {
           { component: 'QSeparator', vertical: true, color: 'lightgrey' },
           { id: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL', color: 'primary', size: '1rem', disabled: true },
           { id: 'editor', icon: 'las la-edit', tooltip: 'EditorActivity.EDIT', size: '1rem', route: { name: 'edit-object', params: { service: 'custom', objectId: '0' } } },
-          { id: 'viewer', icon: 'las la-glasses', tooltip: 'EditorActivity.VIEW',size: '1rem',  route: { name: 'view-object', params: { service: 'custom', objectId: '0' } } }
+          { id: 'viewer', icon: 'las la-glasses', tooltip: 'EditorActivity.VIEW', size: '1rem', route: { name: 'view-object', params: { service: 'custom', objectId: '0' } } }
         ]
       }
     }

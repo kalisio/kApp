@@ -54,7 +54,7 @@ export default {
             },
             { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px;' },
             { 
-              id: 'remove-document',
+              id: 'delete-document',
               icon: 'las la-trash', label: 'Documents.DELETE',
               handler: (document) => this.onDeleteDocument(document) 
             }
@@ -79,7 +79,7 @@ export default {
             },
             { component: 'frame/KMenu', id: 'overflow-menu', actionRenderer: 'item', content: [
             { 
-              id: 'remove-document',
+              id: 'delete-document',
               icon: 'las la-trash',
               label: 'Documents.DELETE',
               handler: (document) => this.deleteDocument(document) }
@@ -102,7 +102,7 @@ export default {
         },
         { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px;' },
         { 
-          id: 'remove-document',
+          id: 'delete-document',
           icon: 'las la-trash',
           label: 'Documents.DELETE',
           handler: (document) => this.deleteDocument(document)
