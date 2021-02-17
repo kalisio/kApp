@@ -44,19 +44,19 @@ export default {
               id: 'view-document', 
               icon: 'las la-glasses', 
               label: 'Documents.VIEW', 
-              handler: (document) => this.$router.push({ name: 'view-document', params: { service: 'documents', objectId: document._id } })
+              handler: (context) => this.$router.push({ name: 'view-document', params: { service: 'documents', objectId: context.item._id } })
             },
             { 
               id: 'edit-document', 
               icon: 'las la-edit', 
               label: 'Documents.EDIT', 
-              handler: (document) => this.$router.push({ name: 'edit-document', params: { service: 'documents', objectId: document._id } })
+              handler: (context) => this.$router.push({ name: 'edit-document', params: { service: 'documents', objectId: context.item._id } })
             },
             { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px;' },
             { 
               id: 'delete-document',
               icon: 'las la-trash', label: 'Documents.DELETE',
-              handler: (document) => this.onDeleteDocument(document) 
+              handler: (context) => this.onDeleteDocument(context.item) 
             }
           ]
         }
@@ -69,20 +69,20 @@ export default {
               id: 'view-document', 
               icon: 'las la-glasses', 
               tooltip: 'Documents.VIEW', 
-              handler: (document) => this.$router.push({ name: 'view-document', params: { service: 'documents', objectId: document._id } })
+              handler: (context) => this.$router.push({ name: 'view-document', params: { service: 'documents', objectId: context.item._id } })
             },
             { 
               id: 'edit-document', 
               icon: 'las la-edit',
               tooltip: 'Documents.EDIT',
-              handler: (document) => this.$router.push({ name: 'edit-document', params: { service: 'documents', objectId: document._id } })
+              handler: (context) => this.$router.push({ name: 'edit-document', params: { service: 'documents', objectId: context.item._id } })
             },
             { component: 'frame/KMenu', id: 'overflow-menu', actionRenderer: 'item', content: [
             { 
               id: 'delete-document',
               icon: 'las la-trash',
               label: 'Documents.DELETE',
-              handler: (document) => this.deleteDocument(document) }
+              handler: (context) => this.deleteDocument(context.item) }
             ]}
           ]
         }
@@ -92,20 +92,20 @@ export default {
           id: 'view-document', 
           icon: 'las la-glasses', 
           label: 'Documents.VIEW', 
-          handler: (document) => this.$router.push({ name: 'view-document', params: { service: 'documents', objectId: document._id } })
+          handler: (context) => this.$router.push({ name: 'view-document', params: { service: 'documents', objectId: context.item._id } })
         },
         { 
           id: 'edit-document', 
           icon: 'las la-edit', 
           label: 'Documents.EDIT', 
-          handler: (document) => this.$router.push({ name: 'edit-document', params: { service: 'documents', objectId: document._id } })
+          handler: (context) => this.$router.push({ name: 'edit-document', params: { service: 'documents', objectId: context.item._id } })
         },
         { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px;' },
         { 
           id: 'delete-document',
           icon: 'las la-trash',
           label: 'Documents.DELETE',
-          handler: (document) => this.deleteDocument(document)
+          handler: (context) => this.deleteDocument(context.item)
         }
       ]
     }
