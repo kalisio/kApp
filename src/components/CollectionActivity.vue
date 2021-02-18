@@ -33,81 +33,44 @@ export default {
     }
   },
   data () {
+    const itemActions = [
+      { 
+        id: 'view-document', 
+        icon: 'las la-glasses', 
+        tooltip: 'Documents.VIEW', 
+        handler: (context) => this.$router.push({ name: 'view-document', params: { service: 'documents', objectId: context.item._id } })
+      },
+      { 
+        id: 'edit-document', 
+        icon: 'las la-edit',
+        tooltip: 'Documents.EDIT',
+        handler: (context) => this.$router.push({ name: 'edit-document', params: { service: 'documents', objectId: context.item._id } })
+      },
+      { component: 'frame/KMenu', id: 'overflow-menu', actionRenderer: 'item', content: [
+      { 
+        id: 'delete-document',
+        icon: 'las la-trash',
+        label: 'Documents.DELETE',
+        handler: (context) => this.deleteDocument(context.item) }
+      ]}
+    ]
+
     return {
       userName:  this.$store.get('user.name'),
       filter: this.$store.get('filter'),
       itemRenderer: {
         component: 'collection/KItem',
         props: {
-          itemActions: [
-            { 
-              id: 'view-document', 
-              icon: 'las la-glasses', 
-              label: 'Documents.VIEW', 
-              handler: (context) => this.$router.push({ name: 'view-document', params: { service: 'documents', objectId: context.item._id } })
-            },
-            { 
-              id: 'edit-document', 
-              icon: 'las la-edit', 
-              label: 'Documents.EDIT', 
-              handler: (context) => this.$router.push({ name: 'edit-document', params: { service: 'documents', objectId: context.item._id } })
-            },
-            { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px;' },
-            { 
-              id: 'delete-document',
-              icon: 'las la-trash', label: 'Documents.DELETE',
-              handler: (context) => this.onDeleteDocument(context.item) 
-            }
-          ]
+          itemActions
         }
       },
       cardRenderer: {
         component: 'collection/KCard',
         props: {
-          itemActions: [
-            { 
-              id: 'view-document', 
-              icon: 'las la-glasses', 
-              tooltip: 'Documents.VIEW', 
-              handler: (context) => this.$router.push({ name: 'view-document', params: { service: 'documents', objectId: context.item._id } })
-            },
-            { 
-              id: 'edit-document', 
-              icon: 'las la-edit',
-              tooltip: 'Documents.EDIT',
-              handler: (context) => this.$router.push({ name: 'edit-document', params: { service: 'documents', objectId: context.item._id } })
-            },
-            { component: 'frame/KMenu', id: 'overflow-menu', actionRenderer: 'item', content: [
-            { 
-              id: 'delete-document',
-              icon: 'las la-trash',
-              label: 'Documents.DELETE',
-              handler: (context) => this.deleteDocument(context.item) }
-            ]}
-          ]
+          itemActions
         }
       },
-      tableActions: [
-        { 
-          id: 'view-document', 
-          icon: 'las la-glasses', 
-          label: 'Documents.VIEW', 
-          handler: (context) => this.$router.push({ name: 'view-document', params: { service: 'documents', objectId: context.item._id } })
-        },
-        { 
-          id: 'edit-document', 
-          icon: 'las la-edit', 
-          label: 'Documents.EDIT', 
-          handler: (context) => this.$router.push({ name: 'edit-document', params: { service: 'documents', objectId: context.item._id } })
-        },
-        { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px;' },
-        { 
-          id: 'delete-document',
-          icon: 'las la-trash',
-          label: 'Documents.DELETE',
-          handler: (context) => this.deleteDocument(context.item)
-        }
-      ]
+      tableActions: itemActions
     }
   },
   watch: {
@@ -125,7 +88,7 @@ export default {
     restoreTopPaneMode () {
       this.setTopPaneMode(this.page)
     },
-    async onDeleteDocument (document) {
+    async deleteDocument (document) {
       await this.$api.getService('documents').remove(document._id)
     }
   },
