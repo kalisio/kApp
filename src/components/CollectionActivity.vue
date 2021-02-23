@@ -16,7 +16,7 @@
       <!--
         Enable modal
        -->
-      <router-view :router="getRouter()" />
+      <router-view />
     </template>
   </k-page>
 </template>
@@ -79,12 +79,6 @@ export default {
     }
   },
   methods: {
-    getRouter () {
-      return {
-        onApply: { name: 'collection-activity' },
-        onDismiss: { name: 'collection-activity' }
-      }
-    },
     restoreTopPaneMode () {
       this.setTopPaneMode(this.page)
     },
