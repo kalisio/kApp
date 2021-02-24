@@ -18,7 +18,7 @@
 import { mixins as kCoreMixins } from '@kalisio/kdk/core.client'
 
 export default {
-  name: 'kanban',
+  name: 'kanban-activity',
   mixins: [kCoreMixins.baseActivity()],
   data () {
     return {

@@ -16,7 +16,7 @@
       <!--
         Enable modal
        -->
-      <router-view />
+      <router-view service="documents" :parentActivity="activityName" />
     </template>
   </k-page>
 </template>

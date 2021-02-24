@@ -10,7 +10,7 @@
 import { mixins as kCoreMixins } from '@kalisio/kdk/core.client'
 
 export default {
-  name: 'layout',
+  name: 'layout-activity',
   mixins: [kCoreMixins.baseActivity()],
   created () {
     // Load the required components
