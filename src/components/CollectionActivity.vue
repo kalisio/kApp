@@ -47,11 +47,12 @@ export default {
         handler: (context) => this.$router.push({ name: 'edit-document', params: { service: 'documents', objectId: context.item._id } })
       },
       { component: 'frame/KMenu', id: 'overflow-menu', actionRenderer: 'item', content: [
-      { 
-        id: 'delete-document',
-        icon: 'las la-trash',
-        label: 'Documents.DELETE',
-        handler: (context) => this.deleteDocument(context.item) }
+        { 
+          id: 'delete-document',
+          icon: 'las la-trash',
+          label: 'Documents.DELETE',
+          handler: (context) => this.deleteDocument(context.item) 
+        }
       ]}
     ]
 
