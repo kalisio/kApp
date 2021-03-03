@@ -33,7 +33,7 @@ export default {
     }
   },
   data () {
-    const itemActions = [
+    const actions = [
       { 
         id: 'view-document', 
         icon: 'las la-glasses', 
@@ -61,17 +61,13 @@ export default {
       filter: this.$store.get('filter'),
       itemRenderer: {
         component: 'collection/KItem',
-        props: {
-          itemActions
-        }
+        actions
       },
       cardRenderer: {
         component: 'collection/KCard',
-        props: {
-          itemActions
-        }
+        actions
       },
-      tableActions: itemActions
+      tableActions: actions
     }
   },
   watch: {

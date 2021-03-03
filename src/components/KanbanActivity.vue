@@ -11,6 +11,10 @@
         :renderer="cardRenderer" 
         :filter-query="filter.query" />
     </template>
+    <!--
+      Enable modal
+     -->
+    <router-view service="documents" :parentActivity="activityName" />
   </k-page>
 </template>
 
@@ -27,11 +31,10 @@ export default {
       filter: this.$store.get('filter'),
       cardRenderer: {
         component: 'collection/KCard',
-        props: {
-          itemActions: [
-            { id: 'view-document', icon: 'las la-glasses', tooltip: 'KanbanActivity.VIEW_DOCUMENT', handler: (document) => this.onViewDocument(document) }
-          ]
-        }
+        actions: [
+          { id: 'view-document', icon: 'las la-glasses', tooltip: 'KanbanActivity.VIEW_DOCUMENT',
+            handler: (context) => this.$router.push({ name: 'view-document', params: { page: 'list', objectId: context.item._id } }) }
+        ]
       }
     }
   },
