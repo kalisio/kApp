@@ -8,8 +8,6 @@ export default class Documents extends Layout {
     // list
     this.nameField = Selector('.q-dialog').find('#name-field')
     this.createButton = Selector('.q-dialog').find('#apply-button')
-    this.firstListItemOverflowMenu = Selector('.q-list').find('.q-btn').nth(0)
-    this.overflowMenuDeleteEntry = Selector('.q-menu').find('.q-item').nth(1)
   }
 
   async create (test, values) {
@@ -20,11 +18,11 @@ export default class Documents extends Layout {
       .wait(500)
   }
 
-  async delete (test) {
+  async delete (test, name) {
     await test
-      .click(this.firstListItemOverflowMenu)
+      .click(Selector('.q-item').withText(name).find('.q-btn').nth(0))
       .wait(500)
-      .click(this.overflowMenuDeleteEntry)
+      .click(Selector('#delete-document'))
       .wait(500)
   }
 }

@@ -13,7 +13,7 @@ module.exports = {
       },
       register: 'authentication/KRegister',
       'change-endpoint': 'authentication/KChangeEndpoint',
-      children: {
+      home: {
         // The name of the route has to be set the default child
         name: '',
         component: 'layout/KHome',
@@ -23,12 +23,58 @@ module.exports = {
             // Because this child is the default one path is empty and name is the one of the parent route
             path: '',
             name: 'home',
-            redirect: { name: 'main', params: { mode: 'list' } }
+            redirect: { name: 'collection-activity', params: { page: 'list' } }
           },
-          'main/:mode': {
-            name: 'main',
-            component: 'MainActivity',
+          'account/:page': {
+            name: 'account-activity',
+            component: 'account/KAccountActivity',
             props: true
+          },
+          layout: {
+            name: 'layout-activity',
+            component: 'LayoutActivity'
+          },
+          'collection/:page': {
+            name: 'collection-activity',
+            component: 'CollectionActivity',
+            props: true,
+            children: {
+              create: {
+                name: 'create-document',
+                component: 'editor/KModalEditor',
+                props: true
+              },
+              ':objectId/edit': {
+                name: 'edit-document',
+                component: 'editor/KModalEditor',
+                props: true
+              },
+              ':objectId/view': {
+                name: 'view-document',
+                component: 'viewer/KModalViewer',
+                props: true
+              }
+            }
+          },
+          kanban: {
+            name: 'kanban-activity',
+            component: 'KanbanActivity'
+          },
+          editor: {
+            name: 'editor-activity',
+            component: 'EditorActivity',
+            children: {
+              edit: {
+                name: 'edit-object',
+                component: 'editor/KModalEditor',
+                props: true
+              },
+              view: {
+                name: 'view-object',
+                component: 'viewer/KModalViewer',
+                props: true
+              }
+            }
           }
         }
       }

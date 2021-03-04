@@ -1,39 +1,45 @@
 {
   "YES": "Yes",
   "NO": "No",
+  "Documents": {
+    "EDIT": "Edit",
+    "VIEW": "View",
+    "DELETE": "Delete"
+  },
   "screen": {
     "ABOUT_KALISIO": "About",
     "CONTACT": "Contact",
     "TERMS_AND_POLICIES": "Terms and Policies"
-  },
-  "sideNav": {
-    "EDITOR": "Editor",
-    "VIEWER": "Viewer",
-    "LOGOUT": "Logout"
-  },
-  "Context": {
-    "EVENTS": "Events & templates",
-    "MEMBERS": "Members & groups",
-    "REFRESH": "Refresh",
-    "SETTINGS": "Settings"
   },
   "Index": {
     "VERSION_MISMATCH": "Application version mismatch, please install the latest available version or check your end point",
     "DISCONNECT": "The server connection has been lost, please wait until reconnection...",
     "RECONNECT": "We are trying to reconnect..."
   },
-  "MainActivity": {
-    "TITLE": "Your documents",
-    "LIST_LABEL": "List",
-    "GRID_LABEL": "Grid",
-    "TABLE_LABEL": "Table",
-    "CREATE_DOCUMENT": "New document",
-    "REMOVE_DOCUMENT": "Delete",
-    "EDIT_DOCUMENT": "Edit",
-    "VIEW_DOCUMENT": "View",
-    "PANEL": "Open right panel",
-    "EDITOR_TITLE": "Editor",
-    "VIEWER_TITLE": "Viewer"
+  "SideNav": {
+    "LAYOUT_ACTIVITY": "Layout",
+    "COLLECTION_ACTIVITY": "Collections",
+    "KANBAN_ACTIVITY": "Kanban",
+    "EDITOR_ACTIVITY": "Editor",
+    "LOGOUT": "Logout"
+  },
+  "LayoutActivity": {
+    "LABEL": "Layout"
+  },
+  "CollectionActivity": {
+    "LIST": "List",
+    "GRID": "Grid",
+    "TABLE": "Table",
+    "FILTER": "Filter"
+  },
+  "KanbanActivity": {
+    "LABEL": "Kanban",
+    "FILTER": "Filter"
+  },
+  "EditorActivity": {
+    "LABEL": "Editor",
+    "EDIT": "Edit",
+    "VIEW": "View"
   },
   "PLatform": {
     "TITLE": "Your platform",
