@@ -19,6 +19,7 @@ jobs:
 
   - stage: APP
     os: linux
+    dist: focal
     language: node_js
     node_js:
     - '12.16'
@@ -31,6 +32,7 @@ jobs:
 
   - stage: ANDROID
     os: linux
+    dist: focal
     language: android
     jdk: oraclejdk8
     android:
