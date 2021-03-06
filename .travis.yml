@@ -19,7 +19,6 @@ jobs:
 
   - stage: APP
     os: linux
-    dist: focal
     language: node_js
     node_js:
     - '12.16'
@@ -32,7 +31,6 @@ jobs:
 
   - stage: ANDROID
     os: linux
-    dist: focal
     language: android
     jdk: oraclejdk8
     android:
@@ -49,6 +47,7 @@ jobs:
     - yes | sdkmanager "platforms;android-29"
     - npm install -g yarn
     - pip install --user awscli
+    - rvm use ruby-2.6.5
     - gem install fastlane -v '~> 2.171.0'
     - npm install -g @quasar/cli
     install:
