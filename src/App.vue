@@ -53,7 +53,7 @@ export default {
     this.nbRequests = 0
     this.nbCompletedRequests = 0
   },
-   created () {
+  created () {
      // Install the icon mapping function to handle kdk icons
     this.$q.iconMapFn = (iconName) => {
       if (iconName.startsWith('kdk:') === true) {
