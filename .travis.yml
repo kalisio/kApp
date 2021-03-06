@@ -47,7 +47,7 @@ jobs:
     - yes | sdkmanager "platforms;android-29"
     - npm install -g yarn
     - pip install --user awscli
-    - rvm use ruby-2.6.5
+    - rvm install ruby-2.6.5
     - gem install fastlane -v '~> 2.171.0'
     - npm install -g @quasar/cli
     install:
