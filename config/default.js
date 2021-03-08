@@ -240,7 +240,7 @@ module.exports = {
           service: 'documents',
           itemActions: collectionActions,
           /*filterQuery: ':filter.query',*/ 
-          nbItemsPerPage: '3',
+          nbItemsPerPage: 3,
           selection: 'multiple'
         }]
       }
