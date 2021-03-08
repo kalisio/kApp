@@ -26,13 +26,13 @@ const collectionActions = [
     id: 'view-document',
     icon: 'las la-glasses',
     tooltip: 'Documents.VIEW',
-    route: { name: 'view-document', params: { service: 'documents', objectId: ':context.item._id' } }
+    route: { name: 'view-document', params: { service: 'documents', objectId: ':item._id' } }
   },
   {
     id: 'edit-document',
     icon: 'las la-edit',
     tooltip: 'Documents.EDIT',
-    route: { name: 'edit-document', params: { service: 'documents', objectId: ':context.item._id' } }
+    route: { name: 'edit-document', params: { service: 'documents', objectId: ':item._id' } }
   },
   {
     component: 'frame/KMenu',

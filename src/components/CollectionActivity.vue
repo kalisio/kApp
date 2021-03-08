@@ -43,8 +43,8 @@ export default {
       this.setTopPaneMode(this.page)
       this.setPageMode(this.page)
     },
-    async deleteDocument (document) {
-      await this.$api.getService('documents').remove(document._id)
+    deleteDocument (context) {
+      this.$api.getService('documents').remove(context.item._id)
     }
   },
   created () {
