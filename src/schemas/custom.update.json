@@ -11,21 +11,21 @@
         "maxLength": 128,
         "field": {
           "component": "form/KTextField",
-          "helper": "KTextField"
+          "label": "KTextField"
         }
       },
       "KTextareaField": {
         "type": "string",
         "field": {
           "component": "form/KTextareaField",
-          "helper": "KTextareaField"
+          "label": "KTextareaField"
         }
       },
       "KAttachmentField": {
         "type": "object",
         "field": {
           "component": "form/KAttachmentField",
-          "helper": "KAttachmentField"
+          "label": "KAttachmentField"
         }
       },
       "KChipsField": {
@@ -35,14 +35,14 @@
         "chips": true,
         "field": {
           "component": "form/KChipsField",
-          "helper": "KChipsField"
+          "label": "KChipsField"
         }
       },
       "KDatetimeField": {
         "type": "string",
         "field": {
           "component": "form/KDatetimeField",
-          "helper": "KDatetimeField"
+          "label": "KDatetimeField"
         }
       },
       "KEmailField": {
@@ -50,14 +50,14 @@
         "format": "email",
         "field": {
           "component": "form/KEmailField",
-          "helper": "KEmailField"
+          "label": "KEmailField"
         }
       },
       "KIconField": {
         "type": "object",
         "field": {
           "component": "form/KIconField",
-          "helper": "KIconField"
+          "label": "KIconField"
         }
       },
       "KItemField": {
@@ -65,47 +65,35 @@
         "services": ["custom"],
         "field": {
           "component": "form/KItemField",
-          "helper": "KItemField"
+          "label": "KItemField"
         }
       },
       "KNumberField": {
         "type": "integer",
         "field": {
           "component": "form/KNumberField",
-          "helper": "KNumberField"
-        }
-      },
-      "KOptionsField": {
-        "type": "string",
-        "field": {
-          "component": "form/KOptionsField",
-          "helper": "KOptionsField",
-          "type": "radio",
-          "options": [
-            { "label": "Option 1", "value": "option1", "selected": "true" },
-            { "label": "Option 2", "value": "option2" }
-          ]
+          "label": "KNumberField"
         }
       },
       "KPasswordField": {
         "type": "string",
         "field": {
           "component": "form/KPasswordField",
-          "helper": "KPasswordField"
+          "label": "KPasswordField"
         }
       },
       "KPhoneField": {
         "type": "string",
         "field": {
           "component": "form/KPhoneField",
-          "helper": "KPhoneField"
+          "label": "KPhoneField"
         }
       },
       "KSelectField": {
         "type": "string",
         "field": {
           "component": "form/KSelectField",
-          "helper": "KSelectField",
+          "label": "KSelectField",
           "options": [
             { "label": "Option 1", "value": "option1", "selected": "true" },
             { "label": "Option 2", "value": "option2" }
@@ -116,7 +104,7 @@
         "type": "string",
         "field": {
           "component": "form/KToggleField",
-          "helper": "KToggleField"
+          "label": "KToggleField"
         }
       },
       "KUrlField": {
@@ -124,7 +112,7 @@
         "format": "uri",
         "field": {
           "component": "form/KUrlField",
-          "helper": "KUrlField"
+          "label": "KUrlField"
         }
       }
     },

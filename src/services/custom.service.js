@@ -10,7 +10,6 @@ export default function (name, api, options) {
     KIconField: { name: 'check', color: 'orange' },
     KItemField: { name: 'An item', services: 'documents', color: 'lime' },
     KNumberField: '0123456789',
-    KOptionsField: 'option1',
     KPasswordField: 'a password',
     KPhoneField: '+0123456789',
     KSelectField: 'option2',

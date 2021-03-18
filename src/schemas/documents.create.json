@@ -8,21 +8,21 @@
       "type": "string",
       "field": {
         "component": "form/KTextField",
-        "helper": "ID de l'arbre"
+        "label": "ID de l'arbre"
       }
     },
     "icon": {
       "type": "object",
       "field": {
         "component": "form/KIconField",
-        "helper": "Icône"
+        "label": "Icône"
       }
     },
     "status": {
       "type": "string",
       "field": {
         "component": "form/KSelectField",
-        "helper": "Status",
+        "label": "Status",
         "options": [
           { "label": "Arbre vivant", "value": "AV" },
           { "label": "Arbre mort", "value": "M" },
@@ -37,7 +37,7 @@
       "type": "string",
       "field": {
         "component": "form/KSelectField",
-        "helper": "Genre",
+        "label": "Genre",
         "options": [
           { "label": "Platanus", "value": "platanus" },
           { "label": "Aesculus", "value": "aesculus" },
@@ -51,7 +51,7 @@
       "type": "string",
       "field": {
         "component": "form/KSelectField",
-        "helper": "Espece",
+        "label": "Espece",
         "options": [
           { "label": "Platanus acerifolia", "value": "platanus acerifolia" },
           { "label": "Aesculus hippocastanum", "value": "aesculus hippocastanum" },
@@ -69,7 +69,7 @@
       "type": "string",
       "field": {
         "component": "form/KSelectField",
-        "helper": "Etat sanitaire",
+        "label": "Etat sanitaire",
         "options": [
           { "label": "Sain", "value": "sain" },
           { "label": "Malade", "value": "malade" },
@@ -81,7 +81,7 @@
       "type": "string",
       "field": {
         "component": "form/KSelectField",
-        "helper": "Etat mécanique",
+        "label": "Etat mécanique",
         "options": [
           { "label": "Sur", "value": "sur" },
           { "label": "Défectueux", "value": "defectueux" },
@@ -94,7 +94,7 @@
       "type": "string",
       "field": {
         "component": "form/KSelectField",
-        "helper": "Forme",
+        "label": "Forme",
         "options": [
           { "label": "Naturelle", "value": "N" },
           { "label": "Libre", "value": "L" },
@@ -111,7 +111,7 @@
       "type": "string",
       "field": {
         "component": "form/KTextareaField",
-        "helper": "Observations"
+        "label": "Observations"
       }
     }
   },
