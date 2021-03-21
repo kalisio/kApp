@@ -20,3 +20,4 @@ This application is based on the [Kalisio Development Kit](https://kalisio.githu
 Copyright (c) 2018-2019 Kalisio
 
 Licensed under the [MIT license](LICENSE).
+
