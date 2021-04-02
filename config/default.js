@@ -21,6 +21,21 @@ if (process.env.NODE_APP_INSTANCE === 'dev') {
   }
 }
 
+const leftPane = {
+  content: [
+    { component: 'QImg', src: 'statics/kapp-logo.png' },
+    { component: 'account/KIdentityPanel', class: 'full-width' },
+    { id: 'layout', icon: 'las la-desktop', label: 'SideNav.LAYOUT_ACTIVITY', renderer: 'item', route: { name: 'layout-activity' } },
+    { id: 'collection', icon: 'las la-list', label: 'SideNav.COLLECTION_ACTIVITY', renderer: 'item', route: { name: 'collection-activity', params: { page: 'list' } } },
+    { id: 'kanban', icon: 'dashboard', label: 'SideNav.KANBAN_ACTIVITY', renderer: 'item', route: { name: 'kanban-activity' } },
+    { id: 'editor', icon: 'las la-edit', label: 'SideNav.EDITOR_ACTIVITY', renderer: 'item', route: { name: 'editor-activity' } },
+    { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px; max-height: 1px;' },
+    { component: 'layout/KAbout' },
+    { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px; max-height: 1px;' },
+    { id: 'logout', icon: 'las la-sign-out-alt', label: 'SideNav.LOGOUT', renderer: 'item', route: { name: 'logout' } }
+  ]
+}
+
 const collectionActions = [
   {
     id: 'view-document',
@@ -100,25 +115,12 @@ module.exports = {
   },
   layout: {
     view: 'lHh LpR lFf',
-    leftDrawer: {
-      content: [
-        { component: 'QImg', src: 'statics/kapp-logo.png' },
-        { component: 'account/KIdentityPanel', class: 'full-width' },
-        { id: 'layout', icon: 'las la-desktop', label: 'SideNav.LAYOUT_ACTIVITY', renderer: 'item', route: { name: 'layout-activity' } },
-        { id: 'collection', icon: 'las la-list', label: 'SideNav.COLLECTION_ACTIVITY', renderer: 'item', route: { name: 'collection-activity', params: { page: 'list' } } },
-        { id: 'kanban', icon: 'dashboard', label: 'SideNav.KANBAN_ACTIVITY', renderer: 'item', route: { name: 'kanban-activity' } },
-        { id: 'editor', icon: 'las la-edit', label: 'SideNav.EDITOR_ACTIVITY', renderer: 'item', route: { name: 'editor-activity' } },
-        { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px;' },
-        { component: 'layout/KAbout' },
-        { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px;' },
-        { id: 'logout', icon: 'las la-sign-out-alt', label: 'SideNav.LOGOUT', renderer: 'item', route: { name: 'logout' } }
-      ],
-      behavior: 'mobile',
-      opener: true
-    },
     topPane: {
       opener: true,
       visible: true
+    },
+    leftPane: {
+      opener: true
     },
     rightPane: {
       opener: true
@@ -152,7 +154,8 @@ module.exports = {
           { id: 'danger-zone', icon: 'las la-exclamation-triangle', color: 'primary', label: 'KAccountActivity.DANGER_ZONE', size: '1rem', disabled: true }
         ]
       }
-    }
+    },
+    leftPane: leftPane
   },
   layoutActivity: {
     topPane: {
@@ -164,6 +167,7 @@ module.exports = {
         ]
       }
     },
+    leftPane: leftPane,
     rightPane: {
       content: [
         { component: 'Platform' }
@@ -215,6 +219,7 @@ module.exports = {
         ]
       }
     },
+    leftPane: leftPane,
     page: {
       content: {
         list: [{
@@ -267,6 +272,7 @@ module.exports = {
         ]
       }
     },
+    leftPane: leftPane,
     categories: [
       { name: 'sain' },
       { name: 'malade' },
@@ -285,7 +291,8 @@ module.exports = {
           { id: 'viewer', icon: 'las la-glasses', tooltip: 'EditorActivity.VIEW', size: '1rem', route: { name: 'view-object', params: { service: 'custom', objectId: '0' } } }
         ]
       }
-    }
+    },
+    leftPane: leftPane
   },
   routes: require('../src/router/routes')
 }
