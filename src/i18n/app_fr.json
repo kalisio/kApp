@@ -4,7 +4,8 @@
   "Documents": {
     "EDIT": "Editer",
     "VIEW": "Visualiser",
-    "DELETE": "Supprimer"
+    "DELETE": "Supprimer",
+    "EXPORT": "Exporter"
   },
   "screen": {
     "ABOUT_KALISIO": "A propos",

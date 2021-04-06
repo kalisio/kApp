@@ -50,6 +50,12 @@ const collectionActions = [
     route: { name: 'edit-document', params: { service: 'documents', objectId: ':item._id' } }
   },
   {
+    id: 'export-document',
+    icon: 'las la-download',
+    tooltip: 'Documents.EXPORT',
+    handler: 'exportItem'
+  },
+  {
     component: 'frame/KMenu',
     id: 'overflow-menu',
     actionRenderer: 'item',
@@ -57,7 +63,7 @@ const collectionActions = [
       id: 'delete-document',
       icon: 'las la-trash',
       label: 'Documents.DELETE',
-      handler: 'deleteDocument'
+      handler: 'removeItem'
     }]
   }
 ]

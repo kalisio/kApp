@@ -20,9 +20,10 @@ export default class Documents extends Layout {
 
   async delete (test, name) {
     await test
-      .click(Selector('.q-item').withText(name).find('.q-btn').nth(0))
+      .click(Selector('.q-item').withText(name).find('#overflow-menu'))
       .wait(500)
       .click(Selector('#delete-document'))
       .wait(500)
+      .click(Selector('.q-dialog').find('.q-btn').nth(1))
   }
 }

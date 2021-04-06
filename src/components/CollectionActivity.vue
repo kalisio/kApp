@@ -42,9 +42,6 @@ export default {
     restoreTopPaneMode () {
       this.setTopPaneMode(this.page)
       this.setPageMode(this.page)
-    },
-    deleteDocument (context) {
-      this.$api.getService('documents').remove(context.item._id)
     }
   },
   created () {
