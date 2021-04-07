@@ -44,12 +44,12 @@ module.exports = {
                 component: 'editor/KModalEditor',
                 props: true
               },
-              ':objectId/edit': {
+              'edit/:objectId': {
                 name: 'edit-document',
                 component: 'editor/KModalEditor',
                 props: true
               },
-              ':objectId/view': {
+              'view/:objectId': {
                 name: 'view-document',
                 component: 'viewer/KModalViewer',
                 props: true

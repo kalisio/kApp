@@ -41,13 +41,13 @@ const collectionActions = [
     id: 'view-document',
     icon: 'las la-glasses',
     tooltip: 'Documents.VIEW',
-    route: { name: 'view-document', params: { service: 'documents', objectId: ':item._id' } }
+    handler: 'viewItem'
   },
   {
     id: 'edit-document',
     icon: 'las la-edit',
     tooltip: 'Documents.EDIT',
-    route: { name: 'edit-document', params: { service: 'documents', objectId: ':item._id' } }
+    handler: 'editItem'
   },
   {
     id: 'export-document',
@@ -244,13 +244,13 @@ module.exports = {
             component: 'collection/KCard',
             actions: collectionActions
           }
-          /*, /*filterQuery: ':filter.query'*/
+          /* , /*filterQuery: ':filter.query' */
         }],
         table: [{
           component: 'collection/KTable',
           service: 'documents',
           itemActions: collectionActions,
-          /*filterQuery: ':filter.query',*/ 
+          /* filterQuery: ':filter.query', */
           nbItemsPerPage: 3,
           selection: 'multiple'
         }]
