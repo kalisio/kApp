@@ -1,6 +1,7 @@
 {
   "YES": "Yes",
   "NO": "No",
+  "MAIN_MENU": "Main menu",
   "Documents": {
     "EDIT": "Edit",
     "VIEW": "View",
@@ -17,7 +18,7 @@
     "DISCONNECT": "The server connection has been lost, please wait until reconnection...",
     "RECONNECT": "We are trying to reconnect..."
   },
-  "SideNav": {
+  "LeftPanel": {
     "LAYOUT_ACTIVITY": "Layout",
     "COLLECTION_ACTIVITY": "Collections",
     "KANBAN_ACTIVITY": "Kanban",
