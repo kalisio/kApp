@@ -23,6 +23,13 @@ if (process.env.NODE_APP_INSTANCE === 'dev') {
 
 const leftPane = {
   content: [
+    {
+      component: 'frame/KPanel',
+      content: [
+        { component: 'QSpace' },
+        { id: 'menu', icon: 'las la-times', tooltip: 'CLOSE', handler: { name: 'setLeftPaneVisible', params: [false] } }
+      ]
+    },
     { component: 'QImg', src: 'statics/kapp-logo.png' },
     { component: 'account/KIdentityPanel', class: 'full-width' },
     { id: 'layout', icon: 'las la-desktop', label: 'SideNav.LAYOUT_ACTIVITY', renderer: 'item', route: { name: 'layout-activity' } },
@@ -35,6 +42,9 @@ const leftPane = {
     { id: 'logout', icon: 'las la-sign-out-alt', label: 'SideNav.LOGOUT', renderer: 'item', route: { name: 'logout' } }
   ]
 }
+
+const menuAction = { id: 'menu', icon: 'las la-bars', tooltip: 'MAIN_MENU', size: '1rem', handler: { name: 'setLeftPaneVisible', params: [true] } }
+const separator = { component: 'QSeparator', vertical: true, color: 'lightgrey' }
 
 const collectionActions = [
   {
@@ -122,11 +132,11 @@ module.exports = {
   layout: {
     view: 'lHh LpR lFf',
     topPane: {
-      opener: true,
+      opener: false,
       visible: true
     },
     leftPane: {
-      opener: true
+      opener: false
     },
     rightPane: {
       opener: true
@@ -136,44 +146,44 @@ module.exports = {
     }
   },
   accountActivity: {
+    leftPane: leftPane,
     topPane: {
       content: {
         profile: [
-          { id: 'home', icon: 'las la-home', size: '1rem', route: { name: 'home' } },
-          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
+          menuAction,
+          separator,
           { id: 'profile', icon: 'las la-user', color: 'primary', size: '1rem', label: 'KAccountActivity.PROFILE', disabled: true },
           { id: 'security', icon: 'las la-shield-alt', tooltip: 'KAccountActivity.SECURITY', size: '1rem', route: { name: 'account-activity', params: { page: 'security' } } },
           { id: 'danger-zone', icon: 'las la-exclamation-triangle', tooltip: 'KAccountActivity.DANGER_ZONE', size: '1rem', route: { name: 'account-activity', params: { page: 'danger-zone' } } }
         ],
         security: [
-          { id: 'home', icon: 'las la-home', size: '1rem', route: { name: 'home' } },
-          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
+          menuAction,
+          separator,
           { id: 'profile', icon: 'las la-user', tooltip: 'KAccountActivity.PROFILE', size: '1rem', route: { name: 'account-activity', params: { page: 'profile' } } },
           { id: 'security', icon: 'las la-shield-alt', color: 'primary', label: 'KAccountActivity.SECURITY', size: '1rem', disabled: true },
           { id: 'danger-zone', icon: 'las la-exclamation-triangle', tooltip: 'KAccountActivity.DANGER_ZONE', size: '1rem', route: { name: 'account-activity', params: { page: 'danger-zone' } } }
         ],
         'danger-zone': [
-          { id: 'home', icon: 'las la-home', size: '1rem', route: { name: 'home' } },
-          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
+          menuAction,
+          separator,
           { id: 'profile', icon: 'las la-user', tooltip: 'KAccountActivity.PROFILE', size: '1rem', route: { name: 'account-activity', params: { page: 'profile' } } },
           { id: 'security', icon: 'las la-shield-alt', tooltip: 'KAccountActivity.SECURITY', size: '1rem', route: { name: 'account-activity', params: { page: 'security' } } },
           { id: 'danger-zone', icon: 'las la-exclamation-triangle', color: 'primary', label: 'KAccountActivity.DANGER_ZONE', size: '1rem', disabled: true }
         ]
       }
-    },
-    leftPane: leftPane
+    }
   },
   layoutActivity: {
+    leftPane: leftPane,
     topPane: {
       content: {
         default: [
-          { id: 'home', icon: 'las la-home', size: '1rem', route: { name: 'home' } },
-          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
+          menuAction,
+          separator,
           { id: 'layout', icon: 'las la-desktop', label: 'LayoutActivity.LABEL', color: 'primary', size: '1rem', disabled: true }
         ]
       }
     },
-    leftPane: leftPane,
     rightPane: {
       content: [
         { component: 'Platform' }
@@ -186,35 +196,36 @@ module.exports = {
     }
   },
   collectionActivity: {
+    leftPane: leftPane,
     topPane: {
       content: {
         list: [
-          { id: 'home', icon: 'las la-home', size: '1rem', route: { name: 'home' } },
-          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
+          menuAction,
+          separator,
           { id: 'list', icon: 'las la-list', label: 'CollectionActivity.LIST', color: 'primary', size: '1rem', disabled: true },
           { id: 'grid', icon: 'view_module', tooltip: 'CollectionActivity.GRID', size: '1rem', route: { name: 'collection-activity', params: { page: 'grid' } } },
           { id: 'table', icon: 'las la-table', tooltip: 'CollectionActivity.TABLE', size: '1rem', route: { name: 'collection-activity', params: { page: 'table' } } },
-          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
+          separator,
           { id: 'filter', icon: 'las la-search', tooltip: 'CollectionActivity.FILTER', size: '1rem', handler: { name: 'setTopPaneMode', params: ['filter'] } },
           { component: 'collection/KSorter' }
         ],
         grid: [
-          { id: 'home', icon: 'las la-home', size: '1rem', route: { name: 'home' } },
-          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
+          menuAction,
+          separator,
           { id: 'list', icon: 'las la-list', tooltip: 'CollectionActivity.LIST', size: '1rem', route: { name: 'collection-activity', params: { page: 'list' } } },
           { id: 'grid', icon: 'view_module', label: 'CollectionActivity.GRID', color: 'primary', size: '1rem', disabled: true },
           { id: 'table', icon: 'las la-table', tooltip: 'CollectionActivity.TABLE', size: '1rem', route: { name: 'collection-activity', params: { page: 'table' } } },
-          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
+          separator,
           { id: 'filter', icon: 'las la-search', tooltip: 'CollectionActivity.FILTER', size: '1rem', handler: { name: 'setTopPaneMode', params: ['filter'] } },
           { component: 'collection/KSorter' }
         ],
         table: [
-          { id: 'home', icon: 'las la-home', size: '1rem', route: { name: 'home' } },
-          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
+          menuAction,
+          separator,
           { id: 'list', icon: 'las la-list', tooltip: 'CollectionActivity.LIST', size: '1rem', route: { name: 'collection-activity', params: { page: 'list' } } },
           { id: 'grid', icon: 'view_module', tooltip: 'CollectionActivity.GRID', size: '1rem', route: { name: 'collection-activity', params: { page: 'grid' } } },
           { id: 'table', icon: 'las la-table', label: 'CollectionActivity.TABLE', size: '1rem', color: 'primary', disabled: true },
-          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
+          separator,
           { id: 'filter', icon: 'las la-search', tooltip: 'CollectionActivity.FILTER', size: '1rem', handler: { name: 'setTopPaneMode', params: ['filter'] } },
           { component: 'collection/KSorter' }
         ],
@@ -225,7 +236,6 @@ module.exports = {
         ]
       }
     },
-    leftPane: leftPane,
     page: {
       content: {
         list: [{
@@ -263,11 +273,12 @@ module.exports = {
     }
   },
   kanbanActivity: {
+    leftPane: leftPane,
     topPane: {
       content: {
         default: [
-          { id: 'home', icon: 'las la-home', size: '1rem', route: { name: 'home' } },
-          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
+          menuAction,
+          separator,
           { id: 'table', icon: 'dashboard', label: 'KanbanActivity.LABEL', color: 'primary', size: '1rem', disabled: true },
           { id: 'filter', icon: 'las la-search', tooltip: 'KanbanActivity.FILTER', size: '1rem', handler: { name: 'setTopPaneMode', params: ['filter'] } }
         ],
@@ -278,7 +289,6 @@ module.exports = {
         ]
       }
     },
-    leftPane: leftPane,
     categories: [
       { name: 'sain' },
       { name: 'malade' },
@@ -290,8 +300,8 @@ module.exports = {
     topPane: {
       content: {
         default: [
-          { id: 'home', icon: 'las la-home', size: '1rem', route: { name: 'home' } },
-          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
+          menuAction,
+          separator,
           { id: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL', color: 'primary', size: '1rem', disabled: true },
           { id: 'editor', icon: 'las la-edit', tooltip: 'EditorActivity.EDIT', size: '1rem', route: { name: 'edit-object', params: { service: 'custom', objectId: '0' } } },
           { id: 'viewer', icon: 'las la-glasses', tooltip: 'EditorActivity.VIEW', size: '1rem', route: { name: 'view-object', params: { service: 'custom', objectId: '0' } } }
