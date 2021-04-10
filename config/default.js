@@ -23,13 +23,13 @@ if (process.env.NODE_APP_INSTANCE === 'dev') {
 
 const leftPane = {
   content: [
-    {
+    /* {
       component: 'frame/KPanel',
       content: [
         { component: 'QSpace' },
         { id: 'menu', icon: 'las la-times', tooltip: 'CLOSE', handler: { name: 'setLeftPaneVisible', params: [false] } }
       ]
-    },
+    }, */
     { component: 'QImg', src: 'statics/kapp-logo.png' },
     { component: 'account/KIdentityPanel', class: 'full-width' },
     { id: 'layout', icon: 'las la-desktop', label: 'SideNav.LAYOUT_ACTIVITY', renderer: 'item', route: { name: 'layout-activity' } },
@@ -43,7 +43,6 @@ const leftPane = {
   ]
 }
 
-const menuAction = { id: 'menu', icon: 'las la-bars', tooltip: 'MAIN_MENU', size: '1rem', handler: { name: 'setLeftPaneVisible', params: [true] } }
 const separator = { component: 'QSeparator', vertical: true, color: 'lightgrey' }
 
 const collectionActions = [
@@ -136,7 +135,7 @@ module.exports = {
       visible: true
     },
     leftPane: {
-      opener: false
+      opener: true
     },
     rightPane: {
       opener: true
@@ -150,22 +149,16 @@ module.exports = {
     topPane: {
       content: {
         profile: [
-          menuAction,
-          separator,
           { id: 'profile', icon: 'las la-user', color: 'primary', size: '1rem', label: 'KAccountActivity.PROFILE', disabled: true },
           { id: 'security', icon: 'las la-shield-alt', tooltip: 'KAccountActivity.SECURITY', size: '1rem', route: { name: 'account-activity', params: { page: 'security' } } },
           { id: 'danger-zone', icon: 'las la-exclamation-triangle', tooltip: 'KAccountActivity.DANGER_ZONE', size: '1rem', route: { name: 'account-activity', params: { page: 'danger-zone' } } }
         ],
         security: [
-          menuAction,
-          separator,
           { id: 'profile', icon: 'las la-user', tooltip: 'KAccountActivity.PROFILE', size: '1rem', route: { name: 'account-activity', params: { page: 'profile' } } },
           { id: 'security', icon: 'las la-shield-alt', color: 'primary', label: 'KAccountActivity.SECURITY', size: '1rem', disabled: true },
           { id: 'danger-zone', icon: 'las la-exclamation-triangle', tooltip: 'KAccountActivity.DANGER_ZONE', size: '1rem', route: { name: 'account-activity', params: { page: 'danger-zone' } } }
         ],
         'danger-zone': [
-          menuAction,
-          separator,
           { id: 'profile', icon: 'las la-user', tooltip: 'KAccountActivity.PROFILE', size: '1rem', route: { name: 'account-activity', params: { page: 'profile' } } },
           { id: 'security', icon: 'las la-shield-alt', tooltip: 'KAccountActivity.SECURITY', size: '1rem', route: { name: 'account-activity', params: { page: 'security' } } },
           { id: 'danger-zone', icon: 'las la-exclamation-triangle', color: 'primary', label: 'KAccountActivity.DANGER_ZONE', size: '1rem', disabled: true }
@@ -178,8 +171,6 @@ module.exports = {
     topPane: {
       content: {
         default: [
-          menuAction,
-          separator,
           { id: 'layout', icon: 'las la-desktop', label: 'LayoutActivity.LABEL', color: 'primary', size: '1rem', disabled: true }
         ]
       }
@@ -200,8 +191,6 @@ module.exports = {
     topPane: {
       content: {
         list: [
-          menuAction,
-          separator,
           { id: 'list', icon: 'las la-list', label: 'CollectionActivity.LIST', color: 'primary', size: '1rem', disabled: true },
           { id: 'grid', icon: 'view_module', tooltip: 'CollectionActivity.GRID', size: '1rem', route: { name: 'collection-activity', params: { page: 'grid' } } },
           { id: 'table', icon: 'las la-table', tooltip: 'CollectionActivity.TABLE', size: '1rem', route: { name: 'collection-activity', params: { page: 'table' } } },
@@ -210,8 +199,6 @@ module.exports = {
           { component: 'collection/KSorter' }
         ],
         grid: [
-          menuAction,
-          separator,
           { id: 'list', icon: 'las la-list', tooltip: 'CollectionActivity.LIST', size: '1rem', route: { name: 'collection-activity', params: { page: 'list' } } },
           { id: 'grid', icon: 'view_module', label: 'CollectionActivity.GRID', color: 'primary', size: '1rem', disabled: true },
           { id: 'table', icon: 'las la-table', tooltip: 'CollectionActivity.TABLE', size: '1rem', route: { name: 'collection-activity', params: { page: 'table' } } },
@@ -220,8 +207,6 @@ module.exports = {
           { component: 'collection/KSorter' }
         ],
         table: [
-          menuAction,
-          separator,
           { id: 'list', icon: 'las la-list', tooltip: 'CollectionActivity.LIST', size: '1rem', route: { name: 'collection-activity', params: { page: 'list' } } },
           { id: 'grid', icon: 'view_module', tooltip: 'CollectionActivity.GRID', size: '1rem', route: { name: 'collection-activity', params: { page: 'grid' } } },
           { id: 'table', icon: 'las la-table', label: 'CollectionActivity.TABLE', size: '1rem', color: 'primary', disabled: true },
@@ -277,8 +262,6 @@ module.exports = {
     topPane: {
       content: {
         default: [
-          menuAction,
-          separator,
           { id: 'table', icon: 'dashboard', label: 'KanbanActivity.LABEL', color: 'primary', size: '1rem', disabled: true },
           { id: 'filter', icon: 'las la-search', tooltip: 'KanbanActivity.FILTER', size: '1rem', handler: { name: 'setTopPaneMode', params: ['filter'] } }
         ],
@@ -300,8 +283,6 @@ module.exports = {
     topPane: {
       content: {
         default: [
-          menuAction,
-          separator,
           { id: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL', color: 'primary', size: '1rem', disabled: true },
           { id: 'editor', icon: 'las la-edit', tooltip: 'EditorActivity.EDIT', size: '1rem', route: { name: 'edit-object', params: { service: 'custom', objectId: '0' } } },
           { id: 'viewer', icon: 'las la-glasses', tooltip: 'EditorActivity.VIEW', size: '1rem', route: { name: 'view-object', params: { service: 'custom', objectId: '0' } } }
