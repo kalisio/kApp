@@ -131,7 +131,7 @@ module.exports = {
   layout: {
     view: 'lHh LpR lFf',
     topPane: {
-      opener: false,
+      opener: true,
       visible: true
     },
     leftPane: {
