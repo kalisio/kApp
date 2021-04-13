@@ -72,7 +72,7 @@ const collectionActions = [
       id: 'delete-document',
       icon: 'las la-trash',
       label: 'Documents.DELETE',
-      handler: 'removeItem'
+      handler: { name: 'removeItem', params: ['confirm'] }
     }]
   }
 ]
