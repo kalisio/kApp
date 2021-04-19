@@ -28,20 +28,19 @@ test('Registering to the app', async test => {
   await screens.goToRegisterScreen(test)
   await screens.register(test, user)
   await layout.clickLeftOpener(test)
-  await layout.clickLeftPane(test, pages.Layout.LOGOUT)
+  await layout.clickLeftPaneAction(test, pages.Layout.LOGOUT)
 })
 
 test('Authenticating to the app', async test => {
   await screens.login(test, user)
   await layout.clickLeftOpener(test)
-  await layout.clickLeftPane(test, pages.Layout.LOGOUT)
+  await layout.clickLeftPaneAction(test, pages.Layout.LOGOUT)
 })
 
 test('Checking the layout', async test => {
   await screens.login(test, user)
   await layout.clickLeftOpener(test)
-  await layout.clickLeftPane(test, 'layout')
-  await layout.clickLeftOpener(test)
+  await layout.clickLeftPaneAction(test, 'layout')
   await test.expect(await layout.isTopPaneOpened()).ok()
   await test.expect(await layout.isLeftPaneOpened()).notOk()
   await test.expect(await layout.isRightPaneOpened()).notOk()
@@ -53,28 +52,28 @@ test('Checking the layout', async test => {
   await layout.clickBottomOpener(test)
   await test.expect(await layout.isBottomPaneOpened()).ok()
   await layout.clickLeftOpener(test)
-  await layout.clickLeftPane(test, pages.Layout.LOGOUT)
+  await layout.clickLeftPaneAction(test, pages.Layout.LOGOUT)
 })
 
 test('Create document', async test => {
   await screens.login(test, user)
   await docs.create(test, { name: 'document1' })
   await layout.clickLeftOpener(test)
-  await layout.clickLeftPane(test, pages.Layout.LOGOUT)
+  await layout.clickLeftPaneAction(test, pages.Layout.LOGOUT)
 })
 
 test('Delete document', async test => {
   await screens.login(test, user)
   await docs.delete(test, 'document1')
   await layout.clickLeftOpener(test)
-  await layout.clickLeftPane(test, pages.Layout.LOGOUT)
+  await layout.clickLeftPaneAction(test, pages.Layout.LOGOUT)
 })
 
 test('Delete account', async test => {
   await screens.login(test, user)
   await layout.clickLeftOpener(test)
-  await layout.clickLeftPane(test, pages.Account.MANAGE_ACCOUNT)
-  await layout.clickTopPane(test, pages.Account.SECURITY)
-  await layout.clickTopPane(test, pages.Account.DANGER_ZONE)
+  await layout.clickLeftPaneAction(test, pages.Account.MANAGE_ACCOUNT)
+  await layout.clickTopPaneAction(test, pages.Account.SECURITY)
+  await layout.clickTopPaneAction(test, pages.Account.DANGER_ZONE)
   await account.delete(test, user.name)
 })
