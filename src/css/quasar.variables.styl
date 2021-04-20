@@ -10,13 +10,6 @@
 // Tip: Use the "Theme Builder" on Quasar's documentation website.
 
 $primary    = #bf360c
-$secondary  = #f9683a
-$accent     = #870000
-
+$secondary  ?= lighten($primary, 80%)
+$accent     ?= lighten($primary, 20%)
 $dark       ?= darken($primary, 25%)
-$light      ?= lighten($primary, 25%)
-
-// STYLES TAKEN FROM 'OLD QUASAR' (v.0.14.7)
-
-$link-color          ?= lighten($accent, 25%)
-$link-color-active   ?= $accent

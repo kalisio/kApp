@@ -5,7 +5,7 @@
         {{ $t('Platform.TITLE') }}
       </div>
       <q-markup-table>
-        <thead class="bg-secondary text-white">
+        <thead class="bg-accent text-white">
           <th class="text-left">{{ $t('Platform.USER_AGENT') }}</th>
         </thead>
         <tbody>
@@ -13,7 +13,7 @@
         </tbody>
       </q-markup-table>
       <q-markup-table>
-        <thead class="bg-secondary text-white">
+        <thead class="bg-accent text-white">
           <tr>
             <th class="text-left" colspan="2">{{ $t('Platform.BROWSER') }}</th>
           </tr>
