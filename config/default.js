@@ -23,13 +23,6 @@ if (process.env.NODE_APP_INSTANCE === 'dev') {
 
 const leftPane = {
   content: [
-    /* {
-      component: 'frame/KPanel',
-      content: [
-        { component: 'QSpace' },
-        { id: 'menu', icon: 'las la-times', tooltip: 'CLOSE', handler: { name: 'setLeftPaneVisible', params: [false] } }
-      ]
-    }, */
     { component: 'QImg', src: 'statics/kapp-logo.png' },
     { component: 'account/KIdentityPanel', class: 'full-width' },
     { id: 'layout', icon: 'las la-desktop', label: 'SideNav.LAYOUT_ACTIVITY', renderer: 'item', route: { name: 'layout-activity' } },
@@ -225,6 +218,7 @@ module.exports = {
       content: {
         list: [{
           component: 'collection/KList',
+          ref: 'list',
           service: 'documents',
           renderer: {
             component: 'collection/KItem',
@@ -234,6 +228,7 @@ module.exports = {
         }],
         grid: [{
           component: 'collection/KGrid',
+          ref: 'grid',
           service: 'documents',
           renderer: {
             component: 'collection/KCard',
@@ -243,6 +238,7 @@ module.exports = {
         }],
         table: [{
           component: 'collection/KTable',
+          ref: 'table',
           service: 'documents',
           itemActions: collectionActions,
           /* filterQuery: ':filter.query', */
@@ -280,16 +276,20 @@ module.exports = {
     categoryField: 'etat_sani'
   },
   editorActivity: {
+    leftPane: leftPane,
     topPane: {
       content: {
         default: [
-          { id: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL', color: 'primary', size: '1rem', disabled: true },
-          { id: 'editor', icon: 'las la-edit', tooltip: 'EditorActivity.EDIT', size: '1rem', route: { name: 'edit-object', params: { service: 'custom', objectId: '0' } } },
-          { id: 'viewer', icon: 'las la-glasses', tooltip: 'EditorActivity.VIEW', size: '1rem', route: { name: 'view-object', params: { service: 'custom', objectId: '0' } } }
+          { id: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL', color: 'primary', size: '1rem', disabled: true }
         ]
       }
     },
-    leftPane: leftPane
+    fab: {
+      actions: [
+        { id: 'editor', icon: 'las la-edit', label: 'EditorActivity.EDIT', route: { name: 'edit-object', params: { service: 'custom', objectId: '0' } } },
+        { id: 'viewer', icon: 'las la-glasses', label: 'EditorActivity.VIEW', route: { name: 'view-object', params: { service: 'custom', objectId: '0' } } }
+      ]
+    }
   },
   routes: require('../src/router/routes')
 }
