@@ -1,4 +1,4 @@
-const website = 'https://www.kalisio.com'
+const website = 'https://kalisio.com'
 
 const serverPort = process.env.PORT || 8081
 // Required to know webpack port so that in dev we can build correct URLs
@@ -107,7 +107,7 @@ module.exports = {
   screens: {
     extraLinks: [
       { label: 'screen.ABOUT_KALISIO', url: website },
-      { label: 'screen.CONTACT', url: website + '/#footer' },
+      { label: 'screen.CONTACT', url: website + '/contact' },
       { label: 'screen.TERMS_AND_POLICIES', url: domain + '/#/terms' }
     ],
     banner: 'kapp-logo.png',
