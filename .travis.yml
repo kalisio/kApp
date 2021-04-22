@@ -31,6 +31,7 @@ jobs:
 
   - stage: ANDROID
     os: linux
+    dist: focal
     language: android
     jdk: oraclejdk8
     android:
@@ -47,9 +48,6 @@ jobs:
     - yes | sdkmanager "platforms;android-29"
     - npm install -g yarn
     - pip install --user awscli
-    - curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
-    - unzip awscli-bundle.zip
-    - ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
     - rvm install ruby-2.6.5
     - gem install fastlane -v '~> 2.171.0'
     - npm install -g @quasar/cli
