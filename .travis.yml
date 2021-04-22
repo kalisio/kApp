@@ -49,7 +49,9 @@ jobs:
     - curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
     - unzip rclone-current-linux-amd64.zip
     - cd rclone-*-linux-amd64
-    - cp rclone /usr/bin/
+    - sudo cp rclone /usr/bin/
+    - sudo chown root:root /usr/bin/rclone
+    - sudo chmod 755 /usr/bin/rclone
     - rvm install ruby-2.6.5
     - gem install fastlane -v '~> 2.171.0'
     - npm install -g @quasar/cli
