@@ -33,11 +33,11 @@ fi
 npm run cordova:build:android > android.build.log 2>&1
 EXIT_CODE=$?
 # Copy the log whatever the result
-rclone cp android.build.log aws:${BUILD_BUCKET}/android.build.log
+rclone copy android.build.log aws:${BUILD_BUCKET}/android.build.log
 check_code $EXIT_CODE "Building the app"
 
 # Backup the android build to S3
-rclone cp src-cordova/platforms/android/app/build/outputs/apk aws:${BUILD_BUCKET}/android > /dev/null
+rclone copy src-cordova/platforms/android/app/build/outputs/apk aws:${BUILD_BUCKET}/android > /dev/null
 check_code $? "Copying the artefact to s3"
 
 travis_fold end "build"
@@ -56,7 +56,7 @@ cd src-cordova
 fastlane android $NODE_APP_INSTANCE > android.deploy.log 2>&1
 EXIT_CODE=$?
 # Copy the log whatever the result
-rclone cp android.deploy.log aws:${BUILD_BUCKET}/android.deploy.log
+rclone copy android.deploy.log aws:${BUILD_BUCKET}/android.deploy.log
 check_code $? "Deploying the app"
 
 travis_fold end "deploy"
