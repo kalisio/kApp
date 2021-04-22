@@ -7,6 +7,11 @@ travis_fold start "provision"
 
 source .travis.env.sh
 
+# Install rclone
+mkdir -p $HOME/.conf/rclone
+cp $TRAVIS_BUILD_DIR/workspace/common/rclone.conf $HOME/.conf/rclone/.
+rclone listremotes
+
 # Install the required secret files requied to sign the app
 cp $TRAVIS_BUILD_DIR/workspace/common/android/*.json src-cordova/
 cp $TRAVIS_BUILD_DIR/workspace/$FLAVOR/android/*.json src-cordova/
