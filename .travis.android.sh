@@ -8,7 +8,7 @@ travis_fold start "provision"
 source .travis.env.sh
 
 # Install rclone
-mkdir -p $HOME/.config/rclone
+mkdir -p ~/.config/rclone
 # cp $TRAVIS_BUILD_DIR/workspace/common/rclone.conf $HOME/.config/rclone/.
 # rclone listremotes
 
