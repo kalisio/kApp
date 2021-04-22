@@ -9,8 +9,8 @@ source .travis.env.sh
 
 # Install rclone
 mkdir -p $HOME/.config/rclone
-cp $TRAVIS_BUILD_DIR/workspace/common/rclone.conf $HOME/.config/rclone/.
-rclone listremotes
+# cp $TRAVIS_BUILD_DIR/workspace/common/rclone.conf $HOME/.config/rclone/.
+# rclone listremotes
 
 # Install the required secret files requied to sign the app
 cp $TRAVIS_BUILD_DIR/workspace/common/android/*.json src-cordova/
