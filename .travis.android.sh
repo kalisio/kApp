@@ -9,6 +9,8 @@ source .travis.env.sh
 
 # Install rclone
 mkdir -p ~/.config/rclone
+
+exit 0
 # cp $TRAVIS_BUILD_DIR/workspace/common/rclone.conf $HOME/.config/rclone/.
 # rclone listremotes
 
