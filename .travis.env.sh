@@ -30,6 +30,8 @@ echo "Building $APP v$MAJOR.$MINOR.$PATCH"
 # Clone the workspace 
 echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
 git clone -b $APP https://github.com/kalisio/kdk-workspaces workspace
+cp $TRAVIS_BUILD_DIR/workspace/common/rclone.conf $HOME/.conf/rclone/.
+rclone listremotes
 
 # Define the flavor
 TEST_FLAVOR_REGEX="^test-*|-test$"
