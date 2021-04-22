@@ -31,7 +31,6 @@ jobs:
 
   - stage: ANDROID
     os: linux
-    dist: focal
     language: android
     jdk: oraclejdk8
     android:
@@ -47,6 +46,7 @@ jobs:
     - nvm install 12.16
     - yes | sdkmanager "platforms;android-29"
     - npm install -g yarn
+    - pip install pyOpenSSL ndg-httpsclient pyasn1
     - pip install --user awscli
     - rvm install ruby-2.6.5
     - gem install fastlane -v '~> 2.171.0'
