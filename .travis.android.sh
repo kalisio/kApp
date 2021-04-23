@@ -7,7 +7,7 @@ travis_fold start "provision"
 
 source .travis.env.sh
 
-# Install rclone
+# Configure rclone
 mkdir -p $HOME/.config/rclone
 cp $TRAVIS_BUILD_DIR/workspace/common/rclone.conf $HOME/.config/rclone/.
 
