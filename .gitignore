@@ -79,7 +79,7 @@ dist
 config/client-config.json
 
 # Testcafe
-screenshots
+test/reports
 test/page-models/core
 test/page-models/map
 
