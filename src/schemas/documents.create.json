@@ -73,7 +73,7 @@
         "options": [
           { "label": "Sain", "value": "sain" },
           { "label": "Malade", "value": "malade" },
-          { "label": "Déclin", "value": "déclin" }
+          { "label": "Déclin", "value": "declin" }
         ]
       }
     },

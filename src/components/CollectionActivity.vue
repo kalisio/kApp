@@ -44,8 +44,7 @@ export default {
       this.setPageMode(this.page)
     }
   },
-  created () {
-    // Load the required components
+  beforeCreate () {
     this.$options.components['k-page'] = this.$load('layout/KPage')
   }
 }

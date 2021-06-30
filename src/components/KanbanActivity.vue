@@ -45,7 +45,7 @@ export default {
       this.categoryField = this.activityOptions.categoryField
     }
   },
-  created () {
+  beforeCreate () {
     // Load the required components
     this.$options.components['k-page'] = this.$load('layout/KPage')
     this.$options.components['k-board'] = this.$load('collection/KBoard')
