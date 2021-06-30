@@ -25,14 +25,15 @@ const leftPane = {
   content: [
     { component: 'QImg', src: 'statics/kapp-logo.png' },
     { component: 'account/KIdentityPanel', class: 'full-width' },
-    { id: 'layout', icon: 'las la-desktop', label: 'SideNav.LAYOUT_ACTIVITY', renderer: 'item', route: { name: 'layout-activity' } },
-    { id: 'collection', icon: 'las la-list', label: 'SideNav.COLLECTION_ACTIVITY', renderer: 'item', route: { name: 'collection-activity', params: { page: 'list' } } },
-    { id: 'kanban', icon: 'dashboard', label: 'SideNav.KANBAN_ACTIVITY', renderer: 'item', route: { name: 'kanban-activity' } },
-    { id: 'editor', icon: 'las la-edit', label: 'SideNav.EDITOR_ACTIVITY', renderer: 'item', route: { name: 'editor-activity' } },
+    { id: 'layout', icon: 'las la-desktop', label: 'LayoutActivity.LABEL', renderer: 'item', route: { name: 'layout-activity' } },
+    { id: 'collection', icon: 'las la-list', label: 'CollectionActivity.LABEL', renderer: 'item', route: { name: 'collection-activity', params: { page: 'list' } } },
+    { id: 'kanban', icon: 'dashboard', label: 'KanbanActivity.LABEL', renderer: 'item', route: { name: 'kanban-activity' } },
+    { id: 'chart', icon: 'las la-chart-pie', label: 'ChartActivity.LABEL', renderer: 'item', route: { name: 'chart-activity' } },
+    { id: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL', renderer: 'item', route: { name: 'editor-activity' } },
     { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px; max-height: 1px;' },
     { component: 'layout/KAbout' },
     { component: 'QSeparator', color: 'lightgrey', style: 'min-height: 1px; max-height: 1px;' },
-    { id: 'logout', icon: 'las la-sign-out-alt', label: 'SideNav.LOGOUT', renderer: 'item', route: { name: 'logout' } }
+    { id: 'logout', icon: 'las la-sign-out-alt', label: 'LOGOUT', renderer: 'item', route: { name: 'logout' } }
   ]
 }
 
@@ -274,6 +275,29 @@ module.exports = {
       { name: 'déclin' }
     ],
     categoryField: 'etat_sani'
+  },
+  chartActivity: {
+    leftPane: leftPane,
+    topPane: {
+      content: {
+        pie: [
+          { id: 'pie', icon: 'las la-chart-pie', label: 'ChartActivity.PIE', color: 'primary', size: '1rem', disabled: true },
+          { id: 'bar', icon: 'las la-chart-bar', label: 'ChartActivity.BAR', handler: { name: 'setTopPaneMode', params: ['bar'] } },
+          { id: 'line', icon: 'las la-chart-line', label: 'ChartActivity.LINE', handler: { name: 'setTopPaneMode', params: ['line'] } }
+        ],
+        bar: [
+          { id: 'pie', icon: 'las la-chart-pie', label: 'ChartActivity.PIE', handler: { name: 'setTopPaneMode', params: ['pie'] } },
+          { id: 'bar', icon: 'las la-chart-bar', label: 'ChartActivity.BAR', color: 'primary', size: '1rem', disabled: true },
+          { id: 'line', icon: 'las la-chart-line', label: 'ChartActivity.LINE', handler: { name: 'setTopPaneMode', params: ['line'] } }
+        ],
+        line: [
+          { id: 'pie', icon: 'las la-chart-pie', label: 'ChartActivity.PIE', handler: { name: 'setTopPaneMode', params: ['pie'] } },
+          { id: 'bar', icon: 'las la-chart-bar', label: 'ChartActivity.BAR', handler: { name: 'setTopPaneMode', params: ['bar'] } },
+          { id: 'line', icon: 'las la-chart-line', label: 'ChartActivity.LINE', color: 'primary', size: '1rem', disabled: true }
+        ]
+      },
+      mode: 'pie'
+    }
   },
   editorActivity: {
     leftPane: leftPane,

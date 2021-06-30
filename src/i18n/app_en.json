@@ -16,19 +16,14 @@
   "Index": {
     "VERSION_MISMATCH": "Application version mismatch, please install the latest available version or check your end point",
     "DISCONNECT": "The server connection has been lost, please wait until reconnection...",
-    "RECONNECT": "We are trying to reconnect..."
-  },
-  "LeftPanel": {
-    "LAYOUT_ACTIVITY": "Layout",
-    "COLLECTION_ACTIVITY": "Collections",
-    "KANBAN_ACTIVITY": "Kanban",
-    "EDITOR_ACTIVITY": "Editor",
-    "LOGOUT": "Logout"
+    "RECONNECT": "We are trying to reconnect...",
+    "LOGOUt": "Disconnect"
   },
   "LayoutActivity": {
     "LABEL": "Layout"
   },
   "CollectionActivity": {
+    "LABEl": "Collections",
     "LIST": "List",
     "GRID": "Grid",
     "TABLE": "Table",
@@ -42,6 +37,12 @@
     "LABEL": "Editor",
     "EDIT": "Edit",
     "VIEW": "View"
+  },
+  "ChartActivity": {
+    "LABEL": "Charts",
+    "PIE": "Pie",
+    "BAR": "Bar",
+    "LINE": "Line"
   },
   "PLatform": {
     "TITLE": "Your platform",

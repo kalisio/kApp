@@ -2,6 +2,7 @@
   "YES": "Oui",
   "NO": "Non",
   "MAIN_MENU": "Menu principal",
+  "LOGOUT": "Se déconnecter",
   "Documents": {
     "EDIT": "Editer",
     "VIEW": "Visualiser",
@@ -18,17 +19,11 @@
     "DISCONNECT": "La connexion au serveur a été interrompue, merci de patienter jusqu'à la reconnexion...",
     "RECONNECT": "Tentative de reconnection en cours..."
   },
-  "SideNav": {
-    "LAYOUT_ACTIVITY": "Layout",
-    "COLLECTION_ACTIVITY": "Collections",
-    "KANBAN_ACTIVITY": "Kanban",
-    "EDITOR_ACTIVITY": "Editeur",
-    "LOGOUT": "Se déconnecter"
-  },
   "LayoutActivity": {
     "LABEL": "Layout"
   },  
   "CollectionActivity": {
+    "LABEL": "Collections",
     "LIST": "Liste",
     "GRID": "Grille",
     "TABLE": "Table",
@@ -42,6 +37,12 @@
     "LABEL": "Editeur",
     "EDIT": "Editer",
     "VIEW": "Visualiser"
+  },
+  "ChartActivity": {
+    "LABEL": "Graphiqus",
+    "PIE": "Camembert",
+    "BAR": "Bâtons",
+    "LINE": "Courbes"
   },
   "Platform": {
     "TITLE": "Votre plateforme",

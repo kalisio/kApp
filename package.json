@@ -80,6 +80,8 @@
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "casl": "^1.0.2",
+    "chart.js": "^3.2.1",
+    "chartjs-plugin-annotation": "^1.0.1",
     "cross-env": "^5.2.0",
     "email-validator": "^2.0.4",
     "feathers-reactive": "^0.8.1",

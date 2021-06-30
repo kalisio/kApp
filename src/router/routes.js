@@ -60,6 +60,10 @@ module.exports = {
             name: 'kanban-activity',
             component: 'KanbanActivity'
           },
+          chart: {
+            name: 'chart-activity',
+            component: 'ChartActivity'
+          },
           editor: {
             name: 'editor-activity',
             component: 'EditorActivity',
