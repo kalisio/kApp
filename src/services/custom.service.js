@@ -8,7 +8,7 @@ export default function (name, api, options) {
     KChipsField: [{ value: 'A chips', icon: { name: 'check', color: 'secondary' } }, { value: 'Another chips', icon: { name: 'layers', color: 'blue' } }],
     KEmailField: 'kalisio@kalisio.xyz',
     KIconField: { name: 'check', color: 'orange' },
-    KItemField: { name: 'An item', services: 'documents', color: 'lime' },
+    KItemField: { name: 'An item', service: 'custom', color: 'lime' },
     KNumberField: '0123456789',
     KPasswordField: 'a password',
     KPhoneField: '+0123456789',

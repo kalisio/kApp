@@ -62,7 +62,10 @@
       },
       "KItemField": {
         "type": "object",
-        "services": ["custom"],
+        "services": [{ 
+          "service": "custom", 
+          "field": "name"
+        }],
         "field": {
           "component": "form/KItemField",
           "label": "KItemField"

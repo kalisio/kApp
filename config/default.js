@@ -50,7 +50,7 @@ const collectionActions = [
     id: 'edit-document',
     icon: 'las la-edit',
     tooltip: 'Documents.EDIT',
-    handler: 'editItem'
+    handler: { name: 'editItem', params: [] }
   },
   {
     id: 'export-document',
