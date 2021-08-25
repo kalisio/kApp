@@ -59,7 +59,7 @@ const collectionActions = [
     handler: 'exportItem'
   },
   {
-    component: 'frame/KPopupAction',
+    component: 'frame/KMenu',
     id: 'overflow-menu',
     actionRenderer: 'item',
     content: [{
