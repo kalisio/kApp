@@ -44,23 +44,27 @@ const collectionActions = [
     id: 'view-document',
     icon: 'las la-glasses',
     tooltip: 'Documents.VIEW',
+    scope: 'footer',
     handler: 'viewItem'
   },
   {
     id: 'edit-document',
     icon: 'las la-edit',
     tooltip: 'Documents.EDIT',
+    scope: 'header',
     handler: { name: 'editItem', params: [] }
   },
   {
     id: 'export-document',
     icon: 'las la-download',
     tooltip: 'Documents.EXPORT',
+    scope: 'footer',
     handler: 'exportItem'
   },
   {
-    component: 'menu/KMenu',
+    component: 'frame/KPopupAction',
     id: 'overflow-menu',
+    scope: 'footer',
     actionRenderer: 'item',
     content: [{
       id: 'delete-document',
