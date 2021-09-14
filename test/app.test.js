@@ -1,131 +1,78 @@
-// Page models
-import * as pages from './page-models'
 import faker from 'faker'
+import { expect } from 'chai'
 
-fixture`app`// declare the fixture
-  .page`${pages.getUrl()}` // specify the start page
-  // test.before/test.after overrides fixture.beforeEach/fixture.afterEach hook,
-  // so implement one in your test if you'd like another behaviour
-  .beforeEach(async test => {
+import { core } from '@kalisio/kdk/test.client'
+import { createDocument, deleteDocumentItem, deleteDocumentCard } from './document'
+
+const suite = 'app'
+
+describe(suite, () => {
+  let runner
+  let page
+  let user
+
+  before(async () => {
+    runner = new core.Runner(suite, { browser: { slowMo: 1 } })
+    page = await runner.start()
+    await core.goToRegisterScreen(page)
+    user = {
+      name: faker.name.findName(),
+      email: faker.internet.email(),
+      password: 'Pass;word1'
+    }
+    await core.register(page, user.name, user.email, user.password)
   })
-  .afterEach(async test => {
-    // check for console error messages
-    await screens.goToLoginScreen(test)
-    await pages.checkNoClientError(test)
+
+  it('check-layout', async () => {
+    await core.clickLeftPaneAction(page, 'layout')
+    expect(await core.isTopPaneVisible(page)).be.true
+    expect(await core.isRightPaneVisible(page)).be.false
+    expect(await core.isBottomPaneVisible(page)).be.false
+    expect(await core.isLeftPaneVisible(page)).be.false        
+    await core.clickTopOpener(page)
+    expect(await core.isTopPaneVisible(page)).be.false
+    await core.clickTopOpener(page)
+    expect(await core.isTopPaneVisible(page)).be.true
+    await core.clickRightOpener(page)
+    expect(await core.isRightPaneVisible(page)).be.true
+    await core.clickRightOpener(page)
+    expect(await core.isRightPaneVisible(page)).be.false
+    await core.clickBottomOpener(page)
+    expect(await core.isBottomPaneVisible(page)).be.true
+    await core.clickBottomOpener(page)
+    expect(await core.isBottomPaneVisible(page)).be.false
+    await core.clickLeftOpener(page)
+    expect(await core.isLeftPaneVisible(page)).be.true
+    await core.clickLeftOpener(page)
+    expect(await core.isLeftPaneVisible(page)).be.false
   })
 
-const screens = new pages.Screens()
-const layout = new pages.Layout()
-const account = new pages.Account()
-const docsList = new pages.Documents('list', 'QItem', layout)
-const docsGrid = new pages.Documents('grid', 'QCard', layout)
+  it('check-profile', async () => {
+    await core.manageAccount(page, 'profile')
+    await core.manageAccount(page, 'security')
+    await core.manageAccount(page, 'danger-zone')
+  })
 
-const user = {
-  name: 'testcafe',
-  email: 'testcafe@kalisio.xyz',
-  password: 'Pass;word1'
-}
+  it('check-collections', async () => {
+    await core.clickLeftPaneAction(page, 'collection')
+    const nbDocuments = await core.countItems(page, 'collection/KItem')
+    const doc1 = faker.name.findName()
+    await createDocument(page, doc1)
+    expect((nbDocuments + 1) === await core.countItems(page)).to.true
+    await core.clickTopPaneAction(page, 'grid', 1000)
+    const doc2 = faker.name.findName()
+    await createDocument(page, doc2)
+    expect((nbDocuments + 2) === await core.countCards(page)).to.true
+    await core.clickTopPaneAction(page, 'list', 1000)
+    await deleteDocumentItem(page, doc1)
+    expect((nbDocuments + 1) === await core.countItems(page)).to.true
+    await core.clickTopPaneAction(page, 'grid', 1000)
+    await deleteDocumentCard(page, doc2)
+    expect(nbDocuments === await core.countCards(page)).to.true
+  })
 
-const doc1 = {
-  name: faker.name.findName()
-}
-
-const doc2 = {
-  name: faker.name.findName()
-}
-
-test('Registering to the app', async test => {
-  await screens.goToRegisterScreen(test)
-  await screens.register(test, user)
-  await layout.clickLeftOpener(test)
-  await layout.clickLeftPaneAction(test, pages.Layout.LOGOUT)
-})
-
-test('Checking the app', async test => {
-  await screens.login(test, user)
-  // Checking the layout
-  await layout.clickLeftOpener(test)
-  await layout.clickLeftPaneAction(test, 'layout')
-  await test.expect(await layout.isTopPaneOpened()).ok()
-  await test.expect(await layout.isLeftPaneOpened()).notOk()
-  await test.expect(await layout.isRightPaneOpened()).notOk()
-  await test.expect(await layout.isBottomPaneOpened()).notOk()
-  await layout.clickTopOpener(test)
-  await test.expect(await layout.isTopPaneOpened()).notOk()
-  await layout.clickTopOpener(test)
-  await test.expect(await layout.isTopPaneOpened()).ok()
-  await layout.clickRightOpener(test)
-  await test.expect(await layout.isRightPaneOpened()).ok()
-  await layout.clickRightOpener(test)
-  await test.expect(await layout.isRightPaneOpened()).notOk()
-  await layout.clickBottomOpener(test)
-  await test.expect(await layout.isBottomPaneOpened()).ok()
-  await layout.clickBottomOpener(test)
-  await test.expect(await layout.isBottomPaneOpened()).notOk()
-  // Checking the account
-  await layout.clickLeftOpener(test)
-  await layout.clickLeftPaneAction(test, pages.Account.MANAGE_ACCOUNT)
-  await layout.clickTopPaneAction(test, pages.Account.SECURITY)
-  await layout.clickTopPaneAction(test, pages.Account.DANGER_ZONE)
-  // Checking the collection
-  await layout.clickLeftOpener(test)
-  await layout.clickLeftPaneAction(test, 'collection')
-  await layout.clickTopPaneAction(test, 'grid')
-  // FIXME: await layout.clickTopPaneAction(test, 'table')
-  // Checking the kanban
-  await layout.clickLeftOpener(test)
-  await layout.clickLeftPaneAction(test, 'kanban')
-  // Checking the editor
-  await layout.clickLeftOpener(test)
-  await layout.clickLeftPaneAction(test, 'editor')
-  // Logout
-  await layout.clickLeftOpener(test)
-  await layout.clickLeftPaneAction(test, pages.Layout.LOGOUT)
-})
-
-test('Create document', async test => {
-  await screens.login(test, user)
-  await layout.clickLeftOpener(test)
-  await layout.clickLeftPaneAction(test, 'collection')
-  const docsCount = await docsList.count()
-  await docsList.create(test, doc1)
-  await docsList.checkExists(test, doc1.name)
-  await docsList.checkCount(test, docsCount + 1)
-  await layout.clickTopPaneAction(test, 'grid')
-  await docsGrid.checkCount(test, docsCount + 1)
-  await docsGrid.create(test, doc2)
-  await docsGrid.checkExists(test, doc1.name)
-  await docsGrid.checkCount(test, docsCount + 2)
-  await layout.clickTopPaneAction(test, 'list')
-  await docsList.checkCount(test, docsCount + 2)
-  await layout.clickLeftOpener(test)
-  await layout.clickLeftPaneAction(test, pages.Layout.LOGOUT)
-})
-
-test('Delete document', async test => {
-  await screens.login(test, user)
-  await layout.clickLeftOpener(test)
-  await layout.clickLeftPaneAction(test, 'collection')
-  const docsCount = await docsList.count()
-  await docsList.delete(test, doc1)
-  await docsList.checkNotExists(test, doc1.name)
-  await docsList.checkCount(test, docsCount - 1)
-  await layout.clickTopPaneAction(test, 'grid')
-  await docsGrid.checkCount(test, docsCount - 1)
-  await docsGrid.delete(test, doc2)
-  await docsGrid.checkNotExists(test, doc2.name)
-  await docsGrid.checkCount(test, docsCount - 2)
-  await layout.clickTopPaneAction(test, 'list')
-  await docsList.checkCount(test, docsCount - 2)
-  await layout.clickLeftOpener(test)
-  await layout.clickLeftPaneAction(test, pages.Layout.LOGOUT)
-})
-
-test('Delete account', async test => {
-  await screens.login(test, user)
-  await layout.clickLeftOpener(test)
-  await layout.clickLeftPaneAction(test, pages.Account.MANAGE_ACCOUNT)
-  await layout.clickTopPaneAction(test, pages.Account.SECURITY)
-  await layout.clickTopPaneAction(test, pages.Account.DANGER_ZONE)
-  await account.delete(test, user.name)
+  after(async () => {
+    await core.deleteAccount(page, user.name)
+    await runner.stop()
+  })
 })
