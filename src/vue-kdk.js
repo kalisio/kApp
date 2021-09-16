@@ -16,7 +16,7 @@ export default {
     Vue.prototype.$config = function (path, defaultValue) {
       return _.get(config, path, defaultValue)
     }
-    // FIXME: This is used for testing purpose, don't know how to access this from testcafe otherwise
+    // FIXME: This is used for testing purpose, don't know how to access this from Puppeteer otherwise
     global.$store = Vue.prototype.$store
     global.$layout = Vue.prototype.$layout
     global.$api = Vue.prototype.$api
