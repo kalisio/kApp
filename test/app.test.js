@@ -54,21 +54,21 @@ describe(suite, () => {
   })
 
   it('check-collections', async () => {
-    await core.clickLeftPaneAction(page, 'collection')
+    await core.clickLeftPaneAction(page, 'collection', 1000)
     const nbDocuments = await core.countItems(page, 'collection/KItem')
     const doc1 = faker.name.findName()
     await createDocument(page, doc1)
-    expect((nbDocuments + 1) === await core.countItems(page)).to.true
+    expect((nbDocuments + 1) === await core.countItems(page, 'collection/KItem')).to.true
     await core.clickTopPaneAction(page, 'grid', 1000)
     const doc2 = faker.name.findName()
     await createDocument(page, doc2)
-    expect((nbDocuments + 2) === await core.countCards(page)).to.true
+    expect((nbDocuments + 2) === await core.countItems(page, 'collection/KCard')).to.true
     await core.clickTopPaneAction(page, 'list', 1000)
     await deleteDocumentItem(page, doc1)
-    expect((nbDocuments + 1) === await core.countItems(page)).to.true
+    expect((nbDocuments + 1) === await core.countItems(page, 'collection/KItem')).to.true
     await core.clickTopPaneAction(page, 'grid', 1000)
     await deleteDocumentCard(page, doc2)
-    expect(nbDocuments === await core.countCards(page)).to.true
+    expect(nbDocuments === await core.countItems(page, 'collection/KCard')).to.true
   })
 
   after(async () => {
