@@ -51,10 +51,4 @@ check_code $? "Connecting to Docker"
 # Push the app image to the hub
 push_docker $APP $TAG $FLAVOR 
 
-# Push the tests api image to the hub
-push_docker $APP ${TAG}_api-tester ${FLAVOR}_api-tester
-
-# Push the tests client image to the hub
-push_docker $APP ${TAG}_client-tester ${FLAVOR}_client-tester
-
 travis_fold end "deploy"
