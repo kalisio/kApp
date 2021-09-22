@@ -20,7 +20,7 @@ describe(suite, () => {
       email: faker.internet.email(),
       password: 'Pass;word1'
     }
-    await core.register(page, user.name, user.email, user.password)
+    await core.register(page, user)
   })
 
   it('check-layout', async () => {
