@@ -1,6 +1,0 @@
-FROM zenika/apline-chrome:latest
-LABEL maintainer="contact@kalisio.xyz"
-
-ENV NODE_ENV=production
-
-COPY ./test /test.
