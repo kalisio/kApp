@@ -12,7 +12,10 @@ describe(suite, () => {
   let user
 
   before(async () => {
-    runner = new core.Runner(suite, { browser: { slowMo: 1 } })
+    runner = new core.Runner(suite, {
+      appName: 'kapp',
+      browser: { slowMo: 1 }
+    })
     page = await runner.start()
     await core.goToRegisterScreen(page)
     user = {
