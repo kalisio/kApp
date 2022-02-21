@@ -70,9 +70,6 @@
         </feature>
         <preference name="WKWebViewOnly" value="true" />    
         <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
-        <edit-config target="UIRequiresFullScreen" file="*-Info.plist" mode="merge">
-            <false/>
-        </edit-config>
         <icon height="29" src="res/icons/ios/icon-small.png" width="29" />
         <icon height="58" src="res/icons/ios/icon-small-2x.png" width="58" />
         <icon height="87" src="res/icons/ios/icon-small-3x.png" width="87" />
