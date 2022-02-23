@@ -70,6 +70,8 @@
         </feature>
         <preference name="WKWebViewOnly" value="true" />    
         <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
+        <preference name="AllowBackForwardNavigationGestures" value="true" />
+        <preference name="Allow3DTouchLinkPreview" value="false" />        
         <icon height="29" src="res/icons/ios/icon-small.png" width="29" />
         <icon height="58" src="res/icons/ios/icon-small-2x.png" width="58" />
         <icon height="87" src="res/icons/ios/icon-small-3x.png" width="87" />
