@@ -1,4 +1,4 @@
-const { IncomingWebhook } = require('@slack/webhook')
+import { IncomingWebhook } from '@slack/webhook'
 
 class SlackNotifier {
   constructor (slackWebhookUrl) {

@@ -43,14 +43,13 @@
     "icons:cp": "shx cp -R node_modules/@kalisio/kdk/extras/icons src/assets",
     "tours:cp": "shx cp -R node_modules/@kalisio/kdk/extras/tours/* src/tours",
     "mocha": "mocha test/**/*.test.js --timeout 30000 --require esm",
-    "coverage": "nyc npm run mocha",
+    "coverage": "c8 npm run mocha",
     "test:server": "cd api && npm run test",
     "test:client": "cd test && npm run coverage"
   },
   "standard": {
     "parser": "vue-eslint-parser",
     "parserOptions": {
-      "parser": "babel-eslint",
       "sourceType": "module"
     },
     "plugins": [
@@ -111,18 +110,16 @@
     "cordova-set-version": "^6.0.3",
     "envsub": "^3.0.9",
     "es6-promise": "^4.1.1",
-    "eslint": "^6.1.0",
-    "eslint-loader": "^2.1.1",
-    "eslint-plugin-vue": "^5.2.3",
+    "eslint-plugin-vue": "^8.7.1",
     "esm": "^3.2.25",
     "faker": "^5.5.3",
     "ignore-loader": "^0.1.2",
     "mocha": "^9.1.1",
-    "nyc": "^15.1.0",
+    "c8": "^7.11.0",
     "pixelmatch": "^5.2.0",
     "pngjs": "^5.0.0",
     "shx": "^0.3.2",
-    "standard": "^14.0.0"
+    "standard": "^16.0.4"
   },
   "engines": {
     "node": ">= 8.9.0",

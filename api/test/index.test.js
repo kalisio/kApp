@@ -2,7 +2,7 @@ import fs from 'fs-extra'
 import path from 'path'
 import chai, { util, expect } from 'chai'
 import chailint from 'chai-lint'
-import server from '../src/main'
+import server from '../src/main.js'
 
 describe('kapp', () => {
   let expressServer, userService
@@ -11,7 +11,7 @@ describe('kapp', () => {
     chailint(chai, util)
   })
 
-  it('is ES6 compatible', () => {
+  it('is ES module compatible', () => {
     expect(typeof server).to.equal('object')
   })
 

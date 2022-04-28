@@ -1,14 +1,13 @@
-import { kalisio } from '@kalisio/kdk/core.api'
+import { kalisio } from '@kalisio/kdk/core.api.js'
+import fs from 'fs-extra'
+import https from 'https'
+import proxyMiddleware from 'http-proxy-middleware'
+import express from '@feathersjs/express'
 
-const fs = require('fs-extra')
-const https = require('https')
-const proxyMiddleware = require('http-proxy-middleware')
-
-const express = require('@feathersjs/express')
-const middlewares = require('./middlewares')
-const services = require('./services')
-const hooks = require('./hooks')
-const channels = require('./channels')
+import middlewares from './middlewares.js'
+import services from './services.js'
+import hooks from './hooks.js'
+import channels from './channels.js'
 
 export class Server {
   constructor () {

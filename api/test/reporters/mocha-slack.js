@@ -1,7 +1,7 @@
 // https://github.com/mochajs/mocha/issues/812
-const util = require('util')
-const mocha = require('mocha')
-const SlackNotifier = require('./slack-notifier')
+import util from 'util'
+import mocha from 'mocha'
+import SlackNotifier from './slack-notifier.js'
 
 const EVENT_RUN_BEGIN = mocha.Runner.constants.EVENT_RUN_BEGIN
 const EVENT_RUN_END = mocha.Runner.constants.EVENT_RUN_END

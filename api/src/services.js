@@ -1,13 +1,17 @@
 import _ from 'lodash'
 import path from 'path'
-import kCore from '@kalisio/kdk/core.api'
-import packageInfo from '../../package.json'
+import fs from 'fs-extra'
+import { fileURLToPath } from 'url'
+import * as kCore from '@kalisio/kdk/core.api.js'
 
-module.exports = async function () {
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+
+export default async function () {
   const app = this
 
   // Set up our plugin services
   try {
+    const packageInfo = fs.readJsonSync(path.join(__dirname, '../../package.json'))
     app.use(app.get('apiPath') + '/capabilities', (req, res, next) => {
       const response = {
         name: 'kapp',
@@ -25,7 +29,7 @@ module.exports = async function () {
   }
 
   // Create a service
-  app.createService('documents', {
+  await app.createService('documents', {
     servicesPath: '',
     modelsPath: path.join(__dirname, 'models')
   })

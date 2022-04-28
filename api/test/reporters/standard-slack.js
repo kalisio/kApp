@@ -1,5 +1,5 @@
-const concat = require('concat-stream')
-const SlackNotifier = require('./slack-notifier')
+import concat from 'concat-stream'
+import SlackNotifier from './slack-notifier'
 
 const SlackReporter = concat({ encoding: 'string' }, function (data) {
   const notifier = new SlackNotifier(process.env.SLACK_WEBHOOK_URL)
