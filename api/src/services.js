@@ -2,7 +2,7 @@ import _ from 'lodash'
 import path from 'path'
 import fs from 'fs-extra'
 import { fileURLToPath } from 'url'
-import * as kCore from '@kalisio/kdk/core.api.js'
+import kCore from '@kalisio/kdk/core.api.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
