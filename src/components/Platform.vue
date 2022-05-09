@@ -31,7 +31,7 @@
 
 <script>
 export default {
-  name: 'device-info',
+  name: 'platform',
   methods: {
     isCordova () {
       if (window.cordova) return true

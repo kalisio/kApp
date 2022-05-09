@@ -1,45 +1,44 @@
 import logger from 'loglevel'
-import i18next from 'i18next'
-import VueI18next from '@panter/vue-i18next'
-import { Quasar } from 'quasar'
-import { utils as kCoreUtils } from '@kalisio/kdk/core.client'
-import utils from '../utils'
+import _ from 'lodash'
+import { createI18n } from 'vue-i18n'
+import { utils as kdkCoreUtils } from '@kalisio/kdk/core.client'
 import config from 'config'
 
-export default async ({ app, Vue }) => {
+// Helper function to load a translation file
+async function loadTranslationFile (bundle, locale) {
+  const translationFile = bundle + '_' + locale + '.json'
+  return await import(`@kalisio/kdk/core/client/i18n/${translationFile}`)
+    .catch(errorCore => {
+      return import(`../i18n/${translationFile}`)
+        .catch(errorApp => {
+          logger.error(errorCore, errorApp)
+        })
+    })
+}
+
+export default async ({ app }) => {
   // Define the locale to be used
+  const fallbackLocale = config.fallbackLocale || 'en'
   const localeConfig = config.locale || {}
-  const localeBrowser = kCoreUtils.getLocale()
+  const localeBrowser = kdkCoreUtils.getLocale()
   const locale = localeConfig.default || localeBrowser
-  // Initializes i18next
-  i18next.init({
-    lng: locale,
-    fallbackLng: localeConfig.fallback || 'en',
-    defaultNS: ['kdk']
-  })
-  // Set Quasar language pack
-  try {
-    const lang = await import('quasar/lang/' + locale)
-    Quasar.lang.set(lang.default)
-  }
-  catch (error) {
-    logger.error(error.message)
-  } 
+
   // Load the translation files
-  const modules = ['core', 'app']
+  const bundles = ['core', 'app']
+  let messages = {}
   try {
-    // Build the translation resolvers
-    const translationResolvers = modules.map(module => {
-      return utils.loadTranslation(module, locale)
-    })
-    // Apply the resolvers and add the translation bundles to i18next
-    const translations = await Promise.all(translationResolvers)
-    translations.forEach((translation) => {
-      i18next.addResourceBundle(locale, 'kdk', translation, true, true)
-    })
+    for (let i = 0; i < bundles.length; i++) {
+      messages[locale] = _.merge(messages[locale], await loadTranslationFile(bundles[i], locale))
+      messages[fallbackLocale] = _.merge(messages[fallbackLocale], await loadTranslationFile(bundles[i], fallbackLocale))
+    }
   } catch (error) {
     logger.error(error.message)
   }
-  Vue.use(VueI18next)
-  app.i18n = new VueI18next(i18next)
+
+  // Create I18n instance
+  app.use(createI18n({ 
+    locale,
+    fallbackLocale, 
+    messages
+  }))
 }

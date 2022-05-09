@@ -1,5 +1,5 @@
 import logger from 'loglevel'
-import kCore from '@kalisio/kdk/core.client'
+import kdkCore from '@kalisio/kdk/core.client'
 import CustomService from './custom.service'
 
 export default function () {
@@ -7,7 +7,7 @@ export default function () {
 
   // Set up our plugin services
   try {
-    api.configure(kCore)
+    api.configure(kdkCore)
     api.createService('custom', { service: CustomService })
   } catch (error) {
     logger.error(error.message)

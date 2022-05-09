@@ -7,14 +7,14 @@
 </template>
 
 <script>
-import { mixins as kCoreMixins } from '@kalisio/kdk/core.client'
+import { mixins } from '@kalisio/kdk/core.client'
+import { defineAsyncComponent } from 'vue'
 
 export default {
   name: 'layout-activity',
-  mixins: [kCoreMixins.baseActivity()],
-  beforeCreate () {
-    // Load the required components
-    this.$options.components['k-page'] = this.$load('layout/KPage')
-  }
+  components: {
+    KPage: defineAsyncComponent(() => import('@kalisio/kdk/core/client/components/layout/KPage.vue'))
+  },
+  mixins: [ mixins.baseActivity() ]
 }
 </script>

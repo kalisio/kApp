@@ -4,6 +4,7 @@ const serverPort = process.env.PORT || 8081
 // Required to know webpack port so that in dev we can build correct URLs
 const clientPort = process.env.CLIENT_PORT || 8080
 const API_PREFIX = '/api'
+
 let domain
 // If we build a specific staging instance
 if (process.env.NODE_APP_INSTANCE === 'dev') {
@@ -23,7 +24,7 @@ if (process.env.NODE_APP_INSTANCE === 'dev') {
 
 const leftPane = {
   content: [
-    { component: 'QImg', src: 'statics/kapp-logo.png' },
+    { component: 'QImg', src: 'kapp-logo.png' },
     { component: 'account/KIdentityPanel', class: 'full-width' },
     { id: 'layout', icon: 'las la-desktop', label: 'LayoutActivity.LABEL', renderer: 'item', route: { name: 'layout-activity' } },
     { id: 'collection', icon: 'las la-list', label: 'CollectionActivity.LABEL', renderer: 'item', route: { name: 'collection-activity', params: { page: 'list' } } },
@@ -103,26 +104,38 @@ module.exports = {
     level: (process.env.NODE_ENV === 'development' ? 'debug' : 'info')
   },
   screens: {
-    extraLinks: [
+    // header: 'screen/KScreenHeader',
+    // footer: 'screen/KScreenFooter',
+    backgroundColor: '#FFF8ED',
+    // textColor: 'white',
+    banner: 'kapp-logo.png',
+    links: [
       { label: 'screen.ABOUT_KALISIO', url: website },
       { label: 'screen.CONTACT', url: website + '/contact' },
       { label: 'screen.TERMS_AND_POLICIES', url: domain + '/#/terms' }
     ],
-    banner: 'kapp-logo.png',
+    frameBackgroundColor: '#FFDC9E',
+    error: {
+      homeRoute: 'root'
+    },
     login: {
-      providers: ['google', 'github'],
-      links: [
-        { id: 'register-link', label: 'KLogin.DONT_HAVE_AN_ACCOUNT_LINK', route: { name: 'register' } }
+      actions: [
+        { id: 'register-link', label: 'KLoginScreen.DONT_HAVE_AN_ACCOUNT_LABEL', route: { name: 'register' } }
       ]
     },
     logout: {
-      links: [
-        { id: 'login-link', label: 'KLogout.LOG_IN_AGAIN_LINK', route: { name: 'login' } }
+      actions: [
+        { id: 'login-link', label: 'KLogoutScreen.LOG_IN_AGAIN_LABEL', route: { name: 'login' } }
       ]
     },
     register: {
-      links: [
-        { id: 'login-link', label: 'KRegister.ALREADY_HAVE_AN_ACCOUNT_LINK', route: { name: 'login' } }
+      actions: [
+        { id: 'login-link', label: 'KRegisterScreen.ALREADY_HAVE_AN_ACCOUNT_LABEL', route: { name: 'login' } }
+      ]
+    },
+    endpoint: {
+      actions: [
+        { id: 'login-link', label: 'KEndpointScreen.LOG_IN_LABEL', route: { name: 'login' } }
       ]
     }
   },
@@ -229,7 +242,7 @@ module.exports = {
             component: 'collection/KItem',
             actions: collectionActions
           }
-          /*, /*filterQuery: ':filter.query' */
+          //, /*filterQuery: ':filter.query'
         }],
         grid: [{
           component: 'collection/KGrid',
@@ -239,14 +252,14 @@ module.exports = {
             component: 'collection/KCard',
             actions: collectionActions
           }
-          /* , /*filterQuery: ':filter.query' */
+          // , /*filterQuery: ':filter.query' 
         }],
         table: [{
           component: 'collection/KTable',
           ref: 'table',
           service: 'documents',
           itemActions: collectionActions,
-          /* filterQuery: ':filter.query', */
+          // filterQuery: ':filter.query', 
           nbItemsPerPage: 3,
           selection: 'multiple'
         }]

@@ -21,10 +21,13 @@
 
 <script>
 import _ from 'lodash'
-import { mixins as kCoreMixins } from '@kalisio/kdk/core.client'
+import { mixins } from '@kalisio/kdk/core.client'
+const { baseActivity } = mixins
 import { QOptionGroup } from 'quasar'
 import { Chart, PointElement, LineElement, BarElement, ArcElement, BarController, 
          LineController, PieController, CategoryScale, LinearScale } from 'chart.js';
+
+
 
 Chart.register(
   PointElement,
@@ -43,7 +46,7 @@ export default {
   components: {
     QOptionGroup
   },
-  mixins: [kCoreMixins.baseActivity()],
+  mixins: [baseActivity()],
   computed: {
     chartConfig () {
       return { 

@@ -12,7 +12,7 @@ import config from 'config'
 export default {
   name: 'index',
   // authorisation mixin is required to automatically update user' abilities on update
-  mixins: [mixins.authentication],
+  mixins: [ mixins.authentication ],
   methods: {
     redirect () {
       // Run registered guards to redirect accordingly if required
@@ -53,7 +53,7 @@ export default {
         this.redirect()
       })
 
-    this.$events.$on('user-changed', user => {
+    this.$events.on('user-changed', user => {
       this.user = user
       // Check if we need to redirect based on the fact there is an authenticated user
       this.redirect()

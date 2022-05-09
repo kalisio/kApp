@@ -1,10 +1,18 @@
+
 {
-  "include": [
-    "./src/**/*"
-  ],
+  // TODO is it required ?
+//  "include": [
+//    "./src/**/*"
+//  ],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "src/*": [
+        "src/*"
+      ],
+      "app/*": [
+        "*"
+      ],
       "components/*": [
         "src/components/*"
       ],
@@ -19,7 +27,18 @@
       ],
       "utils/*": [
         "src/utils/*"
+      ],
+      "assets/*": [
+        "src/assets/*"
+      ],
+      "boot/*": [
+        "src/boot/*"
       ]
     }
-  }
+  },
+  "exclude": [
+    "dist",
+    ".quasar",
+    "node_modules"
+  ]
 }

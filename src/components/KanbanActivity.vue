@@ -18,11 +18,12 @@
 </template>
 
 <script>
-import { mixins as kCoreMixins } from '@kalisio/kdk/core.client'
+import { mixins } from '@kalisio/kdk/core.client'
+const { baseActivity } = mixins
 
 export default {
   name: 'kanban-activity',
-  mixins: [kCoreMixins.baseActivity()],
+  mixins: [baseActivity()],
   computed: {
     columnWidth () {
       if (this.$q.screen.lt.md) return 280
