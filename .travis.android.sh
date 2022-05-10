@@ -60,4 +60,3 @@ rclone copy android.deploy.log scw:kalisio-builds/${BUILD_BUCKET}/android.deploy
 check_code $? "Deploying the app"
 
 travis_fold end "deploy"
-

@@ -78,4 +78,3 @@ node . $APP.js --install
 node . $APP.js --link
 
 cd $APP
-
