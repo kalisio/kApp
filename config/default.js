@@ -108,7 +108,7 @@ module.exports = {
     // footer: 'screen/KScreenFooter',
     backgroundColor: '#FFF8ED',
     // textColor: 'white',
-    banner: 'kapp-logo.png',
+    banner: 'kapp-banner.png',
     links: [
       { label: 'screen.ABOUT_KALISIO', url: website },
       { label: 'screen.CONTACT', url: website + '/contact' },

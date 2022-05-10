@@ -21,8 +21,6 @@ export default async ({ app }) => {
   app.config.globalProperties.$api = api
   app.config.globalProperties.$can = api.can
   app.config.globalProperties.$toast = kCoreUtils.toast
-  app.config.globalProperties.$load = utils.load
-  app.config.globalProperties.$loadComponent = utils.loadComponent
   app.config.globalProperties.$config = function (path, defaultValue) {
     return _.get(config, path, defaultValue)
   }

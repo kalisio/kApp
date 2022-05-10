@@ -21,9 +21,9 @@
 
 <script>
 import _ from 'lodash'
-import { mixins } from '@kalisio/kdk/core.client'
-const { baseActivity } = mixins
-import { QOptionGroup } from 'quasar'
+import { mixins, utils } from '@kalisio/kdk/core.client'
+
+
 import { Chart, PointElement, LineElement, BarElement, ArcElement, BarController, 
          LineController, PieController, CategoryScale, LinearScale } from 'chart.js';
 
@@ -44,9 +44,9 @@ Chart.register(
 export default {
   name: 'chart-activity',
   components: {
-    QOptionGroup
+    KPage: utils.loadComponent('layout/KPage')
   },
-  mixins: [baseActivity()],
+  mixins: [ mixins.baseActivity() ],
   computed: {
     chartConfig () {
       return { 
@@ -97,11 +97,6 @@ export default {
       const response = await service.find({ query, $limit: 0 })
       return response.total
     }
-  },
-  beforeCreate () {
-    // Load the required components
-    this.$options.components['k-page'] = this.$load('layout/KPage')
-    this.$options.components['k-chart'] = this.$load('frame/KChart')
   },
   async created () {
     this.fieldLabels = {

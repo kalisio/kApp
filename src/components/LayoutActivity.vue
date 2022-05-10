@@ -7,13 +7,12 @@
 </template>
 
 <script>
-import { mixins } from '@kalisio/kdk/core.client'
-import { defineAsyncComponent } from 'vue'
+import { mixins, utils } from '@kalisio/kdk/core.client'
 
 export default {
   name: 'layout-activity',
   components: {
-    KPage: defineAsyncComponent(() => import('@kalisio/kdk/core/client/components/layout/KPage.vue'))
+    KPage: utils.loadComponent('layout/KPage')
   },
   mixins: [ mixins.baseActivity() ]
 }

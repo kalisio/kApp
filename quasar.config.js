@@ -71,7 +71,7 @@ module.exports = configure(function (ctx) {
       // Options below are automatically set depending on the env, set them if you want to override
       // extractCSS: false,
 
-      // https://v2.quasar.dev/quasar-cli-webpack/handling-webpack
+      // https://v2.quasar.dev/quasaextend r-cli-webpack/handling-webpack
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
       
       chainWebpack (chain) {
@@ -81,13 +81,20 @@ module.exports = configure(function (ctx) {
       
       extendWebpack (cfg) {
         cfg.resolve.modules = [
-          path.resolve(__dirname, 'src'),
+          //path.resolve(__dirname, 'src'),
           path.resolve(__dirname, 'node_modules')
         ],
         cfg.resolve.alias = {
           ...cfg.resolve.alias, // This adds the existing aliases
-          '@': path.resolve(__dirname, './src/components'),
-          config: path.resolve(__dirname, './config/client-config.json')
+          '@components': [
+            path.resolve(__dirname, 'src/components'),
+            path.resolve(__dirname, 'node_modules/@kalisio/kdk/core/client/components')
+          ],
+          '@schemas': [
+            path.resolve(__dirname, 'src/schemas'),
+            path.resolve(__dirname, 'node_modules/@kalisio/kdk/core/client/schemas')
+          ],
+          config: path.resolve(__dirname, 'config/client-config.json')
         },
         cfg.optimization.minimize = process.env.DEBUG ? false : cfg.optimization.minimize
       }
@@ -193,8 +200,6 @@ module.exports = configure(function (ctx) {
         description: `A sample KDK application`,
         display: 'standalone',
         orientation: 'portrait',
-        background_color: '#ffffff',
-        theme_color: '#027be3',
         icons: [
           {
             src: 'icons/kapp-icon-128x128.png',

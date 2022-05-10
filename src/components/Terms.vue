@@ -9,14 +9,12 @@
 </template>
 
 <script>
-import utils from '../utils'
+import { defineAsyncComponent } from 'vue'
 
 export default {
   name: 'terms',
-  beforeCreate () {
-    // Load the required components
-    this.$options.components['k-screen'] = utils.loadComponent('frame/KScreen')
-    this.$options.components['k-markdown-viewer'] = utils.loadComponent('media/KMarkdownViewer')
+  components: {
+    KMarkdownViewer: import('@components/media/KMarkdownViewer.vue')
   }
 }
 </script>

@@ -7,15 +7,13 @@
 </template>
 
 <script>
-import { mixins } from '@kalisio/kdk/core.client'
-const { baseActivity } = mixins
+import { mixins, utils } from '@kalisio/kdk/core.client'
 
 export default {
   name: 'editor-activity',
-  mixins: [baseActivity()],
-  beforeCreate () {
-    // Load the required components
-    this.$options.components['k-page'] = this.$load('layout/KPage')
-  }
+    components: {
+      KPage: utils.loadComponent('layout/KPage')
+  },
+  mixins: [ mixins.baseActivity() ]
 }
 </script>

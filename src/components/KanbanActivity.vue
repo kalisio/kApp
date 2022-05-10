@@ -18,12 +18,14 @@
 </template>
 
 <script>
-import { mixins } from '@kalisio/kdk/core.client'
-const { baseActivity } = mixins
+import { mixins, utils } from '@kalisio/kdk/core.client'
 
 export default {
   name: 'kanban-activity',
-  mixins: [baseActivity()],
+  components: {
+    KPage: utils.loadComponent('layout/KPage')
+  },  
+  mixins: [ mixins.baseActivity() ],
   computed: {
     columnWidth () {
       if (this.$q.screen.lt.md) return 280
@@ -86,11 +88,6 @@ export default {
     onPageContentResized (size) {
       this.height = size.height - 120
     }
-  },
-  beforeCreate () {
-    // Load the required components
-    this.$options.components['k-page'] = this.$load('layout/KPage')
-    this.$options.components['k-board'] = this.$load('collection/KBoard')
   }
 }
 </script>

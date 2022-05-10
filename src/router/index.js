@@ -1,9 +1,65 @@
 import { route } from 'quasar/wrappers'
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
-import routes from './routes'
-import utils from '../utils.js'
+import _ from 'lodash'
+import routeConfig from './routes'
 
-// TODO import utils from '../utils.js' to buld the routes
+/*
+ * Helper function used to build the routes
+ */
+function buildRoutes (config) {
+  function buildRoutesRecursively (config, routes, parentRoute) {
+    _.forOwn(config, (value, key) => {
+      // The key is always the path for the route
+      const route = {
+        path: key,
+        name: key,
+        // "Inherit" meta data on nested routes
+        meta: (parentRoute ? Object.assign({}, parentRoute.meta) : {})
+      }
+      // If value is a simple string this is a shortcut:
+      // - name = path
+      // - component = value
+      // Otherwise we have an object similar to what expect vue-router,
+      // we simply return the async component loading function with the given component value
+      if (typeof value === 'string') {
+        route.component = () => import(`@components/${value}.vue`)
+      } else {
+        // Take care that path can be empty so we cannot just check with a if
+        if (_.has(value, 'path')) {
+          route.path = value.path
+        }
+        // Take care that name can be empty so we cannot just check with a if
+        if (_.has(value, 'name')) {
+          route.name = value.name
+        }
+        if (_.has(value, 'component')) {
+          route.component = () => import(`@components/${value.component}.vue`)
+        }
+        if (_.has(value, 'props')) {
+          route.props = value.props
+        }
+        if (_.has(value, 'meta')) {
+          // Override parent meta if child meta given
+          Object.assign(route.meta, value.meta)
+        }
+        if (_.has(value, 'redirect')) {
+          _.set(route, 'redirect', value.redirect)
+        }
+      }
+
+      // Check for any children to recurse
+      if (value.children) {
+        route.children = []
+        buildRoutesRecursively(value.children, route.children, route)
+      }
+      routes.push(route)
+    })
+  }
+
+  const routes = []
+  buildRoutesRecursively(config, routes)
+  return routes
+}
 
 /*
 * If not building with SSR mode, you can
@@ -21,7 +77,7 @@ export default route(function (/* { store, ssrContext } */) {
 
  const Router = createRouter({
    scrollBehavior: () => ({ left: 0, top: 0 }),
-   routes: utils.buildRoutes(routes),
+   routes: buildRoutes(routeConfig),
 
    // Leave this as is and make changes in quasar.conf.js instead!
    // quasar.conf.js -> build -> vueRouterMode
