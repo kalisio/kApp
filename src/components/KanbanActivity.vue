@@ -25,7 +25,7 @@ export default {
   components: {
     KPage: utils.loadComponent('layout/KPage')
   },  
-  mixins: [ mixins.baseActivity() ],
+  mixins: [mixins.baseActivity()],
   computed: {
     columnWidth () {
       if (this.$q.screen.lt.md) return 280
@@ -81,7 +81,7 @@ export default {
   },
   methods: {
     configureActivity () {
-      kCoreMixins.baseActivity(this.activityName).methods.configureActivity.call(this)
+      mixins.baseActivity(this.activityName).methods.configureActivity.call(this)
       this.categories = this.activityOptions.categories
       this.categoryField = this.activityOptions.categoryField
     },
