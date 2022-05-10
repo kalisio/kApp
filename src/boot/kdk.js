@@ -4,7 +4,6 @@ import appHooks from '../main.hooks'
 import services from '../services'
 import { kalisio, utils as kCoreUtils, Store, Layout, Events, beforeGuard, authenticationGuard } from '@kalisio/kdk/core.client'
 import config from 'config'
-import utils from '../utils'
 
 export default async ({ app }) => {
   const api = kalisio()
