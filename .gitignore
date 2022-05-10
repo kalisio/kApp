@@ -3,12 +3,6 @@
 
 # Quasar generated
 .quasar
-src-cordova/config.xml
-src-cordova/*.keystore
-src-cordova/*.json
-src-cordova/platforms
-src-cordova/plugins
-src-cordova/www
 
 # Logs
 logs
