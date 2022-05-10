@@ -80,4 +80,4 @@ src/tours/core
 src/tours/map
 
 #KDK icons
-public/icons/kdk
+public/icons/kdk/*.png
