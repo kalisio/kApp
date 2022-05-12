@@ -206,23 +206,23 @@ module.exports = configure(function (ctx) {
         orientation: 'portrait',
         icons: [
           {
+            src: 'icons/kapp-icon-32x32.png',
+            sizes: '32x32',
+            type: 'image/png'
+          },
+          {
+            src: 'icons/kapp-icon-64x64.png',
+            sizes: '64x64',
+            type: 'image/png'
+          },
+          {
             src: 'icons/kapp-icon-128x128.png',
             sizes: '128x128',
             type: 'image/png'
           },
           {
-            src: 'icons/kapp-icon-192x192.png',
-            sizes: '192x192',
-            type: 'image/png'
-          },
-          {
             src: 'icons/kapp-icon-256x256.png',
             sizes: '256x256',
-            type: 'image/png'
-          },
-          {
-            src: 'icons/kapp-icon-384x384.png',
-            sizes: '384x384',
             type: 'image/png'
           },
           {
