@@ -14,9 +14,9 @@ describe(suite, () => {
   before(async () => {
     runner = new core.Runner(suite, {
       appName: 'kapp',
-      browser: { 
+      browser: {
         args: ['--lang=fr'],
-        slowMo: 1        
+        slowMo: 1
       }
     })
     page = await runner.start()
@@ -34,7 +34,7 @@ describe(suite, () => {
     expect(await core.isTopPaneVisible(page)).be.true
     expect(await core.isRightPaneVisible(page)).be.false
     expect(await core.isBottomPaneVisible(page)).be.false
-    expect(await core.isLeftPaneVisible(page)).be.false        
+    expect(await core.isLeftPaneVisible(page)).be.false
     await core.clickTopOpener(page)
     expect(await core.isTopPaneVisible(page)).be.false
     await core.clickTopOpener(page)

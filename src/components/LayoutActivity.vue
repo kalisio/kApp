@@ -7,13 +7,10 @@
 </template>
 
 <script>
-import { mixins, utils } from '@kalisio/kdk/core.client'
+import { mixins } from '@kalisio/kdk/core.client'
 
 export default {
   name: 'layout-activity',
-  components: {
-    KPage: utils.loadComponent('layout/KPage')
-  },
-  mixins: [ mixins.baseActivity() ]
+  mixins: [mixins.baseActivity()]
 }
 </script>

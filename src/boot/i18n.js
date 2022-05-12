@@ -7,9 +7,9 @@ export default async ({ app }) => {
   const fallbackLocale = config.fallbackLocale || 'en'
   const locale = utils.getAppLocale()
   // Create I18n instance using the translation bundles [core, app]
-  app.use(createI18n({ 
+  app.use(createI18n({
     locale,
-    fallbackLocale, 
+    fallbackLocale,
     messages: await utils.loadTranslations(['core', 'app'], locale, fallbackLocale)
   }))
 }

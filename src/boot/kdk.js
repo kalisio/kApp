@@ -24,6 +24,14 @@ export default async ({ app }) => {
     return _.get(config, path, defaultValue)
   }
 
+  // Register global components
+  app.component('KAction', await kCoreUtils.loadComponent('frame/KAction'))
+  app.component('KPanel', await kCoreUtils.loadComponent('frame/KPanel'))
+  app.component('KStamp', await kCoreUtils.loadComponent('frame/KStamp'))
+  app.component('KModal', await kCoreUtils.loadComponent('frame/KModal'))
+  app.component('KForm', await kCoreUtils.loadComponent('form/KForm'))
+  app.component('KPage', await kCoreUtils.loadComponent('layout/KPage'))
+
   // Register global properties
   // FIXME: This is used for testing purpose, don't know how to access this from Puppeteer otherwise
   global.$store = app.config.globalProperties.$store

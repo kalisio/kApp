@@ -21,38 +21,18 @@
 
 <script>
 import _ from 'lodash'
-import { mixins, utils } from '@kalisio/kdk/core.client'
+import { mixins } from '@kalisio/kdk/core.client'
 
-
-import { Chart, PointElement, LineElement, BarElement, ArcElement, BarController, 
-         LineController, PieController, CategoryScale, LinearScale } from 'chart.js';
-
-
-
-Chart.register(
-  PointElement,
-  ArcElement,
-  LineElement,
-  BarElement,
-  BarController,
-  LineController,
-  PieController,
-  CategoryScale,
-  LinearScale
-)
 
 export default {
   name: 'chart-activity',
-  components: {
-    KPage: utils.loadComponent('layout/KPage')
-  },
-  mixins: [ mixins.baseActivity() ],
+  mixins: [mixins.baseActivity()],
   computed: {
     chartConfig () {
-      return { 
-        type: this.chartType, 
-        data: { 
-          labels: this.chartLabels, 
+      return {
+        type: this.chartType,
+        data: {
+          labels: this.chartLabels,
           datasets: this.chartDatasets
         },
         options: this.chartOptions
@@ -68,22 +48,22 @@ export default {
         { label: 'Etat mécanique', value: 'etat_meca' }
       ],
       chartType: 'pie',
-      chartLabels: [],      
+      chartLabels: [],
       chartDatasets: [],
       chartOptions: {}
     }
   },
   watch: {
     'topPane.mode': {
-       handler () {
-         this.chartType = this.topPane.mode
-         this.chartOptions = {}
-       }
+      handler () {
+        this.chartType = this.topPane.mode
+        this.chartOptions = {}
+      }
     },
     currentField: {
       async handler () {
         this.chartLabels = this.fieldLabels[this.currentField]
-        let data = []
+        const data = []
         for (let i = 0; i < this.chartLabels.length; ++i) {
           data.push(await this.countItems({ [this.currentField]: this.chartLabels[i] }))
         }
@@ -100,8 +80,8 @@ export default {
   },
   async created () {
     this.fieldLabels = {
-      'etat_sani': ['sain', 'malade', 'declin'],
-      'etat_meca': ['sur', 'defectueux', 'rupture', 'danger']
+      etat_sani: ['sain', 'malade', 'declin'],
+      etat_meca: ['sur', 'defectueux', 'rupture', 'danger']
     },
     this.currentField = 'etat_sani'
   }

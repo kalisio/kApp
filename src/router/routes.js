@@ -90,4 +90,3 @@ module.exports = [
     component: 'screen/KErrorScreen'
   }
 ]
-

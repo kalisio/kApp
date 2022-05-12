@@ -1,7 +1,7 @@
 <template>
   <k-page padding>
     <template v-slot:page-content>
-      <!-- 
+      <!--
         The content is defined using page content capabilities
         We just need to add a router-view to enable modal routing
        -->
@@ -11,14 +11,11 @@
 </template>
 
 <script>
-import { mixins, utils } from '@kalisio/kdk/core.client'
+import { mixins } from '@kalisio/kdk/core.client'
 
 export default {
   name: 'collection-activity',
-  components: {
-    KPage: utils.loadComponent('layout/KPage')
-  },
-  mixins: [ mixins.baseActivity() ],
+  mixins: [mixins.baseActivity()],
   props: {
     page: {
       type: String,
@@ -27,7 +24,7 @@ export default {
   },
   data () {
     return {
-      userName:  this.$store.get('user.name'),
+      userName: this.$store.get('user.name'),
       filter: this.$store.get('filter'),
       sorter: this.$store.get('sorter')
     }
@@ -36,7 +33,7 @@ export default {
     baseQuery () {
       return this.sorter.query
     }
-  },  
+  },
   watch: {
     page: function () {
       this.restoreTopPaneMode()

@@ -4,10 +4,10 @@
       <!--
         Item list rendering
       -->
-      <k-board 
+      <k-board
         v-if="height"
         class="q-pa-md"
-        :columns="boardColumns" 
+        :columns="boardColumns"
         :height="height" />
     </template>
     <!--
@@ -18,13 +18,10 @@
 </template>
 
 <script>
-import { mixins, utils } from '@kalisio/kdk/core.client'
+import { mixins } from '@kalisio/kdk/core.client'
 
 export default {
   name: 'kanban-activity',
-  components: {
-    KPage: utils.loadComponent('layout/KPage')
-  },  
   mixins: [mixins.baseActivity()],
   computed: {
     columnWidth () {
@@ -39,7 +36,7 @@ export default {
         props: {
           service: 'documents',
           renderer: { component: 'collection/KCard' },
-          baseQuery: Object.assign({ 'etat_sani': 'sain' })
+          baseQuery: Object.assign({ etat_sani: 'sain' })
         },
         width: this.columnWidth
       }, {
@@ -49,7 +46,7 @@ export default {
           service: 'documents',
           renderer: { component: 'collection/KCard' },
           contextId: this.contextId,
-          baseQuery: Object.assign({ 'etat_sani': 'malade' })
+          baseQuery: Object.assign({ etat_sani: 'malade' })
         },
         width: this.columnWidth
       }, {
@@ -58,7 +55,7 @@ export default {
         props: {
           service: 'documents',
           renderer: { component: 'collection/KCard' },
-          baseQuery: Object.assign({ 'etat_sani': 'declin' })
+          baseQuery: Object.assign({ etat_sani: 'declin' })
         },
         width: this.columnWidth
       }]
@@ -72,8 +69,12 @@ export default {
       cardRenderer: {
         component: 'collection/KCard',
         actions: [
-          { id: 'view-document', icon: 'las la-glasses', tooltip: 'KanbanActivity.VIEW_DOCUMENT',
-            handler: (context) => this.$router.push({ name: 'view-document', params: { page: 'list', objectId: context.item._id } }) }
+          {
+            id: 'view-document',
+            icon: 'las la-glasses',
+            tooltip: 'KanbanActivity.VIEW_DOCUMENT',
+            handler: (context) => this.$router.push({ name: 'view-document', params: { page: 'list', objectId: context.item._id } })
+          }
         ]
       },
       height: undefined
