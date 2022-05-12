@@ -28,4 +28,5 @@ config.xml
 *.ts
 platforms/
 plugins/
-www/
+www/*
+!www/.gitkeep
