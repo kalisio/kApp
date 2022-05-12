@@ -50,6 +50,13 @@ module.exports = configure(function (ctx) {
       'fontawesome-v5'
     ],
 
+    // https://quasar.dev/quasar-cli-webpack/quasar-config-js#property-htmlvariables
+    htmlVariables: {
+      appName: 'kApp',
+      appSlug: 'kapp'
+      
+    },
+
     // Full list of options: https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-build
     build: {
       vueRouterMode: 'hash', // available values: 'hash', 'history'
@@ -284,4 +291,4 @@ module.exports = configure(function (ctx) {
       
     }
   }
-});
+})
