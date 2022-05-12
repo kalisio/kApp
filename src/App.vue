@@ -9,7 +9,7 @@
 <script>
 import _ from 'lodash'
 import logger from 'loglevel'
-import { utils } from '@kalisio/kdk/core.client'
+import { utils  as kdkCoreUtils } from '@kalisio/kdk/core.client'
 
 export default {
   data () {
@@ -71,7 +71,7 @@ export default {
   },
   created () {
     // Install the icon mapping function to handle kdk icons
-    this.$q.iconMapFn = utils.mapIconFunction
+    this.$q.iconMapFn = kdkCoreUtils.mapIconFunction
   },
   mounted () {
     // Check for error on refresh

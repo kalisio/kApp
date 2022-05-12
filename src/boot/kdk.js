@@ -2,7 +2,7 @@
 import _ from 'lodash'
 import appHooks from '../main.hooks'
 import services from '../services'
-import { kalisio, utils as kCoreUtils, Store, Layout, Events, beforeGuard, authenticationGuard } from '@kalisio/kdk/core.client'
+import { kalisio, utils as kdkCoreUtils, Store, Layout, Events, beforeGuard, authenticationGuard } from '@kalisio/kdk/core.client'
 import config from 'config'
 
 export default async ({ app }) => {
@@ -19,18 +19,18 @@ export default async ({ app }) => {
   app.config.globalProperties.$events = Events
   app.config.globalProperties.$api = api
   app.config.globalProperties.$can = api.can
-  app.config.globalProperties.$toast = kCoreUtils.toast
+  app.config.globalProperties.$toast = kdkCoreUtils.toast
   app.config.globalProperties.$config = function (path, defaultValue) {
     return _.get(config, path, defaultValue)
   }
 
   // Register global components
-  app.component('KAction', await kCoreUtils.loadComponent('frame/KAction'))
-  app.component('KPanel', await kCoreUtils.loadComponent('frame/KPanel'))
-  app.component('KStamp', await kCoreUtils.loadComponent('frame/KStamp'))
-  app.component('KModal', await kCoreUtils.loadComponent('frame/KModal'))
-  app.component('KForm', await kCoreUtils.loadComponent('form/KForm'))
-  app.component('KPage', await kCoreUtils.loadComponent('layout/KPage'))
+  app.component('KAction', await kdkCoreUtils.loadComponent('frame/KAction'))
+  app.component('KPanel', await kdkCoreUtils.loadComponent('frame/KPanel'))
+  app.component('KStamp', await kdkCoreUtils.loadComponent('frame/KStamp'))
+  app.component('KModal', await kdkCoreUtils.loadComponent('frame/KModal'))
+  app.component('KForm', await kdkCoreUtils.loadComponent('form/KForm'))
+  app.component('KPage', await kdkCoreUtils.loadComponent('layout/KPage'))
 
   // Register global properties
   // FIXME: This is used for testing purpose, don't know how to access this from Puppeteer otherwise

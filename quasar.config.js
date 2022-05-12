@@ -82,10 +82,13 @@ module.exports = configure(function (ctx) {
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
       
       chainWebpack (chain) {
-        chain.plugin('eslint-webpack-plugin')
-          .use(ESLintPlugin, [{ extensions: [ 'js', 'vue' ] }])
+        chain.plugin('eslint-webpack-plugin').use(ESLintPlugin, [{ extensions: [ 'js', 'vue' ] }])
+        // This is required since webpack 5 removed nodejs polyfilss
+        // see https://quasar.dev/start/upgrade-guide#nodejs-polyfills
+        const nodePolyfillWebpackPlugin = require('node-polyfill-webpack-plugin')
+        chain.plugin('node-polyfill').use(nodePolyfillWebpackPlugin)
       },
-      
+
       extendWebpack (cfg) {
         cfg.resolve.modules = [
           //path.resolve(__dirname, 'src'),
@@ -281,8 +284,6 @@ module.exports = configure(function (ctx) {
         chain.plugin('eslint-webpack-plugin')
           .use(ESLintPlugin, [{ extensions: [ 'js' ] }])
       },
-      
-
       
       chainWebpackPreload (chain) {
         chain.plugin('eslint-webpack-plugin')
