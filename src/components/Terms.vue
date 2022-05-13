@@ -9,12 +9,12 @@
 </template>
 
 <script>
-import { defineAsyncComponent } from 'vue'
+import { utils } from '@kalisio/kdk/core.client'
 
 export default {
   name: 'terms',
   components: {
-    KMarkdownViewer: import('@components/media/KMarkdownViewer.vue')
+    KMarkdownViewer: utils.loadComponent('/media/KMarkdownViewer')
   }
 }
 </script>

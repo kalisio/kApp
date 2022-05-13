@@ -101,7 +101,7 @@ module.exports = configure(function (ctx) {
           ],
           '@schemas': [
             path.resolve(__dirname, 'src/schemas'),
-            path.resolve(__dirname, 'node_modules/@kalisio/kdk/core/commmon/schemas')
+            path.resolve(__dirname, 'node_modules/@kalisio/kdk/core/common/schemas')
           ],
           '@i18n': [
             path.resolve(__dirname, 'src/i18n'),

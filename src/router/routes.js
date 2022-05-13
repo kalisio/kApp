@@ -1,5 +1,4 @@
-module.exports = [
-  {
+module.exports = [{
     path: '/',
     name: 'index',
     component: 'Index',

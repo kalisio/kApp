@@ -9,7 +9,7 @@
 <script>
 import _ from 'lodash'
 import logger from 'loglevel'
-import { utils  as kdkCoreUtils } from '@kalisio/kdk/core.client'
+import { utils as kdkCoreUtils } from '@kalisio/kdk/core.client'
 
 export default {
   data () {

@@ -20,14 +20,12 @@
 </template>
 
 <script>
-import _ from 'lodash'
 import { mixins } from '@kalisio/kdk/core.client'
-
 
 export default {
   name: 'chart-activity',
   mixins: [mixins.baseActivity()],
-  computed: {
+  /* computed: {
     chartConfig () {
       return {
         type: this.chartType,
@@ -38,7 +36,7 @@ export default {
         options: this.chartOptions
       }
     }
-  },
+  }, */
   data () {
     return {
       topPane: this.getTopPane(),
