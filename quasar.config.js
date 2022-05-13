@@ -91,7 +91,6 @@ module.exports = configure(function (ctx) {
 
       extendWebpack (cfg) {
         cfg.resolve.modules = [
-          //path.resolve(__dirname, 'src'),
           path.resolve(__dirname, 'node_modules')
         ],
         cfg.resolve.alias = {

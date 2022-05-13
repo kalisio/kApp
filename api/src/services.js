@@ -2,7 +2,7 @@ import _ from 'lodash'
 import path from 'path'
 import fs from 'fs-extra'
 import { fileURLToPath } from 'url'
-import kCore from '@kalisio/kdk/core.api.js'
+import kdkCore from '@kalisio/kdk/core.api.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -23,7 +23,7 @@ export default async function () {
       }
       res.json(response)
     })
-    await app.configure(kCore)
+    await app.configure(kdkCore)
   } catch (error) {
     app.logger.error(error.message)
   }
