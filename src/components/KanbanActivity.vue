@@ -8,7 +8,8 @@
         v-if="height"
         class="q-pa-md"
         :columns="boardColumns"
-        :height="height" />
+        :height="height" 
+      />
     </template>
     <!--
       Enable modal
@@ -18,10 +19,13 @@
 </template>
 
 <script>
-import { mixins } from '@kalisio/kdk/core.client'
+import { utils, mixins } from '@kalisio/kdk/core.client'
 
 export default {
   name: 'kanban-activity',
+  components: {
+    KBoard: utils.loadComponent('collection/KBoard')
+  },
   mixins: [mixins.baseActivity()],
   computed: {
     columnWidth () {
@@ -45,7 +49,6 @@ export default {
         props: {
           service: 'documents',
           renderer: { component: 'collection/KCard' },
-          contextId: this.contextId,
           baseQuery: Object.assign({ etat_sani: 'malade' })
         },
         width: this.columnWidth

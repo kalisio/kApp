@@ -10,6 +10,8 @@ export default async ({ app }) => {
   app.use(createI18n({
     locale,
     fallbackLocale,
-    messages: await kdkCoreUtils.loadTranslations(['core', 'app'], locale, fallbackLocale)
+    messages: await kdkCoreUtils.loadTranslations(['core', 'app'], locale, fallbackLocale),
+    fallbackWarn: false,
+    missingWarn: false
   }))
 }
