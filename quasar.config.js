@@ -53,8 +53,8 @@ module.exports = configure(function (ctx) {
     // https://quasar.dev/quasar-cli-webpack/quasar-config-js#property-htmlvariables
     htmlVariables: {
       appName: 'kApp',
-      appSlug: 'kapp'
-      
+      appSlug: 'kapp',
+      appDescription: 'KDK application test'
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-build
@@ -83,13 +83,13 @@ module.exports = configure(function (ctx) {
       
       chainWebpack (chain) {
         chain.plugin('eslint-webpack-plugin').use(ESLintPlugin, [{ extensions: [ 'js', 'vue' ] }])
-        // This is required since webpack 5 removed nodejs polyfilss
-        // see https://quasar.dev/start/upgrade-guide#nodejs-polyfills
-        const nodePolyfillWebpackPlugin = require('node-polyfill-webpack-plugin')
-        chain.plugin('node-polyfill').use(nodePolyfillWebpackPlugin)
       },
 
       extendWebpack (cfg) {
+        cfg.resolve.fallback = {
+          fs: false,
+          path: require.resolve('path-browserify')
+        },
         cfg.resolve.modules = [
           path.resolve(__dirname, 'node_modules')
         ],
@@ -210,7 +210,7 @@ module.exports = configure(function (ctx) {
       manifest: {
         name: `kApp`,
         short_name: `kapp`,
-        description: `A sample KDK application`,
+        description: `KDK application test`,
         display: 'standalone',
         orientation: 'portrait',
         icons: [
