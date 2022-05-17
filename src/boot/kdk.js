@@ -30,6 +30,7 @@ export default async ({ app }) => {
   app.component('KStamp', await kdkCoreUtils.loadComponent('frame/KStamp'))
   app.component('KModal', await kdkCoreUtils.loadComponent('frame/KModal'))
   app.component('KForm', await kdkCoreUtils.loadComponent('form/KForm'))
+  app.component('KChart', await kdkCoreUtils.loadComponent('chart/KChart'))
   app.component('KPage', await kdkCoreUtils.loadComponent('layout/KPage'))
 
   // Register global properties

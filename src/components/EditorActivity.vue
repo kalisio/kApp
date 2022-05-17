@@ -1,9 +1,9 @@
 <template>
-  <k-page padding>
+  <KPage padding>
     <template v-slot:page-content>
       <router-view />
     </template>
-  </k-page>
+  </KPage>
 </template>
 
 <script>

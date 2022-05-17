@@ -1,5 +1,5 @@
 <template>
-  <k-page padding>
+  <KPage padding>
     <template v-slot:page-content>
       <!--
         The content is defined using page content capabilities
@@ -7,7 +7,7 @@
        -->
       <router-view service="documents" :parentActivity="activityName" />
     </template>
-  </k-page>
+  </KPage>
 </template>
 
 <script>

@@ -1,9 +1,9 @@
 <template>
-  <k-page>
+  <KPage>
     <template v-slot:page-content>
       <div class="fixed-center text-h5">Layout</div>
     </template>
-  </k-page>
+  </KPage>
 </template>
 
 <script>

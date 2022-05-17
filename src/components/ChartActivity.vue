@@ -1,5 +1,5 @@
 <template>
-  <k-page padding>
+  <KPage padding>
     <template v-slot:page-content>
       <!--
         Chart rendering
@@ -9,14 +9,17 @@
           v-model="currentField"
           :options="fieldOptions"
           inline />
-        <k-chart class="q-pa-lg" :config="chartConfig" style="width: 90vw; height: 75vh" />
+        <KChart
+          ref="chart" 
+          class="q-pa-lg" 
+          style="width: 90vw; height: 75vh" />
       </div>
     </template>
     <!--
       Enable modal
      -->
     <router-view service="documents" :parentActivity="activityName" />
-  </k-page>
+  </KPage>
 </template>
 
 <script>
@@ -25,18 +28,6 @@ import { mixins } from '@kalisio/kdk/core.client'
 export default {
   name: 'chart-activity',
   mixins: [mixins.baseActivity()],
-  /* computed: {
-    chartConfig () {
-      return {
-        type: this.chartType,
-        data: {
-          labels: this.chartLabels,
-          datasets: this.chartDatasets
-        },
-        options: this.chartOptions
-      }
-    }
-  }, */
   data () {
     return {
       topPane: this.getTopPane(),
@@ -55,7 +46,7 @@ export default {
     'topPane.mode': {
       handler () {
         this.chartType = this.topPane.mode
-        this.chartOptions = {}
+        this.refresh()
       }
     },
     currentField: {
@@ -66,6 +57,7 @@ export default {
           data.push(await this.countItems({ [this.currentField]: this.chartLabels[i] }))
         }
         this.chartDatasets = [{ label: this.currentField, data, colorScale: 'YlGnBu' }]
+        this.refresh()
       }
     }
   },
@@ -74,6 +66,18 @@ export default {
       const service = this.$api.getService('documents')
       const response = await service.find({ query, $limit: 0 })
       return response.total
+    },
+    refresh () {
+      if (this.$refs.chart) {
+        this.$refs.chart.update({
+          type: this.chartType,
+          data: {
+            labels: this.chartLabels,
+            datasets: this.chartDatasets
+          },
+          options: this.chartOptions
+        })
+      }
     }
   },
   async created () {

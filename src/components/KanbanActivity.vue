@@ -1,5 +1,5 @@
 <template>
-  <k-page padding @content-resized="onPageContentResized">
+  <KPage padding @content-resized="onPageContentResized">
     <template v-slot:page-content>
       <!--
         Item list rendering
@@ -15,7 +15,7 @@
       Enable modal
      -->
     <router-view service="documents" :parentActivity="activityName" />
-  </k-page>
+  </KPage>
 </template>
 
 <script>
