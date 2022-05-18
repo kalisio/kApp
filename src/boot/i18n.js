@@ -4,9 +4,9 @@ import config from 'config'
 
 export default async ({ app }) => {
   // Define the locale to be used
-  const fallbackLocale = config.fallbackLocale || 'en'
+  const fallbackLocale = kCoreUtils.getAppFallbackLocale()
   const locale = kdkCoreUtils.getAppLocale()
-  // Create I18n instance using the translation bundles [core, app]
+  // Create i18n instance using the translation bundles
   app.use(createI18n({
     locale,
     fallbackLocale,
