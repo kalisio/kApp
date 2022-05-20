@@ -32,7 +32,7 @@ const leftPane = {
     { id: 'chart', icon: 'las la-chart-pie', label: 'ChartActivity.LABEL', renderer: 'item', route: { name: 'chart-activity' } },
     { id: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL', renderer: 'item', route: { name: 'editor-activity' } },
     { component: 'layout/KAbout' },
-    { component: 'QSpace', class: 'col' },
+    { component: 'frame/KSpace' },
     { component: 'frame/KSeparator' },
     { id: 'logout', icon: 'las la-sign-out-alt', label: 'LOGOUT', renderer: 'item', route: { name: 'logout' } }
   ]
