@@ -142,17 +142,66 @@ module.exports = configure(function (ctx) {
     framework: {
       config: {},
 
-      // iconSet: 'material-icons', // Quasar icon set
-      // lang: 'en-US', // Quasar language pack
+     components: [
+        'QAjaxBar',
+        'QAvatar',
+        'QBadge',
+        'QBtn',
+        'QCard',
+        'QCardSection',
+        'QCardActions',
+        'QChip',
+        'QDate',
+        'QDialog',
+        'QDrawer',
+        'QExpansionItem',
+        'QFab',
+        'QFabAction',
+        'QField',
+        'QFooter',
+        'QHeader',
+        'QIcon',
+        'QImg',
+        'QInput',
+        'QItem',
+        'QItemSection',
+        'QItemLabel',
+        'QLayout',
+        'QList',
+        'QMarkupTable',
+        'QMenu',
+        'QPage',
+        'QPageContainer',
+        'QPageSticky',
+        'QPagination',
+        'QPopupProxy',
+        'QResizeObserver',
+        'QRouteTab',
+        'QScrollArea',
+        'QSelect',
+        'QSeparator',
+        'QSpace',
+        'QSpinnerCube',
+        'QTab',
+        'QTabPanel',
+        'QTabPanels',
+        'QTabs',
+        'QTime',
+        'QTimeline',
+        'QTimelineEntry',
+        'QToolbar',
+        'QToolbarTitle',
+        'QToggle',
+        'QTooltip'
+      ],
+      
+      directives: [
+        'ClosePopup',
+        'Ripple',
+        'TouchSwipe',
+        'TouchPan'
+      ],
 
-      // For special cases outside of where the auto-import strategy can have an impact
-      // (like functional components as one of the examples),
-      // you can manually specify Quasar components/directives to be available everywhere:
-      //
-      // components: [],
-      // directives: [],
-
-      // Quasar plugins
       plugins: [
         'Notify',
         'Dialog',

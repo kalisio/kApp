@@ -24,7 +24,7 @@ if (process.env.NODE_APP_INSTANCE === 'dev') {
 
 const leftPane = {
   content: [
-    { component: 'QImg', src: 'https://cdn.quasar.dev/img/parallax2.jpg', width: '200px', height: '50px' },
+    { component: 'QImg', src: 'kapp-banner.png' },
     { component: 'account/KIdentityPanel', class: 'full-width' },
     { id: 'layout', icon: 'las la-desktop', label: 'LayoutActivity.LABEL', renderer: 'item', route: { name: 'layout-activity' } },
     { id: 'collection', icon: 'las la-list', label: 'CollectionActivity.LABEL', renderer: 'item', route: { name: 'collection-activity', params: { page: 'list' } } },
@@ -32,13 +32,13 @@ const leftPane = {
     { id: 'chart', icon: 'las la-chart-pie', label: 'ChartActivity.LABEL', renderer: 'item', route: { name: 'chart-activity' } },
     { id: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL', renderer: 'item', route: { name: 'editor-activity' } },
     { component: 'layout/KAbout' },
-    { component: 'frame/KSpace' },
-    { component: 'frame/KSeparator' },
+    { component: 'QSpace' },
+    { component: 'QSeparator' },
     { id: 'logout', icon: 'las la-sign-out-alt', label: 'LOGOUT', renderer: 'item', route: { name: 'logout' } }
   ]
 }
 
-const vSeparator = { component: 'frame/KSeparator', direction: 'vertical' }
+const vSeparator = { component: 'QSeparator', vertical: true }
 
 const collectionActions = [
   {
