@@ -10,8 +10,8 @@
           :options="fieldOptions"
           inline />
         <KChart
-          ref="chart" 
-          class="q-pa-lg" 
+          ref="chart"
+          class="q-pa-lg"
           style="width: 90vw; height: 75vh" />
       </div>
     </template>

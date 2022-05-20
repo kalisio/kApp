@@ -142,7 +142,7 @@ module.exports = configure(function (ctx) {
     framework: {
       config: {},
 
-     components: [
+      components: [
         'QAjaxBar',
         'QAvatar',
         'QBadge',

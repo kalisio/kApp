@@ -8,7 +8,7 @@
         v-if="height"
         class="q-pa-md"
         :columns="boardColumns"
-        :height="height" 
+        :height="height"
       />
     </template>
     <!--
