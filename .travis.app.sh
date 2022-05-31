@@ -27,7 +27,7 @@ EXIT_CODE=$?
 tail -n 24 build.log
 check_code $EXIT_CODE "Builing the client"
 
-# login to docker before building the app because of rate limiting
+# Log in to docker before building the app because of rate limiting
 docker login -u="$DOCKER_USER" -p="$DOCKER_PASSWORD"
 check_code $? "Connecting to Docker"
 
