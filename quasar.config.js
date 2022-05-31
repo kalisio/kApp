@@ -181,7 +181,6 @@ module.exports = configure(function (ctx) {
         'QSelect',
         'QSeparator',
         'QSpace',
-        'QSpinnerCube',
         'QTab',
         'QTabPanel',
         'QTabPanels',
