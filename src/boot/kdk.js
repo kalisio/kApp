@@ -2,7 +2,7 @@
 import _ from 'lodash'
 import appHooks from '../main.hooks'
 import services from '../services'
-import { kalisio, utils as kdkCoreUtils, Store, Layout, Events, beforeGuard, authenticationGuard } from '@kalisio/kdk/core.client'
+import { kalisio, utils as kdkCoreUtils, i18n, Store, Layout, Events, beforeGuard, authenticationGuard } from '@kalisio/kdk/core.client'
 import config from 'config'
 
 export default async ({ app }) => {
@@ -20,6 +20,10 @@ export default async ({ app }) => {
   app.config.globalProperties.$api = api
   app.config.globalProperties.$can = api.can
   app.config.globalProperties.$toast = kdkCoreUtils.toast
+  app.config.globalProperties.$tie = function (key) {
+    if (_.isEmpty(key)) return key
+    return this.$te(key) ? this.$t(key) : key
+  }
   app.config.globalProperties.$config = function (path, defaultValue) {
     return _.get(config, path, defaultValue)
   }
