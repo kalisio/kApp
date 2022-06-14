@@ -1,5 +1,6 @@
-import { kalisio } from '@kalisio/kdk/core.api.js'
+import { kdk } from '@kalisio/kdk/core.api.js'
 import fs from 'fs-extra'
+import _ from 'lodash'
 import https from 'https'
 import proxyMiddleware from 'http-proxy-middleware'
 import express from '@feathersjs/express'
@@ -11,7 +12,7 @@ import channels from './channels.js'
 
 export class Server {
   constructor () {
-    this.app = kalisio()
+    this.app = kdk()
     // Serve pure static assets
     if (process.env.NODE_ENV === 'production') {
       this.app.use('/', express.static('../dist/spa'))
@@ -62,3 +63,26 @@ export class Server {
     return expressServer
   }
 }
+
+export function createServer () {
+  let server = new Server()
+
+  const config = server.app.get('logs')
+  const logPath = _.get(config, 'DailyRotateFile.dirname')
+  if (logPath) {
+    // This will ensure the log directory does exist
+    fs.ensureDirSync(logPath)
+  }
+
+  process.on('unhandledRejection', (reason, p) =>
+    server.app.logger.error('Unhandled Rejection at: Promise ', reason)
+  )
+
+  return server
+}
+
+export async function runServer (server) {
+  await server.run()
+  server.app.logger.info('Server started listening')
+}
+

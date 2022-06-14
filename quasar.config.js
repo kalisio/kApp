@@ -88,7 +88,8 @@ module.exports = configure(function (ctx) {
       extendWebpack (cfg) {
         cfg.resolve.fallback = {
           fs: false,
-          path: require.resolve('path-browserify')
+          path: require.resolve('path-browserify'),
+          url: require.resolve('url')
         },
         cfg.resolve.modules = [
           path.resolve(__dirname, 'node_modules')

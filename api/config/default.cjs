@@ -23,6 +23,10 @@ if (process.env.NODE_APP_INSTANCE === 'dev') {
     domain = 'http://localhost:' + serverPort
   }
 }
+// Override defaults if env provided
+if (process.env.SUBDOMAIN) {
+  domain = 'https://kapp.' + process.env.SUBDOMAIN
+}
 
 module.exports = {
   // Proxy your API if using any.
@@ -46,12 +50,29 @@ module.exports = {
   },
   authentication: {
     secret: process.env.APP_SECRET || 'my secret',
-    strategies: [
+    path: API_PREFIX + '/authentication',
+    service: API_PREFIX + '/users',
+    entity: 'user',
+    authStrategies: [
       'jwt',
       'local'
     ],
-    path: API_PREFIX + '/authentication',
-    service: API_PREFIX + '/users',
+    local: {
+      usernameField: 'email',
+      passwordField: 'password'
+    },
+    jwtOptions: {
+      header: {
+        typ: 'access' // See https://tools.ietf.org/html/rfc7519#section-5.1
+      },
+      audience: process.env.SUBDOMAIN || 'kalisio', // The resource server where the token is processed
+      issuer: 'kalisio', // The issuing server, application or resource
+      algorithm: 'HS256', // See https://github.com/auth0/node-jsonwebtoken#jwtsignpayload-secretorprivatekey-options-callback
+      expiresIn: '1d'
+    },
+    oauth: {
+      redirect: '/'
+    },
     passwordPolicy: {
       minLength: 8,
       maxLength: 128,

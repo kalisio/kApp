@@ -68,9 +68,10 @@
     ]
   },
   "dependencies": {
-    "@feathersjs/client": "3.5.4",
+    "@feathersjs/client": "^4.5.12",
     "@quasar/extras": "^1.0.0",
-    "ajv-i18n": "^4.2.0",
+    "ajv": "6.0.0",
+    "ajv-i18n": "^3.6.0",
     "casl": "1.0.2",
     "chart.js": "^3.7.1",
     "chartjs-plugin-annotation": "^1.4.0",
@@ -80,7 +81,7 @@
     "config": "^3.3.7",
     "core-js": "^3.6.5",
     "email-validator": "^2.0.4",
-    "feathers-reactive": "0.8.1",
+    "feathers-reactive": "^0.9.0",
     "i18next": "^21.6.16",
     "loglevel": "^1.8.0",
     "mathjs": "^10.5.0",
@@ -95,6 +96,7 @@
     "showdown": "^2.1.0",
     "sift": "^16.0.0",
     "socket.io-client": "2.0.1",
+    "url": "^0.11.0",
     "vue": "^3.0.0",
     "vue-i18n": "^9.2.0-beta.35",
     "vue-router": "^4.0.0"
