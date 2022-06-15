@@ -45,7 +45,7 @@
     "benchmark": "node ./benchmark",
     "icons:cp": "shx cp -R node_modules/@kalisio/kdk/extras/icons/* public/icons/kdk",
     "tours:cp": "shx cp -R node_modules/@kalisio/kdk/extras/tours/* src/tours",
-    "mocha": "mocha test/**/*.test.js --timeout 30000 --require esm",
+    "mocha": "mocha test/**/*.test.mjs --timeout 30000",
     "coverage": "c8 npm run mocha",
     "test:server": "cd api && npm run test",
     "test:client": "cd test && npm run coverage"
@@ -81,6 +81,7 @@
     "config": "^3.3.7",
     "core-js": "^3.6.5",
     "email-validator": "^2.0.4",
+    "faker": "5.5.3",
     "feathers-reactive": "^0.9.0",
     "i18next": "^21.6.16",
     "loglevel": "^1.8.0",

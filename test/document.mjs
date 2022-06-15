@@ -1,4 +1,4 @@
-import { core } from '@kalisio/kdk/test.client'
+import { core } from '@kalisio/kdk/test.client.js'
 
 export async function createDocument (page, document, wait = 1000) {
   await core.clickAction(page, 'create-document')

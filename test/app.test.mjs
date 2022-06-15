@@ -1,8 +1,8 @@
 import faker from 'faker'
 import { expect } from 'chai'
 
-import { core } from '@kalisio/kdk/test.client'
-import { createDocument, deleteDocumentItem, deleteDocumentCard } from './document'
+import { core } from '@kalisio/kdk/test.client.js'
+import { createDocument, deleteDocumentItem, deleteDocumentCard } from './document.mjs'
 
 const suite = 'app'
 
