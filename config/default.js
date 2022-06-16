@@ -88,6 +88,7 @@ module.exports = {
   version: require('../package.json').version,
   buildNumber: process.env.BUILD_NUMBER,
   apiPath: API_PREFIX,
+  apiJwt: 'kapp-jwt',
   apiTimeout: 20000,
   transport: 'websocket', // Could be 'http' or 'websocket',
   appName: 'kApp',
@@ -120,7 +121,8 @@ module.exports = {
     },
     login: {
       actions: [
-        { id: 'register-link', label: 'KLoginScreen.DONT_HAVE_AN_ACCOUNT_LABEL', route: { name: 'register' } }
+        { id: 'register-link', label: 'KLoginScreen.DONT_HAVE_AN_ACCOUNT_LABEL', route: { name: 'register' } },
+        { id: 'keycloak-link', label: 'screen.LOGIN_WITH_KEYCLOAK', route: { url: '/oauth/keycloak' } }
       ]
     },
     logout: {

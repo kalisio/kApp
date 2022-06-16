@@ -71,7 +71,39 @@ module.exports = {
       expiresIn: '1d'
     },
     oauth: {
-      redirect: '/'
+      redirect: domain + '/',
+      keycloak: (process.env.KEYCLOAK_CLIENT_ID ? {
+        key: process.env.KEYCLOAK_CLIENT_ID,
+        secret: process.env.KEYCLOAK_CLIENT_SECRET,
+        oauth: 2,
+        scope: ['openid'],
+        authorize_url: 'https://keycloak.portal.k8s.kalisio.xyz/auth/realms/kalisio/protocol/openid-connect/auth',
+        access_url: 'https://keycloak.portal.k8s.kalisio.xyz/auth/realms/kalisio/protocol/openid-connect/token',
+        profile_url: 'https://keycloak.portal.k8s.kalisio.xyz/auth/realms/kalisio/protocol/openid-connect/userinfo',
+        nonce: true
+      } : undefined),
+      github: (process.env.GITHUB_CLIENT_ID ? {
+        key: process.env.GITHUB_CLIENT_ID,
+        secret: process.env.GITHUB_CLIENT_SECRET,
+        scope: ['openid'],
+        nonce: true
+      } : undefined),
+      google: (process.env.GOOGLE_CLIENT_ID ? {
+        key: process.env.GOOGLE_CLIENT_ID,
+        secret: process.env.GOOGLE_CLIENT_SECRET,
+        scope: ['openid', 'email', 'profile'],
+        nonce: true
+      } : undefined),
+      cognito: (process.env.COGNITO_CLIENT_ID ? {
+        key: process.env.COGNITO_CLIENT_ID,
+        secret: process.env.COGNITO_CLIENT_SECRET,
+        oauth: 2,
+        scope: ['openid'],
+        authorize_url: 'https://{domain}.amazoncognito.com/oauth2/authorize',
+        access_url: 'https://{domain}.amazoncognito.com/oauth2/token',
+        profile_url: 'https://{domain}.amazoncognito.com/oauth2/userInfo',
+        nonce: true
+      } : undefined)
     },
     passwordPolicy: {
       minLength: 8,
@@ -97,23 +129,6 @@ module.exports = {
         name: 'Kalisio'
       }
     ],
-    github: (process.env.NODE_APP_INSTANCE ? {
-      clientID: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: domain + '/auth/github/callback',
-      successRedirect: domain + '/',
-      failureRedirect: domain + '/#/login' +
-        '?error_message=An error occured while authenticating with GitHub, check you correctly authorized the application and have a valid public email in your profile'
-    } : undefined),
-    google: (process.env.NODE_APP_INSTANCE ? {
-      clientID: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: domain + '/auth/google/callback',
-      successRedirect: domain + '/',
-      failureRedirect: domain + '/#/login' +
-        '?error_message=An error occured while authenticating with Google, check you correctly authorized the application and have a valid public email in your profile',
-      scope: ['profile', 'email']
-    } : undefined),
     // Required for OAuth2 to work correctly
     cookie: {
       enabled: true,

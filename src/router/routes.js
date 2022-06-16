@@ -1,5 +1,5 @@
 module.exports = [{
-  path: '/',
+  path: '/:token?',
   name: 'index',
   component: 'Index',
   meta: { unauthenticated: true },

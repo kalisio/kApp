@@ -47,8 +47,9 @@ export default {
         this.user = user
         // No need to redirect here since the user should be set thus managed by event handler below
       })
-      .catch(() => {
+      .catch(error => {
         this.user = null
+        this.$events.emit('error', error)
         // Check if we need to redirect based on the fact there is no authenticated user
         this.redirect()
       })
