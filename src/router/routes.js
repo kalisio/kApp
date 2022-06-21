@@ -4,6 +4,7 @@ module.exports = [{
   component: 'Index',
   meta: { unauthenticated: true },
   children: {
+    terms: 'Terms',
     login: 'screen/KLoginScreen',
     logout: {
       component: 'screen/KLogoutScreen',

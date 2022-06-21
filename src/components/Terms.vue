@@ -2,7 +2,7 @@
   <div class="q-pa-md">
     <q-card>
       <q-card-section>
-        <k-markdown-viewer url="statics/kapp-terms.md"></k-markdown-viewer>
+        <KMarkdownViewer url="/kapp-terms.md" />
       </q-card-section>
     </q-card>
   </div>
