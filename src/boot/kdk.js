@@ -20,9 +20,9 @@ export default async ({ app }) => {
   app.config.globalProperties.$api = api
   app.config.globalProperties.$can = api.can
   app.config.globalProperties.$toast = kdkCoreUtils.toast
-  app.config.globalProperties.$tie = function (key) {
+  app.config.globalProperties.$tie = function (key, param) {
     if (_.isEmpty(key)) return key
-    return this.$te(key) ? this.$t(key) : key
+    return this.$te(key) ? this.$t(key, param) : key
   }
   app.config.globalProperties.$config = function (path, defaultValue) {
     return _.get(config, path, defaultValue)
