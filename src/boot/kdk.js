@@ -2,12 +2,10 @@
 import _ from 'lodash'
 import appHooks from '../main.hooks'
 import services from '../services'
-import { kalisio, utils as kdkCoreUtils, i18n, Store, Layout, Events, beforeGuard, authenticationGuard } from '@kalisio/kdk/core.client'
+import { api, utils as kdkCoreUtils, Store, Layout, Events, beforeGuard, authenticationGuard } from '@kalisio/kdk/core.client'
 import config from 'config'
 
 export default async ({ app }) => {
-  const api = kalisio()
-
   // Setup app hooks
   api.hooks(appHooks)
   // Then all services
