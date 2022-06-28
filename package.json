@@ -68,7 +68,7 @@
     ]
   },
   "dependencies": {
-    "@feathersjs/client": "^4.5.12",
+    "@feathersjs/client": "^5.0.0-pre.22",
     "@quasar/extras": "^1.0.0",
     "ajv": "6.0.0",
     "ajv-i18n": "^3.6.0",
@@ -82,7 +82,7 @@
     "core-js": "^3.6.5",
     "email-validator": "^2.0.4",
     "faker": "5.5.3",
-    "feathers-reactive": "^0.9.0",
+    "feathers-reactive": "https://github.com/kalisio/feathers-reactive",
     "i18next": "^21.6.16",
     "loglevel": "^1.8.0",
     "mathjs": "^10.5.0",
@@ -96,7 +96,7 @@
     "sanitize-html": "^2.7.0",
     "showdown": "^2.1.0",
     "sift": "^16.0.0",
-    "socket.io-client": "2.0.1",
+    "socket.io-client": "^4.4.1",
     "url": "^0.11.0",
     "vue": "^3.0.0",
     "vue-i18n": "^9.2.0-beta.35",
