@@ -82,7 +82,7 @@
     "core-js": "^3.6.5",
     "email-validator": "^2.0.4",
     "faker": "5.5.3",
-    "feathers-reactive": "https://github.com/kalisio/feathers-reactive",
+    "feathers-reactive": "^0.10.0",
     "i18next": "^21.6.16",
     "loglevel": "^1.8.0",
     "mathjs": "^10.5.0",
