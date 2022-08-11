@@ -80,4 +80,4 @@ jobs:
     before_script:
     - export -f travis_fold
     script:
-    - travis_wait 60 bash .travis.ios.sh
+    - bash .travis.ios.sh
