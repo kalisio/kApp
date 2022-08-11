@@ -57,8 +57,7 @@ jobs:
     - rvm install ruby-2.6.5
     - gem install fastlane -v '~> 2.171.0'
     - npm install -g @quasar/cli
-    install:
-    - yarn
+    install: skip
     before_script:
     - export -f travis_fold
     script:
@@ -75,8 +74,7 @@ jobs:
     - brew install rclone
     - npm install -g ios-deploy --unsafe-perm=true
     - npm install -g @quasar/cli
-    install:
-    - yarn
+    install: skip
     before_script:
     - export -f travis_fold
     script:
