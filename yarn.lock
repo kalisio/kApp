@@ -1034,7 +1034,7 @@
     long-timeout "^0.1.1"
     uuid "^8.3.2"
 
-"@feathersjs/client@^5.0.0-pre.22":
+"@feathersjs/client@^5.0.0-pre.28":
   version "5.0.0-pre.28"
   resolved "https://registry.yarnpkg.com/@feathersjs/client/-/client-5.0.0-pre.28.tgz#14083538620c924d12771a5c98712c3d5eaf3ec6"
   integrity sha512-VCq0uISJdFRLuzFxeXE3+pi9R94SvhgNmA1CSAYbURpettP1bnYk3mP9PXjLo7/6XqB63Km8hBp0lBony/7lFg==

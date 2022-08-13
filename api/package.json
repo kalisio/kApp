@@ -53,9 +53,8 @@
     "standard": "^16.0.4"
   },
   "dependencies": {
-    "@feathersjs/authentication": "^5.0.0-pre.22",
-    "@feathersjs/express": "^5.0.0-pre.22",
-    "@feathersjs/feathers": "^5.0.0-pre.22",
+    "@feathersjs/express": "^5.0.0-pre.28",
+    "@feathersjs/feathers": "^5.0.0-pre.28",
     "containerized": "^1.0.2",
     "feathers-hooks-common": "^3.0.0",
     "feathers-mongodb-fuzzy-search": "^2.0.1",

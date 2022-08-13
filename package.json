@@ -68,7 +68,7 @@
     ]
   },
   "dependencies": {
-    "@feathersjs/client": "^5.0.0-pre.22",
+    "@feathersjs/client": "^5.0.0-pre.28",
     "@quasar/extras": "^1.0.0",
     "ajv": "6.0.0",
     "ajv-i18n": "^3.6.0",

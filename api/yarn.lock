@@ -58,7 +58,7 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@feathersjs/authentication@^5.0.0-pre.22", "@feathersjs/authentication@^5.0.0-pre.28":
+"@feathersjs/authentication@^5.0.0-pre.28":
   version "5.0.0-pre.28"
   resolved "https://registry.yarnpkg.com/@feathersjs/authentication/-/authentication-5.0.0-pre.28.tgz#522f4f851cfc4dde5f4f20558b6009bf2cd5f24c"
   integrity sha512-hbF6cTYTLZUrXVDddTeEHMHAyYbZEVmAyQeFis8ZmFsimReN+3BYyIx0xd0L5NipxrhntzygHpwlsScLpl9j9w==
@@ -96,7 +96,7 @@
   resolved "https://registry.yarnpkg.com/@feathersjs/errors/-/errors-5.0.0-pre.28.tgz#fb3e24638af8599dfe7408637df1650bc63ef1ce"
   integrity sha512-3zfKE2YyCb16JqbgWVd+8CNlEwPYN9G5WU/IABQGS9Ye7F6OdyBytuSnSavTiTE6/idmaRuxkIw2xSmUklEBUA==
 
-"@feathersjs/express@^5.0.0-pre.22":
+"@feathersjs/express@^5.0.0-pre.28":
   version "5.0.0-pre.28"
   resolved "https://registry.yarnpkg.com/@feathersjs/express/-/express-5.0.0-pre.28.tgz#2973a21f6724015b6e275ffbfc62d36fa1709f35"
   integrity sha512-WZLYXe9F7hMsNaVnsqCc16OI5CXsC62xUO5mG1g3R2r60o8lbKJgiwYO1k05zJfpO3yf/VX+DigRgeFIGahVTQ==
@@ -110,7 +110,7 @@
     "@types/express-serve-static-core" "^4.17.30"
     express "^4.18.1"
 
-"@feathersjs/feathers@^5.0.0-pre.22", "@feathersjs/feathers@^5.0.0-pre.28":
+"@feathersjs/feathers@^5.0.0-pre.28":
   version "5.0.0-pre.28"
   resolved "https://registry.yarnpkg.com/@feathersjs/feathers/-/feathers-5.0.0-pre.28.tgz#04ec710733aede1cf887647db7bbebf85eabb597"
   integrity sha512-Ldr/vucXR5FAKfqmIODtvVjl3HcRoLJAWuEUex6GttwnTRGzBO7sGLydu43GWEHleyv/bY4ZRHf6QuYVDLVu2w==
