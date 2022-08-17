@@ -41,7 +41,7 @@
     "analyze:stats": "webpack --config build/webpack.prod.conf.js --profile --json > build-stats.json",
     "analyze:treemap": "webpack-bundle-analyzer build-stats.json dist",
     "analyze": "npm run analyze:stats && npm run analyze:treemap",
-    "lint": "standard src/**/*.js src/**/*.vue test/**/*.mjs --fix",
+    "lint": "standard src/**/*.js src/**/*.vue test/**/*.js --fix",
     "benchmark": "node ./benchmark",
     "icons:cp": "shx cp -R node_modules/@kalisio/kdk/extras/icons/* public/icons/kdk",
     "tours:cp": "shx cp -R node_modules/@kalisio/kdk/extras/tours/* src/tours",
