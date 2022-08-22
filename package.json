@@ -58,6 +58,9 @@
     "plugins": [
       "vue"
     ],
+    "env": [ 
+      "mocha" 
+    ],
     "globals": [
       "DEV",
       "PROD",

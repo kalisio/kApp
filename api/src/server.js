@@ -65,7 +65,7 @@ export class Server {
 }
 
 export function createServer () {
-  let server = new Server()
+  const server = new Server()
 
   const config = server.app.get('logs')
   const logPath = _.get(config, 'DailyRotateFile.dirname')
@@ -85,4 +85,3 @@ export async function runServer (server) {
   await server.run()
   server.app.logger.info('Server started listening')
 }
-

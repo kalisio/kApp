@@ -84,7 +84,7 @@ export default {
     this.fieldLabels = {
       etat_sani: ['sain', 'malade', 'declin'],
       etat_meca: ['sur', 'defectueux', 'rupture', 'danger']
-    },
+    }
     this.currentField = 'etat_sani'
   }
 }

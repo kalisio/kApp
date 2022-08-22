@@ -3,7 +3,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import chai, { util, expect } from 'chai'
 import chailint from 'chai-lint'
-import { createServer, runServer } from '../src/server.js'
+import { createServer } from '../src/server.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 

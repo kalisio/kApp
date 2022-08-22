@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+
 import faker from 'faker'
 import { expect } from 'chai'
 
