@@ -18,7 +18,7 @@ export default async ({ app }) => {
   app.config.globalProperties.$events = Events
   app.config.globalProperties.$api = api
   app.config.globalProperties.$can = api.can
-  app.config.globalProperties.$toast = Notify.create
+  app.config.globalProperties.$notify = Notify.create
   app.config.globalProperties.$tie = function (key, param) {
     if (_.isEmpty(key)) return key
     return this.$te(key) ? this.$t(key, param) : key
