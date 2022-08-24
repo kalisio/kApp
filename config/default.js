@@ -63,9 +63,10 @@ const collectionActions = [
     handler: 'exportItem'
   },
   {
-    component: 'frame/KPopupAction',
+    component: 'menu/KMenu',
     id: 'overflow-menu',
     scope: 'footer',
+    dropdownIcon: 'las la-ellipsis-v',
     actionRenderer: 'item',
     content: [{
       id: 'delete-document',
