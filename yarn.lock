@@ -2698,6 +2698,11 @@ chart.js@^3.7.1:
   resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-3.9.1.tgz#3abf2c775169c4c71217a107163ac708515924b8"
   integrity sha512-Ro2JbLmvg83gXF5F4sniaQ+lTbSv18E+TIf2cOeiH1Iqd2PGFOtem+DUufMZsCJwFE7ywPOpfXFBwRTGq7dh6w==
 
+chartjs-chart-matrix@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/chartjs-chart-matrix/-/chartjs-chart-matrix-1.1.1.tgz#cf8b8f664ad9d3df894943c1f40c31f67219d291"
+  integrity sha512-0ZNP2Jib4GD/V8BOV1H5myB4RCmdmb3KJ8M9unhCByxojKpAiB70Z/AEc/Uy2Y01bTGLArToqzYpzBMYhDh0uw==
+
 chartjs-plugin-annotation@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/chartjs-plugin-annotation/-/chartjs-plugin-annotation-1.4.0.tgz#4c84cec1ec838bc09712f3686237866e6c3f4798"
