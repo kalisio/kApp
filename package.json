@@ -98,7 +98,7 @@
     "password-generator": "^2.3.2",
     "path-browserify": "^1.0.1",
     "pinch-zoom-element": "^1.1.1",
-    "quasar": "^2.7.7",
+    "quasar": "^2.9.0",
     "sanitize-html": "^2.7.0",
     "showdown": "^2.1.0",
     "sift": "^16.0.0",
@@ -111,7 +111,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.13.14",
-    "@quasar/app-webpack": "^3.5.9",
+    "@quasar/app-webpack": "^3.6.1",
     "c8": "^7.11.3",
     "chai": "^4.3.6",
     "chai-lint": "^0.1.1",
