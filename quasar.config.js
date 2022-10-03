@@ -338,7 +338,7 @@ module.exports = configure(function (ctx) {
       chainWebpackPreload (chain) {
         chain.plugin('eslint-webpack-plugin')
           .use(ESLintPlugin, [{ extensions: [ 'js' ] }])
-      },
+      }
       
     }
   }
