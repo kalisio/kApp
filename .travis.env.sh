@@ -70,7 +70,8 @@ BUILD_BUCKET=${APP}/$BUILD_NUMBER
 
 
 # temp
-remove .postcssrc.js
+pwd
+rm .postcssrc.js
 
 # Install the kdk
 git clone https://github.com/kalisio/kli.git kalisio && cd kalisio && yarn 
