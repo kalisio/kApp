@@ -15,7 +15,7 @@ travis_fold end "provision"
 travis_fold start "build"
 
 pwd
-ls node-modules/autoprefixer
+ls node_modules/autoprefixer
 
 yarn build
 EXIT_CODE=$? 
