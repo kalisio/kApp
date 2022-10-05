@@ -27,10 +27,12 @@ PATCH=${SEMVER[2]}
 
 echo "Building $APP v$MAJOR.$MINOR.$PATCH"
 
+# Set the app build dir
+cd ..
+APP_BUILD_DIR=`pwd`
 
 # Clone the workspace 
 echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
-cd ..
 git clone -b $APP https://github.com/kalisio/kdk-workspaces workspace
 
 # Define the flavor
@@ -75,11 +77,11 @@ git clone https://github.com/kalisio/kli.git $APP-build && cd $APP-build && yarn
 
 # In dev flavor we can build different versions on different branches
 # so check if a specific file exists for the target branch first otherwise use default one
-if [[ -f $TRAVIS_BUILD_DIR/workspace/$FLAVOR/$KDK_PROJECT_FILE-$TRAVIS_BRANCH.js ]];
+if [[ -f $APP_BUILD_DIR/workspace/$FLAVOR/$KDK_PROJECT_FILE-$TRAVIS_BRANCH.js ]];
 then
-  cp $TRAVIS_BUILD_DIR/workspace/$FLAVOR/$KDK_PROJECT_FILE-$TRAVIS_BRANCH.js $APP.js
+  cp $APP_BUILD_DIR/workspace/$FLAVOR/$KDK_PROJECT_FILE-$TRAVIS_BRANCH.js $APP.js
 else
-  cp $TRAVIS_BUILD_DIR/workspace/$FLAVOR/$KDK_PROJECT_FILE.js $APP.js
+  cp $APP_BUILD_DIR/workspace/$FLAVOR/$KDK_PROJECT_FILE.js $APP.js
 fi
 
 # Clone the project and install the dependencies
