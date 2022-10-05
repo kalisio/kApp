@@ -73,7 +73,7 @@ export BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
 BUILD_BUCKET=${APP}/$BUILD_NUMBER
 
 # Install the kdk
-git clone https://github.com/kalisio/kli.git $APP-build && cd $APP-build && yarn 
+git clone https://github.com/kalisio/kli.git kalisio && cd kalisio && yarn 
 
 # In dev flavor we can build different versions on different branches
 # so check if a specific file exists for the target branch first otherwise use default one

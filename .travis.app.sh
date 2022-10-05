@@ -25,7 +25,7 @@ check_code $? 0 "Connecting to Docker"
 
 # Create an archive to speed docker build process
 cd ../..
-tar --exclude='$APP/test' -zcf $TRAVIS_BUILD_DIR/kalisio.tgz $APP-build
+tar --exclude='$APP/test' -zcf $TRAVIS_BUILD_DIR/kalisio.tgz kalisio
 
 # Build the image
 cd $TRAVIS_BUILD_DIR
