@@ -27,8 +27,10 @@ PATCH=${SEMVER[2]}
 
 echo "Building $APP v$MAJOR.$MINOR.$PATCH"
 
+
 # Clone the workspace 
 echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
+cd ..
 git clone -b $APP https://github.com/kalisio/kdk-workspaces workspace
 
 # Define the flavor
@@ -68,13 +70,8 @@ set +a
 export BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
 BUILD_BUCKET=${APP}/$BUILD_NUMBER
 
-
-# temp
-pwd
-rm .postcssrc.js
-
 # Install the kdk
-git clone https://github.com/kalisio/kli.git kalisio && cd kalisio && yarn 
+git clone https://github.com/kalisio/kli.git $APP-build && cd $APP-build && yarn 
 
 # In dev flavor we can build different versions on different branches
 # so check if a specific file exists for the target branch first otherwise use default one

@@ -25,7 +25,7 @@ check_code $? 0 "Connecting to Docker"
 
 # Create an archive to speed docker build process and build the image
 cd ../..
-tar --exclude='kalisio/aktnmap/test' -zcf kalisio.tgz kalisio
+tar --exclude='kalisio/$APP/test' -zcf kalisio.tgz $APP-build
 docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$BUILD_NUMBER -f dockerfile -t kalisio/$APP:$TAG . 
 check_code $? 0 "Building the app docker image"
 
