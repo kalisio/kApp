@@ -14,6 +14,8 @@ travis_fold end "provision"
 #
 travis_fold start "build"
 
+ls ./node-modules/autoprefixer
+
 yarn build
 EXIT_CODE=$? 
 tail -n 24 build.log
