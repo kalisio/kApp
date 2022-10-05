@@ -24,12 +24,11 @@ docker login -u="$DOCKER_USER" -p="$DOCKER_PASSWORD"
 check_code $? 0 "Connecting to Docker"
 
 # Create an archive to speed docker build process
-cd ..
-tar --exclude='$APP/test' -zcf kalisio.tgz $APP
-cp kalisio.tgz $APP/.
+cd ../..
+tar --exclude='$APP/test' -zcf $TRAVIS_BUILD_DIR/kalisio.tgz $APP-build
 
 # Build the image
-cd $APP
+cd $TRAVIS_BUILD_DIR
 docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$BUILD_NUMBER -f dockerfile -t kalisio/$APP:$TAG . 
 check_code $? 0 "Building the app docker image"
 
