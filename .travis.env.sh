@@ -68,6 +68,10 @@ set +a
 export BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
 BUILD_BUCKET=${APP}/$BUILD_NUMBER
 
+
+# temp
+remove .postcssrc.js
+
 # Install the kdk
 git clone https://github.com/kalisio/kli.git kalisio && cd kalisio && yarn 
 
