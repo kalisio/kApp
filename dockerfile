@@ -1,7 +1,6 @@
 FROM node:16-bullseye-slim as Builder
 LABEL maintainer="contact@kalisio.xyz"
 
-ARG APP
 ARG FLAVOR
 ARG BUILD_NUMBER
 
