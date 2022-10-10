@@ -16,6 +16,15 @@ COPY kalisio.tgz /opt/.
 WORKDIR /opt
 RUN tar zxf kalisio.tgz && rm kalisio.tgz
 
+# Link the modules and run the app
+# Use multisage build to forget the unused archive.tgz
+FROM node:16-bullseye-slim
+LABEL maintainer="contact@kalisio.xyz"
+
+ARG APP
+
+COPY --from=builder /opt/kalisio /opt/kalisio
+
 # Link the modules
 WORKDIR /opt/kalisio
 RUN node . ${APP}.js --link
