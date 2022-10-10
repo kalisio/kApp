@@ -1,4 +1,4 @@
-FROM node:16-bullseye-slim
+FROM node:16-bullseye-slim as Builder
 LABEL maintainer="contact@kalisio.xyz"
 
 ARG APP
@@ -23,7 +23,7 @@ LABEL maintainer="contact@kalisio.xyz"
 
 ARG APP
 
-COPY --from=builder /opt/kalisio /opt/kalisio
+COPY --from=Builder /opt/kalisio /opt/kalisio
 
 # Link the modules
 WORKDIR /opt/kalisio
