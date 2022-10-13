@@ -75,7 +75,7 @@
     "@casl/mongoose": "^7.1.0",
     "@feathersjs/client": "^5.0.0-pre.28",
     "@quasar/extras": "^1.15.1",
-    "ajv": "6.0.0",
+    "ajv": "6.12.3",
     "ajv-i18n": "^3.6.0",
     "chart.js": "^3.7.1",
     "chartjs-chart-matrix": "^1.1.1",
