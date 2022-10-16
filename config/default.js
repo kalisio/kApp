@@ -196,7 +196,7 @@ module.exports = {
     },
     bottomPane: {
       content: [
-        { component: 'Platform' }
+        { component: 'ColorScales' }
       ]
     }
   },
