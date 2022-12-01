@@ -1,16 +1,25 @@
 <template>
-  <div class="row">
-    <div class="q-pa-md column q-gutter-y-md">
-      <template v-for="colorScale in hColorScales" :key="colorScale.label">
-        <KColorScale v-bind="colorScale" style="width: 250px; height: 46px"/>
-      </template>
-    </div>
-    <div class="q-pa-md row q-gutter-x-md">
-      <template v-for="colorScale in vColorScales" :key="colorScale.label">
-        <KColorScale v-bind="colorScale" style="width: 50px; height: 200px"/>
-      </template>
-    </div>
-  </div>
+  <q-markup-table>
+    <thead class="bg-accent text-white">
+      <tr>
+        <th class="text-left" colspan="2">{{ $t('ColorScales.LABEL') }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <div class="q-pa-md column q-gutter-y-md">
+          <template v-for="colorScale in hColorScales" :key="colorScale.label">
+            <KColorScale v-bind="colorScale" style="width: 250px; height: 46px"/>
+          </template>
+        </div>
+        <div class="q-pa-md row q-gutter-x-md">
+          <template v-for="colorScale in vColorScales" :key="colorScale.label">
+            <KColorScale v-bind="colorScale" style="width: 50px; height: 200px"/>
+          </template>
+        </div>
+      </tr>
+    </tbody>
+  </q-markup-table>
 </template>
 
 <script setup>

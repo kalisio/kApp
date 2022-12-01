@@ -33,6 +33,10 @@ module.exports = [{
           name: 'layout-activity',
           component: 'LayoutActivity'
         },
+        miscellaneous: {
+          name: 'miscellaneous-activity',
+          component: 'MiscellaneousActivity'
+        },
         'collection/:page': {
           name: 'collection-activity',
           component: 'CollectionActivity',

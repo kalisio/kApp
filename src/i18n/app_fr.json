@@ -1,6 +1,4 @@
 {
-  "YES": "Oui",
-  "NO": "Non",
   "MAIN_MENU": "Menu principal",
   "LOGOUT": "Se déconnecter",
   "Documents": {
@@ -23,6 +21,9 @@
   "LayoutActivity": {
     "LABEL": "Layout"
   },  
+  "MiscellaneousActivity": {
+    "LABEL": "Divers"
+  },
   "CollectionActivity": {
     "LABEL": "Collections",
     "LIST": "Liste",
@@ -45,9 +46,13 @@
     "BAR": "Bâtons",
     "LINE": "Courbes"
   },
-  "Platform": {
-    "TITLE": "Votre plateforme",
-    "USER_AGENT": "Agent utilisateur",
-    "BROWSER": "Navigateur"
+  "Stamps": {
+    "LABEL": "Labels"
+  },
+  "Shapes": {
+    "LABEL": "Formes"
+  },
+  "ColorScales": {
+    "LABEL": "Echelles de couleurs"
   }
 }

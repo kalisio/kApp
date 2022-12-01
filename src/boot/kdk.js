@@ -28,6 +28,7 @@ export default async ({ app }) => {
   }
 
   // Register global components
+  app.component('KDialog', await kdkCoreUtils.loadComponent('modal/KDialog'))
   app.component('KAction', await kdkCoreUtils.loadComponent('frame/KAction'))
   app.component('KPanel', await kdkCoreUtils.loadComponent('frame/KPanel'))
   app.component('KStamp', await kdkCoreUtils.loadComponent('frame/KStamp'))
@@ -35,6 +36,7 @@ export default async ({ app }) => {
   app.component('KForm', await kdkCoreUtils.loadComponent('form/KForm'))
   app.component('KChart', await kdkCoreUtils.loadComponent('chart/KChart'))
   app.component('KPage', await kdkCoreUtils.loadComponent('layout/KPage'))
+  app.component('KShape', await kdkCoreUtils.loadComponent('media/KShape'))
   app.component('KColorScale', await kdkCoreUtils.loadComponent('media/KColorScale'))
 
   // Register global properties

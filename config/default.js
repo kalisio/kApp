@@ -24,14 +24,15 @@ if (process.env.NODE_APP_INSTANCE === 'dev') {
 
 const leftPane = {
   content: [
-    { component: 'QImg', src: 'kapp-banner.png' },
+    { component: 'app/KLogo' },
     { component: 'account/KIdentityPanel', class: 'full-width' },
     { id: 'layout', icon: 'las la-desktop', label: 'LayoutActivity.LABEL', renderer: 'item', route: { name: 'layout-activity' } },
+    { id: 'miscellaneous', icon: 'las la-icons', label: 'MiscellaneousActivity.LABEL', renderer: 'item', route: { name: 'miscellaneous-activity' } },
     { id: 'collection', icon: 'las la-list', label: 'CollectionActivity.LABEL', renderer: 'item', route: { name: 'collection-activity', params: { page: 'list' } } },
     { id: 'kanban', icon: 'dashboard', label: 'KanbanActivity.LABEL', renderer: 'item', route: { name: 'kanban-activity' } },
     { id: 'chart', icon: 'las la-chart-pie', label: 'ChartActivity.LABEL', renderer: 'item', route: { name: 'chart-activity' } },
     { id: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL', renderer: 'item', route: { name: 'editor-activity' } },
-    { component: 'layout/KAbout' },
+    { id: 'about', icon: 'las la-info', label: 'ABOUT', renderer: 'item', dialog: { component: 'app/KAbout', title: 'ABOUT' } },
     { component: 'QSpace' },
     { component: 'QSeparator' },
     { id: 'logout', icon: 'las la-sign-out-alt', label: 'LOGOUT', renderer: 'item', route: { name: 'logout' } }
@@ -93,7 +94,7 @@ module.exports = {
   apiTimeout: 20000,
   transport: 'websocket', // Could be 'http' or 'websocket',
   appName: 'kApp',
-  appLogo: 'kapp-icon.png',
+  appLogo: 'kapp.png',
   appWebsite: 'https://github.com/kalisio/kApp',
   publisher: 'Kalisio',
   publisherWebsite: website,
@@ -110,7 +111,7 @@ module.exports = {
     // footer: 'screen/KScreenFooter',
     backgroundColor: '#FFF8ED',
     // textColor: 'white',
-    banner: 'kapp-banner.png',
+    banner: 'kapp.png',
     links: [
       { label: 'screen.ABOUT_KALISIO', url: website },
       { label: 'screen.CONTACT', url: website + '/contact' },
@@ -191,13 +192,23 @@ module.exports = {
     },
     rightPane: {
       content: [
-        { component: 'Platform' }
+        { component: 'app/KPlatform' }
       ]
     },
     bottomPane: {
       content: [
-        { component: 'ColorScales' }
+        { component: 'app/KPlatform' }
       ]
+    }
+  },
+  miscellaneousActivity: {
+    leftPane: leftPane,
+    topPane: {
+      content: {
+        default: [
+          { id: 'layout', icon: 'las la-icons', label: 'MiscellaneousActivity.LABEL', color: 'primary', size: '1rem', disabled: true }
+        ]
+      }
     }
   },
   collectionActivity: {

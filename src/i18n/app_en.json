@@ -1,6 +1,4 @@
 {
-  "YES": "Yes",
-  "NO": "No",
   "MAIN_MENU": "Main menu",
   "Documents": {
     "EDIT": "Edit",
@@ -22,6 +20,9 @@
   },
   "LayoutActivity": {
     "LABEL": "Layout"
+  },
+  "MiscellaneousActivity": {
+    "LABEL": "Mismiscellaneous"
   },
   "CollectionActivity": {
     "LABEl": "Collections",
@@ -45,9 +46,13 @@
     "BAR": "Bar",
     "LINE": "Line"
   },
-  "PLatform": {
-    "TITLE": "Your platform",
-    "USER_AGENT": "User Agent",
-    "BROWSER": "Browser"
+  "Stamps": {
+    "LABEL": "Stamps"
+  },
+  "Shapes": {
+    "LABEL": "Shapes"
+  },
+  "ColorScales": {
+    "LABEL": "Color scales"
   }
 }
