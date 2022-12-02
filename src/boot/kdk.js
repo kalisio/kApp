@@ -4,13 +4,16 @@ import config from 'config'
 import { Notify } from 'quasar'
 import appHooks from '../main.hooks'
 import services from '../services'
-import { api, utils as kdkCoreUtils, Store, Layout, Events, beforeGuard, authenticationGuard } from '@kalisio/kdk/core.client'
+import { api, i18n, utils as kdkCoreUtils, Store, Layout, Events, beforeGuard, authenticationGuard } from '@kalisio/kdk/core.client'
 
 export default async ({ app }) => {
   // Setup app hooks
   api.hooks(appHooks)
   // Then all services
   services.call(api)
+
+  // Initializes i18n
+  await i18n.initialize(app, ['core', 'app'])
 
   // Register global properties to the the vue app
   app.config.globalProperties.$store = Store
@@ -19,10 +22,7 @@ export default async ({ app }) => {
   app.config.globalProperties.$api = api
   app.config.globalProperties.$can = api.can
   app.config.globalProperties.$notify = Notify.create
-  app.config.globalProperties.$tie = function (key, param) {
-    if (_.isEmpty(key)) return key
-    return this.$te(key) ? this.$t(key, param) : key
-  }
+  app.config.globalProperties.$tie = i18n.tie
   app.config.globalProperties.$config = function (path, defaultValue) {
     return _.get(config, path, defaultValue)
   }
