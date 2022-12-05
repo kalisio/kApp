@@ -24,7 +24,7 @@ if (process.env.NODE_APP_INSTANCE === 'dev') {
 
 const leftPane = {
   content: [
-    { component: 'app/KLogo' },
+    { component: 'foundation/KLogo' },
     { component: 'account/KIdentityPanel', class: 'full-width' },
     { id: 'layout', icon: 'las la-desktop', label: 'LayoutActivity.LABEL', renderer: 'item', route: { name: 'layout-activity' } },
     { id: 'miscellaneous', icon: 'las la-icons', label: 'MiscellaneousActivity.LABEL', renderer: 'item', route: { name: 'miscellaneous-activity' } },
