@@ -24,7 +24,7 @@ if (process.env.NODE_APP_INSTANCE === 'dev') {
 
 const leftPane = {
   content: [
-    { component: 'foundation/KLogo' },
+    { component: 'KLogo' },
     { component: 'account/KIdentityPanel', class: 'full-width' },
     { id: 'layout', icon: 'las la-desktop', label: 'LayoutActivity.LABEL', renderer: 'item', route: { name: 'layout-activity' } },
     { id: 'miscellaneous', icon: 'las la-icons', label: 'MiscellaneousActivity.LABEL', renderer: 'item', route: { name: 'miscellaneous-activity' } },
@@ -94,7 +94,7 @@ module.exports = {
   apiTimeout: 20000,
   transport: 'websocket', // Could be 'http' or 'websocket',
   appName: 'kApp',
-  appLogo: 'kapp-logo.png',
+  // appLogo: 'kapp-logo.png',
   appWebsite: 'https://github.com/kalisio/kApp',
   publisher: 'Kalisio',
   publisherWebsite: website,
@@ -109,15 +109,19 @@ module.exports = {
   screens: {
     // header: 'screen/KScreenHeader',
     // footer: 'screen/KScreenFooter',
-    backgroundColor: '#FFF8ED',
+    // backgroundColor: '#FFF8ED',
     // textColor: 'white',
-    banner: 'kapp.png',
-    links: [
-      { label: 'screen.ABOUT_KALISIO', url: website },
-      { label: 'screen.CONTACT', url: website + '/contact' },
-      { label: 'screen.TERMS_AND_POLICIES', url: domain + '/#/terms' }
+    actions: [
+      { 
+        id: 'terms-policies', 
+        label: 'screen.TERMS_AND_POLICIES', 
+        dialog: {
+          title: 'screen.TERMS_AND_POLICIES',
+          component: 'app/KTerms'
+        }
+      }
     ],
-    frameBackgroundColor: '#FFDC9E',
+    // frameBackgroundColor: '#FFDC9E',
     error: {
       homeRoute: 'root'
     },
