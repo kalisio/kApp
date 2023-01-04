@@ -116,15 +116,11 @@ module.exports = {
         id: 'terms-policies', 
         label: 'screen.TERMS_AND_POLICIES', 
         dialog: {
-          title: 'screen.TERMS_AND_POLICIES',
           component: 'app/KTerms'
         }
       }
     ],
     // frameBackgroundColor: '#FFDC9E',
-    error: {
-      homeRoute: 'root'
-    },
     login: {
       actions: [
         { id: 'register-link', label: 'KLoginScreen.DONT_HAVE_AN_ACCOUNT_LABEL', route: { name: 'register' } },
