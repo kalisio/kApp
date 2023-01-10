@@ -53,5 +53,8 @@
   },
   "ColorScales": {
     "LABEL": "Color scales"
+  },
+  "Times": {
+    "LABEL": "Time components"
   }
 }

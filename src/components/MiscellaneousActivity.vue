@@ -5,6 +5,7 @@
         <Stamps />
         <Shapes />
         <ColorScales />
+        <Times />
       </div>
     </template>
   </KPage>
@@ -14,13 +15,15 @@
 import Stamps from './Stamps.vue'
 import Shapes from './Shapes.vue'
 import ColorScales from './ColorScales.vue'
+import Times from './Times.vue'
 import { mixins } from '@kalisio/kdk/core.client'
 
 export default {
   components: {
     Stamps,
     Shapes,
-    ColorScales
+    ColorScales,
+    Times,
   },  
   mixins: [mixins.baseActivity('miscellaneousActivity')]
 }
