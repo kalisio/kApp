@@ -38,10 +38,10 @@
           "label": "KChipsField"
         }
       },
-      "KDatetimeField": {
+      "KDateTimeField": {
         "type": "string",
         "field": {
-          "component": "form/KDatetimeField",
+          "component": "form/KDateTimeField",
           "label": "KDatetimeField"
         }
       },
