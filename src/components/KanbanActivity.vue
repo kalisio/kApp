@@ -1,9 +1,7 @@
 <template>
   <KPage padding @content-resized="onPageContentResized">
     <template v-slot:page-content>
-      <!--
-        Item list rendering
-      -->
+      <!-- Item list rendering -->
       <k-board
         v-if="height"
         class="q-pa-md"
@@ -11,10 +9,8 @@
         :height="height"
       />
     </template>
-    <!--
-      Enable modal
-     -->
-    <router-view service="documents" :parentActivity="activityName" />
+    <!-- Enable modal -->
+    <router-view service="documents" />
   </KPage>
 </template>
 

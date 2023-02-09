@@ -5,12 +5,13 @@
         The content is defined using page content capabilities
         We just need to add a router-view to enable modal routing
        -->
-      <router-view service="documents" :parentActivity="activityName" />
+      <router-view service="documents" />
     </template>
   </KPage>
 </template>
 
 <script>
+import logger from 'loglevel'
 import { mixins } from '@kalisio/kdk/core.client'
 
 export default {
@@ -24,7 +25,6 @@ export default {
   },
   data () {
     return {
-      userName: this.$store.get('user.name'),
       filter: this.$store.get('filter'),
       sorter: this.$store.get('sorter')
     }
@@ -35,15 +35,21 @@ export default {
     }
   },
   watch: {
-    page: function () {
-      this.restoreTopPaneMode()
+    page: {
+      handler (value) {
+        this.refresh()
+      }
     }
   },
   methods: {
-    restoreTopPaneMode () {
+    refresh () {
+      logger.debug(`[kApp] switching to collection mode '${this.page}'`)
       this.setTopPaneMode(this.page)
       this.setPageMode(this.page)
     }
+  },  
+  mounted () {
+    this.refresh()
   }
 }
 </script>

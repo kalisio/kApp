@@ -1,6 +1,6 @@
 <template>
   <KPage padding>
-    <template v-slot:page-content>
+    <template v-slot:page-router>
       <router-view />
     </template>
   </KPage>
