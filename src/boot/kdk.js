@@ -44,6 +44,7 @@ export default async ({ app }) => {
   app.component('KPage', await kdkCoreUtils.loadComponent('layout/KPage'))
   app.component('KShape', await kdkCoreUtils.loadComponent('media/KShape'))
   app.component('KColorScale', await kdkCoreUtils.loadComponent('media/KColorScale'))
+  app.component('KTree', await kdkCoreUtils.loadComponent('KTree'))
 
   // Register global properties
   // FIXME: This is used for testing purpose, don't know how to access this from Puppeteer otherwise

@@ -67,6 +67,10 @@ module.exports = [{
           name: 'chart-activity',
           component: 'ChartActivity'
         },
+        store: {
+          name: 'store-activity',
+          component: 'StoreActivity'
+        },
         editor: {
           name: 'editor-activity',
           component: 'EditorActivity',

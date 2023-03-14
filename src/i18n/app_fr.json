@@ -45,6 +45,9 @@
     "BAR": "Bâtons",
     "LINE": "Courbes"
   },
+  "StoreActivity": {
+    "LABEL": "Store"
+  },
   "Stamps": {
     "LABEL": "Labels"
   },
