@@ -45,6 +45,9 @@
     "BAR": "Bar",
     "LINE": "Line"
   },
+  "StoreActivity": {
+    "LABEL": "Store"
+  },
   "Stamps": {
     "LABEL": "Stamps"
   },
