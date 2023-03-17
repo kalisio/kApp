@@ -1,34 +1,20 @@
 <template>
   <KPage>
     <template v-slot:page-content>
-      <div class="row full-width justify-center q-gutter-md">
-        <KTree :nodes="store" />
-      </div>
+      <KStore />
     </template>
   </KPage>
 </template>
 
-<script setup>
-import _ from 'lodash'
-import { ref } from 'vue'
-import { Store } from '@kalisio/kdk/core/client'
+<script>
+import KStore from './KStore.vue'
+import { mixins } from '@kalisio/kdk/core.client'
 
-function convertStore(obj) {
-  function traverse(node) {
-    return _.keys(node).map(key => {
-      const child = node[key]
-      if (!_.isFunction(child)) {
-        return {
-          label: key,
-          children: child && _.isObject(child) ? traverse(child) : [{ label: child, children: [] }]
-        }
-      }
-      return false
-    })
-  }
-  return traverse(obj)
+export default {
+  name: 'store-activity',
+  components: {
+    KStore,
+  },  
+  mixins: [mixins.baseActivity('storeActivity')]
 }
-
-const store = ref(convertStore(Store))
-
 </script>
