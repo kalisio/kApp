@@ -95,6 +95,9 @@ const widgets = [
   }, 
   { 
     id: 'widget-4', label: 'Widget 4', content: { component: 'layout/Widget4'} 
+  },
+  { 
+    id: 'widget-Store', label: 'Widget Store', content: { component: 'layout/WidgetStore'} 
   }
 ]
 
@@ -248,7 +251,7 @@ module.exports = {
       }
     },
     windows: {
-      left: { content: [widgets[0], widgets[1]], current: 'widget-1' },
+      left: { content: [widgets[0], widgets[4]], current: 'widget-1' },
       right: { content: [widgets[1]], current: 'widget-2' },
       top: { content: [widgets[2]], current: 'widget-3'},
       bottom: { content: [widgets[3]], current: 'widget-4' }
