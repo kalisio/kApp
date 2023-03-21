@@ -27,23 +27,23 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "a0a047d218dd5bd4f86eba487e7b39fd"
+    "revision": "8b98d4958504670334da99e6e66dff57"
   },
   {
     "url": "about/contact.html",
-    "revision": "cb209b6ea669577ad643fd0050a3ccc8"
+    "revision": "508cf8880a7beab0419fcadfc8ed08ad"
   },
   {
     "url": "about/contributing.html",
-    "revision": "ab4656d6dd81f4231a33cf49f066e287"
+    "revision": "e00d34de18a89f821a6169fafe035b3f"
   },
   {
     "url": "about/index.html",
-    "revision": "6a5ac93d33ced12ca50984f3ab441f75"
+    "revision": "7ad691bd34ec83a9ffd263d605929912"
   },
   {
     "url": "about/license.html",
-    "revision": "7133580021060ec8da625de9e3b6516b"
+    "revision": "9a850c6043d4b3b7a91c614690552169"
   },
   {
     "url": "assets/css/0.styles.ff626e3f.css",
@@ -138,24 +138,24 @@ self.__precacheManifest = [
     "revision": "87d6de00bc3fef740f43380b077e1d76"
   },
   {
-    "url": "assets/js/app.2428e2ec.js",
-    "revision": "f84c217610bd60f76b970caecabde111"
+    "url": "assets/js/app.ed43754d.js",
+    "revision": "769a5a92a78257f1e3031308e12e3d07"
   },
   {
     "url": "guides/installing-kapp.html",
-    "revision": "31824d76550b678fb494bbd440bd9c75"
+    "revision": "a25b155d9d2bdc77e5faa05f742d7414"
   },
   {
     "url": "guides/introduction.html",
-    "revision": "2765d705c21f3d6a5c697576ba9e7418"
+    "revision": "2235106df04b178c7bac29d9ae53d138"
   },
   {
     "url": "index.html",
-    "revision": "917cf713a5703cde42eee0955bd4b0eb"
+    "revision": "ba5b8d9ce88f82bbb306ac0bca1626c3"
   },
   {
     "url": "reference/configuration.html",
-    "revision": "93e0d72aabd6195515a2c116c22dcdbd"
+    "revision": "dd3b04282c4c38d1e5ee7bbd07ed07c2"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
