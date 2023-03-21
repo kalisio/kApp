@@ -17,7 +17,7 @@ This application is based on the [Kalisio Development Kit](https://kalisio.githu
 
 ### Documentation
 
-The full documentation is available [here](https://kalisio.github.io/KApp/)
+The full documentation is available [here](https://kalisio.github.io/kApp/)
 
 > The documentation website is generated using [VuePress](https://vuepress.vuejs.org/)
 
