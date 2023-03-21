@@ -27,27 +27,27 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "8b98d4958504670334da99e6e66dff57"
+    "revision": "458c2de7490c048da7dae05c5370ecf2"
   },
   {
     "url": "about/contact.html",
-    "revision": "508cf8880a7beab0419fcadfc8ed08ad"
+    "revision": "146dd4fa8ee92b4b60bda1b25cab9fb5"
   },
   {
     "url": "about/contributing.html",
-    "revision": "e00d34de18a89f821a6169fafe035b3f"
+    "revision": "beef13a8dbe2ff139d9e46d9cbd4f2ba"
   },
   {
     "url": "about/index.html",
-    "revision": "7ad691bd34ec83a9ffd263d605929912"
+    "revision": "b8d2d1a39410a65750f13de57133a519"
   },
   {
     "url": "about/license.html",
-    "revision": "9a850c6043d4b3b7a91c614690552169"
+    "revision": "42e5afc8da76c1c6f9f3792d3679d5ae"
   },
   {
-    "url": "assets/css/0.styles.ff626e3f.css",
-    "revision": "abd77c16d31af7f2d6272080a8ebe8da"
+    "url": "assets/css/0.styles.1fa0446e.css",
+    "revision": "b20841317d52c9dfc1b0b2e1f612a78e"
   },
   {
     "url": "assets/img/kapp.30fbbf83.png",
@@ -138,24 +138,24 @@ self.__precacheManifest = [
     "revision": "87d6de00bc3fef740f43380b077e1d76"
   },
   {
-    "url": "assets/js/app.ed43754d.js",
-    "revision": "769a5a92a78257f1e3031308e12e3d07"
+    "url": "assets/js/app.d53940b5.js",
+    "revision": "6982273c1da584a49b5eef0781260e4a"
   },
   {
     "url": "guides/installing-kapp.html",
-    "revision": "a25b155d9d2bdc77e5faa05f742d7414"
+    "revision": "959ecd39f49819563e148bef4962522d"
   },
   {
     "url": "guides/introduction.html",
-    "revision": "2235106df04b178c7bac29d9ae53d138"
+    "revision": "58537f273b11b88dd1d2645ba977dea9"
   },
   {
     "url": "index.html",
-    "revision": "ba5b8d9ce88f82bbb306ac0bca1626c3"
+    "revision": "a2cc7d255fe1597cbd4942556a47e3cd"
   },
   {
     "url": "reference/configuration.html",
-    "revision": "dd3b04282c4c38d1e5ee7bbd07ed07c2"
+    "revision": "41916580f56596aaf4720b93ceebd665"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
