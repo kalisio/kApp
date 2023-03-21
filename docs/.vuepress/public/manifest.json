@@ -1,6 +1,6 @@
 {
   "name": "kApp - KDK application template",
-  "short_name": "KApp",
+  "short_name": "kApp",
   "icons": [
     {
       "src": "https://s3.eu-central-1.amazonaws.com/kalisioscope/kapp/kapp-logo-black-128x128.png",

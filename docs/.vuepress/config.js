@@ -1,7 +1,7 @@
 module.exports = {
-  base: '/KApp/',
+  base: '/kApp/',
   port: 8888,
-  title: 'KApp',
+  title: 'kApp',
   description: 'KApp - KDK application template',
   head: [
     ['link', { rel: 'icon', href: `https://s3.eu-central-1.amazonaws.com/kalisioscope/kapp/kapp-icon-64x64.png` }],
