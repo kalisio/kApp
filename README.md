@@ -15,9 +15,19 @@ For more information please visit our websites:
 
 This application is based on the [Kalisio Development Kit](https://kalisio.github.io/kdk/).
 
-### License
+### Documentation
 
-Copyright (c) 2018-2019 Kalisio
+The full documentation is available [here](https://kalisio.github.io/KApp/)
 
-Licensed under the [MIT license](LICENSE).
+> The documentation website is generated using [VuePress](https://vuepress.vuejs.org/)
+
+## License
+
+This project is licensed under the MIT License - see the [license file](./LICENSE) for details
+
+## Authors
+
+This project is sponsored by 
+
+[![Kalisio](https://s3.eu-central-1.amazonaws.com/kalisioscope/kalisio/kalisio-logo-black-256x84.png)](https://kalisio.com)
 

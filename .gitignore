@@ -80,3 +80,7 @@ public/icons/kdk
 public/kalisio.png
 src/tours/core
 src/tours/map
+
+# VuePress
+docs/.vuepress/dist
+docs/node_modules/
