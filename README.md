@@ -15,7 +15,7 @@ For more information please visit our websites:
 
 This application is based on the [Kalisio Development Kit](https://kalisio.github.io/kdk/).
 
-### Documentation
+## Documentation
 
 The full documentation is available [here](https://kalisio.github.io/kApp/)
 
