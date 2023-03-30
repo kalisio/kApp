@@ -2,13 +2,3 @@
 // https://quasar.dev/style/sass-scss-variables#variables-list
 
 @import 'kdk/core.variables';
-
-// Theme
-$primary: #bf360c;
-$secondary: lighten($primary, 75%);
-$accent: lighten($primary, 25%);
-$dark: darken($primary, 25%);
-$info: $accent;
-$positive: #7bb946;
-$negative: #c74a4a;
-$warning: #d09931;
