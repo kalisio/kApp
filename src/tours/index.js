@@ -1,3 +1,4 @@
 module.exports = {
-  // TODO
+  home: require('./home'),
+  'side-nav': require('./side-nav'),
 }

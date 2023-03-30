@@ -1,5 +1,6 @@
 <template>
   <div>
+    <KTour />
     <router-view></router-view>
   </div>
 </template>

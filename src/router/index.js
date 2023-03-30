@@ -2,6 +2,8 @@ import { route } from 'quasar/wrappers'
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
 import _ from 'lodash'
 import routeConfig from './routes'
+import { Store } from '@kalisio/kdk/core.client'
+import utils from '../utils.js'
 
 /*
  * Helper function used to build the routes
@@ -84,6 +86,15 @@ export default route(function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.MODE === 'ssr' ? undefined : process.env.VUE_ROUTER_BASE)
   })
+
+  Store.set('router', Router)
+  Store.set('tours', Object.assign({
+    current: {
+      name: '',
+      step: 0,
+      play: false
+    }
+  }, utils.buildTours(routeConfig)))
 
   return Router
 })

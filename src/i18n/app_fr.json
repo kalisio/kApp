@@ -59,5 +59,30 @@
   },
   "Times": {
     "LABEL": "Composants temporels"
+  },
+  "ContextualHelp": {
+    "LABEL": "Aide contextuelle"
+  },
+  "tours": {
+    "home": {
+      "SIDENAV_LABEL": "Ouvrez à tout moment le menu principal via cette poignée.",
+      "SIDENAV_LINK_LABEL": "Parcourir le menu principal",
+      "TOP_PANE_LABEL": "Ouvrez à tout moment le volet supérieur via cette poignée.",
+      "RIGHT_PANE_LABEL": "Ouvrez à tout moment le volet droit via cette poignée.",
+      "BOTTOM_PANE_LABEL": "Ouvrez à tout moment le volet inférieur via cette poignée.",
+      "FAB_LABEL": "Exécuter rapidement des actions via ce bouton.",
+      "LOGOUT_LABEL": "Déconnectez vous si vous souhaitez clôturer votre session de travail.",
+      "SESSION_LABEL": "Sinon la session reste active sur votre appareil pendant <b>24H</b> et vous n'aurez pas besoin de vous reconnecter durant ce laps de temps.",
+      "CONTEXT_HELP_LABEL": "Pour obtenir de l'aide contextuelle lorsque vous êtes perdu cliquez à tout moment cette l'icône",
+      "ABOUT_LABEL": "Affichez les informations détaillées du système et signalez-nous un boggue.",
+      "BUG_LABEL": "Signalez-nous un boggue via un email contenant automatiquement les informations nécessaires.",
+      "LAYOUT_LABEL" : "",
+      "MISCELLANEOUS_LABEL": "",
+      "COLLECTION_LABEL": "",
+      "KANBAN_LABEL": "",
+      "CHART_LABEL": "",
+      "EDITOR_LABEL": "",
+      "STORE_LABEL": ""
+    }
   }
 }

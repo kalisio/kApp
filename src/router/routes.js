@@ -1,3 +1,5 @@
+const tours = require('../tours')
+
 module.exports = [{
   path: '/:token?',
   name: 'index',
@@ -22,7 +24,11 @@ module.exports = [{
           // Because this child is the default one path is empty and name is the one of the parent route
           path: '',
           name: 'home',
-          redirect: { name: 'layout-activity' }
+          redirect: { name: 'layout-activity' },
+          tour: {
+            home: tours.home,
+            'side-nav': tours['side-nav']
+          },
         },
         'account/:page': {
           name: 'account-activity',

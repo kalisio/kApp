@@ -114,7 +114,8 @@
     "url": "^0.11.0",
     "vue": "^3.0.0",
     "vue-i18n": "^9.2.0-beta.35",
-    "vue-router": "^4.0.0"
+    "vue-router": "^4.0.0",
+    "vue3-tour": "^0.3.3"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.13.14",

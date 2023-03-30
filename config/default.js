@@ -33,6 +33,7 @@ const leftPane = {
     { id: 'chart', icon: 'las la-chart-pie', label: 'ChartActivity.LABEL', renderer: 'item', route: { name: 'chart-activity' } },
     { id: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL', renderer: 'item', route: { name: 'editor-activity' } },
     { id: 'store', icon: 'las la-atom', label: 'StoreActivity.LABEL', renderer: 'item', route: { name: 'store-activity' } },
+    { id: 'contextual-help', icon: 'las la-question-circle', label: 'ContextualHelp.LABEL', handler: { name: 'launchTour', params: ['home'] }, renderer: 'item' },
     { component: 'QSeparator' },
     { id: 'about', icon: 'las la-info', label: 'ABOUT', renderer: 'item', dialog: { component: 'app/KAbout', title: 'ABOUT', okAction: 'CLOSE' } },
     { component: 'QSeparator' },
