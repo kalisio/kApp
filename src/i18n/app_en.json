@@ -75,14 +75,7 @@
       "SESSION_LABEL": "Otherwise the session will remain active on your device for <b>24H</b>, you will not have to login again in this time frame.",
       "CONTEXT_HELP_LABEL": "To get contextual help whenever your are lost simply click on the following icon",
       "ABOUT_LABEL": "Display detailed system information and send us bug reports.",
-      "BUG_LABEL": "Send us a bug report with a preformatted email containing required information.",
-      "LAYOUT_LABEL" : "",
-      "MISCELLANEOUS_LABEL": "",
-      "COLLECTION_LABEL": "",
-      "KANBAN_LABEL": "",
-      "CHART_LABEL": "",
-      "EDITOR_LABEL": "",
-      "STORE_LABEL": ""
+      "BUG_LABEL": "Send us a bug report with a preformatted email containing required information."
     }
   }
 }
