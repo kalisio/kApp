@@ -1,13 +1,13 @@
 module.exports = [{
-  target: '#left-pane #logout',
+  target: '#logout',
   title: 'tours.home.LOGOUT_LABEL',
   content: 'tours.home.SESSION_LABEL',
   params: {
     placement: 'top',
-    clickOnNext: '#left-opener',
+    clickOnNext: '#left-opener'
   }
 }, {
-  target: '#left-pane #contextual-help',
+  target: '#contextual-help',
   content: 'tours.home.CONTEXT_HELP_LABEL',
   params: {
     placement: 'top',
@@ -15,7 +15,7 @@ module.exports = [{
     clickOnNext: '#left-opener'
   }
 }, {
-  target: '#left-pane #about',
+  target: '#about',
   content: 'tours.home.ABOUT_LABEL',
   params: {
     placement: 'top',

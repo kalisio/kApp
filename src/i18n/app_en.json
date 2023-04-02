@@ -1,5 +1,7 @@
 {
   "MAIN_MENU": "Main menu",
+  "LOGOUT": "Logout",
+  "ABOUT": "About",
   "Documents": {
     "EDIT": "Edit",
     "VIEW": "View",
@@ -24,7 +26,7 @@
     "LABEL": "Mismiscellaneous"
   },
   "CollectionActivity": {
-    "LABEl": "Collections",
+    "LABEL": "Collections",
     "LIST": "List",
     "GRID": "Grid",
     "TABLE": "Table",

@@ -5,7 +5,7 @@ module.exports = [{
   params: {
     placement: 'right',
     blockOnMiss: '#top-opener',
-    hoverClickOnLink: '#left-opener',
+    clickOnLink: '#left-opener',
     tour: 'home/side-nav'
   }
 }, {

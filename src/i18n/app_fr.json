@@ -1,6 +1,7 @@
 {
   "MAIN_MENU": "Menu principal",
   "LOGOUT": "Se déconnecter",
+  "ABOUT": "A propos",
   "Documents": {
     "EDIT": "Editer",
     "VIEW": "Visualiser",
@@ -15,7 +16,8 @@
   },
   "Index": {
     "DISCONNECT": "La connexion au serveur a été interrompue, merci de patienter jusqu'à la reconnexion...",
-    "RECONNECT": "Tentative de reconnection en cours..."
+    "RECONNECT": "Tentative de reconnection en cours...",
+    "LOGOUt": "Déconnexion"
   },
   "LayoutActivity": {
     "LABEL": "Layout"
