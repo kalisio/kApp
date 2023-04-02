@@ -20,7 +20,16 @@ module.exports = {
       '/guides/': getGuidesSidebar(),
       '/reference/': getReferenceSidebar()
     }
-  }
+  },
+  head: [
+    [
+      "link",
+      {
+        rel: "stylesheet",
+        href: "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
+      }
+    ]
+  ],
 }
 
 function getAboutSidebar () {
@@ -35,7 +44,15 @@ function getAboutSidebar () {
 function getGuidesSidebar () {
   return [
     'introduction',
-    'installing-kapp'
+    'installing-kapp',
+    {
+      title: 'Customizing kApp',
+      children: ['customizing/tour']
+    },
+    {
+      title: 'Development',
+      children: ['development/setup', 'development/develop', 'development/test', 'development/configure', 'development/deploy', 'development/publish' ] 
+    }
   ]
 }
 

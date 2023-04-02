@@ -44,16 +44,27 @@ For most applications some secrets (like your AWS S3 access key) need also to be
 
 ## From source code
 
-First you have to ensure the [KDK prerequisites](https://kalisio.github.io/kdk/guides/development/setup.html#prerequisites) to run kApp from source code. Then the following commands, assuming you have a MongoDB instance running on local host and default port (27017), should launch your local instance of KApp:
+While it is a WIP and not yet pushed to NPM, or when developing, please use the following process.
 
+::: tip
+We recommand using our [CLI](https://kalisio.github.io/kdk/tools/cli.html#kdk-cli) but you can still proceed manually as explained below.
+:::
+
+First you have to ensure the [KDK prerequisites](https://kalisio.github.io/kdk/guides/development/setup.html#prerequisites) to run kApp from source code. Then the following commands, assuming you have a MongoDB instance running on local host and default port (27017), should launch your local instance of KApp.
+
+Start by cloning all the modules/plugins you need and use [yarn/npm link](https://docs.npmjs.com/cli/link) to make them globally available to your Node.js installation:
 ```bash
-// Clone KDK
+// Clone and link KDK
 git clone https://github.com/kalisio/kdk.git
 cd kdk
 yarn install
 yarn link
+...
+```
 
-// In another terminal clone KApp
+Then clone the main app repository and link to modules/plugins to make Node.js pointing to the previously cloned modules instead of those installed by yarn/npm, e.g. :
+```bash
+// In another terminal clone and link plugins to kApp
 git clone https://github.com/kalisio/kApp.git
 
 // Run the server/API
@@ -71,4 +82,6 @@ yarn dev
 
 Then point your browser to [localhost:8080](http://localhost:8080).
 
-To start coding into your application please refer to our [development guide](https://kalisio.github.io/kdk/guides/development/develop.html).
+::: warning
+Take care that a top-level module/plugin might depend on another module/plugin so you will have to link them together, for instance the kdk plugin depends on the weacast-core plugin.
+:::
