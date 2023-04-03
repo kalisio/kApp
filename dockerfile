@@ -28,7 +28,8 @@ ENV BUILD_NUMBER=$BUILD_NUMBER
 ENV NODE_APP_INSTANCE=$FLAVOR
 
 COPY --from=Builder --chown=node:node /opt/kalisio /opt/kalisio
-USER node # From now on, run stuff as 'node'
+# From now on, run stuff as 'node'
+USER node
 
 # Link the modules
 WORKDIR /opt/kalisio
