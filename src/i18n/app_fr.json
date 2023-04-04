@@ -14,11 +14,6 @@
     "CONTACT": "Contact",
     "TERMS_AND_POLICIES": "Conditions générales"
   },
-  "Index": {
-    "DISCONNECT": "La connexion au serveur a été interrompue, merci de patienter jusqu'à la reconnexion...",
-    "RECONNECT": "Tentative de reconnection en cours...",
-    "LOGOUt": "Déconnexion"
-  },
   "LayoutActivity": {
     "LABEL": "Layout"
   },  

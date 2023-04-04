@@ -77,9 +77,9 @@ module.exports = {
         secret: process.env.KEYCLOAK_CLIENT_SECRET,
         oauth: 2,
         scope: ['openid'],
-        authorize_url: 'https://keycloak.portal.k8s.kalisio.xyz/auth/realms/kalisio/protocol/openid-connect/auth',
-        access_url: 'https://keycloak.portal.k8s.kalisio.xyz/auth/realms/kalisio/protocol/openid-connect/token',
-        profile_url: 'https://keycloak.portal.k8s.kalisio.xyz/auth/realms/kalisio/protocol/openid-connect/userinfo',
+        authorize_url: 'https://keycloak.portal.kalisio.xyz/realms/Kalisio/protocol/openid-connect/auth',
+        access_url: 'https://keycloak.portal.kalisio.xyz/realms/Kalisio/protocol/openid-connect/token',
+        profile_url: 'https://keycloak.portal.kalisio.xyz/realms/Kalisio/protocol/openid-connect/userinfo',
         nonce: true
       } : undefined),
       github: (process.env.GITHUB_CLIENT_ID ? {
