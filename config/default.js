@@ -130,6 +130,9 @@ module.exports = {
   logs: {
     level: (process.env.NODE_ENV === 'development' ? 'debug' : 'info')
   },
+  storage: {
+    useProxy: true
+  },
   screens: {
     // header: 'screen/KScreenHeader',
     // footer: 'screen/KScreenFooter',
