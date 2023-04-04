@@ -34,7 +34,7 @@ Example of configuration to associate two tours to the layout route:
 :::
 
 ::: tip
-You can launch a tour using a query parameter with `tower=name-tower`.
+You can launch a tour using a query parameter with `tower=name-tour`.
 :::
 
 ### Only one tour associated with a route
