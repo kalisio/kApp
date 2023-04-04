@@ -2,7 +2,7 @@
 
 Here is a quick rundown of the *key concepts* to handle when you're just starting to use tours.
 
-Tours are designed to help users discover the different features and functionality of the KApp in an interactive way.
+Tours are designed to help users discover the different features and functionality of the kApp in an interactive way. To generate them, we use the [vue3-tour library](https://github.com/alexandreDavid/vue3-tour) on which we have added several additional features.
 
 ::: warning
 You will first have to follow the required steps to create your account then connect to make everything works as expected.
@@ -22,8 +22,39 @@ You can then follow the step by step guide <a href=""><i class="las la-chevron-r
 ![tour](../../assets/Tour-EN.png)
 </p>
 
+## Configuration
+
+The tour configuration in the kApp depends on how many tours you want to associate with a route.
+### Set of tours associated with a route
+To configure multiple tours associated with a route, you must add a tour object to the route configuration in the `src/router/routes.js` file.
+Example of configuration to associate two tours to the layout route:
+
+::: details configuration example
+<<< @/.vuepress/public/router-tours.js
+:::
+
+::: tip
+You can launch a tour using a query parameter with `tower=name-tower`.
+:::
+
+### Only one tour associated with a route
+To configure a single tour associated with a route, you must:
+
+1. Add a tour property to the route configuration in the `src/router/routes.js` file.
+
+::: details configuration example
+<<< @/.vuepress/public/router-tour.js
+:::
+
+2. Add to the route the query parameter `{ tour: true }` in the `config/default.js` file. For example, `route: { name: 'login', query: { tour: true } }`
+
+::: tip
+You can launch a tour using a query parameter with `tour=true`.
+:::
+
 ## Usage
-Tours are configured using a JavaScript file, located in the `src/tours` folder, exporting an array of objects. Each object describes a step of a tour with the following properties: 
+
+Tours are located in the `src/tours` folder. When you launch the kApp generic tours are automatically copied from the kdk. They are configured using a JavaScript file exporting an array of objects. Each object describes a step of a tour with the following properties:
 
 - `target`: HTML element you want to highlight
 - `title`: Title of the targeted element (String or translation key)

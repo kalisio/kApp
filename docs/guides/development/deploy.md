@@ -44,7 +44,7 @@ In the CI/CD process the `FLAVOR`/`NODE_APP_INSTANCE` environment variable is au
 Starting from the following base application setup:
 * a root domain, defined by the value of the `DOMAIN` environment variable like `kalisio.xyz`
 * a version number, defined by the value of the `VERSION` environment variable like `1.3.0` and automatically extracted from your *package.json* file
-* a name, defined in the `APP` environment variable like `kapp`
+* a name, defined in the `APP` environment variable like `kApp`
 
 Each flavor is then attached to a different target infrastructure, subdomain and version tag:
 * **dev**: `SUBDOMAIN=dev.$DOMAIN`, `VERSION_TAG=$VERSION-dev`

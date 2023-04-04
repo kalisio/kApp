@@ -1,14 +1,14 @@
 version: '3.3'
 
 services:
-  Kapp:
+  kApp:
     image: kalisio/kapp:dev
     environment:
       - DB_URL=mongodb://mongodb:27017/kapp
     ports:
       - "8080:8081"
     networks:
-      - kapp
+      - kApp
   mongodb:
     image: mongo:4.2
     volumes:
@@ -16,10 +16,10 @@ services:
     ports:
       - "27017:27017"
     networks:
-      - kapp
+      - kApp
 
 volumes:
   mongodb:
 
 networks:
-  kapp:
+  kApp:

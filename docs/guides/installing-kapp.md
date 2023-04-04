@@ -1,4 +1,4 @@
-# Installing KApp
+# Installing kApp
 
 ## Using Docker
 
@@ -14,13 +14,13 @@ Jump into the folder with the docker-compose file, the following commands should
 // Retrieve the latest available dev tag
 docker pull kalisio/kapp:dev
 
-// Run the MongoDB and KApp containers
+// Run the MongoDB and kApp containers
 docker-compose up -d
 
-// Stop the MongoDB and KApp containers
+// Stop the MongoDB and kApp containers
 docker-compose down
 
-// Stop the MongoDB and KApp containers erasing DB data
+// Stop the MongoDB and kApp containers erasing DB data
 docker-compose down -v
 ```
 
@@ -34,7 +34,7 @@ Check the [default.cjs](https://github.com/kalisio/kApp/blob/master/api/config/d
 If running Docker under Windows in a virtual machine first redirect the port 8080 of your virtual machine to your host
 ::: 
 
-::: details docker-compose.yml - Used to deploy MongoDB and KApp containers.
+::: details docker-compose.yml - Used to deploy MongoDB and kApp containers.
 <<< @/.vuepress/public/docker-compose.yml
 :::
 
@@ -50,7 +50,7 @@ While it is a WIP and not yet pushed to NPM, or when developing, please use the 
 We recommand using our [CLI](https://kalisio.github.io/kdk/tools/cli.html#kdk-cli) but you can still proceed manually as explained below.
 :::
 
-First you have to ensure the [KDK prerequisites](https://kalisio.github.io/kdk/guides/development/setup.html#prerequisites) to run kApp from source code. Then the following commands, assuming you have a MongoDB instance running on local host and default port (27017), should launch your local instance of KApp.
+First you have to ensure the [KDK prerequisites](https://kalisio.github.io/kdk/guides/development/setup.html#prerequisites) to run kApp from source code. Then the following commands, assuming you have a MongoDB instance running on local host and default port (27017), should launch your local instance of kApp.
 
 Start by cloning all the modules/plugins you need and use [yarn/npm link](https://docs.npmjs.com/cli/link) to make them globally available to your Node.js installation:
 ```bash
@@ -68,13 +68,13 @@ Then clone the main app repository and link to modules/plugins to make Node.js p
 git clone https://github.com/kalisio/kApp.git
 
 // Run the server/API
-cd KApp/api
+cd kApp/api
 yarn install
 yarn link @kalisio/kdk
 yarn dev
 
 // In another terminal run the client app
-cd KApp
+cd kApp
 yarn install
 yarn link @kalisio/kdk
 yarn dev
