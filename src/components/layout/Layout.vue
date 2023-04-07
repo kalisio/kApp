@@ -99,7 +99,7 @@
       />
       <div v-if="mode === 'panes'" class="column">        
         <KAction
-          id ="toggle-bottom-pane"
+          id ="toggle-bottom-opener"
           label="Opener"
           :icon="panes.bottom.opener ? 'las la-toggle-on' : 'las la-toggle-off'"
           :handler="() => togglePaneOpener('bottom')"

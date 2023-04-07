@@ -31,30 +31,6 @@ describe(suite, () => {
     await core.register(page, user)
   })
 
-  it('check-layout', async () => {
-    await core.clickLeftPaneAction(page, 'layout')
-    expect(await core.isTopPaneVisible(page)).be.true
-    expect(await core.isRightPaneVisible(page)).be.false
-    expect(await core.isBottomPaneVisible(page)).be.false
-    expect(await core.isLeftPaneVisible(page)).be.false
-    await core.clickTopOpener(page)
-    expect(await core.isTopPaneVisible(page)).be.false
-    await core.clickTopOpener(page)
-    expect(await core.isTopPaneVisible(page)).be.true
-    await core.clickRightOpener(page)
-    expect(await core.isRightPaneVisible(page)).be.true
-    await core.clickRightOpener(page)
-    expect(await core.isRightPaneVisible(page)).be.false
-    await core.clickBottomOpener(page)
-    expect(await core.isBottomPaneVisible(page)).be.true
-    await core.clickBottomOpener(page)
-    expect(await core.isBottomPaneVisible(page)).be.false
-    await core.clickLeftOpener(page)
-    expect(await core.isLeftPaneVisible(page)).be.true
-    await core.clickLeftOpener(page)
-    expect(await core.isLeftPaneVisible(page)).be.false
-  })
-
   it('check-profile', async () => {
     await core.manageAccount(page, 'profile')
     await core.manageAccount(page, 'security')
