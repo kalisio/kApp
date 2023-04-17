@@ -46,7 +46,8 @@ export default async ({ app }) => {
   app.component('KColorScale', await kdkCoreUtils.loadComponent('media/KColorScale'))
   app.component('KStore', await kdkCoreUtils.loadComponent('KStore'))
   app.component('KTour', await kdkCoreUtils.loadComponent('app/KTour'))
-  
+  app.component('KScrollArea', await kdkCoreUtils.loadComponent('KScrollArea'))
+
   // Register global properties
   // FIXME: This is used for testing purpose, don't know how to access this from Puppeteer otherwise
   global.$store = app.config.globalProperties.$store
