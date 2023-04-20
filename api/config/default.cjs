@@ -73,6 +73,9 @@ module.exports = {
     },
     oauth: {
       redirect: domain + '/',
+      defaults: {
+        origin: domain
+      },
       keycloak: (process.env.KEYCLOAK_CLIENT_ID ? {
         key: process.env.KEYCLOAK_CLIENT_ID,
         secret: process.env.KEYCLOAK_CLIENT_SECRET,
