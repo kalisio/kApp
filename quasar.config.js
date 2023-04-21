@@ -233,7 +233,7 @@ module.exports = configure(function (ctx) {
 
     // https://v2.quasar.dev/quasar-cli-webpack/developing-ssr/configuring-ssr
     ssr: {
-      pwa: false,
+      pwa: true,
 
       // manualStoreHydration: true,
       // manualPostHydrationTrigger: true,
@@ -259,7 +259,7 @@ module.exports = configure(function (ctx) {
 
     // https://v2.quasar.dev/quasar-cli-webpack/developing-pwa/configuring-pwa
     pwa: {
-      workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
+      workboxPluginMode: 'InjectManifest', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
 
       // for the custom service worker ONLY (/src-pwa/custom-service-worker.[js|ts])
@@ -275,6 +275,10 @@ module.exports = configure(function (ctx) {
         short_name: `kapp`,
         description: `KDK application test`,
         display: 'standalone',
+        start_url: './',
+        id: './',
+        background_color: '#f0ecec',
+        theme_color :  '#bf360c',
         orientation: 'portrait',
         icons: [
           {
