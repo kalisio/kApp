@@ -67,7 +67,9 @@
       "TOP_PANE_LABEL": "Open the top pane any time using this handle.",
       "RIGHT_PANE_LABEL": "Open the right pane any time using this handle.",
       "BOTTOM_PANE_LABEL": "Open the bottom pane any time using this handle.",
-      "FAB_LABEL": "Quickly execute actions using this button.",
+      "FAB_LABEL": "Quickly execute actions using this button."
+    },
+    "side-nav": {
       "LOGOUT_LABEL": "Logout in order to close your work session.",
       "SESSION_LABEL": "Otherwise the session will remain active on your device for <b>24H</b>, you will not have to login again in this time frame.",
       "CONTEXT_HELP_LABEL": "To get contextual help whenever your are lost simply click on the following icon",
