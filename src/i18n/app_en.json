@@ -76,5 +76,9 @@
       "ABOUT_LABEL": "Display detailed system information and send us bug reports.",
       "BUG_LABEL": "Send us a bug report with a preformatted email containing required information."
     }
+  },
+  "pwa": {
+    "VERSION_MISMATCH": "A newer version is available, please refresh the page to get the latest updates.",
+    "BUTTON_MISMATCH": "Refresh"
   }
 }

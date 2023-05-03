@@ -76,5 +76,9 @@
       "ABOUT_LABEL": "Affichez les informations détaillées du système et signalez-nous un boggue.",
       "BUG_LABEL": "Signalez-nous un boggue via un email contenant automatiquement les informations nécessaires."
     }
+  },
+  "pwa": {
+    "VERSION_MISMATCH": "Une version plus récente est disponible, veuillez rafraîchir la page pour profiter des dernières mises à jour.",
+    "BUTTON_MISMATCH": "Rafraîchir"
   }
 }

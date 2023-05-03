@@ -1,16 +1,18 @@
 import { register } from 'register-service-worker'
 import logger from 'loglevel'
+import { Notify } from 'quasar'
+import { i18n, LocalStorage } from '@kalisio/kdk/core.client'
 
 // The ready(), registered(), cached(), updatefound() and updated()
 // events passes a ServiceWorkerRegistration instance in their arguments.
 // ServiceWorkerRegistration: https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration
 
-register(process.env.SERVICE_WORKER_FILE, {
+register(location.origin + '/service-worker.js', {
   // The registrationOptions object will be passed as the second argument
   // to ServiceWorkerContainer.register()
   // https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register#Parameter
 
-  //registrationOptions: { scope: './' },
+  registrationOptions: { scope: './' },
 
   ready (registration) {
     logger.debug('Service worker is active.')
@@ -29,11 +31,23 @@ register(process.env.SERVICE_WORKER_FILE, {
   },
 
   updated (registration) {
-    logger.warn('New content is available; please refresh.')
+    logger.debug('New content is available; please refresh.')
+    LocalStorage.clear()
+    Notify.create({
+      icon: 'announcement',
+      color: 'info',
+      timeout: 250000,
+      message: i18n.tie('pwa.VERSION_MISMATCH'),
+      actions: [{
+        label: i18n.tie('pwa.BUTTON_MISMATCH'), 
+        color: 'white', 
+        handler: () => location.reload(true) 
+      }]
+    })
   },
 
   offline () {
-    logger.warn('No internet connection found. App is running in offline mode.')
+    logger.debug('No internet connection found. App is running in offline mode.')
   },
 
   error (err) {
