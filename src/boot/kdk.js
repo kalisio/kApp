@@ -9,13 +9,15 @@ import { initializeApi, i18n, utils as kdkCoreUtils, Store, Layout, Events, befo
 export default async ({ app }) => {
   // Initiate the client
   const api = initializeApi()
+
   // Setup app hooks
   api.hooks(appHooks)
+
   // Then all services
   services.call(api)
 
   // Initializes i18n
-  await i18n.initialize(app, ['core', 'app'])
+  await i18n.initialize(app, ['core', 'app', 'map'])
 
   // Register global properties to the the vue app
   app.config.globalProperties.$store = Store

@@ -68,13 +68,6 @@
       "RIGHT_PANE_LABEL": "Ouvrez à tout moment le volet droit via cette poignée.",
       "BOTTOM_PANE_LABEL": "Ouvrez à tout moment le volet inférieur via cette poignée.",
       "FAB_LABEL": "Exécuter rapidement des actions via ce bouton."
-    },
-    "side-nav": {
-      "LOGOUT_LABEL": "Déconnectez vous si vous souhaitez clôturer votre session de travail.",
-      "SESSION_LABEL": "Sinon la session reste active sur votre appareil pendant <b>24H</b> et vous n'aurez pas besoin de vous reconnecter durant ce laps de temps.",
-      "CONTEXT_HELP_LABEL": "Pour obtenir de l'aide contextuelle lorsque vous êtes perdu cliquez à tout moment cette l'icône",
-      "ABOUT_LABEL": "Affichez les informations détaillées du système et signalez-nous un boggue.",
-      "BUG_LABEL": "Signalez-nous un boggue via un email contenant automatiquement les informations nécessaires."
     }
   },
   "pwa": {

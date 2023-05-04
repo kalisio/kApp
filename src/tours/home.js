@@ -4,7 +4,6 @@ module.exports = [{
   link: 'tours.home.SIDENAV_LINK_LABEL',
   params: {
     placement: 'right',
-    blockOnMiss: '#top-opener',
     clickOnLink: '#left-opener',
     tour: 'home/side-nav'
   }
@@ -12,22 +11,19 @@ module.exports = [{
   target: '#top-opener',
   content: 'tours.home.TOP_PANE_LABEL',
   params: {
-    placement: 'bottom',
-    blockOnMiss: '#right-opener'
+    placement: 'bottom'
   }
 }, {
   target: '#right-opener',
   content: 'tours.home.RIGHT_PANE_LABEL',
   params: {
-    placement: 'left',
-    blockOnMiss: '#bottom-opener'
+    placement: 'left'
   }
 }, {
   target: '#bottom-opener',
   content: 'tours.home.BOTTOM_PANE_LABEL',
   params: {
-    placement: 'top',
-    blockOnMiss: '#fab'
+    placement: 'top'
   }
 }, {
   target: '#fab #fab',

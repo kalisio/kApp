@@ -120,7 +120,8 @@ module.exports = configure(function (ctx) {
           ],
           '@i18n': [
             path.resolve(__dirname, 'src/i18n'),
-            path.resolve(__dirname, 'node_modules/@kalisio/kdk/core/client/i18n')
+            path.resolve(__dirname, 'node_modules/@kalisio/kdk/core/client/i18n'),
+            path.resolve(__dirname, 'node_modules/@kalisio/kdk/map/client/i18n')
           ],
           config: path.resolve(__dirname, 'config/client-config.json')
         },
