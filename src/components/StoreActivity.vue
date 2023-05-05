@@ -13,6 +13,6 @@ import { mixins } from '@kalisio/kdk/core.client'
 
 export default {
   name: 'store-activity',
-  mixins: [mixins.baseActivity('storeActivity')]
+  mixins: [mixins.baseActivity()]
 }
 </script>

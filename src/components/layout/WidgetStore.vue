@@ -11,7 +11,6 @@
       </KScrollArea>
     </div>
   </div>
-
 </template>
 
 <script setup>

@@ -19,12 +19,13 @@ import Times from './Times.vue'
 import { mixins } from '@kalisio/kdk/core.client'
 
 export default {
+  name: 'miscellaneous-activity',
   components: {
     Stamps,
     Shapes,
     ColorScales,
     Times,
   },  
-  mixins: [mixins.baseActivity('miscellaneousActivity')]
+  mixins: [mixins.baseActivity()]
 }
 </script>

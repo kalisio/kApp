@@ -73,7 +73,7 @@
 
 <script setup>
 import moment from 'moment'
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 
 // Data
 const dateModel = ref(null)
