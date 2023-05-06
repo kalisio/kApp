@@ -1,7 +1,7 @@
 import { register } from 'register-service-worker'
 import logger from 'loglevel'
 import { Notify } from 'quasar'
-import { i18n, LocalStorage } from '@kalisio/kdk/core.client'
+import { i18n } from '@kalisio/kdk/core.client'
 
 // The ready(), registered(), cached(), updatefound() and updated()
 // events passes a ServiceWorkerRegistration instance in their arguments.
@@ -28,11 +28,6 @@ register(location.origin + '/service-worker.js', {
 
   updatefound (registration) {
     logger.debug('New content is downloading.')
-  },
-
-  updated (registration) {
-    logger.debug('New content is available; please refresh.')
-    LocalStorage.clear()
     Notify.create({
       icon: 'announcement',
       color: 'info',
@@ -44,6 +39,10 @@ register(location.origin + '/service-worker.js', {
         handler: () => location.reload(true) 
       }]
     })
+  },
+
+  updated (registration) {
+    logger.debug('New content is available; please refresh.')
   },
 
   offline () {
