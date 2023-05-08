@@ -6,7 +6,14 @@
 </template>
 
 <script setup>
-import { composables } from '@kalisio/kdk/core.client'
+import { composables, Store } from '@kalisio/kdk/core.client'
+import { watch } from 'vue'
 
+// Immediate
 const { isInitialized } = composables.useSession()
+
+// Watch
+watch(Store, (currentValue) => {
+  if (currentValue.capabilities) composables.checkVersion()
+})
 </script>

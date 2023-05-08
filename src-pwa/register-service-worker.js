@@ -1,7 +1,5 @@
 import { register } from 'register-service-worker'
 import logger from 'loglevel'
-import { Notify } from 'quasar'
-import { i18n } from '@kalisio/kdk/core.client'
 
 // The ready(), registered(), cached(), updatefound() and updated()
 // events passes a ServiceWorkerRegistration instance in their arguments.
@@ -28,17 +26,6 @@ register(location.origin + '/service-worker.js', {
 
   updatefound (registration) {
     logger.debug('New content is downloading.')
-    Notify.create({
-      icon: 'announcement',
-      color: 'info',
-      timeout: 250000,
-      message: i18n.tie('pwa.VERSION_MISMATCH'),
-      actions: [{
-        label: i18n.tie('pwa.BUTTON_MISMATCH'), 
-        color: 'white', 
-        handler: () => location.reload(true) 
-      }]
-    })
   },
 
   updated (registration) {

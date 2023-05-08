@@ -69,9 +69,5 @@
       "BOTTOM_PANE_LABEL": "Ouvrez à tout moment le volet inférieur via cette poignée.",
       "FAB_LABEL": "Exécuter rapidement des actions via ce bouton."
     }
-  },
-  "pwa": {
-    "VERSION_MISMATCH": "Une version plus récente est disponible, veuillez rafraîchir la page pour profiter des dernières mises à jour.",
-    "BUTTON_MISMATCH": "Rafraîchir"
   }
 }
