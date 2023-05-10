@@ -6,7 +6,7 @@
 
 import { precacheAndRoute } from 'workbox-precaching'
 import { registerRoute } from 'workbox-routing'
-import { StaleWhileRevalidate } from 'workbox-strategies'
+import { NetworkFirst } from 'workbox-strategies'
 
 // disable workbox logs 
 self.__WB_DISABLE_DEV_LOGS = true
@@ -17,5 +17,5 @@ precacheAndRoute(self.__WB_MANIFEST)
 // Caching strategies -- Register route starts with http (all)
 registerRoute(
   ({url}) => url.href.startsWith('http'),
-  new StaleWhileRevalidate()
+  new NetworkFirst()
 )
