@@ -11,10 +11,14 @@ import { NetworkFirst } from 'workbox-strategies'
 // disable workbox logs 
 self.__WB_DISABLE_DEV_LOGS = true
 
+// Any new version will be activated immediately
+self.skipWaiting()
+
 // Use with precache injection 
 precacheAndRoute(self.__WB_MANIFEST)
 
-// Caching strategies -- Register route starts with http (all)
+// Caching strategies
+// Register route starts with http (all)
 registerRoute(
   ({url}) => url.href.startsWith('http'),
   new NetworkFirst()
