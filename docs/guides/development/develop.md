@@ -8,6 +8,10 @@ The **kApp** provides the basic structure and tools to build and run a KDK-based
 
 Run the frontend app (from root project folder): `$ yarn dev`
 
+::: tip
+Run the frontend app as a **PWA** (from root project folder): `$ yarn pwa:dev`
+:::
+
 Then from the backend `api` folder run the server-side app: `$ yarn dev`
 
 Then point your browser to [localhost:8080](http://localhost:8080).
@@ -15,6 +19,10 @@ Then point your browser to [localhost:8080](http://localhost:8080).
 ### Building for production
 
 Build the frontend app (from root project folder): `$ yarn build`.
+
+::: tip
+Build the frontend app as a **PWA** (from root project folder): `$ yarn pwa:build`
+:::
 
 Then from the backend `api` folder build the server-side app: `$ yarn build`
 
