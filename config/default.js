@@ -229,7 +229,8 @@ module.exports = {
           { id: 'panes', label: 'Panes', handler: { name: 'setMode', params: ['panes'] } },
           { id: 'windows', label: 'Windows', color: 'primary', disabled: true }
         ]
-      }
+      },
+      mode: 'page'
     },
     rightPane: {
       content: [{ component: 'layout/RightPane' }],
@@ -244,7 +245,8 @@ module.exports = {
         page: [{ component: 'layout/Layout', mode: 'page' }],
         panes: [{ component: 'layout/Layout', mode: 'panes' }],
         windows: [{ component: 'layout/Layout', mode: 'windows' }]
-      }
+      },
+      mode: 'page'
     },
     fab: {
       content: {
@@ -253,7 +255,8 @@ module.exports = {
           { id: 'panes', label: 'Panes', icon: 'las la-window-minimize', handler: { name: 'setMode', params: ['panes'] } },
           { id: 'windows', label: 'Windows', icon: 'las la-window-restore', handler: { name: 'setMode', params: ['windows'] } }
         ]
-      }
+      },
+      mode: 'page'
     },
     windows: {
       left: { content: [widgets[0], widgets[4]], current: 'widget-1' },
@@ -303,7 +306,8 @@ module.exports = {
           { component: 'QSeparator', vertical: true, color: 'lightgrey' },
           { component: 'collection/KFilter', size: '1rem' }
         ]
-      }
+      },
+      mode: 'list'
     },
     page: {
       content: {
@@ -357,7 +361,8 @@ module.exports = {
           { component: 'QSeparator', vertical: true, color: 'lightgrey' },
           { component: 'collection/KFilter', size: '1rem' }
         ]
-      }
+      },
+      mode: 'default'
     },
     categories: [
       { name: 'sain' },
