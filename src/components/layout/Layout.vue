@@ -30,6 +30,42 @@
         :handler="() => toggleWindow('top')"
       />
     </div>
+    <div class="row items-center q-gutter-x-md no-wrap" v-if="mode === 'fab'">
+      <div class="row items-center layout-box">
+        <KAction
+        id ="toggle-top-left-fab"
+        label="Top left"
+        :icon="fab.position === 'top-left' ? 'las la-toggle-on' : 'las la-toggle-off'"
+        :handler="() => toggleFabPosition('top-left')"
+      />
+      </div>
+      <div class="row items-center layout-box">
+        <KAction
+        id ="toggle-top-right-fab"
+        label="Top right"
+        :icon="fab.position === 'top-right' ? 'las la-toggle-on' : 'las la-toggle-off'"
+        :handler="() => toggleFabPosition('top-right')"
+      />
+      </div>
+    </div>
+    <div class="row items-center q-gutter-x-md no-wrap" v-if="mode === 'fab'">
+      <div class="row items-center layout-box">
+        <KAction
+        id ="toggle-bottom-left-fab"
+        label="Bottom left"
+        :icon="fab.position === 'bottom-left' ? 'las la-toggle-on' : 'las la-toggle-off'"
+        :handler="() => toggleFabPosition('bottom-left')"
+      />
+      </div>
+      <div class="row items-center layout-box">
+        <KAction
+        id ="toggle-bottom-right-fab"
+        label="Bottom right"
+        :icon="fab.position === 'bottom-right' ? 'las la-toggle-on' : 'las la-toggle-off'"
+        :handler="() => toggleFabPosition('bottom-right')"
+      />
+      </div>
+    </div>
     <div class="row items-center q-gutter-x-md no-wrap">
       <div class="row items-center layout-box">
         <div v-if="mode === 'panes'" class="row items-center">
@@ -168,6 +204,9 @@ function toggleWindow (placement) {
 }
 function toggleFab () {
   Layout.setFabVisible(!fab.visible)
+}
+function toggleFabPosition (placement) {
+  Layout.setFabPosition(placement)
 }
 </script>
 

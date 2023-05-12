@@ -17,7 +17,6 @@ export default {
   },
   mounted () {
     Layout.setFooter({ content: [{ component: 'layout/Footer' }] })
-    this.setMode('page')
   },
   onBeforeUnmount () {
     Layout.setFooter({ content: null })

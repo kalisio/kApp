@@ -216,17 +216,26 @@ module.exports = {
         page: [
           { id: 'page', label: 'Page', color: 'primary', disabled: true },
           { id: 'panes', label: 'Panes', handler: { name: 'setMode', params: ['panes'] } },
-          { id: 'windows', label: 'Windows', handler: { name: 'setMode', params: ['windows'] } }
+          { id: 'windows', label: 'Windows', handler: { name: 'setMode', params: ['windows'] } },
+          { id: 'fab', label: 'Fab', handler: { name: 'setMode', params: ['fab'] } }
         ],
         panes: [
           { id: 'page', label: 'Page', handler: { name: 'setMode', params: ['page'] } },
           { id: 'panes', label: 'Panes', color: 'primary', disabled: true },
-          { id: 'windows', label: 'Windows', handler: { name: 'setMode', params: ['windows'] } }
+          { id: 'windows', label: 'Windows', handler: { name: 'setMode', params: ['windows'] } },
+          { id: 'fab', label: 'Fab', handler: { name: 'setMode', params: ['fab'] } }
         ],
         windows: [
           { id: 'page', label: 'Page', handler: { name: 'setMode', params: ['page'] } },
           { id: 'panes', label: 'Panes', handler: { name: 'setMode', params: ['panes'] } },
-          { id: 'windows', label: 'Windows', color: 'primary', disabled: true }
+          { id: 'windows', label: 'Windows', color: 'primary', disabled: true },
+          { id: 'fab', label: 'Fab', handler: { name: 'setMode', params: ['fab'] } }
+        ],
+        fab: [
+          { id: 'page', label: 'Page', handler: { name: 'setMode', params: ['page'] } },
+          { id: 'panes', label: 'Panes', handler: { name: 'setMode', params: ['panes'] } },
+          { id: 'windows', label: 'Windows', handler: { name: 'setMode', params: ['windows'] } },
+          { id: 'fab', label: 'Fab', color: 'primary', disabled: true }
         ]
       },
       mode: 'page'
@@ -243,7 +252,8 @@ module.exports = {
       content: {
         page: [{ component: 'layout/Layout', mode: 'page' }],
         panes: [{ component: 'layout/Layout', mode: 'panes' }],
-        windows: [{ component: 'layout/Layout', mode: 'windows' }]
+        windows: [{ component: 'layout/Layout', mode: 'windows' }],
+        fab: [{ component: 'layout/Layout', mode: 'fab' }]
       },
       mode: 'page'
     },
@@ -252,7 +262,14 @@ module.exports = {
         page: [
           { id: 'page', label: 'Page', icon: 'las la-stream', handler: { name: 'setMode', params: ['page'] } },
           { id: 'panes', label: 'Panes', icon: 'las la-window-minimize', handler: { name: 'setMode', params: ['panes'] } },
-          { id: 'windows', label: 'Windows', icon: 'las la-window-restore', handler: { name: 'setMode', params: ['windows'] } }
+          { id: 'windows', label: 'Windows', icon: 'las la-window-restore', handler: { name: 'setMode', params: ['windows'] } },
+          { id: 'fab', label: 'Fab', icon: 'las la-window-restore', handler: { name: 'setMode', params: ['fab'] } }
+        ],
+        fab: [
+          { id: 'page', label: 'Page', icon: 'las la-stream', handler: { name: 'setMode', params: ['page'] } },
+          { id: 'panes', label: 'Panes', icon: 'las la-window-minimize', handler: { name: 'setMode', params: ['panes'] } },
+          { id: 'windows', label: 'Windows', icon: 'las la-window-restore', handler: { name: 'setMode', params: ['windows'] } },
+          { id: 'fab', label: 'Fab', icon: 'las la-window-restore', handler: { name: 'setMode', params: ['fab'] } }
         ]
       },
       mode: 'page'
