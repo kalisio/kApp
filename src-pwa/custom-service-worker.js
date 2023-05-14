@@ -8,11 +8,15 @@ import { precacheAndRoute } from 'workbox-precaching'
 import { registerRoute } from 'workbox-routing'
 import { NetworkFirst } from 'workbox-strategies'
 
-// disable workbox logs 
+// Disable workbox logs 
 self.__WB_DISABLE_DEV_LOGS = true
 
-// Any new version will be activated immediately
-self.skipWaiting()
+// Activate new service worker
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting()
+  }
+})
 
 // Use with precache injection 
 precacheAndRoute(self.__WB_MANIFEST)
