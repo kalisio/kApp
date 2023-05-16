@@ -36,7 +36,7 @@
         id ="toggle-top-left-fab"
         label="Top left"
         :icon="fab.position === 'top-left' ? 'las la-toggle-on' : 'las la-toggle-off'"
-        :handler="() => toggleFabPosition('top-left')"
+        :handler="() => setFabPosition('top-left')"
       />
       </div>
       <div class="row items-center layout-box">
@@ -44,7 +44,7 @@
         id ="toggle-top-right-fab"
         label="Top right"
         :icon="fab.position === 'top-right' ? 'las la-toggle-on' : 'las la-toggle-off'"
-        :handler="() => toggleFabPosition('top-right')"
+        :handler="() => setFabPosition('top-right')"
       />
       </div>
     </div>
@@ -54,7 +54,7 @@
         id ="toggle-bottom-left-fab"
         label="Bottom left"
         :icon="fab.position === 'bottom-left' ? 'las la-toggle-on' : 'las la-toggle-off'"
-        :handler="() => toggleFabPosition('bottom-left')"
+        :handler="() => setFabPosition('bottom-left')"
       />
       </div>
       <div class="row items-center layout-box">
@@ -62,7 +62,7 @@
         id ="toggle-bottom-right-fab"
         label="Bottom right"
         :icon="fab.position === 'bottom-right' ? 'las la-toggle-on' : 'las la-toggle-off'"
-        :handler="() => toggleFabPosition('bottom-right')"
+        :handler="() => setFabPosition('bottom-right')"
       />
       </div>
     </div>
@@ -205,7 +205,7 @@ function toggleWindow (placement) {
 function toggleFab () {
   Layout.setFabVisible(!fab.visible)
 }
-function toggleFabPosition (placement) {
+function setFabPosition (placement) {
   Layout.setFabPosition(placement)
 }
 </script>
