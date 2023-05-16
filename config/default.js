@@ -117,7 +117,6 @@ module.exports = {
   apiTimeout: 20000,
   transport: 'websocket', // Could be 'http' or 'websocket',
   appName: 'kApp',
-  pwa: process.env.PWA_ENV,
   // appLogo: 'kapp-logo.png',
   appWebsite: 'https://github.com/kalisio/kApp',
   publisher: 'Kalisio',
