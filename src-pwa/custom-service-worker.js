@@ -18,11 +18,12 @@ self.addEventListener('message', (event) => {
   }
 })
 
-// Use with precache injection 
+// Caching for offline mode
+
+// Preload and cache all resources defined in the manifest
 precacheAndRoute(self.__WB_MANIFEST)
 
-// Caching strategies
-// Register route starts with http (all)
+// Register the `NetworkFirst` caching strategy for all HTTP requests
 registerRoute(
   ({url}) => url.href.startsWith('http'),
   new NetworkFirst()
