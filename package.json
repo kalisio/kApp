@@ -75,8 +75,8 @@
   "dependencies": {
     "@casl/ability": "^6.3.0",
     "@casl/mongoose": "^7.1.0",
-    "@feathersjs/client": "^5.0.0-pre.28",
-    "@kalisio/feathers-s3": "https://github.com/kalisio/feathers-s3",
+    "@feathersjs/client": "^5.0.5",
+    "@kalisio/feathers-s3": "^1.1.0",
     "@quasar/extras": "^1.16.3",
     "ajv": "^8.12.0",
     "ajv-formats": "^2.1.1",
