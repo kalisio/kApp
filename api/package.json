@@ -53,6 +53,7 @@
     "standard": "^16.0.4"
   },
   "dependencies": {
+    "@feathersjs/authentication": "^5.0.5",
     "@feathersjs/express": "^5.0.5",
     "@feathersjs/feathers": "^5.0.5",
     "containerized": "^1.0.2",
