@@ -35,7 +35,7 @@ export default {
         value: 'todo',
         props: {
           service: 'documents',
-          renderer: { component: 'collection/KCard' },
+          renderer: { component: 'collection/KCard', class: 'full-width' },
           baseQuery: Object.assign({ etat_sani: 'sain' })
         },
         width: this.columnWidth
@@ -44,7 +44,7 @@ export default {
         value: 'doing',
         props: {
           service: 'documents',
-          renderer: { component: 'collection/KCard' },
+          renderer: { component: 'collection/KCard', class: 'full-width'  },
           baseQuery: Object.assign({ etat_sani: 'malade' })
         },
         width: this.columnWidth
@@ -53,7 +53,7 @@ export default {
         value: 'done',
         props: {
           service: 'documents',
-          renderer: { component: 'collection/KCard' },
+          renderer: { component: 'collection/KCard', class: 'full-width'  },
           baseQuery: Object.assign({ etat_sani: 'declin' })
         },
         width: this.columnWidth
