@@ -88,6 +88,10 @@ module.exports = [{
               props: true
             }
           }
+        }, 
+        webpush: {
+          name: 'webpush-activity',
+          component: 'WebpushActivity'
         }
       }
     }

@@ -174,6 +174,13 @@ module.exports = {
       signatureVersion: 'v4'
     },
     bucket: process.env.S3_BUCKET
+  },
+  push: {
+    vapidDetails: {
+      subject: process.env.SUBJECT,
+      publicKey: process.env.PUBLIC_VAPID_KEY,
+      privateKey: process.env.PRIVATE_VAPID_KEY
+    }
   }
 }
 

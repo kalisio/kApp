@@ -32,6 +32,7 @@ const leftPane = {
     { id: 'kanban', icon: 'dashboard', label: 'KanbanActivity.LABEL', renderer: 'item', route: { name: 'kanban-activity' } },
     { id: 'chart', icon: 'las la-chart-pie', label: 'ChartActivity.LABEL', renderer: 'item', route: { name: 'chart-activity' } },
     { id: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL', renderer: 'item', route: { name: 'editor-activity' } },
+    { id: 'webpush', icon: 'las la-bell', label: 'WebPushActivity.LABEL', renderer: 'item', route: { name: 'webpush-activity' } },
     { id: 'contextual-help', icon: 'las la-question-circle', label: 'ContextualHelp.LABEL', handler: { name: 'launchTour', params: ['home'] }, renderer: 'item' },
     { component: 'QSeparator' },
     { id: 'about', icon: 'las la-info', label: 'ABOUT', renderer: 'item', dialog: { component: 'app/KAbout', title: 'ABOUT', okAction: 'CLOSE' } },
@@ -132,6 +133,7 @@ module.exports = {
   storage: {
     useProxy: true
   },
+  publicVapidKey: process.env.PUBLIC_VAPID_KEY,
   screens: {
     // header: 'screen/KScreenHeader',
     // footer: 'screen/KScreenFooter',
@@ -424,6 +426,9 @@ module.exports = {
         { id: 'viewer', icon: 'las la-glasses', label: 'EditorActivity.VIEW', route: { name: 'view-object', params: { service: 'custom', objectId: '0' } } }
       ]
     }
+  },
+  webPushActivity: {
+    leftPane: leftPane
   },
   routes: require('../src/router/routes')
 }

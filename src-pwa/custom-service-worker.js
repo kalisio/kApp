@@ -22,9 +22,26 @@ self.addEventListener('message', (event) => {
 
 // Preload and cache all resources defined in the manifest
 precacheAndRoute(self.__WB_MANIFEST)
-
 // Register the `NetworkFirst` caching strategy for all HTTP requests
 registerRoute(
   ({url}) => url.href.startsWith('http'),
   new NetworkFirst()
 )
+
+// Web push notification
+let clickOpenUrl
+self.addEventListener('push', (event) => {
+  const pushOptions = event.data.json()
+  clickOpenUrl = pushOptions.url
+  // Show notification
+  event.waitUntil(self.registration.showNotification(pushOptions.title, pushOptions))
+})
+self.addEventListener('notificationclick', (event) => {
+  // Close notification if clicked
+  event.notification.close()
+  // Open window on the specified url
+  if (clickOpenUrl) {
+    const promiseChain = clients.openWindow(clickOpenUrl)
+    event.waitUntil(promiseChain)
+  }
+})
