@@ -177,9 +177,9 @@ module.exports = {
   },
   push: {
     vapidDetails: {
-      subject: process.env.SUBJECT,
-      publicKey: process.env.PUBLIC_VAPID_KEY,
-      privateKey: process.env.PRIVATE_VAPID_KEY
+      subject: process.env.VAPID_SUBJECT,
+      publicKey: process.env.VAPID_PUBLIC_KEY,
+      privateKey: process.env.VAPID_PRIVATE_KEY
     }
   }
 }

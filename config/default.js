@@ -133,7 +133,6 @@ module.exports = {
   storage: {
     useProxy: true
   },
-  publicVapidKey: process.env.PUBLIC_VAPID_KEY,
   screens: {
     // header: 'screen/KScreenHeader',
     // footer: 'screen/KScreenFooter',
