@@ -16,7 +16,8 @@ export default async function () {
       const response = {
         name: 'kapp',
         domain: app.get('domain'),
-        version: packageInfo.version
+        version: packageInfo.version,
+        vapidPublicKey: app.get('push').vapidDetails.publicKey
       }
       if (process.env.BUILD_NUMBER) {
         response.buildNumber = process.env.BUILD_NUMBER

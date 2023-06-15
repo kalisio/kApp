@@ -23,7 +23,6 @@ import {
 } from '@kalisio/feathers-webpush/client.js'
 import logger from 'loglevel'
 import _ from 'lodash'
-import config from 'config'
 
 export default {
   name: 'webpush-activity',
@@ -36,7 +35,7 @@ export default {
   methods: {
     async subscribe () {
       // Subscribe to web webpush notifications
-      const subscription = await subscribePushNotifications(_.get(config, 'publicVapidKey'))
+      const subscription = await subscribePushNotifications(Store.get('capabilities.api.vapidPublicKey'))
       // Patch user subscriptions
       const user = Store.get('user')
       await addSubscription(user, subscription, 'subscriptions')
