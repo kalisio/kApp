@@ -426,7 +426,7 @@ module.exports = {
       ]
     }
   },
-  webPushActivity: {
+  webpushActivity: {
     leftPane: leftPane
   },
   routes: require('../src/router/routes')
