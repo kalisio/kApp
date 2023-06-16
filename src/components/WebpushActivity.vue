@@ -1,10 +1,42 @@
 <template>
   <KPage>
     <template v-slot:page-content>
-      <div class="row full-width justify-center q-gutter-md">
-        <button v-if="isSubscribed" @click="sendNotification">Push</button>
-        <button v-if="!isSubscribed" @click="subscribe">Subscribe</button>
-        <button v-if="isSubscribed" @click="unsubscribe">Unsubscribe</button>
+      <div class="window-height justify-center items-center column">
+        <KAction
+          v-if="!isSubscribed"
+          id="subscribe-btn"
+          renderer="form-button"
+          color="primary"
+          label="webpush.SUBCRIBE"
+          :handler="subscribe"
+        />
+        <div v-if="isSubscribed">
+          <div class="ellipsis text-h6">{{ $tie('webpush.FORM_TITLE') }}</div>
+          <KForm
+            ref='form'
+            :values='values'
+            :schema='schema'
+            @field-changed="onFieldChanged"
+          />
+          <KAction
+            id="push-btn"
+            renderer="form-button"
+            color="primary"
+            size="sm"
+            label="webpush.PUSH"
+            :handler="sendNotification"
+          />
+          &nbsp;&nbsp;
+          <KAction
+            id="unsubscribe-btn"
+            renderer="form-button"
+            color="secondary"
+            size="sm"
+            label="webpush.UNSUBCRIBE"
+            :handler="unsubscribe"
+          />
+        </div>
+
       </div>
     </template>
   </KPage>
@@ -23,23 +55,28 @@ import {
 } from '@kalisio/feathers-webpush/client.js'
 import logger from 'loglevel'
 import _ from 'lodash'
+import baseSchema from '../schemas/push.create.json'
 
 export default {
   name: 'webpush-activity',
   mixins: [mixins.baseActivity()],
   data () {
     return {
-      isSubscribed: false
+      isSubscribed: false,
+      schema: baseSchema,
+      values: {}
     }
   },
   methods: {
     async subscribe () {
+      // Check notification permission
+      requestNotificationPermission()
       // Subscribe to web webpush notifications
       const subscription = await subscribePushNotifications(Store.get('capabilities.api.vapidPublicKey'))
       // Patch user subscriptions
       const user = Store.get('user')
       await addSubscription(user, subscription, 'subscriptions')
-       api.service('api/users').patch(Store.user._id, { subscriptions: user.subscriptions })
+      api.service('api/users').patch(Store.user._id, { subscriptions: user.subscriptions })
       this.isSubscribed = true
     },
     async unsubscribe () {
@@ -52,25 +89,21 @@ export default {
       this.isSubscribed = false
     },
     async sendNotification () {
-      // Setup notification params
-      const dataNotification = {
-        title: 'feathers-webpush example title',
-        body: 'feathers-webpush example body',
-        icon: 'https://s3.eu-central-1.amazonaws.com/kalisioscope/kalisio/kalisio-icon-256x256.png',
-        url: 'https://kalisio.com/'
-      }
-      // Send webpush notification
       api.service('api/push').create({
-        dataNotification: dataNotification, 
+        dataNotification: this.values, 
         subscriptionService: 'api/users',
         subscriptionProperty: 'subscriptions'
       })
+    },
+    async onFieldChanged (field, value) {
+      if (field === 'title') this.values.title = value
+      else if (field === 'body') this.values.body = value
+      else if (field === 'icon') this.values.icon = value
+      else if (field === 'url') this.values.url = value
     }
   },
   async mounted () {
     if (checkPrerequisites()) logger.debug('All prerequisites are valid')
-    // Check notification permission
-    requestNotificationPermission()
     // Check subscription to web push notifications
     const currentSubscription = await getPushSubscription()
     if (currentSubscription) {

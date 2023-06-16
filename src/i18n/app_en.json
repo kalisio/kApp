@@ -72,5 +72,15 @@
       "BOTTOM_PANE_LABEL": "Open the bottom pane any time using this handle.",
       "FAB_LABEL": "Quickly execute actions using this button."
     }
+  },
+  "webpush": {
+    "SUBCRIBE": "Subscribe",
+    "UNSUBCRIBE": "Unsubscribe",
+    "PUSH": "Push",
+    "TITLE": "Notification title",
+    "BODY": "Notification message",
+    "ICON": "Notification icon url",
+    "URL": "Notification redirection url",
+    "FORM_TITLE": "Customize web notification"
   }
 }

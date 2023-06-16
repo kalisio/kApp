@@ -72,5 +72,15 @@
       "BOTTOM_PANE_LABEL": "Ouvrez à tout moment le volet inférieur via cette poignée.",
       "FAB_LABEL": "Exécuter rapidement des actions via ce bouton."
     }
+  },
+  "webpush": {
+    "SUBCRIBE": "S'abonner",
+    "UNSUBCRIBE": "Se désinscrire",
+    "PUSH": "Envoyer",
+    "TITLE": "Titre de la notification",
+    "BODY": "Message de la notification",
+    "ICON": "Url de l'icône de la notification",
+    "URL": "Url de redirection de la notification",
+    "FORM_TITLE": "Personnalisation de la notification web"
   }
 }
