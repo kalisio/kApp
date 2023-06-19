@@ -27,23 +27,23 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "9a5b5c963494e2c0df4bdbd76e8ed986"
+    "revision": "43beaa6935871b21b35e55d81b8e4dea"
   },
   {
     "url": "about/contact.html",
-    "revision": "3087c9d2624c2bdc8e6ba6f79d050a85"
+    "revision": "560130f961c2a5bdd817d6bfa8c4bc55"
   },
   {
     "url": "about/contributing.html",
-    "revision": "c02d9763124d2697262b49e6ff752108"
+    "revision": "e0f601aabaa70dbdde970cf0435d6d85"
   },
   {
     "url": "about/index.html",
-    "revision": "3633da62ceb10d607f3536bc4b0eb9f8"
+    "revision": "f2f1334bac342b8dac74af6ecff130a7"
   },
   {
     "url": "about/license.html",
-    "revision": "27770c5d97a1561e1ba67d652142f3bb"
+    "revision": "c0483377aeff1149fac8895d3b24b943"
   },
   {
     "url": "assets/css/0.styles.1fa0446e.css",
@@ -94,8 +94,8 @@ self.__precacheManifest = [
     "revision": "a368be7752ea12ad2c014456f4811532"
   },
   {
-    "url": "assets/js/10.dfa57fc0.js",
-    "revision": "7162fe41b487db58103623bb54fe17f5"
+    "url": "assets/js/10.e8b251f8.js",
+    "revision": "e39fa87aaf7d5d539b5f6af703b27fa9"
   },
   {
     "url": "assets/js/11.574ac872.js",
@@ -126,32 +126,32 @@ self.__precacheManifest = [
     "revision": "2baf5608fee29fff1477c4b4d7e4283a"
   },
   {
-    "url": "assets/js/18.9efd8083.js",
-    "revision": "1b660b1c84ead3cb793fc7d04052265d"
+    "url": "assets/js/18.11ca0710.js",
+    "revision": "59898b2c236519c3f4fc7cc82666bd9c"
   },
   {
-    "url": "assets/js/19.938c5482.js",
-    "revision": "83dd1194bae063f2bc983ab04c5c6581"
+    "url": "assets/js/19.e493b7a4.js",
+    "revision": "df7b1d57123095fbe13c3648e2abfec0"
   },
   {
     "url": "assets/js/2.cbdd6b15.js",
     "revision": "41767abba1a808e7fd9b3975ae0c954e"
   },
   {
-    "url": "assets/js/20.4ecad343.js",
-    "revision": "8fb52d7ea925a9f105fa92b1127b5f9d"
+    "url": "assets/js/20.734ac1dc.js",
+    "revision": "fbbfbbe090457284583276bc2b7991d3"
   },
   {
-    "url": "assets/js/21.05ccc6fc.js",
-    "revision": "aed180e6119a211b8846f7d7dcc272f1"
+    "url": "assets/js/21.2c1e4cf4.js",
+    "revision": "f625c01eb019e0265f88644eae80cbce"
   },
   {
-    "url": "assets/js/22.0861876d.js",
-    "revision": "9ea198060cfaf89ec1909c8e9cd145b6"
+    "url": "assets/js/22.a94bba2e.js",
+    "revision": "0b2299883c15c45e7a14efe74785c0e6"
   },
   {
-    "url": "assets/js/23.ca4152cb.js",
-    "revision": "592f8ae70970d66fb8397681621cd1b0"
+    "url": "assets/js/23.9edf7edb.js",
+    "revision": "8391be28e3ab6999cf47984daa0be2ba"
   },
   {
     "url": "assets/js/24.027fa423.js",
@@ -202,52 +202,52 @@ self.__precacheManifest = [
     "revision": "4ecc5b9fcfad5f633d6532b60b2d0843"
   },
   {
-    "url": "assets/js/app.d1a46770.js",
-    "revision": "2d2934d03b2ebcf3789250566623407d"
+    "url": "assets/js/app.5b75127b.js",
+    "revision": "e6582ea75e3d6761cc5b8112420b44fa"
   },
   {
     "url": "guides/customizing/tour.html",
-    "revision": "7572a87bc58a9a39c1b313f4df9dc9b9"
+    "revision": "2b4c59621cbe863c00146f6e431e08a0"
   },
   {
     "url": "guides/development/configure.html",
-    "revision": "08e4eecec4e33817e1b71642560e55c3"
+    "revision": "49a5befa5fd9d1d593783492c1484c28"
   },
   {
     "url": "guides/development/deploy.html",
-    "revision": "5906cdfd96786eaa2aa7b3cbc1f3acbf"
+    "revision": "2ec207d24c7f126946fd89e13d217335"
   },
   {
     "url": "guides/development/develop.html",
-    "revision": "5bbe715764c5e6f6f8d1fcf9587ea10c"
+    "revision": "cd694715d2f9bce1613760c5900774da"
   },
   {
     "url": "guides/development/publish.html",
-    "revision": "406d7e61cca611b6154872abf30ba6cd"
+    "revision": "13af922399289f961ee99cd76d5cdc1f"
   },
   {
     "url": "guides/development/setup.html",
-    "revision": "e07c4fc33e7b22c3013ff50f8a330922"
+    "revision": "69eff687f5633d3fea922138ffb89ccd"
   },
   {
     "url": "guides/development/test.html",
-    "revision": "7153a9d299b74dd404fafaf0ef5fb7ff"
+    "revision": "ba2310720bdc2a1b1f608b85f181a3bf"
   },
   {
     "url": "guides/installing-kapp.html",
-    "revision": "94667807aa841db3a1f9dc518efcd966"
+    "revision": "4e5168555b93cd20bb50c6d3e5c63c6b"
   },
   {
     "url": "guides/introduction.html",
-    "revision": "c1b0e89da9a2a1e8b3aa43796d94260f"
+    "revision": "01fbe4fdd8410336aa828a0dc7acb092"
   },
   {
     "url": "index.html",
-    "revision": "848f298d623eb81a5ee7867cbcb5d660"
+    "revision": "d9cad07bcb11a0ae7804bea76f7edc5b"
   },
   {
     "url": "reference/configuration.html",
-    "revision": "a01dd4482a80455c0ee0fc166ec37230"
+    "revision": "d7409e2e72aa85e4aab8e2801625f104"
   },
   {
     "url": "router-tour.js",
