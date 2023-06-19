@@ -2,11 +2,15 @@
 
 ## Prerequisites
 
-The complete list of prerequisites is available [here](https://kalisio.github.io/kdk/guides/development/setup.html)
+Install the prerequisites for the KDK, available [here](https://kalisio.github.io/kdk/guides/development/setup.html).
+
+### Install Cordova ecosystem
+
+Follow this [tutorial](https://evothings.com/doc/build/cordova-install-windows.html).
 
 ## Web app
 
-While it is a WIP and not yet pushed to NPM, or when developing, please use this [link](../installing-kapp.html).
+Please [follow the installation from source code guide](../installing-kapp.md#from-source-code).
 
 ## Cordova wrapper
 

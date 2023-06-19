@@ -34,6 +34,16 @@ From the backend `api` folder run the server-side Feathers app, this will also s
 
 Then point your browser to [localhost:8081](http://localhost:8081).
 
+### Linting the code
+
+As the KDK, the kApp relies on [JavaScript standard style](https://github.com/feross/standard).
+
+To lint the code (from root project folder or the backend `api` folder):
+
+```bash
+$yarn lint
+```
+
 ### Debugging
 
 Use [Chrome DevTools](https://medium.com/@paul_irish/debugging-node-js-nightlies-with-chrome-devtools-7c4a1b95ae27), look at this [tutorial video](https://www.youtube.com/watch?v=Xb_0awoShR8). Usually you simply have to open `chrome://inspect` in the Chrome URL.
@@ -78,6 +88,7 @@ When running the app through Cordova the `domain` entry of the client-side confi
 * use [port forwarding](https://developers.google.com/web/tools/chrome-devtools/remote-debugging/local-server)
 
 ### Building for production
+
 Build the app in release mode (from project folder):
 
 ```bash

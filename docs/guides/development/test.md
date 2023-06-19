@@ -1,6 +1,6 @@
 # Testing your app
 
-The **kApp** relies on the [Mocha](https://mochajs.org/) testing framework and the [Chai](https://www.chaijs.com/) assertion library. 
+As based on the [KDK](https://kalisio.github.io/kdk/guides/development/test.html), The **kApp** relies on the [Mocha](https://mochajs.org/) testing framework and the [Chai](https://www.chaijs.com/) assertion library. 
 
 ## API
 

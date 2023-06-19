@@ -52,7 +52,7 @@ We recommand using our [CLI](https://kalisio.github.io/kdk/tools/cli.html#kdk-cl
 
 First you have to ensure the [KDK prerequisites](https://kalisio.github.io/kdk/guides/development/setup.html#prerequisites) to run kApp from source code. Then the following commands, assuming you have a MongoDB instance running on local host and default port (27017), should launch your local instance of kApp.
 
-Start by cloning all the modules/plugins you need and use [yarn/npm link](https://docs.npmjs.com/cli/link) to make them globally available to your Node.js installation:
+Start by cloning all the modules you need and use [yarn/npm link](https://docs.npmjs.com/cli/link) to make them globally available to your Node.js installation:
 ```bash
 // Clone and link KDK
 git clone https://github.com/kalisio/kdk.git
@@ -62,9 +62,9 @@ yarn link
 ...
 ```
 
-Then clone the main app repository and link to modules/plugins to make Node.js pointing to the previously cloned modules instead of those installed by yarn/npm, e.g. :
+Then clone the main app repository and link to modules to make Node.js pointing to the previously cloned modules instead of those installed by yarn/npm, e.g. :
 ```bash
-// In another terminal clone and link plugins to kApp
+// In another terminal clone and link modules to kApp
 git clone https://github.com/kalisio/kApp.git
 
 // Run the server/API
@@ -83,5 +83,5 @@ yarn dev
 Then point your browser to [localhost:8080](http://localhost:8080).
 
 ::: warning
-Take care that a top-level module/plugin might depend on another module/plugin so you will have to link them together, for instance the kdk plugin depends on the weacast-core plugin.
+Take care that if a top-level module/plugin might depend on another module/plugin you will have to link them together during development, for instance the kdk module depends on the weacast-core module.
 :::
