@@ -77,10 +77,10 @@
     "SUBCRIBE": "S'abonner",
     "UNSUBCRIBE": "Se désinscrire",
     "PUSH": "Envoyer",
-    "TITLE": "Titre de la notification",
-    "BODY": "Message de la notification",
-    "ICON": "Url de l'icône de la notification",
-    "URL": "Url de redirection de la notification",
+    "TITLE": "Titre",
+    "BODY": "Message",
+    "ICON": "Url de l'icône",
+    "URL": "Url de redirection",
     "FORM_TITLE": "Personnalisation de la notification web"
   }
 }

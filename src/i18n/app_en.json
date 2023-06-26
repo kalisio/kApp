@@ -77,10 +77,10 @@
     "SUBCRIBE": "Subscribe",
     "UNSUBCRIBE": "Unsubscribe",
     "PUSH": "Push",
-    "TITLE": "Notification title",
-    "BODY": "Notification message",
-    "ICON": "Notification icon url",
-    "URL": "Notification redirection url",
+    "TITLE": "Title",
+    "BODY": "Message",
+    "ICON": "Icon url",
+    "URL": "Redirection url",
     "FORM_TITLE": "Customize web notification"
   }
 }

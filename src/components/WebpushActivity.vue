@@ -1,7 +1,7 @@
 <template>
   <KPage>
     <template v-slot:page-content>
-      <div class="window-height justify-center items-center column">
+      <div class="window-height full-width justify-center items-center column">
         <KAction
           v-if="!isSubscribed"
           id="subscribe-btn"
@@ -11,7 +11,7 @@
           :handler="subscribe"
         />
         <div v-if="isSubscribed">
-          <div class="ellipsis text-h6">{{ $tie('webpush.FORM_TITLE') }}</div>
+          <div class="ellipsis text-bold">{{ $tie('webpush.FORM_TITLE') }}</div>
           <KForm
             ref='form'
             :values='values'
@@ -36,7 +36,6 @@
             :handler="unsubscribe"
           />
         </div>
-
       </div>
     </template>
   </KPage>
