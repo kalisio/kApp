@@ -1,9 +1,3 @@
-/*
- * This file (which will be your service worker)
- * is picked up by the build system ONLY if
- * quasar.config.js > pwa > workboxPluginMode is set to "InjectManifest"
- */
-
 import { precacheAndRoute } from 'workbox-precaching'
 import { registerRoute } from 'workbox-routing'
 import { NetworkFirst } from 'workbox-strategies'
@@ -12,14 +6,13 @@ import { NetworkFirst } from 'workbox-strategies'
 self.__WB_DISABLE_DEV_LOGS = true
 
 // Activate new service worker
-self.addEventListener('message', (event) => {
+self.addEventListener('message', event => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting()
   }
 })
 
 // Caching for offline mode
-
 // Preload and cache all resources defined in the manifest
 precacheAndRoute(self.__WB_MANIFEST)
 // Register the `NetworkFirst` caching strategy for all HTTP requests
@@ -30,13 +23,13 @@ registerRoute(
 
 // Web push notification
 let clickOpenUrl
-self.addEventListener('push', (event) => {
+self.addEventListener('push', event => {
   const pushOptions = event.data.json()
   clickOpenUrl = pushOptions.url
   // Show notification
   event.waitUntil(self.registration.showNotification(pushOptions.title, pushOptions))
 })
-self.addEventListener('notificationclick', (event) => {
+self.addEventListener('notificationclick', event => {
   // Close notification if clicked
   event.notification.close()
   // Open window on the specified url
