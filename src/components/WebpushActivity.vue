@@ -42,7 +42,8 @@
 </template>
 
 <script>
-import { mixins, api, Store } from '@kalisio/kdk/core.client'
+import { mixins, api, Store, i18n } from '@kalisio/kdk/core.client'
+import { Notify } from 'quasar'
 import { 
   checkPrerequisites,
   getPushSubscription,
@@ -69,7 +70,11 @@ export default {
   methods: {
     async subscribe () {
       // Check notification permission
-      requestNotificationPermission()
+      try {
+        await requestNotificationPermission()
+      } catch (error) {
+        Notify.create({ type: 'negative', message: i18n.t(`errors.${error.code}`) })
+      }
       // Subscribe to web webpush notifications
       const subscription = await subscribePushNotifications(Store.get('capabilities.api.vapidPublicKey'))
       // Patch user subscriptions
@@ -103,11 +108,12 @@ export default {
   },
   async mounted () {
     // Check prerequisites
-    const prerequisites = checkPrerequisites()
-    if (prerequisites) logger.debug('All prerequisites are valid')
-    else if (prerequisites.code === 499) return logger.debug('Denied permission to send notifications')
-    else return  logger.debug('This browser does not support notifications')
-    // Check subscription to web push notifications
+    try {
+      await checkPrerequisites()
+      logger.debug('All prerequisites are valid')
+    } catch (error) {
+      Notify.create({ type: 'negative', message: i18n.t(`errors.${error.code}`) })
+    }
     const currentSubscription = await getPushSubscription()
     if (currentSubscription) {
       // Check if the subscription is in database
