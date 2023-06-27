@@ -102,7 +102,11 @@ export default {
     }
   },
   async mounted () {
-    if (checkPrerequisites()) logger.debug('All prerequisites are valid')
+    // Check prerequisites
+    const prerequisites = checkPrerequisites()
+    if (prerequisites) logger.debug('All prerequisites are valid')
+    else if (prerequisites.code === 499) return logger.debug('Denied permission to send notifications')
+    else return  logger.debug('This browser does not support notifications')
     // Check subscription to web push notifications
     const currentSubscription = await getPushSubscription()
     if (currentSubscription) {
