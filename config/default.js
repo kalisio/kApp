@@ -85,20 +85,20 @@ const collectionActions = [
 const widgets = [
   { 
     id: 'widget-1', label: 'Widget 1', icon: 'las la-restore-windows',
-    content: { component: 'layout/Widget1'}, 
-    header: [{ id: 'title', component: 'KStamp', text: 'Widget 1 header' }] 
+    content: { component: 'layout/Widget'}, 
+    header: [{ id: 'title', component: 'KStamp', text: 'Widget 1', direction: 'horizontal' }] 
   }, 
   { 
-    id: 'widget-2', label: 'Widget 2', content: { component: 'layout/Widget2'} 
+    id: 'widget-2', label: 'Widget 2', content: { component: 'layout/Widget'} 
   }, 
   { 
-    id: 'widget-3', label: 'Widget 3', content: { component: 'layout/Widget3'} 
+    id: 'widget-3', label: 'Widget 3', content: { component: 'layout/Widget'} 
   }, 
   { 
-    id: 'widget-4', label: 'Widget 4', content: { component: 'layout/Widget4'} 
+    id: 'widget-4', label: 'Widget 4', content: { component: 'layout/Widget'} 
   },
   { 
-    id: 'widget-Store', label: 'Widget Store', content: { component: 'layout/WidgetStore'} 
+    id: 'widget-Store', label: 'Store', content: { component: 'layout/WidgetStore'}, scrollable: true
   }
 ]
 

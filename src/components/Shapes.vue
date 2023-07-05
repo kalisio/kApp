@@ -22,13 +22,13 @@
 import { ref } from 'vue'
 
 const shapes = ref([
-  { type: 'circle' },
-  { type: 'ellipse', width: 24 },
-  { type: 'rect' },
-  { type: 'triangle-up' },
-  { type: 'triangle-down' },
-  { type: 'triangle-right' }, 
-  { type: 'triangle-left' },
-  { type: 'diamond' }
+  { type: 'circle', tooltip: 'Circle' },
+  { type: 'ellipse', width: 24, tooltip: 'Ellipse' },
+  { type: 'rect', tooltip: 'Rect' },
+  { type: 'triangle-up', tooltip: 'Triangle up' },
+  { type: 'triangle-down', tooltip: 'Triangle down' },
+  { type: 'triangle-right', tooltip: 'Triangle right' },
+  { type: 'triangle-left', tooltip: 'Triangle left' },
+  { type: 'diamond', tooltip: 'Diamond' },
 ])
 </script>
