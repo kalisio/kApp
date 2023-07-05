@@ -6,11 +6,14 @@ const clientPort = process.env.CLIENT_PORT || 8080
 const API_PREFIX = '/api'
 
 let domain
+let shortName = 'kApp'
 // If we build a specific staging instance
 if (process.env.NODE_APP_INSTANCE === 'dev') {
   domain = 'https://kapp.dev.kalisio.xyz'
+  shortName = 'kApp Dev'
 } else if (process.env.NODE_APP_INSTANCE === 'test') {
   domain = 'https://kapp.test.kalisio.xyz'
+  shortName = 'kApp Test'
 } else if (process.env.NODE_APP_INSTANCE === 'prod') {
   domain = 'https://kapp.kalisio.xyz'
 } else {
@@ -110,6 +113,7 @@ module.exports = {
   // If using local IP on WiFi router
   // domain: 'http://192.168.1.16:8081',
   domain,
+  shortName,
   flavor: process.env.NODE_APP_INSTANCE || 'dev',
   version: require('../package.json').version,
   buildNumber: process.env.BUILD_NUMBER,
