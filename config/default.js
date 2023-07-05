@@ -6,7 +6,7 @@ const clientPort = process.env.CLIENT_PORT || 8080
 const API_PREFIX = '/api'
 
 let domain
-let shortName
+let shortName = 'kApp'
 // If we build a specific staging instance
 if (process.env.NODE_APP_INSTANCE === 'dev') {
   domain = 'https://kapp.dev.kalisio.xyz'
@@ -16,9 +16,7 @@ if (process.env.NODE_APP_INSTANCE === 'dev') {
   shortName = 'kApp Test'
 } else if (process.env.NODE_APP_INSTANCE === 'prod') {
   domain = 'https://kapp.kalisio.xyz'
-  shortName = 'kApp'
 } else {
-  shortName = 'kApp'
   // Otherwise we are on a developer machine
   if (process.env.NODE_ENV === 'development') {
     domain = 'http://localhost:' + clientPort
