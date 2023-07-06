@@ -9,12 +9,13 @@ notifications:
 stages:
 - name: APP
   if: commit_message !~ /(skip[ _-]app)/
+- name: DOC
+  if: commit_message =~ /\[build doc\]/  
 - name: ANDROID
   if: commit_message =~ /\[build android\]/
 - name: IOS
   if: commit_message =~ /\[build ios\]/
-- name: DOC
-  if: commit_message =~ /\[build doc\]/
+
 
 jobs:
   include:
