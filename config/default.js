@@ -27,8 +27,7 @@ if (process.env.NODE_APP_INSTANCE === 'dev') {
 
 const leftPane = {
   content: [
-    { component: 'KLogo' },
-    { component: 'account/KIdentityPanel', class: 'full-width' },
+    { component: 'account/KProfile', class: 'full-width' },
     { id: 'layout', icon: 'las la-desktop', label: 'LayoutActivity.LABEL', renderer: 'item', route: { name: 'layout-activity' } },
     { id: 'miscellaneous', icon: 'las la-icons', label: 'MiscellaneousActivity.LABEL', renderer: 'item', route: { name: 'miscellaneous-activity' } },
     { id: 'collection', icon: 'las la-list', label: 'CollectionActivity.LABEL', renderer: 'item', route: { name: 'collection-activity', params: { page: 'list' } } },
@@ -190,6 +189,18 @@ module.exports = {
       right: { opener: true },
       bottom: { opener: true }
     }
+  },
+  profile: {
+    editable: true,
+    manageable: true
+  },
+  account: {
+    sections: [
+      { title: 'KPasswordManager.TITLE', component: 'account/KPasswordManager' },
+      { title: 'KIdentityManager.TITLE', component: 'account/KIdentityManager' },
+      { title: 'KSubscriptionsManager.TITLE', component: 'account/KSubscriptionsManager' }
+    ],
+    deletable: true
   },
   accountActivity: {
     leftPane: leftPane,
