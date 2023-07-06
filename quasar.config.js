@@ -272,8 +272,8 @@ module.exports = configure(function (ctx) {
       },
       
       manifest: {
-        name: `kApp`,
-        short_name: clientConfig.shortName,
+        name: clientConfig.pwaName,
+        short_name: clientConfig.pwaName,
         description: `KDK application test`,
         display: 'standalone',
         start_url: './',
