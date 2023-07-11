@@ -25,7 +25,7 @@ export default {
         logger.error(error)
         return
       }
-      const options = { message: error.message || error.error_message, html: true }
+      const options = { type: 'negative', message: error.message || error.error_message, html: true }
       // Check if user can retry to avoid this error
       if (error.retryHandler) {
         options.actions = [{

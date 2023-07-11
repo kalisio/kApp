@@ -190,10 +190,6 @@ module.exports = {
       bottom: { opener: true }
     }
   },
-  profile: {
-    editable: true,
-    manageable: true
-  },
   account: {
     sections: [
       { title: 'KPasswordManager.TITLE', component: 'account/KPasswordManager' },
@@ -201,28 +197,6 @@ module.exports = {
       { title: 'KSubscriptionsManager.TITLE', component: 'account/KSubscriptionsManager' }
     ],
     deletable: true
-  },
-  accountActivity: {
-    leftPane: leftPane,
-    topPane: {
-      content: {
-        profile: [
-          { id: 'profile', icon: 'las la-user', color: 'primary', label: 'KAccountActivity.PROFILE', disabled: true },
-          { id: 'security', icon: 'las la-shield-alt', tooltip: 'KAccountActivity.SECURITY', route: { name: 'account-activity', params: { page: 'security' } } },
-          { id: 'danger-zone', icon: 'las la-exclamation-triangle', tooltip: 'KAccountActivity.DANGER_ZONE', route: { name: 'account-activity', params: { page: 'danger-zone' } } }
-        ],
-        security: [
-          { id: 'profile', icon: 'las la-user', tooltip: 'KAccountActivity.PROFILE', route: { name: 'account-activity', params: { page: 'profile' } } },
-          { id: 'security', icon: 'las la-shield-alt', color: 'primary', label: 'KAccountActivity.SECURITY', disabled: true },
-          { id: 'danger-zone', icon: 'las la-exclamation-triangle', tooltip: 'KAccountActivity.DANGER_ZONE', route: { name: 'account-activity', params: { page: 'danger-zone' } } }
-        ],
-        'danger-zone': [
-          { id: 'profile', icon: 'las la-user', tooltip: 'KAccountActivity.PROFILE', route: { name: 'account-activity', params: { page: 'profile' } } },
-          { id: 'security', icon: 'las la-shield-alt', tooltip: 'KAccountActivity.SECURITY', route: { name: 'account-activity', params: { page: 'security' } } },
-          { id: 'danger-zone', icon: 'las la-exclamation-triangle', color: 'primary', label: 'KAccountActivity.DANGER_ZONE', disabled: true }
-        ]
-      }
-    }
   },
   layoutActivity: {
     leftPane: leftPane,

@@ -163,6 +163,20 @@ module.exports = {
     adapter: 'mongodb',
     url: process.env.DB_URL || (containerized ? 'mongodb://mongodb:27017/kapp' : 'mongodb://127.0.0.1:27017/kapp')
   },
+  mailer: {
+    service: 'gmail',
+    auth: {
+      type: 'OAuth2',
+      user: process.env.GOOGLE_MAIL_USER,
+      // Not required anymore for OAuth2
+      //pass: process.env.GOOGLE_MAIL_PASSWORD
+      serviceClient: process.env.GOOGLE_MAIL_CLIENT_ID,
+      // New lines in env var causes some problems and raises the following error
+      // Uncaught Error: error:0909006C:PEM routines:get_name:no start line
+      privateKey: process.env.GOOGLE_MAIL_PRIVATE_KEY
+    },
+    templateDir: path.join(__dirname, 'email-templates')
+  },
   storage: {
     s3Client: {
       credentials: {
