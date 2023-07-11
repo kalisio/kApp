@@ -10,10 +10,10 @@ let pwaName = 'kApp'
 // If we build a specific staging instance
 if (process.env.NODE_APP_INSTANCE === 'dev') {
   domain = 'https://kapp.dev.kalisio.xyz'
-  pwaName = ' (dev)'
+  pwaName += ' (dev)'
 } else if (process.env.NODE_APP_INSTANCE === 'test') {
   domain = 'https://kapp.test.kalisio.xyz'
-  pwaName = ' (test)'
+  pwaName += ' (test)'
 } else if (process.env.NODE_APP_INSTANCE === 'prod') {
   domain = 'https://kapp.kalisio.xyz'
 } else {
