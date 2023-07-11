@@ -74,8 +74,6 @@
     }
   },
   "webpush": {
-    "SUBCRIBE": "Subscribe",
-    "UNSUBCRIBE": "Unsubscribe",
     "PUSH": "Push",
     "TITLE": "Title",
     "BODY": "Message",

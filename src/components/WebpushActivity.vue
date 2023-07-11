@@ -2,15 +2,7 @@
   <KPage>
     <template v-slot:page-content>
       <div class="window-height full-width justify-center items-center column">
-        <KAction
-          v-if="!isSubscribed"
-          id="subscribe-btn"
-          renderer="form-button"
-          color="primary"
-          label="webpush.SUBCRIBE"
-          :handler="subscribe"
-        />
-        <div v-if="isSubscribed">
+        <div>
           <div class="ellipsis text-bold">{{ $tie('webpush.FORM_TITLE') }}</div>
           <KForm
             ref='form'
@@ -26,15 +18,6 @@
             label="webpush.PUSH"
             :handler="sendNotification"
           />
-          &nbsp;&nbsp;
-          <KAction
-            id="unsubscribe-btn"
-            renderer="form-button"
-            color="secondary"
-            size="sm"
-            label="webpush.UNSUBCRIBE"
-            :handler="unsubscribe"
-          />
         </div>
       </div>
     </template>
@@ -42,18 +25,7 @@
 </template>
 
 <script>
-import { mixins, api, Store, i18n } from '@kalisio/kdk/core.client'
-import { Notify } from 'quasar'
-import { 
-  checkPrerequisites,
-  getPushSubscription,
-  subscribePushNotifications,
-  unsubscribePushNotifications,
-  requestNotificationPermission,
-  addSubscription,
-  removeSubscription
-} from '@kalisio/feathers-webpush/client.js'
-import logger from 'loglevel'
+import { mixins, api } from '@kalisio/kdk/core.client'
 import _ from 'lodash'
 import baseSchema from '../schemas/push.create.json'
 
@@ -62,36 +34,11 @@ export default {
   mixins: [mixins.baseActivity()],
   data () {
     return {
-      isSubscribed: false,
       schema: baseSchema,
       values: {}
     }
   },
   methods: {
-    async subscribe () {
-      // Check notification permission
-      try {
-        await requestNotificationPermission()
-      } catch (error) {
-        Notify.create({ type: 'negative', message: i18n.t(`errors.${error.code}`) })
-      }
-      // Subscribe to web webpush notifications
-      const subscription = await subscribePushNotifications(Store.get('capabilities.api.vapidPublicKey'))
-      // Patch user subscriptions
-      const user = Store.get('user')
-      await addSubscription(user, subscription, 'subscriptions')
-      api.service('api/users').patch(Store.user._id, { subscriptions: user.subscriptions })
-      this.isSubscribed = true
-    },
-    async unsubscribe () {
-      // Unsubscribe from web webpush notifications
-      const subscription = await unsubscribePushNotifications()
-      // Patch user subscriptions
-      const user = Store.get('user')
-      removeSubscription(user, subscription, 'subscriptions')
-      api.service('api/users').patch(Store.user._id, { subscriptions: user.subscriptions })
-      this.isSubscribed = false
-    },
     async sendNotification () {
       api.service('api/push').create({
         dataNotification: this.values, 
@@ -104,23 +51,6 @@ export default {
       else if (field === 'body') this.values.body = value
       else if (field === 'icon') this.values.icon = value
       else if (field === 'url') this.values.url = value
-    }
-  },
-  async mounted () {
-    // Check prerequisites
-    try {
-      await checkPrerequisites()
-      logger.debug('All prerequisites are valid')
-    } catch (error) {
-      Notify.create({ type: 'negative', message: i18n.t(`errors.${error.code}`) })
-    }
-    const currentSubscription = await getPushSubscription()
-    if (currentSubscription) {
-      // Check if the subscription is in database
-      const user = Store.get('user')
-      _.find(_.get(user, 'subscriptions', []), subscription => subscription.endpoint === currentSubscription.endpoint) ? this.isSubscribed = true : this.isSubscribed = false
-    } else {
-      this.isSubscribed = false
     }
   },
 }

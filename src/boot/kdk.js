@@ -4,7 +4,7 @@ import config from 'config'
 import { Notify } from 'quasar'
 import appHooks from '../main.hooks'
 import services from '../services'
-import { initializeApi, i18n, utils as kdkCoreUtils, Store, Layout, Events, beforeGuard, authenticationGuard } from '@kalisio/kdk/core.client'
+import { utils, initializeApi, i18n, utils as kdkCoreUtils, Store, Layout, Events, beforeGuard, authenticationGuard } from '@kalisio/kdk/core.client'
 
 export default async ({ app }) => {
   // Initiate the client
@@ -58,4 +58,9 @@ export default async ({ app }) => {
 
   // Add global guard
   beforeGuard.registerGuard(authenticationGuard)
+
+  // Subscribe to webpush notifications
+  api.on('authenticated', (data) => {
+    utils.subscribeToPushNotifications()
+  })
 }

@@ -74,8 +74,6 @@
     }
   },
   "webpush": {
-    "SUBCRIBE": "S'abonner",
-    "UNSUBCRIBE": "Se désinscrire",
     "PUSH": "Envoyer",
     "TITLE": "Titre",
     "BODY": "Message",
