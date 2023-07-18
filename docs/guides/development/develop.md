@@ -60,6 +60,16 @@ For the backend run one instance with `$ yarn dev` and the other one with `$ yar
 
 Look at this [tutorial](https://washamdev.com/debug-a-website-in-ios-safari-on-windows/) will you need to debug the app in Safari from a Windows developmen environment.
 
+### Remote debugging
+
+Notably useful to debug your app running on a mobile device.
+
+For this you need to [enable remote debug on your Android device](https://developer.chrome.com/docs/devtools/remote-debugging/).
+
+::: warning
+For PWA you will need to setup port forwarding so that you can use the same `http:\\localhost:port` adress on your device as on your PC, otherwise you will not be able to install the application.
+:::
+
 ## Cordova wrapper
 
 [Quasar guide](https://quasar.dev/quasar-cli/developing-cordova-apps/introduction) might help.
