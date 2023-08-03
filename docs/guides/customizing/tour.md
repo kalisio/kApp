@@ -25,7 +25,9 @@ You can then follow the step by step guide <a href=""><i class="las la-chevron-r
 ## Configuration
 
 The tour configuration in the kApp depends on how many tours you want to associate with a route.
+
 ### Set of tours associated with a route
+
 To configure multiple tours associated with a route, you must add a tour object to the route configuration in the `src/router/routes.js` file.
 Example of configuration to associate two tours to the layout route:
 
@@ -34,10 +36,11 @@ Example of configuration to associate two tours to the layout route:
 :::
 
 ::: tip
-You can launch a tour using a query parameter with `tower=name-tour`.
+You can launch a tour using a query parameter with `tour=tour-name`.
 :::
 
 ### Only one tour associated with a route
+
 To configure a single tour associated with a route, you must:
 
 1. Add a tour property to the route configuration in the `src/router/routes.js` file.
