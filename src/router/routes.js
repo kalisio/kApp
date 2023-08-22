@@ -30,11 +30,6 @@ module.exports = [{
             'side-nav': tours['side-nav']
           },
         },
-        'account/:page': {
-          name: 'account-activity',
-          component: 'account/KAccountActivity',
-          props: true
-        },
         layout: {
           name: 'layout-activity',
           component: 'LayoutActivity'
