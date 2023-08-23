@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import config from 'config'
 import { mixins, api } from '@kalisio/kdk/core.client'
 import _ from 'lodash'
 import baseSchema from '../schemas/push.create.json'
@@ -40,9 +41,9 @@ export default {
   },
   methods: {
     async sendNotification () {
-      api.service('api/push').create({
+      api.getService('push').create({
         notification: this.values, 
-        subscriptionService: 'api/users',
+        subscriptionService: `${config.apiPath}/users`,
         subscriptionProperty: 'subscriptions'
       })
     },
