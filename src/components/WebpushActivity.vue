@@ -41,7 +41,7 @@ export default {
   methods: {
     async sendNotification () {
       api.service('api/push').create({
-        dataNotification: this.values, 
+        notification: this.values, 
         subscriptionService: 'api/users',
         subscriptionProperty: 'subscriptions'
       })
