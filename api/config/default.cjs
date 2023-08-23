@@ -194,7 +194,9 @@ module.exports = {
       subject: process.env.VAPID_SUBJECT,
       publicKey: process.env.VAPID_PUBLIC_KEY,
       privateKey: process.env.VAPID_PRIVATE_KEY
-    }
+    },
+    // By default push service is not accessible externally
+    disallowExternalPush: false
   }
 }
 
