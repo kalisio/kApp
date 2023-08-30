@@ -214,7 +214,7 @@ before(async function () {
   ...
   // Prepare structure for current run
   api = new core.Api({
-    appName: 'aktnmap'
+    appName: 'crisis'
   })
   client = api.createClient()
   runner = new core.Runner(suite, { ... })
