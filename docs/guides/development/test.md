@@ -167,7 +167,9 @@ A lot of options can be passed to the runner and some defaults provided using en
   // Accuracy might be required to get some desired behaviours
   geolocation: {
     accuracy: 1000 // in meters, defaults to 500
-  }
+  },
+  // Web push notifications allowed
+  notifications: true
 }
 ```
 
