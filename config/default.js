@@ -122,7 +122,7 @@ module.exports = {
   transport: 'websocket', // Could be 'http' or 'websocket',
   appName: 'kApp',
   // appLogo: 'kapp-logo.png',
-  appWebsite: 'https://github.com/kalisio/kApp',
+  appChangelog: 'https://kalisio.github.io/kApp/about/changelog.html',
   publisher: 'Kalisio',
   publisherWebsite: website,
   locale: {
