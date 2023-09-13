@@ -14,7 +14,7 @@ export default async ({ app }) => {
   api.hooks(appHooks)
 
   // Then all services
-  services.call(api)
+  await services.call(api)
 
   // Initializes i18n
   await i18n.initialize(app, ['core', 'app', 'map'])
