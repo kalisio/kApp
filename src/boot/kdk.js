@@ -1,5 +1,6 @@
 // import 'whatwg-fetch'
 import _ from 'lodash'
+import logger from 'loglevel'
 import config from 'config'
 import { Notify } from 'quasar'
 import appHooks from '../main.hooks'
@@ -63,4 +64,7 @@ export default async ({ app }) => {
   api.on('authenticated', (data) => {
     utils.subscribeToPushNotifications()
   })
+
+  // For debug purpose
+  logger.debug(`[KDK] is now ready: ${JSON.stringify(Store.get('kdk'), null, 4)}`)
 }
