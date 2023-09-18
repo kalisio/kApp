@@ -23,8 +23,6 @@ export default defineConfig({
     footer: {
       copyright: 'MIT Licensed | Copyright © 2017-20xx Kalisio'
     },
-
-
   }
 })
 
