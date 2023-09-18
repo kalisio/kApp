@@ -73,6 +73,7 @@
     "ajv-formats": "^2.1.1",
     "ajv-i18n": "^3.6.0",
     "ajv-keywords": "^5.1.0",
+    "autoprefixer": "^10.4.15",
     "chart.js": "^3.7.1",
     "chartjs-adapter-moment": "^1.0.1",
     "chartjs-chart-matrix": "^1.1.1",
