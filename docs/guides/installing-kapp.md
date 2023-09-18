@@ -6,7 +6,7 @@
 This requires you to [install Docker](https://docs.docker.com/engine/installation/), the world’s leading software container platform.
 :::
 
-We provide Docker images on the [Docker Hub](https://hub.docker.com/r/kalisio/kapp/) to ease deploying your own instance. To run correctly it has to be linked with a standard [MongoDB container](https://hub.docker.com/_/mongo/) for the database. Although it's possible to directly run Docker commands we provide you with [docker-compose](https://docs.docker.com/compose/) file to ease deployment. This file is detailed in the following sections and is available in the [public folder](https://github.com/kalisio/kApp/tree/master/docs/.vuepress/public) of the documentation.
+We provide Docker images on the [Docker Hub](https://hub.docker.com/r/kalisio/kapp/) to ease deploying your own instance. To run correctly it has to be linked with a standard [MongoDB container](https://hub.docker.com/_/mongo/) for the database. Although it's possible to directly run Docker commands we provide you with [docker-compose](https://docs.docker.com/compose/) file to ease deployment. This file is detailed in the following sections and is available in the [public folder](https://github.com/kalisio/kApp/tree/master/docs/public) of the documentation.
 
 Jump into the folder with the docker-compose file, the following commands should do the job:
 
@@ -35,7 +35,7 @@ If running Docker under Windows in a virtual machine first redirect the port 808
 ::: 
 
 ::: details docker-compose.yml - Used to deploy MongoDB and kApp containers.
-<<< @/.vuepress/public/docker-compose.yml
+<<< ../public/docker-compose.yml
 :::
 
 ::: tip

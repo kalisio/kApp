@@ -6,7 +6,7 @@ The main purpose of the continuous integration and deployment (CI/CD) pipeline i
 
 You can read this [article](https://medium.com/better-programming/why-we-stopped-using-so-called-best-practices-in-our-ci-cd-process-2ff09811f633) on Medium to get an overview of our global CI/CD pipeline, which is illustrated in the following schema:
 
-![Global deployment pipeline](./../../assets/cd-pipeline-global.svg)
+![Global deployment pipeline](./../../public/cd-pipeline-global.svg)
 
 The different operations performed by each stages are the following:
 * **APP**: executes the *travis.app.sh* script to
@@ -26,7 +26,7 @@ You can skip any of this stage by adding `[skip stage]` to your commit message, 
 
 In addition, the *travis.env.sh* script automatically generates a temporary environment file, based on the secret variables defined in the Travis repository settings or coming from a dedicated private repository (see details hereafter), which is used to [configure the application](./configure.md). The following schema summarizes the different scripts used by the CI/CD:
 
-![Travis scripts](./../../assets/cd-pipeline-travis.svg)
+![Travis scripts](./../../public/cd-pipeline-travis.svg)
 
 ## Deployment flavors
 
@@ -57,7 +57,7 @@ The subdomain is usually used to build a fully-qualified domain name for the app
 
 Each build stage of the CI/CD pipeline first setup the "workspace" required to correctly build the application, i.e. environment variables, application and module source code, configuration files, etc. The following schema summarizes the different steps performed to setup the workspace in the *travis.env.sh* script:
 
-![Travis scripts](./../../assets/cd-pipeline-env.svg)
+![Travis scripts](./../../public/cd-pipeline-env.svg)
 
 In order to simplify and unify as much as possible secrets management we use a private GitHub repository as a secret store for:
 * environment variables through env files
@@ -67,20 +67,20 @@ In order to simplify and unify as much as possible secrets management we use a p
 
 Each workspace includes a **common** folder to store shared secrets between all flavor, then a folder dedicated to secrets specific to each flavor as depicted in the following diagram:
 
-![KDK workspace](./../../assets/kdk-workspace.png)
+![KDK workspace](./../../public/kdk-workspace.png)
 
 ## Web application deployment
 
 The following schema summarizes the different steps performed to deploy the web application:
 
-![Travis scripts](./../../assets/cd-pipeline-app.svg)
+![Travis scripts](./../../public/cd-pipeline-app.svg)
 
 ## Mobile applications deployment
 
 The following schema summarizes the different steps performed to deploy the Android application:
 
-![Travis scripts](./../../assets/cd-pipeline-android.svg)
+![Travis scripts](./../../public/cd-pipeline-android.svg)
 
 The following schema summarizes the different steps performed to deploy the IOS application:
 
-![Travis scripts](./../../assets/cd-pipeline-ios.svg)
+![Travis scripts](./../../public/cd-pipeline-ios.svg)
