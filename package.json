@@ -41,7 +41,10 @@
     "mocha": "mocha test/**/*.test.mjs --timeout 30000",
     "coverage": "c8 npm run mocha",
     "test:server": "cd api && npm run test",
-    "test:client": "cd test && npm run coverage"
+    "test:client": "cd test && npm run coverage",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "standard": {
     "parser": "vue-eslint-parser",
@@ -73,7 +76,6 @@
     "ajv-formats": "^2.1.1",
     "ajv-i18n": "^3.6.0",
     "ajv-keywords": "^5.1.0",
-    "autoprefixer": "^10.4.15",
     "chart.js": "^3.7.1",
     "chartjs-adapter-moment": "^1.0.1",
     "chartjs-chart-matrix": "^1.1.1",
@@ -126,6 +128,7 @@
     "prettier": "^2.5.1",
     "shx": "^0.3.4",
     "standard": "^17.0.0",
+    "vitepress": "^1.0.0-rc.14",
     "webpack-bundle-analyzer": "^4.8.0",
     "workbox-webpack-plugin": "^6.0.0"
   },
