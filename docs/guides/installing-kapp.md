@@ -35,7 +35,7 @@ If running Docker under Windows in a virtual machine first redirect the port 808
 ::: 
 
 ::: details docker-compose.yml - Used to deploy MongoDB and kApp containers.
-<<< ../public/docker-compose.yml
+<<< ../.vitepress/public/docker-compose.yml
 :::
 
 ::: tip

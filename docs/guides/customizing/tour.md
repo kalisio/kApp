@@ -9,7 +9,7 @@ You will first have to follow the required steps to create your account then con
 :::
 
 You can run the tutorial from this [link](https://kapp.dev.kalisio.xyz/#/home/layout?tour=home), or open the application at the right place then click on the following icon <a href=""><i class="las la-question-circle"/></a> in the main menu.
-<img src="../../public/LaunchTour-EN.png" style="margin-left: auto; margin-right: auto;">
+<img src="../../.vitepress/public/images/LaunchTour-EN.png" style="margin-left: auto; margin-right: auto;">
 
 
 ::: tip
@@ -17,7 +17,7 @@ To open the main menu use the handle on the left side of your screen.
 :::
 
 You can then follow the step by step guide <a href=""><i class="las la-chevron-right"/></a> (or <i class="las la-arrow-right"/> key), go back if required <a href=""><i class="las la-chevron-left"/></a> (or <i class="las la-arrow-left"/> key) and stop anytime <a href=""><i class="las la-times"/></a> (or *escape* key) as illustrated by the following figure:
-<img src="../../public/Tour-EN.png" style="margin-left: auto; margin-right: auto;">
+<img src="../../.vitepress/public/images/Tour-EN.png" style="margin-left: auto; margin-right: auto;">
 
 ## Configuration
 
@@ -29,7 +29,7 @@ To configure multiple tours associated with a route, you must add a tour object 
 Example of configuration to associate two tours to the layout route:
 
 ::: details configuration example
-<<< ../../public/router-tours.js
+<<< ../../.vitepress/public/router-tours.js
 :::
 
 ::: tip
@@ -43,7 +43,7 @@ To configure a single tour associated with a route, you must:
 1. Add a tour property to the route configuration in the `src/router/routes.js` file.
 
 ::: details configuration example
-<<< ../../public/router-tour.js
+<<< ../../.vitepress/public/router-tour.js
 :::
 
 2. Add to the route the query parameter `{ tour: true }` in the `config/default.js` file. For example, `route: { name: 'login', query: { tour: true } }`
@@ -81,5 +81,5 @@ Any property starting with `clickOn` can also be an array of HTML elements. In t
 :::
 
 ::: details side-nav.js configuration example
-<<< ../../public/side-nav-tour.js
+<<< ../../.vitepress/public/side-nav-tour.js
 :::
