@@ -1,5 +1,5 @@
 import DefaultTheme from 'vitepress/theme'
-import HomeFooter from '../components/HomeFooter.vue'
+import HomeFooter from './components/HomeFooter.vue'
 import './style.css'
 
 export default {

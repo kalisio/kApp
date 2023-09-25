@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  base: '/kApp/',
+  base: '/',
   title: 'kApp',
   description: 'kApp - KDK application template',
   ignoreDeadLinks: true,

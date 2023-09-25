@@ -41,10 +41,7 @@
     "mocha": "mocha test/**/*.test.mjs --timeout 30000",
     "coverage": "c8 npm run mocha",
     "test:server": "cd api && npm run test",
-    "test:client": "cd test && npm run coverage",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "test:client": "cd test && npm run coverage"
   },
   "standard": {
     "parser": "vue-eslint-parser",
@@ -128,7 +125,6 @@
     "prettier": "^2.5.1",
     "shx": "^0.3.4",
     "standard": "^17.0.0",
-    "vitepress": "^1.0.0-rc.14",
     "webpack-bundle-analyzer": "^4.8.0",
     "workbox-webpack-plugin": "^6.0.0"
   },
