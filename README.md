@@ -1,6 +1,6 @@
 [![Kalisio](https://s3.eu-central-1.amazonaws.com/kalisioscope/kapp/kapp-logo-black-512x168.png)](https://kalisio.com)
 
-## kApp - KDK application template
+## kApp - KDK demonstration application
 
 [![Build Status](https://app.travis-ci.com/kalisio/kApp.png?branch=master)](https://app.travis-ci.com/kalisio/kApp)
 [![Code Climate](https://codeclimate.com/github/kalisio/kApp/badges/gpa.svg)](https://codeclimate.com/github/kalisio/kApp)
@@ -13,7 +13,7 @@ For more information please visit our websites:
 * [Kalisio Company](https://kalisio.com/)
 * [kApp development build](https://kapp.dev.kalisio.xyz/)
 
-This application is based on the [Kalisio Development Kit](https://kalisio.github.io/kdk/).
+This application is based on the [Kalisio Development Kit](https://kalisio.github.io/kdk/) and the [Kalisio application template](https://github.com/kalisio/skeleton).
 
 ## Documentation
 
