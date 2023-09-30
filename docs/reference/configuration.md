@@ -36,12 +36,10 @@ kApp backend configuration is based on [Feathers](https://docs.feathersjs.com/gu
   * **service**: e-mail service to be used (like `gmail`)
   * **auth**: user login and password
   * **templateDir**: directory containing the e-mails templates to be used
-* **pusher**: [push notification service](https://kalisio.github.io/kdk/api/core/services.html#pusher-service) configuration
-  * **accessKeyId**: AWS SNS access key
-  * **secretAccessKey**: AWS SNS secret access key
-  * **region**: AWS region to be used (like `eu-west-1`)
-  * **apiVersion**: AWS API version to be used (like `2010-03-31`)
-  * **platforms**: object containing as keys platforms names in uppercase (like `ANDROID`) and corresponding AWS SNS ARN as values
+* **push**: [feathers-webpush](https://github.com/kalisio/feathers-webpush) configuration
+  * **subject**: VAPID server contact information
+  * **publicKey**: VAPID public key.
+  * **privateKey**: VAPID private key
 * **proxyTable**: a set of proxy rules typically used for [scaling](https://kalisio.github.io/kdk/architecture/global-architecture.html#architecture-at-scale)
 
 Environment variables (will override defaults in config file):

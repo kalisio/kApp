@@ -5,6 +5,9 @@ export default defineConfig({
   title: 'kApp',
   description: 'kApp - KDK application template',
   ignoreDeadLinks: true,
+  head: [
+    ['link', { rel: 'icon', href: `https://s3.eu-central-1.amazonaws.com/kalisioscope/kapp/kapp-icon-64x64.png` }]
+  ],
   themeConfig: {
     logo: 'https://s3.eu-central-1.amazonaws.com/kalisioscope/kapp/kapp-icon-64x64.png',
     nav: [
@@ -38,23 +41,11 @@ function getAboutSidebar () {
 function getGuidesSidebar () {
   return [
     { text: 'Introduction', link: '/guides/introduction' },
-    { text: 'Installing kApp', link: '/guides/installing-kapp' },
     { text: 'Customizing kApp', 
       collapsed: true,
       items: [
-        { text: 'Tour', link: '/guides/customizing/tour' }
-      ]
-    },
-    {
-      text: 'Development',
-      collapsed: true,
-      items: [
-        { text: 'Setup your environment', link: '/guides/development/setup' },
-        { text: 'Develop your app', link: '/guides/development/develop' },
-        { text: 'Testing your app', link: '/guides/development/test' },
-        { text: 'Configure your app', link: '/guides/development/configure' },
-        { text: 'Deploy your app', link: '/guides/development/deploy' },
-        { text: 'Publish your app', link: '/guides/development/publish' }
+        { text: 'Tour', link: '/guides/customizing/tour' },
+        { text: 'PWA', link: '/guides/customizing/pwa' }
       ]
     }
   ]
