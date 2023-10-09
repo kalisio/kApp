@@ -1,6 +1,6 @@
 # Introduction
 
-The kApp includes all the necessary boilerplate that you will need to get started building your application:
+The kApp is a demo application created from [skeleton](https://kalisio.github.io/skeleton/). it includes all the necessary boilerplate that you will need to get started building your application:
 * [client-side boilerplate](https://quasar.dev/quasar-cli/developing-spa/introduction) in the *root* folder
 * [server-side boilerplate](https://docs.feathersjs.com/guides/basics/generator.html) in the *api* folder
 * [continuous integration/deployment boilerplate](https://kalisio.github.io/skeleton/development/setup.html) in the *root* folder as Dockerfiles and Travis CI scripts
