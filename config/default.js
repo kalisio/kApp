@@ -151,6 +151,7 @@ module.exports = {
     // frameBackgroundColor: '#FFDC9E',
     login: {
       actions: [
+        { id: 'reset-password-link', label: 'KLoginScreen.FORGOT_YOUR_PASSWORD_LABEL', route: {name: 'send-reset-password' } },
         { id: 'register-link', label: 'KLoginScreen.DONT_HAVE_AN_ACCOUNT_LABEL', route: { name: 'register' } },
         { id: 'keycloak-link', label: 'screen.LOGIN_WITH_KEYCLOAK', route: { url: '/oauth/keycloak' } }
       ]

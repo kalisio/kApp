@@ -8,6 +8,9 @@ export default async function () {
   // Set up our plugin services
   try {
     await api.configure(kdkCore)
+    await api.createService('account', {
+      methods: ['verifyEmail']
+    })
     api.createService('custom', { service: CustomService })
   } catch (error) {
     logger.error(error.message)

@@ -13,7 +13,13 @@ module.exports = [{
       meta: { authenticated: true }
     },
     register: 'screen/KRegisterScreen',
-    'change-endpoint': 'screen/KEndpointScreen',
+    'send-reset-password': {
+      component: 'account/KSendResetPassword'
+    },
+    'change-password': {
+      component: 'account/KChangePassword',
+      meta: { authenticated: true, unauthenticated: false }
+    },
     home: {
       // The name of the route has to be set the default child
       name: '',
