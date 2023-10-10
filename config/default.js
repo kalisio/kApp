@@ -350,7 +350,8 @@ module.exports = {
           nbItemsPerPage: 3,
           selection: 'multiple'
         }]
-      }
+      },
+      mode: 'list'
     },
     fab: {
       content: [
