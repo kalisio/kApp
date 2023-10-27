@@ -293,7 +293,8 @@ module.exports = {
           { id: 'table', icon: 'las la-table', tooltip: 'CollectionActivity.TABLE', route: { name: 'collection-activity', params: { page: 'table' } } },
           vSeparator,
           { id: 'filter', icon: 'las la-search', tooltip: 'CollectionActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } },
-          { component: 'collection/KSorter' }
+          { component: 'collection/KSorter' },
+          { component: 'tool/KExportTool', service: 'documents', gzip: false }
         ],
         grid: [
           { id: 'list', icon: 'las la-list', tooltip: 'CollectionActivity.LIST', route: { name: 'collection-activity', params: { page: 'list' } } },
@@ -301,7 +302,8 @@ module.exports = {
           { id: 'table', icon: 'las la-table', tooltip: 'CollectionActivity.TABLE', route: { name: 'collection-activity', params: { page: 'table' } } },
           vSeparator,
           { id: 'filter', icon: 'las la-search', tooltip: 'CollectionActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } },
-          { component: 'collection/KSorter' }
+          { component: 'collection/KSorter' },
+          { component: 'tool/KExportTool', service: 'documents' }
         ],
         table: [
           { id: 'list', icon: 'las la-list', tooltip: 'CollectionActivity.LIST', route: { name: 'collection-activity', params: { page: 'list' } } },
@@ -309,7 +311,8 @@ module.exports = {
           { id: 'table', icon: 'las la-table', label: 'CollectionActivity.TABLE', color: 'primary', disabled: true },
           vSeparator,
           { id: 'filter', icon: 'las la-search', tooltip: 'CollectionActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } },
-          { component: 'collection/KSorter' }
+          { component: 'collection/KSorter' },
+          { component: 'tool/KExportTool', service: 'documents' }
         ],
         filter: [
           { id: 'back', icon: 'las la-arrow-left', handler: { name: 'restoreTopPaneMode' } },

@@ -189,6 +189,10 @@ module.exports = {
     },
     bucket: process.env.S3_BUCKET
   },
+  'import-export': {
+    s3Service: 'storage',
+    workingDir: 'tmp'
+  },
   push: {
     vapidDetails: {
       subject: process.env.VAPID_SUBJECT,

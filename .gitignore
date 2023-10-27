@@ -85,3 +85,6 @@ src/css/kdk
 # vitepress
 docs/.vitepress/cache
 docs/.vitepress/dist
+
+# Exports
+tmp
