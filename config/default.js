@@ -84,6 +84,28 @@ const collectionActions = [
   }
 ]
 
+const collectionExport = {
+  component: 'tool/KExportTool',
+  service: 'documents',
+  formats: [
+    { label: 'CSV', value: 'csv' },
+    { label: 'JSON', value: 'json' }
+  ],
+  transform: {
+    csv: {
+      mapping: {
+        'icon.name' : 'iconName',
+        'icon.color' : 'iconColor'
+      },
+      omit: [ '_id', 'icon' ]
+    },
+    json: {
+      omit: [ '_id' ]
+    }
+  },
+  gzip: false
+}
+
 const widgets = [
   { 
     id: 'widget-1', label: 'Widget 1', icon: 'las la-restore-windows',
@@ -294,7 +316,7 @@ module.exports = {
           vSeparator,
           { id: 'filter', icon: 'las la-search', tooltip: 'CollectionActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } },
           { component: 'collection/KSorter' },
-          { component: 'tool/KExportTool', service: 'documents', gzip: false }
+          collectionExport
         ],
         grid: [
           { id: 'list', icon: 'las la-list', tooltip: 'CollectionActivity.LIST', route: { name: 'collection-activity', params: { page: 'list' } } },
@@ -303,7 +325,7 @@ module.exports = {
           vSeparator,
           { id: 'filter', icon: 'las la-search', tooltip: 'CollectionActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } },
           { component: 'collection/KSorter' },
-          { component: 'tool/KExportTool', service: 'documents' }
+          collectionExport
         ],
         table: [
           { id: 'list', icon: 'las la-list', tooltip: 'CollectionActivity.LIST', route: { name: 'collection-activity', params: { page: 'list' } } },
@@ -312,7 +334,7 @@ module.exports = {
           vSeparator,
           { id: 'filter', icon: 'las la-search', tooltip: 'CollectionActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } },
           { component: 'collection/KSorter' },
-          { component: 'tool/KExportTool', service: 'documents' }
+          collectionExport
         ],
         filter: [
           { id: 'back', icon: 'las la-arrow-left', handler: { name: 'restoreTopPaneMode' } },
