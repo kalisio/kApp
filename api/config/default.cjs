@@ -203,7 +203,7 @@ module.exports = {
       bucket: process.env.S3_BUCKET,
       prefix: 'tmp'
     },
-    workingDir: process.env.TMP_DIRECTORY || 'tmp',
+    workingDir: process.env.TMP_DIR || 'tmp',
   },
   push: {
     vapidDetails: {
