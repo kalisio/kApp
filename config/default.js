@@ -187,11 +187,6 @@ module.exports = {
       actions: [
         { id: 'login-link', label: 'KRegisterScreen.ALREADY_HAVE_AN_ACCOUNT_LABEL', route: { name: 'login' } }
       ]
-    },
-    endpoint: {
-      actions: [
-        { id: 'login-link', label: 'KEndpointScreen.LOG_IN_LABEL', route: { name: 'login' } }
-      ]
     }
   },
   layout: {
