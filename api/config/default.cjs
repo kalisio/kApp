@@ -201,7 +201,7 @@ module.exports = {
         signatureVersion: 'v4'
       },
       bucket: process.env.S3_BUCKET,
-      prefix: 'import-export'
+      prefix: 'tmp'
     },
     workingDir: process.env.TMP_DIR || 'tmp',
   },
