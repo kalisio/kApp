@@ -8,9 +8,9 @@
     <tbody>
       <template v-for="shape in shapes" :key="shape.shape">
         <tr>
-          <td>{{ shape.tooltip }}</td>
+          <td>{{ shape.name }}</td>
           <td>
-            <KShape v-bind="shape" />
+            <KShape :options="shape.options" :tooltip="JSON.stringify(shape.options)" />
           </td>
         </tr>
       </template>
@@ -22,15 +22,15 @@
 import { ref } from 'vue'
 
 const shapes = ref([
-  { shape: 'circle', tooltip: 'Circle', fill: 'lightgrey', stroke: 'grey', strokeWidth: '1' },
-  { shape: 'circle', width: 24, tooltip: 'Ellipse', fill: 'red', stroke: 'grey', strokeWidth: '2' },
-  { shape: 'rect', tooltip: 'Rect', fill: 'blue', stroke: 'grey', strokeWidth: '3' },
-  { shape: 'triangle', tooltip: 'Triangle up', fill: 'green', stroke: 'grey', strokeWidth: '4' },
-  { shape: 'triangle-down', tooltip: 'Triangle down', fill: 'orange', stroke: 'grey', strokeWidth: '2' },
-  { shape: 'triangle-right', tooltip: 'Triangle right', fill: 'red', stroke: 'grey', strokeWidth: '3' },
-  { shape: 'triangle-left', tooltip: 'Triangle left', fill: 'purple', stroke: 'grey', strokeWidth: '1' },
-  { shape: 'diamond', tooltip: 'Diamond', fill: 'magenta', stroke: 'grey', strokeWidth: '2' },
-  { shape: 'marker-pin', tooltip: 'Marker Pin', fill: 'darkgreen', stroke: 'grey', strokeWidth: '1' },
-  { shape: 'square-pin', tooltip: 'Square Pin', fill: 'turquoise', stroke: 'grey', strokeWidth: '1' },
+  { name: 'Circle', options: { shape: 'circle', color: 'lightgrey', stroke: { color: 'grey', width: '1' } } },
+  { name: 'Ellipse', options: { shape: 'circle', width: 24, color: 'red', stroke: { color: 'grey', width: '2' } } },
+  { name: 'Rect', options: { shape: 'rect', color: 'blue', stroke: { color: 'grey', width: '3'} } },
+  { name: 'Triangle', options: { shape: 'triangle', color: 'green', stroke: { color: 'grey', swidth: '4'} } },
+  { name: 'Triangle down', options: { shape: 'triangle-down', color: 'orange', stroke: { color: 'grey', swidth: '2'} } },
+  { name: 'Triangle right', options: { shape: 'triangle-right', color: 'red', stroke: { color: 'grey', swidth: '3'} } },
+  { name: 'Triangle left', options: { shape: 'triangle-left', color: 'purple', stroke: { color: 'grey', swidth: '1'} } },
+  { name: 'Diamond', options: { shape: 'diamond', color: 'magenta', stroke: { color: 'grey', swidth: '2'} } },
+  { name: 'Marker pin', options: { shape: 'marker-pin', color: 'darkgreen', stroke: { color: 'grey', swidth: '1'} } },
+  { name: 'Square pin', options: { shape: 'square-pin', color: 'turquoise', stroke: { color: 'grey', swidth: '1'} } }
 ])
 </script>
