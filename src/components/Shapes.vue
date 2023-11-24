@@ -23,7 +23,7 @@ import { ref } from 'vue'
 
 const shapes = ref([
   { name: 'Circle', options: { shape: 'circle', color: 'lightgrey', stroke: { color: 'grey', width: '1' } } },
-  { name: 'Ellipse', options: { shape: 'circle', width: 24, color: 'red', stroke: { color: 'grey', width: '2' } } },
+  { name: 'Ellipse', options: { shape: 'circle', size: [36, 24], color: 'red', stroke: { color: 'grey', width: '2' } } },
   { name: 'Rect', options: { shape: 'rect', color: 'blue', stroke: { color: 'grey', width: '3'} } },
   { name: 'Triangle', options: { shape: 'triangle', color: 'green', stroke: { color: 'grey', swidth: '4'} } },
   { name: 'Triangle down', options: { shape: 'triangle-down', color: 'orange', stroke: { color: 'grey', swidth: '2'} } },
