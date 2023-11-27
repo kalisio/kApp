@@ -93,6 +93,7 @@ travis_fold end "provision"
 #
 travis_fold start "build"
 
+cd $APP
 yarn pwa:build
 EXIT_CODE=$? 
 check_code $EXIT_CODE 0 "Builing the client" 
