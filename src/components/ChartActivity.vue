@@ -33,7 +33,7 @@ export default {
       topPane: this.getTopPane(),
       currentField: '',
       fieldOptions: [
-        { label: 'Etat santiraire', value: 'etat_sani' },
+        { label: 'Etat sanitaire', value: 'etat_sani' },
         { label: 'Etat mécanique', value: 'etat_meca' }
       ],
       chartType: 'pie',
