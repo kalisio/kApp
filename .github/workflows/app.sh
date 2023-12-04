@@ -18,7 +18,7 @@ parse_semver()
 #
 # Provision the required files
 #
-travis_fold start "provision"
+echo "##[group]Provision"
 
 # Define the application name
 APP=$(node -p -e "require('./package.json').name")
@@ -58,7 +58,7 @@ echo "Build flavor is $FLAVOR on branch $TRAVIS_BRANCH"
 cd ..
 
 # Clone the workspace where to build the app
-git clone https://oauth2:$GITHUB_TOKEN@github.com/kalisio/development.git
+git clone https://oauth2:$TOKEN_GITHUB@github.com/kalisio/development.git
 export WORKSPACE_DIR=`pwd`/development/workspaces/apps
 
 # Configue the required env
@@ -81,12 +81,12 @@ node . $APP.js --clone
 node . $APP.js --install
 node . $APP.js --link
 
-travis_fold end "provision"
+echo "##[endgroup]"
 
 #
 # Build the app
 #
-travis_fold start "build"
+echo "##[group]Build"
 
 cd $APP
 yarn pwa:build
@@ -99,19 +99,19 @@ check_code $? 0 "Connecting to Docker"
 
 # Create an archive to speed docker build process
 cd ../..
-tar --exclude='$APP/test' -zcf $TRAVIS_BUILD_DIR/kalisio.tgz kalisio
+tar --exclude='$APP/test' -zcf $GITHUB_WORKSPACE/kalisio.tgz kalisio
 
 # Build the image
-cd $TRAVIS_BUILD_DIR
-docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$TRAVIS_BUILD_NUMBER -f dockerfile -t kalisio/$APP:$TAG . 
+cd $GITHUB_WORKSPACE
+docker build --build-arg APP=$APP --build-arg FLAVOR=$FLAVOR --build-arg BUILD_NUMBER=$GITHUB_RUN_NUMBER -f dockerfile -t kalisio/$APP:$TAG . 
 check_code $? 0 "Building the app docker image"
 
-travis_fold end "build"
+echo "##[endgroup]"
 
 #
 # Deploy the app
 #
-travis_fold start "deploy"
+echo "##[group]Deploy"
 
 # Push the app image to the hub with the version tag
 docker push kalisio/$APP:$TAG
@@ -122,4 +122,4 @@ docker tag kalisio/$APP:$TAG kalisio/$APP:$FLAVOR
 docker push kalisio/$APP:$FLAVOR
 check_code $? 0 "Pushing the $APP:$TAG docker image"
 
-travis_fold end "deploy"
+echo "##[endgroup]"
