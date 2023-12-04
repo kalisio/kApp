@@ -17,8 +17,8 @@ jobs:
       - name: Build and deploy
         run: |
           ls -la
-          chmod +x app.sh
-          ./app.sh
+          chmod +x ./.github/workflows/app.sh
+          ./.github/workflows/app.sh
   doc:
     if: ${{ contains(github.event.head_commit.message, '[build doc]') }}
     runs-on: ubuntu-latest
