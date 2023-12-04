@@ -16,6 +16,7 @@ jobs:
           node-version: ${{ secrets.NODE_VERSION }}
       - name: Build and deploy
         run: |
+          ls -la
           chmod +x app.sh
           ./app.sh
   doc:
