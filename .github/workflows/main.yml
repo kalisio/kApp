@@ -15,9 +15,20 @@ jobs:
         with:
           node-version: ${{ secrets.NODE_VERSION }}
       - name: Build and deploy
+        id: build-deploy
         run: |
           chmod +x ./.github/workflows/app.sh
           ./.github/workflows/app.sh
+      - name: Notify on slack
+        if: always()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_APPS }}
+          SLACK_USERNAME: GitHub Actions
+          SLACK_ICON: https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png
+          SLACK_COLOR: ${{ steps.build-deploy.outcome == 'success' && 'good' || 'danger' }}
+          SLACK_MESSAGE: Test of ${{ github.repository }}@${{ github.ref_name }} by ${{ github.actor }} ${{ steps.build-deploy.outcome == 'success' && 'passed' || 'failed' }}
+          SLACK_FOOTER:
   doc:
     if: ${{ contains(github.event.head_commit.message, '[build doc]') }}
     runs-on: ubuntu-latest
