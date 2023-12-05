@@ -3,12 +3,12 @@ on: [push]
 
 jobs:
   app:
-    if: ${{ !contains(github.event.head_commit.message, '[skip app]') }}
     runs-on: ubuntu-latest
     env: 
       DOCKER_USER: ${{ secrets.DOCKER_USER }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
+      COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
     steps:
       - uses: actions/checkout@v4
       - uses:  actions/setup-node@v3
@@ -16,11 +16,15 @@ jobs:
           node-version: ${{ secrets.NODE_VERSION }}
       - name: Build & deploy
         run: |
-          chmod +x ./.github/workflows/app.sh
-          ./.github/workflows/app.sh
+          if [[ $COMMIT_MESSAGE !~ /(skip[ _-]app)/ ]]; then
+            chmod +x ./.github/workflows/app.sh
+            ./.github/workflows/app.sh
+          fi
   doc:
-    if: ${{ contains(github.event.head_commit.message, '[build doc]') }}
+    if: ${{ contains(github.event.head_commit.message, '[build doc]')}}
     runs-on: ubuntu-latest
+    env: 
+      COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
     steps:
       - uses: actions/checkout@v4
       - uses:  actions/setup-node@v3
@@ -37,6 +41,7 @@ jobs:
   slackNotification:
     name: Notify on slack
     runs-on: ubuntu-latest
+    if: ${{ always() }}
     needs: [app, doc]
     steps:
     - uses: actions/checkout@v4
@@ -46,6 +51,6 @@ jobs:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_APPS }}
         SLACK_USERNAME: GitHub Actions
         SLACK_ICON: https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png
-        SLACK_COLOR: ${{ (needs.app.reult == 'success' && needs.doc.reult == 'success') && 'good' || 'danger' }}
-        SLACK_MESSAGE: Build of ${{ github.repository }}@${{ github.ref_name }} by ${{ github.actor }} ${{ (needs.app.reult == 'success' && needs.doc.reult == 'success') && 'passed' || 'failed' }}
+        SLACK_COLOR: ${{ (needs.app.reult == 'failed' || needs.doc.reult == 'failed') && 'danger' || 'good' }}
+        SLACK_MESSAGE: Build of ${{ github.repository }}@${{ github.ref_name }} by ${{ github.actor }} ${{ (needs.app.reult == 'failed' || needs.doc.reult == 'failed') && 'failed' || 'passed' }}
         SLACK_FOOTER:
