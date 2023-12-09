@@ -2,13 +2,31 @@ name: Build & Deploy
 on: [push]
 
 jobs:
-  app:
+  test:
+    if: ${{ github.event.head_commit.message !~ /\[skip[ _-]test\]/ }}
+    runs-on: ubuntu-latest
+    env: 
+      DB_URL: "mongodb://mongo:27017"
+    steps:
+      - uses: actions/checkout@v4
+      - uses:  actions/setup-node@v3
+        with:
+          node-version: ${{ secrets.NODE_VERSION }}
+      - name: Start MongoDB
+        uses: timgchile/mongodb-github-action@1.7.4
+        with:
+          mongodb-version: 4.0
+      - name: Run tests
+        run: |
+          chmod +x ./.github/workflows/test.sh
+          ./.github/workflows/test.sh
+  build:
+    if: ${{ github.event.head_commit.message !~ /(skip[ _-]app)/ }}
     runs-on: ubuntu-latest
     env: 
       DOCKER_USER: ${{ secrets.DOCKER_USER }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
-      COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
     steps:
       - uses: actions/checkout@v4
       - uses:  actions/setup-node@v3
@@ -16,15 +34,11 @@ jobs:
           node-version: ${{ secrets.NODE_VERSION }}
       - name: Build & deploy
         run: |
-          if [[ $COMMIT_MESSAGE !~ /(skip[ _-]app)/ ]]; then
-            chmod +x ./.github/workflows/app.sh
-            ./.github/workflows/app.sh
-          fi
+          chmod +x ./.github/workflows/build.sh
+          ./.github/workflows/build.sh
   doc:
-    if: ${{ contains(github.event.head_commit.message, '[build doc]')}}
+    if: ${{ github.event.head_commit.message =~ /\[skip[ _-]test\]/ }}
     runs-on: ubuntu-latest
-    env: 
-      COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
     steps:
       - uses: actions/checkout@v4
       - uses:  actions/setup-node@v3
@@ -42,7 +56,7 @@ jobs:
     name: Notify on slack
     runs-on: ubuntu-latest
     if: ${{ always() }}
-    needs: [app, doc]
+    needs: [test, build, doc]
     steps:
     - uses: actions/checkout@v4
     - name: Notify on slack
@@ -51,6 +65,6 @@ jobs:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_APPS }}
         SLACK_USERNAME: GitHub Actions
         SLACK_ICON: https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png
-        SLACK_COLOR: ${{ (needs.app.reult == 'failed' || needs.doc.reult == 'failed') && 'danger' || 'good' }}
-        SLACK_MESSAGE: Build of ${{ github.repository }}@${{ github.ref_name }} by ${{ github.actor }} ${{ (needs.app.reult == 'failed' || needs.doc.reult == 'failed') && 'failed' || 'passed' }}
+        SLACK_COLOR: ${{ (needs.test.result == 'failed' || needs.build.result == 'failed' || needs.doc.result == 'failed') && 'danger' || 'good' }}
+        SLACK_MESSAGE: Build of ${{ github.repository }}@${{ github.ref_name }} by ${{ github.actor }} ${{ (needs.test.result == 'failed' || needs.build.result == 'failed' || needs.doc.result == 'failed') && 'failed' || 'passed' }}
         SLACK_FOOTER:
