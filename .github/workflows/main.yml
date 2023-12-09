@@ -1,11 +1,13 @@
 name: Build & Deploy
 on: [push]
+env: 
+  TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
 
 jobs:
   test:
     if: ${{ !contains(github.event.head_commit.message, '[skip test]') }}
     runs-on: ubuntu-latest
-    env: 
+    env:
       DB_URL: "mongodb://mongo:27017"
     steps:
       - uses: actions/checkout@v4
@@ -23,10 +25,9 @@ jobs:
   build:
     if: ${{ !contains(github.event.head_commit.message, '[skip app]') }}
     runs-on: ubuntu-latest
-    env: 
+    env:
       DOCKER_USER: ${{ secrets.DOCKER_USER }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
     steps:
       - uses: actions/checkout@v4
       - uses:  actions/setup-node@v3

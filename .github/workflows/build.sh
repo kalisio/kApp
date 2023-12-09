@@ -1,8 +1,5 @@
 #!/bin/bash
 
-chmod +x ./.github/workflows/env.sh
-./.github/workflows/env.sh
-
 check_code()
 {
    if [[ $1 -ne $2 ]]; then
@@ -10,6 +7,12 @@ check_code()
 	  exit 1
   fi
 }
+
+#
+# Provision the required files
+#
+chmod +x ./.github/workflows/env.sh
+./.github/workflows/env.sh
 
 #
 # Build the app

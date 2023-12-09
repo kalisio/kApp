@@ -10,6 +10,7 @@ parse_semver()
 #
 # Provision the required files
 #
+echo "##[group]Provision"
 
 # Define the application name
 APP=$(node -p -e "require('./package.json').name")
@@ -71,3 +72,5 @@ fi
 node . $APP.js --clone
 node . $APP.js --install
 node . $APP.js --link
+
+echo "##[endgroup]"
