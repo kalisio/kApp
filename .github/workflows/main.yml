@@ -15,7 +15,7 @@ jobs:
       - name: Start MongoDB
         uses: supercharge/mongodb-github-action@1.10.0
         with:
-          mongodb-version: 4.0
+          mongodb-version: 6.0
       - name: Run tests
         run: |
           chmod +x ./.github/workflows/test.sh
