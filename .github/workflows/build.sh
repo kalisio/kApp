@@ -19,6 +19,8 @@ chmod +x ./.github/workflows/env.sh
 #
 echo "##[group]Build"
 
+# Define the application name
+APP=$(node -p -e "require('./package.json').name")
 cd $APP
 yarn pwa:build
 EXIT_CODE=$? 
