@@ -7,15 +7,13 @@ jobs:
   test:
     if: ${{ !contains(github.event.head_commit.message, '[skip test]') }}
     runs-on: ubuntu-latest
-    env:
-      DB_URL: "mongodb://mongodb:27017/kapp"
     steps:
       - uses: actions/checkout@v4
       - uses:  actions/setup-node@v3
         with:
           node-version: ${{ secrets.NODE_VERSION }}
       - name: Start MongoDB
-        uses: timgchile/mongodb-github-action@1.7.4
+        uses: supercharge/mongodb-github-action@1.10.0
         with:
           mongodb-version: 4.0
       - name: Run tests
