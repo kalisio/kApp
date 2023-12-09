@@ -1,6 +1,7 @@
 #!/bin/bash
 
-source ./env.sh
+chmod +x ./.github/workflows/env.sh
+./.github/workflows/env.sh
 
 check_code()
 {
