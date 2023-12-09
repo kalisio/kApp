@@ -59,15 +59,12 @@ jobs:
     needs: [test, build, doc]
     steps:
     - uses: actions/checkout@v4
-    - 
-      run: |
-        echo "${{ needs.build.result}}"
     - name: Notify on slack
       uses: rtCamp/action-slack-notify@v2
       env:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_APPS }}
         SLACK_USERNAME: GitHub Actions
         SLACK_ICON: https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png
-        SLACK_COLOR: ${{ (needs.test.result == 'failed' || needs.build.result == 'failed' || needs.doc.result == 'failed') && 'danger' || 'good' }}
-        SLACK_MESSAGE: Build of ${{ github.repository }}@${{ github.ref_name }} by ${{ github.actor }} ${{ (needs.test.result == 'failed' || needs.build.result == 'failed' || needs.doc.result == 'failed') && 'failed' || 'passed' }}
+        SLACK_COLOR: ${{ (needs.test.result == 'failure' || needs.build.result == 'failure' || needs.doc.result == 'failure') && 'danger' || 'good' }}
+        SLACK_MESSAGE: Build of ${{ github.repository }}@${{ github.ref_name }} by ${{ github.actor }} ${{ (needs.test.result == 'failure' || needs.build.result == 'failure' || needs.doc.result == 'failure') && 'failed' || 'passed' }}
         SLACK_FOOTER:

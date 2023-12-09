@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source env.sh
+source ./env.sh
 
 check_code()
 {
