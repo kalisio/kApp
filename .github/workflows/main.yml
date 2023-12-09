@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
   test:
-    if: ${{ github.event.head_commit.message !~ /\[skip[ _-]test\]/ }}
+    if: ${{ not(github.event.head_commit.message =~ /\[skip[ _-]test\]/) }}
     runs-on: ubuntu-latest
     env: 
       DB_URL: "mongodb://mongo:27017"
@@ -21,7 +21,7 @@ jobs:
           chmod +x ./.github/workflows/test.sh
           ./.github/workflows/test.sh
   build:
-    if: ${{ github.event.head_commit.message !~ /(skip[ _-]app)/ }}
+    if: ${{ not(github.event.head_commit.message =~ /(skip[ _-]app)/) }}
     runs-on: ubuntu-latest
     env: 
       DOCKER_USER: ${{ secrets.DOCKER_USER }}
