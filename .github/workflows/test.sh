@@ -3,8 +3,7 @@ echo "Running tests"
 #
 # Provision the required files
 #
-chmod +x ./.github/workflows/env.sh
-./.github/workflows/env.sh
+source ./.github/workflows/env.sh
 
 #
 # Run backend tests

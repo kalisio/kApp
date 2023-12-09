@@ -1,18 +1,9 @@
 #!/bin/bash
 
-check_code()
-{
-   if [[ $1 -ne $2 ]]; then
-	  echo "$3 has failed [error: $1]"
-	  exit 1
-  fi
-}
-
 #
 # Provision the required files
 #
-chmod +x ./.github/workflows/env.sh
-./.github/workflows/env.sh
+source ./.github/workflows/env.sh
 
 #
 # Build the app
