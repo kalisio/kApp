@@ -8,7 +8,7 @@ jobs:
     if: ${{ !contains(github.event.head_commit.message, '[skip test]') }}
     runs-on: ubuntu-latest
     env:
-      DB_URL: "mongodb://mongo:27017"
+      DB_URL: "mongodb://mongodb:27017/kapp"
     steps:
       - uses: actions/checkout@v4
       - uses:  actions/setup-node@v3
