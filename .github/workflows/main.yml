@@ -59,6 +59,9 @@ jobs:
     needs: [test, build, doc]
     steps:
     - uses: actions/checkout@v4
+    - 
+      run: |
+        echo "${{ needs.build}}"
     - name: Notify on slack
       uses: rtCamp/action-slack-notify@v2
       env:
