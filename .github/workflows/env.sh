@@ -26,12 +26,12 @@ echo "Building $APP v$MAJOR.$MINOR.$PATCH"
 # Define the flavor build
 TEST_FLAVOR_REGEX="^test-*|-test$"
 PROD_FLAVOR_REGEX="^prod-v[0-9]+\.[0-9]+\.[0-9]+"
-if [[ $TRAVIS_TAG =~ $PROD_FLAVOR_REGEX ]];
+if [[ ${GITHUB_REF#refs/tags/} =~ $PROD_FLAVOR_REGEX ]];
 then
   export FLAVOR=prod
   KLI_FILE=$APP-$VERSION
 else
-  if [[ $TRAVIS_BRANCH =~ $TEST_FLAVOR_REGEX ]];
+  if [[ ${GITHUB_REF##*/} =~ $TEST_FLAVOR_REGEX ]];
   then
     export FLAVOR=test
     KLI_FILE=$APP-$MAJOR.$MINOR
@@ -43,7 +43,7 @@ fi
 export NODE_APP_INSTANCE=$FLAVOR
 TAG=$VERSION-$FLAVOR
 
-echo "Build flavor is $FLAVOR on branch $TRAVIS_BRANCH"
+echo "Build flavor is $FLAVOR on branch ${GITHUB_REF##*/}"
 
 # Leave the project directory to avoid Webpack to look for files into the project directory
 cd ..
@@ -60,9 +60,9 @@ git clone https://github.com/kalisio/kli.git kalisio && cd kalisio && yarn
 
 # In dev flavor we can build different versions on different branches
 # so check if a specific file exists for the target branch first otherwise use default one
-if [[ -f $WORKSPACE_DIR/$APP/$FLAVOR/$KLI_FILE-$TRAVIS_BRANCH.js ]];
+if [[ -f $WORKSPACE_DIR/$APP/$FLAVOR/$KLI_FILE-${GITHUB_REF##*/}.js ]];
 then
-  cp $WORKSPACE_DIR/$APP/$FLAVOR/$KLI_FILE-$TRAVIS_BRANCH.js $APP.js
+  cp $WORKSPACE_DIR/$APP/$FLAVOR/$KLI_FILE-${GITHUB_REF##*/}.js $APP.js
 else
   cp $WORKSPACE_DIR/$APP/$FLAVOR/$KLI_FILE.js $APP.js
 fi

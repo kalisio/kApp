@@ -1,6 +1,7 @@
 echo "Running tests"
 
-source ./env.sh
+chmod +x ./.github/workflows/env.sh
+./.github/workflows/env.sh
 
 # Run backend tests
 cd api
