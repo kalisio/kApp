@@ -1,6 +1,6 @@
 name: Build & Deploy
 on: [push]
-env: 
+env:
   TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
 
 jobs:
