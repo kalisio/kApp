@@ -20,7 +20,6 @@ chmod +x ./.github/workflows/env.sh
 echo "##[group]Build"
 
 # Define the application name
-cd $APP
 yarn pwa:build
 EXIT_CODE=$? 
 check_code $EXIT_CODE 0 "Builing the client" 

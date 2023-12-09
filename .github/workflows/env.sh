@@ -1,5 +1,13 @@
 #!/bin/bash
 
+check_code()
+{
+   if [[ $1 -ne $2 ]]; then
+	  echo "$3 has failed [error: $1]"
+	  exit 1
+  fi
+}
+
 parse_semver()
 {
   local REGEXP="^([0-9]+)\.([0-9]+)\.([0-9]+)"
@@ -70,7 +78,14 @@ fi
 
 # Clone the project and install the dependencies
 node . $APP.js --clone
+check_code $? 0 "Cloning $APP and its dependencies"
+
 node . $APP.js --install
+check_code $? 0 "Installing $APP and its dependencies"
+
 node . $APP.js --link
+check_code $? 0 "Linking $APP with its dependencies"
+
+cd $APP
 
 echo "##[endgroup]"
