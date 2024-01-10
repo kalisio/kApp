@@ -46,7 +46,6 @@ describe(suite, () => {
         }
         await page.waitForTimeout(1000);
     });
-    
 
     after(async () => {
         await core.logout(page)
