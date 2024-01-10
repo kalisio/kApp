@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-expressions */
-
 import { core } from '@kalisio/kdk/test.client.js'
+import { strict as assert } from 'assert'
 
 const suite = 'misc'
 
@@ -30,16 +29,20 @@ describe(suite, () => {
             await page.waitForTimeout(1000)
         await page.click('#miscellaneous')
             await page.waitForTimeout(1000)
-        /*//pour effectuer un screenshot qui remplace le précédent
+        /*//Capture écran qui remplace la précédente
         wait page.screenshot({
-            path: 'test/data/misc/screenrefs/misc.png',
-            fullPage: true*/
-        //pour effectuer un screenshot qui vient s'ajouter à ceux existants
+            path: 'test/data/misc/screenrefs/misc.png'*/
+        //Capture écran qui vient s'ajouter à celles existantes
         const timestamp = new Date().toISOString().replace(/:/g, '-')
         const screenshotPath = `test/data/misc/screenrefs/misc_${timestamp}.png`
-        await page.screenshot({ 
-            path: screenshotPath,
-            fullPage: true });
+        await page.screenshot({
+            path: screenshotPath
+        })
+            await page.waitForTimeout(1000)
+
+        // Comparaison avec la capture d'écran de référence
+        const match = await runner.captureAndMatch('misc')
+        assert.strictEqual(match, true, 'La capture d\'écran ne correspond pas à la référence.')
     })
 
     after(async () => {
