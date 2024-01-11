@@ -28,9 +28,9 @@ describe(suite, () => {
 
     it('webpush', async () => {
         await page.click('#left-opener')
-            await page.waitForTimeout(1000)
+        await page.waitForTimeout(1000)
         await page.click('#webpush')
-            await page.waitForTimeout(1000)
+        await page.waitForTimeout(1000)
         await type(page, '#title-field', 'Mon super titre')
         await type(page, '#body-field', 'Mon magnifique contenu')
         await type(page, '#icon-field', 'Ma fabuleuse icone')
@@ -40,9 +40,9 @@ describe(suite, () => {
     })
 
     it('webpush-clean', async () => {
-        const cancelButtons = await page.$x('//button[contains(text(), "cancel")]'); //cible tous les boutons "cancel" de la page
+        const cancelButtons = await page.$x('//button[contains(text(), "cancel")]'); 
         for (const cancelButton of cancelButtons) {
-            await cancelButton.click();
+        await cancelButton.click();
         }
         await page.waitForTimeout(1000);
     });
