@@ -40,7 +40,7 @@ const shapes = ref({
     { name: 'Diamond', options: { shape: 'diamond', color: 'magenta', stroke: { color: 'blue', width: '2'} } },
     { name: 'Star', options: { shape: 'star', color: 'yellow', stroke: { color: 'orange', width: '1'} } },
     { name: 'Marker pin', options: { shape: 'marker-pin', color: 'darkgreen', stroke: { color: 'orange', width: '1'} } },
-    { name: 'Square pin', options: { shape: 'square-pin', color: 'turquoise', stroke: { color: 'grey', width: '1'} } }
+    { name: 'Square pin', options: { shape: 'square-pin', color: 'turquoise', stroke: { color: 'grey', width: '1'}, text: { label: '15', color: 'red', size: '14px', yOffset: '-11px' } } }
   ],
   radius: [
     { name: 'Circle', options: { shape: 'circle', color: 'lightgrey', radius , stroke: { color: 'black' } } },
@@ -50,7 +50,9 @@ const shapes = ref({
     { name: 'Triangle-left', options: { shape: 'triangle-left', color: 'lightgrey',radius, stroke: { color: 'black' } } },
     { name: 'Triangle right', options: { shape: 'triangle-right', color: 'lightgrey',radius, stroke: { color: 'black' } } },
     { name: 'Diamond', options: { shape: 'diamond', color: 'lightgrey', radius, stroke: { color: 'black' } } },
-    { name: 'Star', options: { shape: 'star', color: 'lightgrey', radius, stroke: { color: 'black' } } }
+    { name: 'Star', options: { shape: 'star', color: 'lightgrey', radius, stroke: { color: 'black' } } },
+    { name: 'Circle', options: { shape: 'circle', color: 'lightgrey', radius , stroke: { color: 'black' }, icon: { classes: 'las la-home' } } },
+    { name: 'Circle', options: { shape: 'circle', color: 'lightgrey', radius , stroke: { color: 'black' }, text: { label: '01'} } }
   ]
 })
 </script>
