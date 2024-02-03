@@ -24,7 +24,6 @@
 
 <script setup>
 import { ref } from 'vue'
-import { utils as kdkCoreUtils } from '@kalisio/kdk/core.client'
 
 const radius = 12
 
@@ -51,8 +50,10 @@ const shapes = ref({
     { name: 'Triangle right', options: { shape: 'triangle-right', color: 'lightgrey',radius, stroke: { color: 'black' } } },
     { name: 'Diamond', options: { shape: 'diamond', color: 'lightgrey', radius, stroke: { color: 'black' } } },
     { name: 'Star', options: { shape: 'star', color: 'lightgrey', radius, stroke: { color: 'black' } } },
-    { name: 'Circle', options: { shape: 'circle', color: 'lightgrey', radius , stroke: { color: 'black' }, icon: { classes: 'las la-home' } } },
-    { name: 'Circle', options: { shape: 'circle', color: 'lightgrey', radius , stroke: { color: 'black' }, text: { label: '01'} } }
+    { name: 'Circle-Icon', options: { shape: 'circle', color: 'lightgrey', radius, stroke: { color: 'black' }, icon: { classes: 'las la-home' } } },
+    { name: 'Circle-Text', options: { shape: 'circle', color: 'lightgrey', radius, stroke: { color: 'black' }, text: { label: '01'} } },
+    { name: 'Icon', options: {  icon: { classes: 'las la-home', size: 24, rotation: 90, color: 'green' }, radius } },
+    { name: 'Text', options: {  text: { label: 'Home', rotation: 45, color: 'red' }, radius } }
   ]
 })
 </script>
