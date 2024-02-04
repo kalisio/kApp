@@ -29,7 +29,7 @@ const radius = 12
 
 const shapes = ref({
   size: [
-    { name: 'Circle', options: { shape: 'circle', color: 'lightgrey', stroke: { color: 'organge', width: '1' } } },
+    { name: 'Circle', options: { shape: 'circle', color: 'lightgrey', stroke: { color: 'orange', width: '1' } } },
     { name: 'Ellipse', options: { shape: 'circle', size: [48, 24], color: 'red', stroke: { color: 'grey', width: '2' } } },
     { name: 'Rect', options: { shape: 'rect', color: 'blue', stroke: { color: 'grey', width: '3'} } },
     { name: 'Triangle', options: { shape: 'triangle', color: 'green', stroke: { color: 'orange', width: '4'} } },
