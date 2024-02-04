@@ -50,10 +50,10 @@ const shapes = ref({
     { name: 'Triangle right', options: { shape: 'triangle-right', color: 'lightgrey',radius, stroke: { color: 'black' } } },
     { name: 'Diamond', options: { shape: 'diamond', color: 'lightgrey', radius, stroke: { color: 'black' } } },
     { name: 'Star', options: { shape: 'star', color: 'lightgrey', radius, stroke: { color: 'black' } } },
-    { name: 'Circle-Icon', options: { shape: 'circle', color: 'lightgrey', radius, stroke: { color: 'black' }, icon: { classes: 'las la-home' } } },
-    { name: 'Circle-Text', options: { shape: 'circle', color: 'lightgrey', radius, stroke: { color: 'black' }, text: { label: '01'} } },
-    { name: 'Icon', options: {  icon: { classes: 'las la-home', size: 24, rotation: 90, color: 'green' }, radius } },
-    { name: 'Text', options: {  text: { label: 'Home', rotation: 45, color: 'red' }, radius } }
+    { name: 'Circle & icon', options: { shape: 'circle', color: 'lightgrey', radius, stroke: { color: 'black' }, icon: { classes: 'las la-home' } } },
+    { name: 'Circle & text', options: { shape: 'circle', color: 'lightgrey', radius, stroke: { color: 'black' }, text: { label: '01'} } },
+    { name: 'Icon only', options: {  icon: { classes: 'las la-home', size: 24, rotation: 90, color: 'green' }, radius } },
+    { name: 'Text only', options: {  text: { label: 'Home', rotation: 45, color: 'red' }, radius } }
   ]
 })
 </script>
