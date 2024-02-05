@@ -6,10 +6,10 @@ export default defineConfig({
   description: 'kApp - KDK application template',
   ignoreDeadLinks: true,
   head: [
-    ['link', { rel: 'icon', href: `https://s3.eu-central-1.amazonaws.com/kalisioscope/kapp/kapp-icon-64x64.png` }]
+    ['link', { rel: 'icon', href: 'https://s3.eu-central-1.amazonaws.com/kalisioscope/kapp/kapp-icon-color-2048x2048.png' }]
   ],
   themeConfig: {
-    logo: 'https://s3.eu-central-1.amazonaws.com/kalisioscope/kapp/kapp-icon-64x64.png',
+    logo: 'https://s3.eu-central-1.amazonaws.com/kalisioscope/kapp/kapp-icon-color-2048x2048.png',
     nav: [
       { text: 'About', link: '/about/introduction' },
       { text: 'Guides', link: '/guides/introduction' },
@@ -26,6 +26,14 @@ export default defineConfig({
     footer: {
       copyright: 'MIT Licensed | Copyright © 2017-20xx Kalisio'
     },
+  },
+  vite: {
+    optimizeDeps: {
+			include: ['keycloak-js', 'lodash'],
+		},
+		ssr: {
+			noExternal: ['vitepress-theme-kalisio']
+		}
   }
 })
 
