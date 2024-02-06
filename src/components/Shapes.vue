@@ -52,7 +52,8 @@ const shapes = ref({
     { name: 'Star', options: { shape: 'star', color: 'lightgrey', radius, stroke: { color: 'black' } } },
     { name: 'Circle & icon', options: { shape: 'circle', color: 'lightgrey', radius, stroke: { color: 'black' }, icon: { classes: 'las la-home' } } },
     { name: 'Circle & text', options: { shape: 'circle', color: 'lightgrey', radius, stroke: { color: 'black' }, text: { label: '01'} } },
-    { name: 'Icon only', options: {  icon: { classes: 'las la-home', size: 24, rotation: 90, color: 'green' }, radius } },
+    { name: 'Icon Classes', options: {  icon: { classes: 'las la-home', size: 24, rotation: 90, color: 'green' }, radius } },
+    { name: 'Icon Url', options: {  icon: { url: '/icons/plane.png', size: 24, rotation: 90, opacity: 0.5 }, radius } },
     { name: 'Text only', options: {  text: { label: 'Home', rotation: 45, color: 'red' }, radius } }
   ]
 })
