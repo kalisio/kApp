@@ -29,8 +29,8 @@ const radius = 12
 
 const shapes = ref({
   size: [
-    { name: 'Circle', options: { shape: 'circle', color: 'lightgrey', stroke: { color: 'orange', width: '1' } } },
-    { name: 'Ellipse', options: { shape: 'circle', size: [48, 24], color: 'red', stroke: { color: 'grey', width: '2' } } },
+    { name: 'Circle', options: { shape: 'circle', color: 'lightgrey', stroke: { color: 'orange', width: '3' } } },
+    { name: 'Ellipse', options: { shape: 'circle', size: [48, 24], color: 'red', stroke: { color: 'grey', width: '1' } } },
     { name: 'Rect', options: { shape: 'rect', color: 'blue', stroke: { color: 'grey', width: '3'} } },
     { name: 'Triangle', options: { shape: 'triangle', color: 'green', stroke: { color: 'orange', width: '4'} } },
     { name: 'Triangle down', options: { shape: 'triangle-down', color: 'orange', stroke: { color: 'grey', width: '2'} } },
@@ -39,7 +39,7 @@ const shapes = ref({
     { name: 'Diamond', options: { shape: 'diamond', color: 'magenta', stroke: { color: 'blue', width: '2'} } },
     { name: 'Star', options: { shape: 'star', color: 'yellow', stroke: { color: 'orange', width: '1'} } },
     { name: 'Marker pin', options: { shape: 'marker-pin', color: 'darkgreen', stroke: { color: 'orange', width: '1'} } },
-    { name: 'Square pin', options: { shape: 'square-pin', color: 'turquoise', stroke: { color: 'grey', width: '1'}, text: { label: '15', color: 'red', size: '14px', yOffset: '-11px' } } }
+    { name: 'Square pin', options: { shape: 'square-pin', color: 'turquoise', stroke: { color: 'grey', width: '1'}, text: { label: '15', color: 'red', size: '14px'/*, translation: [ '0px', '-71px' ]*/ } } }
   ],
   radius: [
     { name: 'Circle', options: { shape: 'circle', color: 'lightgrey', radius , stroke: { color: 'black' } } },
@@ -54,7 +54,8 @@ const shapes = ref({
     { name: 'Circle & text', options: { shape: 'circle', color: 'lightgrey', radius, stroke: { color: 'black' }, text: { label: '01'} } },
     { name: 'Icon Classes', options: {  icon: { classes: 'las la-home', size: 24, rotation: 90, color: 'green' }, radius } },
     { name: 'Icon Url', options: {  icon: { url: '/icons/plane.png', size: 24, rotation: 90, opacity: 0.5 }, radius } },
-    { name: 'Text only', options: {  text: { label: 'Home', rotation: 45, color: 'red' }, radius } }
+    { name: 'Text only', options: {  text: { label: 'Home', rotation: 45, color: 'red' }, radius } },
+    { name: 'Html only', options: {  html: "<img src='/icons/plane.png' width='32px' height='32px' />" } }
   ]
 })
 </script>
