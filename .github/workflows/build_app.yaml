@@ -30,7 +30,7 @@ jobs:
       #     key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
       - name: Init runner
         run: bash ./scripts/init_runner.sh ${{ github.job }}
-      - name: Run tests
+      - name: Build app
         env:
           SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
           GITHUB_DEVELOPMENT_PAT: ${{ secrets.GH_DEVELOPMENT_PAT }}

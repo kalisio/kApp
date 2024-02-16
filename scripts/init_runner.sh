@@ -17,7 +17,7 @@ init_github_run_tests() {
 }
 
 init_github_build_app() {
-    install_reqs nvm node16
+    install_reqs age sops nvm node16
 }
 
 init_github_build_docs() {
