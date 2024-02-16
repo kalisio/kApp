@@ -27,6 +27,9 @@ use_mongo "$MONGO_VER"
 if [ "$CI" = true ]; then
     WORKSPACE_DIR="$(dirname "$ROOT_PATH")"
 
+    # Workaround since repo is kApp with a 'A' and in kli file it's kapp with a 'a'
+    ln -s "$WORKSPACE_DIR/kApp" "$WORKSPACE_DIR/kapp"
+
     # clone developement into $KALISIO_DEVELOPMENT_DIR
     git clone --depth 1 "https://$GITHUB_DEVELOPMENT_PAT@github.com/kalisio/development.git" "$WORKSPACE_DIR/development"
 
