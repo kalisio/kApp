@@ -21,25 +21,44 @@ while getopts "m:n:" option; do
     esac
 done
 
-use_node "$NODE_VER"
-use_mongo "$MONGO_VER"
-
 if [ "$CI" = true ]; then
+    begin_group "Fetching project dependencies ..."
+
     WORKSPACE_DIR="$(dirname "$ROOT_PATH")"
+    DEVELOPMENT_REPO_DIR="$WORKSPACE_DIR/development"
 
     # Workaround since repo is kApp with a 'A' and in kli file it's kapp with a 'a'
     ln -s "$WORKSPACE_DIR/kApp" "$WORKSPACE_DIR/kapp"
 
-    # clone developement into $KALISIO_DEVELOPMENT_DIR
-    git clone --depth 1 "https://$GITHUB_DEVELOPMENT_PAT@github.com/kalisio/development.git" "$WORKSPACE_DIR/development"
+    # clone developement
+    git clone --depth 1 "https://$GITHUB_DEVELOPMENT_PAT@github.com/kalisio/development.git" "$DEVELOPMENT_REPO_DIR"
 
-    get_app_infos "$ROOT_PATH" "$WORKSPACE_DIR/development/workspaces/apps"
+    get_app_infos "$ROOT_PATH" "$DEVELOPMENT_REPO_DIR/workspaces/apps"
     APP="${APP_INFOS[0]}"
     VERSION="${APP_INFOS[1]}"
     FLAVOR="${APP_INFOS[2]}"
     KLI_FILE="${APP_INFOS[3]}"
 
     run_kli "$WORKSPACE_DIR" "$KLI_FILE" "$NODE_VER"
+
+    end_group "Fetching project dependencies ..."
+else
+    DEVELOPMENT_REPO_DIR="$KALISIO_DEVELOPMENT_DIR/development"
 fi
 
+## Start mongo
+##
+
+use_mongo "$MONGO_VER"
+k-mongo
+
+## Load project env
+##
+
+. "$DEVELOPMENT_REPO_DIR/workspaces/apps/apps.sh" kapp
+
+## Run tests
+##
+
+use_node "$NODE_VER"
 yarn test:server
