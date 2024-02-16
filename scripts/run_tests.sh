@@ -30,7 +30,7 @@ if [ "$CI" = true ]; then
     # clone developement into $KALISIO_DEVELOPMENT_DIR
     git clone --depth 1 "https://$GITHUB_DEVELOPMENT_PAT@github.com/kalisio/development.git" "$WORKSPACE_DIR/development"
 
-    get_app_infos "$ROOT_PATH" "$WORSPACE_DIR/development/workspaces/apps"
+    get_app_infos "$ROOT_PATH" "$WORKSPACE_DIR/development/workspaces/apps"
     APP="${APP_INFOS[0]}"
     VERSION="${APP_INFOS[1]}"
     FLAVOR="${APP_INFOS[2]}"
