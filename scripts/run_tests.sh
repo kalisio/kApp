@@ -53,8 +53,10 @@ fi
 ##
 
 begin_group "Starting mongo $MONGO_VER ..."
+
 use_mongo "$MONGO_VER"
 k-mongo
+
 end_group "Starting mongo $MONGO_VER ..."
 
 ## Load project env
