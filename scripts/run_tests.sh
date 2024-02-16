@@ -42,6 +42,9 @@ if [ "$CI" = true ]; then
     run_kli "$WORKSPACE_DIR" "$KLI_FILE" "$NODE_VER"
 
     end_group "Fetching project dependencies ..."
+
+    echo "Used kli file $KLI_FILE ..."
+    echo "About to run tests for ${APP}@${VERSION} ($FLAVOR) ..."
 else
     DEVELOPMENT_REPO_DIR="$KALISIO_DEVELOPMENT_DIR/development"
 fi
@@ -49,8 +52,10 @@ fi
 ## Start mongo
 ##
 
+begin_group "Starting mongo $MONGO_VER ..."
 use_mongo "$MONGO_VER"
 k-mongo
+end_group "Starting mongo $MONGO_VER ..."
 
 ## Load project env
 ##
