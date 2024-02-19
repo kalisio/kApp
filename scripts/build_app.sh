@@ -40,7 +40,7 @@ if [ "$CI" = true ]; then
     # clone app dependencies
     init_app_infos "$ROOT_PATH" "$WORKSPACE_DIR/development/workspaces/apps"
     KLI_FILE=$(get_app_kli_file)
-    echo "Will use kli file $KLI_FILE to fetch dependencies ..."
+    echo -e "${KASH_TXT_BOLD}Will use kli file $KLI_FILE to fetch dependencies ...${KASH_TXT_RESET}"
     cd "$WORKSPACE_DIR" && node "$WORKSPACE_DIR/kli" "$KLI_FILE" --clone --shallow-clone && cd ~-
 
     end_group "Fetching project dependencies ..."
@@ -67,7 +67,7 @@ echo "About to build ${APP} v${VERSION}-$FLAVOR ..."
 # kli file is used in container to install, link
 KLI_FILE=$(get_app_kli_file)
 cp "$KLI_FILE" "$WORKSPACE_DIR/kli.js"
-echo "Will use kli file $KLI_FILE to install and link modules ..."
+echo -e "${KASH_TXT_BOLD}Will use kli file $KLI_FILE to install and link modules ...${KASH_TXT_RESET}"
 
 IMAGE_NAME="kalisio/$APP"
 IMAGE_TAG="$VERSION-$FLAVOR"
