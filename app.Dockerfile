@@ -36,8 +36,9 @@ USER node
 # Link the modules
 WORKDIR /opt/kalisio
 RUN node /opt/kalisio/kli/index.js /opt/kalisio/kli.js --link
+WORKDIR /opt/kalisio/$APP
+RUN yarn pwa:build
 
 # Run the app
-WORKDIR /opt/kalisio/${APP}
 EXPOSE 8081
 CMD [ "yarn", "prod" ]
