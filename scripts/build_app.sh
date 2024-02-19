@@ -28,29 +28,26 @@ if [ "$CI" = true ]; then
     begin_group "Fetching project dependencies ..."
 
     WORKSPACE_DIR="$(dirname "$ROOT_PATH")"
-    DEVELOPMENT_REPO_DIR="$WORKSPACE_DIR/development"
 
     # Workaround since repo is kApp with a 'A' and in kli file it's kapp with a 'a'
     ln -s "$WORKSPACE_DIR/kApp" "$WORKSPACE_DIR/kapp"
 
     # clone developement
-    git clone --depth 1 "https://$GITHUB_DEVELOPMENT_PAT@github.com/kalisio/development.git" "$DEVELOPMENT_REPO_DIR"
+    git clone --depth 1 "https://$GITHUB_DEVELOPMENT_PAT@github.com/kalisio/development.git" "$WORKSPACE_DIR/development"
     # clone kli
     git clone --depth 1 "https://github.com/kalisio/kli.git" "$WORKSPACE_DIR/kli"
     cd "$WORKSPACE_DIR/kli" && yarn install && cd ~-
     # clone app dependencies
-    init_app_infos "$ROOT_PATH" "$DEVELOPMENT_REPO_DIR/workspaces/apps"
+    init_app_infos "$ROOT_PATH" "$WORKSPACE_DIR/development/workspaces/apps"
     KLI_FILE=$(get_app_kli_file)
-    node "$WORKSPACE_DIR/kli" "$KLI_FILE" --clone --shallow-clone
+    echo "Will use kli file $KLI_FILE to fetch dependencies ..."
+    cd "$WORKSPACE_DIR" && node "$WORKSPACE_DIR/kli" "$KLI_FILE" --clone --shallow-clone && cd ~-
 
     end_group "Fetching project dependencies ..."
-
-    echo "Used kli file $KLI_FILE ..."
 else
     WORKSPACE_DIR="$KALISIO_DEVELOPMENT_DIR"
-    DEVELOPMENT_REPO_DIR="$KALISIO_DEVELOPMENT_DIR/development"
 
-    init_app_infos "$ROOT_PATH" "$DEVELOPMENT_REPO_DIR/workspaces/apps"
+    init_app_infos "$ROOT_PATH" "$WORKSPACE_DIR/development/workspaces/apps"
 fi
 
 APP=$(get_app_name)
@@ -62,7 +59,7 @@ echo "About to build ${APP} v${VERSION}-$FLAVOR ..."
 ## Load project env
 ##
 
-. "$DEVELOPMENT_REPO_DIR/workspaces/apps/apps.sh" kapp
+. "$WORKSPACE_DIR/development/workspaces/apps/apps.sh" kapp
 
 ## Build container
 ##
@@ -70,6 +67,7 @@ echo "About to build ${APP} v${VERSION}-$FLAVOR ..."
 # kli file is used in container to install, link
 KLI_FILE=$(get_app_kli_file)
 cp "$KLI_FILE" "$WORKSPACE_DIR/kli.js"
+echo "Will use kli file $KLI_FILE to install and link modules ..."
 
 IMAGE_NAME="kalisio/$APP"
 IMAGE_TAG="$VERSION-$FLAVOR"
