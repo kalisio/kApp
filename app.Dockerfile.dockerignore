@@ -1,0 +1,20 @@
+# Ignore verything
+*
+
+# Except these
+!kli.js
+!kli/*
+!feathers-s3/*
+!feathers-import-export/*
+!feathers-webpush/*
+!kdk/*
+!kapp/*
+
+# But ignore these anyway
+**/node_modules
+**/npm-debug.log
+**/*Dockerfile
+**/docker-compose*
+**/*dockerignore
+**/.git
+**/.gitignore
