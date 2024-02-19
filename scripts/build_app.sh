@@ -41,7 +41,7 @@ if [ "$CI" = true ]; then
     init_app_infos "$ROOT_PATH" "$WORKSPACE_DIR/development/workspaces/apps"
     KLI_FILE=$(get_app_kli_file)
     echo -e "${KASH_TXT_BOLD}Will use kli file $KLI_FILE to fetch dependencies ...${KASH_TXT_RESET}"
-    cd "$WORKSPACE_DIR" && node "$WORKSPACE_DIR/kli" "$KLI_FILE" --clone --shallow-clone && cd ~-
+    cd "$WORKSPACE_DIR" && node "$WORKSPACE_DIR/kli/index.js" "$KLI_FILE" --clone --shallow-clone && cd ~-
 
     end_group "Fetching project dependencies ..."
 else

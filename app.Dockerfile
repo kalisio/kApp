@@ -16,7 +16,7 @@ RUN yarn install
 
 # Setup app
 WORKDIR /opt/kalisio/
-RUN node /opt/kalisio/kli /opt/kalisio/kli.js --install
+RUN node /opt/kalisio/kli/index.js /opt/kalisio/kli.js --install
 
 # Copy to final container
 FROM node:16-bookworm-slim
@@ -35,7 +35,7 @@ USER node
 
 # Link the modules
 WORKDIR /opt/kalisio
-RUN node /opt/kalisio/kli /opt/kalisio/kli.js --link
+RUN node /opt/kalisio/kli/index.js /opt/kalisio/kli.js --link
 
 # Run the app
 WORKDIR /opt/kalisio/${APP}
