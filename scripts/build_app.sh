@@ -30,7 +30,9 @@ if [ "$CI" = true ]; then
     WORKSPACE_DIR="$(dirname "$ROOT_PATH")"
 
     # Workaround since repo is kApp with a 'A' and in kli file it's kapp with a 'a'
-    ln -s "$WORKSPACE_DIR/kApp" "$WORKSPACE_DIR/kapp"
+    # ln -s "$WORKSPACE_DIR/kApp" "$WORKSPACE_DIR/kapp"
+    mv "$WORKSPACE_DIR/kApp" "$WORKSPACE_DIR/kapp"
+    ln -s "$WORKSPACE_DIR/kapp" "$WORKSPACE_DIR/kApp"
 
     # clone developement
     git clone --depth 1 "https://$GITHUB_DEVELOPMENT_PAT@github.com/kalisio/development.git" "$WORKSPACE_DIR/development"
