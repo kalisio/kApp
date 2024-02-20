@@ -3,10 +3,10 @@ set -euo pipefail
 # set -x
 
 THIS_FILE=$(readlink -f "${BASH_SOURCE[0]}")
-THIS_PATH=$(dirname "$THIS_FILE")
-ROOT_PATH=$(dirname "$THIS_PATH")
+THIS_DIR=$(dirname "$THIS_FILE")
+ROOT_DIR=$(dirname "$THIS_DIR")
 
-. "$THIS_PATH/kash/kash.sh"
+. "$THIS_DIR/kash/kash.sh"
 
 ## Parse options
 ##
@@ -21,36 +21,11 @@ while getopts "p" option; do
     esac
 done
 
-### Handle CI/dev environment
+### Init workspace
 ###
 
-if [ "$CI" = true ]; then
-    begin_group "Fetching project dependencies ..."
-
-    WORKSPACE_DIR="$(dirname "$ROOT_PATH")"
-
-    # Workaround since repo is kApp with a 'A' and in kli file it's kapp with a 'a'
-    # ln -s "$WORKSPACE_DIR/kApp" "$WORKSPACE_DIR/kapp"
-    mv "$WORKSPACE_DIR/kApp" "$WORKSPACE_DIR/kapp"
-    ln -s "$WORKSPACE_DIR/kapp" "$WORKSPACE_DIR/kApp"
-
-    # clone developement
-    git clone --depth 1 "https://$GITHUB_DEVELOPMENT_PAT@github.com/kalisio/development.git" "$WORKSPACE_DIR/development"
-    # clone kli
-    git clone --depth 1 "https://github.com/kalisio/kli.git" "$WORKSPACE_DIR/kli"
-    cd "$WORKSPACE_DIR/kli" && yarn install && cd ~-
-    # clone app dependencies
-    init_app_infos "$ROOT_PATH" "$WORKSPACE_DIR/development/workspaces/apps"
-    KLI_FILE=$(get_app_kli_file)
-    echo -e "${KASH_TXT_BOLD}Will use kli file $KLI_FILE to fetch dependencies ...${KASH_TXT_RESET}"
-    cd "$WORKSPACE_DIR" && node "$WORKSPACE_DIR/kli/index.js" "$KLI_FILE" --clone --shallow-clone && cd ~-
-
-    end_group "Fetching project dependencies ..."
-else
-    WORKSPACE_DIR="$KALISIO_DEVELOPMENT_DIR"
-
-    init_app_infos "$ROOT_PATH" "$WORKSPACE_DIR/development/workspaces/apps"
-fi
+WORKSPACE_DIR="$(dirname "$ROOT_DIR")"
+init_app_infos "$ROOT_DIR" "$WORKSPACE_DIR/development/workspaces/apps"
 
 APP=$(get_app_name)
 VERSION=$(get_app_version)
@@ -69,7 +44,7 @@ echo "About to build ${APP} v${VERSION}-$FLAVOR ..."
 # kli file is used in container to install, link
 KLI_FILE=$(get_app_kli_file)
 cp "$KLI_FILE" "$WORKSPACE_DIR/kli.js"
-echo -e "${KASH_TXT_BOLD}Will use kli file $KLI_FILE to install and link modules ...${KASH_TXT_RESET}"
+echo "Will use kli file $KLI_FILE to install and link modules ..."
 
 IMAGE_NAME="kalisio/$APP"
 IMAGE_TAG="$VERSION-$FLAVOR"
