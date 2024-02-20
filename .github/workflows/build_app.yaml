@@ -31,9 +31,10 @@ jobs:
       - name: Init runner
         run: bash ./scripts/init_runner.sh ${{ github.job }}
       - name: Setup workspace
+        env:
+          GITHUB_DEVELOPMENT_PAT: ${{ secrets.GH_DEVELOPMENT_PAT }}
         run: bash ./scripts/setup_workspace.sh
       - name: Build app
         env:
           SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
-          GITHUB_DEVELOPMENT_PAT: ${{ secrets.GH_DEVELOPMENT_PAT }}
         run: bash ./scripts/build_app.sh -p
