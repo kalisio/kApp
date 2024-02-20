@@ -3,14 +3,17 @@ set -euo pipefail
 # set -x
 
 THIS_FILE=$(readlink -f "${BASH_SOURCE[0]}")
-THIS_PATH=$(dirname "$THIS_FILE")
-ROOT_PATH=$(dirname "$THIS_PATH")
+THIS_DIR=$(dirname "$THIS_FILE")
+ROOT_DIR=$(dirname "$THIS_DIR")
 
-. "$THIS_PATH/kash/kash.sh"
+. "$THIS_DIR/kash/kash.sh"
+
+## Parse options
+##
 
 PUBLISH=false
-while getopts "p" option; do
-    case $option in
+while getopts "p" OPT; do
+    case $OPT in
         p) # defines mongo version
             PUBLISH=true;;
         *)
@@ -18,12 +21,27 @@ while getopts "p" option; do
     esac
 done
 
+## Init workspace
+##
+
+WORKSPACE_DIR="$(dirname "$ROOT_DIR")"
+
+## Build docs
+##
+
 # Build process requires node 18
 use_node 18
 
-rm .postcssrc.js && cd docs && yarn install && yarn build
+rm -f .postcssrc.js && cd docs && yarn install && yarn build
 
 if [ "$PUBLISH" = true ]; then
-    # deploy_gh_pages
-    echo "publish !"
+    load_env_files "$WORKSPACE_DIR/development/common/KAPP_PUSH_DOC_TOKEN.enc.env"
+
+    GIT_COMMIT_SHA=$(get_git_commit_sha "$ROOT_DIR")
+    GIT_AUTHOR=$(get_git_commit_author "$ROOT_DIR")
+    deploy_gh_pages \
+        "https://oauth2:$KAPP_PUSH_DOC_TOKEN@github.com/kalisio/kApp.git" \
+        "$ROOT_DIR/docs/.vitepress/dist" \
+        "$GIT_AUTHOR" \
+        "Docs built from $GIT_COMMIT_SHA"
 fi

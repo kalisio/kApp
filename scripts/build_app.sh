@@ -21,8 +21,8 @@ while getopts "p" option; do
     esac
 done
 
-### Init workspace
-###
+## Init workspace
+##
 
 WORKSPACE_DIR="$(dirname "$ROOT_DIR")"
 init_app_infos "$ROOT_DIR" "$WORKSPACE_DIR/development/workspaces/apps"
@@ -32,9 +32,6 @@ VERSION=$(get_app_version)
 FLAVOR=$(get_app_flavor)
 
 echo "About to build ${APP} v${VERSION}-$FLAVOR ..."
-
-## Load project env
-##
 
 . "$WORKSPACE_DIR/development/workspaces/apps/apps.sh" kapp
 

@@ -24,8 +24,8 @@ while getopts "m:n:" option; do
     esac
 done
 
-### Init workspace
-###
+## Init workspace
+##
 
 WORKSPACE_DIR="$(dirname "$ROOT_DIR")"
 init_app_infos "$ROOT_DIR" "$WORKSPACE_DIR/development/workspaces/apps"
@@ -36,6 +36,8 @@ FLAVOR=$(get_app_flavor)
 
 echo "About to run tests for ${APP} v${VERSION}-($FLAVOR) ..."
 
+. "$WORKSPACE_DIR/development/workspaces/apps/apps.sh" kapp
+
 ## Start mongo
 ##
 
@@ -45,11 +47,6 @@ use_mongo "$MONGO_VER"
 k-mongo
 
 end_group "Starting mongo $MONGO_VER ..."
-
-## Load project env
-##
-
-. "$WORKSPACE_DIR/development/workspaces/apps/apps.sh" kapp
 
 ## Run tests
 ##
