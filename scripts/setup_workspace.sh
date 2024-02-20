@@ -38,13 +38,14 @@ shift $((OPTIND-1))
 WORKSPACE_DIR="${1:-$(dirname "$ROOT_DIR")}"
 DEVELOPMENT_DIR="$WORKSPACE_DIR/development"
 
+begin_group "Cloning development repo ..."
+
 if [ "$CI" = true ]; then
     # workaround since repo is kApp with a 'A' and in kli file it's kapp with a 'a'
     mv "$WORKSPACE_DIR/kApp" "$WORKSPACE_DIR/kapp"
     ln -s "$WORKSPACE_DIR/kapp" "$WORKSPACE_DIR/kApp"
 
-    # clone development in $WORKSPACE_DIR
-    git clone --depth 1 "https://$GITHUB_DEVELOPMENT_PAT@github.com/kalisio/development.git" "$DEVELOPMENT_DIR"
+    DEVELOPMENT_REPO_URL="https://$GITHUB_DEVELOPMENT_PAT@github.com/kalisio/development.git"
 else
     GIT_OPS=
     if [ -n "$WORKSPACE_TAG" ] || [ -n "$WORKSPACE_BRANCH" ]; then
@@ -52,16 +53,24 @@ else
     fi
     git clone --depth 1 $GIT_OPS "$GITHUB_URL/kalisio/kApp.git" "$WORKSPACE_DIR/kapp"
 
-    git clone --depth 1 "$GITHUB_URL/kalisio/development.git" "$DEVELOPMENT_DIR"
+    DEVELOPMENT_REPO_URL="$GITHUB_URL/kalisio/development.git"
+
     # unset KALISIO_DEVELOPMENT_DIR because we want kli to clone everyhting in $WORKSPACE_DIR
     unset KALISIO_DEVELOPMENT_DIR
 fi
+
+# clone development in $WORKSPACE_DIR
+git clone --depth 1 "$DEVELOPMENT_REPO_URL" "$DEVELOPMENT_DIR"
+
+end_group "Cloning development repo ..."
 
 # select kli file for dependencies
 init_app_infos "$WORKSPACE_DIR/kapp" "$DEVELOPMENT_DIR/workspaces/apps"
 KLI_FILE=$(get_app_kli_file)
 
 echo "About to setup workspace using $KLI_FILE ..."
+
+begin_group "Running kli ..."
 
 # clone kli in venv if not there
 if [ ! -d "$WORKSPACE_DIR/kli" ]; then
@@ -76,3 +85,5 @@ if [ "$WORKSPACE_FULL" = true ]; then
     nvm exec "$WORKSPACE_NODE" node "$WORKSPACE_DIR/kli/index.js" "$KLI_FILE" --link --link-folder "$WORKSPACE_DIR/yarn-links"
 fi
 cd ~-
+
+end_group "Running kli ..."

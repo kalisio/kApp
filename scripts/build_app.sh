@@ -41,10 +41,13 @@ echo "About to build ${APP} v${VERSION}-$FLAVOR ..."
 # kli file is used in container to install, link
 KLI_FILE=$(get_app_kli_file)
 cp "$KLI_FILE" "$WORKSPACE_DIR/kli.js"
+
 echo "Will use kli file $KLI_FILE to install and link modules ..."
 
 IMAGE_NAME="kalisio/$APP"
 IMAGE_TAG="$VERSION-$FLAVOR"
+
+begin_group "Building container ..."
 
 docker login --username "$KALISIO_DOCKERHUB_USERNAME" --password-stdin < "$KALISIO_DOCKERHUB_PASSWORD"
 # DOCKER_BUILDKIT is here to be able to use Dockerfile specific dockerginore (app.Dockerfile.dockerignore)
@@ -63,3 +66,5 @@ if [ "$PUBLISH" = true ]; then
 fi
 
 docker logout
+
+end_group "Building container ..."
