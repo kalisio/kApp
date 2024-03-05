@@ -12,14 +12,23 @@ ROOT_DIR=$(dirname "$THIS_DIR")
 ##
 
 PUBLISH=false
-while getopts "p" OPT; do
+FORCE=false
+while getopts "pf" OPT; do
     case $OPT in
         p) # defines mongo version
             PUBLISH=true;;
+        f) # force run (skip [build doc] requirement)
+            FORCE=true;;
         *)
             ;;
     esac
 done
+
+if [[ "$FORCE" = false ]] && [[ ! "$(get_git_commit_message "$ROOT_DIR")" =~ "\[build doc\]" ]]; then
+    echo "Skipping job since [build doc] is not included in commit message."
+    echo "Add -f to force."
+    exit 0
+fi
 
 ## Init workspace
 ##
