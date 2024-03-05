@@ -21,6 +21,12 @@ while getopts "p" option; do
     esac
 done
 
+SKIP_REGEX="\[skip app\]"
+if [[ "$(get_git_commit_message "$ROOT_DIR")" =~ $SKIP_REGEX ]]; then
+    echo "Skipping job since regex '$SKIP_REGEX' matched in commit message."
+    exit 0
+fi
+
 ## Init workspace
 ##
 

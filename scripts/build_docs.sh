@@ -26,7 +26,7 @@ done
 
 RUN_REGEX="\[build docs?\]"
 if [[ "$FORCE" = false ]] && [[ ! "$(get_git_commit_message "$ROOT_DIR")" =~ $RUN_REGEX ]]; then
-    echo "Skipping job since '$RUN_REGEX' is not included in commit message."
+    echo "Skipping job since regex '$RUN_REGEX' didn't match in commit message."
     echo "Add -f to force."
     exit 0
 fi
