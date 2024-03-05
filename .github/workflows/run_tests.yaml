@@ -14,10 +14,6 @@ jobs:
         # mongo: [ 4, 5, 6 ]
     name: Tests / Node ${{ matrix.node }} / Mongo ${{ matrix.mongo }}
     runs-on: ubuntu-22.04
-    # container:
-    #   image: harbor.portal.kalisio.com/kalisio/ci-kdk:latest
-    #   # Run using Github Actions specific user in our container
-    #   options: --user 1001
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -40,7 +36,7 @@ jobs:
       - name: Setup workspace
         env:
           GITHUB_DEVELOPMENT_PAT: ${{ secrets.GH_DEVELOPMENT_PAT }}
-        run: bash ./scripts/setup_workspace.sh -f -n ${{ matrix.node }}
+        run: bash ./scripts/setup_workspace.sh -k klifull -n ${{ matrix.node }}
       - name: Run tests
         env:
           SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
