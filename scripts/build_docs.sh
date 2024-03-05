@@ -30,6 +30,7 @@ if [[ "$FORCE" = false ]] && [[ ! "$(get_git_commit_message "$ROOT_DIR")" =~ "\[
     exit 0
 fi
 
+
 ## Init workspace
 ##
 
