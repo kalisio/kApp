@@ -22,7 +22,7 @@ jobs:
       - name: Run tests
         env:
           SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
-        run: bash ./scripts/run_tests.sh -r ${{ job.name }}
+        run: bash ./scripts/run_tests.sh -r ${{ github.job }}
 
   additional_tests:
     strategy:
@@ -71,7 +71,7 @@ jobs:
       - name: Build app
         env:
           SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
-        run: bash ./scripts/build_app.sh -p -r ${{ job.name }}
+        run: bash ./scripts/build_app.sh -p -r ${{ github.job }}
 
   build_docs:
     name: Build docs
@@ -92,4 +92,4 @@ jobs:
       - name: Build docs
         env:
           SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
-        run: bash ./scripts/build_docs.sh -p -r ${{ job.name }}
+        run: bash ./scripts/build_docs.sh -p -r ${{ github.job }}
