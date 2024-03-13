@@ -13,12 +13,17 @@ ROOT_DIR=$(dirname "$THIS_DIR")
 
 NODE_VER=16
 MONGO_VER=4
-while getopts "m:n:" option; do
+while getopts "m:n:r" option; do
     case $option in
         m) # defines mongo version
-            MONGO_VER=$OPTARG;;
+            MONGO_VER=$OPTARG
+            ;;
         n) # defines node version
-            NODE_VER=$OPTARG;;
+            NODE_VER=$OPTARG
+             ;;
+        r) # report outcome to slack
+            trap 'slack_ci_report "$ROOT_DIR" "$?" "$SLACK_WEBHOOK_APPS"' EXIT
+            ;;
         *)
             ;;
     esac
@@ -37,6 +42,7 @@ FLAVOR=$(get_app_flavor)
 echo "About to run tests for ${APP} v${VERSION}-($FLAVOR) ..."
 
 . "$WORKSPACE_DIR/development/workspaces/apps/apps.sh" kapp
+load_env_files "$WORKSPACE_DIR/development/common/SLACK_WEBHOOK_APPS.enc.env"
 
 ## Start mongo
 ##

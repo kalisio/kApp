@@ -8,8 +8,6 @@ ROOT_DIR=$(dirname "$THIS_DIR")
 
 . "$THIS_DIR/kash/kash.sh"
 
-trap 'slack_ci_report "$ROOT_DIR" "$?" "$SLACK_WEBHOOK_APPS"' EXIT
-
 ## Parse options
 ##
 
@@ -17,7 +15,8 @@ PUBLISH=false
 while getopts "pr" option; do
     case $option in
         p) # defines mongo version
-            PUBLISH=true;;
+            PUBLISH=true
+            ;;
         r) # report outcome to slack
             trap 'slack_ci_report "$ROOT_DIR" "$?" "$SLACK_WEBHOOK_APPS"' EXIT
             ;;

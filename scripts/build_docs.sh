@@ -13,12 +13,14 @@ ROOT_DIR=$(dirname "$THIS_DIR")
 
 PUBLISH=false
 FORCE=false
-while getopts "pf" OPT; do
+while getopts "pr" OPT; do
     case $OPT in
         p) # defines mongo version
-            PUBLISH=true;;
-        f) # force run (skip [build doc] requirement)
-            FORCE=true;;
+            PUBLISH=true
+            ;;
+        r) # report outcome to slack
+            trap 'slack_ci_report "$ROOT_DIR" "$?" "$SLACK_WEBHOOK_APPS"' EXIT
+            ;;
         *)
             ;;
     esac
@@ -28,6 +30,8 @@ done
 ##
 
 WORKSPACE_DIR="$(dirname "$ROOT_DIR")"
+
+load_env_files "$WORKSPACE_DIR/development/common/SLACK_WEBHOOK_APPS.enc.env"
 
 ## Build docs
 ##

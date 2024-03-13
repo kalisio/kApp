@@ -33,4 +33,4 @@ jobs:
       - name: Build docs
         env:
           SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
-        run: bash ./scripts/build_docs.sh -p
+        run: bash ./scripts/build_docs.sh -p -r
