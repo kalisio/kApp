@@ -14,7 +14,8 @@ ROOT_DIR=$(dirname "$THIS_DIR")
 NODE_VER=16
 MONGO_VER=4
 CI_STEP_NAME="Run tests"
-while getopts "m:n:r:" option; do
+CODE_COVERAGE=false
+while getopts "m:n:cr:" option; do
     case $option in
         m) # defines mongo version
             MONGO_VER=$OPTARG
@@ -22,6 +23,9 @@ while getopts "m:n:r:" option; do
         n) # defines node version
             NODE_VER=$OPTARG
              ;;
+        c) # publish code coverage
+            CODE_COVERAGE=true
+            ;;
         r) # report outcome to slack
             CI_STEP_NAME=$OPTARG
             trap 'slack_ci_report "$ROOT_DIR" "$CI_STEP_NAME" "$?" "$SLACK_WEBHOOK_APPS"' EXIT
@@ -61,3 +65,10 @@ end_group "Starting mongo $MONGO_VER ..."
 
 use_node "$NODE_VER"
 yarn test:server
+
+## Publish code coverage
+##
+
+if [ "$CODE_COVERAGE" = true ]; then
+    send_coverage_to_cc "$CC_TEST_REPORTER_ID"
+fi
