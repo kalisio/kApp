@@ -5,8 +5,8 @@ on:
       - gha
 
 jobs:
-  main_ci:
-    name: Main CI
+  run_tests:
+    name: Run tests
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repo
@@ -18,18 +18,50 @@ jobs:
       - name: Setup workspace
         env:
           GITHUB_DEVELOPMENT_PAT: ${{ secrets.GH_DEVELOPMENT_PAT }}
-        run: bash ./scripts/setup_workspace.sh -k klifull -n 16
+        run: bash ./scripts/setup_workspace.sh
       - name: Run tests
         env:
           SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
-        run: bash ./scripts/run_tests.sh -n 16 -m 4 -r
+        run: bash ./scripts/run_tests.sh -r
+
+  build_app:
+    name: Build app
+    if: ${{ !contains(github.event.head_commit.message, 'skip app') }}
+    needs: [ run_tests ]
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Init runner
+        run: bash ./scripts/init_runner.sh ${{ github.job }}
+      - name: Setup workspace
+        env:
+          GITHUB_DEVELOPMENT_PAT: ${{ secrets.GH_DEVELOPMENT_PAT }}
+        run: bash ./scripts/setup_workspace.sh -k kli
       - name: Build app
-        if: ${{ !contains(github.event.head_commit.message, 'skip app') }}
         env:
           SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
         run: bash ./scripts/build_app.sh -p -r
+
+  build_docs:
+    name: Build docs
+    if: ${{ contains(github.event.head_commit.message, 'build doc') }}
+    needs: [ run_tests ]
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Init runner
+        run: bash ./scripts/init_runner.sh ${{ github.job }}
+      - name: Setup workspace
+        env:
+          GITHUB_DEVELOPMENT_PAT: ${{ secrets.GH_DEVELOPMENT_PAT }}
+        run: bash ./scripts/setup_workspace.sh -k nokli
       - name: Build docs
-        if: ${{ contains(github.event.head_commit.message, 'build doc') }}
         env:
           SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
         run: bash ./scripts/build_docs.sh -p -r
