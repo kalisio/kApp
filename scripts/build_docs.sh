@@ -12,14 +12,15 @@ ROOT_DIR=$(dirname "$THIS_DIR")
 ##
 
 PUBLISH=false
-FORCE=false
-while getopts "pr" OPT; do
+CI_STEP_NAME="Build docs"
+while getopts "pr:" OPT; do
     case $OPT in
         p) # defines mongo version
             PUBLISH=true
             ;;
         r) # report outcome to slack
-            trap 'slack_ci_report "$ROOT_DIR" "$?" "$SLACK_WEBHOOK_APPS"' EXIT
+            CI_STEP_NAME=$OPTARG
+            trap 'slack_ci_report "$ROOT_DIR" "$CI_STEP_NAME" "$?" "$SLACK_WEBHOOK_APPS"' EXIT
             ;;
         *)
             ;;

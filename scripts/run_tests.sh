@@ -13,7 +13,8 @@ ROOT_DIR=$(dirname "$THIS_DIR")
 
 NODE_VER=16
 MONGO_VER=4
-while getopts "m:n:r" option; do
+CI_STEP_NAME="Run tests"
+while getopts "m:n:r:" option; do
     case $option in
         m) # defines mongo version
             MONGO_VER=$OPTARG
@@ -22,7 +23,8 @@ while getopts "m:n:r" option; do
             NODE_VER=$OPTARG
              ;;
         r) # report outcome to slack
-            trap 'slack_ci_report "$ROOT_DIR" "$?" "$SLACK_WEBHOOK_APPS"' EXIT
+            CI_STEP_NAME=$OPTARG
+            trap 'slack_ci_report "$ROOT_DIR" "$CI_STEP_NAME" "$?" "$SLACK_WEBHOOK_APPS"' EXIT
             ;;
         *)
             ;;
