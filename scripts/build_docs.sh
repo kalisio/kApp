@@ -43,7 +43,7 @@ use_node 18
 rm -f .postcssrc.js && cd docs && yarn install && yarn build
 
 if [ "$PUBLISH" = true ]; then
-    load_env_files "$WORKSPACE_DIR/development/common/KAPP_PUSH_DOC_TOKEN.enc.env"
+    load_env_files "$WORKSPACE_DIR/development/common/GH_PAGES_PUSH_TOKEN.enc.env"
 
     COMMIT_SHA=$(get_git_commit_sha "$ROOT_DIR")
     COMMIT_AUTHOR_NAME=$(get_git_commit_author_name "$ROOT_DIR")
