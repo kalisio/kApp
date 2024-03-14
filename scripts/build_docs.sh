@@ -49,7 +49,7 @@ if [ "$PUBLISH" = true ]; then
     COMMIT_AUTHOR_NAME=$(get_git_commit_author_name "$ROOT_DIR")
     COMMIT_AUTHOR_EMAIL=$(get_git_commit_author_email "$ROOT_DIR")
     deploy_gh_pages \
-        "https://oauth2:$KAPP_PUSH_DOC_TOKEN@github.com/kalisio/kApp.git" \
+        "https://oauth2:$GH_PAGES_PUSH_TOKEN@github.com/kalisio/kApp.git" \
         "$ROOT_DIR/docs/.vitepress/dist" \
         "$COMMIT_AUTHOR_NAME" \
         "$COMMIT_AUTHOR_EMAIL" \
