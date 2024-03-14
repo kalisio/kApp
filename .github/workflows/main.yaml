@@ -55,7 +55,7 @@ jobs:
 
   build_app:
     name: Build app
-    if: ${{ always() && !cancelled() && !failure() && !contains(github.event.head_commit.message, 'skip app') }}
+    if: ${{ !contains(github.event.head_commit.message, 'skip app') }}
     needs: [ run_tests ]
     runs-on: ubuntu-22.04
     steps:
@@ -76,8 +76,7 @@ jobs:
 
   build_docs:
     name: Build docs
-    if: ${{ always() && !cancelled() && !failure() && contains(github.event.head_commit.message, 'build doc') }}
-    needs: [ run_tests ]
+    if: ${{ contains(github.event.head_commit.message, 'build doc') }}
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repo
