@@ -29,7 +29,7 @@ RUN \
   node /opt/kalisio/kli/index.js /opt/kalisio/kli.js --install && \
   node /opt/kalisio/kli/index.js /opt/kalisio/kli.js --link --link-folder /opt/kalisio/yarn-links && \
   cd /opt/kalisio/$APP && yarn pwa:build && \
-  rm -fR /opt/kalisio/development /opt/kalisio/kli /opt/kalisio/kli.js
+  rm -fR /opt/kalisio/kli /opt/kalisio/kli.js
 
 
 ## Copy to final container

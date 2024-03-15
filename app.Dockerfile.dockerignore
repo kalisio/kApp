@@ -5,6 +5,7 @@
 # specific folders, we copy everyhting but the following :
 
 # Ignore all these
+development/*
 **/node_modules
 **/npm-debug.log
 **/*Dockerfile

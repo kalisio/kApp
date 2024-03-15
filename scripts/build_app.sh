@@ -15,7 +15,7 @@ get_ci_build_number() {
     else
         case "$CI_ID" in
             github)
-                echo "$GITHUB_RUN_NUMBER-$GITHUB_RUN_ATTEMPT"
+                echo "$GITHUB_RUN_NUMBER.$GITHUB_RUN_ATTEMPT"
                 ;;
             gitlab)
                 echo "$CI_JOB_ID"
