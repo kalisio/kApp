@@ -14,9 +14,20 @@ COPY . /opt/kalisio
 WORKDIR /opt/kalisio/kli
 RUN yarn install
 
+ARG APP
+ARG FLAVOR
+ARG BUILD_NUMBER
+
+ENV BUILD_NUMBER=$BUILD_NUMBER
+ENV NODE_APP_INSTANCE=$FLAVOR
+
 # Setup app
 WORKDIR /opt/kalisio/
-RUN node /opt/kalisio/kli/index.js /opt/kalisio/kli.js --install
+RUN \
+  node /opt/kalisio/kli/index.js /opt/kalisio/kli.js --install && \
+  node /opt/kalisio/kli/index.js /opt/kalisio/kli.js --link --link-folder /opt/kalisio/yarn-links && \
+  cd /opt/kalisio/$APP && yarn pwa:build && \
+  rm -fR /opt/kalisio/kli && rm /opt/kalisio/kli.js
 
 # Copy to final container
 FROM node:16-bookworm-slim
@@ -34,10 +45,10 @@ COPY --from=Builder --chown=node:node /opt/kalisio /opt/kalisio
 USER node
 
 # Link the modules
-WORKDIR /opt/kalisio
-RUN node /opt/kalisio/kli/index.js /opt/kalisio/kli.js --link
+# WORKDIR /opt/kalisio
+# RUN node /opt/kalisio/kli/index.js /opt/kalisio/kli.js --link
 WORKDIR /opt/kalisio/$APP
-RUN yarn pwa:build
+# RUN yarn pwa:build
 
 # Run the app
 EXPOSE 8081
