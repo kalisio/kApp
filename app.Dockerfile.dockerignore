@@ -1,16 +1,10 @@
-# Ignore verything
-*
+# This is the dockerignore used by app.Dockerfile, it filters out
+# everything we don't want in the 'COPY . /opt/kalisio' step where
+# '.' is the workspace folder.
+# Since we expect the workspace to be clean, we don't allowlist
+# specific folders, we copy everyhting but the following :
 
-# Except these
-!kli.js
-!kli/*
-!feathers-s3/*
-!feathers-import-export/*
-!feathers-webpush/*
-!kdk/*
-!kapp/*
-
-# But ignore these anyway
+# Ignore all these
 **/node_modules
 **/npm-debug.log
 **/*Dockerfile
