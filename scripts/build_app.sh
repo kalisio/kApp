@@ -8,27 +8,6 @@ ROOT_DIR=$(dirname "$THIS_DIR")
 
 . "$THIS_DIR/kash/kash.sh"
 
-get_ci_build_number() {
-    if [ "$CI" != true ]; then
-        # 0 is the build number you get in dev mode
-        echo "0"
-    else
-        case "$CI_ID" in
-            github)
-                echo "$GITHUB_RUN_NUMBER.$GITHUB_RUN_ATTEMPT"
-                ;;
-            gitlab)
-                echo "$CI_JOB_ID"
-                ;;
-            travis)
-                echo "$TRAVIS_BUILD_NUMBER"
-                ;;
-            *)
-                ;;
-        esac
-    fi
-}
-
 ## Parse options
 ##
 
@@ -82,7 +61,7 @@ docker login --username "$KALISIO_DOCKERHUB_USERNAME" --password-stdin < "$KALIS
 DOCKER_BUILDKIT=1 docker build \
     --build-arg APP="$APP" \
     --build-arg FLAVOR="$FLAVOR" \
-    --build-arg BUILD_NUMBER="$(get_ci_build_number)" \
+    --build-arg BUILD_NUMBER="$(get_git_commit_short_sha "$ROOT_DIR")" \
     -f app.Dockerfile \
     -t "$IMAGE_NAME:$IMAGE_TAG" \
     "$WORKSPACE_DIR"
