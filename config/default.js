@@ -30,6 +30,7 @@ const leftPane = {
     { component: 'account/KProfile', class: 'full-width' },
     { id: 'layout', icon: 'las la-desktop', label: 'LayoutActivity.LABEL', renderer: 'item', route: { name: 'layout-activity' } },
     { id: 'miscellaneous', icon: 'las la-icons', label: 'MiscellaneousActivity.LABEL', renderer: 'item', route: { name: 'miscellaneous-activity' } },
+    { id: 'document', icon: 'las la-icons', label: 'DocumentActivity.LABEL', renderer: 'item', route: { name: 'document-activity' } }, 
     { id: 'collection', icon: 'las la-list', label: 'CollectionActivity.LABEL', renderer: 'item', route: { name: 'collection-activity', params: { page: 'list' } } },
     { id: 'kanban', icon: 'dashboard', label: 'KanbanActivity.LABEL', renderer: 'item', route: { name: 'kanban-activity' } },
     { id: 'chart', icon: 'las la-chart-pie', label: 'ChartActivity.LABEL', renderer: 'item', route: { name: 'chart-activity' } },
@@ -297,6 +298,14 @@ module.exports = {
     topPane: {
       content: [
         { id: 'layout', icon: 'las la-icons', label: 'MiscellaneousActivity.LABEL', color: 'primary', disabled: true }
+      ]
+    }
+  },
+  documentActivity: {
+    leftPane: leftPane,
+    topPane: {
+      content: [
+        { id: 'layout', icon: 'las la-icons', label: 'DocumnetActivity.LABEL', color: 'primary', disabled: true }
       ]
     }
   },

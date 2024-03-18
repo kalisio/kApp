@@ -44,6 +44,10 @@ module.exports = [{
           name: 'miscellaneous-activity',
           component: 'MiscellaneousActivity'
         },
+        document: {
+          name: 'document-activity',
+          component: 'document/DocumentActivity'
+        },
         'collection/:page': {
           name: 'collection-activity',
           component: 'CollectionActivity',

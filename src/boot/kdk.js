@@ -42,6 +42,7 @@ export default async ({ app }) => {
   app.component('KTime', await kdkCoreUtils.loadComponent('time/KTime'))
   app.component('KDateTime', await kdkCoreUtils.loadComponent('time/KDateTime'))
   app.component('KDateTimeRange', await kdkCoreUtils.loadComponent('time/KDateTimeRange'))
+  app.component('KDocument', await kdkCoreUtils.loadComponent('document/KDocument'))
   app.component('KForm', await kdkCoreUtils.loadComponent('form/KForm'))
   app.component('KChart', await kdkCoreUtils.loadComponent('chart/KChart'))
   app.component('KPage', await kdkCoreUtils.loadComponent('layout/KPage'))
