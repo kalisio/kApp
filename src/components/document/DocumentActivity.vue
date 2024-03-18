@@ -3,7 +3,7 @@
     <template v-slot:page-content>
       <div class="row full-width justify-center q-gutter-md">
         <KDocument 
-          url="sample.html"
+          :url="url"
           :localize="true"
         />     
       </div>
@@ -17,6 +17,26 @@ import { mixins } from '@kalisio/kdk/core.client'
 export default {
   name: 'document-activity',
   components: {},
-  mixins: [mixins.baseActivity()]
+  mixins: [mixins.baseActivity()],
+  props: {
+    page: {
+      type: String,
+      required: true
+    }
+  },
+  data () {
+    return {
+      url: undefined
+    }
+  },
+  watch: {
+    page: {
+      handler (value) {
+        this.setTopPaneMode(value)
+        this.url = `sample.${value}`
+      },
+      immediate: true
+    }
+  }
 }
 </script>
