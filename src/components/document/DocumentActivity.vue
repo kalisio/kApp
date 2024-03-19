@@ -19,7 +19,7 @@ export default {
   components: {},
   mixins: [mixins.baseActivity()],
   props: {
-    page: {
+    type: {
       type: String,
       required: true
     }
@@ -30,7 +30,7 @@ export default {
     }
   },
   watch: {
-    page: {
+    type: {
       handler (value) {
         this.setTopPaneMode(value)
         this.url = `sample.${value}`

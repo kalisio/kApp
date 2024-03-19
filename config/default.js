@@ -30,7 +30,7 @@ const leftPane = {
     { component: 'account/KProfile', class: 'full-width' },
     { id: 'layout', icon: 'las la-desktop', label: 'LayoutActivity.LABEL', renderer: 'item', route: { name: 'layout-activity' } },
     { id: 'miscellaneous', icon: 'las la-icons', label: 'MiscellaneousActivity.LABEL', renderer: 'item', route: { name: 'miscellaneous-activity' } },
-    { id: 'document', icon: 'las la-icons', label: 'DocumentActivity.LABEL', renderer: 'item', route: { name: 'document-activity', params: { page: 'html' } } }, 
+    { id: 'document', icon: 'las la-icons', label: 'DocumentActivity.LABEL', renderer: 'item', route: { name: 'document-activity', params: { type: 'html' } } }, 
     { id: 'collection', icon: 'las la-list', label: 'CollectionActivity.LABEL', renderer: 'item', route: { name: 'collection-activity', params: { page: 'list' } } },
     { id: 'kanban', icon: 'dashboard', label: 'KanbanActivity.LABEL', renderer: 'item', route: { name: 'kanban-activity' } },
     { id: 'chart', icon: 'las la-chart-pie', label: 'ChartActivity.LABEL', renderer: 'item', route: { name: 'chart-activity' } },
@@ -307,20 +307,21 @@ module.exports = {
       content: {
         html: [
           { id: 'html', label: 'Html', color: 'primary', disabled: true },
-          { id: 'md', label: 'Markdown', color: 'primary', route: { name: 'document-activity', params: { page: 'md' } } },
-          { id: 'pdf', label: 'Pdf', color: 'primary', route: { name: 'document-activity', params: { page: 'pdf' } } }
+          { id: 'md', label: 'Markdown', color: 'primary', route: { name: 'document-activity', params: { type: 'md' } } },
+          { id: 'pdf', label: 'Pdf', color: 'primary', route: { name: 'document-activity', params: { type: 'pdf' } } }
         ],
         md: [
-          { id: 'html', label: 'Html', color: 'primary', route: { name: 'document-activity', params: { page: 'html' } } },
+          { id: 'html', label: 'Html', color: 'primary', route: { name: 'document-activity', params: { type: 'html' } } },
           { id: 'md', label: 'Markdown', color: 'primary', disabled: true },
-          { id: 'pdf', label: 'Pdf', color: 'primary', route: { name: 'document-activity', params: { page: 'pdf' } } }
+          { id: 'pdf', label: 'Pdf', color: 'primary', route: { name: 'document-activity', params: { type: 'pdf' } } }
         ],
         pdf: [
-          { id: 'html', label: 'Html', color: 'primary', route: { name: 'document-activity', params: { page: 'html' } } },
-          { id: 'md', label: 'Markdown', color: 'primary', route: { name: 'document-activity', params: { page: 'md' } } },
+          { id: 'html', label: 'Html', color: 'primary', route: { name: 'document-activity', params: { type: 'html' } } },
+          { id: 'md', label: 'Markdown', color: 'primary', route: { name: 'document-activity', params: { type: 'md' } } },
           { id: 'pdf', label: 'Pdf', color: 'primary', disabled: true }
         ]
-      }
+      },
+      mode: 'html'
     }
   },
   collectionActivity: {

@@ -20,6 +20,9 @@
   "MiscellaneousActivity": {
     "LABEL": "Divers"
   },
+  "DocumentActivity": {
+    "LABEL": "Documents"
+  },
   "CollectionActivity": {
     "LABEL": "Collections",
     "LIST": "Liste",
