@@ -3,6 +3,7 @@
     <template v-slot:page-content>
       <div class="row full-width justify-center q-gutter-md">
         <KDocument 
+          class="q-pa-sm col-sm-10 col-md-8 col-lg-6 bg-white"
           :url="url"
           :localize="true"
         />     
@@ -12,7 +13,7 @@
 </template>
 
 <script>
-import { mixins } from '@kalisio/kdk/core.client'
+import { mixins, Layout } from '@kalisio/kdk/core.client'
 
 export default {
   name: 'document-activity',
@@ -26,17 +27,24 @@ export default {
   },
   data () {
     return {
-      url: undefined
+      url: undefined,
+      ready: false
     }
   },
   watch: {
     type: {
       handler (value) {
-        this.setTopPaneMode(value)
+        Layout.setPaneMode('top', value)
         this.url = `sample.${value}`
-      },
-      immediate: true
+      }
     }
+  },
+  async mounted () {
+    // FIXME: wait for the top pane is mounted otherwise the setPaneMode won't work
+    await this.$nextTick()
+    await this.$nextTick()
+    this.url = `sample.${this.type}`
+    Layout.setPaneMode('top', this.type)
   }
 }
 </script>

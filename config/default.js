@@ -123,7 +123,7 @@ const widgets = [
     id: 'widget-4', label: 'Widget 4', content: { component: 'layout/Widget'} 
   },
   { 
-    id: 'widget-Store', label: 'Store', content: { component: 'layout/WidgetStore'}, scrollable: true
+    id: 'widget-Store', label: 'Store', content: { component: 'KStore'}, scrollable: true
   }
 ]
 
@@ -307,21 +307,18 @@ module.exports = {
       content: {
         html: [
           { id: 'html', label: 'Html', color: 'primary', disabled: true },
-          { id: 'md', label: 'Markdown', color: 'primary', route: { name: 'document-activity', params: { type: 'md' } } },
-          { id: 'pdf', label: 'Pdf', color: 'primary', route: { name: 'document-activity', params: { type: 'pdf' } } }
+          { id: 'md', label: 'Markdown', color: 'primary', route: { name: 'document-activity', params: { type: 'md' } } }
         ],
         md: [
           { id: 'html', label: 'Html', color: 'primary', route: { name: 'document-activity', params: { type: 'html' } } },
-          { id: 'md', label: 'Markdown', color: 'primary', disabled: true },
-          { id: 'pdf', label: 'Pdf', color: 'primary', route: { name: 'document-activity', params: { type: 'pdf' } } }
-        ],
-        pdf: [
-          { id: 'html', label: 'Html', color: 'primary', route: { name: 'document-activity', params: { type: 'html' } } },
-          { id: 'md', label: 'Markdown', color: 'primary', route: { name: 'document-activity', params: { type: 'md' } } },
-          { id: 'pdf', label: 'Pdf', color: 'primary', disabled: true }
+          { id: 'md', label: 'Markdown', color: 'primary', disabled: true }
         ]
       },
       mode: 'html'
+    },
+    rightPane: {
+      content: [{ component: 'KStore' }],
+      visible: false
     }
   },
   collectionActivity: {
