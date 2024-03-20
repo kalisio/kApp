@@ -67,7 +67,7 @@ jobs:
       - name: Setup workspace
         env:
           GITHUB_DEVELOPMENT_PAT: ${{ secrets.GH_DEVELOPMENT_PAT }}
-        run: bash ./scripts/setup_workspace.sh -k nokli
+        run: bash ./scripts/setup_workspace.sh -k kli
       - name: Build e2e tests
         env:
           SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}

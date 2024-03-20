@@ -19,7 +19,6 @@ ENV HEADLESS=$HEADLESS
 
 # Test environment configuration
 WORKDIR /opt/kalisio/
-RUN ls /opt/kalisio/
 RUN \
   cd /opt/kalisio/kdk && yarn && yarn link --link-folder /opt/kalisio/yarn-links && \
   cd /opt/kalisio/$APP && yarn && yarn link "@kalisio/kdk" --link-folder /opt/kalisio/yarn-links

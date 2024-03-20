@@ -40,6 +40,12 @@ load_value_files "$WORKSPACE_DIR/development/common/KALISIO_DOCKERHUB_PASSWORD.e
 ## Build container
 ##
 
+# kli file is used in container to install, link
+KLI_FILE=$(get_app_kli_file)
+cp "$KLI_FILE" "$WORKSPACE_DIR/kli.js"
+
+echo "Will use kli file $KLI_FILE to install and link modules ..."
+
 IMAGE_NAME="kalisio/$APP-e2e-tests"
 IMAGE_TAG="$VERSION-$FLAVOR"
 
