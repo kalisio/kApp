@@ -45,7 +45,7 @@ APP=$(get_app_name)
 VERSION=$(get_app_version)
 FLAVOR=$(get_app_flavor)
 
-echo "About to run tests for ${APP} v${VERSION}-($FLAVOR) ..."
+echo "About to run tests for $APP v$VERSION-$FLAVOR ..."
 
 . "$WORKSPACE_DIR/development/workspaces/apps/apps.sh" kapp
 load_env_files "$WORKSPACE_DIR/development/common/SLACK_WEBHOOK_APPS.enc.env"

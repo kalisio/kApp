@@ -37,7 +37,7 @@ APP=$(get_app_name)
 VERSION=$(get_app_version)
 FLAVOR=$(get_app_flavor)
 
-echo "About to build ${APP} v${VERSION}-$FLAVOR ..."
+echo "About to build $APP v$VERSION-$FLAVOR ..."
 
 load_env_files "$WORKSPACE_DIR/development/common/kalisio_dockerhub.enc.env" "$WORKSPACE_DIR/development/common/SLACK_WEBHOOK_APPS.enc.env"
 load_value_files "$WORKSPACE_DIR/development/common/KALISIO_DOCKERHUB_PASSWORD.enc.value"
