@@ -15,7 +15,7 @@ PUBLISH=false
 CI_STEP_NAME="Build docs"
 while getopts "pr:" OPT; do
     case $OPT in
-        p) # defines mongo version
+        p) # define to publish docs
             PUBLISH=true
             ;;
         r) # report outcome to slack

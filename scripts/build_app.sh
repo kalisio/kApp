@@ -15,7 +15,7 @@ PUBLISH=false
 CI_STEP_NAME="Build app"
 while getopts "pr:" option; do
     case $option in
-        p) # defines mongo version
+        p) # define to publish container to registry
             PUBLISH=true
             ;;
         r) # report outcome to slack

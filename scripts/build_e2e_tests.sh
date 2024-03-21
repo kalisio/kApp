@@ -14,7 +14,7 @@ ROOT_DIR=$(dirname "$THIS_DIR")
 PUBLISH=false
 while getopts "p" option; do
     case $option in
-        p) # defines mongo version
+        p) # define to publish built container to registry
             PUBLISH=true
             ;;
         *)

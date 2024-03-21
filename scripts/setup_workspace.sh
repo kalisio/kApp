@@ -22,11 +22,11 @@ fi
 
 while getopts "$OPT_LIST" OPT; do
     case $OPT in
-        b) # defines branch
+        b) # defines branch to pull
             WORKSPACE_BRANCH=$OPTARG;;
         n) # defines node version
             WORKSPACE_NODE=$OPTARG;;
-        t) # defines venv tag
+        t) # defines tag to pull
             WORKSPACE_TAG=$OPTARG;;
         k) # workspace kind (nokli kli klifull)
             WORKSPACE_KIND=$OPTARG;;
