@@ -17,6 +17,10 @@ describe(suite, () => {
       browser: {
         args: ['--lang=fr'],
         slowMo: 2
+      },
+      localStorage: {
+        'k-app-welcome': false,
+        'k-app-install': false
       }
     })
     page = await runner.start()
