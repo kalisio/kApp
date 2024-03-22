@@ -147,6 +147,7 @@ module.exports = {
   // appLogo: 'kapp-logo.png',
   appChangelog: 'https://kalisio.github.io/kApp/about/changelog.html',
   publisher: 'Kalisio',
+  publisherContact: 'support@kalisio.com',
   publisherWebsite: website,
   locale: {
     // If you'd like to force locale otherwise it is retrieved from browser
