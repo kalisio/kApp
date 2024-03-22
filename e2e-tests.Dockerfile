@@ -1,3 +1,6 @@
+## DEVELOPERS NOTE: 
+## This Dockerfile must be run with the --cap-add=SYS_ADMIN option to ensure proper functionality.
+
 ## Use a builder
 ##
 

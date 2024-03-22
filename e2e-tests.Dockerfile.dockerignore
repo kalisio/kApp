@@ -3,8 +3,7 @@
 
 # Except these
 !kdk/*
-!kapp/test/*
-!kapp/package.json
+!kapp/*
 
 # But ignore these anyway
 **/node_modules

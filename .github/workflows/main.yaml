@@ -68,7 +68,7 @@ jobs:
       - name: Build e2e tests
         env:
           SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
-        run: bash ./scripts/build_e2e_tests.sh
+        run: bash ./scripts/build_e2e_tests.sh -p
 
   build_app:
     name: Build app
