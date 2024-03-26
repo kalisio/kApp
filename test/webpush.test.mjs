@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 
 import { core } from '@kalisio/kdk/test.client.js'
-import { type, clickAction } from '@kalisio/kdk/test/client/core/utils.js';
+import { type } from '@kalisio/kdk/test/client/core/utils.js';
 
 const suite = 'webpush'
 
@@ -35,10 +35,10 @@ describe(`suite:${suite}`, () => {
     await page.waitForTimeout(1000)
     await page.click('#webpush')
     await page.waitForTimeout(1000)
-    await type(page, '#title-field', 'Mon super titre')
-    await type(page, '#body-field', 'Mon magnifique contenu')
-    await type(page, '#icon-field', 'Ma fabuleuse icone')
-    await type(page, '#url-field', 'Ma merveilleuse URL')
+    await type(page, '#title-field', 'Title')
+    await type(page, '#body-field', 'Content')
+    await type(page, '#icon-field', 'https://s3.eu-central-1.amazonaws.com/kalisioscope/kapp/kapp-icon-color-2048x2048.png')
+    await type(page, '#url-field', 'https://kalisio.com')
     await core.clickAction(page, 'push-btn')
     await page.waitForTimeout(1000)
   })

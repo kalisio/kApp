@@ -31,7 +31,7 @@ describe(`suite:${suite}`, () => {
     await core.goToRegisterScreen(page)
     user = {
       name: 'kalisio',
-      email: 'kalisio10@kalisio.xyz',
+      email: 'kalisio1@kalisio.xyz',
       password: 'Pass;word1'
     }
     await core.register(page, user)

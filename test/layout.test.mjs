@@ -35,12 +35,14 @@ describe(`suite:${suite}`, () => {
   })
 
   it('check-header-footer', async () => {
-    expect(await core.isHeaderVisible(page)).beTrue()
+    expect(await core.isHeaderVisible(page)).beFalse()
     expect(await core.isFooterVisible(page)).beFalse()
     await core.clickAction(page, 'toggle-header')
-    expect(await core.isHeaderVisible(page)).beFalse()
+    expect(await core.isHeaderVisible(page)).beTrue()
     await core.clickAction(page, 'toggle-footer')
     expect(await core.isFooterVisible(page)).beTrue()
+    await core.clickAction(page, 'toggle-header')
+    expect(await core.isHeaderVisible(page)).beFalse()
   })
 
   it('check-panes', async () => {
