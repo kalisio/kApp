@@ -2,7 +2,7 @@
   <div class="full-width row justify-between items-center">
     <KStamp text="Footer" direction="horizontal" />
     <KAction
-      id ="close-headers"
+      id ="close-footer"
       icon="las la-times"
       tooltip="Close"
       color="white"

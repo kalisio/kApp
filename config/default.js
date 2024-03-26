@@ -225,7 +225,7 @@ module.exports = {
     view: 'lHh LpR lFf',
     header: {
       content: [{ component: 'layout/Header' }],
-      visible: true
+      visible: false
     },
     page: {
       visible: true
