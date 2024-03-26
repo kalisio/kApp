@@ -5,7 +5,7 @@ import { type, clickAction } from '@kalisio/kdk/test/client/core/utils.js';
 
 const suite = 'webpush'
 
-describe(suite, () => {
+describe(`suite:${suite}`, () => {
   let runner
   let page
   let user

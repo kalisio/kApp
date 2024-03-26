@@ -1,13 +1,17 @@
+import chai, { util, expect } from 'chai'
+import chailint from 'chai-lint'
 import { core } from '@kalisio/kdk/test.client.js'
 
 const suite = 'misc'
 
-describe(suite, () => {
+describe(`suite:${suite}`, () => {
   let runner
   let page
   let user
 
   before(async () => {
+    chailint(chai, util)
+    
     runner = new core.Runner(suite, {
       appName: 'kapp',
       browser: {
