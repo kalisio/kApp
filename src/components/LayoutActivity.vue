@@ -16,9 +16,11 @@ export default {
     }
   },
   mounted () {
+    Layout.setHeader({ content: [{ component: 'layout/Header' }] })
     Layout.setFooter({ content: [{ component: 'layout/Footer' }] })
   },
   onBeforeUnmount () {
+    Layout.setHeader({ content: null })
     Layout.setFooter({ content: null })
   }
 }
