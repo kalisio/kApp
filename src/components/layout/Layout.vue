@@ -124,7 +124,7 @@
               />
             </div>
             <KAction
-              id ="toggle-right-pane-opener" label="Right window" :icon="windows.right.visible ? 'las la-toggle-on' : 'las la-toggle-off'" icon-right
+              id ="toggle-right-window" label="Right window" :icon="windows.right.visible ? 'las la-toggle-on' : 'las la-toggle-off'" icon-right
               :handler="() => toggleWindow('right')"
             />
           </div>
@@ -146,7 +146,7 @@
           />
         </div>
         <KAction
-          id ="toggle-bottom-pane"
+          id ="toggle-bottom-window"
           label="Bottom window"
           :icon="windows.bottom.visible ? 'las la-toggle-on' : 'las la-toggle-off'"
           :handler="() => toggleWindow('bottom')"
