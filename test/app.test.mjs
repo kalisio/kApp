@@ -30,8 +30,8 @@ describe(`suite:${suite}`, () => {
     page = await runner.start()
     await core.goToRegisterScreen(page)
     user = {
-      name: faker.name.findName(),
-      email: faker.internet.email(),
+      name: 'kalisio',
+      email: 'kalisio10@kalisio.xyz',
       password: 'Pass;word1'
     }
     await core.register(page, user)
