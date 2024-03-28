@@ -58,7 +58,7 @@ DOCKER_BUILDKIT=1 docker build \
     --build-arg NODE_APP_INSTANCE="$FLAVOR" \
     --build-arg SUBDOMAIN="$FLAVOR.kalisio.xyz" \
     --build-arg HEADLESS=true \
-    --build-arg SLACK_WEBHOOK_APPS="$SLACK_WEBHOOK_APPS"
+    --build-arg SLACK_WEBHOOK_APPS="$SLACK_WEBHOOK_APPS" \
     -f e2e-tests.Dockerfile \
     -t "$IMAGE_NAME:$IMAGE_TAG" \
     "$WORKSPACE_DIR"
