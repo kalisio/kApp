@@ -24,6 +24,16 @@ describe(`suite:${suite}`, () => {
       }
     })
     page = await runner.start()
+    await page.evaluate(() => {
+      if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+        navigator.serviceWorker.controller.postMessage({ type: 'SKIP_WAITING' })
+      }
+      Object.defineProperty(navigator, 'language', {
+        get: function() {
+          return 'fr'
+        }
+      })
+    })
     user = {
       email: 'kalisio@kalisio.xyz',
       password: 'Pass;word1'

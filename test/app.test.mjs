@@ -28,6 +28,16 @@ describe(`suite:${suite}`, () => {
       }
     })
     page = await runner.start()
+    await page.evaluate(() => {
+      if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+        navigator.serviceWorker.controller.postMessage({ type: 'SKIP_WAITING' })
+      }
+      Object.defineProperty(navigator, 'language', {
+        get: function() {
+          return 'fr'
+        }
+      })
+    })
     await core.goToRegisterScreen(page)
     user = {
       name: 'kalisio',
