@@ -14,7 +14,7 @@ describe(`suite:${suite}`, () => {
     runner = new core.Runner(suite, {
       appName: 'kapp',
       browser: {
-        args: ['--lang=fr'],
+        args: ['--lang=fr-FR'],
         slowMo: 2
       },
       localStorage: {
@@ -29,7 +29,7 @@ describe(`suite:${suite}`, () => {
       }
       Object.defineProperty(navigator, 'language', {
         get: function() {
-          return 'fr'
+          return 'fr-FR'
         }
       })
     })
