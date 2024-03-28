@@ -1,3 +1,6 @@
+## DEVELOPERS NOTE: 
+## This Dockerfile must be run with the --cap-add=SYS_ADMIN option to ensure proper functionality.
+
 ## Use a builder
 ##
 
@@ -11,11 +14,13 @@ ARG APP
 ARG NODE_APP_INSTANCE
 ARG SUBDOMAIN
 ARG HEADLESS
+ARG SLACK_WEBHOOK_APPS
 
 ENV APP=$APP
 ENV NODE_APP_INSTANCE=$NODE_APP_INSTANCE
 ENV SUBDOMAIN=$SUBDOMAIN
 ENV HEADLESS=$HEADLESS
+ENV SLACK_WEBHOOK_APPS=$SLACK_WEBHOOK_APPS
 
 # Test environment configuration
 WORKDIR /opt/kalisio/
@@ -33,11 +38,13 @@ ARG APP
 ARG NODE_APP_INSTANCE
 ARG SUBDOMAIN
 ARG HEADLESS
+ARG SLACK_WEBHOOK_APPS
 
 ENV APP=$APP
 ENV NODE_APP_INSTANCE=$NODE_APP_INSTANCE
 ENV SUBDOMAIN=$SUBDOMAIN
 ENV HEADLESS=$HEADLESS
+ENV SLACK_WEBHOOK_APPS=$SLACK_WEBHOOK_APPS
 
 # Setup Puppeteer
 # https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#running-puppeteer-in-docker
@@ -73,5 +80,6 @@ COPY --from=Builder --chown=node:node /opt/kalisio /opt/kalisio
 USER node
 
 # Run tests
-WORKDIR /opt/kalisio/$APP
-CMD [ "yarn", "test:client" ]
+WORKDIR /opt/kalisio/$APP/scripts
+RUN chmod +x run_e2e_test.sh
+CMD ["bash", "-c", "/opt/kalisio/$APP/scripts/run_e2e_test.sh $APP $SLACK_WEBHOOK_APPS"]
