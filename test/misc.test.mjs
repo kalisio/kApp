@@ -1,3 +1,4 @@
+// This test only works in headless mode because the 'misc' activity contains many elements that alter the size of the screenshot.
 import chai, { util, expect } from 'chai'
 import chailint from 'chai-lint'
 import { core } from '@kalisio/kdk/test.client.js'
@@ -11,29 +12,19 @@ describe(`suite:${suite}`, () => {
 
   before(async () => {
     chailint(chai, util)
-    
+
     runner = new core.Runner(suite, {
       appName: 'kapp',
       browser: {
-        args: ['--lang=fr-FR'],
         slowMo: 2
       },
       localStorage: {
         'k-app-welcome': false,
         'k-app-install': false
-      }
+      },
+      lang: 'fr-FR'
     })
     page = await runner.start()
-    await page.evaluate(() => {
-      if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
-        navigator.serviceWorker.controller.postMessage({ type: 'SKIP_WAITING' })
-      }
-      Object.defineProperty(navigator, 'language', {
-        get: function() {
-          return 'fr-FR'
-        }
-      })
-    })
     user = {
       email: 'kalisio@kalisio.xyz',
       password: 'Pass;word1'

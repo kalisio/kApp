@@ -19,25 +19,15 @@ describe(`suite:${suite}`, () => {
     runner = new core.Runner(suite, {
       appName: 'kapp',
       browser: {
-        args: ['--lang=fr-FR'],
-        slowMo: 1
+        slowMo: 2
       },
       localStorage: {
         'k-app-welcome': false,
         'k-app-install': false
-      }
+      },
+      lang: 'fr-FR'
     })
     page = await runner.start()
-    await page.evaluate(() => {
-      if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
-        navigator.serviceWorker.controller.postMessage({ type: 'SKIP_WAITING' })
-      }
-      Object.defineProperty(navigator, 'language', {
-        get: function() {
-          return 'fr-FR'
-        }
-      })
-    })
     await core.goToRegisterScreen(page)
     user = {
       name: 'kalisio',

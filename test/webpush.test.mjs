@@ -11,28 +11,20 @@ describe(`suite:${suite}`, () => {
   let user
 
   before(async () => {
+    chailint(chai, util)
+    
     runner = new core.Runner(suite, {
       appName: 'kapp',
       browser: {
-        args: ['--lang=fr-FR'],
         slowMo: 2
       },
       localStorage: {
         'k-app-welcome': false,
         'k-app-install': false
-      }
+      },
+      lang: 'fr-FR'
     })
     page = await runner.start()
-    await page.evaluate(() => {
-      if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
-        navigator.serviceWorker.controller.postMessage({ type: 'SKIP_WAITING' })
-      }
-      Object.defineProperty(navigator, 'language', {
-        get: function() {
-          return 'fr-FR'
-        }
-      })
-    })
     user = {
       email: 'kalisio@kalisio.xyz',
       password: 'Pass;word1'
