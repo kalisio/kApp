@@ -19,6 +19,7 @@ trap 'slack_e2e_report "$APP" "$?" "$SLACK_WEBHOOK"' EXIT
 ## Run tests & redirect output to a log file
 ##
 
+mkdir -p "$ROOT_DIR/test/run"
 yarn test:client > "$ROOT_DIR/test/run/e2e_test_log.txt" 2>&1
 
 ## Upload logs & screenshots to S3 bucket
