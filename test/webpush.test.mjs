@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-expressions */
 
+import chai, { util } from 'chai'
+import chailint from 'chai-lint'
 import { core } from '@kalisio/kdk/test.client.js'
-import { type } from '@kalisio/kdk/test/client/core/utils.js';
+import { type } from '@kalisio/kdk/test/client/core/utils.js'
 
 const suite = 'webpush'
 
