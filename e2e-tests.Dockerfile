@@ -50,7 +50,7 @@ ENV SLACK_WEBHOOK_APPS=$SLACK_WEBHOOK_APPS
 # https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#running-puppeteer-in-docker
 RUN export DEBIAN_FRONTEND=noninteractive \
   && apt-get update \
-  && apt-get install -y wget gnupg curl \
+  && apt-get install -y wget gnupg curl unzip \
   && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
   && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
   && apt-get update \
@@ -69,6 +69,17 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     libxext-dev \
     --no-install-recommends \
   && rm -rf /var/lib/apt/lists/*
+ 
+# Install Rclone
+RUN curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip \
+  && unzip rclone-current-linux-amd64.zip \
+  && cd rclone-*-linux-amd64 \
+  && cp rclone /usr/bin/ \
+  && chown root:root /usr/bin/rclone \
+  && chmod 755 /usr/bin/rclone \
+  && mkdir -p /usr/local/share/man/man1 \
+  && cp rclone.1 /usr/local/share/man/man1/ \
+  && mandb
 
 # Copy Puppeteer cache from builder
 COPY --from=Builder --chown=node:node /root/.cache/puppeteer /home/node/.cache/puppeteer
@@ -79,7 +90,10 @@ COPY --from=Builder --chown=node:node /opt/kalisio /opt/kalisio
 # From now on, run stuff as 'node'
 USER node
 
-# Run tests
+# Grant execute permissions
 WORKDIR /opt/kalisio/$APP/scripts
 RUN chmod +x run_e2e_test.sh
+
+# Run tests
+WORKDIR /opt/kalisio/$APP
 CMD ["bash", "-c", "/opt/kalisio/$APP/scripts/run_e2e_test.sh $APP $SLACK_WEBHOOK_APPS"]
