@@ -37,5 +37,5 @@ yarn test:client > "$ROOT_DIR/test/run/chrome/e2e_test_log.txt" 2>&1
 cd "$ROOT_DIR/test"
 zip -r "$ROOT_DIR/test/$CURRENT_DATE.zip" run
 
-rclone copy "$ROOT_DIR/test/$CURRENT_DATE.zip" "ovh:/dev/e2e_tests/$APP" --swift-chunk-size 0
+rclone copy "$ROOT_DIR/test/$CURRENT_DATE.zip" "ovh:/dev/e2e_tests/$APP"
 LINK=$(rclone link "ovh:/dev/e2e_tests/$APP/$CURRENT_DATE.zip")
