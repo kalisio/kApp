@@ -34,5 +34,8 @@ yarn test:client > "$ROOT_DIR/test/run/chrome/e2e_test_log.txt" 2>&1
 ## Upload logs & screenshots to S3
 ##
 
-rclone copy "$ROOT_DIR/test/run" "ovh:/dev/$APP/e2e_tests/$CURRENT_DATE"
-LINK=$(rclone link "ovh:/dev/$APP/e2e_tests/$CURRENT_DATE")
+cd "$ROOT_DIR/test"
+zip -r "$ROOT_DIR/test/$CURRENT_DATE.zip" run
+
+rclone copy "$ROOT_DIR/test/$CURRENT_DATE.zip" "ovh:/dev/$APP/e2e_tests"
+LINK=$(rclone link "ovh:/dev/$APP/e2e_tests/$CURRENT_DATE.zip")
