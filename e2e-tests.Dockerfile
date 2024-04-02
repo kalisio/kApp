@@ -90,6 +90,11 @@ COPY --from=Builder --chown=node:node /opt/kalisio /opt/kalisio
 # From now on, run stuff as 'node'
 USER node
 
+# Create the .config/rclone directory and set the necessary permissions
+RUN mkdir -p /home/node/.config/rclone \
+  && chown -R node:node /home/node/.config/rclone \
+  && chmod -R 777 /home/node/.config/rclone
+  
 # Grant execute permissions
 WORKDIR /opt/kalisio/$APP/scripts
 RUN chmod +x run_e2e_test.sh
