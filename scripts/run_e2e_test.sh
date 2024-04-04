@@ -6,7 +6,7 @@ APP=$1
 SLACK_WEBHOOK=$2
 
 GOOGLE_LOGS_LINK=""
-GOOGLE_SCREEN_LINK=""
+SCREEN_LINK=""
 
 CURRENT_DATE=$(date +"%d-%m-%Y")
 
@@ -19,7 +19,7 @@ ROOT_DIR=$(dirname "$THIS_DIR")
 ## Report outcome to slack
 ## 
 
-trap 'slack_e2e_report "$APP" "$?" "$SLACK_WEBHOOK" "$GOOGLE_LOGS_LINK" "$GOOGLE_SCREEN_LINK"' EXIT
+trap 'slack_e2e_report "$APP" "$?" "$SLACK_WEBHOOK" "$GOOGLE_LOGS_LINK" "$SCREEN_LINK"' EXIT
 
 ## Run tests & redirect output to a log file
 ##
@@ -37,10 +37,10 @@ yarn test:client > "$ROOT_DIR/test/run/chrome/google_logs.txt" 2>&1
 ##
 
 cd "$ROOT_DIR/test"
-zip -r "$ROOT_DIR/test/screenshots_google.zip" run
+zip -r "$ROOT_DIR/test/screenshots.zip" run
 
-rclone copy "$ROOT_DIR/test/run/chrome/google_log.txt" "ovh-s3:/dev/e2e_tests/$APP/$CURRENT_DATE"
-GOOGLE_LOGS_LINK=$(rclone link "ovh-s3:/dev/e2e_tests/$APP/$CURRENT_DATE/google_log.txt")
+rclone copy "$ROOT_DIR/test/run/chrome/google_logs.txt" "ovh-s3:/dev/e2e_tests/$APP/$CURRENT_DATE"
+GOOGLE_LOGS_LINK=$(rclone link "ovh-s3:/dev/e2e_tests/$APP/$CURRENT_DATE/google_logs.txt")
 
-rclone copy "$ROOT_DIR/test/screenshots_google.zip" "ovh-s3:/dev/e2e_tests/$APP/$CURRENT_DATE"
-GOOGLE_SCREEN_LINK=$(rclone link "ovh-s3:/dev/e2e_tests/$APP/$CURRENT_DATE/screenshots_google.zip")
+rclone copy "$ROOT_DIR/test/screenshots.zip" "ovh-s3:/dev/e2e_tests/$APP/$CURRENT_DATE"
+SCREEN_LINK=$(rclone link "ovh-s3:/dev/e2e_tests/$APP/$CURRENT_DATE/screenshots.zip")
