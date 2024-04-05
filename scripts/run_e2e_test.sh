@@ -5,8 +5,8 @@ set -euo pipefail
 APP=$1
 SLACK_WEBHOOK=$2
 
-GOOGLE_LOGS_LINK=""
-SCREEN_LINK=""
+GOOGLE_LOGS_LINK="https://github.com/kalisio/kApp"
+SCREEN_LINK="https://github.com/kalisio/kApp"
 
 CURRENT_DATE=$(date +"%d-%m-%Y")
 
@@ -36,7 +36,6 @@ yarn test:client > "$ROOT_DIR/test/run/chrome/google_logs.txt" 2>&1
 ## Upload logs & screenshots to S3
 ##
 
-cd "$ROOT_DIR/test"
 zip -r "$ROOT_DIR/test/screenshots.zip" run
 
 rclone copy "$ROOT_DIR/test/run/chrome/google_logs.txt" "ovh-s3:/dev/e2e_tests/$APP/$CURRENT_DATE"
