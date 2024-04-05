@@ -199,7 +199,8 @@ module.exports = {
       id: 'terms-policies', 
       label: 'screen.TERMS_AND_POLICIES', 
       dialog: {
-        component: 'app/KTerms'
+        component: 'document/KDocument',
+        url: 'kapp-terms.md'
       }
     }],
     // frameBackgroundColor: '#FFDC9E',
