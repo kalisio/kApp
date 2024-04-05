@@ -5,8 +5,8 @@ set -euo pipefail
 APP=$1
 SLACK_WEBHOOK=$2
 
-GOOGLE_LOGS_LINK="https://github.com/kalisio/kApp"
-SCREEN_LINK="https://github.com/kalisio/kApp"
+GOOGLE_LOGS_LINK="https://github.com/kalisio"
+SCREEN_LINK="https://github.com/kalisio"
 
 CURRENT_DATE=$(date +"%d-%m-%Y")
 
@@ -38,8 +38,8 @@ yarn test:client > "$ROOT_DIR/test/run/chrome/google_logs.txt" 2>&1
 
 zip -r "$ROOT_DIR/test/screenshots.zip" run
 
-rclone copy "$ROOT_DIR/test/run/chrome/google_logs.txt" "ovh-s3:/dev/e2e_tests/$APP/$CURRENT_DATE"
-GOOGLE_LOGS_LINK=$(rclone link "ovh-s3:/dev/e2e_tests/$APP/$CURRENT_DATE/google_logs.txt")
+rclone copy "$ROOT_DIR/test/run/chrome/google_logs.txt" "ovh-s3:/dev/e2e-tests/$APP/$CURRENT_DATE"
+GOOGLE_LOGS_LINK=$(rclone link "ovh-s3:/dev/e2e-tests/$APP/$CURRENT_DATE/google_logs.txt")
 
-rclone copy "$ROOT_DIR/test/screenshots.zip" "ovh-s3:/dev/e2e_tests/$APP/$CURRENT_DATE"
-SCREEN_LINK=$(rclone link "ovh-s3:/dev/e2e_tests/$APP/$CURRENT_DATE/screenshots.zip")
+rclone copy "$ROOT_DIR/test/screenshots.zip" "ovh-s3:/dev/e2e-tests/$APP/$CURRENT_DATE"
+SCREEN_LINK=$(rclone link "ovh-s3:/dev/e2e-tests/$APP/$CURRENT_DATE/screenshots.zip")
