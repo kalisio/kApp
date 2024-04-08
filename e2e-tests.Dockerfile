@@ -9,7 +9,7 @@ LABEL maintainer="contact@kalisio.xyz"
 
 COPY . /opt/kalisio
 
-# Setup ENV
+# Setting environment variables
 ARG APP
 ARG NODE_APP_INSTANCE
 ARG SUBDOMAIN
@@ -20,7 +20,7 @@ ENV NODE_APP_INSTANCE=$NODE_APP_INSTANCE
 ENV SUBDOMAIN=$SUBDOMAIN
 ENV HEADLESS=$HEADLESS
 
-# Test environment configuration
+# Development environment setup
 WORKDIR /opt/kalisio/
 RUN \
   cd /opt/kalisio/kdk && yarn && yarn link --link-folder /opt/kalisio/yarn-links && \
@@ -32,6 +32,7 @@ RUN \
 FROM node:16-bookworm-slim
 LABEL maintainer="contact@kalisio.xyz"
 
+# Setting environment variables
 ARG APP
 ARG NODE_APP_INSTANCE
 ARG SUBDOMAIN
@@ -42,7 +43,7 @@ ENV NODE_APP_INSTANCE=$NODE_APP_INSTANCE
 ENV SUBDOMAIN=$SUBDOMAIN
 ENV HEADLESS=$HEADLESS
 
-# Setup Puppeteer & Rclone
+# Setup Puppeteer & Rclone and installation of the necessary packages
 # https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#running-puppeteer-in-docker
 RUN export DEBIAN_FRONTEND=noninteractive \
   && apt-get update \
