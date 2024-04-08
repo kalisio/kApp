@@ -14,13 +14,11 @@ ARG APP
 ARG NODE_APP_INSTANCE
 ARG SUBDOMAIN
 ARG HEADLESS
-ARG SLACK_WEBHOOK_APPS
 
 ENV APP=$APP
 ENV NODE_APP_INSTANCE=$NODE_APP_INSTANCE
 ENV SUBDOMAIN=$SUBDOMAIN
 ENV HEADLESS=$HEADLESS
-ENV SLACK_WEBHOOK_APPS=$SLACK_WEBHOOK_APPS
 
 # Test environment configuration
 WORKDIR /opt/kalisio/
@@ -38,19 +36,17 @@ ARG APP
 ARG NODE_APP_INSTANCE
 ARG SUBDOMAIN
 ARG HEADLESS
-ARG SLACK_WEBHOOK_APPS
 
 ENV APP=$APP
 ENV NODE_APP_INSTANCE=$NODE_APP_INSTANCE
 ENV SUBDOMAIN=$SUBDOMAIN
 ENV HEADLESS=$HEADLESS
-ENV SLACK_WEBHOOK_APPS=$SLACK_WEBHOOK_APPS
 
-# Setup Puppeteer
+# Setup Puppeteer & Rclone
 # https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#running-puppeteer-in-docker
 RUN export DEBIAN_FRONTEND=noninteractive \
   && apt-get update \
-  && apt-get install -y wget gnupg curl zip unzip \
+  && apt-get install -y wget gnupg curl zip unzip rclone \
   && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
   && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
   && apt-get update \
@@ -69,17 +65,6 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     libxext-dev \
     --no-install-recommends \
   && rm -rf /var/lib/apt/lists/*
- 
-# Install Rclone
-RUN curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip \
-  && unzip rclone-current-linux-amd64.zip \
-  && cd rclone-*-linux-amd64 \
-  && cp rclone /usr/bin/ \
-  && chown root:root /usr/bin/rclone \
-  && chmod 755 /usr/bin/rclone \
-  && mkdir -p /usr/local/share/man/man1 \
-  && cp rclone.1 /usr/local/share/man/man1/ \
-  && mandb
 
 # Copy Puppeteer cache from builder
 COPY --from=Builder --chown=node:node /root/.cache/puppeteer /home/node/.cache/puppeteer
@@ -101,4 +86,4 @@ RUN chmod +x run_e2e_test.sh
 
 # Run tests
 WORKDIR /opt/kalisio/$APP
-CMD ["bash", "-c", "/opt/kalisio/$APP/scripts/run_e2e_test.sh $APP $SLACK_WEBHOOK_APPS"]
+CMD ["bash", "-c", "/opt/kalisio/$APP/scripts/run_e2e_test.sh $APP"]
