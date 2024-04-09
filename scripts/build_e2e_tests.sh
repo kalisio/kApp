@@ -15,19 +15,18 @@ WORKSPACE_DIR="$(dirname "$ROOT_DIR")"
 PUBLISH=false
 while getopts "p" option; do
     case $option in
-        p) # define to publish built container to registry
+        p) # define to publish container to registry
             PUBLISH=true
+            ;;
+        r) # report outcome to slack
+            load_env_files "$WORKSPACE_DIR/development/common/SLACK_WEBHOOK_APPS.enc.env"
+            CI_STEP_NAME=$OPTARG
+            trap 'slack_ci_report "$ROOT_DIR" "$CI_STEP_NAME" "$?" "$SLACK_WEBHOOK_APPS"' EXIT
             ;;
         *)
             ;;
     esac
 done
-
-## Report to slack
-##
-
-load_env_files "$WORKSPACE_DIR/development/common/SLACK_WEBHOOK_APPS.enc.env"
-trap 'slack_ci_report "$ROOT_DIR" "Build e2e tests" "$?" "$SLACK_WEBHOOK_APPS"' EXIT
 
 ## Build e2e tests
 ##
