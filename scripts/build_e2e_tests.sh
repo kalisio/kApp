@@ -13,7 +13,7 @@ WORKSPACE_DIR="$(dirname "$ROOT_DIR")"
 ##
 
 PUBLISH=false
-while getopts "p" option; do
+while getopts "pr:" option; do
     case $option in
         p) # define to publish container to registry
             PUBLISH=true
