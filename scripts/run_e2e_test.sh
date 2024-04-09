@@ -3,6 +3,8 @@ set -uo pipefail
 # set -x
 
 APP=$1
+SLACK_WEBHOOK=$2
+CC_TEST_REPORTER_ID=$3
 
 THIS_FILE=$(readlink -f "${BASH_SOURCE[0]}")
 THIS_DIR=$(dirname "$THIS_FILE")
@@ -10,4 +12,7 @@ ROOT_DIR=$(dirname "$THIS_DIR")
 
 . "$THIS_DIR/kash/kash.sh"
 
-run_e2e_tests "$ROOT_DIR" "$APP"
+## Run e2e tests
+##
+
+run_e2e_tests "$ROOT_DIR" "$APP" "$SLACK_WEBHOOK" "$CC_TEST_REPORTER_ID"

@@ -86,5 +86,6 @@ WORKDIR /opt/kalisio/$APP/scripts
 RUN chmod +x run_e2e_test.sh
 
 # Run tests
+# SLACK_WEBHOOK & CC_TEST_REPORTER_ID are set upon Kubernetes container startup
 WORKDIR /opt/kalisio/$APP
-CMD ["bash", "-c", "/opt/kalisio/$APP/scripts/run_e2e_test.sh $APP"]
+CMD ["bash", "-c", "/opt/kalisio/$APP/scripts/run_e2e_test.sh $APP" "$SLACK_WEBHOOK" "$CC_TEST_REPORTER_ID"]
