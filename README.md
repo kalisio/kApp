@@ -31,3 +31,4 @@ This project is sponsored by
 
 [![Kalisio](https://s3.eu-central-1.amazonaws.com/kalisioscope/kalisio/kalisio-logo-black-256x84.png)](https://kalisio.com)
 
+This branch added a super-feature !
