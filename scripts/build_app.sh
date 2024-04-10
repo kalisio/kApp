@@ -20,6 +20,7 @@ while getopts "pr:" option; do
             ;;
         r) # report outcome to slack
             CI_STEP_NAME=$OPTARG
+            load_env_files "$WORKSPACE_DIR/development/common/SLACK_WEBHOOK_APPS.enc.env"
             trap 'slack_ci_report "$ROOT_DIR" "$CI_STEP_NAME" "$?" "$SLACK_WEBHOOK_APPS"' EXIT
             ;;
         *)
@@ -39,7 +40,7 @@ FLAVOR=$(get_app_flavor)
 
 echo "About to build $APP v$VERSION-$FLAVOR ..."
 
-load_env_files "$WORKSPACE_DIR/development/common/kalisio_dockerhub.enc.env" "$WORKSPACE_DIR/development/common/SLACK_WEBHOOK_APPS.enc.env"
+load_env_files "$WORKSPACE_DIR/development/common/kalisio_dockerhub.enc.env"
 load_value_files "$WORKSPACE_DIR/development/common/KALISIO_DOCKERHUB_PASSWORD.enc.value"
 
 ## Build container

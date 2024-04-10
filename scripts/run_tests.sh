@@ -28,6 +28,7 @@ while getopts "m:n:cr:" option; do
             ;;
         r) # report outcome to slack
             CI_STEP_NAME=$OPTARG
+            load_env_files "$WORKSPACE_DIR/development/common/SLACK_WEBHOOK_APPS.enc.env"
             trap 'slack_ci_report "$ROOT_DIR" "$CI_STEP_NAME" "$?" "$SLACK_WEBHOOK_APPS"' EXIT
             ;;
         *)
@@ -48,7 +49,6 @@ FLAVOR=$(get_app_flavor)
 echo "About to run tests for $APP v$VERSION-$FLAVOR ..."
 
 . "$WORKSPACE_DIR/development/workspaces/apps/apps.sh" kapp
-load_env_files "$WORKSPACE_DIR/development/common/SLACK_WEBHOOK_APPS.enc.env"
 
 ## Start mongo
 ##
