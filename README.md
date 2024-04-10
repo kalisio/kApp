@@ -2,7 +2,7 @@
 
 ## kApp - KDK demonstration application
 
-[![Build Status](https://app.travis-ci.com/kalisio/kApp.png?branch=master)](https://app.travis-ci.com/kalisio/kApp)
+[![on-push](https://github.com/kalisio/kApp/actions/workflows/main.yaml/badge.svg)](https://github.com/kalisio/kApp/actions/workflows/main.yaml)
 [![Code Climate](https://codeclimate.com/github/kalisio/kApp/badges/gpa.svg)](https://codeclimate.com/github/kalisio/kApp)
 [![Test Coverage](https://codeclimate.com/github/kalisio/kApp/badges/coverage.svg)](https://codeclimate.com/github/kalisio/kApp/test_coverage)
 [![Dependency Status](https://img.shields.io/librariesio/github/kalisio/kapp?style=flat-square)](https://david-dm.org/kalisio/kapp)

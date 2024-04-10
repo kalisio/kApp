@@ -13,5 +13,5 @@ ROOT_DIR=$(dirname "$THIS_DIR")
 ## Run e2e tests
 ##
 
-# SLACK_WEBHOOK & CC_TEST_REPORTER_ID are set upon Kubernetes container startup
-run_e2e_tests "$ROOT_DIR" "$APP" "$SLACK_WEBHOOK" "$CC_TEST_REPORTER_ID"
+# SLACK_WEBHOOK is set upon Kubernetes container startup
+run_e2e_tests "$ROOT_DIR" "$APP" "$SLACK_WEBHOOK"
