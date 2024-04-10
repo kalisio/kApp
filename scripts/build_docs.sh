@@ -5,6 +5,7 @@ set -euo pipefail
 THIS_FILE=$(readlink -f "${BASH_SOURCE[0]}")
 THIS_DIR=$(dirname "$THIS_FILE")
 ROOT_DIR=$(dirname "$THIS_DIR")
+WORKSPACE_DIR="$(dirname "$ROOT_DIR")"
 
 . "$THIS_DIR/kash/kash.sh"
 
@@ -20,19 +21,13 @@ while getopts "pr:" OPT; do
             ;;
         r) # report outcome to slack
             CI_STEP_NAME=$OPTARG
+            load_env_files "$WORKSPACE_DIR/development/common/SLACK_WEBHOOK_APPS.enc.env"
             trap 'slack_ci_report "$ROOT_DIR" "$CI_STEP_NAME" "$?" "$SLACK_WEBHOOK_APPS"' EXIT
             ;;
         *)
             ;;
     esac
 done
-
-## Init workspace
-##
-
-WORKSPACE_DIR="$(dirname "$ROOT_DIR")"
-
-load_env_files "$WORKSPACE_DIR/development/common/SLACK_WEBHOOK_APPS.enc.env"
 
 ## Build docs
 ##
