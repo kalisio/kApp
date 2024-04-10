@@ -49,35 +49,19 @@ else
     shift $((OPTIND-1))
     WORKSPACE_DIR="$1"
 
-    # NOTE: cloning kapp could be avoided if we could parse app_version from tag/branch name instead
-    # In this case, the kli would clone kapp
-    GIT_OPS="--recurse-submodules"
-    if [ -n "$WORKSPACE_TAG" ] || [ -n "$WORKSPACE_BRANCH" ]; then
-        GIT_OPS="$GIT_OPS --branch ${WORKSPACE_TAG:-$WORKSPACE_BRANCH}"
-    fi
-    git clone --depth 1 $GIT_OPS "$GITHUB_URL/kalisio/kApp.git" "$WORKSPACE_DIR/kapp"
-
     DEVELOPMENT_REPO_URL="$GITHUB_URL/kalisio/development.git"
 
     # unset KALISIO_DEVELOPMENT_DIR because we want kli to clone everyhting in $WORKSPACE_DIR
     unset KALISIO_DEVELOPMENT_DIR
 fi
 
-# clone development in $WORKSPACE_DIR
-DEVELOPMENT_DIR="$WORKSPACE_DIR/development"
-git clone --depth 1 "$DEVELOPMENT_REPO_URL" "$DEVELOPMENT_DIR"
-
-if [ "$WORKSPACE_KIND" = kli ] || [ "$WORKSPACE_KIND" = klifull ]; then
-    # select kli file for dependencies
-    init_app_infos "$WORKSPACE_DIR/kapp" "$DEVELOPMENT_DIR/workspaces/apps"
-    KLI_FILE=$(get_app_kli_file)
-
-    echo "About to populate workspace using $KLI_FILE ..."
-    run_kli "$WORKSPACE_DIR" "$WORKSPACE_NODE" "$KLI_FILE" "$WORKSPACE_KIND"
-fi
+setup_app_workspace \
+    "$ROOT_DIR" \
+    "$WORKSPACE_DIR" \
+    "$DEVELOPMENT_REPO_URL" \
+    "$WORKSPACE_NODE" \
+    "workspaces/apps" \
+    "$WORKSPACE_KIND" \
+    "${WORKSPACE_TAG:-$WORKSPACE_BRANCH}"
 
 end_group "Setting up workspace ..."
-
-if [ -n "${KLI_FILE:-}" ]; then
-    echo "Workspace setup using $KLI_FILE"
-fi
