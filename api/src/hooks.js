@@ -2,17 +2,14 @@
 import fuzzySearch from 'feathers-mongodb-fuzzy-search'
 import commonHooks from 'feathers-hooks-common'
 import { permissions as corePermissions, hooks as coreHooks } from '@kalisio/kdk/core.api.js'
+import * as permissions from '../../common/permissions.mjs'
 import authentication from '@feathersjs/authentication'
 const { authenticate } = authentication.hooks
 
 // Default rules for all users
-function defineUserAbilities (subject, can, cannot) {
-  can('service', 'documents')
-  can('all', 'documents')
-}
-
 corePermissions.defineAbilities.registerHook(corePermissions.defineUserAbilities)
-corePermissions.defineAbilities.registerHook(defineUserAbilities)
+// Then rules for app
+corePermissions.defineAbilities.registerHook(permissions.defineUserAbilities)
 
 export default {
   before: {

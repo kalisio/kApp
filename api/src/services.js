@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url'
 import kdkCore from '@kalisio/kdk/core.api.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const servicesPath = path.join(__dirname, 'services')
 
 export default async function () {
   const app = this
@@ -23,6 +24,12 @@ export default async function () {
         response.buildNumber = process.env.BUILD_NUMBER
       }
       res.json(response)
+    })
+    app.on('service', async service => {
+      // Add app-specific hooks to required services initialized externally
+      if (service.name === 'users') {
+        await app.configureService(service.name, service, servicesPath)
+      }
     })
     await app.configure(kdkCore)
   } catch (error) {
