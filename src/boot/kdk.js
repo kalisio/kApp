@@ -33,7 +33,7 @@ export default async ({ app }) => {
   }
 
   // Register global components
-  app.component('KAction', await kdkCoreUtils.loadComponent('KAction'))
+  app.component('KAction', await kdkCoreUtils.loadComponent('action/KAction'))
   app.component('KPanel', await kdkCoreUtils.loadComponent('KPanel'))
   app.component('KStamp', await kdkCoreUtils.loadComponent('KStamp'))
   app.component('KModal', await kdkCoreUtils.loadComponent('KModal'))
