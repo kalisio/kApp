@@ -41,8 +41,9 @@ if [ "$CI" = true ]; then
     WORKSPACE_DIR="$(dirname "$ROOT_DIR")"
 
     # workaround since repo is kApp with a 'A' and in kli file it's kapp with a 'a'
-    mv "$WORKSPACE_DIR/kApp" "$WORKSPACE_DIR/kapp"
-    ln -s "$WORKSPACE_DIR/kapp" "$WORKSPACE_DIR/kApp"
+    cd "$WORKSPACE_DIR"
+    mv "kApp" "kapp" && ln -s "kapp" "kApp"
+    cd ~-
 
     DEVELOPMENT_REPO_URL="https://$GITHUB_DEVELOPMENT_PAT@github.com/kalisio/development.git"
 else
