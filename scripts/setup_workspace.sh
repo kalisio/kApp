@@ -45,7 +45,7 @@ if [ "$CI" = true ]; then
     mv "kApp" "kapp" && ln -s "kapp" "kApp"
     cd ~-
 
-    DEVELOPMENT_REPO_URL="https://$GITHUB_DEVELOPMENT_PAT@github.com/kalisio/development.git"
+    DEVELOPMENT_REPO_URL="https://$GITHUB_DEVELOPMENT_TOKEN@github.com/kalisio/development.git"
 else
     shift $((OPTIND-1))
     WORKSPACE_DIR="$1"

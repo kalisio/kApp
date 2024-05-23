@@ -6,22 +6,21 @@ JOB_ID=$1
 
 THIS_FILE=$(readlink -f "${BASH_SOURCE[0]}")
 THIS_DIR=$(dirname "$THIS_FILE")
-# ROOT_DIR=$(dirname "$THIS_DIR")
 
 . "$THIS_DIR/kash/kash.sh"
 
 ### Github Actions
 
 init_github_run_tests() {
-    install_reqs age sops nvm node16 node18 node20 mongo4 mongo5 mongo6 cc_test_reporter
+    install_reqs age sops nvm node16 mongo4 cc_test_reporter
 }
 
 init_github_build_app() {
-    install_reqs age sops nvm node16
+    install_reqs age sops
 }
 
 init_github_build_e2e_tests() {
-    install_reqs age sops nvm node16
+    install_reqs age sops
 }
 
 init_github_build_docs() {
@@ -29,7 +28,7 @@ init_github_build_docs() {
 }
 
 init_github_additional_tests() {
-    install_reqs age sops nvm node16 node18 node20 mongo4 mongo5 mongo6
+    install_reqs age sops nvm node18 node20 mongo4 mongo5 mongo6 mongo7
 }
 
 begin_group "Init $CI_ID for $JOB_ID"
