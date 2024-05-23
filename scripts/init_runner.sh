@@ -16,11 +16,11 @@ init_github_run_tests() {
 }
 
 init_github_build_app() {
-    install_reqs age sops
+    install_reqs age sops nvm node16
 }
 
 init_github_build_e2e_tests() {
-    install_reqs age sops
+    install_reqs age sops nvm node16
 }
 
 init_github_build_docs() {
