@@ -39,17 +39,16 @@ begin_group "Setting up workspace ..."
 
 if [ "$CI" = true ]; then
     WORKSPACE_DIR="$(dirname "$ROOT_DIR")"
+    DEVELOPMENT_REPO_URL="https://$GITHUB_DEVELOPMENT_TOKEN@github.com/kalisio/development.git"
 
     # workaround since repo is kApp with a 'A' and in kli file it's kapp with a 'a'
     cd "$WORKSPACE_DIR"
     mv "kApp" "kapp" && ln -s "kapp" "kApp"
     cd ~-
 
-    DEVELOPMENT_REPO_URL="https://$GITHUB_DEVELOPMENT_TOKEN@github.com/kalisio/development.git"
 else
     shift $((OPTIND-1))
     WORKSPACE_DIR="$1"
-
     DEVELOPMENT_REPO_URL="$GITHUB_URL/kalisio/development.git"
 
     # unset KALISIO_DEVELOPMENT_DIR because we want kli to clone everyhting in $WORKSPACE_DIR
