@@ -223,7 +223,6 @@ module.exports = {
     }
   },
   layout: {
-    view: 'lHh LpR lFf',
     header: {
       content: [{ component: 'layout/Header' }],
       visible: false
