@@ -339,17 +339,26 @@ module.exports = {
         html: [
           { id: 'html', label: 'Html', color: 'primary', disabled: true },
           { id: 'md', label: 'Markdown', color: 'primary', route: { name: 'document-activity', params: { type: 'md' } } },
-          { id: 'pdf', label: 'Pdf', color: 'primary', route: { name: 'document-activity', params: { type: 'pdf' } } }
+          { id: 'pdf', label: 'Pdf', color: 'primary', route: { name: 'document-activity', params: { type: 'pdf' } } },
+          { id: 'png', label: 'Png', color: 'primary', route: { name: 'document-activity', params: { type: 'png' } } }
         ],
         md: [
           { id: 'html', label: 'Html', color: 'primary', route: { name: 'document-activity', params: { type: 'html' } } },
           { id: 'md', label: 'Markdown', color: 'primary', disabled: true },
-          { id: 'pdf', label: 'Pdf', color: 'primary', route: { name: 'document-activity', params: { type: 'pdf' } } }
+          { id: 'pdf', label: 'Pdf', color: 'primary', route: { name: 'document-activity', params: { type: 'pdf' } } },
+          { id: 'png', label: 'Png', color: 'primary', route: { name: 'document-activity', params: { type: 'png' } } }
         ],
         pdf: [
           { id: 'html', label: 'Html', color: 'primary', route: { name: 'document-activity', params: { type: 'html' } } },
           { id: 'md', label: 'Markdown', color: 'primary', route: { name: 'document-activity', params: { type: 'md' } } },
-          { id: 'pdf', label: 'Pdf', color: 'primary', disabled: true }
+          { id: 'pdf', label: 'Pdf', color: 'primary', disabled: true },
+          { id: 'png', label: 'Png', color: 'primary', route: { name: 'document-activity', params: { type: 'png' } } }
+        ],
+        png: [
+          { id: 'html', label: 'Html', color: 'primary', route: { name: 'document-activity', params: { type: 'html' } } },
+          { id: 'md', label: 'Markdown', color: 'primary', route: { name: 'document-activity', params: { type: 'md' } } },
+          { id: 'pdf', label: 'Pdf', color: 'primary', route: { name: 'document-activity', params: { type: 'pdf' } } },
+          { id: 'png', label: 'Png', color: 'primary', disabled: true }
         ]
       },
       mode: 'html'
