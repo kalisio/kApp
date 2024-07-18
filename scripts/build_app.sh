@@ -18,8 +18,14 @@ NODE_VER=$DEFAULT_NODE_VER
 DEBIAN_VER=$DEFAULT_DEBIAN_VER
 PUBLISH=false
 CI_STEP_NAME="Build app"
-while getopts "pr:" option; do
+while getopts "d:n:pr:" option; do
     case $option in
+        d) # defines debian version
+            DEBIAN_VER=$OPTARG
+            ;;
+        n) # defines node version
+            NODE_VER=$OPTARG
+             ;;
         p) # define to publish container to registry
             PUBLISH=true
             ;;
