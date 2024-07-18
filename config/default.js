@@ -338,11 +338,18 @@ module.exports = {
       content: {
         html: [
           { id: 'html', label: 'Html', color: 'primary', disabled: true },
-          { id: 'md', label: 'Markdown', color: 'primary', route: { name: 'document-activity', params: { type: 'md' } } }
+          { id: 'md', label: 'Markdown', color: 'primary', route: { name: 'document-activity', params: { type: 'md' } } },
+          { id: 'pdf', label: 'Pdf', color: 'primary', route: { name: 'document-activity', params: { type: 'pdf' } } }
         ],
         md: [
           { id: 'html', label: 'Html', color: 'primary', route: { name: 'document-activity', params: { type: 'html' } } },
-          { id: 'md', label: 'Markdown', color: 'primary', disabled: true }
+          { id: 'md', label: 'Markdown', color: 'primary', disabled: true },
+          { id: 'pdf', label: 'Pdf', color: 'primary', route: { name: 'document-activity', params: { type: 'pdf' } } }
+        ],
+        pdf: [
+          { id: 'html', label: 'Html', color: 'primary', route: { name: 'document-activity', params: { type: 'html' } } },
+          { id: 'md', label: 'Markdown', color: 'primary', route: { name: 'document-activity', params: { type: 'md' } } },
+          { id: 'pdf', label: 'Pdf', color: 'primary', disabled: true }
         ]
       },
       mode: 'html'

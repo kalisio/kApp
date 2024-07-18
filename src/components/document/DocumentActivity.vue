@@ -6,6 +6,7 @@
           class="q-pa-sm col-sm-10 col-md-8 col-lg-6 bg-white"
           :url="url"
           :localize="true"
+          style="max-height: calc(100vh - 75px);"
         />     
       </div>
     </template>
