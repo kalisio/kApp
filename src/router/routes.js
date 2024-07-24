@@ -37,11 +37,11 @@ module.exports = [{
         },
         layout: {
           name: 'layout-activity',
-          component: 'LayoutActivity'
+          component: 'layout/LayoutActivity'
         },
         miscellaneous: {
           name: 'miscellaneous-activity',
-          component: 'MiscellaneousActivity'
+          component: 'miscellaneous/MiscellaneousActivity'
         },
         'document/:type': {
           name: 'document-activity',
@@ -96,7 +96,7 @@ module.exports = [{
         }, 
         webpush: {
           name: 'webpush-activity',
-          component: 'WebpushActivity'
+          component: 'webpush/WebpushActivity'
         }
       }
     }

@@ -253,43 +253,45 @@ module.exports = {
     deletable: true
   },
   layoutActivity: {
-    leftPane: leftPane,
-    topPane: {
-      content: {
-        page: [
-          { id: 'page', label: 'Page', color: 'primary', disabled: true },
-          { id: 'panes', label: 'Panes', handler: { name: 'setMode', params: ['panes'] } },
-          { id: 'windows', label: 'Windows', handler: { name: 'setMode', params: ['windows'] } },
-          { id: 'fab', label: 'Fab', handler: { name: 'setMode', params: ['fab'] } }
-        ],
-        panes: [
-          { id: 'page', label: 'Page', handler: { name: 'setMode', params: ['page'] } },
-          { id: 'panes', label: 'Panes', color: 'primary', disabled: true },
-          { id: 'windows', label: 'Windows', handler: { name: 'setMode', params: ['windows'] } },
-          { id: 'fab', label: 'Fab', handler: { name: 'setMode', params: ['fab'] } }
-        ],
-        windows: [
-          { id: 'page', label: 'Page', handler: { name: 'setMode', params: ['page'] } },
-          { id: 'panes', label: 'Panes', handler: { name: 'setMode', params: ['panes'] } },
-          { id: 'windows', label: 'Windows', color: 'primary', disabled: true },
-          { id: 'fab', label: 'Fab', handler: { name: 'setMode', params: ['fab'] } }
-        ],
-        fab: [
-          { id: 'page', label: 'Page', handler: { name: 'setMode', params: ['page'] } },
-          { id: 'panes', label: 'Panes', handler: { name: 'setMode', params: ['panes'] } },
-          { id: 'windows', label: 'Windows', handler: { name: 'setMode', params: ['windows'] } },
-          { id: 'fab', label: 'Fab', color: 'primary', disabled: true }
-        ]
+    panes: { 
+      left: leftPane,
+      top: {
+        content: {
+          page: [
+            { id: 'page', label: 'Page', color: 'primary', disabled: true },
+            { id: 'panes', label: 'Panes', handler: { name: 'setMode', params: ['panes'] } },
+            { id: 'windows', label: 'Windows', handler: { name: 'setMode', params: ['windows'] } },
+            { id: 'fab', label: 'Fab', handler: { name: 'setMode', params: ['fab'] } }
+          ],
+          panes: [
+            { id: 'page', label: 'Page', handler: { name: 'setMode', params: ['page'] } },
+            { id: 'panes', label: 'Panes', color: 'primary', disabled: true },
+            { id: 'windows', label: 'Windows', handler: { name: 'setMode', params: ['windows'] } },
+            { id: 'fab', label: 'Fab', handler: { name: 'setMode', params: ['fab'] } }
+          ],
+          windows: [
+            { id: 'page', label: 'Page', handler: { name: 'setMode', params: ['page'] } },
+            { id: 'panes', label: 'Panes', handler: { name: 'setMode', params: ['panes'] } },
+            { id: 'windows', label: 'Windows', color: 'primary', disabled: true },
+            { id: 'fab', label: 'Fab', handler: { name: 'setMode', params: ['fab'] } }
+          ],
+          fab: [
+            { id: 'page', label: 'Page', handler: { name: 'setMode', params: ['page'] } },
+            { id: 'panes', label: 'Panes', handler: { name: 'setMode', params: ['panes'] } },
+            { id: 'windows', label: 'Windows', handler: { name: 'setMode', params: ['windows'] } },
+            { id: 'fab', label: 'Fab', color: 'primary', disabled: true }
+          ]
+        },
+        mode: 'page'
       },
-      mode: 'page'
-    },
-    rightPane: {
-      content: [{ component: 'layout/RightPane' }],
-      visible: false
-    },
-    bottomPane: {
-      content: [{ component: 'layout/BottomPane' }],
-      visible: false
+      right: {
+        content: [{ component: 'layout/RightPane' }],
+        visible: false
+      },
+      bottom: {
+        content: [{ component: 'layout/BottomPane' }],
+        visible: false
+      }
     },
     page: {
       content: {
@@ -325,11 +327,13 @@ module.exports = {
     }
   },
   miscellaneousActivity: {
-    leftPane: leftPane,
-    topPane: {
-      content: [
-        { id: 'layout', icon: 'las la-icons', label: 'MiscellaneousActivity.LABEL', color: 'primary', disabled: true }
-      ]
+    panes: {
+      left: leftPane,
+      top: {
+        content: [
+          { id: 'layout', icon: 'las la-icons', label: 'MiscellaneousActivity.LABEL', color: 'primary', disabled: true }
+        ]
+      }
     }
   },
   documentActivity: {
@@ -508,7 +512,9 @@ module.exports = {
     }
   },
   webpushActivity: {
-    leftPane: leftPane
+    panes: {
+      left: leftPane
+    }
   },
   routes: require('../src/router/routes')
 }
