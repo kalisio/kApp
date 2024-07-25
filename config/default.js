@@ -219,7 +219,7 @@ module.exports = {
     register: {
       actions: [
         { id: 'login-link', label: 'KRegisterScreen.ALREADY_HAVE_AN_ACCOUNT_LABEL', route: { name: 'login' } }
-      ]
+      ]       
     }
   },
   layout: {
@@ -365,8 +365,15 @@ module.exports = {
             { id: 'pdf', label: 'Pdf', color: 'primary', route: { name: 'document-activity', params: { type: 'pdf' } } },
             { id: 'png', label: 'Png', color: 'primary', disabled: true }
           ]
-        },
-        mode: 'html'
+        }
+      }
+    },
+    page: {
+      content: {
+        html: [{ component: 'document/KDocument', url: 'sample.html',  localize: true }],
+        md: [{ component: 'document/KDocument', url: 'sample.md',  localize: true }],
+        pdf: [{ component: 'document/KDocument', url: 'sample.pdf',  localize: true }],
+        png: [{ component: 'document/KDocument', url: 'sample.png',  localize: true }]
       }
     }
   },
