@@ -28,7 +28,7 @@ if (process.env.NODE_APP_INSTANCE === 'dev') {
 const leftPane = {
   content: [
     { component: 'account/KProfile', class: 'full-width' },
-    { id: 'layout', icon: 'las la-desktop', label: 'LayoutActivity.LABEL', renderer: 'item', route: { name: 'layout-activity' } },
+    { id: 'layout', icon: 'las la-desktop', label: 'LayoutActivity.LABEL', renderer: 'item', route: { name: 'layout-activity', params: { mode: 'header-footer' } } },
     { id: 'miscellaneous', icon: 'las la-icons', label: 'MiscellaneousActivity.LABEL', renderer: 'item', route: { name: 'miscellaneous-activity' } },
     { id: 'document', icon: 'las la-icons', label: 'DocumentActivity.LABEL', renderer: 'item', route: { name: 'document-activity', params: { type: 'html' } } }, 
     { id: 'collection', icon: 'las la-list', label: 'CollectionActivity.LABEL', renderer: 'item', route: { name: 'collection-activity', params: { page: 'list' } } },
@@ -203,7 +203,6 @@ module.exports = {
         url: 'kapp-terms.md'
       }
     }],
-    // frameBackgroundColor: '#FFDC9E',
     login: {
       actions: [
         { id: 'reset-password-link', label: 'KLoginScreen.FORGOT_YOUR_PASSWORD_LABEL', route: {name: 'send-reset-password' } },
@@ -223,10 +222,6 @@ module.exports = {
     }
   },
   layout: {
-    header: {
-      content: [{ component: 'layout/Header' }],
-      visible: false
-    },
     page: {
       visible: true
     },
@@ -253,36 +248,45 @@ module.exports = {
     deletable: true
   },
   layoutActivity: {
+    header: {
+      content: {
+        'header-footer': [{ component: 'layout/Header'}]
+      }
+    },
+    footer: {
+      content: {
+        'header-footer': [{ component: 'layout/Footer'}]
+      }
+    },
     panes: { 
       left: leftPane,
       top: {
         content: {
-          page: [
-            { id: 'page', label: 'Page', color: 'primary', disabled: true },
-            { id: 'panes', label: 'Panes', handler: { name: 'setMode', params: ['panes'] } },
-            { id: 'windows', label: 'Windows', handler: { name: 'setMode', params: ['windows'] } },
-            { id: 'fab', label: 'Fab', handler: { name: 'setMode', params: ['fab'] } }
+          'header-footer': [
+            { id: 'page', label: 'Header/Footer', color: 'primary', disabled: true },
+            { id: 'panes', label: 'Panes', route: { name: 'layout-activity', params: { mode: 'panes' } } },
+            { id: 'windows', label: 'Windows', route: { name: 'layout-activity', params: { mode: 'windows' } } },
+            { id: 'fab', label: 'Fab', route: { name: 'layout-activity', params: { mode: 'fab' } } },
           ],
           panes: [
-            { id: 'page', label: 'Page', handler: { name: 'setMode', params: ['page'] } },
-            { id: 'panes', label: 'Panes', color: 'primary', disabled: true },
-            { id: 'windows', label: 'Windows', handler: { name: 'setMode', params: ['windows'] } },
-            { id: 'fab', label: 'Fab', handler: { name: 'setMode', params: ['fab'] } }
+            { id: 'page', label: 'Header/Footer', route: { name: 'layout-activity', params: { mode: 'header-footer' } } },
+            { id: 'panes', label: 'Panes', route: { name: 'layout-activity', params: { mode: 'panes' } } },
+            { id: 'windows', label: 'Windows', route: { name: 'layout-activity', params: { mode: 'windows' } } },
+            { id: 'fab', label: 'Fab', route: { name: 'layout-activity', params: { mode: 'fab' } } },
           ],
           windows: [
-            { id: 'page', label: 'Page', handler: { name: 'setMode', params: ['page'] } },
-            { id: 'panes', label: 'Panes', handler: { name: 'setMode', params: ['panes'] } },
+            { id: 'page', label: 'Header/Footer', route: { name: 'layout-activity', params: { mode: 'header-footer' } } },
+            { id: 'panes', label: 'Panes', route: { name: 'layout-activity', params: { mode: 'panes' } } },
             { id: 'windows', label: 'Windows', color: 'primary', disabled: true },
-            { id: 'fab', label: 'Fab', handler: { name: 'setMode', params: ['fab'] } }
+            { id: 'fab', label: 'Fab', route: { name: 'layout-activity', params: { mode: 'fab' } } },
           ],
           fab: [
-            { id: 'page', label: 'Page', handler: { name: 'setMode', params: ['page'] } },
-            { id: 'panes', label: 'Panes', handler: { name: 'setMode', params: ['panes'] } },
-            { id: 'windows', label: 'Windows', handler: { name: 'setMode', params: ['windows'] } },
+            { id: 'page', label: 'Header/Footer', route: { name: 'layout-activity', params: { mode: 'header-footer' } } },
+            { id: 'panes', label: 'Panes', route: { name: 'layout-activity', params: { mode: 'panes' } } },
+            { id: 'windows', label: 'Windows', route: { name: 'layout-activity', params: { mode: 'windows' } } },
             { id: 'fab', label: 'Fab', color: 'primary', disabled: true }
           ]
-        },
-        mode: 'page'
+        }
       },
       right: {
         content: [{ component: 'layout/RightPane' }],
@@ -295,16 +299,15 @@ module.exports = {
     },
     page: {
       content: {
-        page: [{ component: 'layout/Layout', mode: 'page' }],
+        'header-footer': [{ component: 'layout/Layout', mode: 'page' }],
         panes: [{ component: 'layout/Layout', mode: 'panes' }],
         windows: [{ component: 'layout/Layout', mode: 'windows' }],
         fab: [{ component: 'layout/Layout', mode: 'fab' }]
-      },
-      mode: 'page'
+      }
     },
     fab: {
       content: {
-        page: [
+        'header-footer': [
           { id: 'page', label: 'Page', icon: 'las la-stream', handler: { name: 'setMode', params: ['page'] } },
           { id: 'panes', label: 'Panes', icon: 'las la-window-minimize', handler: { name: 'setMode', params: ['panes'] } },
           { id: 'windows', label: 'Windows', icon: 'las la-window-restore', handler: { name: 'setMode', params: ['windows'] } },
@@ -316,8 +319,7 @@ module.exports = {
           { id: 'windows', label: 'Windows', icon: 'las la-window-restore', handler: { name: 'setMode', params: ['windows'] } },
           { id: 'fab', label: 'Fab', icon: 'las la-window-restore', handler: { name: 'setMode', params: ['fab'] } }
         ]
-      },
-      mode: 'page'
+      }
     },
     windows: {
       left: { content: [widgets[0], widgets[4]], current: 'widget-1' },

@@ -7,7 +7,6 @@
 </template>
 
 <script setup>
-// Props
 defineProps({
   type: {
     type: String,
