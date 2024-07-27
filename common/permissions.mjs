@@ -12,6 +12,8 @@ export const RoleNames = [
 // Hook to manage app permissions
 export function defineUserAbilities (subject, can, cannot, app) {
   if (subject && subject._id) {
+    can('service', 'messages')
+    can('all', 'messages')
     can('service', 'documents')
     can('all', 'documents')
     if (subject.permissions) {

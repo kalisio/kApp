@@ -23,6 +23,9 @@
   "DocumentActivity": {
     "LABEL": "Documents"
   },
+  "MessagesActivity": {
+    "LABEL": "Messages"
+  },
   "CollectionActivity": {
     "LABEL": "Collections",
     "LIST": "Liste",
@@ -59,6 +62,9 @@
   },
   "Times": {
     "LABEL": "Composants temporels"
+  },
+  "Messages": {
+    "LABEL": "Messages"
   },
   "ContextualHelp": {
     "LABEL": "Aide contextuelle"

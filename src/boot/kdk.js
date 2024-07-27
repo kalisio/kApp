@@ -51,6 +51,7 @@ export default async ({ app }) => {
   app.component('KStore', await kdkCoreUtils.loadComponent('KStore'))
   app.component('KTour', await kdkCoreUtils.loadComponent('app/KTour'))
   app.component('KScrollArea', await kdkCoreUtils.loadComponent('KScrollArea'))
+  app.component('KTimeLine', await kdkCoreUtils.loadComponent('collection/KTimeLine'))
   app.component('KActivity', await kdkCoreUtils.loadComponent('KActivity'))
 
   // Register global properties

@@ -49,6 +49,10 @@ module.exports = [{
           component: 'document/DocumentActivity',
           props: true
         },
+        messages: {
+          name: 'messages-activity',
+          component: 'messages/MessagesActivity',
+        },
         'collection/:page': {
           name: 'collection-activity',
           component: 'CollectionActivity',
