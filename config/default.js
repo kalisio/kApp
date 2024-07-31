@@ -124,7 +124,7 @@ const widgets = [
     id: 'widget-4', label: 'Widget 4', content: { component: 'layout/Widget'} 
   },
   { 
-    id: 'widget-Store', label: 'Store', content: { component: 'KStore'}, scrollable: true
+    id: 'store-widget', label: 'Store', content: { component: 'KStore'}, scrollable: true
   }
 ]
 

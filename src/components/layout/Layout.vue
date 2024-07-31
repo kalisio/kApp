@@ -19,46 +19,86 @@
     <div v-if="mode === 'panes'" class="column items-center layout q-pa-md q-gutter-md">
       <div class="column layout-box">
         <KAction
-          id ="toggle-top-opener" label="Top opener" :icon="panes.top.opener ? 'las la-toggle-on' : 'las la-toggle-off'"
-          :handler="() => togglePaneOpener('top')"
-        />
-        <KAction
           id ="toggle-top-pane" label="Top pane" :icon="panes.top.visible ? 'las la-toggle-on' : 'las la-toggle-off'"
           :handler="() => togglePane('top')"
         />
+        <div class="row items-center">
+          <KAction
+            id ="toggle-top-opener" label="Opener" :icon="panes.top.opener ? 'las la-toggle-on' : 'las la-toggle-off'"
+            :handler="() => togglePaneOpener('top')"
+          />
+          <KAction
+            id ="top-pane-fixed" label="Fixed" :icon="panes.top.state === 'fixed' ? 'las la-toggle-on' : 'las la-toggle-off'"
+            :handler="() => setPaneState('top', 'fixed')"
+          />
+          <KAction
+            id ="top-pane-responsive" label="Responsive" :icon="panes.top.state === 'responsive' ? 'las la-toggle-on' : 'las la-toggle-off'"
+            :handler="() => setPaneState('top', 'responsive')"
+          />
+        </div>
       </div>
       <div>
-        <div class="row items-center q-gutter-lg no-wrap">
+        <div class="row items-center q-gutter-sm no-wrap">
           <div class="row items-center layout-box">
             <KAction
-              id ="toggle-left-pane-opener" label="Left opener" :icon="panes.left.opener ? 'las la-toggle-on' : 'las la-toggle-off'" icon-right
-              :handler="() => togglePaneOpener('left')"
-            />
-            <KAction
-              id ="toggle-left-pane" label="Left pane" :icon="panes.left.visible ? 'las la-toggle-on' : 'las la-toggle-off'"
+              id ="toggle-left-pane" label="Left pane" :icon="panes.left.visible ? 'las la-toggle-on' : 'las la-toggle-off'" icon-right
               :handler="() => togglePane('left')"
             />
+            <div class="column items-center">
+              <KAction
+                id ="toggle-left-pane-opener" label="Opener" :icon="panes.left.opener ? 'las la-toggle-on' : 'las la-toggle-off'"
+                :handler="() => togglePaneOpener('left')"
+              />
+              <KAction
+                id ="left-pane-fixed" label="Fixed" :icon="panes.left.state === 'fixed' ? 'las la-toggle-on' : 'las la-toggle-off'"
+                :handler="() => setPaneState('left', 'fixed')"
+              />
+              <KAction
+                id ="left-pane-responsive" label="Responsive" :icon="panes.left.state === 'responsive' ? 'las la-toggle-on' : 'las la-toggle-off'"
+                :handler="() => setPaneState('left', 'responsive')"
+              />
+            </div>
           </div>
-          <div class="row items-center layout-box">
+          <div class="row layout-box">
+            <div class="column items-center">
+              <KAction
+                id ="toggle-right-pane-opener" label="Opener" :icon="panes.right.opener ? 'las la-toggle-on' : 'las la-toggle-off'" 
+                :handler="() => togglePaneOpener('right')"
+              />
+              <KAction
+                id ="right-pane-fixed" label="Fixed" :icon="panes.right.state === 'fixed' ? 'las la-toggle-on' : 'las la-toggle-off'"
+                :handler="() => setPaneState('right', 'fixed')"
+              />
+              <KAction
+                id ="right-pane-responsive" label="Responsive" :icon="panes.right.state === 'responsive' ? 'las la-toggle-on' : 'las la-toggle-off'"
+                :handler="() => setPaneState('right', 'responsive')"
+              />
+            </div>
             <KAction
               id ="toggle-right-pane" label="Right pane" :icon="panes.right.visible ? 'las la-toggle-on' : 'las la-toggle-off'"
               :handler="() => togglePane('right')"
-            />
-            <KAction
-              id ="toggle-right-pane-opener" label="Right opener" :icon="panes.right.opener ? 'las la-toggle-on' : 'las la-toggle-off'" icon-right
-              :handler="() => togglePaneOpener('right')"
             />
           </div>
         </div>
       </div>
       <div class="column layout-box">
+        <div class="row items-center">
+          <KAction
+            id ="toggle-bottom-opener" label="Opener" :icon="panes.bottom.opener ? 'las la-toggle-on' : 'las la-toggle-off'"
+            :handler="() => togglePaneOpener('bottom')"
+          />
+          <KAction
+            id ="bottom-pane-fixed" label="Fixed" :icon="panes.bottom.state === 'fixed' ? 'las la-toggle-on' : 'las la-toggle-off'"
+            :handler="() => setPaneState('bottom', 'fixed')"
+          />
+          <KAction
+            id ="bottom-pane-responsive" label="Responsive" :icon="panes.bottom.state === 'responsive' ? 'las la-toggle-on' : 'las la-toggle-off'"
+            :handler="() => setPaneState('bottom', 'responsive')"
+          />
+        </div>
         <KAction
           id ="toggle-bottom-pane" label="Bottom pane" :icon="panes.bottom.visible ? 'las la-toggle-on' : 'las la-toggle-off'"
           :handler="() => togglePane('bottom')"
-        />
-        <KAction
-          id ="toggle-bottom-opener" label="Bottom opener" :icon="panes.bottom.opener ? 'las la-toggle-on' : 'las la-toggle-off'"
-          :handler="() => togglePaneOpener('bottom')"
         />
       </div>
     </div>
@@ -107,6 +147,12 @@
                 :handler="() => setWindowState('left', 'maximized')" 
               />
             </div>
+          </div>
+          <div>
+            <KAction 
+                id ="store-widget" label="Store"
+                :handler="openStoreWidget" 
+              />
           </div>
           <div class="row items-center layout-box">
             <div class="column">
@@ -222,6 +268,9 @@ function togglePane (placement) {
 function togglePaneOpener (placement) {
   Layout.setPaneOpener(placement, !panes[placement].opener)
 }
+function setPaneState (placement, state) {
+  Layout.setPaneState(placement, state)
+}
 function toggleWindow (placement) {
   Layout.setWindowVisible(placement, !windows[placement].visible)
 }
@@ -231,6 +280,9 @@ function setWindowState (placement, state) {
 function setFabPosition (placement) {
   Layout.setFabPosition(placement)
 }
+function openStoreWidget () {
+  Layout.openWidget('store-widget')
+} 
 </script>
 
 <style lang="scss" scoped>
