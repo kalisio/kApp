@@ -33,11 +33,11 @@ module.exports = [{
           tour: {
             home: tours.home,
             'side-nav': tours['side-nav']
-          },
+          }
         },
-        'screen': {
+        screen: {
           name: 'screen-activity',
-          component: 'screen/ScreenActivity',
+          component: 'screen/ScreenActivity'
         },
         'layout/:mode': {
           name: 'layout-activity',
@@ -55,7 +55,7 @@ module.exports = [{
         },
         messages: {
           name: 'messages-activity',
-          component: 'messages/MessagesActivity',
+          component: 'messages/MessagesActivity'
         },
         'collection/:page': {
           name: 'collection-activity',
@@ -102,7 +102,7 @@ module.exports = [{
               props: true
             }
           }
-        }, 
+        },
         webpush: {
           name: 'webpush-activity',
           component: 'webpush/WebpushActivity'

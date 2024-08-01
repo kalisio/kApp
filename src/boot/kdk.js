@@ -38,7 +38,7 @@ export default async ({ app }) => {
   app.component('KPanel', await kdkCoreUtils.loadComponent('KPanel'))
   app.component('KStamp', await kdkCoreUtils.loadComponent('KStamp'))
   app.component('KModal', await kdkCoreUtils.loadComponent('KModal'))
-  app.component('KDialog', await kdkCoreUtils.loadComponent('KDialog'))  
+  app.component('KDialog', await kdkCoreUtils.loadComponent('KDialog'))
   app.component('KDate', await kdkCoreUtils.loadComponent('time/KDate'))
   app.component('KTime', await kdkCoreUtils.loadComponent('time/KTime'))
   app.component('KDateTime', await kdkCoreUtils.loadComponent('time/KDateTime'))
@@ -53,7 +53,6 @@ export default async ({ app }) => {
   app.component('KTour', await kdkCoreUtils.loadComponent('app/KTour'))
   app.component('KTimeLine', await kdkCoreUtils.loadComponent('collection/KTimeLine'))
   app.component('KActivity', await kdkCoreUtils.loadComponent('KActivity'))
-
 
   // Register global properties
   // FIXME: This is used for testing purpose, don't know how to access this from Puppeteer otherwise

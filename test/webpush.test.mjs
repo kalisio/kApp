@@ -14,7 +14,7 @@ describe(`suite:${suite}`, () => {
 
   before(async () => {
     chailint(chai, util)
-    
+
     runner = new core.Runner(suite, {
       appName: 'kapp',
       browser: {

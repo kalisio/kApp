@@ -18,7 +18,6 @@
         :toggle="{ icon: 'las la-compress', label: 'ScreenActivity.EXIT_FULLSCREEN' }"
         renderer="form-button"
       />
-       
     </div>
   </KActivity>
 </template>

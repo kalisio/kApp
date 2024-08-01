@@ -47,7 +47,7 @@ export default {
       this.setTopPaneMode(this.page)
       this.setPageMode(this.page)
     }
-  },  
+  },
   mounted () {
     this.refresh()
   }
