@@ -3,7 +3,7 @@
     name="layout"
     :mode="mode"
     padding
-  />
+  /> 
 </template>
 
 <script setup>

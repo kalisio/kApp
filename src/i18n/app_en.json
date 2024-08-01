@@ -14,6 +14,13 @@
     "CONTACT": "Contact",
     "TERMS_AND_POLICIES": "Terms and Policies"
   },
+  "ScreenActivity": {
+    "LABEL": "Screen",
+    "PORTRAIT_ORIENTATION": "Portrait [{w}px x {h}px]",
+    "LANDSCAPE_ORIENTATION": "Landscape [{w}px x {h}px]",
+    "ENTER_FULLSCREEN": "Enter fulscreen mode",
+    "EXIT_FULLSCREEN": "Exit fullscreen mode"
+  },
   "LayoutActivity": {
     "LABEL": "Layout"
   },

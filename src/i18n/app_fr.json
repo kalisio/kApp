@@ -14,6 +14,13 @@
     "CONTACT": "Contact",
     "TERMS_AND_POLICIES": "Conditions générales"
   },
+  "ScreenActivity": {
+    "LABEL": "Ecran",
+    "PORTRAIT_ORIENTATION": "Portrait [{w}px x {h}px]",
+    "LANDSCAPE_ORIENTATION": "Paysage [{w}px x {h}px]",
+    "ENTER_FULLSCREEN": "Basculer en mode plein écran",
+    "EXIT_FULLSCREEN": "Quitter le mode plein écran"
+  },  
   "LayoutActivity": {
     "LABEL": "Layout"
   },  

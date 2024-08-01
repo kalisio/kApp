@@ -29,11 +29,15 @@ module.exports = [{
           // Because this child is the default one path is empty and name is the one of the parent route
           path: '',
           name: 'home',
-          redirect: { name: 'layout-activity', params: { mode: 'header-footer' } },
+          redirect: { name: 'screen-activity' },
           tour: {
             home: tours.home,
             'side-nav': tours['side-nav']
           },
+        },
+        'screen': {
+          name: 'screen-activity',
+          component: 'screen/ScreenActivity',
         },
         'layout/:mode': {
           name: 'layout-activity',

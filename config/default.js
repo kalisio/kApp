@@ -28,6 +28,7 @@ if (process.env.NODE_APP_INSTANCE === 'dev') {
 const LeftPane = {
   content: [
     { component: 'account/KProfile', class: 'full-width' },
+    { id: 'screen', icon: 'las la-tv', label: 'ScreenActivity.LABEL', renderer: 'item', route: { name: 'screen-activity' } },
     { id: 'layout', icon: 'las la-desktop', label: 'LayoutActivity.LABEL', renderer: 'item', route: { name: 'layout-activity', params: { mode: 'header-footer' } } },
     { id: 'miscellaneous', icon: 'las la-icons', label: 'MiscellaneousActivity.LABEL', renderer: 'item', route: { name: 'miscellaneous-activity' } },
     { id: 'document', icon: 'las la-icons', label: 'DocumentActivity.LABEL', renderer: 'item', route: { name: 'document-activity', params: { type: 'html' } } },
@@ -247,6 +248,11 @@ module.exports = {
       }
     ],
     deletable: true
+  },
+  screenActivity: {
+    panes: { 
+      left: LeftPane
+    }
   },
   layoutActivity: {
     header: {
