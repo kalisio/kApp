@@ -31,6 +31,6 @@ const { Orientation: ScreenOrientation, Screen } = kdkCoreComposables.useScreen(
 
 // Computed
 const text = computed(() => {
-  return i18n.t(ScreenOrientation === 'portrait' ? 'ScreenActivity.PORTRAIT_ORIENTATION' : 'ScreenActivity.LANDSCAPE_ORIENTATION', { w: Screen.width, h: Screen.height })
+  return i18n.t(ScreenOrientation.value === 'portrait' ? 'ScreenActivity.PORTRAIT_ORIENTATION' : 'ScreenActivity.LANDSCAPE_ORIENTATION', { w: Screen.width, h: Screen.height })
 })
 </script>
