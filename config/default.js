@@ -438,17 +438,18 @@ module.exports = {
     page: {
       content: {
         list: [{
-          component: 'collection/KList',
+          component: 'collection/KCollection',
           ref: 'list',
           service: 'documents',
           renderer: {
             component: 'collection/KItem',
-            actions: collectionActions
+            actions: collectionActions,
+            class: 'col-12'
           }
           //, /*filterQuery: ':filter.query'
         }],
         grid: [{
-          component: 'collection/KGrid',
+          component: 'collection/KCollection',
           ref: 'grid',
           service: 'documents',
           renderer: {
