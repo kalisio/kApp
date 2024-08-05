@@ -39,6 +39,7 @@ export default async ({ app }) => {
   app.component('KStamp', await kdkCoreUtils.loadComponent('KStamp'))
   app.component('KModal', await kdkCoreUtils.loadComponent('KModal'))
   app.component('KDialog', await kdkCoreUtils.loadComponent('KDialog'))
+  app.component('KBoard', await kdkCoreUtils.loadComponent('collection/KBoard'))
   app.component('KDate', await kdkCoreUtils.loadComponent('time/KDate'))
   app.component('KTime', await kdkCoreUtils.loadComponent('time/KTime'))
   app.component('KDateTime', await kdkCoreUtils.loadComponent('time/KDateTime'))

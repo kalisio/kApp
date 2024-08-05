@@ -34,7 +34,7 @@ const LeftPane = {
     { id: 'document', icon: 'las la-icons', label: 'DocumentActivity.LABEL', renderer: 'item', route: { name: 'document-activity', params: { type: 'html' } } },
     { id: 'messages', icon: 'las la-comments', label: 'MessagesActivity.LABEL', renderer: 'item', route: { name: 'messages-activity' } }, 
     { id: 'collection', icon: 'las la-list', label: 'CollectionActivity.LABEL', renderer: 'item', route: { name: 'collection-activity', params: { page: 'list' } } },
-    { id: 'kanban', icon: 'dashboard', label: 'KanbanActivity.LABEL', renderer: 'item', route: { name: 'kanban-activity' } },
+    { id: 'board', icon: 'dashboard', label: 'KanbanActivity.LABEL', renderer: 'item', route: { name: 'board-activity' } },
     { id: 'chart', icon: 'las la-chart-pie', label: 'ChartActivity.LABEL', renderer: 'item', route: { name: 'chart-activity' } },
     { id: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL', renderer: 'item', route: { name: 'editor-activity' } },
     { id: 'webpush', icon: 'las la-bell', label: 'WebPushActivity.LABEL', renderer: 'item', route: { name: 'webpush-activity' } },
@@ -476,21 +476,23 @@ module.exports = {
       ]
     }
   },
-  kanbanActivity: {
-    leftPane: LeftPane,
-    topPane: {
-      content: {
-        default: [
-          { id: 'table', icon: 'dashboard', label: 'KanbanActivity.LABEL', color: 'primary', disabled: true },
-          { id: 'filter', icon: 'las la-search', tooltip: 'KanbanActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } }
-        ],
-        filter: [
-          { id: 'back', icon: 'las la-arrow-left', handler: { name: 'setTopPaneMode', params: ['default'] } },
-          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
-          { component: 'collection/KFilter', size: '1rem' }
-        ]
-      },
-      mode: 'default'
+  boardActivity: {
+    panes: {
+      left: LeftPane,
+      top: {
+        content: {
+          default: [
+            { id: 'table', icon: 'dashboard', label: 'KanbanActivity.LABEL', color: 'primary', disabled: true },
+            { id: 'filter', icon: 'las la-search', tooltip: 'KanbanActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } }
+          ],
+          filter: [
+            { id: 'back', icon: 'las la-arrow-left', handler: { name: 'setTopPaneMode', params: ['default'] } },
+            { component: 'QSeparator', vertical: true, color: 'lightgrey' },
+            { component: 'collection/KFilter', size: '1rem' }
+          ]
+        },
+        mode: 'default'
+      }
     },
     categories: [
       { name: 'sain' },

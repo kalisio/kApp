@@ -79,9 +79,9 @@ module.exports = [{
             }
           }
         },
-        kanban: {
-          name: 'kanban-activity',
-          component: 'KanbanActivity'
+        board: {
+          name: 'board-activity',
+          component: 'board/BoardActivity'
         },
         chart: {
           name: 'chart-activity',
