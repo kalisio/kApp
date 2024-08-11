@@ -2,7 +2,6 @@
   <KActivity
     name="document"
     :mode="type"
-    padding
   />
 </template>
 

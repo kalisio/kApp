@@ -2,7 +2,6 @@
   <KActivity
     :ref="activityCreated"
     name="board"
-    padding
   >
     <KBoard 
       v-if="categories" 

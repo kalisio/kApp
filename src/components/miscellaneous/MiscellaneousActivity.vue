@@ -1,8 +1,5 @@
 <template>
-  <KActivity
-    name="miscellaneous"
-    padding
-  >
+  <KActivity name="miscellaneous">
     <div class="row full-width justify-center q-gutter-md">
       <Stamps />
       <Shapes />

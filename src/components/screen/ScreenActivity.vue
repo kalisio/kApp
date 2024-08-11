@@ -1,8 +1,5 @@
 <template>
-  <KActivity 
-    name="screen"
-    padding
-  >
+  <KActivity name="screen">
     <div class="q-pa-md fixed-center column items-center q-gutter-y-xl">
       <KStamp
         :text="text" 
