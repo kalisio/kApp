@@ -28,6 +28,7 @@ if (process.env.NODE_APP_INSTANCE === 'dev') {
 const LeftPane = {
   content: [
     { component: 'account/KProfile', class: 'full-width' },
+    { id: 'action', label: 'ScreenActivity.LABEL', renderer: 'item', route: { name: 'action-activity' } },
     { id: 'screen', icon: 'las la-tv', label: 'ScreenActivity.LABEL', renderer: 'item', route: { name: 'screen-activity' } },
     { id: 'layout', icon: 'las la-desktop', label: 'LayoutActivity.LABEL', renderer: 'item', route: { name: 'layout-activity', params: { mode: 'header-footer' } } },
     { id: 'miscellaneous', icon: 'las la-icons', label: 'MiscellaneousActivity.LABEL', renderer: 'item', route: { name: 'miscellaneous-activity' } },
@@ -438,7 +439,7 @@ module.exports = {
     page: {
       content: {
         list: [{
-          component: 'collection/KCollection',
+          component: 'collection/KGrid',
           ref: 'list',
           service: 'documents',
           renderer: {
@@ -449,7 +450,7 @@ module.exports = {
           //, /*filterQuery: ':filter.query'
         }],
         grid: [{
-          component: 'collection/KCollection',
+          component: 'collection/KGrid',
           ref: 'grid',
           service: 'documents',
           renderer: {
