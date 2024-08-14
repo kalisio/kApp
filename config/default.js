@@ -28,7 +28,6 @@ if (process.env.NODE_APP_INSTANCE === 'dev') {
 const LeftPane = {
   content: [
     { component: 'account/KProfile', class: 'full-width' },
-    { id: 'action', label: 'ScreenActivity.LABEL', renderer: 'item', route: { name: 'action-activity' } },
     { id: 'screen', icon: 'las la-tv', label: 'ScreenActivity.LABEL', renderer: 'item', route: { name: 'screen-activity' } },
     { id: 'layout', icon: 'las la-desktop', label: 'LayoutActivity.LABEL', renderer: 'item', route: { name: 'layout-activity', params: { mode: 'header-footer' } } },
     { id: 'miscellaneous', icon: 'las la-icons', label: 'MiscellaneousActivity.LABEL', renderer: 'item', route: { name: 'miscellaneous-activity' } },
@@ -398,75 +397,75 @@ module.exports = {
     }
   },
   collectionActivity: {
-    leftPane: LeftPane,
-    topPane: {
-      content: {
-        list: [
-          { id: 'list', icon: 'las la-list', label: 'CollectionActivity.LIST', color: 'primary', disabled: true },
-          { id: 'grid', icon: 'view_module', tooltip: 'CollectionActivity.GRID', route: { name: 'collection-activity', params: { page: 'grid' } } },
-          { id: 'table', icon: 'las la-table', tooltip: 'CollectionActivity.TABLE', route: { name: 'collection-activity', params: { page: 'table' } } },
-          vSeparator,
-          { id: 'filter', icon: 'las la-search', tooltip: 'CollectionActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } },
-          { component: 'collection/KSorter' },
-          collectionExport
-        ],
-        grid: [
-          { id: 'list', icon: 'las la-list', tooltip: 'CollectionActivity.LIST', route: { name: 'collection-activity', params: { page: 'list' } } },
-          { id: 'grid', icon: 'view_module', label: 'CollectionActivity.GRID', color: 'primary', disabled: true },
-          { id: 'table', icon: 'las la-table', tooltip: 'CollectionActivity.TABLE', route: { name: 'collection-activity', params: { page: 'table' } } },
-          vSeparator,
-          { id: 'filter', icon: 'las la-search', tooltip: 'CollectionActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } },
-          { component: 'collection/KSorter' },
-          collectionExport
-        ],
-        table: [
-          { id: 'list', icon: 'las la-list', tooltip: 'CollectionActivity.LIST', route: { name: 'collection-activity', params: { page: 'list' } } },
-          { id: 'grid', icon: 'view_module', tooltip: 'CollectionActivity.GRID', route: { name: 'collection-activity', params: { page: 'grid' } } },
-          { id: 'table', icon: 'las la-table', label: 'CollectionActivity.TABLE', color: 'primary', disabled: true },
-          vSeparator,
-          { id: 'filter', icon: 'las la-search', tooltip: 'CollectionActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } },
-          { component: 'collection/KSorter' },
-          collectionExport
-        ],
-        filter: [
-          { id: 'back', icon: 'las la-arrow-left', handler: { name: 'restoreTopPaneMode' } },
-          { component: 'QSeparator', vertical: true, color: 'lightgrey' },
-          { component: 'collection/KFilter', size: '1rem' }
-        ]
-      },
-      mode: 'list'
+    panes: {
+      left: LeftPane,
+      top: {
+        content: {
+          list: [
+            { id: 'list', icon: 'las la-list', label: 'CollectionActivity.LIST', color: 'primary', disabled: true },
+            { id: 'grid', icon: 'view_module', tooltip: 'CollectionActivity.GRID', route: { name: 'collection-activity', params: { page: 'grid' } } },
+            { id: 'table', icon: 'las la-table', tooltip: 'CollectionActivity.TABLE', route: { name: 'collection-activity', params: { page: 'table' } } },
+            vSeparator,
+            { id: 'filter', icon: 'las la-search', tooltip: 'CollectionActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } },
+            { component: 'collection/KSorter' },
+            collectionExport
+          ],
+          grid: [
+            { id: 'list', icon: 'las la-list', tooltip: 'CollectionActivity.LIST', route: { name: 'collection-activity', params: { page: 'list' } } },
+            { id: 'grid', icon: 'view_module', label: 'CollectionActivity.GRID', color: 'primary', disabled: true },
+            { id: 'table', icon: 'las la-table', tooltip: 'CollectionActivity.TABLE', route: { name: 'collection-activity', params: { page: 'table' } } },
+            vSeparator,
+            { id: 'filter', icon: 'las la-search', tooltip: 'CollectionActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } },
+            { component: 'collection/KSorter' },
+            collectionExport
+          ],
+          table: [
+            { id: 'list', icon: 'las la-list', tooltip: 'CollectionActivity.LIST', route: { name: 'collection-activity', params: { page: 'list' } } },
+            { id: 'grid', icon: 'view_module', tooltip: 'CollectionActivity.GRID', route: { name: 'collection-activity', params: { page: 'grid' } } },
+            { id: 'table', icon: 'las la-table', label: 'CollectionActivity.TABLE', color: 'primary', disabled: true },
+            vSeparator,
+            { id: 'filter', icon: 'las la-search', tooltip: 'CollectionActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } },
+            { component: 'collection/KSorter' },
+            collectionExport
+          ],
+          filter: [
+            { id: 'back', icon: 'las la-arrow-left', handler: { name: 'restoreTopPaneMode' } },
+            { component: 'QSeparator', vertical: true, color: 'lightgrey' },
+            { component: 'collection/KFilter', size: '1rem' }
+          ]
+        },
+        mode: 'list'
+      }
     },
     page: {
       content: {
         list: [{
           component: 'collection/KGrid',
-          ref: 'list',
           service: 'documents',
           renderer: {
             component: 'collection/KItem',
             actions: collectionActions,
             class: 'col-12'
-          }
-          //, /*filterQuery: ':filter.query'
+          },
+          appendItems: true,
+          class: 'fit'
         }],
         grid: [{
           component: 'collection/KGrid',
-          ref: 'grid',
           service: 'documents',
           renderer: {
             component: 'collection/KCard',
             actions: collectionActions
-          }
-          // , /*filterQuery: ':filter.query' 
+          },
+          class: 'fit'
         }],
         table: [{
           component: 'collection/KTable',
-          ref: 'table',
           service: 'documents',
           itemActions: collectionActions,
-          // filterQuery: ':filter.query', 
-          nbItemsPerPage: 3,
-          selection: 'multiple'
+          nbItemsPerPage: 12,
+          selection: 'multiple',
+          class: 'fit'
         }]
       },
       mode: 'list'

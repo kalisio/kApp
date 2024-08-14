@@ -59,7 +59,7 @@ module.exports = [{
         },
         'collection/:page': {
           name: 'collection-activity',
-          component: 'CollectionActivity',
+          component: 'collection/CollectionActivity',
           props: true,
           children: {
             create: {
