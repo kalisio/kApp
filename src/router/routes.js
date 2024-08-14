@@ -85,11 +85,11 @@ module.exports = [{
         },
         chart: {
           name: 'chart-activity',
-          component: 'ChartActivity'
+          component: 'chart/ChartActivity'
         },
         editor: {
           name: 'editor-activity',
-          component: 'EditorActivity',
+          component: 'editor/EditorActivity',
           children: {
             edit: {
               name: 'edit-object',

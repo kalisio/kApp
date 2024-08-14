@@ -2,11 +2,34 @@
   <KActivity name="messages">
     <KTimeLine
       service="messages"
-      style="height: calc(100vh - 100px);"
+      class="fit"
+      :processor="process"
+      :schema="schema"
     />
   </KActivity>
 </template>
 
 <script setup>
+import _ from 'lodash'
 
+// Data
+const schema = {
+  timestampField: 'createdAt',
+  titleField: 'title',
+  colorField: 'color',
+  decorationField: 'decoration'
+}
+
+// Function
+function process (messages) {
+  _.forEach(messages, message => {
+    // process tags
+    let decoration = []
+    _.forEach(message.tags, tag => {
+      decoration.push({ component: 'QChip', label: tag, size: 'sm' })
+    })
+    message.decoration = decoration
+  })
+  return messages
+}
 </script>

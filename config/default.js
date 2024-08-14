@@ -502,35 +502,35 @@ module.exports = {
     categoryField: 'etat_sani'
   },
   chartActivity: {
-    leftPane: LeftPane,
-    topPane: {
-      content: {
-        pie: [
-          { id: 'pie', icon: 'las la-chart-pie', label: 'ChartActivity.PIE', color: 'primary', disabled: true },
-          { id: 'bar', icon: 'las la-chart-bar', label: 'ChartActivity.BAR', handler: { name: 'setTopPaneMode', params: ['bar'] } },
-          { id: 'line', icon: 'las la-chart-line', label: 'ChartActivity.LINE', handler: { name: 'setTopPaneMode', params: ['line'] } }
-        ],
-        bar: [
-          { id: 'pie', icon: 'las la-chart-pie', label: 'ChartActivity.PIE', handler: { name: 'setTopPaneMode', params: ['pie'] } },
-          { id: 'bar', icon: 'las la-chart-bar', label: 'ChartActivity.BAR', color: 'primary', disabled: true },
-          { id: 'line', icon: 'las la-chart-line', label: 'ChartActivity.LINE', handler: { name: 'setTopPaneMode', params: ['line'] } }
-        ],
-        line: [
-          { id: 'pie', icon: 'las la-chart-pie', label: 'ChartActivity.PIE', handler: { name: 'setTopPaneMode', params: ['pie'] } },
-          { id: 'bar', icon: 'las la-chart-bar', label: 'ChartActivity.BAR', handler: { name: 'setTopPaneMode', params: ['bar'] } },
-          { id: 'line', icon: 'las la-chart-line', label: 'ChartActivity.LINE', color: 'primary', disabled: true }
-        ]
-      },
-      mode: 'pie'
+    panes: {
+      left: LeftPane,
+      top: {
+        content: {
+          pie: [
+            { id: 'pie', icon: 'las la-chart-pie', label: 'ChartActivity.PIE', color: 'primary', disabled: true },
+            { id: 'bar', icon: 'las la-chart-bar', label: 'ChartActivity.BAR',  handler: { name: 'setTopPaneMode', params: ['bar'] } },
+            { id: 'line', icon: 'las la-chart-line', label: 'ChartActivity.LINE', handler: { name: 'setTopPaneMode', params: ['line'] } }
+          ],
+          bar: [
+            { id: 'pie', icon: 'las la-chart-pie', label: 'ChartActivity.PIE', handler: { name: 'setTopPaneMode', params: ['pie'] } },
+            { id: 'bar', icon: 'las la-chart-bar', label: 'ChartActivity.BAR', color: 'primary', disabled: true },
+            { id: 'line', icon: 'las la-chart-line', label: 'ChartActivity.LINE', handler: { name: 'setTopPaneMode', params: ['line'] } }
+          ],
+          line: [
+            { id: 'pie', icon: 'las la-chart-pie', label: 'ChartActivity.PIE', handler: { name: 'setTopPaneMode', params: ['pie'] } },
+            { id: 'bar', icon: 'las la-chart-bar', label: 'ChartActivity.BAR', handler: { name: 'setTopPaneMode', params: ['bar'] } },
+            { id: 'line', icon: 'las la-chart-line', label: 'ChartActivity.LINE', color: 'primary', disabled: true }
+          ]
+        },
+        mode: 'pie'
+      }
     }
   },
   editorActivity: {
-    leftPane: LeftPane,
-    topPane: {
-      content: {
-        default: [
-          { id: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL', color: 'primary', disabled: true }
-        ]
+    panes: {
+      left: LeftPane,
+      top: {
+        content: [{ id: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL', color: 'primary', disabled: true }]
       }
     },
     fab: {
