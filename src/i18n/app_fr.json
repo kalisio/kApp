@@ -31,7 +31,14 @@
     "LABEL": "Documents"
   },
   "MessagesActivity": {
-    "LABEL": "Messages"
+    "LABEL": "Messages",
+    "INFORMATION": "Information",
+    "WARNING": "Attention",
+    "ALERT": "Alerte"
+  },
+  "Composer": {
+    "WRITE_YOUR_MESSAGE": "Saisissez votre message...",
+    "SEND_MESSAGE": "Envoyer le message"
   },
   "CollectionActivity": {
     "LABEL": "Collections",

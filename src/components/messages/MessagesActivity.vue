@@ -11,13 +11,18 @@
 
 <script setup>
 import _ from 'lodash'
+import config from 'config'
 
 // Data
+const MessageKinds = config.messagesActivity.messages
+console.log(MessageKinds)
 const schema = {
   timestampField: 'createdAt',
+  authorField: 'author',
   titleField: 'title',
   colorField: 'color',
-  decorationField: 'decoration'
+  decorationField: 'decoration',
+  bodyField: 'body'
 }
 
 // Function
@@ -29,6 +34,7 @@ function process (messages) {
       decoration.push({ component: 'QChip', label: tag, size: 'sm' })
     })
     message.decoration = decoration
+    if (message.kind) message.color = MessageKinds[message.kind].color
   })
   return messages
 }

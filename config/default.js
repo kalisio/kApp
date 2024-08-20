@@ -379,7 +379,19 @@ module.exports = {
         content: [
           { id: 'layout', icon: 'las la-icons', label: 'Messages.LABEL', color: 'primary', disabled: true }
         ]
+      },
+      bottom: {
+        content: [
+          { component: 'messages/Composer', class: 'fit' }
+        ],
+        sizes: { xs: 100, sm: 600, md: 600, lg: 600, xl: 600 },
+        visible: true
       }
+    },
+    messages: {
+      information: { label: 'MessagesActivity.INFORMATION', color: 'grey-7', textColor: 'black', icon: 'las la-info' },
+      warning: { label: 'MessagesActivity.WARNING', color: 'warning', textColor: 'black', icon: 'las la-exclamation' },
+      alert: { label: 'MessagesActivity.ALERT', color: 'negative', textColor: 'white', icon: 'las la-skull-crossbones' }
     }
   },
   collectionActivity: {
