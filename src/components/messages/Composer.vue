@@ -32,7 +32,7 @@
         <KAction
           id="add-file"
           icon="las la-plus-circle"
-          tooltip="Composer.ADD_FILE"
+          tooltip="Composer.ATTACH_FILE"
           :handler="attachFile"
           size="0.9rem"
         />

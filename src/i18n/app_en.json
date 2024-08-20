@@ -37,6 +37,9 @@
     "ALERT": "Alert"
   },
   "Composer": {
+    "FORMAT_MESSAGE": "Format message",
+    "CLOSE_EDITOR": "Close editor",
+    "ATTACH_FILE": "Attach file",
     "WRITE_YOUR_MESSAGE": "Write your message...",
     "SEND_MESSAGE": "Send message"
   },
