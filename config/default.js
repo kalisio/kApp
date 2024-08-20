@@ -5,24 +5,17 @@ const serverPort = process.env.PORT || 8081
 const clientPort = process.env.CLIENT_PORT || 8080
 const API_PREFIX = '/api'
 
-let domain
 let pwaName = 'kApp'
 // If we build a specific staging instance
 if (process.env.NODE_APP_INSTANCE === 'dev') {
-  domain = 'https://kapp.dev.kalisio.xyz'
   pwaName += ' (dev)'
 } else if (process.env.NODE_APP_INSTANCE === 'test') {
-  domain = 'https://kapp.test.kalisio.xyz'
   pwaName += ' (test)'
 } else if (process.env.NODE_APP_INSTANCE === 'prod') {
-  domain = 'https://kapp.kalisio.xyz'
+  // Nothing to do
 } else {
   // Otherwise we are on a developer machine
-  if (process.env.NODE_ENV === 'development') {
-    domain = 'http://localhost:' + clientPort
-  } else {
-    domain = 'http://localhost:' + serverPort
-  }
+  pwaName += ' (localhost)'
 }
 
 const LeftPane = {
@@ -130,13 +123,6 @@ const widgets = [
 ]
 
 module.exports = {
-  // Special alias to host loopback interface in cordova
-  // domain: 'http://10.0.2.2:8081',
-  // If using port forwarding
-  // domain: 'http://localhost:8081',
-  // If using local IP on WiFi router
-  // domain: 'http://192.168.1.16:8081',
-  domain,
   pwaName,
   flavor: process.env.NODE_APP_INSTANCE || 'dev',
   version: require('../package.json').version,
