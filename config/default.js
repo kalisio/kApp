@@ -385,7 +385,8 @@ module.exports = {
           { component: 'messages/Composer', class: 'fit' }
         ],
         sizes: { xs: 100, sm: 600, md: 600, lg: 600, xl: 600 },
-        visible: true
+        visible: true,
+        opener: false
       }
     },
     messages: {

@@ -43,7 +43,6 @@ const schema = ref(baseSchema)
 
 // Functions
 async function sendNotification () {
-  console.log(values.value)
   api.getService('push').create({
     notification: values.value, 
     subscriptionService: `${config.apiPath}/users`,

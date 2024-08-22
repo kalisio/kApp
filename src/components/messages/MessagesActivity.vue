@@ -15,7 +15,6 @@ import config from 'config'
 
 // Data
 const MessageKinds = config.messagesActivity.messages
-console.log(MessageKinds)
 const schema = {
   timestampField: 'createdAt',
   authorField: 'author',
