@@ -1,5 +1,4 @@
 // Application hooks that run for every service
-import fuzzySearch from 'feathers-mongodb-fuzzy-search'
 import commonHooks from 'feathers-hooks-common'
 import { permissions as corePermissions, hooks as coreHooks } from '@kalisio/kdk/core.api.js'
 import * as permissions from '../../common/permissions.mjs'
@@ -29,7 +28,7 @@ export default {
       }, authenticate('jwt')),
       coreHooks.processObjectIDs,
       coreHooks.authorise],
-    find: [fuzzySearch({ fields: ['name'] }), coreHooks.marshallCollationQuery],
+    find: [coreHooks.marshallCollationQuery],
     get: [],
     create: [],
     // We only use pacth in editors to avoid dumping "hidden" (ie internal) properties

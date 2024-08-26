@@ -1,7 +1,7 @@
 <template>
   <div class="column">
     <div class="row justify-between items-center no-wrap">
-      <div class="q-pl-sm">
+      <div :class="{ 'q-pa-xs': $q.screen.xs, 'q-pa-sm': $q.screen.gt.xs }">
         <q-fab 
           :icon="getKindIcon(currentKind)"
           :color="getKindColor(currentKind)"
@@ -22,18 +22,12 @@
       </div>
       <div class="row items-center justify-end">
         <KAction
+          v-if="$q.screen.gt.xs"
           id="add-file"
-          icon="las la-font"
-          tooltip="Composer.FORMAT_MESSAGE"
-          :toggle="{ color: 'primary', tooltip: 'Composer.CLOSE_EDITOR' }"
+          icon="las la-angle-up"
+          tooltip="Composer.OPEN_EDITOR"
+          :toggle="{ icon: 'las la-angle-down', color: 'primary', tooltip: 'Composer.CLOSE_EDITOR' }"
           :handler="() => { editor = !editor }"
-          size="0.9rem"
-        />
-        <KAction
-          id="add-file"
-          icon="las la-plus-circle"
-          tooltip="Composer.ATTACH_FILE"
-          :handler="attachFile"
           size="0.9rem"
         />
       </div>
@@ -109,9 +103,6 @@ function getKindColor (kind) {
 }
 function getKindLabel (kind) {
   return i18n.t(MessageKinds[kind].label)
-}
-async function attachFile () {
-  $q.notify({ type: 'negative', message: 'Not implemented' })
 }
 async function sendMessage () {
   if (_.isEmpty(body.value)) return

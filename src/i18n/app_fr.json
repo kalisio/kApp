@@ -32,6 +32,7 @@
   },
   "MessagesActivity": {
     "LABEL": "Messages",
+    "SEARCH": "Rechercher des messages...",
     "INFORMATION": "Information",
     "WARNING": "Attention",
     "ALERT": "Alerte"

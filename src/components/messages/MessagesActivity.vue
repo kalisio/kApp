@@ -2,7 +2,8 @@
   <KActivity name="messages">
     <KTimeLine
       service="messages"
-      class="fit"
+      :base-query="baseQuery"
+      :filter-query="filter.query"
       :processor="process"
       :schema="schema"
     />
@@ -12,8 +13,11 @@
 <script setup>
 import _ from 'lodash'
 import config from 'config'
+import { Store } from '@kalisio/kdk/core.client'
 
 // Data
+const baseQuery =  { $sort: { createdAt: -1 } }
+const filter = Store.get('filter')
 const MessageKinds = config.messagesActivity.messages
 const schema = {
   timestampField: 'createdAt',

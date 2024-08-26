@@ -377,7 +377,7 @@ module.exports = {
       left: LeftPane,
       top: {
         content: [
-          { id: 'layout', icon: 'las la-icons', label: 'Messages.LABEL', color: 'primary', disabled: true }
+          { component: 'collection/KFilter', label: 'MessagesActivity.SEARCH', fields: ['body', 'author'], style: 'width: 50vw; min-width: 180px; max-width: 500px;' },
         ]
       },
       bottom: {
