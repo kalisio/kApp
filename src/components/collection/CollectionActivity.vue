@@ -4,7 +4,7 @@
     :mode="page"
   />
     <div>
-      <router-view />
+      <router-view service="documents" />
     </div>
 </template>
 
