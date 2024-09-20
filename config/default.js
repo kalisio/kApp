@@ -301,16 +301,14 @@ module.exports = {
     fab: {
       content: {
         'header-footer': [
-          { id: 'page', label: 'Page', icon: 'las la-stream', handler: { name: 'setMode', params: ['page'] } },
-          { id: 'panes', label: 'Panes', icon: 'las la-window-minimize', handler: { name: 'setMode', params: ['panes'] } },
-          { id: 'windows', label: 'Windows', icon: 'las la-window-restore', handler: { name: 'setMode', params: ['windows'] } },
-          { id: 'fab', label: 'Fab', icon: 'las la-window-restore', handler: { name: 'setMode', params: ['fab'] } }
+          { id: 'panes', label: 'Panes', icon: 'las la-window-minimize', route: { name: 'layout-activity', params: { mode: 'panes' }} },
+          { id: 'windows', label: 'Windows', icon: 'las la-window-restore', route: { name: 'layout-activity', params: { mode: 'windows' }} },
+          { id: 'fab', label: 'Fab', icon: 'las la-window-restore', route: { name: 'layout-activity', params: { mode: 'fab' }} }
         ],
         fab: [
-          { id: 'page', label: 'Page', icon: 'las la-stream', handler: { name: 'setMode', params: ['page'] } },
-          { id: 'panes', label: 'Panes', icon: 'las la-window-minimize', handler: { name: 'setMode', params: ['panes'] } },
-          { id: 'windows', label: 'Windows', icon: 'las la-window-restore', handler: { name: 'setMode', params: ['windows'] } },
-          { id: 'fab', label: 'Fab', icon: 'las la-window-restore', handler: { name: 'setMode', params: ['fab'] } }
+          { id: 'header-footer', label: 'Header/Footer', icon: 'las la-stream', route: { name: 'layout-activity', params: { mode: 'header-footer' }} },
+          { id: 'panes', label: 'Panes', icon: 'las la-window-minimize', route: { name: 'layout-activity', params: { mode: 'panes' }} },
+          { id: 'windows', label: 'Windows', icon: 'las la-window-restore', route: { name: 'layout-activity', params: { mode: 'windows' }} }
         ]
       }
     },
