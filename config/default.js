@@ -452,6 +452,11 @@ module.exports = {
           service: 'documents',
           renderer: {
             component: 'collection/KCard',
+            sections: {
+              description: {
+                component: 'collection/KDescriptionCardSection'
+              }
+            },
             actions: collectionActions
           },
           class: 'fit'
