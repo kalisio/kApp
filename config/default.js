@@ -124,6 +124,7 @@ const widgets = [
 
 module.exports = {
   pwaName,
+  buildMode: process.env.BUILD_MODE === 'pwa' ? 'pwa' : 'spa',
   flavor: process.env.NODE_APP_INSTANCE || 'dev',
   version: require('../package.json').version,
   buildNumber: process.env.BUILD_NUMBER,
