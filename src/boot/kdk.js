@@ -66,7 +66,8 @@ export default async ({ app }) => {
 
   // Subscribe to webpush notifications
   api.on('authenticated', (data) => {
-    utils.subscribeToPushNotifications()
+    // User will be updated in store just after login so that we need to wait for the event
+    Events.once('user-changed', utils.subscribeToPushNotifications)
   })
 
   // For debug purpose
