@@ -67,7 +67,7 @@
     "@casl/mongoose": "^7.1.0",
     "@feathersjs/client": "^5.0.8",
     "@kalisio/feathers-localforage": "^1.2.0",
-    "@kalisio/feathers-s3": "^1.1.0",
+    "@kalisio/feathers-s3": "^1.5.0",
     "@kalisio/feathers-webpush": "^1.0.1",
     "@pdfme/ui": "^4.1.0",
     "@quasar/extras": "^1.16.3",
