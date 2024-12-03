@@ -1,6 +1,6 @@
 <template>
   <div class="row q-gutter-x-md">
-    <template v-for="key in ['size', 'radius']" :key="key">
+    <template v-for="key in ['size', 'radius', 'personnalisées']" :key="key">
       <q-markup-table>
         <thead class="bg-accent text-white">
           <tr>
@@ -24,8 +24,42 @@
 
 <script setup>
 import { ref } from 'vue'
+import { Shapes } from '@kalisio/kdk/core/client/utils/utils.shapes.js'
 
 const radius = 12
+
+Shapes['GP-irsn-cp'] = {
+  viewBox: [0, 0, 14, 24],
+  content: '<path class="cls-1" d="M13.71,6.86c0-3.79-3.07-6.86-6.86-6.86S0,3.07,0,6.86c0,1.87.75,3.56,1.96,4.8h-.04c2.47,2.47,4.94,12.34,4.94,12.34,0,0,2.47-9.87,4.94-12.34h-.04c1.21-1.24,1.96-2.93,1.96-4.8Z"/>'
+}
+Shapes['GP-irsn-sp'] = {
+  viewBox: [0, 0, 14, 24],
+  content: '<path class="cls-1" d="M13.71,6.86c0-3.79-3.07-6.86-6.86-6.86S0,3.07,0,6.86c0,1.88.76,3.58,1.98,4.82l-.06-.02c2.47,2.47,4.94,12.34,4.94,12.34,0,0,2.47-9.87,4.94-12.34l-.06.02c1.22-1.24,1.98-2.94,1.98-4.82ZM6.86,1.71c2.84,0,5.14,2.3,5.14,5.14s-2.3,5.14-5.14,5.14S1.71,9.7,1.71,6.86,4.02,1.71,6.86,1.71Z"/>'
+}
+Shapes['GP-irsn-favorite'] = {
+  viewBox: [0, 0, 14, 24],
+  content: '<path class="cls-1" d="M13.71,6.86c0-3.79-3.07-6.86-6.86-6.86S0,3.07,0,6.86c0,1.87.75,3.56,1.96,4.8h-.04c2.47,2.47,4.94,12.34,4.94,12.34,0,0,2.47-9.87,4.94-12.34h-.04c1.21-1.24,1.96-2.93,1.96-4.8ZM5.58,5.14l1.28-3.93,1.28,3.93h4.13l-3.34,2.43,1.28,3.93-3.34-2.43-3.34,2.43,1.28-3.93-3.34-2.43h4.13Z"/>'
+}
+Shapes['UI-irsn-cp'] = {
+  viewBox: [0, 0, 24, 24],
+  content: '<circle class="cls-1" cx="12" cy="12" r="12"/>'
+}
+Shapes['UI-irsn-sp'] = {
+  viewBox: [0, 0, 24, 24],
+  content: '<path class="cls-1" d="M24,12c0,6.63-5.37,12-12,12S0,18.63,0,12,5.37,0,12,0s12,5.37,12,12ZM12,3C7.03,3,3,7.03,3,12s4.03,9,9,9,9-4.03,9-9S16.97,3,12,3Z"/>'
+}
+Shapes['UI-irsn-favorite'] = {
+  viewBox: [0, 0, 24, 24],
+  content: '<path class="cls-1" d="M9.77,9H2.54s5.85,4.25,5.85,4.25l-2.23,6.87,5.85-4.25,5.85,4.25-2.23-6.87,5.85-4.25h-7.23s-2.23-6.87-2.23-6.87l-2.23,6.87ZM24,12c0,6.63-5.37,12-12,12S0,18.63,0,12,5.37,0,12,0s12,5.37,12,12Z"/>'
+}
+Shapes['UI-exploitant-favorite'] = {
+  viewBox: [0, 0, 24, 24],
+  content: '<path class="cls-1" d="M3.13,0h17.74c1.73,0,3.13,1.4,3.13,3.13v17.74c0,1.73-1.4,3.13-3.13,3.13H3.13c-1.73,0-3.13-1.4-3.13-3.13V3.13C0,1.4,1.4,0,3.13,0ZM9.77,8.88H2.54s5.85,4.25,5.85,4.25l-2.23,6.87,5.85-4.25,5.85,4.25-2.23-6.87,5.85-4.25h-7.23s-2.23-6.87-2.23-6.87l-2.23,6.87Z"/>'
+}
+Shapes['UI-exploitant'] = {
+  viewBox: [0, 0, 24, 24],
+  content: '<rect class="cls-1" width="24" height="24" rx="3.13" ry="3.13"/>'
+}
 
 const shapes = ref({
   size: [
@@ -56,6 +90,16 @@ const shapes = ref({
     { name: 'Icon Url', options: {  icon: { url: '/icons/plane.png', size: 24, rotation: 90, opacity: 0.5 }, radius } },
     { name: 'Text only', options: {  text: { label: 'Home', rotation: 45, color: 'red' }, radius } },
     { name: 'Html only', options: {  html: "<img src='/icons/plane.png' width='32px' height='32px' />" } }
+  ],
+  personnalisées: [
+    { name: 'GP-irsn-cp', options: { shape: 'GP-irsn-cp', size: [24, 41.14], color: 'lightblue' } },
+    { name: 'GP-irsn-sp', options: { shape: 'GP-irsn-sp', size: [24, 41.14], color: 'lightblue' } },
+    { name: 'GP-irsn-favorite', options: { shape: 'GP-irsn-favorite', size: [24, 41.14], color: 'lightblue' } },
+    { name: 'UI-exploitant-favorite', options: { shape: 'UI-exploitant-favorite', color: 'limegreen' } },
+    { name: 'UI-exploitant', options: { shape: 'UI-exploitant', color: 'limegreen' } },
+    { name: 'UI-irsn-cp', options: { shape: 'UI-irsn-cp', color: 'pink' } },
+    { name: 'UI-irsn-sp', options: { shape: 'UI-irsn-sp', color: 'pink' } },
+    { name: 'UI-irsn-favorite', options: { shape: 'UI-irsn-favorite', color: 'pink' } }
   ]
 })
 </script>
