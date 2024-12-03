@@ -1,6 +1,6 @@
 <template>
   <div class="row q-gutter-x-md">
-    <template v-for="key in ['size', 'radius', 'personnalisées']" :key="key">
+    <template v-for="key in ['size', 'radius', 'custom']" :key="key">
       <q-markup-table>
         <thead class="bg-accent text-white">
           <tr>
@@ -80,7 +80,7 @@ const shapes = ref({
     { name: 'Rect', options: { shape: 'rect', color: 'lightgrey', radius, stroke: { color: 'black' } } },
     { name: 'Triangle', options: { shape: 'triangle', color: 'lightgrey',radius, stroke: { color: 'black' } } },
     { name: 'Triangle down', options: { shape: 'triangle-down', color: 'lightgrey',radius, stroke: { color: 'black' } } },
-    { name: 'Triangle-left', options: { shape: 'triangle-left', color: 'lightgrey',radius, stroke: { color: 'black' } } },
+    { name: 'Triangle left', options: { shape: 'triangle-left', color: 'lightgrey',radius, stroke: { color: 'black' } } },
     { name: 'Triangle right', options: { shape: 'triangle-right', color: 'lightgrey',radius, stroke: { color: 'black' } } },
     { name: 'Diamond', options: { shape: 'diamond', color: 'lightgrey', radius, stroke: { color: 'black' } } },
     { name: 'Star', options: { shape: 'star', color: 'lightgrey', radius, stroke: { color: 'black' } } },
@@ -92,14 +92,14 @@ const shapes = ref({
     { name: 'Html only', options: {  html: "<img src='/icons/plane.png' width='32px' height='32px' />" } }
   ],
   personnalisées: [
-    { name: 'GP-irsn-cp', options: { shape: 'GP-irsn-cp', size: [24, 41.14], color: 'lightblue' } },
-    { name: 'GP-irsn-sp', options: { shape: 'GP-irsn-sp', size: [24, 41.14], color: 'lightblue' } },
-    { name: 'GP-irsn-favorite', options: { shape: 'GP-irsn-favorite', size: [24, 41.14], color: 'lightblue' } },
-    { name: 'UI-exploitant-favorite', options: { shape: 'UI-exploitant-favorite', color: 'limegreen' } },
-    { name: 'UI-exploitant', options: { shape: 'UI-exploitant', color: 'limegreen' } },
-    { name: 'UI-irsn-cp', options: { shape: 'UI-irsn-cp', color: 'pink' } },
-    { name: 'UI-irsn-sp', options: { shape: 'UI-irsn-sp', color: 'pink' } },
-    { name: 'UI-irsn-favorite', options: { shape: 'UI-irsn-favorite', color: 'pink' } }
+    { name: 'Full pin', options: { shape: 'GP-irsn-cp', size: [24, 41.14], color: 'lightblue' } },
+    { name: 'Empty pin', options: { shape: 'GP-irsn-sp', size: [24, 41.14], color: 'lightblue' } },
+    { name: 'Pin with empty star', options: { shape: 'GP-irsn-favorite', size: [24, 41.14], color: 'lightblue' } },
+    { name: 'Full square with empty star', options: { shape: 'UI-exploitant-favorite', color: 'limegreen' } },
+    { name: 'Full square', options: { shape: 'UI-exploitant', color: 'limegreen' } },
+    { name: 'Full circle', options: { shape: 'UI-irsn-cp', color: 'pink' } },
+    { name: 'Empty circle', options: { shape: 'UI-irsn-sp', color: 'pink' } },
+    { name: 'Full circle with empty star', options: { shape: 'UI-irsn-favorite', color: 'pink' } }
   ]
 })
 </script>
