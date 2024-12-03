@@ -91,7 +91,7 @@ const shapes = ref({
     { name: 'Text only', options: {  text: { label: 'Home', rotation: 45, color: 'red' }, radius } },
     { name: 'Html only', options: {  html: "<img src='/icons/plane.png' width='32px' height='32px' />" } }
   ],
-  personnalisées: [
+  custom: [
     { name: 'Full pin', options: { shape: 'GP-irsn-cp', size: [24, 41.14], color: 'lightblue' } },
     { name: 'Empty pin', options: { shape: 'GP-irsn-sp', size: [24, 41.14], color: 'lightblue' } },
     { name: 'Pin with empty star', options: { shape: 'GP-irsn-favorite', size: [24, 41.14], color: 'lightblue' } },
