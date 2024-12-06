@@ -2997,6 +2997,11 @@
     magic-string "^0.25.0"
     string.prototype.matchall "^4.0.6"
 
+"@thumbmarkjs/thumbmarkjs@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/@thumbmarkjs/thumbmarkjs/-/thumbmarkjs-0.16.1.tgz#88f0c969633eea2e3676dab2d9a1eec210781162"
+  integrity sha512-E4xDSM1Htbw6zvyGiosrcGNEo4OwnkyNZoJIZpQKSPz75NuyEiFL75bWIYlIswhpv6/rhVeY9bhxtxjYWJqy+w==
+
 "@trysound/sax@0.2.0":
   version "0.2.0"
   resolved "https://registry.npmjs.org/@trysound/sax/-/sax-0.2.0.tgz#cccaab758af56761eb7bf37af6f03f326dd798ad"
