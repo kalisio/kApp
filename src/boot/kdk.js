@@ -8,7 +8,7 @@ import services from '../services'
 import { utils, initializeApi, i18n, utils as kdkCoreUtils, Store, Layout, Events, beforeGuard, authenticationGuard } from '@kalisio/kdk/core.client'
 
 export default async ({ app }) => {
-  // Initializes i18n
+  // Initializes i18n first to avoid any browser translation
   await i18n.initialize(app, ['core', 'app', 'map'])
   // Initiate the client
   const api = initializeApi()
