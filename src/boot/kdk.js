@@ -8,6 +8,8 @@ import services from '../services'
 import { utils, initializeApi, i18n, utils as kdkCoreUtils, Store, Layout, Events, beforeGuard, authenticationGuard } from '@kalisio/kdk/core.client'
 
 export default async ({ app }) => {
+  // Initializes i18n
+  await i18n.initialize(app, ['core', 'app', 'map'])
   // Initiate the client
   const api = initializeApi()
 
@@ -16,9 +18,6 @@ export default async ({ app }) => {
 
   // Then all services
   await services.call(api)
-
-  // Initializes i18n
-  await i18n.initialize(app, ['core', 'app', 'map'])
 
   // Register global properties to the the vue app
   app.config.globalProperties.$store = Store
