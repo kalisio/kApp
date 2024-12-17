@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   base: '/kApp',
   title: 'kApp',
-  description: 'kApp - KDK application template',
+  description: 'kApp - KDK demonstration application',
   ignoreDeadLinks: true,
   head: [
     ['link', { rel: 'icon', href: 'https://s3.eu-central-1.amazonaws.com/kalisioscope/kapp/kapp-icon-color-2048x2048.png' }]
@@ -11,14 +11,10 @@ export default defineConfig({
   themeConfig: {
     logo: 'https://s3.eu-central-1.amazonaws.com/kalisioscope/kapp/kapp-icon-color-2048x2048.png',
     nav: [
-      { text: 'About', link: '/about/introduction' },
-      { text: 'Guides', link: '/guides/introduction' },
-      { text: 'Reference', link: '/reference/configuration' }
+      { text: 'About', link: '/about/introduction' }
     ],
     sidebar: {
-      '/about/': getAboutSidebar(),
-      '/guides/': getGuidesSidebar(),
-      '/reference/': getReferenceSidebar()
+      '/about/': getAboutSidebar()
     },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/kalisio/kApp' }
@@ -44,23 +40,4 @@ function getAboutSidebar () {
     { text: 'License', link: '/about/license' },
     { text: 'Contact', link: '/about/contact' }
   ] 
-}
-
-function getGuidesSidebar () {
-  return [
-    { text: 'Introduction', link: '/guides/introduction' },
-    { text: 'Customizing kApp', 
-      collapsed: true,
-      items: [
-        { text: 'Tour', link: '/guides/customizing/tour' },
-        { text: 'PWA', link: '/guides/customizing/pwa' }
-      ]
-    }
-  ]
-}
-
-function getReferenceSidebar () {
-  return [
-    { text: 'Configuring a kApp', link: '/reference/configuration' }
-  ]
 }
