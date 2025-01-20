@@ -11,8 +11,8 @@
           KDate
         </td>
         <td>
-          <KDate 
-            v-model="dateModel" 
+          <KDate
+            v-model="dateModel"
             :options="dateOptions"
           />
         </td>
@@ -25,8 +25,8 @@
           KTime
         </td>
         <td>
-          <KTime 
-            v-model="timeModel" 
+          <KTime
+            v-model="timeModel"
             :options="timeOptions"
           />
         </td>
@@ -39,10 +39,10 @@
           KDateTime
         </td>
         <td>
-          <KDateTime 
-            v-model="dateTimeModel" 
+          <KDateTime
+            v-model="dateTimeModel"
             :options="dateTimeOptions"
-            :min="minDateTime()" 
+            :min="minDateTime()"
             :max="maxDateTime()"
           />
         </td>
@@ -55,16 +55,36 @@
           KDateTimeRange
         </td>
         <td>
-          <KDateTimeRange 
-            v-model="dateTimeRangeModel" 
-            :options="dateTimeRangeOptions" 
-            :min="minDateTime()" 
+          <KDateTimeRange
+            v-model="dateTimeRangeModel"
+            :options="dateTimeRangeOptions"
+            :min="minDateTime()"
             :max="maxDateTime()"
             dense
           />
         </td>
         <td>
           {{ dateTimeRangeModel }}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          KDateTimeRange with slide range
+        </td>
+        <td>
+          <KDateTimeRange
+            v-model="dateTimeRangeSliderModel"
+            :options="dateTimeRangeSliderOptions"
+            :min="minDateTime()"
+            :max="maxDateTime()"
+            dense
+            date-only
+            :range="{min:0,max:100}"
+          />
+          <p>{{ dateTimeRangeSliderModel }}</p>
+        </td>
+        <td>
+
         </td>
       </tr>
     </tbody>
@@ -106,6 +126,13 @@ const dateTimeOptions = ref({
 })
 const dateTimeRangeModel = ref(null)
 const dateTimeRangeOptions = ref({
+  date: {
+    icon: 'las la-calendar',
+    format: 'DD/MM/YYYY'
+  }
+})
+const dateTimeRangeSliderModel = ref(null)
+const dateTimeRangeSliderOptions = ref({
   date: {
     icon: 'las la-calendar',
     format: 'DD/MM/YYYY'
