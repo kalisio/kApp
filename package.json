@@ -107,10 +107,10 @@
     "socket.io-client": "^4.4.1",
     "stream-browserify": "^3.0.0",
     "url": "^0.11.0",
-    "vue": "^3.0.0",
+    "vue": "3.4.38",
     "vue-i18n": "^9.2.0-beta.35",
     "vue-router": "^4.0.0",
-    "vue3-tour": "^0.3.3"
+    "vue3-tour": "^1.0.3"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.13.14",
@@ -132,8 +132,11 @@
     "webpack-bundle-analyzer": "^4.8.0",
     "workbox-webpack-plugin": "^6.0.0"
   },
+  "resolutions": {
+    "vue": "3.4.38"
+  },
   "engines": {
-    "node": ">= 18.0.0",
+    "node": ">= 20.0.0",
     "npm": ">= 6.13.4",
     "yarn": ">= 1.21.1"
   },

@@ -1,8 +1,5 @@
 <template>
-  <KActivity
-    name="webpush"
-    padding
-  >
+  <KActivity name="webpush">
     <div class="fit justify-center items-center column">
       <div>
         <div class="ellipsis text-bold">{{ $tie('webpush.FORM_TITLE') }}</div>

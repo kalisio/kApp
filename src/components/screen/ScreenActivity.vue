@@ -4,7 +4,7 @@
       <KStamp
         :text="text" 
         textSize="1rem"
-        :icon="ScreenOrientation === 'portrait' ? 'las la-portrait' : 'las la-image'" 
+        :icon="screenOrientation === 'portrait' ? 'las la-portrait' : 'las la-image'" 
         iconSize="8rem"
         direction="vertical"
       /> 
@@ -24,10 +24,10 @@ import { computed } from 'vue'
 import { i18n, composables as kdkCoreComposables } from '@kalisio/kdk/core.client'
 
 // Data
-const { Orientation: ScreenOrientation, Screen } = kdkCoreComposables.useScreen()
+const { orientation: screenOrientation, Screen } = kdkCoreComposables.useScreen()
 
 // Computed
 const text = computed(() => {
-  return i18n.t(ScreenOrientation.value === 'portrait' ? 'ScreenActivity.PORTRAIT_ORIENTATION' : 'ScreenActivity.LANDSCAPE_ORIENTATION', { w: Screen.width, h: Screen.height })
+  return i18n.t(screenOrientation.value === 'portrait' ? 'ScreenActivity.PORTRAIT_ORIENTATION' : 'ScreenActivity.LANDSCAPE_ORIENTATION', { w: Screen.width, h: Screen.height })
 })
 </script>
