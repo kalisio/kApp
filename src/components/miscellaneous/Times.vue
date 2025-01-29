@@ -79,7 +79,7 @@
             :max="maxDateTime()"
             dense
             date-only
-            :slider="{ show:true }"
+            :slider="{}"
           />
           <p>{{ dateTimeRangeSliderModel }}</p>
         </td>
