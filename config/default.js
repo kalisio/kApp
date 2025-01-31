@@ -35,7 +35,7 @@ const LeftPane = {
     { component: 'QSeparator' },
     { id: 'about', icon: 'las la-info', label: 'ABOUT', renderer: 'item', dialog: { component: 'app/KAbout', title: 'ABOUT', okAction: 'CLOSE' } },
     { component: 'QSeparator' },
-    { id: 'logout', icon: 'las la-sign-out-alt', label: 'LOGOUT', renderer: 'item', route: { name: 'logout' } }
+    { id: 'logout', icon: 'las la-sign-out-alt', label: 'LOGOUT', renderer: 'item', route: { name: 'logout', params: { provider: 'keycloak' } } }
   ],
   opener: true,
   visible: false
@@ -133,7 +133,7 @@ module.exports = {
   apiTimeout: 20000,
   transport: 'websocket', // Could be 'http' or 'websocket',
   appName: 'kApp',
-  // appLogo: 'kapp-logo.png',
+  appLogo: 'kapp-logo.png',
   appChangelog: 'https://kalisio.github.io/kApp/about/changelog.html',
   publisher: 'Kalisio',
   publisherContact: 'support@kalisio.com',

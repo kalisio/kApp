@@ -27,6 +27,10 @@ if (process.env.NODE_APP_INSTANCE === 'dev') {
 if (process.env.SUBDOMAIN) {
   domain = 'https://kapp.' + process.env.SUBDOMAIN
 }
+// Keycloak base url
+const keycloakBaseUrl = process.env.KEYCLOAK_URL ?
+  `${process.env.KEYCLOAK_URL}/realms/${process.env.KEYCLOAK_REALM}/protocol/openid-connect` :
+  'https://keycloak.portal.kalisio.com/realms/Kalisio/protocol/openid-connect'
 
 module.exports = {
   // Proxy your API if using any.
@@ -72,7 +76,7 @@ module.exports = {
       expiresIn: '1d'
     },
     oauth: {
-      redirect: domain + '/',
+      redirect: domain,
       defaults: {
         origin: domain
       },
@@ -81,9 +85,10 @@ module.exports = {
         secret: process.env.KEYCLOAK_CLIENT_SECRET,
         oauth: 2,
         scope: ['openid'],
-        authorize_url: 'https://keycloak.portal.kalisio.com/realms/Kalisio/protocol/openid-connect/auth',
-        access_url: 'https://keycloak.portal.kalisio.com/realms/Kalisio/protocol/openid-connect/token',
-        profile_url: 'https://keycloak.portal.kalisio.com/realms/Kalisio/protocol/openid-connect/userinfo',
+        authorize_url: `${keycloakBaseUrl}/auth`,
+        access_url: `${keycloakBaseUrl}/token`,
+        profile_url: `${keycloakBaseUrl}/userinfo`,
+        logout_url: `${keycloakBaseUrl}/logout`,
         nonce: true
       } : undefined),
       github: (process.env.GITHUB_CLIENT_ID ? {
