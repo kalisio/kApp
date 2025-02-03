@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 export default function (app) {
   if (typeof app.channel !== 'function') {
     // If no real-time functionality has been configured just return
@@ -24,8 +26,29 @@ export default function (app) {
     }
   })
 
+  app.on('logout', (authResult, { connection }) => {
+    // connection can be undefined if there is no
+    // real-time connection, e.g. when logging in via REST
+    if (connection) {
+      // Obtain the logged user from the connection
+      const user = connection.user
+      const usersService = app.getService('users')
+      usersService.logout(user)
+    }
+  })
+  const usersService = app.getService('users')
+  usersService.publish('logout', (data, hook) => {
+    const user = data
+    // Publish logout event to target user only
+    return app.channel('authenticated').filter(connection => {
+      const connectionUser = connection.user
+      return user && connectionUser && connectionUser._id.toString() === user._id.toString()
+    })
+  })
+
   app.publish((data, hook) => {
     // Publish service events to authenticated users only
     return app.channel('authenticated')
   })
+  
 }
