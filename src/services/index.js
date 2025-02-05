@@ -8,6 +8,7 @@ export default async function () {
   // Set up our plugin services
   try {
     await api.configure(kdkCore)
+    api.createService('documents')
     api.createService('custom', { service: CustomService })
   } catch (error) {
     logger.error(error.message)
