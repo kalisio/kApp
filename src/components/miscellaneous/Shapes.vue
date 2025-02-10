@@ -87,9 +87,9 @@ const shapes = ref({
     { name: 'Circle & icon', options: { shape: 'circle', color: 'lightgrey', radius, stroke: { color: 'black' }, icon: { classes: 'las la-home' } } },
     { name: 'Circle & text', options: { shape: 'circle', color: 'lightgrey', radius, stroke: { color: 'black' }, text: { label: '01'} } },
     { name: 'Icon Classes', options: {  icon: { classes: 'las la-home', size: 24, rotation: 90, color: 'green' }, radius } },
-    { name: 'Icon Url', options: {  icon: { url: '/icons/plane.png', size: 24, rotation: 90, opacity: 0.5 }, radius } },
+    { name: 'Icon Url', options: {  icon: { url: 'plane.png', size: 24, rotation: 90, opacity: 0.5 }, radius } },
     { name: 'Text only', options: {  text: { label: 'Home', rotation: 45, color: 'red' }, radius } },
-    { name: 'Html only', options: {  html: "<img src='/icons/plane.png' width='32px' height='32px' />" } }
+    { name: 'Html only', options: {  html: "<img src='plane.png' width='32px' height='32px' />" } }
   ],
   custom: [
     { name: 'Full pin', options: { shape: 'full-pin', size: [24, 41.14], color: 'lightblue' } },

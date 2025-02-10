@@ -77,8 +77,7 @@ config/client-config.json
 test/run
 
 # KDK extras
-public/icons/kdk
-public/kalisio.png
+public/kdk
 src/tours/core
 src/tours/map
 src/css/kdk
