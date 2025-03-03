@@ -4,7 +4,6 @@
       <Stamps />
       <Shapes />
       <ColorScales />
-      <Times />
     </div>
   </KActivity>
 </template>
@@ -13,5 +12,4 @@
 import Stamps from './Stamps.vue'
 import Shapes from './Shapes.vue'
 import ColorScales from './ColorScales.vue'
-import Times from './Times.vue'
 </script>
