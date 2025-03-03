@@ -45,9 +45,10 @@ module.exports = [{
           component: 'layout/LayoutActivity',
           props: true
         },
-        miscellaneous: {
-          name: 'miscellaneous-activity',
-          component: 'miscellaneous/MiscellaneousActivity'
+        'components/:mode': {
+          name: 'components-activity',
+          component: 'components/ComponentsActivity',
+          props: true
         },
         'document/:type': {
           name: 'document-activity',

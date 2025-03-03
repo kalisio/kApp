@@ -24,8 +24,8 @@
   "LayoutActivity": {
     "LABEL": "Layout"
   },
-  "MiscellaneousActivity": {
-    "LABEL": "Mismiscellaneous"
+  "ComponentsActivity": {
+    "LABEL": "Components"
   },
   "DocumentActivity": {
     "LABEL": "Documents"

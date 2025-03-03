@@ -23,7 +23,7 @@ const LeftPane = {
     { component: 'account/KProfile', class: 'full-width' },
     { id: 'screen', icon: 'las la-tv', label: 'ScreenActivity.LABEL', renderer: 'item', route: { name: 'screen-activity' } },
     { id: 'layout', icon: 'las la-desktop', label: 'LayoutActivity.LABEL', renderer: 'item', route: { name: 'layout-activity', params: { mode: 'header-footer' } } },
-    { id: 'miscellaneous', icon: 'las la-icons', label: 'MiscellaneousActivity.LABEL', renderer: 'item', route: { name: 'miscellaneous-activity' } },
+    { id: 'components', icon: 'las la-code', label: 'ComponentsActivity.LABEL', renderer: 'item', route: { name: 'components-activity', params: { mode: 'text' } } },
     { id: 'document', icon: 'las la-icons', label: 'DocumentActivity.LABEL', renderer: 'item', route: { name: 'document-activity', params: { type: 'html' } } },
     { id: 'messages', icon: 'las la-comments', label: 'MessagesActivity.LABEL', renderer: 'item', route: { name: 'messages-activity' } }, 
     { id: 'collection', icon: 'las la-list', label: 'CollectionActivity.LABEL', renderer: 'item', route: { name: 'collection-activity', params: { page: 'list' } } },
@@ -320,15 +320,37 @@ module.exports = {
       bottom: { content: [widgets[3]], current: 'widget-4' }
     }
   },
-  miscellaneousActivity: {
+  componentsActivity: {
     panes: {
       left: LeftPane,
       top: {
-        content: [
-          { id: 'layout', icon: 'las la-icons', label: 'MiscellaneousActivity.LABEL', color: 'primary', disabled: true }
-        ]
+        content: {
+          text: [
+            { id: 'text', label: 'Text', route: { name: 'components-activity', params: { mode: 'text' } } },
+            { id: 'graphic', label: 'Graphic', route: { name: 'components-activity', params: { mode: 'graphic' } } },
+            { id: 'time', label: 'Time', route: { name: 'components-activity', params: { mode: 'time' } } },
+          ],
+          graphic: [
+            { id: 'text', label: 'Text', route: { name: 'components-activity', params: { mode: 'text' } } },
+            { id: 'graphic', label: 'Graphic', route: { name: 'components-activity', params: { mode: 'graphic' } } },
+            { id: 'time', label: 'Time', route: { name: 'components-activity', params: { mode: 'time' } } },
+          ],
+          time: [
+            { id: 'text', label: 'Text', route: { name: 'components-activity', params: { mode: 'text' } } },
+            { id: 'graphic', label: 'Graphic', route: { name: 'components-activity', params: { mode: 'graphic' } } },
+            { id: 'time', label: 'Time', route: { name: 'components-activity', params: { mode: 'time' } } },
+          ],
+          
+        }
       }
-    }
+    },
+    page: {
+      content: {
+        text: [{ component: 'components/TextMode', mode: 'text' }],
+        graphic: [{ component: 'components/GraphicMode', mode: 'graphic' }],
+        time: [{ component: 'components/TimeMode', mode: 'time' }]
+      }
+    },
   },
   documentActivity: {
     panes: {

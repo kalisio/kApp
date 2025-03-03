@@ -3,7 +3,7 @@ import chai, { util, expect } from 'chai'
 import chailint from 'chai-lint'
 import { core } from '@kalisio/kdk/test.client.js'
 
-const suite = 'misc'
+const suite = 'components'
 
 describe(`suite:${suite}`, () => {
   let runner
@@ -35,9 +35,9 @@ describe(`suite:${suite}`, () => {
   it('misc', async () => {
     await page.click('#left-opener')
     await page.waitForTimeout(1000)
-    await page.click('#miscellaneous')
+    await page.click('#components')
     await page.waitForTimeout(1000)
-    const match = await runner.captureAndMatch('misc')
+    const match = await runner.captureAndMatch('components')
     expect(match).beTrue()
   })
 
