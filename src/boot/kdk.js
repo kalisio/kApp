@@ -1,11 +1,11 @@
 // import 'whatwg-fetch'
+import { authenticationGuard, beforeGuard, Events, i18n, initializeApi, utils as kdkCoreUtils, Layout, Store, utils } from '@kalisio/kdk/core.client'
+import config from 'config'
 import _ from 'lodash'
 import logger from 'loglevel'
-import config from 'config'
 import { Notify } from 'quasar'
 import appHooks from '../main.hooks'
 import services from '../services'
-import { utils, initializeApi, i18n, utils as kdkCoreUtils, Store, Layout, Events, beforeGuard, authenticationGuard } from '@kalisio/kdk/core.client'
 
 export default async ({ app }) => {
   // Initializes i18n first to avoid any browser translation
@@ -36,6 +36,8 @@ export default async ({ app }) => {
   app.component('KToggleFullscreenAction', await kdkCoreUtils.loadComponent('action/KToggleFullscreenAction'))
   app.component('KPanel', await kdkCoreUtils.loadComponent('KPanel'))
   app.component('KStamp', await kdkCoreUtils.loadComponent('KStamp'))
+  app.component('KChip', await kdkCoreUtils.loadComponent('KChip'))
+  app.component('KRibbon', await kdkCoreUtils.loadComponent('media/KRibbon'))
   app.component('KModal', await kdkCoreUtils.loadComponent('KModal'))
   app.component('KDialog', await kdkCoreUtils.loadComponent('KDialog'))
   app.component('KBoard', await kdkCoreUtils.loadComponent('collection/KBoard'))

@@ -20,10 +20,10 @@
     "LANDSCAPE_ORIENTATION": "Paysage [{w}px x {h}px]",
     "ENTER_FULLSCREEN": "Basculer en mode plein écran",
     "EXIT_FULLSCREEN": "Quitter le mode plein écran"
-  },  
+  },
   "LayoutActivity": {
     "LABEL": "Layout"
-  },  
+  },
   "ComponentsActivity": {
     "LABEL": "Composants"
   },
@@ -74,6 +74,9 @@
   },
   "Shapes": {
     "LABEL": "Formes"
+  },
+  "Chips": {
+    "LABEL": "Chips"
   },
   "ColorScales": {
     "LABEL": "Echelles de couleurs"

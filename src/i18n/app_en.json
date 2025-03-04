@@ -25,7 +25,8 @@
     "LABEL": "Layout"
   },
   "ComponentsActivity": {
-    "LABEL": "Components"
+    "LABEL": "Components",
+    "CHIPS": "Chips"
   },
   "DocumentActivity": {
     "LABEL": "Documents"
@@ -74,6 +75,9 @@
   },
   "Shapes": {
     "LABEL": "Shapes"
+  },
+  "Chips": {
+    "LABEL": "Chips"
   },
   "ColorScales": {
     "LABEL": "Color scales"

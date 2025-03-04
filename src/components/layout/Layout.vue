@@ -224,6 +224,31 @@
         />
       </div>
     </div>
+    <!--
+      Sticky mode
+    -->
+    <div v-if="mode === 'sticky'" class="column items-center layout q-pa-md">
+      <div class="row items-center">
+        <KAction
+          id ="toggle-top-left-ribbon" label="Top left ribbon" :icon="ribbons.topleft.visible ? 'las la-toggle-on' : 'las la-toggle-off'"
+          :handler="() => toggleSticky(ribbons.topleft)"
+        />
+       <KAction
+          id ="toggle-top-right-ribbon" label="Top right ribbon" :icon="ribbons.topright.visible ? 'las la-toggle-on' : 'las la-toggle-off'"
+          :handler="() => toggleSticky(ribbons.topright)"
+        />
+      </div>
+      <div class="row items-center">
+        <KAction
+          id ="toggle-bottom-left-ribbon" label="Bottom left ribbon" :icon="ribbons.bottomleft.visible ? 'las la-toggle-on' : 'las la-toggle-off'"
+          :handler="() => toggleSticky(ribbons.bottomleft)"
+        />
+        <KAction
+          id ="toggle-bottom-right-ribbon" label="Bottom right ribbon" :icon="ribbons.bottomright.visible ? 'las la-toggle-on' : 'las la-toggle-off'"
+          :handler="() => toggleSticky(ribbons.bottomright)"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -254,6 +279,12 @@ const windows = {
   bottom: Layout.getWindow('bottom')
 }
 const fab = Layout.getFab()
+const ribbons = {
+  topleft: Layout.findSticky('tl-ribbon'),
+  topright: Layout.findSticky('tr-ribbon'),
+  bottomleft: Layout.findSticky('bl-ribbon'),
+  bottomright: Layout.findSticky('br-ribbon'),
+}
 
 // Functions
 function toggleHeader () {
@@ -267,6 +298,13 @@ function togglePane (placement) {
 }
 function togglePaneOpener (placement) {
   Layout.setPaneOpener(placement, !panes[placement].opener)
+}
+function toggleSticky (sticky) {
+  if (sticky.visible) {
+    Layout.hideSticky(sticky.id)
+  } else if (sticky.visible !== undefined && !sticky.visible) {
+    Layout.showSticky(sticky.id)
+  }
 }
 function setPaneState (placement, state) {
   Layout.setPaneState(placement, state)

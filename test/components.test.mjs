@@ -22,7 +22,7 @@ describe(`suite:${suite}`, () => {
         'k-app-welcome': false,
         'k-app-install': false
       },
-      lang: 'fr-FR',
+      lang: 'fr-FR'
     })
     page = await runner.start()
     user = {
@@ -32,13 +32,24 @@ describe(`suite:${suite}`, () => {
     await core.login(page, user)
   })
 
-  it('misc', async () => {
+  it('components', async () => {
     await page.click('#left-opener')
     await page.waitForTimeout(1000)
+
     await page.click('#components')
     await page.waitForTimeout(1000)
-    const match = await runner.captureAndMatch('components')
-    expect(match).beTrue()
+    const textModeMatch = await runner.captureAndMatch('text')
+    expect(textModeMatch).beTrue()
+
+    await page.click('#graphic')
+    await page.waitForTimeout(1000)
+    const graphicModeMatch = await runner.captureAndMatch('graphic')
+    expect(graphicModeMatch).beTrue()
+
+    await page.click('#time')
+    await page.waitForTimeout(1000)
+    const timeModeMatch = await runner.captureAndMatch('time')
+    expect(timeModeMatch).beTrue()
   })
 
   after(async () => {

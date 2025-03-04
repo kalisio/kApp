@@ -25,7 +25,7 @@ const LeftPane = {
     { id: 'layout', icon: 'las la-desktop', label: 'LayoutActivity.LABEL', renderer: 'item', route: { name: 'layout-activity', params: { mode: 'header-footer' } } },
     { id: 'components', icon: 'las la-code', label: 'ComponentsActivity.LABEL', renderer: 'item', route: { name: 'components-activity', params: { mode: 'text' } } },
     { id: 'document', icon: 'las la-icons', label: 'DocumentActivity.LABEL', renderer: 'item', route: { name: 'document-activity', params: { type: 'html' } } },
-    { id: 'messages', icon: 'las la-comments', label: 'MessagesActivity.LABEL', renderer: 'item', route: { name: 'messages-activity' } }, 
+    { id: 'messages', icon: 'las la-comments', label: 'MessagesActivity.LABEL', renderer: 'item', route: { name: 'messages-activity' } },
     { id: 'collection', icon: 'las la-list', label: 'CollectionActivity.LABEL', renderer: 'item', route: { name: 'collection-activity', params: { page: 'list' } } },
     { id: 'board', icon: 'dashboard', label: 'KanbanActivity.LABEL', renderer: 'item', route: { name: 'board-activity' } },
     { id: 'chart', icon: 'las la-chart-pie', label: 'ChartActivity.LABEL', renderer: 'item', route: { name: 'chart-activity' } },
@@ -90,35 +90,35 @@ const collectionExport = {
   transform: {
     csv: {
       mapping: {
-        'icon.name' : 'iconName',
-        'icon.color' : 'iconColor'
+        'icon.name': 'iconName',
+        'icon.color': 'iconColor'
       },
-      omit: [ '_id', 'icon' ]
+      omit: ['_id', 'icon']
     },
     json: {
-      omit: [ '_id' ]
+      omit: ['_id']
     }
   },
   gzip: false
 }
 
 const widgets = [
-  { 
+  {
     id: 'widget-1', label: 'Widget 1', icon: 'las la-restore-windows',
-    content: { component: 'layout/Widget'}, 
-    header: [{ id: 'title', component: 'KStamp', text: 'Widget 1', direction: 'horizontal' }] 
-  }, 
-  { 
-    id: 'widget-2', label: 'Widget 2', content: { component: 'layout/Widget'} 
-  }, 
-  { 
-    id: 'widget-3', label: 'Widget 3', content: { component: 'layout/Widget'} 
-  }, 
-  { 
-    id: 'widget-4', label: 'Widget 4', content: { component: 'layout/Widget'} 
+    content: { component: 'layout/Widget' },
+    header: [{ id: 'title', component: 'KStamp', text: 'Widget 1', direction: 'horizontal' }]
   },
-  { 
-    id: 'store-widget', label: 'Store', content: { component: 'KStore'}, scrollable: true
+  {
+    id: 'widget-2', label: 'Widget 2', content: { component: 'layout/Widget' }
+  },
+  {
+    id: 'widget-3', label: 'Widget 3', content: { component: 'layout/Widget' }
+  },
+  {
+    id: 'widget-4', label: 'Widget 4', content: { component: 'layout/Widget' }
+  },
+  {
+    id: 'store-widget', label: 'Store', content: { component: 'KStore' }, scrollable: true
   }
 ]
 
@@ -163,7 +163,7 @@ module.exports = {
           widthPolicy: 'narrow'
         }
       },
-      { 
+      {
         id: 'report-bug',
         icon: 'las la-bug',
         label: 'KAbout.BUG_REPORT',
@@ -184,9 +184,9 @@ module.exports = {
     // footer: 'screen/KScreenFooter',
     // backgroundColor: '#FFF8ED',
     // textColor: 'white',
-    actions: [{ 
-      id: 'terms-policies', 
-      label: 'screen.TERMS_AND_POLICIES', 
+    actions: [{
+      id: 'terms-policies',
+      label: 'screen.TERMS_AND_POLICIES',
       dialog: {
         component: 'document/KDocument',
         url: 'kapp-terms.md'
@@ -194,7 +194,7 @@ module.exports = {
     }],
     login: {
       actions: [
-        { id: 'reset-password-link', label: 'KLoginScreen.FORGOT_YOUR_PASSWORD_LABEL', route: {name: 'send-reset-password' } },
+        { id: 'reset-password-link', label: 'KLoginScreen.FORGOT_YOUR_PASSWORD_LABEL', route: { name: 'send-reset-password' } },
         { id: 'register-link', label: 'KLoginScreen.DONT_HAVE_AN_ACCOUNT_LABEL', route: { name: 'register' } },
         { id: 'keycloak-link', label: 'screen.LOGIN_WITH_KEYCLOAK', route: { url: '/oauth/keycloak' } }
       ]
@@ -207,7 +207,7 @@ module.exports = {
     register: {
       actions: [
         { id: 'login-link', label: 'KRegisterScreen.ALREADY_HAVE_AN_ACCOUNT_LABEL', route: { name: 'login' } }
-      ]       
+      ]
     }
   },
   layout: {
@@ -216,7 +216,7 @@ module.exports = {
     },
     fab: {
       visible: true
-    }, 
+    },
     panes: {
       left: { opener: true },
       top: { opener: true, visible: true },
@@ -228,7 +228,8 @@ module.exports = {
     sections: [
       { title: 'KPasswordManager.TITLE', component: 'account/KPasswordManager', id: 'password-manager' },
       { title: 'KEmailManager.TITLE', component: 'account/KEmailManager', id: 'email-manager' },
-      { title: 'KSubscriptionsManager.TITLE', component: 'account/KSubscriptionsManager', id: 'subscriptions-manager',
+      {
+        title: 'KSubscriptionsManager.TITLE', component: 'account/KSubscriptionsManager', id: 'subscriptions-manager',
         actions: [
           { id: 'unsubscribe', tooltip: 'KSubscriptionCard.UNSUBSCRIBE_LABEL', icon: 'phonelink_erase', handler: 'unsubscribe' }
         ]
@@ -237,22 +238,22 @@ module.exports = {
     deletable: true
   },
   screenActivity: {
-    panes: { 
+    panes: {
       left: LeftPane
     }
   },
   layoutActivity: {
     header: {
       content: {
-        'header-footer': [{ component: 'layout/Header'}]
+        'header-footer': [{ component: 'layout/Header' }]
       }
     },
     footer: {
       content: {
-        'header-footer': [{ component: 'layout/Footer'}]
+        'header-footer': [{ component: 'layout/Footer' }]
       }
     },
-    panes: { 
+    panes: {
       left: LeftPane,
       top: {
         content: {
@@ -261,25 +262,36 @@ module.exports = {
             { id: 'panes', label: 'Panes', route: { name: 'layout-activity', params: { mode: 'panes' } } },
             { id: 'windows', label: 'Windows', route: { name: 'layout-activity', params: { mode: 'windows' } } },
             { id: 'fab', label: 'Fab', route: { name: 'layout-activity', params: { mode: 'fab' } } },
+            { id: 'sticky', label: 'Stickies', route: { name: 'layout-activity', params: { mode: 'sticky' } } },
           ],
           panes: [
             { id: 'page', label: 'Header/Footer', route: { name: 'layout-activity', params: { mode: 'header-footer' } } },
-            { id: 'panes', label: 'Panes', route: { name: 'layout-activity', params: { mode: 'panes' } } },
+            { id: 'panes', label: 'Panes', disabled: true },
             { id: 'windows', label: 'Windows', route: { name: 'layout-activity', params: { mode: 'windows' } } },
             { id: 'fab', label: 'Fab', route: { name: 'layout-activity', params: { mode: 'fab' } } },
+            { id: 'sticky', label: 'Stickies', route: { name: 'layout-activity', params: { mode: 'sticky' } } },
           ],
           windows: [
             { id: 'page', label: 'Header/Footer', route: { name: 'layout-activity', params: { mode: 'header-footer' } } },
             { id: 'panes', label: 'Panes', route: { name: 'layout-activity', params: { mode: 'panes' } } },
             { id: 'windows', label: 'Windows', color: 'primary', disabled: true },
             { id: 'fab', label: 'Fab', route: { name: 'layout-activity', params: { mode: 'fab' } } },
+            { id: 'sticky', label: 'Stickies', route: { name: 'layout-activity', params: { mode: 'sticky' } } },
           ],
           fab: [
             { id: 'page', label: 'Header/Footer', route: { name: 'layout-activity', params: { mode: 'header-footer' } } },
             { id: 'panes', label: 'Panes', route: { name: 'layout-activity', params: { mode: 'panes' } } },
             { id: 'windows', label: 'Windows', route: { name: 'layout-activity', params: { mode: 'windows' } } },
-            { id: 'fab', label: 'Fab', color: 'primary', disabled: true }
-          ]
+            { id: 'fab', label: 'Fab', color: 'primary', disabled: true },
+            { id: 'sticky', label: 'Stickies', route: { name: 'layout-activity', params: { mode: 'sticky' } } },
+          ],
+          sticky: [
+            { id: 'page', label: 'Header/Footer', route: { name: 'layout-activity', params: { mode: 'header-footer' } } },
+            { id: 'panes', label: 'Panes', route: { name: 'layout-activity', params: { mode: 'panes' } } },
+            { id: 'windows', label: 'Windows', route: { name: 'layout-activity', params: { mode: 'windows' } } },
+            { id: 'fab', label: 'Fab', color: 'primary', route: { name: 'layout-activity', params: { mode: 'fab' } } },
+            { id: 'sticky', label: 'Stickies', disabled: true },
+          ],
         }
       },
       right: {
@@ -296,28 +308,34 @@ module.exports = {
         'header-footer': [{ component: 'layout/Layout', mode: 'page' }],
         panes: [{ component: 'layout/Layout', mode: 'panes' }],
         windows: [{ component: 'layout/Layout', mode: 'windows' }],
-        fab: [{ component: 'layout/Layout', mode: 'fab' }]
+        fab: [{ component: 'layout/Layout', mode: 'fab' }],
+        sticky: [{ component: 'layout/Layout', mode: 'sticky' }]
       }
     },
     fab: {
       content: {
         'header-footer': [
-          { id: 'panes', label: 'Panes', icon: 'las la-window-minimize', route: { name: 'layout-activity', params: { mode: 'panes' }} },
-          { id: 'windows', label: 'Windows', icon: 'las la-window-restore', route: { name: 'layout-activity', params: { mode: 'windows' }} },
-          { id: 'fab', label: 'Fab', icon: 'las la-window-restore', route: { name: 'layout-activity', params: { mode: 'fab' }} }
+          { id: 'panes', label: 'Panes', icon: 'las la-window-minimize', route: { name: 'layout-activity', params: { mode: 'panes' } } },
+          { id: 'windows', label: 'Windows', icon: 'las la-window-restore', route: { name: 'layout-activity', params: { mode: 'windows' } } },
+          { id: 'fab', label: 'Fab', icon: 'las la-window-restore', route: { name: 'layout-activity', params: { mode: 'fab' } } }
         ],
         fab: [
-          { id: 'header-footer', label: 'Header/Footer', icon: 'las la-stream', route: { name: 'layout-activity', params: { mode: 'header-footer' }} },
-          { id: 'panes', label: 'Panes', icon: 'las la-window-minimize', route: { name: 'layout-activity', params: { mode: 'panes' }} },
-          { id: 'windows', label: 'Windows', icon: 'las la-window-restore', route: { name: 'layout-activity', params: { mode: 'windows' }} }
+          { id: 'header-footer', label: 'Header/Footer', icon: 'las la-stream', route: { name: 'layout-activity', params: { mode: 'header-footer' } } },
+          { id: 'panes', label: 'Panes', icon: 'las la-window-minimize', route: { name: 'layout-activity', params: { mode: 'panes' } } },
+          { id: 'windows', label: 'Windows', icon: 'las la-window-restore', route: { name: 'layout-activity', params: { mode: 'windows' } } }
         ]
       }
     },
     windows: {
       left: { content: [widgets[0], widgets[4]], current: 'widget-1' },
       right: { content: [widgets[1]], current: 'widget-2' },
-      top: { content: [widgets[2]], current: 'widget-3'},
+      top: { content: [widgets[2]], current: 'widget-3' },
       bottom: { content: [widgets[3]], current: 'widget-4' }
+    },
+    stickies: {
+      content: {
+        sticky: [{ id: 'tl-ribbon', position: "top-left", "component.position": 'top-left', component: 'media/KRibbon', visible: true }, { id: 'tr-ribbon', position: "top-right", "component.position": 'top-right', component: 'media/KRibbon', visible: true }, { id: 'bl-ribbon', position: "bottom-left", "component.position": 'bottom-left', component: 'media/KRibbon', visible: false }, { id: 'br-ribbon', position: "bottom-right", "component.position": 'bottom-right', component: 'media/KRibbon', visible: false },]
+      }
     }
   },
   componentsActivity: {
@@ -341,7 +359,7 @@ module.exports = {
             { id: 'graphic', label: 'Graphic', route: { name: 'components-activity', params: { mode: 'graphic' } } },
             { id: 'time', label: 'Time', route: { name: 'components-activity', params: { mode: 'time' } } },
           ],
-          
+
         }
       }
     },
@@ -387,10 +405,10 @@ module.exports = {
     },
     page: {
       content: {
-        html: [{ component: 'document/KDocument', url: 'sample.html',  localize: true }],
-        md: [{ component: 'document/KDocument', url: 'sample.md',  localize: true }],
-        pdf: [{ component: 'document/KDocument', url: 'sample.pdf',  localize: true }],
-        png: [{ component: 'document/KDocument', url: 'sample.png',  localize: true }]
+        html: [{ component: 'document/KDocument', url: 'sample.html', localize: true }],
+        md: [{ component: 'document/KDocument', url: 'sample.md', localize: true }],
+        pdf: [{ component: 'document/KDocument', url: 'sample.pdf', localize: true }],
+        png: [{ component: 'document/KDocument', url: 'sample.png', localize: true }]
       }
     }
   },
@@ -534,7 +552,7 @@ module.exports = {
         content: {
           pie: [
             { id: 'pie', icon: 'las la-chart-pie', label: 'ChartActivity.PIE', color: 'primary', disabled: true },
-            { id: 'bar', icon: 'las la-chart-bar', label: 'ChartActivity.BAR',  handler: { name: 'setTopPaneMode', params: ['bar'] } },
+            { id: 'bar', icon: 'las la-chart-bar', label: 'ChartActivity.BAR', handler: { name: 'setTopPaneMode', params: ['bar'] } },
             { id: 'line', icon: 'las la-chart-line', label: 'ChartActivity.LINE', handler: { name: 'setTopPaneMode', params: ['line'] } }
           ],
           bar: [
