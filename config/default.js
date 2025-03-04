@@ -321,6 +321,7 @@ module.exports = {
     }
   },
   componentsActivity: {
+    padding: true,
     panes: {
       left: LeftPane,
       top: {
