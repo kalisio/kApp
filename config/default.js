@@ -334,7 +334,7 @@ module.exports = {
     },
     stickies: {
       content: {
-        sticky: [{ id: 'tl-ribbon', position: "top-left", "component.position": 'top-left', component: 'media/KRibbon', visible: true }, { id: 'tr-ribbon', position: "top-right", "component.position": 'top-right', component: 'media/KRibbon', visible: true }, { id: 'bl-ribbon', position: "bottom-left", "component.position": 'bottom-left', component: 'media/KRibbon', visible: false }, { id: 'br-ribbon', position: "bottom-right", "component.position": 'bottom-right', component: 'media/KRibbon', visible: false },]
+        sticky: [{ id: 'tl-ribbon', position: "top-left", "component.position": 'top-left', component: 'media/KRibbon', visible: false }, { id: 'tr-ribbon', position: "top-right", "component.position": 'top-right', component: 'media/KRibbon', visible: false }, { id: 'bl-ribbon', position: "bottom-left", "component.position": 'bottom-left', component: 'media/KRibbon', visible: false }, { id: 'br-ribbon', position: "bottom-right", "component.position": 'bottom-right', component: 'media/KRibbon', visible: false },]
       }
     }
   },

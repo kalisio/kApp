@@ -1,23 +1,22 @@
 <template>
-  <Shapes />
-  <ColorScales />
-  <Chips />
-  <KAvatar
-        :subject="avatar"
-        size="7rem"
-      />
-  <KContent>
-    <h1>test</h1>
-  </KContent> 
+  <div class="row full-width q-gutter-x-md q-my-md justify-center">
+    <Shapes />
+    <ColorScales />
+    <Chips />
+  </div>
+  <div class="row full-width q-gutter-x-md justify-center">
+    <KAvatar :subject="avatar" size="7rem" />
   <KLogo />
+  </div>
+  
   <KSponsor />
-  <KRibbon />
+  <!-- Je vais éviter de mettre KVersion, à cause des tests -->
+  <!-- <KVersion /> -->
 </template>
 
 <script setup>
 import { Store } from '@kalisio/kdk/core.client'
-import { KAvatar, KContent, KLogo, KSponsor } from '@kalisio/kdk/core/client/components'
-import { KRibbon } from '@kalisio/kdk/core/client/components/media'
+import { KAvatar, KLogo, KSponsor } from '@kalisio/kdk/core/client/components'
 import { computed } from 'vue'
 import Chips from './Chips.vue'
 import ColorScales from './ColorScales.vue'
