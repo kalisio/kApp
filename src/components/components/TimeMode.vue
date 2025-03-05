@@ -3,19 +3,19 @@
     <!--
       KDate
       -->
-    <TimeComponent title="KCard" :model="dateModel" class="q-pa-xs col-xs-12 col-sm-5 col-3">
+    <ComponentCard title="KCard" :model="dateModel" class="q-pa-xs col-xs-12 col-sm-5 col-3">
       <KDate v-model="dateModel" :dense="dense" />
-    </TimeComponent>
+    </ComponentCard>
     <!--
       KTime
       -->
-    <TimeComponent title="KTime" :model="timeModel" class="q-pa-xs col-xs-12 col-sm-5 col-3">
+    <ComponentCard title="KTime" :model="timeModel" class="q-pa-xs col-xs-12 col-sm-5 col-3">
       <KTime v-model="timeModel" format="HH:mm:ss" with-seconds :dense="dense" />
-    </TimeComponent>
+    </ComponentCard>
     <!--
       KDateTime
       -->
-    <TimeComponent title="KDateTime" :model="dateTimeModel" class="q-pa-xs col-xs-12 col-sm-10">
+    <ComponentCard title="KDateTime" :model="dateTimeModel" class="q-pa-xs col-xs-12 col-sm-10">
       <div class="column q-gutter-sm">
         <div class="row items-center no-wrap">
           <span style="min-width: 30px;">Min:</span>
@@ -32,11 +32,11 @@
             time-class="text-caption" />
         </div>
       </div>
-    </TimeComponent>
+    </ComponentCard>
     <!--
       KDateTimeRange
       -->
-    <TimeComponent title="KDateTimeRange" :model="JSON.stringify(dateTimeRangeModel)"
+    <ComponentCard title="KDateTimeRange" :model="JSON.stringify(dateTimeRangeModel)"
       class="q-pa-xs col-xs-12 col-sm-10">
       <div class="column q-gutter-sm">
         <div class="row items-center no-wrap">
@@ -58,14 +58,14 @@
           <KDateTime v-model="maxDateTimeModel" :min="dateTimeModel" :dense="dense" id="slider-range-max" />
         </div>
       </div>
-    </TimeComponent>
+    </ComponentCard>
   </div>
 </template>
 
 <script setup>
 import { composables as kdkCoreComposables } from '@kalisio/kdk/core.client'
 import { ref } from 'vue'
-import TimeComponent from './TimeComponent.vue'
+import ComponentCard from './ComponentCard.vue'
 
 // Data
 const { dense } = kdkCoreComposables.useScreen()
