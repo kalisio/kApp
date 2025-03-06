@@ -1,24 +1,17 @@
 <template>
-  <q-markup-table>
-    <thead class="bg-accent text-white">
-      <tr>
-        <th class="text-left" colspan="2">{{ $t('Stamps.LABEL') }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <template v-for="(stamp, index) in stamps" :key="index">
-        <tr>
-          <td>
-            <KStamp v-bind="stamp" />
-          </td>
-        </tr>
-      </template>
-    </tbody>
-  </q-markup-table>
+  <ComponentCard title="Labels" :code="KStampCode">
+    <template v-for="(stamp, index) in stamps" :key="index">
+      <KStamp v-bind="stamp" />
+      <q-separator v-if="index !== stamps.length - 1" />
+    </template>
+  </ComponentCard>
+
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
+import { KStampCode } from '../raw';
+import ComponentCard from './ComponentCard.vue';
 
 const stamps = ref([
   { direction: 'horizontal', text: 'message', textSize: '1.5rem' },

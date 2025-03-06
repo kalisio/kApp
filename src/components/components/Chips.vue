@@ -9,7 +9,11 @@
       <template v-for="(chip, index) in chips" :key="index">
         <tr>
           <td>
-            <KChip v-bind="chip" v-if="isChipRemoved(chip)" @click="onChipSelected(chip)" @remove="chipRemoved = true" />
+            <KChip v-bind="chip" v-if="isChipRemoved(chip)" @click="onChipSelected(chip)"
+              @remove="chipRemoved = true" />
+            <q-tooltip>
+              {{ JSON.stringify(chip) }}
+            </q-tooltip>
           </td>
         </tr>
       </template>
@@ -39,7 +43,9 @@ function isChipRemoved(chip) {
 const chips = ref([
   { label: 'Basic Chip' },
   { label: 'Icon chip', icon: 'las la-code' },
-  { label: 'Color chip', color: 'primary' },
+  { label: 'Color chip (primary)', color: 'primary' },
+  { label: 'Color chip (#0492C2)', color: '#0492C2' },
+  { label: 'Color chip (blue)', color: 'blue' },
   { label: 'Glossy chip', color: 'primary', class: 'glossy' },
   { label: 'Square chip', color: 'primary', square: true },
   { label: 'Outline chip', "text-color": 'primary', outline: true },

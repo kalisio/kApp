@@ -43,6 +43,12 @@ describe(`suite:${suite}`, () => {
   it('check text', async () => {
     const textModeMatch = await runner.captureAndMatch('text')
     expect(textModeMatch).beTrue()
+
+    await page.click('.q-card:first-child button:has(.la-code)')
+    await page.waitForTimeout(1000)
+
+    const textModeMatch2 = await runner.captureAndMatch('text2')
+    expect(textModeMatch2).beTrue()
   });
 
   it('check graphic', async () => {

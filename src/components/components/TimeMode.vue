@@ -3,19 +3,19 @@
     <!--
       KDate
       -->
-    <ComponentCard title="KCard" :model="dateModel" class="q-pa-xs col-xs-12 col-sm-5 col-3">
+    <ComponentCard title="KDate" :model="dateModel" :code="KDateCode" class="q-pa-xs col-xs-12 col-sm-5 col-3">
       <KDate v-model="dateModel" :dense="dense" />
     </ComponentCard>
     <!--
       KTime
       -->
-    <ComponentCard title="KTime" :model="timeModel" class="q-pa-xs col-xs-12 col-sm-5 col-3">
+    <ComponentCard title="KTime" :model="timeModel" :code="KTimeCode" class="q-pa-xs col-xs-12 col-sm-5 col-3">
       <KTime v-model="timeModel" format="HH:mm:ss" with-seconds :dense="dense" />
     </ComponentCard>
     <!--
       KDateTime
       -->
-    <ComponentCard title="KDateTime" :model="dateTimeModel" class="q-pa-xs col-xs-12 col-sm-10">
+    <ComponentCard title="KDateTime" :model="dateTimeModel" :code="KDateTimeCode" class="q-pa-xs col-xs-12 col-sm-10">
       <div class="column q-gutter-sm">
         <div class="row items-center no-wrap">
           <span style="min-width: 30px;">Min:</span>
@@ -36,7 +36,7 @@
     <!--
       KDateTimeRange
       -->
-    <ComponentCard title="KDateTimeRange" :model="JSON.stringify(dateTimeRangeModel)"
+    <ComponentCard title="KDateTimeRange" :model="JSON.stringify(dateTimeRangeModel)" :code="KDateTimeRangeCode"
       class="q-pa-xs col-xs-12 col-sm-10">
       <div class="column q-gutter-sm">
         <div class="row items-center no-wrap">
@@ -65,6 +65,7 @@
 <script setup>
 import { composables as kdkCoreComposables } from '@kalisio/kdk/core.client'
 import { ref } from 'vue'
+import { KDateCode, KDateTimeCode, KDateTimeRangeCode, KTimeCode } from '../raw'
 import ComponentCard from './ComponentCard.vue'
 
 // Data

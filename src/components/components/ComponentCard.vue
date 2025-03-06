@@ -3,12 +3,18 @@
     <div class="flex flex-center q-pa-sm full-width text-subtitle1 bg-primary text-white">
       {{ title }}
       <q-space />
-      <q-btn round color="primary" icon="las la-code" @click="showingCode = !showingCode" />
+      <q-btn v-if="code" round color="primary" icon="las la-code" @click="showingCode = !showingCode" />
+      <q-icon v-else size="42px" />
     </div>
 
     <q-card-section>
       <q-slide-transition>
-        <pre v-show="code && showingCode" id="code-paragraph">{{ code }}</pre>
+        <div v-show="code && showingCode">
+          <KScrollArea :maxHeight="300" class="q-pb-sm">
+            <pre id="code-paragraph">{{ code }}</pre>
+          </KScrollArea>
+          <q-separator />
+        </div>
       </q-slide-transition>
 
       <slot />
@@ -27,6 +33,7 @@
 </template>
 
 <script setup>
+import { KScrollArea } from '@kalisio/kdk/core/client/components';
 import { ref } from 'vue';
 
 const props = defineProps({
