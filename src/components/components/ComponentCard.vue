@@ -9,9 +9,9 @@
 
     <q-card-section>
       <q-slide-transition>
-        <div v-show="code && showingCode">
+        <div v-if="code" v-show="showingCode">
           <KScrollArea :maxHeight="300" class="q-pb-sm">
-            <pre id="code-paragraph">{{ code }}</pre>
+            <CodeHighlight :code="code" language="xml" />
           </KScrollArea>
           <q-separator />
         </div>
@@ -35,6 +35,10 @@
 <script setup>
 import { KScrollArea } from '@kalisio/kdk/core/client/components';
 import { ref } from 'vue';
+
+// highlightjs theme
+import "../../css/atom-one-dark.css";
+import CodeHighlight from './CodeHighlight';
 
 const props = defineProps({
   title: {

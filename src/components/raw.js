@@ -16,12 +16,14 @@ const stamps = ref([
   { direction: 'horizontal', text: 'message', icon: 'las la-info-circle', iconSize: '1.2rem' },
   { direction: 'vertical', text: 'message', textSize: '1.5rem', icon: 'las la-info-circle', iconSize: '4rem' },
 ])
-<\/script>`;
+</script>
+`;
 
 export const KTextAreaCode =
   `<KTextArea text="TextArea" class="text-h1" />
-<q-separator />
-<KTextArea text="TextArea" />`
+  <q-separator />
+<KTextArea text="TextArea" />
+`;
 
 export const KDateCode = `<template>
   <q-btn v-bind="computedButton">

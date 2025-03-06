@@ -1,7 +1,7 @@
 import _ from 'lodash'
 
-function buildTours (config) {
-  function buildToursRecursively (config, tours) {
+function buildTours(config) {
+  function buildToursRecursively(config, tours) {
     _.forOwn(config, (value, key) => {
       const name = _.get(value, 'name', _.get(value, 'path', key))
       const tour = _.get(value, 'tour')
@@ -30,8 +30,18 @@ function buildTours (config) {
   return tours
 }
 
+function escapeHtml(value) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;')
+}
+
 const utils = {
-  buildTours
+  buildTours,
+  escapeHtml
 }
 
 export default utils
