@@ -1,10 +1,17 @@
 <template>
-  <div class="row full-width q-gutter-x-md q-my-md justify-center text-center">
+  <div class="row full-width q-gutter-md justify-center text-center">
     <Shapes />
-    <ColorScales />
-    <Chips />
-    <Logos />
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <ColorScales />
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <Chips />
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <Logos />
+    </div>
   </div>
+
 </template>
 
 <script setup>

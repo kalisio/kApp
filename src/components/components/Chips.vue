@@ -1,28 +1,20 @@
 <template>
-  <q-markup-table>
-    <thead class="bg-accent text-white">
-      <tr>
-        <th class="text-left" colspan="2">{{ $t('Chips.LABEL') }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <template v-for="(chip, index) in chips" :key="index">
-        <tr>
-          <td>
-            <KChip v-bind="chip" v-if="isChipRemoved(chip)" @click="onChipSelected(chip)"
-              @remove="chipRemoved = true" />
-            <q-tooltip>
-              {{ JSON.stringify(chip) }}
-            </q-tooltip>
-          </td>
-        </tr>
-      </template>
-    </tbody>
-  </q-markup-table>
+  <ComponentCard :title="$t('Chips.LABEL')" class="full-height">
+    <div v-for="(chip, index) in chips" :key="index" class="q-gutter-sm">
+      <div class="q-gutter-sm">
+        <KChip v-bind="chip" v-if="isChipRemoved(chip)" @click="onChipSelected(chip)" @remove="chipRemoved = true" />
+        <q-tooltip>
+          {{ JSON.stringify(chip) }}
+        </q-tooltip>
+      </div>
+      <q-separator v-if="index !== chips.length - 1" />
+    </div>
+  </ComponentCard>
 </template>
 
 <script setup>
 import { ref } from 'vue';
+import ComponentCard from './ComponentCard.vue';
 
 const chipSelected = ref(false)
 const chipRemoved = ref(false)

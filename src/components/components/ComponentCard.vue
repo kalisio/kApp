@@ -1,23 +1,26 @@
 <template>
-  <q-card>
-    <div class="flex flex-center q-pa-sm full-width text-subtitle1 bg-primary text-white">
+  <q-card class="column">
+    <q-item class="row col-auto flex flex-center q-pa-sm full-width text-subtitle1 bg-primary text-white">
       {{ title }}
       <q-space />
       <q-btn v-if="code" round color="primary" icon="las la-code" @click="showingCode = !showingCode" />
       <q-icon v-else size="42px" />
-    </div>
+    </q-item>
 
-    <q-card-section>
-      <q-slide-transition>
-        <div v-if="code" v-show="showingCode">
-          <KScrollArea :maxHeight="300" class="q-pb-sm">
-            <CodeHighlight :code="code" language="xml" />
-          </KScrollArea>
-          <q-separator />
-        </div>
-      </q-slide-transition>
+    <q-card-section class="column col">
 
-      <slot />
+      <div v-if="code" v-show="showingCode" class="col-auto">
+        <KScrollArea :maxHeight="300" class="q-pb-sm">
+          <CodeHighlight :code="code" language="xml" />
+        </KScrollArea>
+        <q-separator />
+      </div>
+
+      <div class="col">
+        <slot />
+      </div>
+
+
 
     </q-card-section>
 
