@@ -13,3 +13,4 @@
 **/*dockerignore
 **/.git
 **/.gitignore
+**/*.dec.*
