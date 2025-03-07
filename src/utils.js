@@ -30,7 +30,7 @@ function buildTours(config) {
   return tours
 }
 
-function escapeHtml(value) {
+export function escapeHtml(value) {
   return value
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')

@@ -5,7 +5,6 @@
       <q-separator v-if="index !== stamps.length - 1" />
     </template>
   </ComponentCard>
-
 </template>
 
 <script setup>

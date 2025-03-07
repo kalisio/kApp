@@ -10,7 +10,7 @@
     <q-card-section class="column col">
 
       <div v-if="code" v-show="showingCode" class="col-auto">
-        <KScrollArea :maxHeight="300" class="q-pb-sm">
+        <KScrollArea :maxHeight="300" class="q-pb-md q-pr-md">
           <CodeHighlight :code="code" language="xml" />
         </KScrollArea>
         <q-separator />
@@ -19,8 +19,6 @@
       <div class="col">
         <slot />
       </div>
-
-
 
     </q-card-section>
 
@@ -41,7 +39,7 @@ import { ref } from 'vue';
 
 // highlightjs theme
 import "../../css/atom-one-dark.css";
-import CodeHighlight from './CodeHighlight';
+import CodeHighlight from './CodeHighlight.vue';
 
 const props = defineProps({
   title: {
