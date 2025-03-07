@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-expressions */
 
-import faker from 'faker'
-import chai, { util, expect } from 'chai'
-import chailint from 'chai-lint'
 import { core } from '@kalisio/kdk/test.client.js'
-import { createDocument, deleteDocumentItem, deleteDocumentCard } from './document.mjs'
+import chai, { expect, util } from 'chai'
+import chailint from 'chai-lint'
+import faker from 'faker'
+import { createDocument, deleteDocumentCard, deleteDocumentItem } from './document.mjs'
 
 const suite = 'app'
 
@@ -25,16 +25,15 @@ describe(`suite:${suite}`, () => {
         'k-app-welcome': false,
         'k-app-install': false
       },
-      lang: 'fr-FR'
+      dataDir: "data/app",
+      lang: 'fr-FR',
     })
     page = await runner.start()
-    await core.goToRegisterScreen(page)
     user = {
-      name: 'kalisio',
       email: 'kalisio1@kalisio.xyz',
       password: 'Pass;word1'
     }
-    await core.register(page, user)
+    await core.login(page, user)
   })
 
   it('update profile', async () => {
@@ -63,7 +62,7 @@ describe(`suite:${suite}`, () => {
   })
 
   after(async () => {
-    await core.deleteAccount(page, user.name)
+    await core.logout(page)
     await runner.stop()
   })
 })
