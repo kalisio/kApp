@@ -16,7 +16,7 @@
         <q-separator />
       </div>
 
-      <div class="col">
+      <div class="col flex column flex-center">
         <slot />
       </div>
 

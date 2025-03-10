@@ -1,30 +1,24 @@
 <template>
-  <ComponentCard title="Brand/Logos" class="full-height">
-    <div class="row full-width items-center text-center">
-      <p class="col-5">KAvatar</p>
-      <div class="col">
+  <div class="column full-height">
+    <div class="col q-mb-md">
+      <ComponentCard title="KAvatar" class="full-height full-width">
         <KAvatar :subject="avatar" size="7rem" />
         <q-tooltip>
           {"size":"7rem"}
         </q-tooltip>
-      </div>
+      </ComponentCard>
     </div>
-    <q-separator class="q-my-md" />
-    <div class="row">
-      <p class="col-5">KLogo</p>
-      <div class="col">
+    <div class="col-auto q-mb-md">
+      <ComponentCard title="KLogo" class="full-height">
         <KLogo />
-      </div>
+      </ComponentCard>
     </div>
-    <q-separator class="q-my-md" />
-    <div class="row">
-      <p class="col-5">KSponsor</p>
-      <div class="col">
+    <div class="col-auto">
+      <ComponentCard title="KSponsor">
         <KSponsor />
-      </div>
+      </ComponentCard>
     </div>
-  </ComponentCard>
-
+  </div>
 </template>
 
 <script setup>
