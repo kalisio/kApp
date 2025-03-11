@@ -1,7 +1,5 @@
 {
   "MAIN_MENU": "Menu principal",
-  "LOGOUT": "Se déconnecter",
-  "ABOUT": "A propos",
   "Documents": {
     "EDIT": "Editer",
     "VIEW": "Visualiser",
@@ -86,9 +84,6 @@
   },
   "Messages": {
     "LABEL": "Messages"
-  },
-  "ContextualHelp": {
-    "LABEL": "Aide contextuelle"
   },
   "WebPushActivity": {
     "LABEL": "Web Push"

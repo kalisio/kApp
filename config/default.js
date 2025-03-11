@@ -31,11 +31,11 @@ const LeftPane = {
     { id: 'chart', icon: 'las la-chart-pie', label: 'ChartActivity.LABEL', renderer: 'item', route: { name: 'chart-activity' } },
     { id: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL', renderer: 'item', route: { name: 'editor-activity' } },
     { id: 'webpush', icon: 'las la-bell', label: 'WebPushActivity.LABEL', renderer: 'item', route: { name: 'webpush-activity' } },
-    { id: 'contextual-help', icon: 'las la-question-circle', label: 'ContextualHelp.LABEL', handler: { name: 'launchTour', params: ['home'] }, renderer: 'item' },
+    { id: 'contextual-help', icon: 'las la-question-circle', label: 'layout.CONTEXTUAL_HELP', handler: { name: 'launchTour', params: ['home'] }, renderer: 'item' },
     { component: 'QSeparator' },
-    { id: 'about', icon: 'las la-info', label: 'ABOUT', renderer: 'item', dialog: { component: 'app/KAbout', title: 'ABOUT', okAction: 'CLOSE' } },
+    { id: 'about', icon: 'las la-info', label: 'layout.ABOUT', renderer: 'item', dialog: { component: 'app/KAbout', title: 'ABOUT', okAction: 'CLOSE' } },
     { component: 'QSeparator' },
-    { id: 'logout', icon: 'las la-sign-out-alt', label: 'LOGOUT', renderer: 'item', route: { name: 'logout', params: { provider: 'keycloak' } } }
+    { id: 'logout', icon: 'las la-sign-out-alt', label: 'layout.LOGOUT', renderer: 'item', route: { name: 'logout', params: { provider: 'keycloak' } } }
   ],
   opener: true,
   visible: false
