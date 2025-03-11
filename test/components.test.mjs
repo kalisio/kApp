@@ -24,7 +24,7 @@ describe(`suite:${suite}`, () => {
         'k-app-welcome': false,
         'k-app-install': false
       },
-      lang: 'fr-FR'
+      lang: 'fr-FR',
     })
     page = await runner.start()
     user = {

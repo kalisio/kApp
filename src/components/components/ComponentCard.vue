@@ -16,9 +16,11 @@
         <q-separator />
       </div>
 
-      <div class="col flex column flex-center">
+      <div v-if="props.centered === true" class="col flex column flex-center">
         <slot />
       </div>
+
+      <slot v-else />
 
     </q-card-section>
 
@@ -45,6 +47,10 @@ const props = defineProps({
   title: {
     type: String,
     required: true
+  },
+  centered: {
+    type: Boolean,
+    default: false
   },
   model: {
     type: String,
