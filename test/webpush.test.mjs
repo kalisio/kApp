@@ -37,7 +37,7 @@ describe(`suite:${suite}`, () => {
   it('webpush', async () => {
     await page.click('#left-opener')
     await page.waitForTimeout(1000)
-    await page.click('#webpush')
+    await page.click('#webpush-activity-action')
     await page.waitForTimeout(1000)
     await type(page, '#title-field', 'Title')
     await type(page, '#body-field', 'Content')

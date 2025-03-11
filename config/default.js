@@ -21,7 +21,7 @@ if (process.env.NODE_APP_INSTANCE === 'dev') {
   pwaName += ' (localhost)'
 }
 
-const LeftPane = {
+const LEFT_PANE = {
   content: [
     { component: 'account/KProfile', class: 'full-width' },
     leftPane.activityLink('screen', 'las la-tv', 'ScreenActivity.LABEL'),
@@ -39,9 +39,7 @@ const LeftPane = {
     leftPane.ABOUT,
     helpers.horizontalSeparator(),
     leftPane.logout('keycloak')
-  ],
-  opener: true,
-  visible: false
+  ]
 }
 
 const collectionActions = [
@@ -240,7 +238,7 @@ module.exports = {
   },
   screenActivity: {
     panes: {
-      left: LeftPane
+      left: LEFT_PANE
     }
   },
   layoutActivity: {
@@ -255,7 +253,7 @@ module.exports = {
       }
     },
     panes: {
-      left: LeftPane,
+      left: LEFT_PANE,
       top: {
         content: {
           'header-footer': [
@@ -342,7 +340,7 @@ module.exports = {
   componentsActivity: {
     padding: true,
     panes: {
-      left: LeftPane,
+      left: LEFT_PANE,
       top: {
         content: {
           text: [
@@ -374,7 +372,7 @@ module.exports = {
   },
   documentActivity: {
     panes: {
-      left: LeftPane,
+      left: LEFT_PANE,
       top: {
         content: {
           html: [
@@ -415,7 +413,7 @@ module.exports = {
   },
   messagesActivity: {
     panes: {
-      left: LeftPane,
+      left: LEFT_PANE,
       top: {
         content: [
           { component: 'collection/KFilter', label: 'MessagesActivity.SEARCH', fields: ['body', 'author'], style: 'width: 50vw; min-width: 180px; max-width: 500px;' },
@@ -438,7 +436,7 @@ module.exports = {
   },
   collectionActivity: {
     panes: {
-      left: LeftPane,
+      left: LEFT_PANE,
       top: {
         content: {
           list: [
@@ -523,7 +521,7 @@ module.exports = {
   },
   boardActivity: {
     panes: {
-      left: LeftPane,
+      left: LEFT_PANE,
       top: {
         content: {
           default: [
@@ -548,7 +546,7 @@ module.exports = {
   },
   chartActivity: {
     panes: {
-      left: LeftPane,
+      left: LEFT_PANE,
       top: {
         content: {
           pie: [
@@ -573,7 +571,7 @@ module.exports = {
   },
   editorActivity: {
     panes: {
-      left: LeftPane,
+      left: LEFT_PANE,
       top: {
         content: [{ id: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL', color: 'primary', disabled: true }]
       }
@@ -587,7 +585,7 @@ module.exports = {
   },
   webpushActivity: {
     panes: {
-      left: LeftPane
+      left: LEFT_PANE
     }
   },
   routes: require('../src/router/routes')

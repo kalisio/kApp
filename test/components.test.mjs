@@ -36,7 +36,7 @@ describe(`suite:${suite}`, () => {
     await page.click('#left-opener')
     await page.waitForTimeout(1000)
 
-    await page.click('#components')
+    await page.click('#components-activity-action')
     await page.waitForTimeout(1000)
   })
 

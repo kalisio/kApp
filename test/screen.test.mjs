@@ -34,7 +34,7 @@ describe(`suite:${suite}`, () => {
   it('screen', async () => {
     await page.click('#left-opener')
     await page.waitForTimeout(1000)
-    await page.click('#screen')
+    await page.click('#screen-activity-action')
     await page.waitForTimeout(1000)
     const match = await runner.captureAndMatch('screen')
     expect(match).beTrue()
