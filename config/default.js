@@ -1,3 +1,6 @@
+const leftPane = require('./kdk/panes.left')
+const helpers = require('./kdk/helpers')
+
 const website = 'https://kalisio.com'
 
 const serverPort = process.env.PORT || 8081
@@ -21,27 +24,25 @@ if (process.env.NODE_APP_INSTANCE === 'dev') {
 const LeftPane = {
   content: [
     { component: 'account/KProfile', class: 'full-width' },
-    { id: 'screen', icon: 'las la-tv', label: 'ScreenActivity.LABEL', renderer: 'item', route: { name: 'screen-activity' } },
-    { id: 'layout', icon: 'las la-desktop', label: 'LayoutActivity.LABEL', renderer: 'item', route: { name: 'layout-activity', params: { mode: 'header-footer' } } },
-    { id: 'components', icon: 'las la-code', label: 'ComponentsActivity.LABEL', renderer: 'item', route: { name: 'components-activity', params: { mode: 'text' } } },
-    { id: 'document', icon: 'las la-icons', label: 'DocumentActivity.LABEL', renderer: 'item', route: { name: 'document-activity', params: { type: 'html' } } },
-    { id: 'messages', icon: 'las la-comments', label: 'MessagesActivity.LABEL', renderer: 'item', route: { name: 'messages-activity' } },
-    { id: 'collection', icon: 'las la-list', label: 'CollectionActivity.LABEL', renderer: 'item', route: { name: 'collection-activity', params: { page: 'list' } } },
-    { id: 'board', icon: 'dashboard', label: 'KanbanActivity.LABEL', renderer: 'item', route: { name: 'board-activity' } },
-    { id: 'chart', icon: 'las la-chart-pie', label: 'ChartActivity.LABEL', renderer: 'item', route: { name: 'chart-activity' } },
-    { id: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL', renderer: 'item', route: { name: 'editor-activity' } },
-    { id: 'webpush', icon: 'las la-bell', label: 'WebPushActivity.LABEL', renderer: 'item', route: { name: 'webpush-activity' } },
+    leftPane.activityLink('screen', 'las la-tv', 'ScreenActivity.LABEL'),
+    leftPane.activityLink('layout', 'las la-desktop', 'LayoutActivity.LABEL', { mode: 'header-footer' }),
+    leftPane.activityLink('components', 'las la-code', 'ComponentsActivity.LABEL', { mode: 'text' }),
+    leftPane.activityLink('document', 'las la-icons', 'DocumentActivity.LABEL', { type: 'html' }),
+    leftPane.activityLink('messages', 'las la-comments', 'MessagesActivity.LABEL'),
+    leftPane.activityLink('collection', 'las la-list', 'CollectionActivity.LABEL', { page: 'list' }),
+    leftPane.activityLink('board', 'dashboard', 'KanbanActivity.LABEL'),
+    leftPane.activityLink('chart', 'las la-chart-pie', 'ChartActivity.LABEL'),
+    leftPane.activityLink('editor', 'las la-edit', 'EditorActivity.LABEL'),
+    leftPane.activityLink('webpush', 'las la-bell', 'WebPushActivity.LABEL'),
     { id: 'contextual-help', icon: 'las la-question-circle', label: 'layout.CONTEXTUAL_HELP', handler: { name: 'launchTour', params: ['home'] }, renderer: 'item' },
-    { component: 'QSeparator' },
+    helpers.horizontal_separator(),
     { id: 'about', icon: 'las la-info', label: 'layout.ABOUT', renderer: 'item', dialog: { component: 'app/KAbout', title: 'ABOUT', okAction: 'CLOSE' } },
-    { component: 'QSeparator' },
-    { id: 'logout', icon: 'las la-sign-out-alt', label: 'layout.LOGOUT', renderer: 'item', route: { name: 'logout', params: { provider: 'keycloak' } } }
+    helpers.horizontal_separator(),
+    leftPane.logout('keycloak')
   ],
   opener: true,
   visible: false
 }
-
-const vSeparator = { component: 'QSeparator', vertical: true }
 
 const collectionActions = [
   {
@@ -444,7 +445,7 @@ module.exports = {
             { id: 'list', icon: 'las la-list', label: 'CollectionActivity.LIST', color: 'primary', disabled: true },
             { id: 'grid', icon: 'view_module', tooltip: 'CollectionActivity.GRID', route: { name: 'collection-activity', params: { page: 'grid' } } },
             { id: 'table', icon: 'las la-table', tooltip: 'CollectionActivity.TABLE', route: { name: 'collection-activity', params: { page: 'table' } } },
-            vSeparator,
+            helpers.vertical_separator(),
             { id: 'filter', icon: 'las la-search', tooltip: 'CollectionActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } },
             { component: 'collection/KSorter' },
             collectionExport
@@ -453,7 +454,7 @@ module.exports = {
             { id: 'list', icon: 'las la-list', tooltip: 'CollectionActivity.LIST', route: { name: 'collection-activity', params: { page: 'list' } } },
             { id: 'grid', icon: 'view_module', label: 'CollectionActivity.GRID', color: 'primary', disabled: true },
             { id: 'table', icon: 'las la-table', tooltip: 'CollectionActivity.TABLE', route: { name: 'collection-activity', params: { page: 'table' } } },
-            vSeparator,
+            helpers.vertical_separator(),
             { id: 'filter', icon: 'las la-search', tooltip: 'CollectionActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } },
             { component: 'collection/KSorter' },
             collectionExport
@@ -462,14 +463,14 @@ module.exports = {
             { id: 'list', icon: 'las la-list', tooltip: 'CollectionActivity.LIST', route: { name: 'collection-activity', params: { page: 'list' } } },
             { id: 'grid', icon: 'view_module', tooltip: 'CollectionActivity.GRID', route: { name: 'collection-activity', params: { page: 'grid' } } },
             { id: 'table', icon: 'las la-table', label: 'CollectionActivity.TABLE', color: 'primary', disabled: true },
-            vSeparator,
+            helpers.vertical_separator(),
             { id: 'filter', icon: 'las la-search', tooltip: 'CollectionActivity.FILTER', handler: { name: 'setTopPaneMode', params: ['filter'] } },
             { component: 'collection/KSorter' },
             collectionExport
           ],
           filter: [
             { id: 'back', icon: 'las la-arrow-left', handler: { name: 'restoreTopPaneMode' } },
-            { component: 'QSeparator', vertical: true, color: 'lightgrey' },
+            helpers.vertical_separator('lightgrey'),
             { component: 'collection/KFilter', size: '1rem' }
           ]
         },
@@ -531,7 +532,7 @@ module.exports = {
           ],
           filter: [
             { id: 'back', icon: 'las la-arrow-left', handler: { name: 'setTopPaneMode', params: ['default'] } },
-            { component: 'QSeparator', vertical: true, color: 'lightgrey' },
+            helpers.vertical_separator('lightgrey'),
             { component: 'collection/KFilter', size: '1rem' }
           ]
         },
