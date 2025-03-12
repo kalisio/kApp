@@ -2,12 +2,18 @@
   <ComponentCard :title="$t('ColorScales.LABEL')" class="full-height">
     <div class="q-pa-md column q-gutter-y-md">
       <template v-for="colorScale in hColorScales" :key="colorScale.label">
-        <KColorScale v-bind="colorScale" style="width: 250px; height: 46px" />
+        <div>
+          <KColorScale v-bind="colorScale" style="width: 250px; height: 46px" />
+          <q-tooltip>{{ JSON.stringify(colorScale) }}</q-tooltip>
+        </div>
       </template>
     </div>
     <div class="q-pa-md row q-gutter-x-md">
       <template v-for="colorScale in vColorScales" :key="colorScale.label">
-        <KColorScale v-bind="colorScale" style="width: 50px; height: 200px" />
+        <div>
+          <KColorScale v-bind="colorScale" style="width: 50px; height: 200px" />
+          <q-tooltip>{{ JSON.stringify(colorScale) }}</q-tooltip>
+        </div>
       </template>
     </div>
   </ComponentCard>
