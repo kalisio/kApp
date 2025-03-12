@@ -44,7 +44,7 @@ describe(`suite:${suite}`, () => {
   })
 
   it('check-collections', async () => {
-    await core.clickPaneAction(page, 'left', 'collection', 1000)
+    await core.clickPaneAction(page, 'left', 'collection-activity-action', 1000)
     const nbDocuments = await core.countItems(page, 'collection/KItem')
     const doc1 = { name: faker.name.findName() }
     await createDocument(page, doc1)
