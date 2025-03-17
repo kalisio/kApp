@@ -72,5 +72,5 @@ export default async ({ app }) => {
   })
 
   // For debug purpose
-  logger.debug(`[KDK] is now ready: ${JSON.stringify(Store.get('kdk'), null, 4)}`)
+  logger.debug('[KDK] is now ready:', Store.get('kdk'))
 }

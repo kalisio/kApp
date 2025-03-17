@@ -24,20 +24,19 @@ if (process.env.NODE_APP_INSTANCE === 'dev') {
 const LEFT_PANE = {
   content: [
     { component: 'account/KProfile', class: 'full-width' },
-    leftPane.activityLink('screen', 'las la-tv', 'ScreenActivity.LABEL'),
-    leftPane.activityLink('layout', 'las la-desktop', 'LayoutActivity.LABEL', { mode: 'header-footer' }),
-    leftPane.activityLink('components', 'las la-code', 'ComponentsActivity.LABEL', { mode: 'text' }),
-    leftPane.activityLink('document', 'las la-icons', 'DocumentActivity.LABEL', { type: 'html' }),
-    leftPane.activityLink('messages', 'las la-comments', 'MessagesActivity.LABEL'),
-    leftPane.activityLink('collection', 'las la-list', 'CollectionActivity.LABEL', { page: 'list' }),
-    leftPane.activityLink('board', 'dashboard', 'KanbanActivity.LABEL'),
-    leftPane.activityLink('chart', 'las la-chart-pie', 'ChartActivity.LABEL'),
-    leftPane.activityLink('editor', 'las la-edit', 'EditorActivity.LABEL'),
-    leftPane.activityLink('webpush', 'las la-bell', 'WebPushActivity.LABEL'),
-    leftPane.CONTEXTUAL_HELP,
+    leftPane.activityLink({ name: 'screen', icon: 'las la-tv', label: 'ScreenActivity.LABEL' }),
+    leftPane.activityLink({ name: 'layout', icon: 'las la-window-restore', label: 'LayoutActivity.LABEL', params: { mode: 'header-footer' } }),
+    leftPane.activityLink({ name: 'components', icon: 'las la-code', label: 'ComponentsActivity.LABEL', params: { mode: 'text' } }),
+    leftPane.activityLink({ name: 'document', icon: 'las la-icons', label: 'DocumentActivity.LABEL', params: { type: 'html' } }),
+    leftPane.activityLink({ name: 'messages', icon: 'las la-comments', label: 'MessagesActivity.LABEL' }),
+    leftPane.activityLink({ name: 'collection', icon: 'las la-list', label: 'CollectionActivity.LABEL', params: { page: 'list' } }),
+    leftPane.activityLink({ name: 'board', icon: 'dashboard', label: 'KanbanActivity.LABEL' }),
+    leftPane.activityLink({ name: 'chart', icon: 'las la-chart-pie', label: 'ChartActivity.LABEL' }),
+    leftPane.activityLink({ name: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL' }),
+    leftPane.activityLink({ name: 'webpush', icon: 'las la-bell', label: 'WebPushActivity.LABEL' }),
     helpers.horizontalSeparator(),
-    leftPane.ABOUT,
-    helpers.horizontalSeparator(),
+    leftPane.contextualHelp(),
+    leftPane.about(),
     leftPane.logout('keycloak')
   ]
 }
