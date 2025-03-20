@@ -17,6 +17,9 @@ ARG APP
 
 # Development environment setup
 WORKDIR /opt/kalisio/
+
+# Install git (because some dependencies are not available on npm)
+RUN apt-get update && apt-get install -y git
 RUN \
   cd /opt/kalisio/kdk && yarn && yarn link --link-folder /opt/kalisio/yarn-links && \
   cd /opt/kalisio/$APP && yarn && yarn link "@kalisio/kdk" --link-folder /opt/kalisio/yarn-links
@@ -76,10 +79,9 @@ RUN mkdir -p /home/node/.config/rclone \
   && chmod -R 777 /home/node/.config/rclone
 
 # Make sure runner is properly setup
-WORKDIR /opt/kalisio/$APP/scripts
-RUN ./init_runner.sh run_e2e_tests
+RUN mkdir -p /home/node/.local/bin && /opt/kalisio/$APP/scripts/init_runner.sh run_e2e_tests
 
 # Run tests
 WORKDIR /opt/kalisio/$APP
 ENV PATH="$PATH:/home/node/.local/bin"
-CMD ["bash", "-c", "/opt/kalisio/$APP/scripts/run_e2e_test.sh $APP"]
+CMD ["bash", "-c", "/opt/kalisio/$APP/scripts/run_e2e_tests.sh $APP"]
