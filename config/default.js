@@ -102,7 +102,9 @@ const collectionExport = {
 
 const widgets = [
   {
-    id: 'widget-1', label: 'Widget 1', icon: 'las la-restore-windows',
+    id: 'widget-1',
+    label: 'Widget 1',
+    icon: 'las la-restore-windows',
     content: { component: 'layout/Widget' },
     header: [{ id: 'title', component: 'KStamp', text: 'Widget 1', direction: 'horizontal' }]
   },
@@ -227,7 +229,9 @@ module.exports = {
       { title: 'KPasswordManager.TITLE', component: 'account/KPasswordManager', id: 'password-manager' },
       { title: 'KEmailManager.TITLE', component: 'account/KEmailManager', id: 'email-manager' },
       {
-        title: 'KSubscriptionsManager.TITLE', component: 'account/KSubscriptionsManager', id: 'subscriptions-manager',
+        title: 'KSubscriptionsManager.TITLE',
+        component: 'account/KSubscriptionsManager',
+        id: 'subscriptions-manager',
         actions: [
           { id: 'unsubscribe', tooltip: 'KSubscriptionCard.UNSUBSCRIBE_LABEL', icon: 'phonelink_erase', handler: 'unsubscribe' }
         ]
@@ -260,36 +264,36 @@ module.exports = {
             { id: 'panes', label: 'Panes', route: { name: 'layout-activity', params: { mode: 'panes' } } },
             { id: 'windows', label: 'Windows', route: { name: 'layout-activity', params: { mode: 'windows' } } },
             { id: 'fab', label: 'Fab', route: { name: 'layout-activity', params: { mode: 'fab' } } },
-            { id: 'sticky', label: 'Stickies', route: { name: 'layout-activity', params: { mode: 'sticky' } } },
+            { id: 'sticky', label: 'Stickies', route: { name: 'layout-activity', params: { mode: 'sticky' } } }
           ],
           panes: [
             { id: 'page', label: 'Header/Footer', route: { name: 'layout-activity', params: { mode: 'header-footer' } } },
             { id: 'panes', label: 'Panes', disabled: true },
             { id: 'windows', label: 'Windows', route: { name: 'layout-activity', params: { mode: 'windows' } } },
             { id: 'fab', label: 'Fab', route: { name: 'layout-activity', params: { mode: 'fab' } } },
-            { id: 'sticky', label: 'Stickies', route: { name: 'layout-activity', params: { mode: 'sticky' } } },
+            { id: 'sticky', label: 'Stickies', route: { name: 'layout-activity', params: { mode: 'sticky' } } }
           ],
           windows: [
             { id: 'page', label: 'Header/Footer', route: { name: 'layout-activity', params: { mode: 'header-footer' } } },
             { id: 'panes', label: 'Panes', route: { name: 'layout-activity', params: { mode: 'panes' } } },
             { id: 'windows', label: 'Windows', color: 'primary', disabled: true },
             { id: 'fab', label: 'Fab', route: { name: 'layout-activity', params: { mode: 'fab' } } },
-            { id: 'sticky', label: 'Stickies', route: { name: 'layout-activity', params: { mode: 'sticky' } } },
+            { id: 'sticky', label: 'Stickies', route: { name: 'layout-activity', params: { mode: 'sticky' } } }
           ],
           fab: [
             { id: 'page', label: 'Header/Footer', route: { name: 'layout-activity', params: { mode: 'header-footer' } } },
             { id: 'panes', label: 'Panes', route: { name: 'layout-activity', params: { mode: 'panes' } } },
             { id: 'windows', label: 'Windows', route: { name: 'layout-activity', params: { mode: 'windows' } } },
             { id: 'fab', label: 'Fab', color: 'primary', disabled: true },
-            { id: 'sticky', label: 'Stickies', route: { name: 'layout-activity', params: { mode: 'sticky' } } },
+            { id: 'sticky', label: 'Stickies', route: { name: 'layout-activity', params: { mode: 'sticky' } } }
           ],
           sticky: [
             { id: 'page', label: 'Header/Footer', route: { name: 'layout-activity', params: { mode: 'header-footer' } } },
             { id: 'panes', label: 'Panes', route: { name: 'layout-activity', params: { mode: 'panes' } } },
             { id: 'windows', label: 'Windows', route: { name: 'layout-activity', params: { mode: 'windows' } } },
             { id: 'fab', label: 'Fab', color: 'primary', route: { name: 'layout-activity', params: { mode: 'fab' } } },
-            { id: 'sticky', label: 'Stickies', disabled: true },
-          ],
+            { id: 'sticky', label: 'Stickies', disabled: true }
+          ]
         }
       },
       right: {
@@ -332,7 +336,7 @@ module.exports = {
     },
     stickies: {
       content: {
-        sticky: [{ id: 'tl-ribbon', position: "top-left", "component.position": 'top-left', component: 'media/KRibbon', visible: false }, { id: 'tr-ribbon', position: "top-right", "component.position": 'top-right', component: 'media/KRibbon', visible: false }, { id: 'bl-ribbon', position: "bottom-left", "component.position": 'bottom-left', component: 'media/KRibbon', visible: false }, { id: 'br-ribbon', position: "bottom-right", "component.position": 'bottom-right', component: 'media/KRibbon', visible: false },]
+        sticky: [{ id: 'tl-ribbon', position: 'top-left', 'component.position': 'top-left', component: 'media/KRibbon', visible: false }, { id: 'tr-ribbon', position: 'top-right', 'component.position': 'top-right', component: 'media/KRibbon', visible: false }, { id: 'bl-ribbon', position: 'bottom-left', 'component.position': 'bottom-left', component: 'media/KRibbon', visible: false }, { id: 'br-ribbon', position: 'bottom-right', 'component.position': 'bottom-right', component: 'media/KRibbon', visible: false }]
       }
     }
   },
@@ -345,18 +349,18 @@ module.exports = {
           text: [
             { id: 'text', label: 'Text', route: { name: 'components-activity', params: { mode: 'text' } } },
             { id: 'graphic', label: 'Graphic', route: { name: 'components-activity', params: { mode: 'graphic' } } },
-            { id: 'time', label: 'Time', route: { name: 'components-activity', params: { mode: 'time' } } },
+            { id: 'time', label: 'Time', route: { name: 'components-activity', params: { mode: 'time' } } }
           ],
           graphic: [
             { id: 'text', label: 'Text', route: { name: 'components-activity', params: { mode: 'text' } } },
             { id: 'graphic', label: 'Graphic', route: { name: 'components-activity', params: { mode: 'graphic' } } },
-            { id: 'time', label: 'Time', route: { name: 'components-activity', params: { mode: 'time' } } },
+            { id: 'time', label: 'Time', route: { name: 'components-activity', params: { mode: 'time' } } }
           ],
           time: [
             { id: 'text', label: 'Text', route: { name: 'components-activity', params: { mode: 'text' } } },
             { id: 'graphic', label: 'Graphic', route: { name: 'components-activity', params: { mode: 'graphic' } } },
-            { id: 'time', label: 'Time', route: { name: 'components-activity', params: { mode: 'time' } } },
-          ],
+            { id: 'time', label: 'Time', route: { name: 'components-activity', params: { mode: 'time' } } }
+          ]
 
         }
       }
@@ -367,7 +371,7 @@ module.exports = {
         graphic: [{ component: 'components/GraphicMode', mode: 'graphic' }],
         time: [{ component: 'components/TimeMode', mode: 'time' }]
       }
-    },
+    }
   },
   documentActivity: {
     panes: {
@@ -415,12 +419,12 @@ module.exports = {
       left: LEFT_PANE,
       top: {
         content: [
-          { component: 'collection/KFilter', label: 'MessagesActivity.SEARCH', fields: ['body', 'author'], style: 'width: 50vw; min-width: 180px; max-width: 500px;' },
+          { component: 'collection/KFilter', label: 'MessagesActivity.SEARCH', fields: ['body', 'author'], style: 'width: 50vw; min-width: 180px; max-width: 500px;' }
         ]
       },
       bottom: {
         content: [
-          { component: 'messages/Composer', class: 'fit' }
+          { component: 'messages/KMessageComposer', class: 'fit' }
         ],
         sizes: { xs: 100, sm: 600, md: 600, lg: 600, xl: 600 },
         visible: true,

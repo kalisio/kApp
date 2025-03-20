@@ -1,5 +1,5 @@
+import kdkCore, { Storage } from '@kalisio/kdk/core.client'
 import logger from 'loglevel'
-import kdkCore from '@kalisio/kdk/core.client'
 import CustomService from './custom.service'
 
 export default async function () {
@@ -10,6 +10,7 @@ export default async function () {
     await api.configure(kdkCore)
     api.createService('documents')
     api.createService('custom', { service: CustomService })
+    Storage.createService()
   } catch (error) {
     logger.error(error.message)
   }
