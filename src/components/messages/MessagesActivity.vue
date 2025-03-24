@@ -13,14 +13,14 @@
 </template>
 
 <script setup>
-import { Store } from '@kalisio/kdk/core.client'
+import { i18n, Store } from '@kalisio/kdk/core.client'
 import config from 'config'
 import _ from 'lodash'
 
 // Data
 const baseQuery = { $sort: { createdAt: -1 } }
 const filter = Store.get('filter')
-const MessageKinds = config.messagesActivity.messages
+const MessageTypes = config.messagesActivity.messages
 const renderer = _.merge(
   { component: 'messages/KMessageCard' },
   config.messagesActivity.items
@@ -30,20 +30,28 @@ const schema = {
   authorField: 'author',
   titleField: 'title',
   colorField: 'color',
-  decorationField: 'decoration',
+  decorationField: 'decorations',
   bodyField: 'body'
 }
 
 // Function
 function process (messages) {
   _.forEach(messages, (message) => {
+    const messageType = message.type ?? message.kind
     // process tags
-    const decoration = []
-    _.forEach(message.tags, (tag) => {
-      decoration.push({ component: 'QChip', label: tag, size: 'sm' })
-    })
-    message.decoration = decoration
-    if (message.kind) message.color = MessageKinds[message.kind].color
+    message.decorations = [
+      {
+        component: 'KChip',
+        name: messageType,
+        label: i18n.t(MessageTypes[messageType].label),
+        color: MessageTypes[messageType].color,
+        textColor: MessageTypes[messageType].textColor,
+        icon: MessageTypes[messageType].icon,
+        dense: true,
+        square: true
+      }
+    ]
+    message.color = MessageTypes[messageType].color
   })
   return messages
 }
