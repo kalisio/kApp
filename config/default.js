@@ -432,9 +432,9 @@ module.exports = {
       }
     },
     messages: {
-      information: { label: 'MessagesActivity.INFORMATION', color: 'grey-7', textColor: 'black', icon: 'las la-info' },
-      warning: { label: 'MessagesActivity.WARNING', color: 'warning', textColor: 'black', icon: 'las la-exclamation' },
-      alert: { label: 'MessagesActivity.ALERT', color: 'negative', textColor: 'white', icon: 'las la-skull-crossbones' }
+      information: { label: 'KMessageComposer.message-type.INFORMATION', color: 'grey-7', textColor: 'black', icon: 'las la-info' },
+      warning: { label: 'KMessageComposer.message-type.WARNING', color: 'warning', textColor: 'black', icon: 'las la-exclamation' },
+      alert: { label: 'KMessageComposer.message-type.ALERT', color: 'negative', textColor: 'white', icon: 'las la-skull-crossbones' }
     }
   },
   collectionActivity: {
