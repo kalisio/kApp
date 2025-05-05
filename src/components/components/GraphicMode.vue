@@ -8,6 +8,9 @@
       <Chips />
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <Icons />
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
       <Logos />
     </div>
   </div>
@@ -16,6 +19,7 @@
 
 <script setup>
 import Chips from './Chips.vue'
+import Icons from './Icons.vue'
 import ColorScales from './ColorScales.vue'
 import Logos from './Logos.vue'
 import Shapes from './Shapes.vue'

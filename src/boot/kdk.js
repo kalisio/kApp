@@ -36,6 +36,7 @@ export default async ({ app }) => {
   app.component('KToggleFullscreenAction', await kdkCoreUtils.loadComponent('action/KToggleFullscreenAction'))
   app.component('KPanel', await kdkCoreUtils.loadComponent('KPanel'))
   app.component('KStamp', await kdkCoreUtils.loadComponent('KStamp'))
+  app.component('KIcon', await kdkCoreUtils.loadComponent('graphics/KIcon'))
   app.component('KChip', await kdkCoreUtils.loadComponent('KChip'))
   app.component('KRibbon', await kdkCoreUtils.loadComponent('media/KRibbon'))
   app.component('KModal', await kdkCoreUtils.loadComponent('KModal'))
