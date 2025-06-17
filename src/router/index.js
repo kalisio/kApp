@@ -4,6 +4,7 @@ import _ from 'lodash'
 import routeConfig from './routes'
 import { Store } from '@kalisio/kdk/core.client'
 import utils from '../utils.js'
+import buildTours from '@kalisio/kdk/core/client/utils/utils.buildTours.js'
 
 /*
  * Helper function used to build the routes
@@ -93,7 +94,7 @@ export default route(function (/* { store, ssrContext } */) {
       step: 0,
       play: false
     }
-  }, utils.buildTours(routeConfig)))
+  }, buildTours(routeConfig)))
 
   return Router
 })
