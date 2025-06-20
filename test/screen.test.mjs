@@ -21,7 +21,7 @@ describe(`suite:${suite}`, () => {
         'k-app-welcome': false,
         'k-app-install': false
       },
-      lang: 'fr-FR',
+      lang: 'fr-FR'
     })
     page = await runner.start()
     user = {
@@ -33,9 +33,9 @@ describe(`suite:${suite}`, () => {
 
   it('screen', async () => {
     await page.click('#left-opener')
-    await page.waitForTimeout(1000)
+    await core.waitForTimeout(1000)
     await page.click('#screen-activity-action')
-    await page.waitForTimeout(1000)
+    await core.waitForTimeout(1000)
     const match = await runner.captureAndMatch('screen')
     expect(match).beTrue()
   })

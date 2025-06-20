@@ -24,7 +24,7 @@ describe(`suite:${suite}`, () => {
         'k-app-welcome': false,
         'k-app-install': false
       },
-      lang: 'fr-FR',
+      lang: 'fr-FR'
     })
     page = await runner.start()
     user = {
@@ -34,10 +34,10 @@ describe(`suite:${suite}`, () => {
     await core.login(page, user)
 
     await page.click('#left-opener')
-    await page.waitForTimeout(1000)
+    await core.waitForTimeout(1000)
 
     await page.click('#components-activity-action')
-    await page.waitForTimeout(1000)
+    await core.waitForTimeout(1000)
   })
 
   it('check text', async () => {
@@ -45,22 +45,22 @@ describe(`suite:${suite}`, () => {
     expect(textModeMatch).beTrue()
 
     await page.click('.q-card:first-child button:has(.la-code)')
-    await page.waitForTimeout(1000)
+    await core.waitForTimeout(1000)
 
     const textModeMatch2 = await runner.captureAndMatch('text2')
     expect(textModeMatch2).beTrue()
-  });
+  })
 
   it('check graphic', async () => {
     await page.click('#graphic')
-    await page.waitForTimeout(1000)
+    await core.waitForTimeout(1000)
     const graphicModeMatch = await runner.captureAndMatch('graphic')
     expect(graphicModeMatch).beTrue()
-  });
+  })
 
   it('check time', async () => {
     await page.click('#time')
-    await page.waitForTimeout(1000)
+    await core.waitForTimeout(1000)
 
     expect(await isElementVisible(page, '#date-picker')).beFalse()
 
@@ -74,13 +74,13 @@ describe(`suite:${suite}`, () => {
 
     // Last KDateTimeRange Date button
     await page.click('#slider-range-max #date-button')
-    await page.waitForTimeout(500)
+    await core.waitForTimeout(500)
     // Next month arrow
     await page.click('.q-date__navigation > div:nth-child(3) > button')
-    await page.waitForTimeout(500)
+    await core.waitForTimeout(500)
     // Last day of month
     await page.click('.q-date__calendar-days > div:nth-child(10) > button')
-    await page.waitForTimeout(500)
+    await core.waitForTimeout(500)
 
     expect(await isSliderDisabled(page)).beFalse()
   })

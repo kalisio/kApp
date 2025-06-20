@@ -36,23 +36,23 @@ describe(`suite:${suite}`, () => {
 
   it('webpush', async () => {
     await page.click('#left-opener')
-    await page.waitForTimeout(1000)
+    await core.waitForTimeout(1000)
     await page.click('#webpush-activity-action')
-    await page.waitForTimeout(1000)
+    await core.waitForTimeout(1000)
     await type(page, '#title-field', 'Title')
     await type(page, '#body-field', 'Content')
     await type(page, '#icon-field', 'https://s3.eu-central-1.amazonaws.com/kalisioscope/kapp/kapp-icon-color-2048x2048.png')
     await type(page, '#url-field', 'https://kalisio.com')
     await core.clickAction(page, 'push-btn')
-    await page.waitForTimeout(1000)
+    await core.waitForTimeout(1000)
   })
 
   it('webpush-clean', async () => {
-    const cancelButtons = await page.$x('//button[contains(text(), "cancel")]')
+    const cancelButtons = await page.$$('xpath/.//button[contains(text(), "cancel")]')
     for (const cancelButton of cancelButtons) {
       await cancelButton.click()
     }
-    await page.waitForTimeout(1000)
+    await core.waitForTimeout(1000)
   })
 
   after(async () => {

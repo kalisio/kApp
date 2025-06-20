@@ -33,16 +33,16 @@ describe(`suite:${suite}`, () => {
     await core.login(page, user)
 
     await page.click('#left-opener')
-    await page.waitForTimeout(500)
+    await core.waitForTimeout(500)
     await page.click('#messages-activity-action')
-    await page.waitForTimeout(500)
+    await core.waitForTimeout(500)
   })
 
   it.skip('check messages count', async () => {
-    await page.waitForTimeout(1500)
+    await core.waitForTimeout(1500)
     const nbMessages = await core.countItems(page, 'messages/KMessageCard')
     console.log('NUMBER OF MESSAGES: ' + nbMessages)
-    await page.waitForTimeout(15000)
+    await core.waitForTimeout(15000)
   })
 
   after(async () => {

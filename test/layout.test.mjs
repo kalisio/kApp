@@ -24,7 +24,7 @@ describe(`suite:${suite}`, () => {
         'k-app-welcome': false,
         'k-app-install': false
       },
-      lang: 'fr-FR',
+      lang: 'fr-FR'
     })
     page = await runner.start()
     user = {
@@ -34,9 +34,9 @@ describe(`suite:${suite}`, () => {
     await core.login(page, user)
 
     await page.click('#left-opener')
-    await page.waitForTimeout(500)
+    await core.waitForTimeout(500)
     await page.click('#layout-activity-action')
-    await page.waitForTimeout(500)
+    await core.waitForTimeout(500)
   })
 
   it('check-header-footer', async () => {
@@ -96,20 +96,20 @@ describe(`suite:${suite}`, () => {
     expect(bottomRightMatch).beTrue()
 
     await page.click('#toggle-bottom-left-fab')
-    await page.waitForTimeout(500)
+    await core.waitForTimeout(500)
     const bottomLeftMatch = await runner.captureAndMatch('bottomLeft')
     expect(bottomLeftMatch).beTrue()
 
     await page.click('#toggle-top-left-fab')
-    await page.waitForTimeout(500)
+    await core.waitForTimeout(500)
     const topLeftMatch = await runner.captureAndMatch('topLeft')
     expect(topLeftMatch).beTrue()
 
     await page.click('#toggle-top-right-fab')
-    await page.waitForTimeout(500)
+    await core.waitForTimeout(500)
     const topRightFab = await runner.captureAndMatch('topRight')
     expect(topRightFab).beTrue()
-  });
+  })
 
   it('check-stickies', async () => {
     await core.clickPaneAction(page, 'top', 'sticky')
@@ -119,18 +119,18 @@ describe(`suite:${suite}`, () => {
 
     await page.click('#toggle-top-left-ribbon')
     await page.click('#toggle-top-right-ribbon')
-    await page.waitForTimeout(500)
+    await core.waitForTimeout(500)
 
     const halfRibbonsMatch = await runner.captureAndMatch('halfRibbons')
     expect(halfRibbonsMatch).beTrue()
 
     await page.click('#toggle-bottom-left-ribbon')
     await page.click('#toggle-bottom-right-ribbon')
-    await page.waitForTimeout(500)
+    await core.waitForTimeout(500)
 
     const allRibbonsMatch = await runner.captureAndMatch('allRibbons')
     expect(allRibbonsMatch).beTrue()
-  });
+  })
 
   after(async () => {
     await core.logout(page)
