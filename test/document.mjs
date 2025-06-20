@@ -1,4 +1,4 @@
-import { core } from '@kalisio/kdk/test.client.js'
+import { core } from './kdk/index.mjs'
 
 async function selectFirstOption(page, selector) {
   await page.click(selector)

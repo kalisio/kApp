@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 
-import { core } from '@kalisio/kdk/test.client.js'
+import { core } from './kdk/index.mjs'
 import chai, { expect, util } from 'chai'
 import chailint from 'chai-lint'
 import faker from 'faker'
@@ -30,7 +30,7 @@ describe(`suite:${suite}`, () => {
     })
     page = await runner.start()
     user = {
-      email: 'kalisio1@kalisio.xyz',
+      email: 'kalisio@kalisio.xyz',
       password: 'Pass;word1'
     }
     await core.login(page, user)

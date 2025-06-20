@@ -39,10 +39,11 @@
     "icons:cp": "shx mkdir -p ./public/kdk && shx cp -R node_modules/@kalisio/kdk/extras/icons/* ./public/kdk",
     "images:cp": "shx mkdir -p ./public/kdk && shx cp -R node_modules/@kalisio/kdk/extras/images/* public/kdk",
     "tours:cp": "shx mkdir -p ./src/tours/kdk && shx cp -R node_modules/@kalisio/kdk/extras/tours/* src/tours/kdk",
+    "tests:cp": "shx mkdir -p ./test/kdk && shx cp -R node_modules/@kalisio/kdk/extras/tests/* ./test/kdk",
     "mocha": "mocha test/**/*.test.mjs --timeout 30000",
     "coverage": "c8 npm run mocha",
     "test:server": "cd api && npm run test",
-    "test:client": "cd test && npm run coverage"
+    "test:client": "npm run tests:cp && cd test && npm run coverage"
   },
   "standard": {
     "parser": "vue-eslint-parser",
@@ -128,9 +129,12 @@
     "eslint-plugin-vue": "^9.1.0",
     "eslint-webpack-plugin": "^3.1.1",
     "mocha": "^10.0.0",
+    "pixelmatch": "^5.2.0",
     "prettier": "^2.5.1",
+    "puppeteer": "^21.11.0",
     "shx": "^0.3.4",
     "standard": "^17.0.0",
+    "superagent": "^5.1.0",
     "webpack-bundle-analyzer": "^4.8.0",
     "workbox-webpack-plugin": "^6.0.0"
   },

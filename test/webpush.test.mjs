@@ -2,8 +2,8 @@
 
 import chai, { util } from 'chai'
 import chailint from 'chai-lint'
-import { core } from '@kalisio/kdk/test.client.js'
-import { type } from '@kalisio/kdk/test/client/core/utils.js'
+import { core } from './kdk/index.mjs'
+import { type } from './kdk/core/utils.mjs'
 
 const suite = 'webpush'
 

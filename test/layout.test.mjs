@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 
-import { core } from '@kalisio/kdk/test.client.js'
+import { core } from './kdk/index.mjs'
 import chai, { expect, util } from 'chai'
 import chailint from 'chai-lint'
 

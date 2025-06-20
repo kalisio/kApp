@@ -1,5 +1,5 @@
 // This test only works in headless mode because the 'misc' activity contains many elements that alter the size of the screenshot.
-import { core } from '@kalisio/kdk/test.client.js'
+import { core } from './kdk/index.mjs'
 import chai, { expect, util } from 'chai'
 import chailint from 'chai-lint'
 import { isSliderDisabled } from './helpers/components.mjs'

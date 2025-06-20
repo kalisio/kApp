@@ -81,6 +81,7 @@ config/kdk
 public/kdk
 src/tours/kdk
 src/css/kdk
+test/kdk
 
 # vitepress
 docs/.vitepress/cache
