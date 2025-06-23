@@ -24,11 +24,11 @@ init_github_build_e2e_tests() {
 }
 
 init_github_build_docs() {
-    install_reqs age sops nvm node18
+    install_reqs age sops nvm node20
 }
 
 init_github_additional_tests() {
-    install_reqs age sops nvm node22 mongo7
+    install_reqs age sops nvm node22 mongo7 mongo8
 }
 
 ### e2e tests runner (dedicated container, outside any CI system)
