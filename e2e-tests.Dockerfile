@@ -55,12 +55,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     fonts-thai-tlwg \
     fonts-kacst \
     fonts-freefont-ttf \
-    libxss1  \
-    xorg \
-    xserver-xorg \
-    xvfb \
-    libx11-dev \
-    libxext-dev \
+    libxss1 \
     --no-install-recommends \
   && rm -rf /var/lib/apt/lists/*
 
