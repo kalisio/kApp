@@ -7,7 +7,7 @@ ARG NODE_VERSION=20
 ## Use a builder
 ##
 
-FROM node:${NODE_VERSION}-${DEBIAN_VERSION}-slim as builder
+FROM node:${NODE_VERSION}-${DEBIAN_VERSION}-slim AS builder
 LABEL maintainer="contact@kalisio.xyz"
 
 COPY . /opt/kalisio
