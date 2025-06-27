@@ -1,9 +1,9 @@
 // This test only works in headless mode because the 'misc' activity contains many elements that alter the size of the screenshot.
-import { core } from './kdk/index.mjs'
 import chai, { expect, util } from 'chai'
 import chailint from 'chai-lint'
 import { isSliderDisabled } from './helpers/components.mjs'
 import { isElementVisible } from './helpers/core.mjs'
+import { core } from './kdk/index.mjs'
 
 const suite = 'components'
 
@@ -24,7 +24,7 @@ describe(`suite:${suite}`, () => {
         'k-app-welcome': false,
         'k-app-install': false
       },
-      lang: 'fr-FR'
+      lang: 'fr'
     })
     page = await runner.start()
     user = {

@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-expressions */
 
-import { core } from './kdk/index.mjs'
 import chai, { expect, util } from 'chai'
 import chailint from 'chai-lint'
 import faker from 'faker'
 import { createDocument, deleteDocumentCard, deleteDocumentItem } from './document.mjs'
+import { core } from './kdk/index.mjs'
 
 const suite = 'app'
 
@@ -26,7 +26,7 @@ describe(`suite:${suite}`, () => {
         'k-app-install': false
       },
       dataDir: 'data/app',
-      lang: 'fr-FR'
+      lang: 'fr'
     })
     page = await runner.start()
     user = {

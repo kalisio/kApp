@@ -1,4 +1,4 @@
-import chai, { util, expect } from 'chai'
+import chai, { expect, util } from 'chai'
 import chailint from 'chai-lint'
 import { core } from './kdk/index.mjs'
 
@@ -21,7 +21,7 @@ describe(`suite:${suite}`, () => {
         'k-app-welcome': false,
         'k-app-install': false
       },
-      lang: 'fr-FR'
+      lang: 'fr'
     })
     page = await runner.start()
     user = {

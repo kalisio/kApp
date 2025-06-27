@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-expressions */
 
-import { core } from './kdk/index.mjs'
 import chai, { util } from 'chai'
 import chailint from 'chai-lint'
+import { core } from './kdk/index.mjs'
 
 const suite = 'messages'
 
@@ -23,7 +23,7 @@ describe(`suite:${suite}`, () => {
         'k-app-welcome': false,
         'k-app-install': false
       },
-      lang: 'fr-FR'
+      lang: 'fr'
     })
     page = await runner.start()
     user = {
