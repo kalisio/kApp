@@ -63,6 +63,7 @@
 </template>
 
 <script setup>
+import moment from 'moment'
 import { composables as kdkCoreComposables } from '@kalisio/kdk/core.client'
 import { ref } from 'vue'
 import { KDateCode, KDateTimeCode, KDateTimeRangeCode, KTimeCode } from '../raw'
@@ -70,10 +71,11 @@ import ComponentCard from './ComponentCard.vue'
 
 // Data
 const { dense } = kdkCoreComposables.useScreen()
-const dateModel = ref(null)
-const timeModel = ref(null)
-const minDateTimeModel = ref(null)
-const maxDateTimeModel = ref(null)
-const dateTimeModel = ref(null)
-const dateTimeRangeModel = ref(null)
+const now = moment()
+const dateModel = ref(now.format('YYYY-MM-DD'))
+const timeModel = ref(now.format('HH:mm:ss'))
+const minDateTimeModel = ref(now.toISOString())
+const maxDateTimeModel = ref(now.toISOString())
+const dateTimeModel = ref(now.toISOString())
+const dateTimeRangeModel = ref({ start: now.toISOString(), end: now.toISOString() })
 </script>

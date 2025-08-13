@@ -30,10 +30,13 @@ export const KDateCode = `<template>
 </template>
 
 <script setup>
+import moment from 'moment'
 import { ref } from 'vue'
+import { composables as kdkCoreComposables } from '@kalisio/kdk/core.client'
 
-const dense = ref(false)
-const dateModel = ref(null)
+const { dense } = kdkCoreComposables.useScreen()
+const now = moment()
+const dateModel = ref(now.format('YYYY-MM-DD'))
 </script>
 `;
 
@@ -42,10 +45,13 @@ export const KTimeCode = `<template>
 </template>
 
 <script setup>
+import moment from 'moment'
 import { ref } from 'vue'
+import { composables as kdkCoreComposables } from '@kalisio/kdk/core.client'
 
-const dense = ref(false)
-const timeModel = ref(null)
+const { dense } = kdkCoreComposables.useScreen()
+const now = moment()
+const dateModel = ref(now.format('HH:mm:ss'))
 </script>
 `;
 
@@ -69,13 +75,15 @@ export const KDateTimeCode = `<template>
 </template>
 
 <script setup>
+import moment from 'moment'
 import { ref } from 'vue'
+import { composables as kdkCoreComposables } from '@kalisio/kdk/core.client'
 
-const dense = ref(false)
-
-const minDateTimeModel = ref(null)
-const maxDateTimeModel = ref(null)
-const dateTimeModel = ref(null)
+const { dense } = kdkCoreComposables.useScreen()
+const now = moment()
+const minDateTimeModel = ref(now.toISOString())
+const maxDateTimeModel = ref(now.toISOString())
+const dateTimeModel = ref(now.toISOString())
 </script>
 `;
 
@@ -103,13 +111,15 @@ export const KDateTimeRangeCode = `<template>
 </template>
 
 <script setup>
+import moment from 'moment'
 import { ref } from 'vue'
+import { composables as kdkCoreComposables } from '@kalisio/kdk/core.client'
 
-const dense = ref(false)
-
-const minDateTimeModel = ref(null)
-const maxDateTimeModel = ref(null)
-const dateTimeModel = ref(null)
-const dateTimeRangeModel = ref(null)
+const { dense } = kdkCoreComposables.useScreen()
+const now = moment()
+const minDateTimeModel = ref(now.toISOString())
+const maxDateTimeModel = ref(now.toISOString())
+const dateTimeModel = ref(now.toISOString())
+const dateTimeRangeModel = ref({ start: now.toISOString(), end: now.toISOString() })
 </script>
 `;
