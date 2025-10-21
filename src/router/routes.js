@@ -85,6 +85,11 @@ module.exports = [{
           name: 'board-activity',
           component: 'board/BoardActivity'
         },
+        'colors/:mode': {
+          name: 'colors-activity',
+          component: 'colors/ColorsActivity',
+          props: true
+        },
         chart: {
           name: 'chart-activity',
           component: 'chart/ChartActivity'

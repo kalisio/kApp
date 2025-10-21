@@ -58,6 +58,11 @@
     "EDIT": "Editer",
     "VIEW": "Visualiser"
   },
+  "ColorsActivity": {
+    "LABEL": "Couleurs",
+    "QUASAR_COLORS": "Couleurs Quasar",
+    "HTML_COLORS": "Couleurs HTML"
+  },
   "ChartActivity": {
     "LABEL": "Graphiques",
     "PIE": "Camembert",

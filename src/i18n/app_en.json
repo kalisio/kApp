@@ -59,6 +59,11 @@
     "EDIT": "Edit",
     "VIEW": "View"
   },
+  "ColorsActivity": {
+    "LABEL": "Colors",
+    "QUASAR_COLORS": "Quasar Colors",
+    "HTML_COLORS": "HTML Colors"
+  },
   "ChartActivity": {
     "LABEL": "Charts",
     "PIE": "Pie",

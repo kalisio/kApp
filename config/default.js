@@ -31,6 +31,7 @@ const LEFT_PANE = {
     leftPane.activityLink({ name: 'messages', icon: 'las la-comments', label: 'MessagesActivity.LABEL' }),
     leftPane.activityLink({ name: 'collection', icon: 'las la-list', label: 'CollectionActivity.LABEL', params: { page: 'list' } }),
     leftPane.activityLink({ name: 'board', icon: 'dashboard', label: 'KanbanActivity.LABEL' }),
+    leftPane.activityLink({ name: 'colors', icon: 'las la-palette', label: 'ColorsActivity.LABEL', params: { mode: 'quasar' } }),
     leftPane.activityLink({ name: 'chart', icon: 'las la-chart-pie', label: 'ChartActivity.LABEL' }),
     leftPane.activityLink({ name: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL' }),
     leftPane.activityLink({ name: 'webpush', icon: 'las la-bell', label: 'WebPushActivity.LABEL' }),
@@ -361,7 +362,6 @@ module.exports = {
             { id: 'graphic', label: 'Graphic', route: { name: 'components-activity', params: { mode: 'graphic' } } },
             { id: 'time', label: 'Time', route: { name: 'components-activity', params: { mode: 'time' } } }
           ]
-
         }
       }
     },
@@ -546,6 +546,29 @@ module.exports = {
       { name: 'déclin' }
     ],
     categoryField: 'etat_sani'
+  },
+  colorsActivity: {
+    panes: {
+      left: LEFT_PANE,
+      top: {
+        content: {
+          quasar: [
+            { id: 'quasar-colors', label: 'ColorsActivity.QUASAR_COLORS', route: { name: 'colors-activity', params: { mode: 'quasar' } } },
+            { id: 'html-colors', label: 'ColorsActivity.HTML_COLORS', route: { name: 'colors-activity', params: { mode: 'html' } } }
+          ],
+          html: [
+            { id: 'quasar-colors', label: 'ColorsActivity.QUASAR_COLORS', route: { name: 'colors-activity', params: { mode: 'quasar' } } },
+            { id: 'html-colors', label: 'ColorsActivity.HTML_COLORS', route: { name: 'colors-activity', params: { mode: 'html' } } }
+          ]
+        }
+      }
+    },
+    page: {
+      content: {
+        quasar: [{ component: 'colors/QuasarColors', mode: 'quasar' }],
+        html: [{ component: 'colors/HtmlColors', mode: 'html' }]
+      }
+    }
   },
   chartActivity: {
     panes: {
