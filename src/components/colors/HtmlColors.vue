@@ -1,11 +1,11 @@
 <template>
-  <KScrollArea class="full-height flex flex-center">
-    <div class="row items-center justify-center" style="font-size: large;">
-      <KChip v-for="(value, key) in kdkCoreUtils.HtmlPalette" :color="value" class="detailed-color text-white column flex-center q-px-md">
+  <div class="full-height flex flex-center">
+    <div class="row flex-center" style="font-size: large;">
+      <KChip v-for="(value, key) in kdkCoreUtils.HtmlPalette" :color="value" class="detailed-color column q-px-md">
         {{ key }}
       </KChip>
     </div>
-  </KScrollArea>
+  </div>
 </template>
 
 <script setup>

@@ -1,11 +1,11 @@
 <template>
   <KScrollArea class="full-height">
-    <div class="full-width full-height q-gutter-md row items-center justify-center" style="font-size: large;">
+    <div class="full-width full-height q-gutter-md row flex-center" style="font-size: large;">
       <q-card v-for="family of kdkCoreUtils.QuasarFamilies" flat class="column">
-        <KChip square :color="family" class="column flex flex-center text-white q-ma-none">
+        <KChip square :color="family" class="column flex text-white q-ma-none">
           {{ family }}
         </KChip>
-        <KChip square v-for="color in 14" :color="`${family}-${color}`" class="column flex-center text-white detailed-color q-ma-none">
+        <KChip square v-for="color in 14" :color="`${family}-${color}`" class="column text-white detailed-color q-ma-none">
           {{ `${family}-${color}` }}
         </KChip>
       </q-card>
