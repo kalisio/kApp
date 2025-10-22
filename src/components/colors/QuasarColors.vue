@@ -1,14 +1,14 @@
 <template>
   <KScrollArea class="full-height">
     <div class="full-width full-height q-gutter-md row flex-center" style="font-size: large;">
-      <q-card v-for="family of kdkCoreUtils.QuasarFamilies" flat class="column">
-        <KChip square :color="family" class="column flex text-white q-ma-none">
+      <div v-for="family of kdkCoreUtils.QuasarFamilies" class="column">
+        <KChip square :color="family">
           {{ family }}
         </KChip>
-        <KChip square v-for="color in 14" :color="`${family}-${color}`" class="column text-white detailed-color q-ma-none">
+        <KChip square v-for="color in 14" :color="`${family}-${color}`">
           {{ `${family}-${color}` }}
         </KChip>
-      </q-card>
+      </div>
     </div>
   </KScrollArea>
 </template>
@@ -26,8 +26,3 @@ defineExpose({
 })
 </script>
 
-<style lang="scss">
-  .detailed-color {
-    height: 40px;
-  }
-</style>

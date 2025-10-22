@@ -1,7 +1,7 @@
 <template>
-  <div class="full-height flex flex-center">
-    <div class="row flex-center" style="font-size: large;">
-      <KChip v-for="(value, key) in kdkCoreUtils.HtmlPalette" :color="value" class="detailed-color column q-px-md">
+  <div class="full-height column justify-center">
+    <div class="row items-center">
+      <KChip v-for="(value, key) in kdkCoreUtils.HtmlPalette" :color="value" class="q-px-md">
         {{ key }}
       </KChip>
     </div>
@@ -21,8 +21,3 @@ defineExpose({
 })
 </script>
 
-<style lang="scss">
-  .detailed-color {
-    height: 40px;
-  }
-</style>
