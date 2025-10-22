@@ -7,6 +7,7 @@
     "name": {
       "type": "string",
       "field": {
+        "focus": true,
         "component": "form/KTextField",
         "label": "ID de l'arbre"
       }
