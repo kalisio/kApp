@@ -2,7 +2,7 @@ import { precacheAndRoute } from 'workbox-precaching'
 import { registerRoute } from 'workbox-routing'
 import { NetworkFirst } from 'workbox-strategies'
 
-// Disable workbox logs 
+// Disable workbox logs
 self.__WB_DISABLE_DEV_LOGS = true
 
 // Activate new service worker

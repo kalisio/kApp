@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md row justify-center items-center q-gutter-md row">
-    <div v-for="family of kdkCoreUtils.QuasarFamilies" class="column">
+    <div v-for="family of QuasarFamilies" class="column">
       <KChip square :color="family">
         {{ family }}
       </KChip>
@@ -16,7 +16,11 @@ import { utils as kdkCoreUtils, composables as kdkCoreComposables } from '@kalis
 
 // Data
 const { setTopPaneMode } = kdkCoreComposables.useLayout()
-
+const QuasarFamilies = [
+  'red', 'pink', 'purple', 'deep-purple', 'indigo', 'blue', 'light-blue',
+  'cyan', 'teal', 'green', 'light-green', 'lime', 'yellow', 'amber',
+  'orange', 'deep-orange', 'brown', 'grey', 'blue-grey'
+]
 // Expose
 defineExpose({
   // must be exposed in order to be known by the handlers in the config

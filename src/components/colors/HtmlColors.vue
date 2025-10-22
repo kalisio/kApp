@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md row justify-center items-center q-gutter-sm">
+  <div class="q-pa-md row justify-centeritems-center q-gutter-sm">
     <KChip v-for="(value, key) in kdkCoreUtils.HtmlPalette" :color="value">
       {{ key }}
     </KChip>
