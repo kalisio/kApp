@@ -1,10 +1,8 @@
 <template>
-  <div class="full-height column justify-center">
-    <div class="row items-center">
-      <KChip v-for="(value, key) in kdkCoreUtils.HtmlPalette" :color="value" class="q-px-md">
-        {{ key }}
-      </KChip>
-    </div>
+  <div class="q-pa-md row justify-center items-center q-gutter-sm">
+    <KChip v-for="(value, key) in kdkCoreUtils.HtmlPalette" :color="value">
+      {{ key }}
+    </KChip>
   </div>
 </template>
 

@@ -1,16 +1,14 @@
 <template>
-  <KScrollArea class="full-height">
-    <div class="full-width full-height q-gutter-md row flex-center" style="font-size: large;">
-      <div v-for="family of kdkCoreUtils.QuasarFamilies" class="column">
-        <KChip square :color="family">
-          {{ family }}
-        </KChip>
-        <KChip square v-for="color in 14" :color="`${family}-${color}`">
-          {{ `${family}-${color}` }}
-        </KChip>
-      </div>
+  <div class="q-pa-md row justify-center items-center q-gutter-md row">
+    <div v-for="family of kdkCoreUtils.QuasarFamilies" class="column">
+      <KChip square :color="family">
+        {{ family }}
+      </KChip>
+      <KChip square v-for="color in 14" :color="`${family}-${color}`">
+        {{ `${family}-${color}` }}
+      </KChip>
     </div>
-  </KScrollArea>
+  </div>
 </template>
 
 <script setup>
