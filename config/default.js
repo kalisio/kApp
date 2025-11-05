@@ -227,8 +227,6 @@ module.exports = {
   },
   account: {
     sections: [
-      { title: 'KPasswordManager.TITLE', component: 'account/KPasswordManager', id: 'password-manager' },
-      { title: 'KEmailManager.TITLE', component: 'account/KEmailManager', id: 'email-manager' },
       {
         title: 'KSubscriptionsManager.TITLE',
         component: 'account/KSubscriptionsManager',
