@@ -180,6 +180,9 @@ module.exports = {
       }
     ]
   },
+  profile: {
+    header: 'components/ProfileHeader'
+  },
   screens: {
     // header: 'screen/KScreenHeader',
     // footer: 'screen/KScreenFooter',
