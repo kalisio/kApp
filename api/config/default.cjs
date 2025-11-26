@@ -209,6 +209,7 @@ module.exports = {
       prefix: 'tmp'
     },
     workingDir: process.env.TMP_DIR || 'tmp',
+    allowedServicePaths: 'documents'
   },
   push: {
     vapidDetails: {
