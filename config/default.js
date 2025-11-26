@@ -35,6 +35,7 @@ const LEFT_PANE = {
     leftPane.activityLink({ name: 'chart', icon: 'las la-chart-pie', label: 'ChartActivity.LABEL' }),
     leftPane.activityLink({ name: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL' }),
     leftPane.activityLink({ name: 'webpush', icon: 'las la-bell', label: 'WebPushActivity.LABEL' }),
+    leftPane.activityLink({ name: 'tags', icon: 'las la-tags', label: 'TagsActivity.LABEL' }),
     helpers.horizontalSeparator(),
     leftPane.contextualHelp(),
     leftPane.about(),
@@ -613,6 +614,66 @@ module.exports = {
   webpushActivity: {
     panes: {
       left: LEFT_PANE
+    }
+  },
+  tagsActivity: {
+    panes: {
+      left: LEFT_PANE,
+      top: {
+        content: [
+          {
+            component: 'collection/KFilter',
+            label: 'TagsActivity.SEARCH',
+            fields: ['name'],
+            style: 'width: 50vw; min-width: 200px; max-width: 500px;'
+          },
+          {
+            component: 'collection/KSorter',
+            tooltip: 'TagsActivity.SORT'
+          }
+        ]
+      }
+    },
+    items: {
+      actions: [
+        {
+          id: 'edit-tag',
+          icon: 'las la-edit',
+          tooltip: 'TagsActivity.EDIT',
+          dialog: {
+            component: 'KEditor',
+            service: 'tags',
+            okAction: 'APPLY'
+          }
+        },
+        {
+          id: 'delete-tag',
+          icon: 'las la-trash',
+          label: 'TagsActivity.DELETE',
+          handler: { name: 'removeItem', params: ['confirm'] }
+        }
+      ]
+    },
+    fab: {
+      content: [
+        {
+          id: 'create-tag',
+          icon: 'las la-plus',
+          tooltip: 'TagsActivity.CREATE',
+          dialog: {
+            title: 'TagsActivity.CREATE',
+            component: 'KEditor',
+            service: 'tags',
+            schema: 'tags.create',
+            okAction: {
+              id: 'apply-button',
+              label: 'APPLY',
+              handler: 'apply'
+            },
+            cancelAction: 'CANCEL'
+          }
+        }
+      ]
     }
   },
   routes: require('../src/router/routes')

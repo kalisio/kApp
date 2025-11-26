@@ -130,5 +130,17 @@
     "ICON": "Url de l'icône",
     "URL": "Url de redirection",
     "FORM_TITLE": "Personnalisation de la notification web"
+  },
+  "TagsActivity": {
+    "LABEL": "Tags",
+    "SEARCH": "Rechercher...",
+    "SORT": "Trier",
+    "EDIT": "Éditer",
+    "DELETE": "Supprimer",
+    "CREATE": "Créer une nouvelle étiquette",
+    "CREATE_NEW_TAG": "Créer une nouvelle étiquette ?",
+    "NAME": "Nom de l'étiquette",
+    "COLOR": "Couleur de l'étiquette",
+    "DESCRIPTION": "Description de l'étiquette"
   }
 }

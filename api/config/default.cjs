@@ -220,7 +220,8 @@ module.exports = {
     // By default push service is not accessible externally
     disallowExternalPush: false
   },
-  messages: {}
+  messages: {},
+  tags: {}
 }
 
 /*

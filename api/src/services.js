@@ -42,6 +42,11 @@ export default async function () {
     modelsPath: path.join(__dirname, 'models')
   })
 
+  await app.createService('tags', {
+    servicesPath: '',
+    modelsPath: path.join(__dirname, 'models')
+  })
+
   // Create the default user
   const usersService = app.getService('users')
   const defaultUsers = app.get('authentication').defaultUsers

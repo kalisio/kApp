@@ -131,5 +131,13 @@
     "ICON": "Icon url",
     "URL": "Redirection url",
     "FORM_TITLE": "Customize web notification"
+  },
+  "TagsActivity": {
+    "LABEL": "Tags",
+    "SEARCH": "Search...",
+    "SORT": "Sort",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "CREATE": "Create new tag"
   }
 }

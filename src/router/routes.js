@@ -94,6 +94,10 @@ module.exports = [{
           name: 'chart-activity',
           component: 'chart/ChartActivity'
         },
+        tags: {
+          name: 'tags-activity',
+          component: 'tags/TagsActivity'
+        },
         editor: {
           name: 'editor-activity',
           component: 'editor/EditorActivity',

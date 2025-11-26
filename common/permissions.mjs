@@ -15,6 +15,7 @@ export function defineUserAbilities (subject, can, cannot, app) {
     can('all', 'documents')
     can('service', 'storage')
     can('all', 'storage')
+    can('all', 'tags')
     can(
       [
         'createMultipartUpload',
