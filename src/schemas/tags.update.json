@@ -29,5 +29,5 @@
       }
     }
   },
-  "required": ["name", "color"]
+  "required": ["name"]
 }

@@ -641,9 +641,22 @@ module.exports = {
           icon: 'las la-edit',
           tooltip: 'TagsActivity.EDIT',
           dialog: {
+            title: ':item.name',
             component: 'KEditor',
             service: 'tags',
-            okAction: 'APPLY'
+            object: ':item',
+            baseObject: {
+              service: ':item.service',
+              property: ':item.property'
+            },
+            hideButtons: true,
+            schema: 'tags.update',
+            cancelAction: 'CANCEL',
+            okAction: {
+              id: 'ok-button',
+              label: 'APPLY',
+              handler: 'apply'
+            }
           }
         },
         {
@@ -665,7 +678,10 @@ module.exports = {
             component: 'KEditor',
             service: 'tags',
             schema: 'tags.create',
-            baseObject: { scope: 'user' },
+            baseObject: { scope: 'user',
+              service: 'documents',
+              property: 'tags'
+             },
             okAction: {
               id: 'apply-button',
               label: 'APPLY',

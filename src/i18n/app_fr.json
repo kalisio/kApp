@@ -4,7 +4,8 @@
     "EDIT": "Editer",
     "VIEW": "Visualiser",
     "DELETE": "Supprimer",
-    "EXPORT": "Exporter"
+    "EXPORT": "Exporter",
+    "TAGS": "Étiquettes"
   },
   "screen": {
     "LOGIN_WITH_KEYCLOAK": "Se connecter avec Keycloak ?",

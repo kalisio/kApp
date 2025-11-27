@@ -4,7 +4,8 @@
     "EDIT": "Edit",
     "VIEW": "View",
     "DELETE": "Delete",
-    "EXPORT": "Export"
+    "EXPORT": "Export",
+    "TAGS": "Tags"
   },
   "screen": {
     "LOGIN_WITH_KEYCLOAK": "Login with Keycloak ?",

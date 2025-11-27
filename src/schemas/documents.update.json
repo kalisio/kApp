@@ -19,6 +19,26 @@
         "label": "Icône"
       }
     },
+    "tags": {
+      "type": "array",
+      "minLength": 3,
+      "maxLength": 256,
+      "services": [
+        {
+          "service": "tags",
+          "field": "name",
+          "description": "label"
+        }
+      ],
+      "field": {
+        "component": "form/KTagField",
+        "label": "KTagManager.TITLE",
+        "service": "documents",
+        "property": "tags"
+      },
+      "multiselect": true,
+      "minCharsToSearch": 0
+    },
     "status": {
       "type": "string", 
       "field": {
