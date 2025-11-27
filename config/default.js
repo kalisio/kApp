@@ -665,6 +665,7 @@ module.exports = {
             component: 'KEditor',
             service: 'tags',
             schema: 'tags.create',
+            baseObject: { scope: 'user' },
             okAction: {
               id: 'apply-button',
               label: 'APPLY',
