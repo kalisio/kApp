@@ -98,6 +98,10 @@ module.exports = [{
           name: 'tags-activity',
           component: 'tags/TagsActivity'
         },
+        // tagged_collections: {
+        //   name: 'tagged-collections-activity',
+        //   component: 'tags/TaggedCollectionsActivity'
+        // },
         editor: {
           name: 'editor-activity',
           component: 'editor/EditorActivity',

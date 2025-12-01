@@ -221,7 +221,8 @@ module.exports = {
     disallowExternalPush: false
   },
   messages: {},
-  tags: {}
+  tags: {},
+  TaggedCollections: {}
 }
 
 /*

@@ -31,15 +31,16 @@ const LEFT_PANE = {
     leftPane.activityLink({ name: 'messages', icon: 'las la-comments', label: 'MessagesActivity.LABEL' }),
     leftPane.activityLink({ name: 'collection', icon: 'las la-list', label: 'CollectionActivity.LABEL', params: { page: 'list' } }),
     leftPane.activityLink({ name: 'board', icon: 'dashboard', label: 'KanbanActivity.LABEL' }),
+    leftPane.activityLink({ name: 'colors', icon: 'las la-palette', label: 'ColorsActivity.LABEL', params: { mode: 'quasar' } }),
+    leftPane.activityLink({ name: 'chart', icon: 'las la-chart-pie', label: 'ChartActivity.LABEL' }),
+    leftPane.activityLink({ name: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL' }),
+    leftPane.activityLink({ name: 'webpush', icon: 'las la-bell', label: 'WebPushActivity.LABEL' }),
     {
       component: 'ActivityLinks',
       class: 'full-width',
       activities: [
-        leftPane.activityLink({ name: 'colors', icon: 'las la-palette', label: 'ColorsActivity.LABEL', params: { mode: 'quasar' } }),
-        leftPane.activityLink({ name: 'chart', icon: 'las la-chart-pie', label: 'ChartActivity.LABEL' }),
-        leftPane.activityLink({ name: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL' }),
-        leftPane.activityLink({ name: 'webpush', icon: 'las la-bell', label: 'WebPushActivity.LABEL' }),
         leftPane.activityLink({ name: 'tags', icon: 'las la-tags', label: 'TagsActivity.LABEL' }),
+        //leftPane.activityLink({ name: 'tagged-collections', icon: 'las la-filter', label: 'TagsActivity.LABEL' }),
       ]
     },
     helpers.horizontalSeparator(),
@@ -698,6 +699,83 @@ module.exports = {
         }
       ]
     }
-  },
+   },
+  // taggedCollectionsActivity: {
+  //   panes: {
+  //     left: LEFT_PANE,
+  //     top: {
+  //       content: [
+  //         {
+  //           component: 'collection/KFilter',
+  //           label: 'TagsActivity.SEARCH',
+  //           fields: ['name'],
+  //           style: 'width: 50vw; min-width: 200px; max-width: 500px;'
+  //         },
+  //         {
+  //           component: 'collection/KSorter',
+  //           tooltip: 'TagsActivity.SORT'
+  //         }
+  //       ]
+  //     }
+  //   },
+  //   items: {
+  //     actions: [
+  //       {
+  //         id: 'edit-tag',
+  //         icon: 'las la-edit',
+  //         tooltip: 'TagsActivity.EDIT',
+  //         dialog: {
+  //           title: ':item.name',
+  //           component: 'KEditor',
+  //           service: 'tags',
+  //           object: ':item',
+  //           baseObject: {
+  //             service: ':item.service',
+  //             property: ':item.property'
+  //           },
+  //           hideButtons: true,
+  //           schema: 'tags.update',
+  //           cancelAction: 'CANCEL',
+  //           okAction: {
+  //             id: 'ok-button',
+  //             label: 'APPLY',
+  //             handler: 'apply'
+  //           }
+  //         }
+  //       },
+  //       {
+  //         id: 'delete-tag',
+  //         icon: 'las la-trash',
+  //         tooltip: 'TagsActivity.DELETE',
+  //         handler: { name: 'removeItem', params: ['confirm'] }
+  //       }
+  //     ]
+  //   },
+  //   fab: {
+  //     content: [
+  //       {
+  //         id: 'create-tag',
+  //         icon: 'las la-plus',
+  //         tooltip: 'TagsActivity.CREATE',
+  //         dialog: {
+  //           title: 'TagsActivity.CREATE',
+  //           component: 'KEditor',
+  //           service: 'tags',
+  //           schema: 'tags.create',
+  //           baseObject: { scope: 'user',
+  //             service: 'documents',
+  //             property: 'tags'
+  //            },
+  //           okAction: {
+  //             id: 'apply-button',
+  //             label: 'APPLY',
+  //             handler: 'apply'
+  //           },
+  //           cancelAction: 'CANCEL'
+  //         }
+  //       }
+  //     ]
+  //   }
+  // },
   routes: require('../src/router/routes')
 }

@@ -16,6 +16,7 @@ export function defineUserAbilities (subject, can, cannot, app) {
     can('service', 'storage')
     can('all', 'storage')
     can('all', 'tags')
+    can('all', 'tagged-collections')
     can(
       [
         'createMultipartUpload',
