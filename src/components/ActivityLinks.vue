@@ -10,6 +10,7 @@
         id="profile-header"
         :content="activities"
         class="q-py-sm full-width justify-end no-wrap"
+        direction="vertical"
         @triggered="onTriggered"
       />
     </q-expansion-item>
