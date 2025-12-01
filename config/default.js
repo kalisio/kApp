@@ -31,11 +31,17 @@ const LEFT_PANE = {
     leftPane.activityLink({ name: 'messages', icon: 'las la-comments', label: 'MessagesActivity.LABEL' }),
     leftPane.activityLink({ name: 'collection', icon: 'las la-list', label: 'CollectionActivity.LABEL', params: { page: 'list' } }),
     leftPane.activityLink({ name: 'board', icon: 'dashboard', label: 'KanbanActivity.LABEL' }),
-    leftPane.activityLink({ name: 'colors', icon: 'las la-palette', label: 'ColorsActivity.LABEL', params: { mode: 'quasar' } }),
-    leftPane.activityLink({ name: 'chart', icon: 'las la-chart-pie', label: 'ChartActivity.LABEL' }),
-    leftPane.activityLink({ name: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL' }),
-    leftPane.activityLink({ name: 'webpush', icon: 'las la-bell', label: 'WebPushActivity.LABEL' }),
-    leftPane.activityLink({ name: 'tags', icon: 'las la-tags', label: 'TagsActivity.LABEL' }),
+    {
+      component: 'ActivityLinks',
+      class: 'full-width',
+      activities: [
+        leftPane.activityLink({ name: 'colors', icon: 'las la-palette', label: 'ColorsActivity.LABEL', params: { mode: 'quasar' } }),
+        leftPane.activityLink({ name: 'chart', icon: 'las la-chart-pie', label: 'ChartActivity.LABEL' }),
+        leftPane.activityLink({ name: 'editor', icon: 'las la-edit', label: 'EditorActivity.LABEL' }),
+        leftPane.activityLink({ name: 'webpush', icon: 'las la-bell', label: 'WebPushActivity.LABEL' }),
+        leftPane.activityLink({ name: 'tags', icon: 'las la-tags', label: 'TagsActivity.LABEL' }),
+      ]
+    },
     helpers.horizontalSeparator(),
     leftPane.contextualHelp(),
     leftPane.about(),
@@ -662,7 +668,7 @@ module.exports = {
         {
           id: 'delete-tag',
           icon: 'las la-trash',
-          label: 'TagsActivity.DELETE',
+          tooltip: 'TagsActivity.DELETE',
           handler: { name: 'removeItem', params: ['confirm'] }
         }
       ]
