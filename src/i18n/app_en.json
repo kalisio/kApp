@@ -5,7 +5,8 @@
     "VIEW": "View",
     "DELETE": "Delete",
     "EXPORT": "Export",
-    "TAGS": "Tags"
+    "TAGS": "Tags",
+    "CREATE": "Create Document"
   },
   "screen": {
     "LOGIN_WITH_KEYCLOAK": "Login with Keycloak ?",
@@ -135,6 +136,14 @@
   },
   "TagsActivity": {
     "LABEL": "Tags",
+    "SEARCH": "Search...",
+    "SORT": "Sort",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "CREATE": "Create new tag"
+  },
+  "TaggedCollectionActivity": {
+    "LABEL": "Tagged Collections",
     "SEARCH": "Search...",
     "SORT": "Sort",
     "EDIT": "Edit",

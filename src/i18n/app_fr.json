@@ -5,7 +5,8 @@
     "VIEW": "Visualiser",
     "DELETE": "Supprimer",
     "EXPORT": "Exporter",
-    "TAGS": "Étiquettes"
+    "TAGS": "Étiquettes",
+    "CREATE": "Créer une collection"
   },
   "screen": {
     "LOGIN_WITH_KEYCLOAK": "Se connecter avec Keycloak ?",
@@ -143,5 +144,12 @@
     "NAME": "Nom de l'étiquette",
     "COLOR": "Couleur de l'étiquette",
     "DESCRIPTION": "Description de l'étiquette"
+  },
+  "TaggedCollectionActivity": {
+    "LABEL": "Collections épinglées",
+    "SEARCH": "Rechercher...",
+    "SORT": "Trier",
+    "EDIT": "Éditer",
+    "DELETE": "Supprimer"
   }
 }

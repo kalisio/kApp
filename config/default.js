@@ -1,5 +1,6 @@
 const leftPane = require('./kdk/panes.left')
 const helpers = require('./kdk/helpers')
+const stickies = require('./kdk/stickies.js')
 
 const website = 'https://kalisio.com'
 
@@ -39,8 +40,9 @@ const LEFT_PANE = {
       component: 'ActivityLinks',
       class: 'full-width',
       activities: [
-        leftPane.activityLink({ name: 'tags', icon: 'las la-tags', label: 'TagsActivity.LABEL' }),
-        //leftPane.activityLink({ name: 'tagged-collections', icon: 'las la-filter', label: 'TagsActivity.LABEL' }),
+        leftPane.activityLink({ name: 'tags', icon: 'las la-tag', label: 'TagsActivity.LABEL' }),
+        leftPane.activityLink({ name: 'tagged-collections', icon: 'las la-bookmark', label: 'TaggedCollectionActivity.LABEL' })
+        //leftPane.activityLink({ name: 'tagged-collections', icon: 'las la-list-ul', label: 'TaggedCollectionActivity.LABEL' }),
       ]
     },
     helpers.horizontalSeparator(),
@@ -699,83 +701,75 @@ module.exports = {
         }
       ]
     }
-   },
-  // taggedCollectionsActivity: {
-  //   panes: {
-  //     left: LEFT_PANE,
-  //     top: {
-  //       content: [
-  //         {
-  //           component: 'collection/KFilter',
-  //           label: 'TagsActivity.SEARCH',
-  //           fields: ['name'],
-  //           style: 'width: 50vw; min-width: 200px; max-width: 500px;'
-  //         },
-  //         {
-  //           component: 'collection/KSorter',
-  //           tooltip: 'TagsActivity.SORT'
-  //         }
-  //       ]
-  //     }
-  //   },
-  //   items: {
-  //     actions: [
-  //       {
-  //         id: 'edit-tag',
-  //         icon: 'las la-edit',
-  //         tooltip: 'TagsActivity.EDIT',
-  //         dialog: {
-  //           title: ':item.name',
-  //           component: 'KEditor',
-  //           service: 'tags',
-  //           object: ':item',
-  //           baseObject: {
-  //             service: ':item.service',
-  //             property: ':item.property'
-  //           },
-  //           hideButtons: true,
-  //           schema: 'tags.update',
-  //           cancelAction: 'CANCEL',
-  //           okAction: {
-  //             id: 'ok-button',
-  //             label: 'APPLY',
-  //             handler: 'apply'
-  //           }
-  //         }
-  //       },
-  //       {
-  //         id: 'delete-tag',
-  //         icon: 'las la-trash',
-  //         tooltip: 'TagsActivity.DELETE',
-  //         handler: { name: 'removeItem', params: ['confirm'] }
-  //       }
-  //     ]
-  //   },
-  //   fab: {
-  //     content: [
-  //       {
-  //         id: 'create-tag',
-  //         icon: 'las la-plus',
-  //         tooltip: 'TagsActivity.CREATE',
-  //         dialog: {
-  //           title: 'TagsActivity.CREATE',
-  //           component: 'KEditor',
-  //           service: 'tags',
-  //           schema: 'tags.create',
-  //           baseObject: { scope: 'user',
-  //             service: 'documents',
-  //             property: 'tags'
-  //            },
-  //           okAction: {
-  //             id: 'apply-button',
-  //             label: 'APPLY',
-  //             handler: 'apply'
-  //           },
-  //           cancelAction: 'CANCEL'
-  //         }
-  //       }
-  //     ]
-  //   }
-  // },
+  },
+  taggedCollectionsActivity: {
+    panes: {
+      left: LEFT_PANE,
+      top: {
+        content: [
+          { component: 'collection/KFilter', label: 'TagsActivity.SEARCH', fields: ['name'], style: 'width: 50vw; min-width: 200px; max-width: 500px;' },
+          { component: 'collection/KSorter' },
+          { component: 'collection/KTagsFilterControl', tooltip: 'StylesActivity.FILTER_BY_TAGS' },
+          collectionExport
+        ]
+      }
+    },
+    stickies: {
+      content: [stickies.filterView()]
+    },
+    items: {
+      actions: [
+        {
+          id: 'edit-collection',
+          icon: 'las la-edit',
+          tooltip: 'Documents.EDIT',
+          dialog: {
+            title: ':item.name',
+            component: 'KEditor',
+            service: 'documents',
+            object: ':item',
+            hideButtons: true,
+            schema: 'documents.update',
+            cancelAction: 'CANCEL',
+            okAction: {
+              id: 'ok-button',
+              label: 'APPLY',
+              handler: 'apply'
+            }
+          }
+        },
+        {
+          id: 'delete-collection',
+          icon: 'las la-trash',
+          tooltip: 'Documents.DELETE',
+          handler: { name: 'removeItem', params: ['confirm'] }
+        }
+      ]
+    },
+    fab: {
+      content: [
+        {
+          id: 'create-collection',
+          icon: 'las la-plus',
+          tooltip: 'Documents.CREATE',
+          dialog: {
+            title: 'Documents.CREATE',
+            component: 'KEditor',
+            service: 'documents',
+            schema: 'documents.create',
+            baseObject: { scope: 'user',
+              service: 'documents'
+             },
+            okAction: {
+              id: 'apply-button',
+              label: 'APPLY',
+              handler: 'apply'
+            },
+            cancelAction: 'CANCEL'
+          }
+        }
+      ]
+    }
+  },
   routes: require('../src/router/routes')
 }
