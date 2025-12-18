@@ -3,7 +3,6 @@ import { createRouter, createMemoryHistory, createWebHistory, createWebHashHisto
 import _ from 'lodash'
 import routeConfig from './routes'
 import { Store } from '@kalisio/kdk/core.client'
-import utils from '../utils.js'
 import buildTours from '@kalisio/kdk/core/client/utils/utils.tours.js'
 
 /*
