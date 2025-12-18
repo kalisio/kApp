@@ -1,3 +1,4 @@
+/* global location */
 import logger from 'loglevel'
 import { register } from 'register-service-worker'
 import { Events } from '@kalisio/kdk/core.client'
