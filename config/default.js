@@ -259,8 +259,9 @@ module.exports = {
   layoutActivity: {
     header: {
       content: {
-        'header-footer': [{ component: 'layout/Header' }]
-      }
+        'header-footer': [{ component: 'layout/Header' }],
+      },
+      visible: true
     },
     footer: {
       content: {
