@@ -4,6 +4,7 @@
 
 [![Latest Release](https://img.shields.io/github/v/tag/kalisio/kapp?sort=semver&label=latest)](https://github.com/kalisio/kapp/releases)
 [![CI](https://github.com/kalisio/kapp/actions/workflows/main.yaml/badge.svg)](https://github.com/kalisio/kapp/actions/workflows/main.yaml)
+[![Quality Gate Status](https://sonar.portal.kalisio.com/api/project_badges/measure?project=kalisio-kapp&metric=alert_status&token=sqb_b5ab005f5b7a383f0d4fd3ce66993ab13ae26b7b)](https://sonar.portal.kalisio.com/dashboard?id=kalisio-kapp)
 [![Maintainability Issues](https://sonar.portal.kalisio.com/api/project_badges/measure?project=kalisio-kapp&metric=software_quality_maintainability_issues&token=sqb_b5ab005f5b7a383f0d4fd3ce66993ab13ae26b7b)](https://sonar.portal.kalisio.com/dashboard?id=kalisio-kapp)
 [![Coverage](https://sonar.portal.kalisio.com/api/project_badges/measure?project=kalisio-kapp&metric=coverage&token=sqb_b5ab005f5b7a383f0d4fd3ce66993ab13ae26b7b)](https://sonar.portal.kalisio.com/dashboard?id=kalisio-kapp)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
