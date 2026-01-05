@@ -8,13 +8,13 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { KStampCode } from '../raw';
-import ComponentCard from './ComponentCard.vue';
+import { ref } from 'vue'
+import { KStampCode } from '../raw'
+import ComponentCard from './ComponentCard.vue'
 
 const stamps = ref([
   { direction: 'horizontal', text: 'message', textSize: '1.5rem' },
   { direction: 'horizontal', text: 'message', icon: 'las la-info-circle', iconSize: '1.2rem' },
-  { direction: 'vertical', text: 'message', textSize: '1.5rem', icon: 'las la-info-circle', iconSize: '4rem' },
+  { direction: 'vertical', text: 'message', textSize: '1.5rem', icon: 'las la-info-circle', iconSize: '4rem' }
 ])
 </script>

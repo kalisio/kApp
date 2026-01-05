@@ -22,10 +22,10 @@
 </template>
 
 <script setup>
-import { Store } from '@kalisio/kdk/core.client';
-import { KAvatar, KLogo, KSponsor } from '@kalisio/kdk/core/client/components';
-import { computed } from 'vue';
-import ComponentCard from './ComponentCard.vue';
+import { Store } from '@kalisio/kdk/core.client'
+import { KAvatar, KLogo, KSponsor } from '@kalisio/kdk/core/client/components'
+import { computed } from 'vue'
+import ComponentCard from './ComponentCard.vue'
 
 const User = Store.getRef('user')
 const avatar = computed(() => _.get(User.value, 'profile', {}))

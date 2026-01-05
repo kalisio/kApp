@@ -18,7 +18,7 @@ import ComponentCard from './ComponentCard.vue'
 
 const icons = ref([
   { icon: 'las la-home' },
-  { icon: { name: 'las la-home', size: 'lg', color: '#FFA500' } },
-  { icon: { name: 'las la-home', size: 'xl', color: '#FF9988', overlay: { name: 'las la-slash', size: 'xl', color: '#FF0000', rotation: 90 } } }
+  { icon: { name: 'las la-home', size: 'lg', color: '#FFA500' }},
+  { icon: { name: 'las la-home', size: 'xl', color: '#FF9988', overlay: { name: 'las la-slash', size: 'xl', color: '#FF0000', rotation: 90 }}}
 ])
 </script>

@@ -64,7 +64,7 @@ const highlightedCode = computed(() => {
   } else {
     const result = hljs.highlight(props.code, {
       language: language.value,
-      ignoreIllegals: props.ignoreIllegals,
+      ignoreIllegals: props.ignoreIllegals
     })
 
     return result.value

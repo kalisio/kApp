@@ -10,10 +10,10 @@
 </template>
 
 <script setup>
-import { KTextArea } from '@kalisio/kdk/core/client/components';
-import { KTextAreaCode } from '../raw';
-import ComponentCard from './ComponentCard.vue';
-import Stamps from './Stamps.vue';
+import { KTextArea } from '@kalisio/kdk/core/client/components'
+import { KTextAreaCode } from '../raw'
+import ComponentCard from './ComponentCard.vue'
+import Stamps from './Stamps.vue'
 
 
 </script>

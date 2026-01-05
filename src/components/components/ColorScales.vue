@@ -20,13 +20,13 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import ComponentCard from './ComponentCard.vue';
+import { ref } from 'vue'
+import ComponentCard from './ComponentCard.vue'
 
 const hColorScales = ref([
-  { label: 'Blues', colors: 'Blues', domain: [-50, 50], layout: { bar: { height: 16 }, label: { align: 'center' } } },
-  { label: 'Greens', colors: 'Greens', classes: [5e-324, 100, 500, 1000, 5000, 10000, 1.7976931348623157e+308] },
-  { label: 'Reds', colors: 'Reds', domain: [-100, 10], layout: { label: { align: 'right' } } }
+  { label: 'Blues', colors: 'Blues', domain: [-50, 50], layout: { bar: { height: 16 }, label: { align: 'center' }}},
+  { label: 'Greens', colors: 'Greens', classes: [5e-324, 100, 500, 1000, 5000, 10000, 1.7976931348623157e+308]},
+  { label: 'Reds', colors: 'Reds', domain: [-100, 10], layout: { label: { align: 'right' }}}
 ])
 
 const vColorScales = ref([

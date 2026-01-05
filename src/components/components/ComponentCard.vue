@@ -36,12 +36,12 @@
 </template>
 
 <script setup>
-import { KScrollArea } from '@kalisio/kdk/core/client/components';
-import { ref } from 'vue';
+import { KScrollArea } from '@kalisio/kdk/core/client/components'
+import { ref } from 'vue'
 
 // highlightjs theme
-import "../../css/atom-one-dark.css";
-import CodeHighlight from './CodeHighlight.vue';
+import '../../css/atom-one-dark.css'
+import CodeHighlight from './CodeHighlight.vue'
 
 const props = defineProps({
   title: {
