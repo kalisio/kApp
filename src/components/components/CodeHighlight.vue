@@ -5,33 +5,33 @@
 </template>
 
 <script setup>
-import hljs from 'highlight.js/lib/core';
-import javascript from 'highlight.js/lib/languages/javascript';
-import xml from 'highlight.js/lib/languages/xml';
-import { computed, ref, watch } from 'vue';
-import { escapeHtml } from '../../utils.js';
+import hljs from 'highlight.js/lib/core'
+import javascript from 'highlight.js/lib/languages/javascript'
+import xml from 'highlight.js/lib/languages/xml'
+import { computed, ref, watch } from 'vue'
+import { escapeHtml } from '../../utils.js'
 
 const props = defineProps({
   code: {
     type: String,
-    required: true,
+    required: true
   },
   language: {
     type: String,
-    default: '',
+    default: ''
   },
   autodetect: {
     type: Boolean,
-    default: true,
+    default: true
   },
   ignoreIllegals: {
     type: Boolean,
-    default: true,
+    default: true
   }
 })
 
-hljs.registerLanguage('javascript', javascript);
-hljs.registerLanguage('xml', xml);
+hljs.registerLanguage('javascript', javascript)
+hljs.registerLanguage('xml', xml)
 
 const language = ref(props.language)
 watch(() => props.language, (newLanguage) => {
