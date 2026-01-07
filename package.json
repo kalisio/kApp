@@ -48,6 +48,9 @@
   "standard": {
     "parser": "vue-eslint-parser",
     "parserOptions": {
+      "parser": "babel-eslint",
+      "allowImportExportEverywhere": true,
+      "ecmaVersion": 2019,
       "sourceType": "module"
     },
     "plugins": [
@@ -56,13 +59,26 @@
     "env": [
       "mocha"
     ],
+    "ignore": [
+      "public"
+    ],
     "globals": [
       "DEV",
       "PROD",
       "__THEME",
       "test",
       "fixture",
-      "self"
+      "self",
+      "fetch",
+      "cordova",
+      "location",
+      "FileReader",
+      "LocalFileSystem",
+      "mime",
+      "atob",
+      "URL",
+      "Blob",
+      "Event"
     ]
   },
   "dependencies": {
