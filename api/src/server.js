@@ -32,7 +32,6 @@ export class Server {
   }
 
   async run () {
-    console.log('toto')
     const app = this.app
     // First try to connect to DB
     await app.db.connect()

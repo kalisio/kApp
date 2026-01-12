@@ -16,7 +16,6 @@ describe('kapp', () => {
 
   it('is ES module compatible', () => {
     expect(typeof createServer).to.equal('function')
-    console.log('toto')
   })
 
   it('initialize the server', async () => {

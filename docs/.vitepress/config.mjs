@@ -41,4 +41,3 @@ function getAboutSidebar () {
     { text: 'Contact', link: '/about/contact' }
   ] 
 }
-console.log('toto')
