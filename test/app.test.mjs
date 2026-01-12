@@ -41,6 +41,7 @@ describe(`suite:${suite}`, () => {
     user.name = 'My new name'
     await core.clickOpener(page, 'left')
     expect(await runner.captureAndMatch('profile')).beTrue()
+    console.log('tata')
   })
 
   it('check-collections', async () => {

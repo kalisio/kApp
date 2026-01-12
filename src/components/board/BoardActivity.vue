@@ -30,6 +30,7 @@ const columnWidth = computed(() => {
   if ($q.screen.lt.xl) return 440
   return 500
 })
+console.log('toto')
 const renderer = computed(() => {
   return {
     component: 'collection/KCard',
