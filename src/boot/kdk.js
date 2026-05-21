@@ -4,6 +4,7 @@ import config from 'config'
 import _ from 'lodash'
 import logger from 'loglevel'
 import { Notify } from 'quasar'
+import { directives as kdkCoreDirectives } from '@kalisio/kdk/core.client'
 import appHooks from '../main.hooks'
 import services from '../services'
 
