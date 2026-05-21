@@ -1,10 +1,15 @@
 // import 'whatwg-fetch'
-import { authenticationGuard, beforeGuard, Events, i18n, initializeApi, utils as kdkCoreUtils, Layout, Store, utils } from '@kalisio/kdk/core.client'
+import {
+  authenticationGuard, beforeGuard,
+  Events, i18n, initializeApi,
+  directives as kdkCoreDirectives,
+  utils as kdkCoreUtils,
+  Layout, Store
+} from '@kalisio/kdk/core.client'
 import config from 'config'
 import _ from 'lodash'
 import logger from 'loglevel'
 import { Notify } from 'quasar'
-import { directives as kdkCoreDirectives } from '@kalisio/kdk/core.client'
 import appHooks from '../main.hooks'
 import services from '../services'
 
@@ -78,7 +83,7 @@ export default async ({ app }) => {
   // Subscribe to webpush notifications
   api.on('authenticated', (data) => {
     // User will be updated in store just after login so that we need to wait for the event
-    Events.once('user-changed', utils.subscribeToPushNotifications)
+    Events.once('user-changed', kdkCoreUtils.subscribeToPushNotifications)
   })
 
   // For debug purpose
