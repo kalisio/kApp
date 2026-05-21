@@ -31,6 +31,11 @@ export default async ({ app }) => {
     return _.get(config, path, defaultValue)
   }
 
+  // Register global directives
+  app.directive('drop-file', kdkCoreDirectives.vDropFile)
+  app.directive('hover', kdkCoreDirectives.vHover)
+  app.directive('safe-html', kdkCoreDirectives.vSafeHtml)
+
   // Register global components
   app.component('KAction', await kdkCoreUtils.loadComponent('action/KAction'))
   app.component('KToggleFullscreenAction', await kdkCoreUtils.loadComponent('action/KToggleFullscreenAction'))
