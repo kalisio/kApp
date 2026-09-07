@@ -1,3 +1,2 @@
 overrides:
   '@kalisio/kdk': link:../../kdk
-nodeLinker: hoisted
