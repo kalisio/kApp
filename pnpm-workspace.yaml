@@ -1,0 +1,4 @@
+overrides:
+  '@kalisio/kdk': link:../kdk
+  vue: 3.4.14
+shamefullyHoist: true
