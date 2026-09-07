@@ -1,4 +1,4 @@
-pacakges:
+packages:
   - '.'
   - '!api/**'
   - '!docs/**'
