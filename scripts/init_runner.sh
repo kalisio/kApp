@@ -12,23 +12,23 @@ THIS_DIR=$(dirname "$THIS_FILE")
 ### Github Actions
 
 init_github_run_tests() {
-    install_reqs age sops nvm node20 mongo7 sonar_scanner_cli
+    install_reqs age sops nvm node24 mongo7 sonar_scanner_cli
 }
 
 init_github_build_app() {
-    install_reqs age sops nvm node20
+    install_reqs age sops nvm node24
 }
 
 init_github_build_e2e_tests() {
-    install_reqs age sops nvm node20
+    install_reqs age sops nvm node24
 }
 
 init_github_build_docs() {
-    install_reqs age sops nvm node20
+    install_reqs age sops nvm node24
 }
 
 init_github_additional_tests() {
-    install_reqs age sops nvm node20 node22 mongo7 mongo8
+    install_reqs age sops nvm node24 mongo7 mongo8
 }
 
 ### e2e tests runner (dedicated container, outside any CI system)
