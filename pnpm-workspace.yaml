@@ -1,3 +1,7 @@
+pacakges:
+  - '.'
+  - '!api/**'
+  - '!docs/**'
 overrides:
   '@kalisio/kdk': link:../kdk
   vue: 3.4.14
