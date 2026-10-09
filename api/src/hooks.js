@@ -1,5 +1,5 @@
 // Application hooks that run for every service
-import * as commonHooks from 'feathers-hooks-common'
+import commonHooks from 'feathers-hooks-common'
 import { permissions as corePermissions, hooks as coreHooks } from '@kalisio/kdk/core.api.js'
 import * as permissions from '../../common/permissions.mjs'
 import authentication from '@feathersjs/authentication'

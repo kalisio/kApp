@@ -1,4 +1,4 @@
-import * as commonHooks from 'feathers-hooks-common'
+import commonHooks from 'feathers-hooks-common'
 import { hooks as coreHooks } from '@kalisio/kdk/core.api.js'
 
 export default {

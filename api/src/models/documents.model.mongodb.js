@@ -1,6 +1,6 @@
-export default async function (app, options) {
+export default function (app, options) {
   const db = options.db || app.db
   options.Model = db.collection('documents')
   // Use compound index to have unique pairs scope/value
-  await options.Model.createIndex({ name: 1 }, { unique: true })
+  options.Model.createIndex({ name: 1 }, { unique: true })
 }
