@@ -1,8 +1,5 @@
-[![Kalisio](https://s3.eu-central-1.amazonaws.com/kalisioscope/kapp/kapp-logo-color-512x192.png)](https://kalisio.com)
+# kapp
 
-## kApp - KDK demonstration application
-
-[![Latest Release](https://img.shields.io/github/v/tag/kalisio/kapp?sort=semver&label=latest)](https://github.com/kalisio/kapp/releases)
 [![CI](https://github.com/kalisio/kapp/actions/workflows/main.yaml/badge.svg)](https://github.com/kalisio/kapp/actions/workflows/main.yaml)
 [![Quality Gate Status](https://sonar.portal.kalisio.com/api/project_badges/measure?project=kalisio-kapp&metric=alert_status&token=sqb_b5ab005f5b7a383f0d4fd3ce66993ab13ae26b7b)](https://sonar.portal.kalisio.com/dashboard?id=kalisio-kapp)
 [![Maintainability Issues](https://sonar.portal.kalisio.com/api/project_badges/measure?project=kalisio-kapp&metric=software_quality_maintainability_issues&token=sqb_b5ab005f5b7a383f0d4fd3ce66993ab13ae26b7b)](https://sonar.portal.kalisio.com/dashboard?id=kalisio-kapp)
@@ -11,24 +8,25 @@
 [![Documentation](https://img.shields.io/badge/documentation-available-brightgreen.svg)](https://kalisio.github.io/kApp/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/kalisio/kapp.svg?style=plastic)](https://hub.docker.com/r/kalisio/kapp/)
 
-For more information please visit our websites:
-* [Kalisio Company](https://kalisio.com/)
-* [kApp development build](https://kapp.dev.kalisio.xyz/)
+_An example application based on the [Kalisio Development Kit (KDK)](https://kalisio.github.io/kdk/)_
 
-This application is based on the [Kalisio Development Kit](https://kalisio.github.io/kdk/) and the [Kalisio application template](https://github.com/kalisio/skeleton).
+> [!IMPORTANT]
+> This project is now deprecated and is no longer actively maintained.
 
 ## Documentation
 
-The full documentation is available [here](https://kalisio.github.io/kApp/)
-
-> The documentation website is generated using [VitePress](https://vitepress.dev/)
+Full documentation is available [here](https://kalisio.github.io/kApp/)
 
 ## License
 
-This project is licensed under the MIT License - see the [license file](./LICENSE) for details
+Licensed under the [MIT license](LICENSE).
 
-## Authors
+Copyright (c) 2018-present [Kalisio](https://kalisio.com)
 
-This project is sponsored by 
-
-[![Kalisio](https://s3.eu-central-1.amazonaws.com/kalisioscope/kalisio/kalisio-logo-black-256x84.png)](https://kalisio.com)
+<a href="https://kalisio.com">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://kalisio.github.io/kalisioscope/kalisio/kalisio-logo-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://kalisio.github.io/kalisioscope/kalisio/kalisio-logo-light.svg">
+    <img alt="Kalisio" src="https://kalisio.github.io/kalisioscope/kalisio/kalisio-logo-light.svg" height="96">
+  </picture>
+</a>
